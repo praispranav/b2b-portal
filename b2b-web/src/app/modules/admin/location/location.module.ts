@@ -6,6 +6,8 @@ import { ListLocationComponent } from './list-location/list-location.component';
 import { LocationRoutingModule } from "./location-routing.module";
 import { SharedModule } from 'src/app/shared/shared.module';
 import { EditLocationComponent } from './edit-location/edit-location.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'
 @NgModule({
   declarations: [
     LocationComponent,
@@ -14,7 +16,7 @@ import { EditLocationComponent } from './edit-location/edit-location.component';
     EditLocationComponent
   ],
   imports: [
-    CommonModule, LocationRoutingModule,SharedModule
+    CommonModule, LocationRoutingModule,SharedModule,FormsModule,ReactiveFormsModule
   ]
 })
 export class LocationModule { }
