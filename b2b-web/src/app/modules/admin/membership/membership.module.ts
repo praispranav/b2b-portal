@@ -5,11 +5,13 @@ import { AddMembershipComponent } from './add-membership/add-membership.componen
 import { ListMembershipComponent } from './list-membership/list-membership.component';
 import { MembershipRoutingModule } from "./membership-routing.module"
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EditMembershipComponent } from './edit-membership/edit-membership.component';
 @NgModule({
   declarations: [
     MembershipComponent,
     AddMembershipComponent,
     ListMembershipComponent,
+    EditMembershipComponent,
   ],
   imports: [
     CommonModule, MembershipRoutingModule, SharedModule

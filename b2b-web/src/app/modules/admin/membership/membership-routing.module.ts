@@ -1,3 +1,4 @@
+import { EditMembershipComponent } from './edit-membership/edit-membership.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddMembershipComponent } from './add-membership/add-membership.component';
@@ -21,6 +22,11 @@ const routes: Routes = [
             {
                 path: 'manage',
                 component: AddMembershipComponent
+            },
+
+            {
+                path: 'edit',
+                component: EditMembershipComponent
             }
         ],
     },
