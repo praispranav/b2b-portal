@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-location',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListLocationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
+  }
+  navigateToEdit()
+  {  console.log("hello brother");
+    this.route.navigate(['/admin/location/edit'])
+  }
+  navigateToAdd()  {
+    this.route.navigate(['admin/location/manage']);
   }
 
 }

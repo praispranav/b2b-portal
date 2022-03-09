@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddLocationComponent } from './add-location/add-location.component';
+import { EditLocationComponent } from './edit-location/edit-location.component';
 import { ListLocationComponent } from './list-location/list-location.component';
 import { LocationComponent } from './location.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
             {
                 path: 'manage',
                 component: AddLocationComponent
+            },
+            {
+                path: 'edit',
+                component: EditLocationComponent
             }
         ],
     },
