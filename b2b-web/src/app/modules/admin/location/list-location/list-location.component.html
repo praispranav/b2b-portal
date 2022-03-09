@@ -11,8 +11,8 @@
         </div>
         <div class="col-5 p-0 mb-0 d-flex justify-content-end mr-3">
 
-          <button class="btn btn-primary  text-white inter f-12" data-toggle="modal" type="button"
-            (click)="navigateToEdit()">Edit</button>
+          <!-- <button class="btn btn-primary  text-white inter f-12" data-toggle="modal" type="button"
+            (click)="navigateToEdit()">Edit</button> -->
           <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button"
             (click)="navigateToAdd()">Add</button>
 
@@ -32,9 +32,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of location;  index as i">
+
             <td>{{item.name}}</td>
             <td>{{item.currency}}</td>
             <td>{{item.code}}</td>
+            <td><button class="btn btn-primary  text-white inter f-12 " data-toggle="modal" type="button"
+                (click)="navigateToEdit()">Edit</button>
+              <button class="btn btn-primary  text-white inter f-12 m-3" data-toggle="modal" type="button"
+                (click)="navigateToEdit()">Delete</button>
+            </td>
           </tr>
 
         </tbody>
