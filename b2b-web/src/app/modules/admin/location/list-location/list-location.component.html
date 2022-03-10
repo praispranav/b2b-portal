@@ -1,30 +1,7 @@
 <div class="row">
-<<<<<<< HEAD
-    <div class="col-3"></div>
-    <div class="col-9">
-        <div class="card-header bg-white border-0 ">
-
-
-
-            <div class="row table-sort ">
-                <div class="col-5">
-                    <h5 class=" m-0">Location List</h5>
-                </div>
-                <div class="col-5 p-0 mb-0 d-flex justify-content-end mr-3">
-
-                    <button class="btn btn-primary  text-white inter f-12" data-toggle="modal" type="button"
-                        (click)="navigateToEdit()">Edit</button>
-                    <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button"
-                        (click)="navigateToAdd()">Add</button>
-
-
-                </div>
-            </div>
-=======
   <div class="col-3"></div>
   <div class="col-9">
     <div class="card-header bg-white border-0 ">
->>>>>>> 94f15e471ab357ae4780385ea6b1324c901720e6
 
 
 
@@ -60,7 +37,7 @@
             <td>{{item.currency}}</td>
             <td>{{item.code}}</td>
             <td><button class="btn btn-primary  text-white inter f-12 " data-toggle="modal" type="button"
-                (click)="navigateToEdit()">Edit</button>
+                (click)="editLocation(item)">Edit</button>
               <button class="btn btn-primary  text-white inter f-12 m-3" data-toggle="modal" type="button"
                 (click)="deleteLocation(item._id)">Delete</button>
             </td>

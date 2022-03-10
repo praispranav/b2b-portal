@@ -5,10 +5,10 @@
       <div class="card">
 
         <div class="card-header">
-          <h4>Add-location</h4>
+          <h4>{{isEditMode ? 'Edit': 'Add'}}-location</h4>
         </div>
         <div class="card-body">
-          <form action="" (ngSubmit)="add()">
+          <form action="" (ngSubmit)="submit()">
             <div class="row">
               <div class="col-4">
                 <div class="form-group m-1">
@@ -28,7 +28,7 @@
                   <input type="text" name="code" class="form-control" [(ngModel)]="location.code">
                 </div>
               </div>
-              <button class="btn btn-primary text-white m-1 mt-3 "> Add Location</button>
+              <button class="btn btn-primary text-white m-1 mt-3 "> {{isEditMode? 'Edit':'Add'}} Location</button>
             </div>
           </form>
         </div>

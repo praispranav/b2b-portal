@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LocationService {
   apiUrl: string = environment.apiUrl
+  static editId:any;
 
   constructor(private http: HttpClient) { }
   addLocation(obj: any) {
@@ -15,10 +16,13 @@ export class LocationService {
   getLocationList() {
     return this.http.get(this.apiUrl + 'location')
   }
-  editLocation(id: string, obj: any) {
-    return this.http.put(this.apiUrl + `location/${id}`, { ...obj })
-  }
+  // editLocation(obj:any) {
+  //   return this.http.put(this.apiUrl + `location/${id}`, { ...obj })
+  // }
   deleteLocation(id:string){
     return this.http.delete(this.apiUrl + 'location/' + id)
+  }
+  editLocation(obj:any){
+    return this.http.put(this.apiUrl + 'location/',{ ...obj } )
   }
 }

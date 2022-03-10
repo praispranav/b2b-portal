@@ -23,6 +23,7 @@ export class ListLocationComponent implements OnInit {
     this.route.navigate(['/admin/location/edit'])
   }
   navigateToAdd()  {
+    LocationService.editId = undefined;
     this.route.navigate(['admin/location/manage']);
   }
   getLocation() {
@@ -42,5 +43,10 @@ export class ListLocationComponent implements OnInit {
       alert('location deleted');
        this.getLocation();
     });
+  }
+
+  editLocation(obj: any) {
+    LocationService.editId = obj;
+    this.route.navigate(['/admin/location/manage']);
   }
 }
