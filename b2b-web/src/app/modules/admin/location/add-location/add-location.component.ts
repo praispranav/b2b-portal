@@ -28,7 +28,7 @@ location:Location={
 add(){
   this.locationService.addLocation(this.location).subscribe((res)=>{
     alert("location added")
-  },(error) => alert('Customer Not Added.'))
+  },(error) => alert('Location Not Added.'))
   
 }
 }

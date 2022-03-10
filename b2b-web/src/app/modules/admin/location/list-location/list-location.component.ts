@@ -36,5 +36,11 @@ export class ListLocationComponent implements OnInit {
       }
     );
   }
-
+  deleteLocation(id: string) {
+    console.log('Id to Delete', id);
+    this.locationService.deleteLocation(id).subscribe((response) => {
+      alert('location deleted');
+       this.getLocation();
+    });
+  }
 }

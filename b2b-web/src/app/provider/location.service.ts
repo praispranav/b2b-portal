@@ -18,5 +18,7 @@ export class LocationService {
   editLocation(id: string, obj: any) {
     return this.http.put(this.apiUrl + `location/${id}`, { ...obj })
   }
- 
+  deleteLocation(id:string){
+    return this.http.delete(this.apiUrl + 'location/' + id)
+  }
 }
