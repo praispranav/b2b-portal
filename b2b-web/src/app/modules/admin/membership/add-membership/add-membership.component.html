@@ -5,34 +5,33 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h4>Add-Membership</h4>
+                    <h4> Add Membership</h4>
                 </div>
                 <div class="card-body">
-                    <form action="">
+                    <div action="">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group m-1">
                                     <label for="">Location Name</label>
-                                    <select class="form-control">
-                                     <option #selected>Seclect location</option>
-                                     <option value="mumbai">Mumbai</option>
-                                     <option value="Delhi">Delhi</option>
+                                    <select class="form-control" [(ngModel)]="membership.location" name="location">
+                                        <option #selected>Seclect location</option>
+                                        <option value="mumbai">Mumbai</option>
+                                        <option value="Delhi">Delhi</option>
 
-                                   </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group m-1">
                                     <label for=""> Cost</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="cost" [(ngModel)]="membership.cost">
                                 </div>
                             </div>
-                            <button class="btn btn-primary text-white m-1 mt-3"> Add Member</button>
+                            <button class="btn btn-primary text-white m-1 mt-3" (click)="submit()"> Add Member</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>

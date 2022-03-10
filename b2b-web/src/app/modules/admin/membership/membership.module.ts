@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MembershipComponent } from './membership.component';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+
 import { AddMembershipComponent } from './add-membership/add-membership.component';
 import { ListMembershipComponent } from './list-membership/list-membership.component';
 import { MembershipRoutingModule } from "./membership-routing.module"
@@ -14,7 +16,7 @@ import { EditMembershipComponent } from './edit-membership/edit-membership.compo
     EditMembershipComponent,
   ],
   imports: [
-    CommonModule, MembershipRoutingModule, SharedModule
+    CommonModule, ReactiveFormsModule, MembershipRoutingModule, SharedModule, FormsModule
   ]
 })
 export class MembershipModule { }

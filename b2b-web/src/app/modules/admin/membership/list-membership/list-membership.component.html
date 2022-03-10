@@ -11,8 +11,10 @@
                 </div>
                 <div class="col-5 p-0 mb-0 d-flex justify-content-end mr-3">
 
-                    <button class="btn btn-primary  text-white inter f-12" data-toggle="modal" type="button" (click)="navigateToEdit()"><i class="fa fa-plus"></i>Edit</button>
-                    <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button" (click)="navigateToAdd()"><i class="fa fa-plus"></i>Add</button>
+                    <button class="btn btn-primary  text-white inter f-12" data-toggle="modal" type="button"
+                        (click)="navigateToEdit()"><i class="fa fa-plus"></i>Edit</button>
+                    <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button"
+                        (click)="navigateToAdd()"><i class="fa fa-plus"></i>Add</button>
 
 
                 </div>
@@ -34,16 +36,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mumbai</td>
-                        <td>50 Rs</td>
-
+                    <tr *ngFor="let item of membershipList">
+                        <td>{{item.location}}</td>
+                        <td>{{item.cost}} Rs</td>
+                        <td><button class="btn btn-primary  text-white inter f-12 " data-toggle="modal" type="button"
+                                (click)="navigateToEdit()">Edit</button>
+                            <button class="btn btn-primary  text-white inter f-12 m-3" data-toggle="modal" type="button"
+                                (click)="navigateToEdit()">Delete</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Mumbai</td>
-                        <td>50 Rs</td>
 
-                    </tr>
+
+
                 </tbody>
             </table>
         </div>
