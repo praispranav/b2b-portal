@@ -18,63 +18,43 @@ export class AddMembershipComponent implements OnInit {
     cost: ''
   };
 
-  // isEditMode: boolean = false;
-  // id: string | null;
+  isEditMode: boolean = false;
+
   constructor(private membershipService: MembershipService, private router: Router) {
-    // this.id = '';
+
   }
 
 
   ngOnInit(): void {
+    const values = MembershipService.editId
+    if (values) {
+      this.isEditMode = true;
+      this.membership = { ...values }
+    }
 
-
+  }
+  add() {
+    this.membershipService.addMembership(this.membership).subscribe((res) => {
+      alert("membership added")
+    }, (error) => alert('Membership Not Added.'))
   }
   save() {
     this.membershipService.addMembership(this.membership).subscribe((res) => {
       alert("Membership Saved Id:" + res)
     }, (error) => alert('Membership Not Added.'))
   }
-  submit() {
-    let requestPayload = this.membership;
-    console.log('requestPayload', requestPayload);
-    console.log('this.membership', this.membership);
-    this.membershipService.addMembership(requestPayload).subscribe(
-      (res) => {
-        console.log(res);
-        this.router.navigate(['admin/membership/list'])
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+
+  editMembership() {
+    this.membershipService.editMembership(this.membership).subscribe((res) => {
+      alert("Membership Edited :" + this.membership.location)
+    })
   }
 
-  // submit() {
-  //   console.log(this.membership);
-  //   if (this.isEditMode) {
-  //     console.log("Id", this.id)
-  //     console.log("Membership On Submit", this.membership)
-  //     this.membershipService.updateMembership({ _id: this.id, ...this.membership }).subscribe((response: any) => {
-  //       alert(response.message || "Membership Saved")
-  //       this.router.navigate(['/membership'])
-  //     }, (error) => alert("Exposition Not Saved"))
-  //   } else {
-  //     let requestPayload = this.membership;
+  submit() {
+    if (this.isEditMode) this.editMembership();
+    else this.add();
+  }
 
-  //     this.membershipService.addMembership(requestPayload).subscribe(
-  //       (res) => {
-  //         alert("Membership Saved");
-  //         this.router.navigate(['/membership'])
-  //       },
-  //       (err: any) => {
-  //         alert("Error" + err.response.data.message);
-  //       }
-  //     );
-  //     // this.expositionService
-  //     //   .addExposition(this.exposition)
-  //     //   .subscribe(() => alert('schedule has been saved'));
-  //   }
-  // }
 
 
 }

@@ -10,7 +10,7 @@ export class MembershipService {
 
   static editId: any;
   constructor(private http: HttpClient) { }
-  fetchList(): Observable<any | any[]> {
+  fetchList() {
     return this.http.get(this.apiUrl + 'membership')
   }
   addMembership(obj: any) {
@@ -23,7 +23,7 @@ export class MembershipService {
     return this.http.delete(this.apiUrl + 'membership/' + id)
   }
 
-  updateMembership(obj: any) {
+  editMembership(obj: any) {
     return this.http.put(this.apiUrl + 'membership/', { ...obj })
   }
 }

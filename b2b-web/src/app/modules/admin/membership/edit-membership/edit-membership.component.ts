@@ -29,7 +29,7 @@ export class EditMembershipComponent implements OnInit {
     if (this.isEditMode) {
       console.log("Id", this.id)
       console.log("Membership On Submit", this.membership)
-      this.membershipService.updateMembership({ _id: this.id, ...this.membership }).subscribe((response: any) => {
+      this.membershipService.editMembership({ _id: this.id, ...this.membership }).subscribe((response: any) => {
         alert(response.message || "Membership Saved")
         this.router.navigate(['/membership'])
       }, (error) => alert("Exposition Not Saved"))
@@ -39,23 +39,13 @@ export class EditMembershipComponent implements OnInit {
       this.membershipService.addMembership(requestPayload).subscribe(
         (res) => {
           alert("Membership Saved");
-          this.router.navigate(['/membership'])
+          this.router.navigate(['/admin/membership/list'])
         },
         (err: any) => {
           alert("Error" + err.response.data.message);
         }
       );
-      // this.expositionService
-      //   .addExposition(this.exposition)
-      //   .subscribe(() => alert('schedule has been saved'));
-    }
-  }
-  getMembershipById() {
-    const selectedExposition = MembershipService.editId;
-    if (selectedExposition) {
-      this.membership = selectedExposition
-      this.id = selectedExposition._id;
-      this.isEditMode = true
+
     }
   }
 }

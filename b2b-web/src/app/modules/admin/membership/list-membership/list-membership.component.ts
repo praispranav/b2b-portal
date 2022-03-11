@@ -1,5 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
 import { MembershipService } from 'src/app/provider/membership.service';
 
 @Component({
@@ -8,15 +10,15 @@ import { MembershipService } from 'src/app/provider/membership.service';
   styleUrls: ['./list-membership.component.scss']
 })
 export class ListMembershipComponent implements OnInit {
-  membershipList: any[]
+  membershipList: any[] = [];
+  assetURL: string;
   constructor(private route: Router, private membershipService: MembershipService) {
-    this.membershipList = []
+    this.assetURL = environment.apiUrl + '/membership/';
   }
 
   ngOnInit(): void {
-    // this.fetchList();
+    this.fetchList();
 
-    this.getList();
   }
   navigateToAdd() {
     this.route.navigate(['admin/membership/manage']);
@@ -24,35 +26,29 @@ export class ListMembershipComponent implements OnInit {
   navigateToEdit() {
     this.route.navigate(['admin/membership/edit']);
   }
-  // fetchList(): void {
-  //   this.membershipService.fetchList().subscribe(
-  //     (response: any) => {
-  //       this.membershipList = response;
-  //     },
-  //     (error: any) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-  getList() {
-    this.membershipService.getMembershipList().subscribe((res: any) => {
-      if (Array.isArray(res)) {
-        this.membershipList = res;
-        console.log(this.membershipList)
+  fetchList(): void {
+    this.membershipService.fetchList().subscribe(
+      (response: any) => {
+        this.membershipList = response;
+      },
+      (error: any) => {
+        console.log(error);
       }
-    })
+    );
   }
+
   deleteMembership(id: string) {
     console.log('Id to Delete', id);
     this.membershipService.deleteMembership(id).subscribe((response) => {
       alert('membership deleted');
-      // this.fetchList();
+      this.fetchList();
     });
   }
-
   editMembership(obj: any) {
     MembershipService.editId = obj;
-    this.route.navigate(['/membership/edit']);
+    this.route.navigate(['/admin/membership/manage']);
   }
+
+
 
 }
