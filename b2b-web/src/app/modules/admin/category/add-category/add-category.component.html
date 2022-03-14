@@ -4,19 +4,30 @@
         <div class="card p-4">
             <div class="row justify-content-center">
                 <div action="" class="w-75">
+
                     <div class="col-lg-12">
                         <div class="form-group row">
                             <div class="col-lg-2">
-
-                                <label for="">Category</label>
+                                <label for=""> Category Level</label>
                             </div>
                             <div class="col-lg-10">
-                                <select name="category" id="" class="form-control" [(ngModel)]="category.category">
-                                    <option #selected>
-                                        Select Category
-                                    </option>
-                                    <option value="Clothes"> Clothes</option>
-                                    <option value="Jewellery">Jewellery</option>
+                                <input type="number" class="form-control" (change)="handleLevelChange($event)"
+                                    [(ngModel)]="category.level">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div *ngIf="category.level > 0  " class="col-lg-12">
+                        <div class="form-group row">
+                            <div class="col-lg-2">
+                                <label for="">Parent Category</label>
+                            </div>
+                            <div *ngIf="category.level > 0" class="col-lg-10">
+                                <select name="category" id="" class="form-control"
+                                    [(ngModel)]="category.parentCategory">
+                                    <option *ngFor="let option of categoryOptions" [value]="option.category">{{
+                                        option.category }}</option>
                                 </select>
                             </div>
                         </div>
@@ -24,9 +35,7 @@
                     <div class="col-lg-12">
                         <div class="form-group row">
                             <div class="col-lg-2">
-                                <label for=""> Category Type</label>
-
-
+                                <label for=""> Category Name</label>
                             </div>
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" [(ngModel)]="category.category">
@@ -34,19 +43,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="form-group row">
-                            <div class="col-lg-2">
-                                <label for=""> Category Level</label>
 
-
-                            </div>
-                            <div class="col-lg-10">
-                                <input type="number" class="form-control" [(ngModel)]="category.level">
-                            </div>
-
-                        </div>
-                    </div>
                     <div class="col-lg-12">
                         <div class="form-group row">
                             <div class="col-lg-2">
@@ -65,10 +62,9 @@
                             <div class="col-lg-2">
                                 <label for=""> Description</label>
                             </div>
-
-
                             <div class="col-lg-10">
-                                <textarea id="" cols="73" rows="8" [(ngModel)]="category.description"></textarea>
+                                <textarea id="" cols="73" rows="8"
+                                    (change)="handleDescriptionChange($event)"></textarea>
                             </div>
 
                         </div>
@@ -78,8 +74,6 @@
                             <div class="col-lg-2">
                                 <label for=""> Keywords</label>
                             </div>
-
-
                             <div class="col-lg-10">
                                 <input type="text" class="form-control" [(ngModel)]="category.keywords">
                             </div>
