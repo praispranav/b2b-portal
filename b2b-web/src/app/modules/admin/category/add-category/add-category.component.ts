@@ -6,7 +6,7 @@ interface CategoryType {
   "parentCategory": string,
   "parentLevel": string,
   "category": string,
-  "level": string,
+  "level": number,
   "tags": string,
   "description": string,
   "keywords": string
@@ -18,30 +18,33 @@ interface CategoryType {
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
-  category: CategoryType
+  category: CategoryType;
+  categoryList: any[] | any;
+  categoryOptions: any[] = []
   constructor(private categoryService: CategoryService, private formBuilder: FormBuilder, private router: Router) {
     this.category = {
       "parentCategory": '',
       "parentLevel": '',
       "category": '',
-      "level": '',
+      "level": -1,
       "tags": '',
       "description": '',
       "keywords": ''
     }
+    this.categoryList = [];
   }
 
   ngOnInit(): void {
+    this.getList();
   }
   save() {
     this.categoryService.addCategory(this.category).subscribe((res) => {
       alert("Category Saved Id:" + res)
     }, (error) => alert('Category Not Added.'))
   }
+
   submit() {
     let requestPayload = this.category;
-    console.log('requestPayload', requestPayload);
-    console.log('this.customer', this.category);
     this.categoryService.addCategory(requestPayload).subscribe(
       (res) => {
         console.log(res);
@@ -51,6 +54,32 @@ export class AddCategoryComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  getList() {
+    this.categoryService.getCategoryList().subscribe((res) => {
+      if (Array.isArray(res)) {
+        this.categoryList = res;
+      }
+    })
+  }
+
+  filterCategoryList(value: string | number) {
+    const filterArray = this.categoryList.filter((item: any) => {
+      console.log(item.level, value)
+      return Number(item.level) == (Number(value) -1)
+    });
+    this.categoryOptions = filterArray
+    console.log(value, filterArray);
+  }
+
+  handleLevelChange(changeEvent: any) {
+    const value = changeEvent.target.value;
+    this.filterCategoryList(value);
+  }
+
+  handleDescriptionChange(changeEvent:any){
+    this.category.description = changeEvent.target.value
   }
 
 }
