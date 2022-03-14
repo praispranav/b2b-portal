@@ -1,1 +1,73 @@
-Category Component
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-10">
+        <div class="container">
+            <div class="card">
+                <div class="row justify-content-between">
+                    <div>
+                        <h5 class="m-4">Category List</h5>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary m-4" (click)="navigateToAdd()">Add</button>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+
+                    <tr class="pl-0 pr-0">
+                        <th> Category</th>
+                        <th>Sub-categories</th>
+                        <th>Tags</th>
+                        <th>Description</th>
+                        <th>Keywords</th>
+                        <th col="2">Edit</th>
+                    </tr>
+
+
+
+                    <tbody>
+                        <tr>
+                            <td>Clothes</td>
+                            <td>Winter Collection, Summer Collection , Causals, formals</td>
+                            <td>n/a</td>
+                            <td>we have brand new collection of summer clothes</td>
+                            <td>summer, winter</td>
+                            <td class="p-1">
+
+
+                                <div class="flex p-0">
+
+                                    <button class="btn btn-primary  m-1"> Edit</button>
+
+                                    <button class="btn btn-danger m-1">Delete</button>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Electronics</td>
+                            <td>Mobiles,kitchen Electronics</td>
+                            <td>n/a</td>
+                            <td>we have a huge collection of best product in the market at best price</td>
+                            <td>TV,LCD</td>
+                            <td class="p-1">
+
+
+                                <div class="flex p-0">
+
+                                    <button class="btn btn-primary  m-1"> Edit</button>
+
+                                    <button class="btn btn-danger m-1">Delete</button>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
