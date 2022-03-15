@@ -69,7 +69,8 @@ export class AddCategoryComponent implements OnInit {
 
   filterCategoryList(value: string | number) {
     const filterArray = this.categoryList.filter((item: any) => {
-      return Number(item.level) == (Number(value) -1)  
+      console.log(item.level, value)
+      return Number(item.level) == (Number(value) - 1)
     });
     this.categoryOptions = filterArray
   }
@@ -79,7 +80,7 @@ export class AddCategoryComponent implements OnInit {
     this.filterCategoryList(value);
   }
 
-  handleDescriptionChange(changeEvent:any){
+  handleDescriptionChange(changeEvent: any) {
     this.category.description = changeEvent.target.value
   }
 

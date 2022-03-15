@@ -28,6 +28,12 @@
                             <div class="col-lg-10">
                                 <input type="number" class="form-control" (change)="handleLevelChange($event)"
                                     [(ngModel)]="category.level">
+                            <div *ngIf="category.level > 0" class="col-lg-10">
+                                <select name="category" id="" class="form-control"
+                                    [(ngModel)]="category.parentCategory">
+                                    <option *ngFor="let option of categoryOptions" [value]="option.category">{{
+                                        option.category }}</option>
+                                </select>
                             </div>
 
                         </div>
@@ -66,7 +72,8 @@
                                 <label for=""> Description</label>
                             </div>
                             <div class="col-lg-10">
-                                <textarea id="" cols="73" rows="8" (change)="handleDescriptionChange($event)"></textarea>
+                                <textarea id="" cols="73" rows="8"
+                                    (change)="handleDescriptionChange($event)"></textarea>
                             </div>
 
                         </div>
