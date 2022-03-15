@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage.component.scss']
 })
 export class ManageComponent implements OnInit {
+  list: boolean = false;
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { RAndDCapacityRoutingModule } from './r-and-d-capacity-routing.module';
 import { ListComponent } from './list/list.component';
@@ -17,7 +18,8 @@ import { RAndDCapacityComponent } from './r-and-d-capacity.component';
   ],
   imports: [
     CommonModule,
-    RAndDCapacityRoutingModule
+    RAndDCapacityRoutingModule,
+    FormsModule
   ]
 })
 export class RAndDCapacityModule { }
