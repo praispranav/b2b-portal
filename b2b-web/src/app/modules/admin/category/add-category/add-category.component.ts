@@ -32,7 +32,7 @@ export class AddCategoryComponent implements OnInit {
       "tags": '',
       "description": '',
       "keywords": '',
-      parentId:"",
+      parentId:"None",
     }
     this.categoryList = [];
   }
