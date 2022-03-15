@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CompanyProfileRoutingModule } from './company-profile-routing.module';
+import { QualityControlRoutingModule } from './quality-control-routing.module';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { ManageComponent } from './manage/manage.component';
-import { CompnayProfileComponent } from './compnay-profile.component';
+import { QualityControlComponent } from './quality-control.component';
 
 
 @NgModule({
@@ -13,11 +13,11 @@ import { CompnayProfileComponent } from './compnay-profile.component';
     ListComponent,
     DetailComponent,
     ManageComponent,
-    CompnayProfileComponent
+    QualityControlComponent
   ],
   imports: [
     CommonModule,
-    CompanyProfileRoutingModule
+    QualityControlRoutingModule
   ]
 })
-export class CompanyProfileModule { }
+export class QualityControlModule { }
