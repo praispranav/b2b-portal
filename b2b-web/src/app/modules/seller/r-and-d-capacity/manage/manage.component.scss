@@ -2,3 +2,8 @@
     padding: 20px;
     margin-top: 10px;
 }
+@media only screen and (max-width: 576px) {
+    .capacity {
+        margin-left: 3px;
+    }
+}
