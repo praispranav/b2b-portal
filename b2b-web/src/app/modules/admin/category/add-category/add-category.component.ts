@@ -22,7 +22,8 @@ interface CategoryType {
 export class AddCategoryComponent implements OnInit {
   category: CategoryType;
   categoryList: any[] | any;
-  categoryOptions: any[] = []
+  categoryOptions: any[] = [];
+  isEditMode: boolean = false;
   constructor(private categoryService: CategoryService, private formBuilder: FormBuilder, private router: Router) {
     this.category = {
       "parentCategory": 'None',
@@ -39,7 +40,18 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getList();
+    this.editCategory();
   }
+  
+  editCategory(){
+    this.isEditMode = false;
+    const obj = CategoryService.selectedCategoryObj
+    if(obj){
+      this.isEditMode = true 
+      this.category = { ...obj }
+    }
+  }
+
   save() {
     this.categoryService.addCategory(this.category).subscribe((res) => {
       alert("Category Saved Id:" + res)

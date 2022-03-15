@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/provider/category.service';
 })
 export class ListCategoryComponent implements OnInit {
   categoryList: any[];
-  constructor(private route: Router, private categoryService: CategoryService) {
+  constructor(private route: Router, private categoryService: CategoryService, private router:Router) {
     this.categoryList = []
   }
 
@@ -35,6 +35,18 @@ export class ListCategoryComponent implements OnInit {
     if(obj) return obj.category
     else if(parentId === 'None') return "None"
     else "None"
+  }
+
+  deleteCategory(category:any){
+    return this.categoryService.deleteCategory(category._id).subscribe((res)=>{
+    alert("Category Deleted" + category.category);
+    this.getList();
+    })
+  }
+
+  navigateToEdit(item:any){
+    CategoryService.selectedCategoryObj = item 
+    this.router.navigate(['/admin/category/manage'])
   }
 
 }
