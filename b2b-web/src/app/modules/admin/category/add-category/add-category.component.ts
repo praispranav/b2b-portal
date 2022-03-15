@@ -26,7 +26,7 @@ export class AddCategoryComponent implements OnInit {
       "parentCategory": '',
       "parentLevel": '',
       "category": '',
-      "level": -1,
+      "level": 0,
       "tags": '',
       "description": '',
       "keywords": ''
