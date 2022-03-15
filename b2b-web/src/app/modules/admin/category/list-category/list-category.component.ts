@@ -30,4 +30,11 @@ export class ListCategoryComponent implements OnInit {
     })
   }
 
+  findParentCategory(parentId:string){
+    const obj = this.categoryList.find((item)=> item._id === parentId)
+    if(obj) return obj.category
+    else if(parentId === 'None') return "None"
+    else "None"
+  }
+
 }

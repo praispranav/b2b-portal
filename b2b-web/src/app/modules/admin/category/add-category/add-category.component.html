@@ -8,21 +8,26 @@
                     <div class="col-lg-12">
                         <div class="form-group row">
                             <div class="col-lg-2">
+                                <label for="">Parent Category</label>
+                            </div>
+                            <div class="col-lg-10">
+                                <select name="category" id="" #parentCat (change)="handleCategoryChange(parentCat.value)" class="form-control" [(ngModel)]="category.parentCategory">
+                                    <option selected value="None">None</option>
+                                    <option *ngFor="let option of categoryList" [value]="option.category">{{
+                                        option.category }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-lg-12">
+                        <div class="form-group row">
+                            <div class="col-lg-2">
                                 <label for=""> Category Level</label>
                             </div>
                             <div class="col-lg-10">
                                 <input type="number" class="form-control" (change)="handleLevelChange($event)"
                                     [(ngModel)]="category.level">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div *ngIf="category.level > 0  " class="col-lg-12">
-                        <div class="form-group row">
-                            <div class="col-lg-2">
-                                <label for="">Parent Category</label>
-                            </div>
                             <div *ngIf="category.level > 0" class="col-lg-10">
                                 <select name="category" id="" class="form-control"
                                     [(ngModel)]="category.parentCategory">
@@ -30,8 +35,12 @@
                                         option.category }}</option>
                                 </select>
                             </div>
+
                         </div>
-                    </div>
+                    </div> -->
+
+                 
+
                     <div class="col-lg-12">
                         <div class="form-group row">
                             <div class="col-lg-2">
