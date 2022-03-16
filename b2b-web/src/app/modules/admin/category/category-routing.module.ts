@@ -11,15 +11,15 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'list',
+                redirectTo: 'category-list',
                 pathMatch: 'full'
             },
             {
-                path: 'list',
+                path: 'category-list',
                 component: ListCategoryComponent
             },
             {
-                path: 'manage',
+                path: 'add-category',
                 component: AddCategoryComponent
             }
         ],

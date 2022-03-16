@@ -12,19 +12,19 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'list',
+                redirectTo: 'location-list',
                 pathMatch: 'full'
             },
             {
-                path: 'list',
+                path: 'location-list',
                 component: ListLocationComponent
             },
             {
-                path: 'manage',
+                path: 'add-location',
                 component: AddLocationComponent
             },
             {
-                path: 'edit',
+                path: 'edit-location',
                 component: EditLocationComponent
             }
         ],
