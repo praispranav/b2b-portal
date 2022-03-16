@@ -20,11 +20,11 @@ const routes: Routes = [
         component: ListComponent,
       },
       {
-        path: 'manage',
+        path: 'add-detail',
         component: ManageComponent,
       },
       {
-        path: 'detail',
+        path: 'view-detail',
         component: DetailComponent,
       },
     ],

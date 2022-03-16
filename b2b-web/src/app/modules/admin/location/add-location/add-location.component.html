@@ -1,39 +1,33 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-9">
-      <div class="card">
+<section>
+  <div class="card">
 
-        <div class="card-header">
-          <h4>{{isEditMode ? 'Edit': 'Add'}}-location</h4>
-        </div>
-        <div class="card-body">
-          <form action="" (ngSubmit)="submit()">
-            <div class="row">
-              <div class="col-4">
-                <div class="form-group m-1">
-                  <label for=""> Name</label>
-                  <input type="text" name="name" class="form-control" [(ngModel)]="location.name">
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="form-group m-1">
-                  <label for=""> Currency</label>
-                  <input type="text" name="currency" class="form-control" [(ngModel)]="location.currency">
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="form-group m-1">
-                  <label for=""> Code</label>
-                  <input type="text" name="code" class="form-control" [(ngModel)]="location.code">
-                </div>
-              </div>
-              <button class="btn btn-primary text-white m-1 mt-3 "> {{isEditMode? 'Edit':'Add'}} Location</button>
-            </div>
-          </form>
-        </div>
-      </div>
+    <div class="card-header">
+      <h4>{{isEditMode ? 'Edit': 'Add'}}-location</h4>
     </div>
-
+    <div class="card-body">
+      <form action="" (ngSubmit)="submit()">
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group m-1">
+              <label for=""> Name</label>
+              <input type="text" name="name" class="form-control" [(ngModel)]="location.name">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group m-1">
+              <label for=""> Currency</label>
+              <input type="text" name="currency" class="form-control" [(ngModel)]="location.currency">
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group m-1">
+              <label for=""> Code</label>
+              <input type="text" name="code" class="form-control" [(ngModel)]="location.code">
+            </div>
+          </div>
+          <button class="btn btn-primary text-white m-1 mt-3 "> {{isEditMode? 'Edit':'Add'}} Location</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</section>
