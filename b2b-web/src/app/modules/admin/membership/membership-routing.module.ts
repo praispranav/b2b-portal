@@ -12,20 +12,20 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'list',
+                redirectTo: 'membership-list',
                 pathMatch: 'full'
             },
             {
-                path: 'list',
+                path: 'membership-list',
                 component: ListMembershipComponent
             },
             {
-                path: 'manage',
+                path: 'add-membership',
                 component: AddMembershipComponent
             },
 
             {
-                path: 'edit',
+                path: 'edit-membership',
                 component: EditMembershipComponent
             }
         ],
