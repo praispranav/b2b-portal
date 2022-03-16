@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CompnayProfileComponent } from './compnay-profile.component';
-import { DetailComponent } from './detail/detail.component';
+import { ProfileViewComponent } from './detail/profile-view.component';
+
 import { ListComponent } from './list/list.component';
-import { ManageComponent } from './manage/manage.component';
+import { AddProfileComponent } from './manage/add-profile.component';
+
 
 const routes: Routes = [
   {
@@ -20,12 +22,12 @@ const routes: Routes = [
         component: ListComponent,
       },
       {
-        path: 'add-detail',
-        component: ManageComponent,
+        path: 'add-profile',
+        component: AddProfileComponent,
       },
       {
-        path: 'view-detail',
-        component: DetailComponent,
+        path: 'view-profile',
+        component: ProfileViewComponent,
       },
     ],
   },
