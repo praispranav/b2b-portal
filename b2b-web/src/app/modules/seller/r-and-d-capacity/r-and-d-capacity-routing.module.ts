@@ -20,11 +20,11 @@ const routes: Routes = [
             component: ListComponent
         },
         {
-            path: 'manage',
+            path: 'add-rnd',
             component: ManageComponent
         },
         {
-            path: 'detail',
+            path: 'view-rnd',
             component: DetailComponent
         },
     ],

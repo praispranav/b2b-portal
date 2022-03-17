@@ -20,11 +20,11 @@ const routes: Routes = [
             component: ListComponent
         },
         {
-            path: 'manage',
+            path: 'add-quality-check',
             component: ManageComponent
         },
         {
-            path: 'detail',
+            path: 'view-quality-check',
             component: DetailComponent
         },
     ],
