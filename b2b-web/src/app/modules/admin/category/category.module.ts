@@ -6,11 +6,13 @@ import { ListCategoryComponent } from './list-category/list-category.component';
 import { CategoryRoutingModule } from './category-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 @NgModule({
   declarations: [
     CategoryComponent,
     AddCategoryComponent,
-    ListCategoryComponent
+    ListCategoryComponent,
+    EditCategoryComponent
   ],
   imports: [
     CommonModule, CategoryRoutingModule, SharedModule, FormsModule, ReactiveFormsModule

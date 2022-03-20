@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from 'src/app/provider/location.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 interface Location {
   name: string;
   currency: string;
+  cost: string;
   code: string;
   _id?: string;
 }
@@ -18,10 +20,11 @@ export class AddLocationComponent implements OnInit {
   location: Location = {
     name: '',
     currency: '',
-    code: ''
+    code: '',
+    cost: ''
   }
   isEditMode: boolean = false;
-  constructor(private locationService: LocationService) { }
+  constructor(private locationService: LocationService, private route: Router) { }
 
   ngOnInit(): void {
     const values = LocationService.editId
@@ -34,12 +37,15 @@ export class AddLocationComponent implements OnInit {
   add() {
     this.locationService.addLocation(this.location).subscribe((res) => {
       alert("location added")
+      this.route.navigate(['admin/location/location-list'])
     }, (error) => alert('Location Not Added.'))
   }
 
   editLocation() {
     this.locationService.editLocation(this.location).subscribe((res) => {
       alert("Location Edited :" + this.location.name)
+      this.route.navigate(['admin/location/location-list'])
+
     })
   }
 

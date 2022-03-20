@@ -1,53 +1,47 @@
 <section>
-    <div class="card">
-       <div class="card-header">
-        <div>
-            <h5 class="m-4">Category List</h5>
-          </div>
-          <div>
-            <button class="btn btn-primary m-4" (click)="navigateToAdd()">
-              Add
-            </button>
-          </div>
-       </div>
-       <div class="card-body">
-      
-          <table class="table table-bordered">
-            <tr class="pl-0 pr-0">
-              <th>Parent Category</th>
-              <th>Sub-categories</th>
-              <th>Tags</th>
-              <th>Description</th>
-              <th>Keywords</th>
-              <th col="2">Edit</th>
-            </tr>
-    
-            <tbody>
-              <tr *ngFor="let item of categoryList">
-                <td>{{ findParentCategory(item.parentId) }}</td>
-                <td>{{ item.category }}</td>
-                <td>{{ item.tags }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.keywords }}</td>
-                <td class="p-1">
-                  <div class="flex p-0">
-                    <button
-                      class="btn btn-primary m-1"
-                      (click)="navigateToEdit(item)"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      class="btn btn-danger m-1"
-                      (click)="deleteCategory(item)"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-       </div>
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h5 class="m-4">Category List</h5>
       </div>
+      <div>
+        <button class="btn btn-primary m-4" (click)="navigateToAdd()">
+          Add
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <table class="table table-bordered">
+        <tr class="pl-0 pr-0">
+          <th>Parent Category</th>
+          <th>Sub-categories</th>
+          <th>Tags</th>
+          <th>Description</th>
+          <th>Keywords</th>
+          <th col="2">Edit</th>
+        </tr>
+
+        <tbody>
+          <tr *ngFor="let item of categoryList">
+            <td>{{ findParentCategory(item.parentId) }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.tags }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.keywords }}</td>
+            <td class="p-1">
+              <div class="flex p-0">
+                <button class="btn btn-primary m-1" (click)="navigateToEdit(item)">
+                  Edit
+                </button>
+                <button class="btn btn-danger m-1" (click)="deleteCategory(item)">
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

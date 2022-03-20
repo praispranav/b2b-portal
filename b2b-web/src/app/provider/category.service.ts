@@ -6,7 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
-  static selectedCategoryObj:any;
+  static selectedCategoryObj: any;
+  static editId: any;
+
+
 
   apiUrl: string = environment.apiUrl
   constructor(private http: HttpClient) { }
@@ -23,7 +26,7 @@ export class CategoryService {
     return this.http.put(this.apiUrl + `category/${id}`, { ...obj })
   }
 
-  deleteCategory(id:string){
+  deleteCategory(id: string) {
     return this.http.delete(this.apiUrl + `category/${id}`)
   }
 }

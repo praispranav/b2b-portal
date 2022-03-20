@@ -14,8 +14,6 @@
             (click)="navigateToEdit()">Edit</button> -->
           <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button"
             (click)="navigateToAdd()">Add</button>
-
-
         </div>
       </div>
 
@@ -27,6 +25,7 @@
             <th>Name</th>
             <th>Currency</th>
             <th>Code</th>
+            <th>Cost</th>
           </tr>
         </thead>
         <tbody>
@@ -35,6 +34,7 @@
             <td>{{item.name}}</td>
             <td>{{item.currency}}</td>
             <td>{{item.code}}</td>
+            <td>{{item.cost}}</td>
             <td><button class="btn btn-primary  text-white inter f-12 " data-toggle="modal" type="button"
                 (click)="editLocation(item)">Edit</button>
               <button class="btn btn-primary  text-white inter f-12 m-3" data-toggle="modal" type="button"

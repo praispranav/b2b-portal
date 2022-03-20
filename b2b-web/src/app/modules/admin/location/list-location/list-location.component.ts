@@ -10,21 +10,21 @@ import { LocationService } from 'src/app/provider/location.service';
 })
 export class ListLocationComponent implements OnInit {
   location: any[] = [];
-  assetURL:string;
-  constructor(private route:Router,private locationService: LocationService) {
-    this.assetURL = environment.apiUrl +  '/location/';
-   }
+  assetURL: string;
+  constructor(private route: Router, private locationService: LocationService) {
+    this.assetURL = environment.apiUrl + '/location/';
+  }
 
   ngOnInit(): void {
-    this.getLocation()
+    this.getLocation();
   }
-  navigateToEdit()
-  {  console.log("hello brother");
-    this.route.navigate(['/admin/location/edit'])
+  navigateToEdit() {
+    console.log("hello brother");
+    this.route.navigate(['admin/location/edit-location'])
   }
-  navigateToAdd()  {
+  navigateToAdd() {
     LocationService.editId = undefined;
-    this.route.navigate(['admin/location/manage']);
+    this.route.navigate(['admin/location/add-location']);
   }
   getLocation() {
     this.locationService.getLocationList().subscribe(
@@ -41,12 +41,12 @@ export class ListLocationComponent implements OnInit {
     console.log('Id to Delete', id);
     this.locationService.deleteLocation(id).subscribe((response) => {
       alert('location deleted');
-       this.getLocation();
+      this.getLocation();
     });
   }
 
   editLocation(obj: any) {
     LocationService.editId = obj;
-    this.route.navigate(['/admin/location/manage']);
+    this.route.navigate(['admin/location/add-location']);
   }
 }

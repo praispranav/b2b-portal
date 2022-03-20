@@ -24,7 +24,7 @@ export class AddCategoryComponent implements OnInit {
   categoryList: any[] | any;
   categoryOptions: any[] = [];
   isEditMode: boolean = false;
-  constructor(private categoryService: CategoryService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private categoryService: CategoryService, private formBuilder: FormBuilder, private route: Router) {
     this.category = {
       "parentCategory": 'None',
       "parentLevel": -1,
@@ -33,44 +33,43 @@ export class AddCategoryComponent implements OnInit {
       "tags": '',
       "description": '',
       "keywords": '',
-      parentId:"None",
+      parentId: "None",
     }
     this.categoryList = [];
   }
 
   ngOnInit(): void {
     this.getList();
-    this.editCategory();
+    // this.editCategory();
   }
-  
-  editCategory(){
-    this.isEditMode = false;
-    const obj = CategoryService.selectedCategoryObj
-    if(obj){
-      this.isEditMode = true 
-      this.category = { ...obj }
-    }
-  }
+
+  // editCategory() {
+  //   this.isEditMode = false;
+  //   const obj = CategoryService.selectedCategoryObj
+  //   if (obj) {
+  //     this.isEditMode = true
+  //     this.category = { ...obj }
+  //   }
+  // }
+  // editCategory() {
+  //   this.categoryService.editCategory(this.category._id, this.category).subscribe((res) => {
+  //     alert("Category Edited :" + this.category.parentCategory)
+  //     this.route.navigate(['admin/category/category-list'])
+
+  //   })
+  // }
 
   save() {
     this.categoryService.addCategory(this.category).subscribe((res) => {
       alert("Category Saved Id:" + res)
+      this.route.navigate(['admin/category/category-list'])
     }, (error) => alert('Category Not Added.'))
   }
 
   submit() {
-    console.log("value", this.category)
-    let requestPayload = this.category;
-    this.categoryService.addCategory(requestPayload).subscribe(
-      (res) => {
-        this.router.navigate(['admin/category/list'])
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // if (this.isEditMode) this.editCategory();
+    this.save();
   }
-
   getList() {
     this.categoryService.getCategoryList().subscribe((res) => {
       if (Array.isArray(res)) {
@@ -96,26 +95,26 @@ export class AddCategoryComponent implements OnInit {
     this.category.description = changeEvent.target.value
   }
 
-  findCategory(categoryName:string){
-    return this.categoryList.find((item)=> item.category === categoryName)
+  findCategory(categoryName: string) {
+    return this.categoryList.find((item) => item.category === categoryName)
   }
 
-  handleCategoryChange(changeEvent:any){
+  handleCategoryChange(changeEvent: any) {
     const value = changeEvent;
     const categoryObj = this.findCategory(value)
-    if(categoryObj === 'None'){
+    if (categoryObj === 'None') {
       this.category.parentLevel = -1
       this.category.level = -1 + 1
 
       this.category.parentId = "None"
-    } else if(categoryObj){
+    } else if (categoryObj) {
       this.category.parentId = categoryObj._id
       this.category.parentLevel = categoryObj.level
       this.category.level = Number(categoryObj.level + 1)
-    } else{
+    } else {
       this.category.parentId = 'None'
     }
-    console.log( "VValue", this.category.parentId)
+    console.log("VValue", this.category.parentId)
   }
 
 }
