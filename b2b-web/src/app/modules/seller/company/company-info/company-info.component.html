@@ -1,4 +1,3 @@
-
 <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
@@ -16,291 +15,674 @@
     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">hello world</div>
   </div> -->
 <section>
-    <div class="card">
- <tabset (click)="confirmTabSwitch($event)" #tabset>
-        <tab
-          tab1
-          heading="Details"
-          id="first"
-          #first
-          [disabled]="disableSwitching"
-          >
-         <div class="container-fluid">
+  <div class="card">
+    <tabset (click)="confirmTabSwitch($event)" #tabset>
+      <tab tab1 heading="Details" id="first" #first [disabled]="disableSwitching">
+        <div class="container-fluid">
+          <form>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Company Logo<span>*</span></label>
+                    <input type="file" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Company Picture</label>
+                    <input type="file" class="form-control w-75 float-left" /><button
+                      class="btn btn-info w-20 float-right ml-2">Add</button>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Company Video</label>
+                    <input type="file" class="form-control" /> <button>Add</button>
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Contact Person</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>surname</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Alternative Email</label>
+                    <input type="email" class="form-control" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Company Website</label>
+                    <input type="text" class="form-control" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Google Business URL</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Instagram Business URL </label>
+                    <input type="text" class="form-control" />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Company Page </label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>b2bportal.com/Company-NameL </label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h6 class="mt-4">Bank Details <span>*</span></h6>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Account Number</label>
+                    <input type="number" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Account Type</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>IFSC Code</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>SWIFT Code</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Bank Name</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Branch</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Language Spoken</label>
+                    <input type="text" class="form-control" /><button>Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border mt-4 px-2">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Company Philosophy</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Company Mission and Vision</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Company Detailed Introduction</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Employee Strenth</label>
+                    <select class="form-control" id="">
+                      <option>10-20</option>
+                      <option>20-50</option>
+                      <option>50-100</option>
+                      <option>100-200</option>
+                      <option>200-500</option>
+                      <option>500-1000</option>
+                      <option>more than 1000</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h6>
+              Have you attended or Planed to attand any trade expo?
+              <span class="ml-4">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  checked />
+                <label class="form-check-label" for="defaultCheck1">Yes</label>
+              </span>
+              <span class="ml-4">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                <label class="form-check-label" for="defaultCheck2">No</label>
+              </span>
+            </h6>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Select Trade showes you attaended</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Name</label>
+                    <input type="text" class="form-control" /> <button>Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row border mt-4">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Trade Show Name</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="mt-2 form-label">From</label>
+                    <input type="date" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="mt-2 form-label">To</label>
+                    <input type="date" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Host</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>Country/region</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                  <div class="col-md-4">
+                    <label>City</label>
+                    <input type="text" class="form-control" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Upload picture</label>
+                    <input type="text" class="form-control" /> <button>Add</button>
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-6">
+                    <label>About The Trade show</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </tab>
+
+      <tab tab2 heading="Profile" id="second" select="!disableSwitching && second.active = true" #second
+        [disabled]="disableSwitching">
         <form>
-          <div class="row">
+          <div class="row border">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4">
-                  <label>Company Logo<span>*</span></label>
-                  <input type="file" class="form-control" />
+                  <label>Company Name<span>*</span></label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="col-md-4">
-                  <label>Company Picture</label>
-                  <input type="file" class="form-control w-75 float-left" /><button class="btn btn-info w-20 float-right ml-2">Add</button>
+                  <label>PAN</label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="col-md-4">
-                  <label>Company Video</label>
-                  <input type="file" class="form-control" /> <button>Add</button>
+                  <label>TAN</label>
+                  <input type="text" class="form-control">
                 </div>
               </div>
-  
+
+
               <div class="row mt-4">
                 <div class="col-md-4">
-                  <label>Contact Person</label>
-                  <input type="text" class="form-control" />
+                  <label>GST No.</label>
+                  <input type="number" class="form-control">
                 </div>
                 <div class="col-md-4">
-                  <label>Name</label>
-                  <input type="text" class="form-control" />
+                  <label>Import Export Code
+                    (IEC)</label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="col-md-4">
-                  <label>surname</label>
-                  <input type="text" class="form-control" />
+                  <label>Year Of Establishment<span>*</span></label>
+                  <input type="Date" class="form-control">
                 </div>
               </div>
-  
+
               <div class="row mt-4">
                 <div class="col-md-4">
-                  <label>Alternative Email</label>
-                  <input type="email" class="form-control" />
-                </div>
-  
-                <div class="col-md-4">
-                  <label>Company Website</label>
-                  <input type="text" class="form-control" />
-                </div>
-  
-                <div class="col-md-4">
-                  <label>Google Business URL</label>
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-  
-              <div class="row mt-4">
-                <div class="col-md-4">
-                  <label>Instagram Business URL </label>
-                  <input type="text" class="form-control" />
-                </div>
-  
-                <div class="col-md-4">
-                  <label>Company Page </label>
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>b2bportal.com/Company-NameL </label>
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-            </div>
-          </div>
-  <hr>
-          <h6 class="mt-4">Bank Details <span>*</span></h6>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-4">
-                  <label>Account Number</label>
-                  <input type="number" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>Account Type</label>
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>IFSC Code</label>
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-  
-              <div class="row mt-4">
-                <div class="col-md-4">
-                  <label>SWIFT Code</label>
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>Bank Name</label>
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>Branch</label>
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-  
-              <div class="row mt-4">
-                <div class="col-md-4">
-                  <label>Language Spoken</label>
-                  <input type="text" class="form-control" /><button>Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="border mt-4 px-2">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Company Philosophy</label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                  <div class="col-md-6">
-                    <label>Company Mission and Vision</label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <div class="row">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col-md-6">
-                    <label>Company Detailed Introduction</label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Employee Strenth</label>
-                  <select class="form-control" id="">
-                    <option>10-20</option>
-                    <option>20-50</option>
-                    <option>50-100</option>
-                    <option>100-200</option>
-                    <option>200-500</option>
-                    <option>500-1000</option>
-                    <option>more than 1000</option>
+                  <label>Main Category<span>*</span></label>
+                  <select class="form-control" aria-label="multiple select example">
+                    <option selected> select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                   </select>
                 </div>
+
+                <div class="col-md-4">
+                  <label>Main Product <span>*</span></label>
+                  <input type="text" class="form-control">
+                </div>
               </div>
+
             </div>
           </div>
-  
-          <h6>
-            Have you attended or Planed to attand any trade expo?
-            <span class="ml-4">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-                checked
-              />
-              <label class="form-check-label" for="defaultCheck1">Yes</label>
-            </span>
-            <span class="ml-4">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios2"
-                value="option2"
-              />
-              <label class="form-check-label" for="defaultCheck2">No</label>
-            </span>
-          </h6>
-          <div class="row">
+
+
+          <h6 class="mt-4">Registered Address <span>*</span></h6>
+          <div class="row border">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4">
-                  <label>Select Trade showes you attaended</label>
-                  <input type="text" class="form-control" />
+                  <label>Country</label>
+                  <input type="number" class="form-control">
                 </div>
                 <div class="col-md-4">
-                  <label>Name</label>
-                  <input type="text" class="form-control" /> <button>Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row border mt-4">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-4">
-                  <label>Trade Show Name</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <label for="" class="mt-2 form-label">From</label>
-                  <input type="date" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label for="" class="mt-2 form-label">To</label>
-                  <input type="date" class="form-control" />
-                </div>
-              </div>
-  
-              <div class="row mt-4">
-                <div class="col-md-4">
-                  <label>Host</label>
-                  <input type="text" class="form-control" />
-                </div>
-                <div class="col-md-4">
-                  <label>Country/region</label>
-                  <input type="text" class="form-control" />
+                  <label>State</label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="col-md-4">
                   <label>City</label>
-                  <input type="text" class="form-control" />
+                  <input type="text" class="form-control">
+
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-4">
-                  <label>Upload picture</label>
-                  <input type="text" class="form-control" /> <button>Add</button>
-                </div>
-              </div>
-  
+
               <div class="row mt-4">
-                <div class="col-md-6">
-                  <label>About The Trade show</label>
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                  ></textarea>
+                <div class="col-md-4">
+                  <label>Company Address</label>
+                  <input type="number" class="form-control">
+                </div>
+                <div class="col-md-4">
+                  <label>Mobile Number</label>
+                  <input type="text" class="form-control"><button>Add</button>
+                </div>
+                <div class="col-md-4">
+                  <label>Landline Number</label>
+                  <input type="number" class="form-control"><button>Add</button>
+                </div>
+              </div>
+
+              <div class="row mt-4">
+
+                <div class="col-md-4">
+                  <label>Business Registration Certificate<span>*</span></label>
+                  <input type="text" class="form-control"> <button>Add</button>
                 </div>
               </div>
             </div>
           </div>
+          <h6>Additional Contact Details</h6>
+          <div class="border mt-4 px-2">
+            <h6>Division<span>*</span></h6>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label>Branch</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Network</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Factory</label>
+                    <input type="text" class="form-control">
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>International Office</label>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Menufacturing </label>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Showroom</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row ">
+              <div class="col-md-4">
+
+                <label>Trading Division</label>
+                <input type="text" class="form-control">
+
+              </div>
+              <div class="col-md-4">
+
+                <label>Wharehouse</label>
+                <input type="text" class="form-control">
+
+              </div>
+            </div>
+          </div>
+
+
+          <h6>Area/Size<span>*</span></h6>
+          <div class="border mt-4 px-2">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label>Square Meter</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Square Feet</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Square Yard</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Acre</label>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Hectare </label>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Showroom</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <h6>Factory Country/Region<span>*</span></h6>
+          <div class="border mt-4 px-2">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <label>Country<span>*</span></label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>State</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Annual Turnover</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Contact Person</label>
+                    <input class="form-control" type="text">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Phone </label>
+                    <input class="form-control" type="number">
+                  </div>
+                  <div class="col-md-4">
+                    <label>Mobile</label>
+                    <input class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Email</label>
+                    <input class="form-control" type="email">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
         </form>
-      </div>
-        </tab>
-      
-        <tab
-          tab2
-          heading="Profile"
-          id="second"
-          select="!disableSwitching && second.active = true"
-          #second
-          [disabled]="disableSwitching"
-          >Tab 2 content</tab>
-      </tabset>
-    </div>
-   
+      </tab>
+
+      <tab tab3 heading="Quality-Control" id="second" select="!disableSwitching && second.active = true" #second
+        [disabled]="disableSwitching">
+
+        <form>
+          <div class="row mb-3">
+
+
+            <div class="col-md-6 ">
+              <label for="">Process Name</label>
+              <input type="text" class="form-control" placeholder="Process Name">
+            </div>
+
+            <div class="col-md-6">
+              <label for="">Process Picture</label>
+
+              <input type="file" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mt-2">
+              <label for="" class="me-4">
+                Description
+              </label>
+              <textarea name="" id="" cols="5" rows="4" style="width: 100%;"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="border-0 btn btn-primary">Add</button>
+        </form>
+      </tab>
+
+      <tab tab4 heading="Certificate-Center" id="second" select="!disableSwitching && second.active = true" #second
+        [disabled]="disableSwitching">
+
+        <form class="border mb-4">
+          <h6 class="mb-4 text-center certificate">Certifications You Must Have</h6>
+          <div class="row">
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="ISO">
+              <label class="form-check-label" for="inlineCheckbox9">ISO</label>
+            </div>
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">BSCI</label>
+            </div>
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">SA8000</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">IATF16949</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">WCA</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">WRAP</label>
+            </div>
+
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">CE</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">GRS</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">ROHS</label>
+            </div>
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">FCC</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">EMC</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">TUV MARK</label>
+            </div>
+
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">UL</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">UKCA</label>
+            </div>
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">GOTS</label>
+            </div>
+
+            <div class="col-md-4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">CPC</label>
+            </div>
+            <div class="col-md-12">
+
+              <label class="pr-4">Other Certifications:</label>
+              <input type="file" placeholder="upload">
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="border-0 btn btn-primary button ">Add</button>
+          </div>
+        </form>
+      </tab>
+      <tab tab5 heading="R & D" id="second" select="!disableSwitching && second.active = true" #second
+        [disabled]="disableSwitching">
+
+        <form>
+
+          <div class="row ms-4">
+            <div class="col-md-6 ">
+              <label for="" class="form-label">Certification Name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6 ">
+              <label for="" class="form-label">Certified By</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-12">
+              <label for="" class="form-label">Business Scope</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="" class="mt-2 form-label">From</label>
+              <input type="date" class="form-control">
+
+            </div>
+            <div class="col-md-6">
+              <label for="" class="mt-2 form-label">To</label>
+              <input type="date" class="form-control">
+
+            </div>
+          </div>
+
+          <button type="submit" class="border-0 btn btn-primary mt-2 mb-3">Add</button>
+        </form>
+      </tab>
+      <tab tab6 heading="Export-Capabilities" id="second" select="!disableSwitching && second.active = true" #second
+        [disabled]="disableSwitching">
+
+        <p>Export-Capabilities works!</p>
+      </tab>
+    </tabset>
+  </div>
+
 </section>
- 
