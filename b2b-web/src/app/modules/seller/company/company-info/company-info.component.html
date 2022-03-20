@@ -564,124 +564,154 @@
 
       <tab tab4 heading="Certificate-Center" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
+        <div class="container">
+          <form class="mb-4">
+            <h6 class="mb-4  certificate">Certifications You Must Have</h6>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="ISO">
+                    <label class="form-check-label" for="inlineCheckbox9">ISO</label>
+                  </div>
 
-        <form class="mb-4">
-          <h6 class="mb-4 text-center certificate">Certifications You Must Have</h6>
-          <div class="row">
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="ISO">
-              <label class="form-check-label" for="inlineCheckbox9">ISO</label>
-            </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">BSCI</label>
+                  </div>
 
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">BSCI</label>
-            </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">SA8000</label>
+                  </div>
+                </div>
 
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">SA8000</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">IATF16949</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">WCA</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">WRAP</label>
-            </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">IATF16949</label>
+                  </div>
+
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">WCA</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">WRAP</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">CE</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">GRS</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">ROHS</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">FCC</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">EMC</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">TUV MARK</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">UL</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">UKCA</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">GOTS</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">CPC</label>
+                  </div>
+                  <!-- <div class="col-md-8">
+
+                  <label class="">Other Certifications:</label>
+                  <input type="file" placeholder="upload">
+                </div> -->
+
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label>Other Certifications</label>
+                    <input type="file" class="form-control w-75 float-left"> <button
+                      class="btn btn-info w-20 float-right">Add</button>
+                  </div>
+                </div>
+
+              </div>
 
 
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">CE</label>
             </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">GRS</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">ROHS</label>
-            </div>
-
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">FCC</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">EMC</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">TUV MARK</label>
-            </div>
-
-
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">UL</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">UKCA</label>
-            </div>
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">GOTS</label>
-            </div>
-
-            <div class="col-md-4">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-              <label class="form-check-label" for="inlineCheckbox2">CPC</label>
-            </div>
-            <div class="col-md-12">
-
-              <label class="pr-4">Other Certifications:</label>
-              <input type="file" placeholder="upload">
-            </div>
-          </div>
-          <div class="d-flex justify-content-center">
+            <!-- <div class="d-flex justify-content-center">
             <button type="submit" class="border-0 btn btn-primary button ">Add</button>
-          </div>
-        </form>
+          </div> -->
+          </form>
+        </div>
       </tab>
       <tab tab5 heading="R & D" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
 
         <form>
+          <div class="container">
+            <div class="row ms-4">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4 ">
+                    <label for="" class="form-label">Certification Name</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4 ">
+                    <label for="" class="form-label">Certified By</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Business Scope</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="" class="mt-2 form-label">From</label>
+                    <input type="date" class="form-control">
 
-          <div class="row ms-4">
-            <div class="col-md-6 ">
-              <label for="" class="form-label">Certification Name</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="col-md-6 ">
-              <label for="" class="form-label">Certified By</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="col-md-12">
-              <label for="" class="form-label">Business Scope</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="col-md-6">
-              <label for="" class="mt-2 form-label">From</label>
-              <input type="date" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="mt-2 form-label">To</label>
+                    <input type="date" class="form-control">
 
-            </div>
-            <div class="col-md-6">
-              <label for="" class="mt-2 form-label">To</label>
-              <input type="date" class="form-control">
-
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <button type="submit" class="border-0 btn btn-primary mt-2 mb-3">Add</button>
+          <button type="submit" class="border-0 btn btn-primary  mt-4 mb-3">Add</button>
         </form>
       </tab>
       <tab tab6 heading="Export-Capabilities" id="second" select="!disableSwitching && second.active = true" #second
