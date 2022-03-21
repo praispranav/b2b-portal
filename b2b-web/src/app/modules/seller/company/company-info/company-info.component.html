@@ -113,71 +113,72 @@
                     </div>
 
                   </div>
-                  <div class="row mt-4">
-                    <div class="col-md-4">
-                      <label>Email</label>
-                      <input type="email" class="form-control" formControlName="email"
-                        [class.is-invalid]="email?.invalid && email?.touched"
-                        [class.is-valid]="email?.valid && email?.touched">
-                      <div *ngIf="email?.invalid && email?.touched">
-                        <small class="text-danger"> Email is required</small>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label>Alternative Email</label>
-                      <input type="text" class="form-control" formControlName="alternativeEmail"
-                        [class.is-invalid]="alternativeEmail?.invalid && alternativeEmail?.touched"
-                        [class.is-valid]="alternativeEmail?.valid && alternativeEmail?.touched">
-                      <div *ngIf="alternativeEmail?.invalid && alternativeEmail?.touched">
-                        <small class="text-danger"> Alternative Email is required</small>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label>Google Business URL</label>
-                      <input type="text" class="form-control" formControlName="googleBusinessUrl"
-                        [class.is-invalid]="googleBusinessUrl?.invalid && googleBusinessUrl?.touched"
-                        [class.is-valid]="googleBusinessUrl?.valid && googleBusinessUrl?.touched" />
-                      <div *ngIf="googleBusinessUrl?.invalid && googleBusinessUrl?.touched">
-                        <small class="text-danger">Google Business URL is required</small>
-                      </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email"
+                      [class.is-invalid]="email?.invalid && email?.touched"
+                      [class.is-valid]="email?.valid && email?.touched">
+                    <div *ngIf="email?.invalid && email?.touched">
+                      <small class="text-danger"> Email is required</small>
                     </div>
                   </div>
 
-                  <div class="row mt-4">
-                    <div class="col-md-4">
-                      <label>Instagram Business URL </label>
-                      <input type="text" class="form-control" formControlName="instagramBusinessUrl"
-                        [class.is-invalid]="instagramBusinessUrl?.invalid && instagramBusinessUrl?.touched"
-                        [class.is-valid]="instagramBusinessUrl?.valid && instagramBusinessUrl?.touched" />
-                      <div *ngIf="instagramBusinessUrl?.invalid && instagramBusinessUrl?.touched">
-                        <small class="text-danger">Google Business URL is required</small>
-                      </div>
+                  <div class="col-md-4">
+                    <label>Alternative Email</label>
+                    <input type="text" class="form-control" formControlName="alternativeEmail"
+                      [class.is-invalid]="alternativeEmail?.invalid && alternativeEmail?.touched"
+                      [class.is-valid]="alternativeEmail?.valid && alternativeEmail?.touched">
+                    <div *ngIf="alternativeEmail?.invalid && alternativeEmail?.touched">
+                      <small class="text-danger"> Alternative Email is required</small>
                     </div>
-                    <div class="col-md-4">
-                      <label>b2bportal.com/Company-Name </label>
-                      <input type="text" class="form-control" formControlName="companyName"
-                        [class.is-invalid]="companyName?.invalid && companyName?.touched"
-                        [class.is-valid]="companyName?.valid && companyName?.touched" />
-                      <div *ngIf="companyName?.invalid && companyName?.touched">
-                        <small class="text-danger">Company-Name is required</small>
-                      </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Google Business URL</label>
+                    <input type="text" class="form-control" formControlName="googleBusinessUrl"
+                      [class.is-invalid]="googleBusinessUrl?.invalid && googleBusinessUrl?.touched"
+                      [class.is-valid]="googleBusinessUrl?.valid && googleBusinessUrl?.touched" />
+                    <div *ngIf="googleBusinessUrl?.invalid && googleBusinessUrl?.touched">
+                      <small class="text-danger">Google Business URL is required</small>
                     </div>
-                    <div class="col-md-4">
-                      <label>Facebook Business Page </label>
-                      <input type="text" class="form-control" formControlName="facebookBusinessPage"
-                        [class.is-invalid]="facebookBusinessPage?.invalid && facebookBusinessPage?.touched"
-                        [class.is-valid]="facebookBusinessPage?.valid && facebookBusinessPage?.touched" />
-                      <div *ngIf="facebookBusinessPage?.invalid && facebookBusinessPage?.touched">
-                        <small class="text-danger">Facebook Business Page is required</small>
-                      </div>
+                  </div>
+                </div>
+
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label>Instagram Business URL </label>
+                    <input type="text" class="form-control" formControlName="instagramBusinessUrl"
+                      [class.is-invalid]="instagramBusinessUrl?.invalid && instagramBusinessUrl?.touched"
+                      [class.is-valid]="instagramBusinessUrl?.valid && instagramBusinessUrl?.touched" />
+                    <div *ngIf="instagramBusinessUrl?.invalid && instagramBusinessUrl?.touched">
+                      <small class="text-danger">Google Business URL is required</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label>b2bportal.com/Company-Name </label>
+                    <input type="text" class="form-control" formControlName="companyName"
+                      [class.is-invalid]="companyName?.invalid && companyName?.touched"
+                      [class.is-valid]="companyName?.valid && companyName?.touched" />
+                    <div *ngIf="companyName?.invalid && companyName?.touched">
+                      <small class="text-danger">Company-Name is required</small>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label>Facebook Business Page </label>
+                    <input type="text" class="form-control" formControlName="facebookBusinessPage"
+                      [class.is-invalid]="facebookBusinessPage?.invalid && facebookBusinessPage?.touched"
+                      [class.is-valid]="facebookBusinessPage?.valid && facebookBusinessPage?.touched" />
+                    <div *ngIf="facebookBusinessPage?.invalid && facebookBusinessPage?.touched">
+                      <small class="text-danger">Facebook Business Page is required</small>
                     </div>
                   </div>
                 </div>
               </div>
-              <hr>
             </div>
+            <hr>
+
             <h6 class="mt-4">Bank Details <span>*</span></h6>
             <div class="row">
               <div class="col-md-12">
