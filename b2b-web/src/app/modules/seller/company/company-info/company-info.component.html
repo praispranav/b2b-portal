@@ -553,6 +553,7 @@
 
           <button type="submit" class="border-0 btn btn-primary">Add</button>
         </form>
+
       </tab>
 
       <tab tab4 heading="Certificate-Center" id="second" select="!disableSwitching && second.active = true" #second
@@ -679,8 +680,111 @@
       </tab>
       <tab tab6 heading="Export-Capabilities" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
+        <div class="container-fluid">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="" class="form-label">Yearly Turnover</label>
+                <select class="form-select form-control" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">Below $1 Million</option>
+                  <option value="2">$1 Million - $2.5 Million</option>
+                  <option value="2">$2.5 Million - $5 Million</option>
+                  <option value="2">$5 Million - $10 Million</option>
+                  <option value="2">$10 Million - $50 Million</option>
+                  <option value="2"> US $50 Million - $100 Million</option>
+                  <option value="2">
+                    Above $100 Million
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="" class="form-label">Exporting Science</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class=" col-md-4">
+                <label for="" class="form-label">Export Contribution Percentage</label>
+                <input type="number" class="form-control" min="1" max="100">
+              </div>
+              <div class=" col-md-4 mt-2">
+                <label for="" class="form-label">Nearest Port</label>
+                <select class="form-select form-control" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">one</option>
+                  <option value="1">two</option>
+                  <option value="2">three</option>
+                </select>
+              </div>
+            </div>
+            <h6 class="mt-4">Export Markets And Distribution <span>*</span></h6>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="" class="form-label">North America</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Western Europe</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Eastern Asia</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                </div>
 
-        <p>Export-Capabilities works!</p>
+                <div class="row mt-4">
+                  <div class="col-md-4">
+                    <label for="" class="form-label">
+                      South America
+                    </label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Nothern Europe</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Africa</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Central America</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Sothern Europe</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Middle East</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Eastern Europe</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">South Asia</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Gulf</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="" class="form-label">Local And Domestic Market</label>
+                    <input type="number" class="form-control" min="1" max="100">
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Add</button>
+          </form>
+        </div>
       </tab>
     </tabset>
   </div>
