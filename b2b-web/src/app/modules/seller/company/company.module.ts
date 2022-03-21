@@ -6,6 +6,7 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
   ],
   imports: [
     CommonModule,
-    CompanyRoutingModule, TabsModule.forRoot() 
+    FormsModule,
+    ReactiveFormsModule,
+    CompanyRoutingModule, TabsModule.forRoot()
   ]
 })
 export class CompanyModule { }
