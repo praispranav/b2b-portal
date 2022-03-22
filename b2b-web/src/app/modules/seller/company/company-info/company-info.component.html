@@ -776,7 +776,7 @@
       <tab tab5 heading="R & D" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
 
-        <form>
+        <form [formGroup]="randdForm">
           <div class="container">
             <div class="row ms-4">
               <div class="col-md-12">
@@ -796,26 +796,51 @@
                   <div class="row">
                     <div class="col-md-4 ">
                       <label for="" class="form-label">Certification Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="certificateName"
+                        [class.is-invalid]="certificateName?.invalid && certificateName?.touched"
+                        [class.is-valid]="certificateName?.valid && certificateName?.touched">
+                      <div *ngIf="certificateName?.invalid && certificateName?.touched">
+                        <small class="text-danger">Certification Name is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4 ">
                       <label for="" class="form-label">Certified By</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="certifiedBy"
+                        [class.is-invalid]="certifiedBy?.invalid && certifiedBy?.touched"
+                        [class.is-valid]="certifiedBy?.valid && certifiedBy?.touched">
+                      <div *ngIf="certifiedBy?.invalid && certifiedBy?.touched">
+                        <small class="text-danger">Certified By is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label for="" class="form-label">Business Scope</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="businessScope"
+                        [class.is-invalid]="businessScope?.invalid && businessScope?.touched"
+                        [class.is-valid]="businessScope?.valid && businessScope?.touched">
+                      <div *ngIf="businessScope?.invalid && businessScope?.touched">
+                        <small class="text-danger">Business Scope is required</small>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
                       <label for="" class="mt-2 form-label">From</label>
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" formControlName="fromDate"
+                        [class.is-invalid]="fromDate?.invalid && fromDate?.touched"
+                        [class.is-valid]="fromDate?.valid && fromDate?.touched">
+                      <div *ngIf="fromDate?.invalid && fromDate?.touched">
+                        <small class="text-danger">Date is required</small>
+                      </div>
 
                     </div>
                     <div class="col-md-4">
                       <label for="" class="mt-2 form-label">To</label>
-                      <input type="date" class="form-control">
+                      <input type="date" class="form-control" formControlName="toDate"
+                        [class.is-invalid]="toDate?.invalid && toDate?.touched"
+                        [class.is-valid]="toDate?.valid && toDate?.touched">
+                      <div *ngIf="toDate?.invalid && toDate?.touched">
+                        <small class="text-danger">Date is required</small>
+                      </div>
 
                     </div>
 

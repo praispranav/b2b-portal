@@ -72,6 +72,24 @@ export class CompanyInfoComponent implements OnInit {
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
   get description() { return this.qualityControlForm.get('description'); }
+
+  // R&D validation
+
+  randdForm = new FormGroup(
+    {
+      certificateName: new FormControl('', Validators.required),
+      certifiedBy: new FormControl('', Validators.required),
+      businessScope: new FormControl('', Validators.required),
+      fromDate: new FormControl('', Validators.required),
+      toDate: new FormControl('', Validators.required),
+    })
+  get certificateName() { return this.randdForm.get('certificateName'); }
+  get certifiedBy() { return this.randdForm.get('certifiedBy'); }
+  get businessScope() { return this.randdForm.get('businessScope'); }
+  get fromDate() { return this.randdForm.get('fromDate'); }
+  get toDate() { return this.randdForm.get('toDate'); }
+
+
   constructor() { }
 
   ngOnInit(): void {
