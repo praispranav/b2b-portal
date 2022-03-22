@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-<<<<<<< HEAD
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-=======
->>>>>>> 92221caa4398033ab036ae589cd8fa87edf6e31a
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
-import { FormGroup, FormControlName, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-company-info',
   templateUrl: './company-info.component.html',
@@ -16,9 +12,7 @@ export class CompanyInfoComponent implements OnInit {
   @ViewChild('first') first: TabDirective;
   @ViewChild('second') second: TabDirective;
 
-<<<<<<< HEAD
   constructor(private formBuilder: FormBuilder) { }
-=======
   // company profile validation
   companyProfileForm = new FormGroup(
     {
@@ -94,8 +88,6 @@ export class CompanyInfoComponent implements OnInit {
   get addstate() { return this.companyProfileForm.get('addstate'); }
   get addcountry() { return this.companyProfileForm.get('addcountry'); }
 
-  constructor() { }
->>>>>>> 92221caa4398033ab036ae589cd8fa87edf6e31a
 
   ngOnInit(): void {
   }
@@ -138,18 +130,18 @@ export class CompanyInfoComponent implements OnInit {
   get surname() { return this.companyDetailsForm.get('surname'); }
   get companyWebsite() { return this.companyDetailsForm.get('companyWebsite'); }
   get companyPage() { return this.companyDetailsForm.get('companyPage'); }
-  get email() { return this.companyDetailsForm.get('email'); }
+  get emailDetails() { return this.companyDetailsForm.get('email'); }
   get alternativeEmail() { return this.companyDetailsForm.get('alternativeEmail'); }
   get googleBusinessUrl() { return this.companyDetailsForm.get('googleBusinessUrl'); }
   get instagramBusinessUrl() { return this.companyDetailsForm.get('instagramBusinessUrl'); }
-  get companyName() { return this.companyDetailsForm.get('companyName'); }
+  get companyNameDetails() { return this.companyDetailsForm.get('companyName'); }
   get facebookBusinessPage() { return this.companyDetailsForm.get('facebookBusinessPage'); }
   get accountNumber() { return this.companyDetailsForm.get('accountNumber'); }
   get accountType() { return this.companyDetailsForm.get('accountType'); }
   get ifscCode() { return this.companyDetailsForm.get('ifscCode'); }
   get swiftCode() { return this.companyDetailsForm.get('swiftCode'); }
   get bankName() { return this.companyDetailsForm.get('bankName'); }
-  get branch() { return this.companyDetailsForm.get('branch'); }
+  get branchDetails() { return this.companyDetailsForm.get('branch'); }
   get companyPhilosophy() { return this.companyDetailsForm.get('companyPhilosophy'); }
   get companyMissionAndVision() { return this.companyDetailsForm.get('companyMissionAndVision'); }
   get companyDetailedInstruction() { return this.companyDetailsForm.get('companyDetailedInstruction'); }
@@ -158,8 +150,8 @@ export class CompanyInfoComponent implements OnInit {
   get dateFrom() { return this.companyDetailsForm.get('dateFrom'); }
   get dateTo() { return this.companyDetailsForm.get('dateTo'); }
   get host() { return this.companyDetailsForm.get('host'); }
-  get country() { return this.companyDetailsForm.get('country'); }
-  get city() { return this.companyDetailsForm.get('city'); }
+  get countryDetails() { return this.companyDetailsForm.get('country'); }
+  get cityDetails() { return this.companyDetailsForm.get('city'); }
   get aboutTradeShow() { return this.companyDetailsForm.get('aboutTradeShow'); }
   get designation() { return this.companyDetailsForm.get('designation'); }
   get employeeStrength() { return this.companyDetailsForm.get('employeeStrength'); }
