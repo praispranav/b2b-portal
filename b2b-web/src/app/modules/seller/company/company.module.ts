@@ -15,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    CompanyRoutingModule, TabsModule.forRoot(), FormsModule, ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    CompanyRoutingModule, TabsModule.forRoot()
   ]
 })
 export class CompanyModule { }

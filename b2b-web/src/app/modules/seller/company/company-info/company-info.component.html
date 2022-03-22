@@ -458,21 +458,35 @@
 
       <tab tab2 heading="Profile" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
-        <form>
+        <form [formGroup]="companyProfileForm">
           <div class="row ">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4">
                   <label>Company Name<span>*</span></label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="companyName"
+                    [class.is-invalid]="companyName?.invalid && companyName?.touched"
+                    [class.is-valid]="companyName?.valid && companyName?.touched">
+                  <div *ngIf="companyName?.invalid && companyName?.touched">
+                    <small class="text-danger">Company Name is required</small>
+                  </div>
+
                 </div>
                 <div class="col-md-4">
                   <label>PAN<span>*</span></label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="pan"
+                    [class.is-invalid]="pan?.invalid && pan?.touched" [class.is-valid]="pan?.valid && pan?.touched">
+                  <div *ngIf="pan?.invalid && pan?.touched">
+                    <small class="text-danger">PAN is required</small>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>TAN</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="tan"
+                    [class.is-invalid]="tan?.invalid && tan?.touched" [class.is-valid]="tan?.valid && tan?.touched">
+                  <div *ngIf="tan?.invalid && tan?.touched">
+                    <small class="text-danger">TAN is required</small>
+                  </div>
                 </div>
               </div>
 
@@ -480,28 +494,46 @@
               <div class="row mt-4">
                 <div class="col-md-4">
                   <label>GST No.</label>
-                  <input type="number" class="form-control">
+                  <input type="number" class="form-control" formControlName="gst"
+                    [class.is-invalid]="gst?.invalid && gst?.touched" [class.is-valid]="gst?.valid && gst?.touched">
+                  <div *ngIf="gst?.invalid && gst?.touched">
+                    <small class="text-danger">GST is required</small>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>Import Export Code
                     (IEC)</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="iec"
+                    [class.is-invalid]="iec?.invalid && iec?.touched" [class.is-valid]="iec?.valid && iec?.touched">
+                  <div *ngIf="iec?.invalid && iec?.touched">
+                    <small class="text-danger">Import Export Code is required</small>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>Year Of Establishment<span>*</span></label>
-                  <input type="Date" class="form-control">
+                  <input type="Date" class="form-control" formControlName="estDate"
+                    [class.is-invalid]="estDate?.invalid && estDate?.touched"
+                    [class.is-valid]="estDate?.valid && estDate?.touched">
+                  <div *ngIf="estDate?.invalid && estDate?.touched">
+                    <small class="text-danger">Date is required</small>
+                  </div>
                 </div>
               </div>
 
               <div class="row mt-4">
                 <div class="col-md-4">
                   <label>Main Category<span>*</span></label>
-                  <select class="form-control" aria-label="multiple select example">
+                  <select class="form-control" aria-label="multiple select example" formControlName="mainCat"
+                    [class.is-invalid]="mainCat?.invalid && mainCat?.touched"
+                    [class.is-valid]="mainCat?.valid && mainCat?.touched">
                     <option selected> select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </select>
+                  <div *ngIf="mainCat?.invalid && estDate?.touched">
+                    <small class="text-danger">Main Category required</small>
+                  </div>
                 </div>
 
                 <div class="col-md-4">
@@ -521,15 +553,29 @@
               <div class="row">
                 <div class="col-md-4">
                   <label>Country</label>
-                  <input type="number" class="form-control">
+                  <input type="text" class="form-control" formControlName="country"
+                    [class.is-invalid]="country?.invalid && country?.touched"
+                    [class.is-valid]="iec?.valid && iec?.touched">
+                  <div *ngIf="country?.invalid && country?.touched">
+                    <small class="text-danger">Country is required</small>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>State</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="state"
+                    [class.is-invalid]="state?.invalid && state?.touched"
+                    [class.is-valid]="state?.valid && iec?.touched">
+                  <div *ngIf="state?.invalid && state?.touched">
+                    <small class="text-danger">State is required</small>
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>City</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="city"
+                    [class.is-invalid]="city?.invalid && city?.touched" [class.is-valid]="city?.valid && city?.touched">
+                  <div *ngIf="city?.invalid && city?.touched">
+                    <small class="text-danger">City is required</small>
+                  </div>
 
                 </div>
               </div>
@@ -537,7 +583,12 @@
               <div class="row mt-4">
                 <div class="col-md-4">
                   <label>Company Address</label>
-                  <input type="number" class="form-control">
+                  <input type="text" class="form-control" formControlName="addr"
+                    [class.is-invalid]="addr?.invalid && addr?.touched" [class.is-valid]="addr?.valid && addr?.touched">
+                  <div *ngIf="addr?.invalid && addr?.touched">
+                    <small class="text-danger">Address is required</small>
+                  </div>
+
                 </div>
                 <div class="col-md-4">
                   <label>Mobile Number</label>
@@ -571,15 +622,30 @@
 
                     <div class="col-md-4">
                       <label>Branch</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="branch"
+                        [class.is-invalid]="branch?.invalid && branch?.touched"
+                        [class.is-valid]="branch?.valid && branch?.touched">
+                      <div *ngIf="branch?.invalid && branch?.touched">
+                        <small class="text-danger">Branch is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Network</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="network"
+                        [class.is-invalid]="network?.invalid && network?.touched"
+                        [class.is-valid]="network?.valid && network?.touched">
+                      <div *ngIf="network?.invalid && network?.touched">
+                        <small class="text-danger">Network is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Factory</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="factory"
+                        [class.is-invalid]="factory?.invalid && factory?.touched"
+                        [class.is-valid]="factory?.valid && factory?.touched">
+                      <div *ngIf="factory?.invalid && factory?.touched">
+                        <small class="text-danger">Factory is required</small>
+                      </div>
                     </div>
 
 
@@ -594,15 +660,30 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>International Office</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="internalOffice"
+                        [class.is-invalid]="internalOffice?.invalid && internalOffice?.touched"
+                        [class.is-valid]="internalOffice?.valid && internalOffice?.touched">
+                      <div *ngIf="internalOffice?.invalid && internalOffice?.touched">
+                        <small class="text-danger">Internal Office is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Menufacturing </label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="menufacturing"
+                        [class.is-invalid]="menufacturing?.invalid && menufacturing?.touched"
+                        [class.is-valid]="menufacturing?.valid && menufacturing?.touched">
+                      <div *ngIf="menufacturing?.invalid && menufacturing?.touched">
+                        <small class="text-danger">Menufacturing is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Showroom</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="showroom"
+                        [class.is-invalid]="showroom?.invalid && showroom?.touched"
+                        [class.is-valid]="showroom?.valid && showroom?.touched">
+                      <div *ngIf="showroom?.invalid && showroom?.touched">
+                        <small class="text-danger">Showroom is required</small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -613,19 +694,34 @@
                 <div class="col-md-4">
 
                   <label>Trading Division</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="trandingDiv"
+                    [class.is-invalid]="trandingDiv?.invalid && trandingDiv?.touched"
+                    [class.is-valid]="trandingDiv?.valid && trandingDiv?.touched">
+                  <div *ngIf="trandingDiv?.invalid && trandingDiv?.touched">
+                    <small class="text-danger">Trading Division is required</small>
+                  </div>
 
                 </div>
                 <div class="col-md-4">
 
                   <label>Wharehouse</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="wharehouse"
+                    [class.is-invalid]="wharehouse?.invalid && wharehouse?.touched"
+                    [class.is-valid]="wharehouse?.valid && wharehouse?.touched">
+                  <div *ngIf="wharehouse?.invalid && wharehouse?.touched">
+                    <small class="text-danger">Wharehouse is required</small>
+                  </div>
 
                 </div>
                 <div class="col-md-4">
 
                   <label>Sister Concern</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="sisterCon"
+                    [class.is-invalid]="sisterCon?.invalid && sisterCon?.touched"
+                    [class.is-valid]="sisterCon?.valid && sisterCon?.touched">
+                  <div *ngIf="sisterCon?.invalid && sisterCon?.touched">
+                    <small class="text-danger">Sister Concern is required</small>
+                  </div>
 
                 </div>
               </div>
@@ -641,15 +737,30 @@
 
                     <div class="col-md-4">
                       <label>Square Meter</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="sqareMeter"
+                        [class.is-invalid]="sqareMeter?.invalid && sqareMeter?.touched"
+                        [class.is-valid]="sqareMeter?.valid && sqareMeter?.touched">
+                      <div *ngIf="sqareMeter?.invalid && sqareMeter?.touched">
+                        <small class="text-danger">Square Meter is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Square Feet</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="squareFeet"
+                        [class.is-invalid]="squareFeet?.invalid && squareFeet?.touched"
+                        [class.is-valid]="squareFeet?.valid && squareFeet?.touched">
+                      <div *ngIf="squareFeet?.invalid && squareFeet?.touched">
+                        <small class="text-danger">Square Feet is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Square Yard</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="squareYard"
+                        [class.is-invalid]="squareYard?.invalid && squareYard?.touched"
+                        [class.is-valid]="squareYard?.valid && squareYard?.touched">
+                      <div *ngIf="squareYard?.invalid && squareYard?.touched">
+                        <small class="text-danger">Square Yard is required</small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -659,11 +770,21 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>Acre</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="acre"
+                        [class.is-invalid]="acre?.invalid && acre?.touched"
+                        [class.is-valid]="acre?.valid && acre?.touched">
+                      <div *ngIf="acre?.invalid && acre?.touched">
+                        <small class="text-danger">Acre is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Hectare </label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="hectare"
+                        [class.is-invalid]="hectare?.invalid && hectare?.touched"
+                        [class.is-valid]="hectare?.valid && hectare?.touched">
+                      <div *ngIf="hectare?.invalid && hectare?.touched">
+                        <small class="text-danger">Hectare is required</small>
+                      </div>
                     </div>
                     <!-- <div class="col-md-4">
                       <label>Showroom</label>
@@ -685,15 +806,30 @@
 
                     <div class="col-md-4">
                       <label>Country<span>*</span></label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="addcountry"
+                        [class.is-invalid]="addcountry?.invalid && addcountry?.touched"
+                        [class.is-valid]="addcountry?.valid && addcountry?.touched">
+                      <div *ngIf="addcountry?.invalid && addcountry?.touched">
+                        <small class="text-danger">Country is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>State</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="addstate"
+                        [class.is-invalid]="addstate?.invalid && addstate?.touched"
+                        [class.is-valid]="addstate?.valid && addstate?.touched">
+                      <div *ngIf="addstate?.invalid && addstate?.touched">
+                        <small class="text-danger">State is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Annual Turnover</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="annualTurn"
+                        [class.is-invalid]="annualTurn?.invalid && annualTurn?.touched"
+                        [class.is-valid]="annualTurn?.valid && annualTurn?.touched">
+                      <div *ngIf="annualTurn?.invalid && annualTurn?.touched">
+                        <small class="text-danger">Annual Turnover is required</small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -703,15 +839,28 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>Contact Person</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="contPerson"
+                        [class.is-invalid]="contPerson?.invalid && contPerson?.touched"
+                        [class.is-valid]="contPerson?.valid && contPerson?.touched">
+                      <div *ngIf="contPerson?.invalid && contPerson?.touched">
+                        <small class="text-danger">Contact Person is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Phone </label>
-                      <input class="form-control" type="number">
+                      <input class="form-control" type="number" formControlName="phn"
+                        [class.is-invalid]="phn?.invalid && phn?.touched" [class.is-valid]="phn?.valid && phn?.touched">
+                      <div *ngIf="phn?.invalid && phn?.touched">
+                        <small class="text-danger">Phone number is required</small>
+                      </div>
                     </div>
                     <div class="col-md-4">
                       <label>Mobile</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="mob"
+                        [class.is-invalid]="mob?.invalid && mob?.touched" [class.is-valid]="mob?.valid && mob?.touched">
+                      <div *ngIf="mob?.invalid && mob?.touched">
+                        <small class="text-danger">Mobile is required</small>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -721,7 +870,12 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>Email</label>
-                      <input class="form-control" type="email">
+                      <input class="form-control" type="email" formControlName="email"
+                        [class.is-invalid]="email?.invalid && email?.touched"
+                        [class.is-valid]="email?.valid && email?.touched">
+                      <div *ngIf="email?.invalid && email?.touched">
+                        <small class="text-danger">Email is required</small>
+                      </div>
                     </div>
 
                   </div>
