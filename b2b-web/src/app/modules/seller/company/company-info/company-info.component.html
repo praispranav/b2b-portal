@@ -596,7 +596,7 @@
             </div>
           </div>
 
-          <div class="mt-2"><button class="btn btn-primary">Save</button></div>
+          <div class="mt-2"><button class="btn btn-primary" [disabled]="companyProfileForm.invalid">Save</button></div>
 
         </form>
       </tab>
@@ -655,7 +655,8 @@
             </div>
           </div>
           <div class="mt-4">
-            <button type="submit" class="border-0 btn btn-primary ">Save</button>
+            <button type="submit" class="border-0 btn btn-primary "
+              [disabled]="qualityControlForm.invalid">Save</button>
           </div>
         </form>
       </tab>
@@ -854,7 +855,7 @@
             </div>
 
           </div>
-          <div class="p-3"><button class="btn btn-primary">Save</button></div>
+          <div class="p-3"><button class="btn btn-primary" [disabled]="randdForm.invalid">Save</button></div>
         </form>
       </tab>
       <tab tab6 heading="Export-Capabilities" id="second" select="!disableSwitching && second.active = true" #second
