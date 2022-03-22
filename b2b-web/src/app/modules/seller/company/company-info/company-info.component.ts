@@ -62,7 +62,16 @@ export class CompanyInfoComponent implements OnInit {
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
 
-
+  // Ouality-Control Validation
+  qualityControlForm = new FormGroup(
+    {
+      processName: new FormControl('', Validators.required),
+      picture: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+    })
+  get processName() { return this.qualityControlForm.get('processName'); }
+  get picture() { return this.qualityControlForm.get('picture'); }
+  get description() { return this.qualityControlForm.get('description'); }
   constructor() { }
 
   ngOnInit(): void {
