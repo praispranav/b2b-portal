@@ -67,11 +67,11 @@ export class CompanyInfoComponent implements OnInit {
     {
       processName: new FormControl('', Validators.required),
       picture: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      qualitydescription: new FormControl('', Validators.required),
     })
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
-  get description() { return this.qualityControlForm.get('description'); }
+  get qualitydescription() { return this.qualityControlForm.get('qualitydescription'); }
 
   // R&D validation
 
@@ -90,10 +90,22 @@ export class CompanyInfoComponent implements OnInit {
   get toDate() { return this.randdForm.get('toDate'); }
 
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }
+  submitCompanyProfileForm() {
+    console.log(this.companyProfileForm.value)
+  }
+  submitqualityControlForm() {
+    console.log(this.qualityControlForm.value)
+  }
+  submitranddForm() {
+    console.log(this.randdForm.value)
+  }
+
   confirmTabSwitch($event) {
     if (this.disableSwitching) {
       const confirm = window.confirm('Discard changes and switch tab?');
