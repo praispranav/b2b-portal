@@ -26,31 +26,17 @@ export class CompanyInfoComponent implements OnInit {
       state: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       addr: new FormControl('', Validators.required),
-      branch: new FormControl('', Validators.required),
-      network: new FormControl('', Validators.required),
-      factory: new FormControl('', Validators.required),
-      internalOffice: new FormControl('', Validators.required),
-      menufacturing: new FormControl('', Validators.required),
-      showroom: new FormControl('', Validators.required),
-      trandingDiv: new FormControl('', Validators.required),
-      wharehouse: new FormControl('', Validators.required),
-      sisterCon: new FormControl('', Validators.required),
-      sqareMeter: new FormControl('', Validators.required),
-      squareFeet: new FormControl('', Validators.required),
-      squareYard: new FormControl('', Validators.required),
-      hectare: new FormControl('', Validators.required),
-      acre: new FormControl('', Validators.required),
-      addcountry: new FormControl('', Validators.required),
-      addstate: new FormControl('', Validators.required),
-      annualTurn: new FormControl('', Validators.required),
-      contPerson: new FormControl('', Validators.required),
-      phn: new FormControl('', Validators.required),
-      mob: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      division: new FormControl(''),
+
+      factory: new FormControl(''),
+
+      annualTurn: new FormControl(''),
+      contPerson: new FormControl(''),
+      phn: new FormControl(''),
+      mob: new FormControl(''),
+      email: new FormControl(''),
       mainCat: new FormControl('', Validators.required),
-
-
-
+      area: new FormControl(''),
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
@@ -65,32 +51,61 @@ export class CompanyInfoComponent implements OnInit {
   get state() { return this.companyProfileForm.get('state'); }
   get city() { return this.companyProfileForm.get('city'); }
   get addr() { return this.companyProfileForm.get('addr'); }
-  get branch() { return this.companyProfileForm.get('branch'); }
-  get network() { return this.companyProfileForm.get('network'); }
+  get division() { return this.companyProfileForm.get('division'); }
+  get area() { return this.companyProfileForm.get('area'); }
+
   get factory() { return this.companyProfileForm.get('factory'); }
-  get internalOffice() { return this.companyProfileForm.get('internalOffice'); }
-  get menufacturing() { return this.companyProfileForm.get('menufacturing'); }
-  get showroom() { return this.companyProfileForm.get('showroom'); }
-  get trandingDiv() { return this.companyProfileForm.get('trandingDiv'); }
-  get wharehouse() { return this.companyProfileForm.get('wharehouse'); }
-  get sisterCon() { return this.companyProfileForm.get('sisterCon'); }
-  get sqareMeter() { return this.companyProfileForm.get('sqareMeter'); }
-  get squareFeet() { return this.companyProfileForm.get('squareFeet'); }
-  get squareYard() { return this.companyProfileForm.get('squareYard'); }
-  get acre() { return this.companyProfileForm.get('acre'); }
-  get hectare() { return this.companyProfileForm.get('hectare'); }
+
   get annualTurn() { return this.companyProfileForm.get('annualTurn'); }
   get contPerson() { return this.companyProfileForm.get('contPerson'); }
   get phn() { return this.companyProfileForm.get('phn'); }
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
-  get addstate() { return this.companyProfileForm.get('addstate'); }
-  get addcountry() { return this.companyProfileForm.get('addcountry'); }
 
-  constructor() { }
+  // Ouality-Control Validation
+  qualityControlForm = new FormGroup(
+    {
+      processName: new FormControl(''),
+      picture: new FormControl(''),
+      qualitydescription: new FormControl(''),
+    })
+  get processName() { return this.qualityControlForm.get('processName'); }
+  get picture() { return this.qualityControlForm.get('picture'); }
+  get qualitydescription() { return this.qualityControlForm.get('qualitydescription'); }
+
+  // R&D validation
+
+  randdForm = new FormGroup(
+    {
+      certificateName: new FormControl(''),
+      certifiedBy: new FormControl(''),
+      businessScope: new FormControl(''),
+      fromDate: new FormControl(''),
+      toDate: new FormControl(''),
+    })
+  get certificateName() { return this.randdForm.get('certificateName'); }
+  get certifiedBy() { return this.randdForm.get('certifiedBy'); }
+  get businessScope() { return this.randdForm.get('businessScope'); }
+  get fromDate() { return this.randdForm.get('fromDate'); }
+  get toDate() { return this.randdForm.get('toDate'); }
+
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }
+  submitCompanyProfileForm() {
+    console.log(this.companyProfileForm.value)
+  }
+  submitqualityControlForm() {
+    console.log(this.qualityControlForm.value)
+  }
+  submitranddForm() {
+    console.log(this.randdForm.value)
+  }
+
   confirmTabSwitch($event) {
     if (this.disableSwitching) {
       const confirm = window.confirm('Discard changes and switch tab?');
