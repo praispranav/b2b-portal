@@ -462,10 +462,10 @@
                   <div class="row">
 
                     <div class="col-md-4">
-                      <label>Division <span>*</span></label>
-                      <select class="form-control" id="" formControlName="division"
-                        [class.is-invalid]="division?.invalid && division?.touched"
-                        [class.is-valid]="division?.valid && division?.touched">
+                      <label>Division</label>
+                      <select class="form-control" id="" formControlName="division">
+                        <!-- [class.is-invalid]="division?.invalid && division?.touched"
+                        [class.is-valid]="division?.valid && division?.touched"> -->
                         <option>Select division</option>
                         <option>Branch</option>
                         <option>Network</option>
@@ -477,16 +477,16 @@
                         <option>Wharehouse</option>
                         <option>Sister Concern</option>
                       </select>
-                      <div *ngIf="division?.invalid && division?.touched">
+                      <!-- <div *ngIf="division?.invalid && division?.touched">
                         <small class="text-danger">Division required</small>
-                      </div>
+                      </div> -->
 
                     </div>
                     <div class="col-md-4">
-                      <label>Area/Size<span>*</span></label>
-                      <select class="form-control" id="" formControlName="area"
-                        [class.is-invalid]="area?.invalid && area?.touched"
-                        [class.is-valid]="area?.valid && area?.touched">
+                      <label>Area/Size</label>
+                      <select class="form-control" id="" formControlName="area">
+                        <!-- [class.is-invalid]="area?.invalid && area?.touched"
+                        [class.is-valid]="area?.valid && area?.touched"> -->
                         <option>Select area/size</option>
                         <option>Square Meter</option>
                         <option>Square Feet</option>
@@ -494,25 +494,25 @@
                         <option>Acre</option>
                         <option>Hectare</option>
                       </select>
-                      <div *ngIf="area?.invalid && area?.touched">
+                      <!-- <div *ngIf="area?.invalid && area?.touched">
                         <small class="text-danger">Division required</small>
-                      </div>
+                      </div> -->
 
                     </div>
                     <div class="col-md-4">
                       <label>Factory Country/Region<span>*</span></label>
-                      <select class="form-control" id="" formControlName="factory"
-                        [class.is-invalid]="factory?.invalid && factory?.touched"
-                        [class.is-valid]="factory?.valid && factory?.touched">
+                      <select class="form-control" id="" formControlName="factory">
+                        <!-- [class.is-invalid]="factory?.invalid && factory?.touched"
+                        [class.is-valid]="factory?.valid && factory?.touched"> -->
                         <option>Select Factory Country/Region</option>
                         <option>Country</option>
                         <option>State</option>
 
                       </select>
 
-                      <div *ngIf="factory?.invalid && factory?.touched">
+                      <!-- <div *ngIf="factory?.invalid && factory?.touched">
                         <small class="text-danger">Factory Country/Region required</small>
-                      </div>
+                      </div> -->
                       <!-- <input type="text" class="form-control" formControlName="factory"
                         [class.is-invalid]="factory?.invalid && factory?.touched"
                         [class.is-valid]="factory?.valid && factory?.touched">
@@ -533,28 +533,28 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>Contact Person</label>
-                      <input class="form-control" type="text" formControlName="contPerson"
-                        [class.is-invalid]="contPerson?.invalid && contPerson?.touched"
+                      <input class="form-control" type="text" formControlName="contPerson">
+                      <!-- [class.is-invalid]="contPerson?.invalid && contPerson?.touched"
                         [class.is-valid]="contPerson?.valid && contPerson?.touched">
                       <div *ngIf="contPerson?.invalid && contPerson?.touched">
                         <small class="text-danger">Contact Person is required</small>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="col-md-4">
                       <label>Phone </label>
-                      <input class="form-control" type="text" formControlName="phn"
-                        [class.is-invalid]="phn?.invalid && phn?.touched" [class.is-valid]="phn?.valid && phn?.touched">
+                      <input class="form-control" type="text" formControlName="phn">
+                      <!-- [class.is-invalid]="phn?.invalid && phn?.touched" [class.is-valid]="phn?.valid && phn?.touched">
                       <div *ngIf="phn?.invalid && phn?.touched">
                         <small class="text-danger">Phone number is required</small>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="col-md-4">
                       <label>Mobile</label>
-                      <input class="form-control" type="text" formControlName="mob"
-                        [class.is-invalid]="mob?.invalid && mob?.touched" [class.is-valid]="mob?.valid && mob?.touched">
+                      <input class="form-control" type="text" formControlName="mob">
+                      <!-- [class.is-invalid]="mob?.invalid && mob?.touched" [class.is-valid]="mob?.valid && mob?.touched">
                       <div *ngIf="mob?.invalid && mob?.touched">
                         <small class="text-danger">Mobile no is required</small>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -565,23 +565,23 @@
                 <div class="col-md-4">
 
                   <label>Email</label>
-                  <input type="text" class="form-control" formControlName="email"
-                    [class.is-invalid]="email?.invalid && email?.touched"
+                  <input type="text" class="form-control" formControlName="email">
+                  <!-- [class.is-invalid]="email?.invalid && email?.touched"
                     [class.is-valid]="email?.valid && email?.touched">
                   <div *ngIf="email?.invalid && email?.touched">
                     <small class="text-danger">Email is required</small>
-                  </div>
+                  </div> -->
 
                 </div>
                 <div class="col-md-4">
 
                   <label>Annual Turnover</label>
-                  <input type="text" class="form-control" formControlName="annualTurn"
-                    [class.is-invalid]="annualTurn?.invalid && annualTurn?.touched"
+                  <input type="text" class="form-control" formControlName="annualTurn">
+                  <!-- [class.is-invalid]="annualTurn?.invalid && annualTurn?.touched"
                     [class.is-valid]="annualTurn?.valid && annualTurn?.touched">
                   <div *ngIf="annualTurn?.invalid && annualTurn?.touched">
                     <small class="text-danger">Turnover is required</small>
-                  </div>
+                  </div> -->
 
                 </div>
 
@@ -596,7 +596,7 @@
             </div>
           </div>
 
-          <div class="mt-2"><button class="btn btn-primary" [disabled]="companyProfileForm.invalid">Save</button></div>
+          <div class="mt-2"><button class="btn btn-primary">Save</button></div>
 
         </form>
       </tab>

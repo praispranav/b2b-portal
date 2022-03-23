@@ -26,17 +26,17 @@ export class CompanyInfoComponent implements OnInit {
       state: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       addr: new FormControl('', Validators.required),
-      division: new FormControl('', Validators.required),
+      division: new FormControl(''),
 
-      factory: new FormControl('', Validators.required),
+      factory: new FormControl(''),
 
-      annualTurn: new FormControl('', Validators.required),
-      contPerson: new FormControl('', Validators.required),
-      phn: new FormControl('', Validators.required),
-      mob: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      annualTurn: new FormControl(''),
+      contPerson: new FormControl(''),
+      phn: new FormControl(''),
+      mob: new FormControl(''),
+      email: new FormControl(''),
       mainCat: new FormControl('', Validators.required),
-      area: new FormControl('', Validators.required),
+      area: new FormControl(''),
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
