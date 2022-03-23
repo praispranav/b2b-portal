@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { TabsetComponent, TabDirective } from 'ngx-bootstrap/tabs';
-import { FormGroup, FormControlName, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-company-info',
   templateUrl: './company-info.component.html',
@@ -11,6 +11,21 @@ export class CompanyInfoComponent implements OnInit {
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('first') first: TabDirective;
   @ViewChild('second') second: TabDirective;
+  constructor(private formBuilder: FormBuilder) { }
+
+  //Export Capabilities Validation
+  exportCapabilitiesForm = this.formBuilder.group({
+    yearlyTurnOver: ['', Validators.required],
+    nearestPort: ['', Validators.required],
+
+  });
+
+  get yearlyTurnOver() { return this.exportCapabilitiesForm.get('yearlyTurnOver'); }
+  get nearestPort() { return this.exportCapabilitiesForm.get('nearestPort'); }
+
+  exportSubmit() {
+    console.log(this.exportCapabilitiesForm.value);
+  }
 
   // company profile validation
   companyProfileForm = new FormGroup(
@@ -62,6 +77,96 @@ export class CompanyInfoComponent implements OnInit {
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
 
+
+  ngOnInit(): void {
+  }
+  //company details validation
+  companyDetailsForm = new FormGroup({
+    contactPerson: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
+    surname: new FormControl('', Validators.required),
+    companyWebsite: new FormControl('', Validators.required),
+    companyPage: new FormControl('', Validators.required),
+    emailDetails: new FormControl('', [Validators.required, Validators.email]),
+    alternativeEmail: new FormControl('', [Validators.required, Validators.email]),
+    companyNameDetails: new FormControl('', Validators.required),
+    accountNumber: new FormControl('', Validators.required),
+    accountType: new FormControl('', Validators.required),
+    ifscCode: new FormControl('', Validators.required),
+    swiftCode: new FormControl('', Validators.required),
+    bankName: new FormControl('', Validators.required),
+    branchDetails: new FormControl('', Validators.required),
+    companyPhilosophy: new FormControl('', Validators.required),
+    companyMissionAndVision: new FormControl('', Validators.required),
+    companyDetailedInstruction: new FormControl('', Validators.required),
+    selectTradeShow: new FormControl('', Validators.required),
+    tradeShowName: new FormControl('', Validators.required),
+    dateFrom: new FormControl('', Validators.required),
+    dateTo: new FormControl('', Validators.required),
+    host: new FormControl('', Validators.required),
+    countryDetails: new FormControl('', Validators.required),
+    cityDetails: new FormControl('', Validators.required),
+    aboutTradeShow: new FormControl('', Validators.required),
+    designation: new FormControl('', Validators.required),
+    employeeStrength: new FormControl('', Validators.required),
+  })
+
+  get contactPerson() { return this.companyDetailsForm.get('contactPerson'); }
+  get name() { return this.companyDetailsForm.get('name'); }
+  get surname() { return this.companyDetailsForm.get('surname'); }
+  get companyWebsite() { return this.companyDetailsForm.get('companyWebsite'); }
+  get companyPage() { return this.companyDetailsForm.get('companyPage'); }
+  get emailDetails() { return this.companyDetailsForm.get('emailDetails'); }
+  get alternativeEmail() { return this.companyDetailsForm.get('alternativeEmail'); }
+  get companyNameDetails() { return this.companyDetailsForm.get('companyNameDetails'); }
+  get accountNumber() { return this.companyDetailsForm.get('accountNumber'); }
+  get accountType() { return this.companyDetailsForm.get('accountType'); }
+  get ifscCode() { return this.companyDetailsForm.get('ifscCode'); }
+  get swiftCode() { return this.companyDetailsForm.get('swiftCode'); }
+  get bankName() { return this.companyDetailsForm.get('bankName'); }
+  get branchDetails() { return this.companyDetailsForm.get('branchDetails'); }
+  get companyPhilosophy() { return this.companyDetailsForm.get('companyPhilosophy'); }
+  get companyMissionAndVision() { return this.companyDetailsForm.get('companyMissionAndVision'); }
+  get companyDetailedInstruction() { return this.companyDetailsForm.get('companyDetailedInstruction'); }
+  get selectTradeShow() { return this.companyDetailsForm.get('selectTradeShow'); }
+  get tradeShowName() { return this.companyDetailsForm.get('tradeShowName'); }
+  get dateFrom() { return this.companyDetailsForm.get('dateFrom'); }
+  get dateTo() { return this.companyDetailsForm.get('dateTo'); }
+  get host() { return this.companyDetailsForm.get('host'); }
+  get countryDetails() { return this.companyDetailsForm.get('countryDetails'); }
+  get cityDetails() { return this.companyDetailsForm.get('cityDetails'); }
+  get aboutTradeShow() { return this.companyDetailsForm.get('aboutTradeShow'); }
+  get designation() { return this.companyDetailsForm.get('designation'); }
+  get employeeStrength() { return this.companyDetailsForm.get('employeeStrength'); }
+
+
+  detailsSubmitForm() {
+    console.log(this.companyDetailsForm.value);
+  }
+
+  //Certificate Centre Dynamic Data
+
+  Data: Array<any> = [
+    { name: 'ISO', value: 'ISO' },
+    { name: 'BSCI', value: 'BSCI' },
+    { name: 'SA8000', value: 'SA8000' },
+    { name: 'Apple', value: 'apple' },
+    { name: 'WCA', value: 'WCA' },
+    { name: 'WRAP', value: 'WRAP' },
+    { name: 'CE', value: 'CE' },
+    { name: 'GRS', value: 'GRS' },
+    { name: 'ROHS', value: 'ROHS' },
+    { name: 'FCC', value: 'FCC' },
+    { name: 'EMC', value: 'EMC' },
+    { name: 'TUV MARK', value: 'TUV MARK' },
+    { name: 'UL', value: 'UL' },
+    { name: 'UKCA', value: 'UKCA' },
+    { name: 'GOTS', value: 'GOTS' },
+    { name: 'CPC', value: 'CPC' }
+
+  ];
+
+
   // Ouality-Control Validation
   qualityControlForm = new FormGroup(
     {
@@ -90,12 +195,7 @@ export class CompanyInfoComponent implements OnInit {
   get toDate() { return this.randdForm.get('toDate'); }
 
 
-  constructor() {
 
-  }
-
-  ngOnInit(): void {
-  }
   submitCompanyProfileForm() {
     console.log(this.companyProfileForm.value)
   }
