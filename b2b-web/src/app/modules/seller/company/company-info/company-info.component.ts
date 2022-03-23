@@ -77,11 +77,11 @@ export class CompanyInfoComponent implements OnInit {
 
   randdForm = new FormGroup(
     {
-      certificateName: new FormControl('', Validators.required),
-      certifiedBy: new FormControl('', Validators.required),
-      businessScope: new FormControl('', Validators.required),
-      fromDate: new FormControl('', Validators.required),
-      toDate: new FormControl('', Validators.required),
+      certificateName: new FormControl(''),
+      certifiedBy: new FormControl(''),
+      businessScope: new FormControl(''),
+      fromDate: new FormControl(''),
+      toDate: new FormControl(''),
     })
   get certificateName() { return this.randdForm.get('certificateName'); }
   get certifiedBy() { return this.randdForm.get('certifiedBy'); }
