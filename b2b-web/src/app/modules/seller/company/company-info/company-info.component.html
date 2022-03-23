@@ -620,23 +620,23 @@
             <div class="row mb-3">
               <div class="col-md-4 ">
                 <label for="">Process Name</label>
-                <input type="text" class="form-control" placeholder="Process Name" formControlName="processName"
-                  [class.is-invalid]="processName?.invalid && processName?.touched"
+                <input type="text" class="form-control" placeholder="Process Name" formControlName="processName">
+                <!-- [class.is-invalid]="processName?.invalid && processName?.touched"
                   [class.is-valid]="processName?.valid && processName?.touched">
                 <div *ngIf="processName?.invalid && processName?.touched">
                   <small class="text-danger">Process Name is required</small>
-                </div>
+                </div> -->
               </div>
 
               <div class="col-md-4">
                 <label for="">Process Picture</label>
 
-                <input type="file" class="form-control" placeholder="Last name" formControlName="picture"
-                  [class.is-invalid]="picture?.invalid && picture?.touched"
+                <input type="file" class="form-control" placeholder="Last name" formControlName="picture">
+                <!-- [class.is-invalid]="picture?.invalid && picture?.touched"
                   [class.is-valid]="picture?.valid && picture?.touched">
                 <div *ngIf="picture?.invalid && picture?.touched">
                   <small class="text-danger">Process Picture is required</small>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="row">
@@ -644,10 +644,13 @@
                 <label for="" class="me-4">
                   Description
                 </label>
-                <textarea name="" id="" cols="5" rows="4" style="width: 100%;" formControlName="qualitydescription"
-                  [class.is-invalid]="qualitydescription?.invalid && qualitydescription?.touched"
+                <textarea name="" id="" cols="5" rows="4" style="width: 100%;"
+                  formControlName="qualitydescription"></textarea>
+                <!-- [class.is-invalid]="qualitydescription?.invalid && qualitydescription?.touched"
                   [class.is-valid]="qualitydescription?.valid && qualitydescription?.touched">
-                <div *ngIf="qualitydescription?.invalid && qualitydescription?.touched"></textarea>
+                <div *ngIf="qualitydescription?.invalid && qualitydescription?.touched">
+
+                </textarea> -->
               </div>
             </div>
             <div class="mb-2">

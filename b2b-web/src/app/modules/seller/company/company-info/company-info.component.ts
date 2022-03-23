@@ -65,9 +65,9 @@ export class CompanyInfoComponent implements OnInit {
   // Ouality-Control Validation
   qualityControlForm = new FormGroup(
     {
-      processName: new FormControl('', Validators.required),
-      picture: new FormControl('', Validators.required),
-      qualitydescription: new FormControl('', Validators.required),
+      processName: new FormControl(''),
+      picture: new FormControl(''),
+      qualitydescription: new FormControl(''),
     })
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
