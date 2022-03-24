@@ -15,12 +15,20 @@ export class CompanyInfoComponent implements OnInit {
   companyProfileMobile: any[] = [];
   companyProfileLandline: any[] = [];
   profileRegCertificate: any[] = [];
-  constructor(private formBuilder: FormBuilder) { }
+  additionalDetailsArray: FormArray;
+
+  constructor(private formBuilder: FormBuilder) {
+
+
+  }
+
+
 
   //Export Capabilities Validation
   exportCapabilitiesForm = this.formBuilder.group({
     yearlyTurnOver: ['', Validators.required],
     nearestPort: ['', Validators.required],
+
 
   });
 
@@ -59,7 +67,8 @@ export class CompanyInfoComponent implements OnInit {
       mainProducts: new FormControl(''),
       companyProfileMobile: new FormControl(''),
       companyProfileLandline: new FormControl(''),
-      profileRegCertificate: new FormControl('')
+      profileRegCertificate: new FormControl(''),
+      additionalDetailsArray: new FormArray([]),
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
@@ -176,6 +185,12 @@ export class CompanyInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
+
+
+  }
+  ngAfterViewInit() {
+    this.addAditionalDetails()
   }
 
   // company prrofile  function
@@ -209,9 +224,36 @@ export class CompanyInfoComponent implements OnInit {
     this.profileRegCertificate.push(value);
     this.companyProfileForm.patchValue({ profileRegCertificate: '' })
   }
+  createAditionalDetails(): FormGroup {
+    return this.formBuilder.group({
+      division: ['', Validators.required],
+      area: ['', Validators.required],
+      factory: ['', Validators.required],
+      country: ['', Validators.required],
+      phn: ['', Validators.required],
+      mob: ['', Validators.required],
+      annualTurn: ['', Validators.required],
+      contPerson: ['', Validators.required]
+
+
+    });
+  }
+  addAditionalDetails(): void {
+    this.additionalDetailsArray.push(this.createAditionalDetails());
+  }
+
 
   submitCompanyProfileForm() {
-    console.log(this.companyProfileForm.value)
+    const obj = {
+      ...this.companyProfileForm.value,
+      companyProfileMobile: this.companyProfileMobile,
+      companyProfileLandline: this.companyProfileLandline,
+      profileRegCertificate: this.profileRegCertificate,
+
+
+    }
+
+    console.log(obj)
   }
 
   // company detail  function
