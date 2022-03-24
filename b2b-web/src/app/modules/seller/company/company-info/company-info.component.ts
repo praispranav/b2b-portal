@@ -20,15 +20,25 @@ export class CompanyInfoComponent implements OnInit {
   languageSpoken: any[] = [];
   tradeName: any[] = [];
   uploadPicture: any[] = [];
-  additionalTradeExpo: [] = [];
+  additionalTradeExpoArray: FormArray;
+  additionalDetailsArray: FormArray;
+  randdAddtionalFieldArray: FormArray;
+  qualityControlArray: FormArray;
+  otherCertifications: any[] = [];
+
+
+
   constructor(private formBuilder: FormBuilder) { }
+
 
   //Export Capabilities Validation
   exportCapabilitiesForm = this.formBuilder.group({
     yearlyTurnOver: ['', Validators.required],
     nearestPort: ['', Validators.required],
 
+
   });
+
 
   get yearlyTurnOver() { return this.exportCapabilitiesForm.get('yearlyTurnOver'); }
   get nearestPort() { return this.exportCapabilitiesForm.get('nearestPort'); }
@@ -36,6 +46,19 @@ export class CompanyInfoComponent implements OnInit {
   exportSubmit() {
     console.log(this.exportCapabilitiesForm.value);
   }
+
+  //certificate center Validation
+  certificateCenterForm = new FormGroup({
+    otherCertifications: new FormControl('')
+  });
+  addOtherCertifications() {
+    if (this.otherCertifications.length == 3) return
+
+    const value = this.certificateCenterForm.value.otherCertifications;
+    this.otherCertifications.push(value);
+    this.certificateCenterForm.patchValue({ otherCertifications: "" })
+  }
+
 
   // company profile validation
   companyProfileForm = new FormGroup(
@@ -65,7 +88,8 @@ export class CompanyInfoComponent implements OnInit {
       mainProducts: new FormControl(''),
       companyProfileMobile: new FormControl(''),
       companyProfileLandline: new FormControl(''),
-      profileRegCertificate: new FormControl('')
+      profileRegCertificate: new FormControl(''),
+      additionalDetailsArray: new FormArray([]),
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
@@ -90,7 +114,7 @@ export class CompanyInfoComponent implements OnInit {
   get phn() { return this.companyProfileForm.get('phn'); }
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
-  // get mainProducts() { return this.companyProfileForm.get('mainProducts'); }
+  // get mainProductsProfile() { return this.companyProfileForm.get('mainProducts'); }
 
 
   //company details validation
@@ -100,7 +124,7 @@ export class CompanyInfoComponent implements OnInit {
     companyLogo: new FormControl('', Validators.required),
 
     languageSpoken: new FormControl(''),
-    tradeName: new FormControl(''),
+
     uploadPicture: new FormControl(''),
     contactPerson: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
@@ -129,6 +153,8 @@ export class CompanyInfoComponent implements OnInit {
     aboutTradeShow: new FormControl('', Validators.required),
     designation: new FormControl('', Validators.required),
     employeeStrength: new FormControl('', Validators.required),
+    additionalTradeExpoArray: new FormArray([])
+
   })
 
   get contactPerson() { return this.companyDetailsForm.get('contactPerson'); }
@@ -166,6 +192,7 @@ export class CompanyInfoComponent implements OnInit {
       processName: new FormControl(''),
       picture: new FormControl(''),
       qualitydescription: new FormControl(''),
+      qualityControlArray: new FormArray([])
     })
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
@@ -180,6 +207,7 @@ export class CompanyInfoComponent implements OnInit {
       businessScope: new FormControl(''),
       fromDate: new FormControl(''),
       toDate: new FormControl(''),
+      randdAddtionalFieldArray: new FormArray([])
     })
   get certificateName() { return this.randdForm.get('certificateName'); }
   get certifiedBy() { return this.randdForm.get('certifiedBy'); }
@@ -190,6 +218,18 @@ export class CompanyInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.additionalTradeExpoArray = this.companyDetailsForm.get('additionalTradeExpoArray') as FormArray
+    this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
+
+    this.randdAddtionalFieldArray = this.randdForm.get('randdAddtionalFieldArray') as FormArray
+    this.qualityControlArray = this.qualityControlForm.get('qualityControlArray') as FormArray
+
+  }
+  ngAfterViewInit() {
+    this.addqualityControlField()
+    this.addranddField()
+    this.addAditionalDetails()
+    this.addAdditionalTradeExpo()
   }
 
   // company prrofile  function
@@ -223,9 +263,29 @@ export class CompanyInfoComponent implements OnInit {
     this.profileRegCertificate.push(value);
     this.companyProfileForm.patchValue({ profileRegCertificate: '' })
   }
+  createqualityControlField(): FormGroup {
+    return this.formBuilder.group({
+      processName: ['', Validators.required],
+      picture: ['', Validators.required],
+      qualitydescription: ['', Validators.required],
+    });
+  }
+  addqualityControlField(): void {
+    this.qualityControlArray.push(this.createqualityControlField());
+  }
+
 
   submitCompanyProfileForm() {
-    console.log(this.companyProfileForm.value)
+    const obj = {
+      ...this.companyProfileForm.value,
+      companyProfileMobile: this.companyProfileMobile,
+      companyProfileLandline: this.companyProfileLandline,
+      profileRegCertificate: this.profileRegCertificate,
+
+
+    }
+
+    console.log(obj)
   }
 
   // company detail  function
@@ -256,6 +316,7 @@ export class CompanyInfoComponent implements OnInit {
     if (this.companyVideo.length == 3) return
 
     const value = this.companyDetailsForm.value.companyVideo;
+
     this.companyVideo.push(value);
     this.companyDetailsForm.patchValue({ companyVideo: "" })
   }
@@ -263,10 +324,14 @@ export class CompanyInfoComponent implements OnInit {
     if (this.uploadPicture.length == 3) return
 
     const value = this.companyDetailsForm.value.uploadPicture;
+    console.log(value)
     this.uploadPicture.push(value);
     this.companyDetailsForm.patchValue({ uploadPicture: "" })
   }
-
+  onChangeTradeName(changeEvent: any, index: number) {
+    // const addValue = [ ...this.additionalTradeExpoArray.at(index).value,  ]
+    //   this.additionalTradeExpoArray.at(index).patchValue({  })
+  }
   detailsSubmitForm() {
     console.log(this.companyDetailsForm.value);
   }
@@ -295,11 +360,60 @@ export class CompanyInfoComponent implements OnInit {
 
 
   // Quality control submit function
+  createAditionalDetails(): FormGroup {
+    return this.formBuilder.group({
+      division: ['', Validators.required],
+      area: ['', Validators.required],
+      factory: ['', Validators.required],
+      country: ['', Validators.required],
+      phn: ['', Validators.required],
+      mob: ['', Validators.required],
+      annualTurn: ['', Validators.required],
+      contPerson: ['', Validators.required]
+
+
+    });
+  }
+  //details
+  createAdditionalTradeExpo(): FormGroup {
+    return this.formBuilder.group({
+      selectTradeShow: ['', Validators.required],
+      tradeName: [[], Validators.required],
+      tradeShowName: ['', Validators.required],
+      dateFrom: ['', Validators.required],
+      dateTo: ['', Validators.required],
+      host: ['', Validators.required],
+      countryDetails: ['', Validators.required],
+      cityDetails: ['', Validators.required],
+      uploadPicture: ['', Validators.required]
+    })
+  }
+  addAditionalDetails(): void {
+    this.additionalDetailsArray.push(this.createAditionalDetails());
+  }
+  addAdditionalTradeExpo(): void {
+    this.additionalTradeExpoArray.push(this.createAdditionalTradeExpo());
+  }
   submitqualityControlForm() {
     console.log(this.qualityControlForm.value)
   }
 
   // r&d submit function
+  createranddArray(): FormGroup {
+    return this.formBuilder.group({
+      certificateName: ['', Validators.required],
+      certifiedBy: ['', Validators.required],
+      businessScope: ['', Validators.required],
+      fromDate: ['', Validators.required],
+      toDate: ['', Validators.required],
+
+
+    });
+  }
+  addranddField(): void {
+    this.randdAddtionalFieldArray.push(this.createranddArray());
+  }
+
   submitranddForm() {
     console.log(this.randdForm.value)
   }
