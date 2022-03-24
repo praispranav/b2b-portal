@@ -15,12 +15,22 @@ export class CompanyInfoComponent implements OnInit {
   companyProfileMobile: any[] = [];
   companyProfileLandline: any[] = [];
   profileRegCertificate: any[] = [];
-  constructor(private formBuilder: FormBuilder) { }
+  additionalDetailsArray: FormArray;
+  randdAddtionalFieldArray: FormArray;
+  qualityControlArray: FormArray;
+
+  constructor(private formBuilder: FormBuilder) {
+
+
+  }
+
+
 
   //Export Capabilities Validation
   exportCapabilitiesForm = this.formBuilder.group({
     yearlyTurnOver: ['', Validators.required],
     nearestPort: ['', Validators.required],
+
 
   });
 
@@ -59,7 +69,8 @@ export class CompanyInfoComponent implements OnInit {
       mainProducts: new FormControl(''),
       companyProfileMobile: new FormControl(''),
       companyProfileLandline: new FormControl(''),
-      profileRegCertificate: new FormControl('')
+      profileRegCertificate: new FormControl(''),
+      additionalDetailsArray: new FormArray([]),
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
@@ -152,6 +163,7 @@ export class CompanyInfoComponent implements OnInit {
       processName: new FormControl(''),
       picture: new FormControl(''),
       qualitydescription: new FormControl(''),
+      qualityControlArray: new FormArray([])
     })
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
@@ -166,6 +178,7 @@ export class CompanyInfoComponent implements OnInit {
       businessScope: new FormControl(''),
       fromDate: new FormControl(''),
       toDate: new FormControl(''),
+      randdAddtionalFieldArray: new FormArray([])
     })
   get certificateName() { return this.randdForm.get('certificateName'); }
   get certifiedBy() { return this.randdForm.get('certifiedBy'); }
@@ -176,6 +189,15 @@ export class CompanyInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
+    this.randdAddtionalFieldArray = this.randdForm.get('randdAddtionalFieldArray') as FormArray
+    this.qualityControlArray = this.qualityControlForm.get('qualityControlArray') as FormArray
+
+  }
+  ngAfterViewInit() {
+    this.addqualityControlField()
+    this.addranddField()
+    this.addAditionalDetails()
   }
 
   // company prrofile  function
@@ -209,9 +231,29 @@ export class CompanyInfoComponent implements OnInit {
     this.profileRegCertificate.push(value);
     this.companyProfileForm.patchValue({ profileRegCertificate: '' })
   }
+  createqualityControlField(): FormGroup {
+    return this.formBuilder.group({
+      processName: ['', Validators.required],
+      picture: ['', Validators.required],
+      qualitydescription: ['', Validators.required],
+    });
+  }
+  addqualityControlField(): void {
+    this.qualityControlArray.push(this.createqualityControlField());
+  }
+
 
   submitCompanyProfileForm() {
-    console.log(this.companyProfileForm.value)
+    const obj = {
+      ...this.companyProfileForm.value,
+      companyProfileMobile: this.companyProfileMobile,
+      companyProfileLandline: this.companyProfileLandline,
+      profileRegCertificate: this.profileRegCertificate,
+
+
+    }
+
+    console.log(obj)
   }
 
   // company detail  function
@@ -243,11 +285,43 @@ export class CompanyInfoComponent implements OnInit {
 
 
   // Quality control submit function
+  createAditionalDetails(): FormGroup {
+    return this.formBuilder.group({
+      division: ['', Validators.required],
+      area: ['', Validators.required],
+      factory: ['', Validators.required],
+      country: ['', Validators.required],
+      phn: ['', Validators.required],
+      mob: ['', Validators.required],
+      annualTurn: ['', Validators.required],
+      contPerson: ['', Validators.required]
+
+
+    });
+  }
+  addAditionalDetails(): void {
+    this.additionalDetailsArray.push(this.createAditionalDetails());
+  }
   submitqualityControlForm() {
     console.log(this.qualityControlForm.value)
   }
 
   // r&d submit function
+  createranddArray(): FormGroup {
+    return this.formBuilder.group({
+      certificateName: ['', Validators.required],
+      certifiedBy: ['', Validators.required],
+      businessScope: ['', Validators.required],
+      fromDate: ['', Validators.required],
+      toDate: ['', Validators.required],
+
+
+    });
+  }
+  addranddField(): void {
+    this.randdAddtionalFieldArray.push(this.createranddArray());
+  }
+
   submitranddForm() {
     console.log(this.randdForm.value)
   }

@@ -620,149 +620,151 @@
             </div>
           </div>
           <h6>Additional Contact Details</h6>
-          <div class=" border p-4">
-            <div class=" mt-4 px-2">
-              <!-- <h6>Division<span>*</span></h6> -->
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="row">
+          <div formArrayName="additionalDetailsArray">
+            <div class=" border p-4" *ngFor="let item of additionalDetailsArray.controls; let i = index;">
+              <div class=" mt-4 px-2">
+                <!-- <h6>Division<span>*</span></h6> -->
+                <div class="row" formGroupName="{{ i }}">
+                  <div class="col-md-12">
+                    <div class="row">
 
-                    <div class="col-md-4">
-                      <label>Division</label>
-                      <select class="form-control" id="" formControlName="division">
-                        <!-- [class.is-invalid]="division?.invalid && division?.touched"
+                      <div class="col-md-4">
+                        <label>Division</label>
+                        <select class="form-control" id="" formControlName="division">
+                          <!-- [class.is-invalid]="division?.invalid && division?.touched"
                         [class.is-valid]="division?.valid && division?.touched"> -->
-                        <option>Select division</option>
-                        <option>Branch</option>
-                        <option>Network</option>
-                        <option>Factory</option>
-                        <option>International Office</option>
-                        <option>Menufacturing</option>
-                        <option>Showroom</option>
-                        <option>Trading Division</option>
-                        <option>Wharehouse</option>
-                        <option>Sister Concern</option>
-                      </select>
-                      <!-- <div *ngIf="division?.invalid && division?.touched">
+                          <option>Select division</option>
+                          <option>Branch</option>
+                          <option>Network</option>
+                          <option>Factory</option>
+                          <option>International Office</option>
+                          <option>Menufacturing</option>
+                          <option>Showroom</option>
+                          <option>Trading Division</option>
+                          <option>Wharehouse</option>
+                          <option>Sister Concern</option>
+                        </select>
+                        <!-- <div *ngIf="division?.invalid && division?.touched">
                         <small class="text-danger">Division required</small>
                       </div> -->
 
-                    </div>
-                    <div class="col-md-4">
-                      <label>Area/Size</label>
-                      <select class="form-control" id="" formControlName="area">
-                        <!-- [class.is-invalid]="area?.invalid && area?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label>Area/Size</label>
+                        <select class="form-control" id="" formControlName="area">
+                          <!-- [class.is-invalid]="area?.invalid && area?.touched"
                         [class.is-valid]="area?.valid && area?.touched"> -->
-                        <option>Select area/size</option>
-                        <option>Square Meter</option>
-                        <option>Square Feet</option>
-                        <option>Square Yard</option>
-                        <option>Acre</option>
-                        <option>Hectare</option>
-                      </select>
-                      <!-- <div *ngIf="area?.invalid && area?.touched">
+                          <option>Select area/size</option>
+                          <option>Square Meter</option>
+                          <option>Square Feet</option>
+                          <option>Square Yard</option>
+                          <option>Acre</option>
+                          <option>Hectare</option>
+                        </select>
+                        <!-- <div *ngIf="area?.invalid && area?.touched">
                         <small class="text-danger">Division required</small>
                       </div> -->
 
-                    </div>
-                    <div class="col-md-4">
-                      <label>Factory Country/Region<span>*</span></label>
-                      <select class="form-control" id="" formControlName="factory">
-                        <!-- [class.is-invalid]="factory?.invalid && factory?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label>Factory Country/Region<span>*</span></label>
+                        <select class="form-control" id="" formControlName="factory">
+                          <!-- [class.is-invalid]="factory?.invalid && factory?.touched"
                         [class.is-valid]="factory?.valid && factory?.touched"> -->
-                        <option>Select Factory Country/Region</option>
-                        <option>Country</option>
-                        <option>State</option>
+                          <option>Select Factory Country/Region</option>
+                          <option>Country</option>
+                          <option>State</option>
 
-                      </select>
+                        </select>
 
-                      <!-- <div *ngIf="factory?.invalid && factory?.touched">
+                        <!-- <div *ngIf="factory?.invalid && factory?.touched">
                         <small class="text-danger">Factory Country/Region required</small>
                       </div> -->
-                      <!-- <input type="text" class="form-control" formControlName="factory"
+                        <!-- <input type="text" class="form-control" formControlName="factory"
                         [class.is-invalid]="factory?.invalid && factory?.touched"
                         [class.is-valid]="factory?.valid && factory?.touched">
                       <div *ngIf="factory?.invalid && factory?.touched">
                         <small class="text-danger">Factory is required</small>
                       </div> -->
+                      </div>
+
+
                     </div>
-
-
                   </div>
+
+
                 </div>
 
-
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-md-12">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label>Contact Person</label>
-                      <input class="form-control" type="text" formControlName="contPerson">
-                      <!-- [class.is-invalid]="contPerson?.invalid && contPerson?.touched"
+                <div class="row mt-2">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>Contact Person</label>
+                        <input class="form-control" type="text" formControlName="contPerson">
+                        <!-- [class.is-invalid]="contPerson?.invalid && contPerson?.touched"
                         [class.is-valid]="contPerson?.valid && contPerson?.touched">
                       <div *ngIf="contPerson?.invalid && contPerson?.touched">
                         <small class="text-danger">Contact Person is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4">
-                      <label>Phone </label>
-                      <input class="form-control" type="text" formControlName="phn">
-                      <!-- [class.is-invalid]="phn?.invalid && phn?.touched" [class.is-valid]="phn?.valid && phn?.touched">
+                      </div>
+                      <div class="col-md-4">
+                        <label>Phone </label>
+                        <input class="form-control" type="text" formControlName="phn">
+                        <!-- [class.is-invalid]="phn?.invalid && phn?.touched" [class.is-valid]="phn?.valid && phn?.touched">
                       <div *ngIf="phn?.invalid && phn?.touched">
                         <small class="text-danger">Phone number is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4">
-                      <label>Mobile</label>
-                      <input class="form-control" type="text" formControlName="mob">
-                      <!-- [class.is-invalid]="mob?.invalid && mob?.touched" [class.is-valid]="mob?.valid && mob?.touched">
+                      </div>
+                      <div class="col-md-4">
+                        <label>Mobile</label>
+                        <input class="form-control" type="text" formControlName="mob">
+                        <!-- [class.is-invalid]="mob?.invalid && mob?.touched" [class.is-valid]="mob?.valid && mob?.touched">
                       <div *ngIf="mob?.invalid && mob?.touched">
                         <small class="text-danger">Mobile no is required</small>
                       </div> -->
+                      </div>
                     </div>
                   </div>
+
+
                 </div>
+                <div class="row ">
+                  <div class="col-md-4">
 
-
-              </div>
-              <div class="row ">
-                <div class="col-md-4">
-
-                  <label>Email</label>
-                  <input type="text" class="form-control" formControlName="email">
-                  <!-- [class.is-invalid]="email?.invalid && email?.touched"
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <!-- [class.is-invalid]="email?.invalid && email?.touched"
                     [class.is-valid]="email?.valid && email?.touched">
                   <div *ngIf="email?.invalid && email?.touched">
                     <small class="text-danger">Email is required</small>
                   </div> -->
 
-                </div>
-                <div class="col-md-4">
+                  </div>
+                  <div class="col-md-4">
 
-                  <label>Annual Turnover</label>
-                  <input type="text" class="form-control" formControlName="annualTurn">
-                  <!-- [class.is-invalid]="annualTurn?.invalid && annualTurn?.touched"
+                    <label>Annual Turnover</label>
+                    <input type="text" class="form-control" formControlName="annualTurn">
+                    <!-- [class.is-invalid]="annualTurn?.invalid && annualTurn?.touched"
                     [class.is-valid]="annualTurn?.valid && annualTurn?.touched">
                   <div *ngIf="annualTurn?.invalid && annualTurn?.touched">
                     <small class="text-danger">Turnover is required</small>
                   </div> -->
 
+                  </div>
+
                 </div>
-
               </div>
-            </div>
 
 
-            <!-- <h6>Area/Size<span>*</span></h6> -->
+              <!-- <h6>Area/Size<span>*</span></h6> -->
 
-            <!-- <div class="mb-2">
+              <!-- <div class="mb-2">
               <button class="btn btn-secondary float-right add">Add</button>
             </div> -->
+            </div>
           </div>
           <div class="mt-2">
-            <button class="btn btn-secondary float-right add">Add</button>
+            <button class="btn btn-secondary float-right add" (click)="addAditionalDetails()">Add</button>
           </div>
 
           <div class="mt-4"><button class="btn btn-primary">Save</button></div>
@@ -785,46 +787,50 @@
               <label class="form-check-label" for="defaultCheck2">No</label>
             </span>
           </div>
-          <div class="border p-4">
-            <div class="row mb-3">
-              <div class="col-md-4 ">
-                <label for="">Process Name</label>
-                <input type="text" class="form-control" placeholder="Process Name" formControlName="processName">
-                <!-- [class.is-invalid]="processName?.invalid && processName?.touched"
+          <div formArrayName="qualityControlArray">
+            <div class="border p-4" *ngFor="let item of qualityControlArray.controls; let i = index;">
+              <div class="row mb-3" formGroupName="{{ i }}">
+                <div class="col-md-4 ">
+                  <label for="">Process Name</label>
+                  <input type="text" class="form-control" placeholder="Process Name" formControlName="processName">
+                  <!-- [class.is-invalid]="processName?.invalid && processName?.touched"
                   [class.is-valid]="processName?.valid && processName?.touched">
                 <div *ngIf="processName?.invalid && processName?.touched">
                   <small class="text-danger">Process Name is required</small>
                 </div> -->
-              </div>
+                </div>
 
-              <div class="col-md-4">
-                <label for="">Process Picture</label>
+                <div class="col-md-4">
+                  <label for="">Process Picture</label>
 
-                <input type="file" class="form-control" placeholder="Last name" formControlName="picture">
-                <!-- [class.is-invalid]="picture?.invalid && picture?.touched"
+                  <input type="file" class="form-control" placeholder="Last name" formControlName="picture">
+                  <!-- [class.is-invalid]="picture?.invalid && picture?.touched"
                   [class.is-valid]="picture?.valid && picture?.touched">
                 <div *ngIf="picture?.invalid && picture?.touched">
                   <small class="text-danger">Process Picture is required</small>
                 </div> -->
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mt-2">
-                <label for="" class="me-4">
-                  Description
-                </label>
-                <textarea name="" id="" cols="5" rows="4" style="width: 100%;"
-                  formControlName="qualitydescription"></textarea>
-                <!-- [class.is-invalid]="qualitydescription?.invalid && qualitydescription?.touched"
+              <div class="row">
+                <div class="col-md-6 mt-2">
+                  <label for="" class="me-4">
+                    Description
+                  </label>
+                  <textarea name="" id="" cols="5" rows="4" style="width: 100%;"
+                    formControlName="qualitydescription"></textarea>
+                  <!-- [class.is-invalid]="qualitydescription?.invalid && qualitydescription?.touched"
                   [class.is-valid]="qualitydescription?.valid && qualitydescription?.touched">
                 <div *ngIf="qualitydescription?.invalid && qualitydescription?.touched">
 
                 </textarea> -->
+                </div>
               </div>
+
             </div>
-            <div class="mb-2">
-              <button type="" class="border-0 btn btn-secondary float-right  mr-4 add">Add</button>
-            </div>
+          </div>
+          <div class="mt-2">
+            <button type="" class="border-0 btn btn-secondary float-right  mr-4 add"
+              (click)="addqualityControlField()">Add</button>
           </div>
           <div class="mt-4">
             <button type="submit" class="border-0 btn btn-primary "
@@ -877,67 +883,66 @@
                     <label class="form-check-label" for="defaultCheck2">No</label>
                   </span>
                 </div>
-                <div class="border p-4">
-                  <div class="row">
-                    <div class="col-md-4 ">
-                      <label for="" class="form-label">Certification Name</label>
-                      <input type="text" class="form-control" formControlName="certificateName">
-                      <!-- [class.is-invalid]="certificateName?.invalid && certificateName?.touched"
+                <div formArrayName="randdAddtionalFieldArray">
+                  <div class="border p-4" *ngFor="let item of randdAddtionalFieldArray.controls; let i = index;">
+                    <div class="row" formGroupName="{{ i }}">
+                      <div class="col-md-4 ">
+                        <label for="" class="form-label">Certification Name</label>
+                        <input type="text" class="form-control" formControlName="certificateName">
+                        <!-- [class.is-invalid]="certificateName?.invalid && certificateName?.touched"
                         [class.is-valid]="certificateName?.valid && certificateName?.touched">
                       <div *ngIf="certificateName?.invalid && certificateName?.touched">
                         <small class="text-danger">Certification Name is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4 ">
-                      <label for="" class="form-label">Certified By</label>
-                      <input type="text" class="form-control" formControlName="certifiedBy">
-                      <!-- [class.is-invalid]="certifiedBy?.invalid && certifiedBy?.touched"
+                      </div>
+                      <div class="col-md-4 ">
+                        <label for="" class="form-label">Certified By</label>
+                        <input type="text" class="form-control" formControlName="certifiedBy">
+                        <!-- [class.is-invalid]="certifiedBy?.invalid && certifiedBy?.touched"
                         [class.is-valid]="certifiedBy?.valid && certifiedBy?.touched">
                       <div *ngIf="certifiedBy?.invalid && certifiedBy?.touched">
                         <small class="text-danger">Certified By is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4">
-                      <label for="" class="form-label">Business Scope</label>
-                      <input type="text" class="form-control" formControlName="businessScope">
-                      <!-- [class.is-invalid]="businessScope?.invalid && businessScope?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label for="" class="form-label">Business Scope</label>
+                        <input type="text" class="form-control" formControlName="businessScope">
+                        <!-- [class.is-invalid]="businessScope?.invalid && businessScope?.touched"
                         [class.is-valid]="businessScope?.valid && businessScope?.touched">
                       <div *ngIf="businessScope?.invalid && businessScope?.touched">
                         <small class="text-danger">Business Scope is required</small>
                       </div> -->
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label for="" class="mt-2 form-label">From</label>
-                      <input type="date" class="form-control" formControlName="fromDate">
-                      <!-- [class.is-invalid]="fromDate?.invalid && fromDate?.touched"
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="" class="mt-2 form-label">From</label>
+                        <input type="date" class="form-control" formControlName="fromDate">
+                        <!-- [class.is-invalid]="fromDate?.invalid && fromDate?.touched"
                         [class.is-valid]="fromDate?.valid && fromDate?.touched">
                       <div *ngIf="fromDate?.invalid && fromDate?.touched">
                         <small class="text-danger">Date is required</small>
                       </div> -->
 
-                    </div>
-                    <div class="col-md-4">
-                      <label for="" class="mt-2 form-label">To</label>
-                      <input type="date" class="form-control" formControlName="toDate">
-                      <!-- [class.is-invalid]="toDate?.invalid && toDate?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label for="" class="mt-2 form-label">To</label>
+                        <input type="date" class="form-control" formControlName="toDate">
+                        <!-- [class.is-invalid]="toDate?.invalid && toDate?.touched"
                         [class.is-valid]="toDate?.valid && toDate?.touched">
                       <div *ngIf="toDate?.invalid && toDate?.touched">
                         <small class="text-danger">Date is required</small>
                       </div> -->
 
+                      </div>
                     </div>
-
                   </div>
-                  <div class="mb-2">
-                    <button type="submit" class="border-0 btn btn-dark  float-right add ">Add</button>
-                  </div>
-
                 </div>
               </div>
             </div>
-
+          </div>
+          <div class="mt-2">
+            <button type="submit" class="border-0 btn btn-dark  float-right add " (click)="addranddField()">Add</button>
           </div>
           <div class="p-3"><button class="btn btn-primary" [disabled]="randdForm.invalid">Save</button></div>
         </form>
