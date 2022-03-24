@@ -524,8 +524,12 @@
 
                 <div class="col-md-4">
                   <label>Main Product <span>*</span></label>
-                  <input type="text" class="form-control w-75 float-left" /><button
-                    class="btn btn-info w-20 float-right ml-2">Add</button>
+                  <input type="text" class="form-control w-75 float-left" formControlName="mainProducts" /><button
+                    class="btn btn-info w-20 float-right ml-2" (click)="addMainProducts()">Add</button><br>
+                  <div>
+                    <span class="badge bg-primary text-white" *ngFor="let item of mainProducts">{{ item }}</span>
+
+                  </div>
                 </div>
               </div>
 
@@ -578,13 +582,24 @@
                 </div>
                 <div class="col-md-4">
                   <label>Mobile Number</label>
-                  <input type="text" class="form-control w-75 float-left"><button
-                    class="btn btn-info float-right w-20 ml-2">Add</button>
+                  <input type="text" class="form-control w-75 float-left" formControlName="companyProfileMobile"><button
+                    class="btn btn-info float-right w-20 ml-2" (click)="addProfileMobileNumber()">Add</button><br>
+                  <div>
+                    <span class="badge bg-primary text-white"
+                      *ngFor="let item of companyProfileMobile">{{ item }}</span>
+
+                  </div>
                 </div>
                 <div class="col-md-4">
                   <label>Landline Number</label>
-                  <input type="number" class="form-control w-75 float-left"><button
-                    class="btn btn-info float-right w-20 ml-2">Add</button>
+                  <input type="text" class="form-control w-75 float-left"
+                    formControlName="companyProfileLandline"><button class="btn btn-info float-right w-20 ml-2"
+                    (click)="addcompanyProfileLandline()">Add</button><br>
+                  <div>
+                    <span class="badge bg-primary text-white"
+                      *ngFor="let item of companyProfileLandline">{{ item }}</span>
+
+                  </div>
                 </div>
               </div>
 
@@ -592,8 +607,14 @@
 
                 <div class="col-md-4">
                   <label>Business Registration Certificate<span>*</span></label>
-                  <input type="text" class="form-control w-75 float-left"> <button
-                    class="btn btn-info float-right w-20 ml-2">Add</button>
+                  <input type="text" class="form-control w-75 float-left" formControlName="profileRegCertificate">
+                  <button class="btn btn-info float-right w-20 ml-2"
+                    (click)="addprofileRegCertificate()">Add</button><br>
+                  <div>
+                    <span class="badge bg-primary text-white"
+                      *ngFor="let item of profileRegCertificate">{{ item }}</span>
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -736,12 +757,15 @@
 
             <!-- <h6>Area/Size<span>*</span></h6> -->
 
-            <div class="mb-2">
+            <!-- <div class="mb-2">
               <button class="btn btn-secondary float-right add">Add</button>
-            </div>
+            </div> -->
+          </div>
+          <div class="mt-2">
+            <button class="btn btn-secondary float-right add">Add</button>
           </div>
 
-          <div class="mt-2"><button class="btn btn-primary">Save</button></div>
+          <div class="mt-4"><button class="btn btn-primary">Save</button></div>
 
         </form>
       </tab>

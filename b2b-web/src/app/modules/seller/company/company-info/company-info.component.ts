@@ -11,6 +11,10 @@ export class CompanyInfoComponent implements OnInit {
   @ViewChild('tabset') tabset: TabsetComponent;
   @ViewChild('first') first: TabDirective;
   @ViewChild('second') second: TabDirective;
+  mainProducts: any[] = [];
+  companyProfileMobile: any[] = [];
+  companyProfileLandline: any[] = [];
+  profileRegCertificate: any[] = [];
   constructor(private formBuilder: FormBuilder) { }
 
   //Export Capabilities Validation
@@ -52,6 +56,10 @@ export class CompanyInfoComponent implements OnInit {
       email: new FormControl(''),
       mainCat: new FormControl('', Validators.required),
       area: new FormControl(''),
+      mainProducts: new FormControl(''),
+      companyProfileMobile: new FormControl(''),
+      companyProfileLandline: new FormControl(''),
+      profileRegCertificate: new FormControl('')
     }
   )
   get companyName() { return this.companyProfileForm.get('companyName'); }
@@ -76,10 +84,9 @@ export class CompanyInfoComponent implements OnInit {
   get phn() { return this.companyProfileForm.get('phn'); }
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
+  // get mainProducts() { return this.companyProfileForm.get('mainProducts'); }
 
 
-  ngOnInit(): void {
-  }
   //company details validation
   companyDetailsForm = new FormGroup({
     contactPerson: new FormControl('', Validators.required),
@@ -139,34 +146,6 @@ export class CompanyInfoComponent implements OnInit {
   get designation() { return this.companyDetailsForm.get('designation'); }
   get employeeStrength() { return this.companyDetailsForm.get('employeeStrength'); }
 
-
-  detailsSubmitForm() {
-    console.log(this.companyDetailsForm.value);
-  }
-
-  //Certificate Centre Dynamic Data
-
-  Data: Array<any> = [
-    { name: 'ISO', value: 'ISO' },
-    { name: 'BSCI', value: 'BSCI' },
-    { name: 'SA8000', value: 'SA8000' },
-    { name: 'Apple', value: 'apple' },
-    { name: 'WCA', value: 'WCA' },
-    { name: 'WRAP', value: 'WRAP' },
-    { name: 'CE', value: 'CE' },
-    { name: 'GRS', value: 'GRS' },
-    { name: 'ROHS', value: 'ROHS' },
-    { name: 'FCC', value: 'FCC' },
-    { name: 'EMC', value: 'EMC' },
-    { name: 'TUV MARK', value: 'TUV MARK' },
-    { name: 'UL', value: 'UL' },
-    { name: 'UKCA', value: 'UKCA' },
-    { name: 'GOTS', value: 'GOTS' },
-    { name: 'CPC', value: 'CPC' }
-
-  ];
-
-
   // Ouality-Control Validation
   qualityControlForm = new FormGroup(
     {
@@ -196,12 +175,79 @@ export class CompanyInfoComponent implements OnInit {
 
 
 
+  ngOnInit(): void {
+  }
+
+  // company prrofile  function
+  addMainProducts() {
+    if (this.mainProducts.length == 3) return
+
+    const value = this.companyProfileForm.value.mainProducts;
+    this.mainProducts.push(value);
+    this.companyProfileForm.patchValue({ mainProducts: "" })
+  }
+
+  addProfileMobileNumber() {
+    if (this.companyProfileMobile.length == 3)
+      return
+    const value = this.companyProfileForm.value.companyProfileMobile;
+    this.companyProfileMobile.push(value);
+    this.companyProfileForm.patchValue({ companyProfileMobile: '' })
+  }
+  addcompanyProfileLandline() {
+    if (this.companyProfileLandline.length == 3)
+      return
+    const value = this.companyProfileForm.value.companyProfileLandline;
+    this.companyProfileLandline.push(value);
+    this.companyProfileForm.patchValue({ companyProfileLandline: '' })
+  }
+
+  addprofileRegCertificate() {
+    if (this.profileRegCertificate.length == 3)
+      return
+    const value = this.companyProfileForm.value.profileRegCertificate;
+    this.profileRegCertificate.push(value);
+    this.companyProfileForm.patchValue({ profileRegCertificate: '' })
+  }
+
   submitCompanyProfileForm() {
     console.log(this.companyProfileForm.value)
   }
+
+  // company detail  function
+  detailsSubmitForm() {
+    console.log(this.companyDetailsForm.value);
+  }
+
+  //Certificate Centre Dynamic Data
+
+  Data: Array<any> = [
+    { name: 'ISO', value: 'ISO' },
+    { name: 'BSCI', value: 'BSCI' },
+    { name: 'SA8000', value: 'SA8000' },
+    { name: 'Apple', value: 'apple' },
+    { name: 'WCA', value: 'WCA' },
+    { name: 'WRAP', value: 'WRAP' },
+    { name: 'CE', value: 'CE' },
+    { name: 'GRS', value: 'GRS' },
+    { name: 'ROHS', value: 'ROHS' },
+    { name: 'FCC', value: 'FCC' },
+    { name: 'EMC', value: 'EMC' },
+    { name: 'TUV MARK', value: 'TUV MARK' },
+    { name: 'UL', value: 'UL' },
+    { name: 'UKCA', value: 'UKCA' },
+    { name: 'GOTS', value: 'GOTS' },
+    { name: 'CPC', value: 'CPC' }
+
+  ];
+
+
+  // Quality control submit function
   submitqualityControlForm() {
     console.log(this.qualityControlForm.value)
   }
+
+  // r&d submit function
   submitranddForm() {
     console.log(this.randdForm.value)
   }
