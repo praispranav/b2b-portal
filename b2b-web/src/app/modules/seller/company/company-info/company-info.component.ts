@@ -17,6 +17,7 @@ export class CompanyInfoComponent implements OnInit {
   profileRegCertificate: any[] = [];
   additionalDetailsArray: FormArray;
   randdAddtionalFieldArray: FormArray;
+  qualityControlArray: FormArray;
 
   constructor(private formBuilder: FormBuilder) {
 
@@ -162,6 +163,7 @@ export class CompanyInfoComponent implements OnInit {
       processName: new FormControl(''),
       picture: new FormControl(''),
       qualitydescription: new FormControl(''),
+      qualityControlArray: new FormArray([])
     })
   get processName() { return this.qualityControlForm.get('processName'); }
   get picture() { return this.qualityControlForm.get('picture'); }
@@ -189,9 +191,11 @@ export class CompanyInfoComponent implements OnInit {
   ngOnInit(): void {
     this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
     this.randdAddtionalFieldArray = this.randdForm.get('randdAddtionalFieldArray') as FormArray
+    this.qualityControlArray = this.qualityControlForm.get('qualityControlArray') as FormArray
 
   }
   ngAfterViewInit() {
+    this.addqualityControlField()
     this.addranddField()
     this.addAditionalDetails()
   }
@@ -227,22 +231,15 @@ export class CompanyInfoComponent implements OnInit {
     this.profileRegCertificate.push(value);
     this.companyProfileForm.patchValue({ profileRegCertificate: '' })
   }
-  createAditionalDetails(): FormGroup {
+  createqualityControlField(): FormGroup {
     return this.formBuilder.group({
-      division: ['', Validators.required],
-      area: ['', Validators.required],
-      factory: ['', Validators.required],
-      country: ['', Validators.required],
-      phn: ['', Validators.required],
-      mob: ['', Validators.required],
-      annualTurn: ['', Validators.required],
-      contPerson: ['', Validators.required]
-
-
+      processName: ['', Validators.required],
+      picture: ['', Validators.required],
+      qualitydescription: ['', Validators.required],
     });
   }
-  addAditionalDetails(): void {
-    this.additionalDetailsArray.push(this.createAditionalDetails());
+  addqualityControlField(): void {
+    this.qualityControlArray.push(this.createqualityControlField());
   }
 
 
@@ -288,6 +285,23 @@ export class CompanyInfoComponent implements OnInit {
 
 
   // Quality control submit function
+  createAditionalDetails(): FormGroup {
+    return this.formBuilder.group({
+      division: ['', Validators.required],
+      area: ['', Validators.required],
+      factory: ['', Validators.required],
+      country: ['', Validators.required],
+      phn: ['', Validators.required],
+      mob: ['', Validators.required],
+      annualTurn: ['', Validators.required],
+      contPerson: ['', Validators.required]
+
+
+    });
+  }
+  addAditionalDetails(): void {
+    this.additionalDetailsArray.push(this.createAditionalDetails());
+  }
   submitqualityControlForm() {
     console.log(this.qualityControlForm.value)
   }
