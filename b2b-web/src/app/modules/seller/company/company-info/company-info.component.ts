@@ -15,6 +15,12 @@ export class CompanyInfoComponent implements OnInit {
   companyProfileMobile: any[] = [];
   companyProfileLandline: any[] = [];
   profileRegCertificate: any[] = [];
+  companyPicture: any[] = [];
+  companyVideo: any[] = [];
+  languageSpoken: any[] = [];
+  tradeName: any[] = [];
+  uploadPicture: any[] = [];
+  additionalTradeExpo: [] = [];
   constructor(private formBuilder: FormBuilder) { }
 
   //Export Capabilities Validation
@@ -89,6 +95,13 @@ export class CompanyInfoComponent implements OnInit {
 
   //company details validation
   companyDetailsForm = new FormGroup({
+    companyPicture: new FormControl(''),
+    companyVideo: new FormControl(''),
+    companyLogo: new FormControl('', Validators.required),
+
+    languageSpoken: new FormControl(''),
+    tradeName: new FormControl(''),
+    uploadPicture: new FormControl(''),
     contactPerson: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -145,6 +158,7 @@ export class CompanyInfoComponent implements OnInit {
   get aboutTradeShow() { return this.companyDetailsForm.get('aboutTradeShow'); }
   get designation() { return this.companyDetailsForm.get('designation'); }
   get employeeStrength() { return this.companyDetailsForm.get('employeeStrength'); }
+  get companyLogo() { return this.companyDetailsForm.get('companyLogo'); }
 
   // Ouality-Control Validation
   qualityControlForm = new FormGroup(
@@ -215,6 +229,44 @@ export class CompanyInfoComponent implements OnInit {
   }
 
   // company detail  function
+
+  addCompanyPicture() {
+    if (this.companyPicture.length == 3) return
+
+    const value = this.companyDetailsForm.value.companyPicture;
+    this.companyPicture.push(value);
+    this.companyDetailsForm.patchValue({ companyPicture: "" })
+  }
+
+  addLanguageSpoken() {
+    if (this.languageSpoken.length == 3) return
+
+    const value = this.companyDetailsForm.value.languageSpoken;
+    this.languageSpoken.push(value);
+    this.companyDetailsForm.patchValue({ languageSpoken: "" })
+  }
+  addTradeName() {
+    if (this.tradeName.length == 3) return
+
+    const value = this.companyDetailsForm.value.tradeName;
+    this.tradeName.push(value);
+    this.companyDetailsForm.patchValue({ tradeName: "" })
+  }
+  addCompanyVideo() {
+    if (this.companyVideo.length == 3) return
+
+    const value = this.companyDetailsForm.value.companyVideo;
+    this.companyVideo.push(value);
+    this.companyDetailsForm.patchValue({ companyVideo: "" })
+  }
+  addUploadPicture() {
+    if (this.uploadPicture.length == 3) return
+
+    const value = this.companyDetailsForm.value.uploadPicture;
+    this.uploadPicture.push(value);
+    this.companyDetailsForm.patchValue({ uploadPicture: "" })
+  }
+
   detailsSubmitForm() {
     console.log(this.companyDetailsForm.value);
   }

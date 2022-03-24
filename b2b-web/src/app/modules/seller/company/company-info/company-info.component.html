@@ -25,17 +25,25 @@
                 <div class="row">
                   <div class="col-md-4">
                     <label>Company Logo<span>*</span></label>
-                    <input type="file" class="form-control" />
+                    <input type="file" class="form-control" formControlName="companyLogo"
+                      [class.is-invalid]="companyLogo?.invalid && companyLogo?.touched"
+                      [class.is-valid]="companyLogo?.valid && companyLogo?.touched">
+                    <div *ngIf="companyLogo?.invalid && companyLogo?.touched">
+                      <small class="text-danger"> Company Logo is required</small>
+                    </div>
                   </div>
                   <div class="col-md-4">
                     <label>Company Picture</label>
-                    <input type="file" class="form-control w-75 float-left" /><button
-                      class="btn btn-info w-20 float-right ml-2">Add</button>
+                    <input type="file" class="form-control w-75 float-left" formControlName="companyPicture" /><button
+                      class="btn btn-info w-20 float-right ml-2" (click)="addCompanyPicture()">Add</button><br>
+                    <span class="badge bg-primary text-white" *ngFor="let item of companyPicture">{{ item }}</span>
                   </div>
                   <div class="col-md-4">
                     <label>Company Video</label>
-                    <input type="text" class="form-control w-75 float-left" /> <button
-                      class="btn btn-info w-20 float-right ml-2">Add</button>
+                    <input type="text" class="form-control w-75 float-left" formControlName="companyVideo" /> <button
+                      class="btn btn-info w-20 float-right ml-2" (click)="addCompanyVideo()">Add</button><br>
+                    <span class="badge bg-primary text-white" *ngFor="let item of companyVideo">{{ item }}</span>
+
                   </div>
                 </div>
                 <div class="row mt-2 px-2">
@@ -232,8 +240,10 @@
                 <div class="row mt-4">
                   <div class="col-md-4">
                     <label>Language Spoken</label>
-                    <input type="text" class="form-control w-75 float-left" /><button
-                      class="btn btn-info w-20 float-right ml-2">Add</button>
+                    <input type="text" class="form-control w-75 float-left" formControlName="languageSpoken" /><button
+                      class="btn btn-info w-20 float-right ml-2" (click)="addLanguageSpoken()">Add</button><br>
+                    <span class="badge bg-primary text-white" *ngFor="let item of languageSpoken">{{ item }}</span>
+
                   </div>
                 </div>
               </div>
@@ -311,7 +321,7 @@
               <span class="ml-4">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
                   checked />
-                <label class="form-check-label" for="defaultCheck1">Yes</label>
+                <label class="form-check-label checked" for="defaultCheck1">Yes</label>
               </span>
               <span class="ml-4">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
@@ -333,8 +343,11 @@
                     </div>
                     <div class="col-md-4">
                       <label>Name</label>
-                      <input type="text" class="form-control w-75"> <button
-                        class="btn btn-info w-20 float-right ml-2 mb-0" style="margin-top: -31px">Add</button>
+                      <input type="text" class="form-control w-75" formControlName="tradeName"> <button
+                        class="btn btn-info w-20 float-right ml-2 mb-0" style="margin-top: -31px"
+                        (click)="addTradeName()">Add</button><br>
+                      <span class="badge bg-primary text-white" *ngFor="let item of tradeName">{{ item }}</span>
+
                     </div>
                   </div>
                 </div>
@@ -410,8 +423,11 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label>Upload picture</label>
-                      <input type="text" class="form-control w-75 float-left" /> <button
-                        class="btn btn-info w-20 float-right ml-2">Add</button>
+                      <input type="file" class="form-control w-75 float-left" formControlName="uploadPicture" /><button
+                        class="btn btn-info w-20 float-right ml-2" (click)="addUploadPicture()">Add</button><br>
+                      <span class="badge bg-primary text-white" *ngFor="let item of uploadPicture">{{ item }}</span>
+
+
                     </div>
                   </div>
 
@@ -585,8 +601,8 @@
                   <input type="text" class="form-control w-75 float-left" formControlName="companyProfileMobile"><button
                     class="btn btn-info float-right w-20 ml-2" (click)="addProfileMobileNumber()">Add</button><br>
                   <div>
-                    <span class="badge bg-primary text-white"
-                      *ngFor="let item of companyProfileMobile">{{ item }}</span>
+                    <span class="badge bg-primary text-white" *ngFor="let item of companyProfileMobile">{{ item
+                      }}</span>
 
                   </div>
                 </div>
@@ -596,8 +612,8 @@
                     formControlName="companyProfileLandline"><button class="btn btn-info float-right w-20 ml-2"
                     (click)="addcompanyProfileLandline()">Add</button><br>
                   <div>
-                    <span class="badge bg-primary text-white"
-                      *ngFor="let item of companyProfileLandline">{{ item }}</span>
+                    <span class="badge bg-primary text-white" *ngFor="let item of companyProfileLandline">{{ item
+                      }}</span>
 
                   </div>
                 </div>
@@ -611,8 +627,8 @@
                   <button class="btn btn-info float-right w-20 ml-2"
                     (click)="addprofileRegCertificate()">Add</button><br>
                   <div>
-                    <span class="badge bg-primary text-white"
-                      *ngFor="let item of profileRegCertificate">{{ item }}</span>
+                    <span class="badge bg-primary text-white" *ngFor="let item of profileRegCertificate">{{ item
+                      }}</span>
 
                   </div>
                 </div>
