@@ -879,67 +879,66 @@
                     <label class="form-check-label" for="defaultCheck2">No</label>
                   </span>
                 </div>
-                <div class="border p-4">
-                  <div class="row">
-                    <div class="col-md-4 ">
-                      <label for="" class="form-label">Certification Name</label>
-                      <input type="text" class="form-control" formControlName="certificateName">
-                      <!-- [class.is-invalid]="certificateName?.invalid && certificateName?.touched"
+                <div formArrayName="randdAddtionalFieldArray">
+                  <div class="border p-4" *ngFor="let item of randdAddtionalFieldArray.controls; let i = index;">
+                    <div class="row" formGroupName="{{ i }}">
+                      <div class="col-md-4 ">
+                        <label for="" class="form-label">Certification Name</label>
+                        <input type="text" class="form-control" formControlName="certificateName">
+                        <!-- [class.is-invalid]="certificateName?.invalid && certificateName?.touched"
                         [class.is-valid]="certificateName?.valid && certificateName?.touched">
                       <div *ngIf="certificateName?.invalid && certificateName?.touched">
                         <small class="text-danger">Certification Name is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4 ">
-                      <label for="" class="form-label">Certified By</label>
-                      <input type="text" class="form-control" formControlName="certifiedBy">
-                      <!-- [class.is-invalid]="certifiedBy?.invalid && certifiedBy?.touched"
+                      </div>
+                      <div class="col-md-4 ">
+                        <label for="" class="form-label">Certified By</label>
+                        <input type="text" class="form-control" formControlName="certifiedBy">
+                        <!-- [class.is-invalid]="certifiedBy?.invalid && certifiedBy?.touched"
                         [class.is-valid]="certifiedBy?.valid && certifiedBy?.touched">
                       <div *ngIf="certifiedBy?.invalid && certifiedBy?.touched">
                         <small class="text-danger">Certified By is required</small>
                       </div> -->
-                    </div>
-                    <div class="col-md-4">
-                      <label for="" class="form-label">Business Scope</label>
-                      <input type="text" class="form-control" formControlName="businessScope">
-                      <!-- [class.is-invalid]="businessScope?.invalid && businessScope?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label for="" class="form-label">Business Scope</label>
+                        <input type="text" class="form-control" formControlName="businessScope">
+                        <!-- [class.is-invalid]="businessScope?.invalid && businessScope?.touched"
                         [class.is-valid]="businessScope?.valid && businessScope?.touched">
                       <div *ngIf="businessScope?.invalid && businessScope?.touched">
                         <small class="text-danger">Business Scope is required</small>
                       </div> -->
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <label for="" class="mt-2 form-label">From</label>
-                      <input type="date" class="form-control" formControlName="fromDate">
-                      <!-- [class.is-invalid]="fromDate?.invalid && fromDate?.touched"
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="" class="mt-2 form-label">From</label>
+                        <input type="date" class="form-control" formControlName="fromDate">
+                        <!-- [class.is-invalid]="fromDate?.invalid && fromDate?.touched"
                         [class.is-valid]="fromDate?.valid && fromDate?.touched">
                       <div *ngIf="fromDate?.invalid && fromDate?.touched">
                         <small class="text-danger">Date is required</small>
                       </div> -->
 
-                    </div>
-                    <div class="col-md-4">
-                      <label for="" class="mt-2 form-label">To</label>
-                      <input type="date" class="form-control" formControlName="toDate">
-                      <!-- [class.is-invalid]="toDate?.invalid && toDate?.touched"
+                      </div>
+                      <div class="col-md-4">
+                        <label for="" class="mt-2 form-label">To</label>
+                        <input type="date" class="form-control" formControlName="toDate">
+                        <!-- [class.is-invalid]="toDate?.invalid && toDate?.touched"
                         [class.is-valid]="toDate?.valid && toDate?.touched">
                       <div *ngIf="toDate?.invalid && toDate?.touched">
                         <small class="text-danger">Date is required</small>
                       </div> -->
 
+                      </div>
                     </div>
-
                   </div>
-                  <div class="mb-2">
-                    <button type="submit" class="border-0 btn btn-dark  float-right add ">Add</button>
-                  </div>
-
                 </div>
               </div>
             </div>
-
+          </div>
+          <div class="mt-2">
+            <button type="submit" class="border-0 btn btn-dark  float-right add " (click)="addranddField()">Add</button>
           </div>
           <div class="p-3"><button class="btn btn-primary" [disabled]="randdForm.invalid">Save</button></div>
         </form>

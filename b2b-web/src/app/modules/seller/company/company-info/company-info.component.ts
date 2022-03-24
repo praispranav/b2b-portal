@@ -16,6 +16,7 @@ export class CompanyInfoComponent implements OnInit {
   companyProfileLandline: any[] = [];
   profileRegCertificate: any[] = [];
   additionalDetailsArray: FormArray;
+  randdAddtionalFieldArray: FormArray;
 
   constructor(private formBuilder: FormBuilder) {
 
@@ -175,6 +176,7 @@ export class CompanyInfoComponent implements OnInit {
       businessScope: new FormControl(''),
       fromDate: new FormControl(''),
       toDate: new FormControl(''),
+      randdAddtionalFieldArray: new FormArray([])
     })
   get certificateName() { return this.randdForm.get('certificateName'); }
   get certifiedBy() { return this.randdForm.get('certifiedBy'); }
@@ -186,10 +188,11 @@ export class CompanyInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
-
+    this.randdAddtionalFieldArray = this.randdForm.get('randdAddtionalFieldArray') as FormArray
 
   }
   ngAfterViewInit() {
+    this.addranddField()
     this.addAditionalDetails()
   }
 
@@ -290,6 +293,21 @@ export class CompanyInfoComponent implements OnInit {
   }
 
   // r&d submit function
+  createranddArray(): FormGroup {
+    return this.formBuilder.group({
+      certificateName: ['', Validators.required],
+      certifiedBy: ['', Validators.required],
+      businessScope: ['', Validators.required],
+      fromDate: ['', Validators.required],
+      toDate: ['', Validators.required],
+
+
+    });
+  }
+  addranddField(): void {
+    this.randdAddtionalFieldArray.push(this.createranddArray());
+  }
+
   submitranddForm() {
     console.log(this.randdForm.value)
   }
