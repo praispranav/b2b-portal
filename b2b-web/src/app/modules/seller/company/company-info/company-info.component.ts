@@ -120,7 +120,7 @@ export class CompanyInfoComponent implements OnInit {
   //company details validation
   companyDetailsForm = new FormGroup({
     companyPicture: new FormControl(''),
-    companyVideo: new FormControl(''),
+    companyVideo: new FormControl('', Validators.required),
     companyLogo: new FormControl('', Validators.required),
 
     languageSpoken: new FormControl(''),
@@ -336,27 +336,7 @@ export class CompanyInfoComponent implements OnInit {
     console.log(this.companyDetailsForm.value);
   }
 
-  //Certificate Centre Dynamic Data
 
-  Data: Array<any> = [
-    { name: 'ISO', value: 'ISO' },
-    { name: 'BSCI', value: 'BSCI' },
-    { name: 'SA8000', value: 'SA8000' },
-    { name: 'Apple', value: 'apple' },
-    { name: 'WCA', value: 'WCA' },
-    { name: 'WRAP', value: 'WRAP' },
-    { name: 'CE', value: 'CE' },
-    { name: 'GRS', value: 'GRS' },
-    { name: 'ROHS', value: 'ROHS' },
-    { name: 'FCC', value: 'FCC' },
-    { name: 'EMC', value: 'EMC' },
-    { name: 'TUV MARK', value: 'TUV MARK' },
-    { name: 'UL', value: 'UL' },
-    { name: 'UKCA', value: 'UKCA' },
-    { name: 'GOTS', value: 'GOTS' },
-    { name: 'CPC', value: 'CPC' }
-
-  ];
 
 
   // Quality control submit function

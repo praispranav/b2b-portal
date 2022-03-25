@@ -41,7 +41,7 @@
                   <div class="col-md-4">
                     <label>Company Video</label>
                     <input type="text" class="form-control w-75 float-left" formControlName="companyVideo" /> <button
-                      class="btn btn-info w-20 float-right ml-2" (click)="addCompanyVideo()">Add</button><br>
+                      class="btn btn-info w-20 float-right ml-2" (click)=" addCompanyVideo()">Add</button><br>
                     <span class="badge bg-primary text-white" *ngFor="let item of companyVideo">{{ item }}</span>
 
                   </div>
@@ -864,24 +864,103 @@
       <tab tab4 heading="Certificate-Center" id="second" select="!disableSwitching && second.active = true" #second
         [disabled]="disableSwitching">
         <div class="container">
-          <form>
+          <form class="mb-4">
+            <h6 class="mb-4  certificate">Certifications You Must Have</h6>
             <div class="row">
-              <ng-container *ngFor="let data of Data; let i=index">
-                <div class="col-md-4">
-                  <input type="checkbox" [value]="data.value" />
-                  {{data.name}}
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="ISO">
+                    <label class="form-check-label" for="inlineCheckbox9">ISO</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">BSCI</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">SA8000</label>
+                  </div>
                 </div>
-              </ng-container>
-            </div>
-            <div class="row" [formGroup]="certificateCenterForm">
-              <div class="col-md-4">
-                <label>Other Certifications</label>
-                <input type="file" class="form-control w-75 float-left" formControlName="otherCertifications" />
-                <button class="btn btn-info w-20 float-right ml-2" (click)="addOtherCertifications()">Add</button><br>
-                <span class="badge bg-primary text-white" *ngFor="let item of otherCertifications">{{ item }}</span>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">IATF16949</label>
+                  </div>
+
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">WCA</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">WRAP</label>
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">CE</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">GRS</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">ROHS</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">FCC</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">EMC</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">TUV MARK</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">UL</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">UKCA</label>
+                  </div>
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">GOTS</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">CPC</label>
+                  </div>
+                </div>
+                <div class="row" [formGroup]="certificateCenterForm">
+                  <div class="col-md-4">
+                    <label>Other Certifications</label>
+                    <input type="file" class="form-control w-75 float-left" formControlName="otherCertifications" />
+                    <button class="btn btn-info w-20 float-right ml-2"
+                      (click)="addOtherCertifications()">Add</button><br>
+                    <span class="badge bg-primary text-white" *ngFor="let item of otherCertifications">{{ item
+                      }}</span>
+                  </div>
+                </div>
+                <div class="mt-2"><button class="btn btn-primary float-left">Save</button>
+                </div>
               </div>
-            </div>
-            <div class="mt-2"><button class="btn btn-primary float-left">Save</button>
             </div>
           </form>
         </div>
@@ -1015,14 +1094,10 @@
               </div>
               <div class="col-md-6 mt-2">
                 <label for="" class="form-label">Nearest Port</label>
-                <select class="form-select form-control" aria-label="Default select example"
+                <input type="text" class="form-select form-control" aria-label="Default select example"
                   formControlName="nearestPort" [class.is-invalid]="nearestPort?.invalid && nearestPort?.touched"
                   [class.is-valid]="nearestPort?.valid && nearestPort?.touched">
-                  <option selected>Open this select menu</option>
-                  <option value="1">one</option>
-                  <option value="1">two</option>
-                  <option value="2">three</option>
-                </select>
+
                 <div *ngIf="nearestPort?.invalid && nearestPort?.touched">
                   <small class="text-danger"> Nearest Port is required</small>
                 </div>
