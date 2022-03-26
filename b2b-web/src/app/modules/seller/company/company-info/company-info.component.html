@@ -24,7 +24,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-4">
-                    <label>Company Logo<span>*</span></label>
+                    <label>Company Logo<span class="text-danger">*</span></label>
                     <input type="file" class="form-control" formControlName="companyLogo"
                       [class.is-invalid]="companyLogo?.invalid && companyLogo?.touched"
                       [class.is-valid]="companyLogo?.valid && companyLogo?.touched">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="row mt-4">
                   <div class="col-md-4">
-                    <label>Contact Person</label>
+                    <label>Contact Person <span class="text-danger">*</span></label>
 
                     <input type="text" class="form-control" formControlName="contactPerson"
                       [class.is-invalid]="contactPerson?.invalid && contactPerson?.touched"
@@ -64,7 +64,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Name</label>
+                    <label>Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="name"
                       [class.is-invalid]="name?.invalid && name?.touched"
                       [class.is-valid]="name?.valid && name?.touched">
@@ -73,7 +73,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Surname</label>
+                    <label>Surname <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="surname"
                       [class.is-invalid]="surname?.invalid && surname?.touched"
                       [class.is-valid]="surname?.valid && surname?.touched" />
@@ -85,7 +85,7 @@
 
                 <div class="row mt-2">
                   <div class="col-md-4">
-                    <label>Designation</label>
+                    <label>Designation <span class="text-danger">*</span></label>
                     <select class="form-control" id="" formControlName="designation"
                       [class.is-invalid]="designation?.invalid && designation?.touched"
                       [class.is-valid]="designation?.valid && designation?.touched">
@@ -103,7 +103,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Company Website</label>
+                    <label>Company Website <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="companyWebsite"
                       [class.is-invalid]="companyWebsite?.invalid && companyWebsite?.touched"
                       [class.is-valid]="companyWebsite?.valid && companyWebsite?.touched" />
@@ -112,7 +112,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Company Page </label>
+                    <label>Company Page <span class="text-danger">*</span> </label>
                     <input type="text" class="form-control" formControlName="companyPage"
                       [class.is-invalid]="companyPage?.invalid && companyPage?.touched"
                       [class.is-valid]="companyPage?.valid && companyPage?.touched" />
@@ -124,7 +124,7 @@
                 </div>
                 <div class="row mt-4">
                   <div class="col-md-4">
-                    <label>Email</label>
+                    <label>Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" formControlName="emailDetails"
                       [class.is-invalid]="emailDetails?.invalid && emailDetails?.touched"
                       [class.is-valid]="emailDetails?.valid && emailDetails?.touched">
@@ -134,7 +134,7 @@
                   </div>
 
                   <div class="col-md-4">
-                    <label>Alternative Email</label>
+                    <label>Alternative Email<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="alternativeEmail"
                       [class.is-invalid]="alternativeEmail?.invalid && alternativeEmail?.touched"
                       [class.is-valid]="alternativeEmail?.valid && alternativeEmail?.touched">
@@ -157,7 +157,7 @@
 
                   </div>
                   <div class="col-md-4">
-                    <label>b2bportal.com/Company-Name </label>
+                    <label>b2bportal.com/Company-Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="companyNameDetails"
                       [class.is-invalid]="companyNameDetails?.invalid && companyNameDetails?.touched"
                       [class.is-valid]="companyNameDetails?.valid && companyNameDetails?.touched" />
@@ -179,7 +179,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-4">
-                    <label>Account Number</label>
+                    <label>Account Number<span class="text-danger">*</span></label>
                     <input type="number" class="form-control" formControlName="accountNumber"
                       [class.is-invalid]="accountNumber?.invalid && accountNumber?.touched"
                       [class.is-valid]="accountNumber?.valid && accountNumber?.touched" />
@@ -188,7 +188,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Account Type</label>
+                    <label>Account Type<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="accountType"
                       [class.is-invalid]="accountType?.invalid && accountType?.touched"
                       [class.is-valid]="accountType?.valid && accountType?.touched" />
@@ -197,7 +197,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>IFSC Code</label>
+                    <label>IFSC Code<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="ifscCode"
                       [class.is-invalid]="ifscCode?.invalid && ifscCode?.touched"
                       [class.is-valid]="ifscCode?.valid && ifscCode?.touched" />
@@ -209,7 +209,7 @@
 
                 <div class="row mt-4">
                   <div class="col-md-4">
-                    <label>SWIFT Code</label>
+                    <label>SWIFT Code<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="swiftCode"
                       [class.is-invalid]="swiftCode?.invalid && swiftCode?.touched"
                       [class.is-valid]="swiftCode?.valid && swiftCode?.touched" />
@@ -218,7 +218,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Bank Name</label>
+                    <label>Bank Name<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="bankName"
                       [class.is-invalid]="bankName?.invalid && bankName?.touched"
                       [class.is-valid]="bankName?.valid && bankName?.touched" />
@@ -227,7 +227,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <label>Branch</label>
+                    <label>Branch<span class="text-danger">*</span></label>
                     <input type="text" class="form-control" formControlName="branchDetails"
                       [class.is-invalid]="branchDetails?.invalid && branchDetails?.touched"
                       [class.is-valid]="branchDetails?.valid && branchDetails?.touched" />
@@ -254,7 +254,7 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <label>Company Philosophy</label>
+                      <label>Company Philosophy<span class="text-danger">*</span></label>
                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                         formControlName="companyPhilosophy"
                         [class.is-invalid]="companyPhilosophy?.invalid && companyPhilosophy?.touched"
@@ -264,7 +264,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <label>Company Mission and Vision</label>
+                      <label>Company Mission and Vision<span class="text-danger">*</span></label>
                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                         formControlName="companyMissionAndVision"
                         [class.is-invalid]="companyMissionAndVision?.invalid && companyMissionAndVision?.touched"
@@ -281,7 +281,7 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <label>Company Detailed Introduction</label>
+                      <label>Company Detailed Introduction<span class="text-danger">*</span></label>
                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                         formControlName="companyDetailedInstruction"
                         [class.is-invalid]="companyDetailedInstruction?.invalid && companyDetailedInstruction?.touched"
@@ -296,7 +296,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label>Employee Strength</label>
+                    <label>Employee Strength<span class="text-danger">*</span></label>
                     <select class="form-control" id="" formControlName="employeeStrength"
                       [class.is-invalid]="employeeStrength?.invalid && employeeStrength?.touched"
                       [class.is-valid]="employeeStrength?.valid && employeeStrength?.touched">
@@ -334,7 +334,7 @@
                   <div class="col-md-12">
                     <div class="row">
                       <div class="col-md-4">
-                        <label>Select Trade showes you attaended</label>
+                        <label>Select Trade showes you attaended<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" formControlName="selectTradeShow"
                           [class.is-invalid]="selectTradeShow?.invalid && selectTradeShow?.touched"
                           [class.is-valid]="selectTradeShow?.valid && selectTradeShow?.touched" />
@@ -470,7 +470,7 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-4">
-                  <label>Company Name<span>*</span></label>
+                  <label>Company Name<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="companyName"
                     [class.is-invalid]="companyName?.invalid && companyName?.touched"
                     [class.is-valid]="companyName?.valid && companyName?.touched">
@@ -480,7 +480,7 @@
 
                 </div>
                 <div class="col-md-4">
-                  <label>PAN<span>*</span></label>
+                  <label>PAN<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="pan"
                     [class.is-invalid]="pan?.invalid && pan?.touched" [class.is-valid]="pan?.valid && pan?.touched">
                   <div *ngIf="pan?.invalid && pan?.touched">
@@ -488,7 +488,7 @@
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label>TAN</label>
+                  <label>TAN<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="tan"
                     [class.is-invalid]="tan?.invalid && tan?.touched" [class.is-valid]="tan?.valid && tan?.touched">
                   <div *ngIf="tan?.invalid && tan?.touched">
@@ -500,7 +500,7 @@
 
               <div class="row mt-4">
                 <div class="col-md-4">
-                  <label>GST No.</label>
+                  <label>GST No.<span class="text-danger">*</span></label>
                   <input type="number" class="form-control" formControlName="gst"
                     [class.is-invalid]="gst?.invalid && gst?.touched" [class.is-valid]="gst?.valid && gst?.touched">
                   <div *ngIf="gst?.invalid && gst?.touched">
@@ -509,7 +509,7 @@
                 </div>
                 <div class="col-md-4">
                   <label>Import Export Code
-                    (IEC)</label>
+                    (IEC)<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="iec"
                     [class.is-invalid]="iec?.invalid && iec?.touched" [class.is-valid]="iec?.valid && iec?.touched">
                   <div *ngIf="iec?.invalid && iec?.touched">
@@ -517,7 +517,7 @@
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label>Year Of Establishment<span>*</span></label>
+                  <label>Year Of Establishment<span class="text-danger">*</span></label>
                   <input type="Date" class="form-control" formControlName="estDate"
                     [class.is-invalid]="estDate?.invalid && estDate?.touched"
                     [class.is-valid]="estDate?.valid && estDate?.touched">
@@ -529,7 +529,7 @@
 
               <div class="row mt-4">
                 <div class="col-md-4">
-                  <label>Main Category<span>*</span></label>
+                  <label>Main Category<span class="text-danger">*</span></label>
                   <select class="form-control" aria-label="multiple select example" formControlName="mainCat"
                     [class.is-invalid]="mainCat?.invalid && mainCat?.touched"
                     [class.is-valid]="mainCat?.valid && mainCat?.touched">
@@ -544,7 +544,7 @@
                 </div>
 
                 <div class="col-md-4">
-                  <label>Main Product <span>*</span></label>
+                  <label>Main Product <span class="text-danger">*</span></label>
                   <input type="text" class="form-control w-75 float-left" formControlName="mainProducts" /><button
                     class="btn btn-info w-20 float-right ml-2" (click)="addMainProducts()">Add</button><br>
                   <div>
@@ -558,7 +558,7 @@
           </div>
 
 
-          <h6 class="mt-4">Registered Address <span>*</span></h6>
+          <h6 class="mt-4">Registered Address<span class="text-danger">*</span></h6>
           <div class="row ">
             <div class="col-md-12">
               <div class="row">
@@ -572,7 +572,7 @@
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label>State</label>
+                  <label>State<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="state"
                     [class.is-invalid]="state?.invalid && state?.touched"
                     [class.is-valid]="state?.valid && iec?.touched">
@@ -581,7 +581,7 @@
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label>City</label>
+                  <label>City<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="city"
                     [class.is-invalid]="city?.invalid && city?.touched" [class.is-valid]="city?.valid && city?.touched">
                   <div *ngIf="city?.invalid && city?.touched">
@@ -593,7 +593,7 @@
 
               <div class="row mt-4">
                 <div class="col-md-4">
-                  <label>Company Address</label>
+                  <label>Company Address<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" formControlName="addr"
                     [class.is-invalid]="addr?.invalid && addr?.touched" [class.is-valid]="addr?.valid && addr?.touched">
                   <div *ngIf="addr?.invalid && addr?.touched">
@@ -627,7 +627,7 @@
               <div class="row mt-4">
 
                 <div class="col-md-4">
-                  <label>Business Registration Certificate<span>*</span></label>
+                  <label>Business Registration Certificate<span class="text-danger">*</span></label>
                   <input type="text" class="form-control w-75 float-left" formControlName="profileRegCertificate">
                   <button class="btn btn-info float-right w-20 ml-2"
                     (click)="addprofileRegCertificate()">Add</button><br>
@@ -1054,7 +1054,7 @@
           <form [formGroup]="exportCapabilitiesForm" (ngSubmit)="exportSubmit()">
             <div class="row">
               <div class="col-md-6">
-                <label for="" class="form-label">Yearly Turnover</label>
+                <label for="" class="form-label">Yearly Turnover<span class="text-danger">*</span></label>
                 <select class="form-select form-control" aria-label="Default select example"
                   formControlName="yearlyTurnOver"
                   [class.is-invalid]="yearlyTurnOver?.invalid && yearlyTurnOver?.touched"
@@ -1093,7 +1093,7 @@
                 </div>
               </div>
               <div class="col-md-6 mt-2">
-                <label for="" class="form-label">Nearest Port</label>
+                <label for="" class="form-label">Nearest Port<span class="text-danger">*</span></label>
                 <input type="text" class="form-select form-control" aria-label="Default select example"
                   formControlName="nearestPort" [class.is-invalid]="nearestPort?.invalid && nearestPort?.touched"
                   [class.is-valid]="nearestPort?.valid && nearestPort?.touched">
