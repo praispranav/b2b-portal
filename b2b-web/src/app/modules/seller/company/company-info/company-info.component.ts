@@ -15,15 +15,20 @@ export class CompanyInfoComponent implements OnInit {
   companyProfileMobile: any[] = [];
   companyProfileLandline: any[] = [];
   profileRegCertificate: any[] = [];
+  companyPicture: any[] = [];
+  companyVideo: any[] = [];
+  languageSpoken: any[] = [];
+  tradeName: any[] = [];
+  uploadPicture: any[] = [];
+  additionalTradeExpoArray: FormArray;
   additionalDetailsArray: FormArray;
   randdAddtionalFieldArray: FormArray;
   qualityControlArray: FormArray;
+  otherCertifications: any[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
 
 
-  }
-
+  constructor(private formBuilder: FormBuilder) { }
 
 
   //Export Capabilities Validation
@@ -34,12 +39,26 @@ export class CompanyInfoComponent implements OnInit {
 
   });
 
+
   get yearlyTurnOver() { return this.exportCapabilitiesForm.get('yearlyTurnOver'); }
   get nearestPort() { return this.exportCapabilitiesForm.get('nearestPort'); }
 
   exportSubmit() {
     console.log(this.exportCapabilitiesForm.value);
   }
+
+  //certificate center Validation
+  certificateCenterForm = new FormGroup({
+    otherCertifications: new FormControl('')
+  });
+  addOtherCertifications() {
+    if (this.otherCertifications.length == 3) return
+
+    const value = this.certificateCenterForm.value.otherCertifications;
+    this.otherCertifications.push(value);
+    this.certificateCenterForm.patchValue({ otherCertifications: "" })
+  }
+
 
   // company profile validation
   companyProfileForm = new FormGroup(
@@ -95,11 +114,18 @@ export class CompanyInfoComponent implements OnInit {
   get phn() { return this.companyProfileForm.get('phn'); }
   get mob() { return this.companyProfileForm.get('mob'); }
   get email() { return this.companyProfileForm.get('email'); }
-  // get mainProducts() { return this.companyProfileForm.get('mainProducts'); }
+  // get mainProductsProfile() { return this.companyProfileForm.get('mainProducts'); }
 
 
   //company details validation
   companyDetailsForm = new FormGroup({
+    companyPicture: new FormControl(''),
+    companyVideo: new FormControl('', Validators.required),
+    companyLogo: new FormControl('', Validators.required),
+
+    languageSpoken: new FormControl(''),
+
+    uploadPicture: new FormControl(''),
     contactPerson: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
     surname: new FormControl('', Validators.required),
@@ -127,6 +153,8 @@ export class CompanyInfoComponent implements OnInit {
     aboutTradeShow: new FormControl('', Validators.required),
     designation: new FormControl('', Validators.required),
     employeeStrength: new FormControl('', Validators.required),
+    additionalTradeExpoArray: new FormArray([])
+
   })
 
   get contactPerson() { return this.companyDetailsForm.get('contactPerson'); }
@@ -156,6 +184,7 @@ export class CompanyInfoComponent implements OnInit {
   get aboutTradeShow() { return this.companyDetailsForm.get('aboutTradeShow'); }
   get designation() { return this.companyDetailsForm.get('designation'); }
   get employeeStrength() { return this.companyDetailsForm.get('employeeStrength'); }
+  get companyLogo() { return this.companyDetailsForm.get('companyLogo'); }
 
   // Ouality-Control Validation
   qualityControlForm = new FormGroup(
@@ -189,7 +218,9 @@ export class CompanyInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.additionalTradeExpoArray = this.companyDetailsForm.get('additionalTradeExpoArray') as FormArray
     this.additionalDetailsArray = this.companyProfileForm.get('additionalDetailsArray') as FormArray
+
     this.randdAddtionalFieldArray = this.randdForm.get('randdAddtionalFieldArray') as FormArray
     this.qualityControlArray = this.qualityControlForm.get('qualityControlArray') as FormArray
 
@@ -198,6 +229,7 @@ export class CompanyInfoComponent implements OnInit {
     this.addqualityControlField()
     this.addranddField()
     this.addAditionalDetails()
+    this.addAdditionalTradeExpo()
   }
 
   // company prrofile  function
@@ -257,31 +289,54 @@ export class CompanyInfoComponent implements OnInit {
   }
 
   // company detail  function
+
+  addCompanyPicture() {
+    if (this.companyPicture.length == 3) return
+
+    const value = this.companyDetailsForm.value.companyPicture;
+    this.companyPicture.push(value);
+    this.companyDetailsForm.patchValue({ companyPicture: "" })
+  }
+
+  addLanguageSpoken() {
+    if (this.languageSpoken.length == 3) return
+
+    const value = this.companyDetailsForm.value.languageSpoken;
+    this.languageSpoken.push(value);
+    this.companyDetailsForm.patchValue({ languageSpoken: "" })
+  }
+  addTradeName() {
+    if (this.tradeName.length == 3) return
+
+    const value = this.companyDetailsForm.value.tradeName;
+    this.tradeName.push(value);
+    this.companyDetailsForm.patchValue({ tradeName: "" })
+  }
+  addCompanyVideo() {
+    if (this.companyVideo.length == 3) return
+
+    const value = this.companyDetailsForm.value.companyVideo;
+
+    this.companyVideo.push(value);
+    this.companyDetailsForm.patchValue({ companyVideo: "" })
+  }
+  addUploadPicture() {
+    if (this.uploadPicture.length == 3) return
+
+    const value = this.companyDetailsForm.value.uploadPicture;
+    console.log(value)
+    this.uploadPicture.push(value);
+    this.companyDetailsForm.patchValue({ uploadPicture: "" })
+  }
+  onChangeTradeName(changeEvent: any, index: number) {
+    // const addValue = [ ...this.additionalTradeExpoArray.at(index).value,  ]
+    //   this.additionalTradeExpoArray.at(index).patchValue({  })
+  }
   detailsSubmitForm() {
     console.log(this.companyDetailsForm.value);
   }
 
-  //Certificate Centre Dynamic Data
 
-  Data: Array<any> = [
-    { name: 'ISO', value: 'ISO' },
-    { name: 'BSCI', value: 'BSCI' },
-    { name: 'SA8000', value: 'SA8000' },
-    { name: 'Apple', value: 'apple' },
-    { name: 'WCA', value: 'WCA' },
-    { name: 'WRAP', value: 'WRAP' },
-    { name: 'CE', value: 'CE' },
-    { name: 'GRS', value: 'GRS' },
-    { name: 'ROHS', value: 'ROHS' },
-    { name: 'FCC', value: 'FCC' },
-    { name: 'EMC', value: 'EMC' },
-    { name: 'TUV MARK', value: 'TUV MARK' },
-    { name: 'UL', value: 'UL' },
-    { name: 'UKCA', value: 'UKCA' },
-    { name: 'GOTS', value: 'GOTS' },
-    { name: 'CPC', value: 'CPC' }
-
-  ];
 
 
   // Quality control submit function
@@ -299,8 +354,25 @@ export class CompanyInfoComponent implements OnInit {
 
     });
   }
+  //details
+  createAdditionalTradeExpo(): FormGroup {
+    return this.formBuilder.group({
+      selectTradeShow: ['', Validators.required],
+      tradeName: [[], Validators.required],
+      tradeShowName: ['', Validators.required],
+      dateFrom: ['', Validators.required],
+      dateTo: ['', Validators.required],
+      host: ['', Validators.required],
+      countryDetails: ['', Validators.required],
+      cityDetails: ['', Validators.required],
+      uploadPicture: ['', Validators.required]
+    })
+  }
   addAditionalDetails(): void {
     this.additionalDetailsArray.push(this.createAditionalDetails());
+  }
+  addAdditionalTradeExpo(): void {
+    this.additionalTradeExpoArray.push(this.createAdditionalTradeExpo());
   }
   submitqualityControlForm() {
     console.log(this.qualityControlForm.value)
