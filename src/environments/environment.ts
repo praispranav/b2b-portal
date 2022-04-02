@@ -2,14 +2,10 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
 export const environment = {
-  production: false,
-  apiUrl:"https://b2b-portal-api.azurewebsites.net/"
-  // apiUrl:"http://localhost:4000/",
-  // apiUrl:"http://192.168.6:4000//",
-  // apiUrl: "https://4001-ajayshankar-b2bportalapi-scw3jmk26d6.ws-us34.gitpod.io/"
+  production: false
 };
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

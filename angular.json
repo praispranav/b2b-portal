@@ -1,12 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "c146b66e-700f-4829-af88-e7bf80c08724"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "b2b-web": {
+    "b2b-portal": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/b2b-web",
+            "outputPath": "dist/b2b-portal",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "b2b-web:build:production"
+              "browserTarget": "b2b-portal:build:production"
             },
             "development": {
-              "browserTarget": "b2b-web:build:development"
+              "browserTarget": "b2b-portal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "b2b-web:build"
+            "browserTarget": "b2b-portal:build"
           }
         },
         "test": {
@@ -110,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "b2b-web"
+  "defaultProject": "b2b-portal"
 }
