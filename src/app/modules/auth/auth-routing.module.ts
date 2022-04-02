@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: PageSignUpComponent
-  }
+  },
+  {
+    path: '**',
+    component: PageError404Component
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
