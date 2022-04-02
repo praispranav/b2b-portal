@@ -1,40 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { LockedComponent } from './locked/locked.component';
-import { Page404Component } from './page404/page404.component';
-import { Page500Component } from './page500/page500.component';
+import { PageError404Component } from './page-error404/page-error404.component';
+import { PageError500Component } from './page-error500/page-error500.component';
+import { PageSignInComponent } from './page-sign-in/page-sign-in.component';
+import { PageSignUpComponent } from './page-sign-up/page-sign-up.component';
+
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'signin',
+    redirectTo: 'sign-in',
     pathMatch: 'full'
   },
   {
-    path: 'signin',
-    component: SigninComponent
+    path: 'error-404',
+    component: PageError404Component
   },
   {
-    path: 'signup',
-    component: SignupComponent
+    path: 'error-500',
+    component: PageError500Component
   },
   {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent
+    path: 'sign-in',
+    component: PageSignInComponent
   },
   {
-    path: 'locked',
-    component: LockedComponent
-  },
-  {
-    path: 'page404',
-    component: Page404Component
-  },
-  {
-    path: 'page500',
-    component: Page500Component
+    path: 'sign-up',
+    component: PageSignUpComponent
   }
 ];
 @NgModule({
