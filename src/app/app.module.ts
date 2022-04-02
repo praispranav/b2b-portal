@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import * as feather from 'feather-icons';
 
 
@@ -21,7 +20,9 @@ import * as feather from 'feather-icons';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [FormsModule,
-    ReactiveFormsModule]
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class AppModule { }
