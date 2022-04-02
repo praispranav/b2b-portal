@@ -1,35 +1,31 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { RouterModule, Routes } from '@angular/router';
-import { CompanyComponent } from './company.component';
-import { CompanyInfoComponent } from './company-info/company-info.component';
-
+import { PageCompanyAddComponent } from './page-company-add/page-company-add.component';
+import { PageCompanyEditComponent } from './page-company-edit/page-company-edit.component';
+import { PageCompanyViewComponent } from './page-company-view/page-company-view.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CompanyComponent,
-    children: [
-      // {
-      //   path: '',
-      //   redirectTo: '',
-      //   pathMatch: 'full'
-      // },
-
-      {
-        path: '',
-        component: CompanyInfoComponent
-      }
-    ]
-  }
+    redirectTo: 'company-view',
+    pathMatch: 'full',
+  },
+  {
+    path: 'company-add',
+    component: PageCompanyAddComponent,
+  },
+  {
+    path: 'company-edit',
+    component: PageCompanyEditComponent,
+  },
+  {
+    path: 'company-view',
+    component: PageCompanyViewComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule, RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class CompanyRoutingModule { }
+export class CompanyRoutingModule {}

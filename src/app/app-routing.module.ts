@@ -30,12 +30,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/buyer/buyer.module').then((m) => m.BuyerModule),
   },
-  // {
-  //   path: 'seller',
-  //   component: SellerLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./modules/seller/seller.module').then((m) => m.SellerModule),
-  // },
+  {
+    path: 'seller',
+    component: SellerLayoutComponent,
+    loadChildren: () =>
+      import('./modules/seller/seller.module').then((m) => m.SellerModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
