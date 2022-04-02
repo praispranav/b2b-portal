@@ -22,11 +22,11 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     loadChildren: () => import("./modules/auth/auth.module").then((m) => m.AuthModule)
   },
-  // {
-  //   path: "buyer",
-  //   component: BuyerLayoutComponent,
-  //   loadChildren: () => import("./modules/buyer/buyer.module").then((m) => m.BuyerModule)
-  // },
+  {
+    path: "buyer",
+    component: BuyerLayoutComponent,
+    loadChildren: () => import("./modules/buyer/buyer.module").then((m) => m.BuyerModule)
+  },
   // {
   //   path: "seller",
   //   component: SellerLayoutComponent,
