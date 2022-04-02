@@ -1,0 +1,32 @@
+<section>
+    <div class="card">
+
+        <div class="card-header">
+            <h4>Edit Membership</h4>
+        </div>
+        <div class="card-body">
+            <form action="" (ngSubmit)="submit()">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group m-1">
+                            <label for="">Location Name</label>
+                            <select class="form-control" [(ngModel)]="membership.location">
+                                <option #selected>Seclect location</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="Delhi">Delhi</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group m-1">
+                            <label for=""> Cost</label>
+                            <input type="text" class="form-control" [(ngModel)]="membership.cost">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary text-white m-1 mt-3"> Edit Member</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

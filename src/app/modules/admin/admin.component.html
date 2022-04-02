@@ -1,0 +1,117 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <nav
+        class="page-sidebar"
+        style="left: 0px !important"
+        data-pages="sidebar"
+      >
+        <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+        <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
+        <!-- BEGIN SIDEBAR MENU HEADER-->
+        <div class="sidebar-header">
+          <img
+            src="assets/img/logo.png"
+            alt="logo"
+            class="brand"
+            data-src="assets/img/logo.png"
+            data-src-retina="assets/img/logo_2x.png"
+            width="78"
+            height="22"
+          />
+        </div>
+        <!-- END SIDEBAR MENU HEADER-->
+        <!-- START SIDEBAR MENU -->
+        <div class="sidebar-menu">
+          <!-- BEGIN SIDEBAR MENU ITEMS-->
+          <strong class="pl-2">Admin</strong>
+          <ul class="menu-items">
+            <li>
+              <a href="javascript:void(0);" routerLink="location/location-list">
+                <span class="title">Location</span>
+              </a>
+
+              <ul class="list-unstyled pl-4">
+                <!-- <ul class="sub-menu"> -->
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="location/add-location"
+                  >
+                    Add Location
+                  </a>
+                </li>
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="location/location-list"
+                  >
+                    Location List
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0);"
+                routerLink="membership/membership-list"
+              >
+                <span class="title">Membership</span>
+              </a>
+
+              <ul class="list-unstyled pl-4">
+                <!-- <ul class="sub-menu"> -->
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="membership/add-membership"
+                  >
+                    Add Membership
+                  </a>
+                </li>
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="membership/membership-list"
+                  >
+                    Membership List
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0);" routerLink="category/category-list">
+                <span class="title">Category</span>
+              </a>
+
+              <ul class="list-unstyled pl-4">
+                <!-- <ul class="sub-menu"> -->
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="category/add-category"
+                  >
+                    Add Category
+                  </a>
+                </li>
+                <li class="pl-4">
+                  <a
+                    href="javascript:void(0);"
+                    routerLink="category/category-list"
+                  >
+                    Category List
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <!-- END SIDEBAR MENU -->
+      </nav>
+    </div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
