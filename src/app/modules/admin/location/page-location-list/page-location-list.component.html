@@ -1,0 +1,42 @@
+<section>
+  <div class="card">
+    <div class="card-header bg-white border-0 ">
+      <div class="row table-sort ">
+        <div class="col-5">
+          <h5 class=" m-0">Location List</h5>
+        </div>
+        <div class="col-5 p-0 mb-0 d-flex justify-content-end mr-3">
+          <button class="btn btn-primary  text-white inter f-12 ml-3" data-toggle="modal" type="button"
+            (click)="navigateToAdd()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead class="table-heading">
+          <tr>
+            <th>Name</th>
+            <th>Currency</th>
+            <th>Code</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of location;  index as i">
+
+            <td>{{item.name}}</td>
+            <td>{{item.currency}}</td>
+            <td>{{item.code}}</td>
+            <td>{{item.cost}}</td>
+            <td><button class="btn btn-primary  text-white inter f-12 " data-toggle="modal" type="button"
+                (click)="editLocation(item)">Edit</button>
+              <button class="btn btn-primary  text-white inter f-12 m-3" data-toggle="modal" type="button"
+                (click)="deleteLocation(item._id)">Delete</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

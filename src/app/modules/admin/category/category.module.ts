@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoryComponent } from './category.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
-import { CategoryRoutingModule } from './category-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { CategoryRoutingModule } from './category-routing.module';
+import { PageCategoryAddComponent } from './page-category-add/page-category-add.component';
+import { PageCategoryEditComponent } from './page-category-edit/page-category-edit.component';
+import { PageCategoryListComponent } from './page-category-list/page-category-list.component';
+
 @NgModule({
   declarations: [
-    CategoryComponent,
-    AddCategoryComponent,
-    ListCategoryComponent,
-    EditCategoryComponent
+    PageCategoryAddComponent,
+    PageCategoryEditComponent,
+    PageCategoryListComponent,
   ],
   imports: [
-    CommonModule, CategoryRoutingModule, SharedModule, FormsModule, ReactiveFormsModule
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CategoryRoutingModule,
+  ],
 })
-export class CategoryModule { }
+export class CategoryModule {}

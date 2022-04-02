@@ -1,35 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
-import { DashboardV1Component } from './dashboard-v1/dashboard-v1.component';
-
+import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'dashboard-v1',
-        pathMatch: 'full'
-      },
-
-      {
-        path: 'dashboard-v1',
-        component: DashboardV1Component
-      }
-    ]
-  }
+    component: PageDashboardComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule, RouterModule.forChild(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

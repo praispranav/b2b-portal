@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MembershipComponent } from './membership.component';
-import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MembershipRoutingModule } from './membership-routing.module';
+import { PageMembershipAddComponent } from './page-membership-add/page-membership-add.component';
+import { PageMembershipEditComponent } from './page-membership-edit/page-membership-edit.component';
+import { PageMembershipListComponent } from './page-membership-list/page-membership-list.component';
 
-import { AddMembershipComponent } from './add-membership/add-membership.component';
-import { ListMembershipComponent } from './list-membership/list-membership.component';
-import { MembershipRoutingModule } from "./membership-routing.module"
-import { SharedModule } from 'src/app/shared/shared.module';
-import { EditMembershipComponent } from './edit-membership/edit-membership.component';
 @NgModule({
   declarations: [
-    MembershipComponent,
-    AddMembershipComponent,
-    ListMembershipComponent,
-    EditMembershipComponent,
+    PageMembershipAddComponent,
+    PageMembershipEditComponent,
+    PageMembershipListComponent,
   ],
   imports: [
-    CommonModule, ReactiveFormsModule, MembershipRoutingModule, SharedModule, FormsModule
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MembershipRoutingModule,
+  ],
 })
-export class MembershipModule { }
+export class MembershipModule {}

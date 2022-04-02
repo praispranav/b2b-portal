@@ -12,12 +12,12 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'auth',
   },
-  // {
-  //   path: 'admin',
-  //   component: AdminLayoutComponent,
-  //   loadChildren: () =>
-  //     import('./modules/admin/admin.module').then((m) => m.AdminModule),
-  // },
+  {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    loadChildren: () =>
+      import('./modules/admin/admin.module').then((m) => m.AdminModule),
+  },
   {
     path: 'auth',
     component: AuthLayoutComponent,

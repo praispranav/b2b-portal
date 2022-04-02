@@ -1,38 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddLocationComponent } from './add-location/add-location.component';
-import { EditLocationComponent } from './edit-location/edit-location.component';
-import { ListLocationComponent } from './list-location/list-location.component';
-import { LocationComponent } from './location.component';
+import { PageLocationAddComponent } from './page-location-add/page-location-add.component';
+import { PageLocationEditComponent } from './page-location-edit/page-location-edit.component';
+import { PageLocationListComponent } from './page-location-list/page-location-list.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: LocationComponent,
-        children: [
-            {
-                path: '',
-                redirectTo: 'location-list',
-                pathMatch: 'full'
-            },
-            {
-                path: 'location-list',
-                component: ListLocationComponent
-            },
-            {
-                path: 'add-location',
-                component: AddLocationComponent
-            },
-            {
-                path: 'edit-location',
-                component: EditLocationComponent
-            }
-        ],
-    },
+  {
+    path: '',
+    redirectTo: 'location-list',
+    pathMatch: 'full',
+  },
+  {
+    path: 'location-add',
+    component: PageLocationAddComponent,
+  },
+  {
+    path: 'location-edit',
+    component: PageLocationEditComponent,
+  },
+  {
+    path: 'location-list',
+    component: PageLocationListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class LocationRoutingModule { }
+export class LocationRoutingModule {}
