@@ -12,13 +12,8 @@ import { PageSignUpComponent } from './page-sign-up/page-sign-up.component';
     PageError404Component,
     PageError500Component,
     PageSignInComponent,
-    PageSignUpComponent
+    PageSignUpComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AuthRoutingModule
-  ]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, AuthRoutingModule],
 })
 export class AuthModule {}

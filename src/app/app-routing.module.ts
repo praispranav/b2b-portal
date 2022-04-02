@@ -1,40 +1,44 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AuthGuard } from "src/app/core/guards/auth.guard";
-import { AdminLayoutComponent } from "src/app/shared/layouts/layout-structures/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from "src/app/shared/layouts/layout-structures/auth-layout/auth-layout.component";
-import { BuyerLayoutComponent } from "src/app/shared/layouts/layout-structures/buyer-layout/buyer-layout.component";
-import { SellerLayoutComponent } from "src/app/shared/layouts/layout-structures/seller-layout/seller-layout.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/core/guards/auth.guard';
+import { AdminLayoutComponent } from 'src/app/shared/layouts/layout-structures/admin-layout/admin-layout.component';
+import { AuthLayoutComponent } from 'src/app/shared/layouts/layout-structures/auth-layout/auth-layout.component';
+import { BuyerLayoutComponent } from 'src/app/shared/layouts/layout-structures/buyer-layout/buyer-layout.component';
+import { SellerLayoutComponent } from 'src/app/shared/layouts/layout-structures/seller-layout/seller-layout.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     pathMatch: 'full',
-    redirectTo: 'auth'
+    redirectTo: 'auth',
   },
   // {
-  //   path: "admin",
+  //   path: 'admin',
   //   component: AdminLayoutComponent,
-  //   loadChildren: () => import("./modules/admin/admin.module").then((m) => m.AdminModule)
+  //   loadChildren: () =>
+  //     import('./modules/admin/admin.module').then((m) => m.AdminModule),
   // },
   {
-    path: "auth",
+    path: 'auth',
     component: AuthLayoutComponent,
-    loadChildren: () => import("./modules/auth/auth.module").then((m) => m.AuthModule)
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: "buyer",
+    path: 'buyer',
     component: BuyerLayoutComponent,
-    loadChildren: () => import("./modules/buyer/buyer.module").then((m) => m.BuyerModule)
+    loadChildren: () =>
+      import('./modules/buyer/buyer.module').then((m) => m.BuyerModule),
   },
   // {
-  //   path: "seller",
+  //   path: 'seller',
   //   component: SellerLayoutComponent,
-  //   loadChildren: () => import("./modules/seller/seller.module").then((m) => m.SellerModule)
+  //   loadChildren: () =>
+  //     import('./modules/seller/seller.module').then((m) => m.SellerModule),
   // },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

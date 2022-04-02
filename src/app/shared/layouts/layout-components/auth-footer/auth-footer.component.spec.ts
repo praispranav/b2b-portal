@@ -8,9 +8,8 @@ describe('AuthFooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthFooterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

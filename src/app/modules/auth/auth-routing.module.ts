@@ -9,31 +9,31 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'sign-in',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'error-404',
-    component: PageError404Component
+    component: PageError404Component,
   },
   {
     path: 'error-500',
-    component: PageError500Component
+    component: PageError500Component,
   },
   {
     path: 'sign-in',
-    component: PageSignInComponent
+    component: PageSignInComponent,
   },
   {
     path: 'sign-up',
-    component: PageSignUpComponent
+    component: PageSignUpComponent,
   },
   {
     path: '**',
-    component: PageError404Component
+    component: PageError404Component,
   },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}
