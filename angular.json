@@ -34,6 +34,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/assets/plugins/pace/pace-theme-flash.css",
+              "src/assets/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/assets/plugins/jquery-scrollbar/jquery.scrollbar.css",
+              "src/assets/assets/plugins/select2/css/select2.min.css",
+              "src/assets/pages/css/themes/light.css",
+              "src/assets/assets/css/style.css",
               "src/styles.scss"
             ],
             "scripts": []
