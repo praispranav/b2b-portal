@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageError404Component } from './page-error404/page-error404.component';
+import { PageError500Component } from './page-error500/page-error500.component';
 
 const routes: Routes = [
   {
@@ -16,8 +18,9 @@ const routes: Routes = [
   }
 ];
 
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class CommonRoutingModule {}
+export class ViewRoutingModule { }
