@@ -16,10 +16,10 @@ const routes: Routes = [
   {
     path: 'sign-up',
     component: PageSignUpComponent,
-  }
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BuyerAuthRoutingModule { }
+export class BuyerAuthRoutingModule {}
