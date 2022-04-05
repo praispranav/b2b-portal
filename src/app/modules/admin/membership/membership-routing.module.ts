@@ -1,39 +1,31 @@
-import { EditMembershipComponent } from './edit-membership/edit-membership.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddMembershipComponent } from './add-membership/add-membership.component';
-import { ListMembershipComponent } from './list-membership/list-membership.component';
-import { MembershipComponent } from './membership.component';
+import { PageMembershipAddComponent } from './page-membership-add/page-membership-add.component';
+import { PageMembershipEditComponent } from './page-membership-edit/page-membership-edit.component';
+import { PageMembershipListComponent } from './page-membership-list/page-membership-list.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: MembershipComponent,
-        children: [
-            {
-                path: '',
-                redirectTo: 'membership-list',
-                pathMatch: 'full'
-            },
-            {
-                path: 'membership-list',
-                component: ListMembershipComponent
-            },
-            {
-                path: 'add-membership',
-                component: AddMembershipComponent
-            },
-
-            {
-                path: 'edit-membership',
-                component: EditMembershipComponent
-            }
-        ],
-    },
+  {
+    path: '',
+    redirectTo: 'membership-list',
+    pathMatch: 'full',
+  },
+  {
+    path: 'membership-add',
+    component: PageMembershipAddComponent,
+  },
+  {
+    path: 'membership-edit',
+    component: PageMembershipEditComponent,
+  },
+  {
+    path: 'membership-list',
+    component: PageMembershipListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MembershipRoutingModule { }
+export class MembershipRoutingModule {}

@@ -1,22 +1,22 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LocationComponent } from './location.component';
-import { AddLocationComponent } from './add-location/add-location.component';
-import { ListLocationComponent } from './list-location/list-location.component';
-import { LocationRoutingModule } from "./location-routing.module";
-import { SharedModule } from 'src/app/shared/shared.module';
-import { EditLocationComponent } from './edit-location/edit-location.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
+import { LocationRoutingModule } from './location-routing.module';
+import { PageLocationAddComponent } from './page-location-add/page-location-add.component';
+import { PageLocationEditComponent } from './page-location-edit/page-location-edit.component';
+import { PageLocationListComponent } from './page-location-list/page-location-list.component';
+
 @NgModule({
   declarations: [
-    LocationComponent,
-    AddLocationComponent,
-    ListLocationComponent,
-    EditLocationComponent
+    PageLocationAddComponent,
+    PageLocationEditComponent,
+    PageLocationListComponent,
   ],
   imports: [
-    CommonModule, LocationRoutingModule,SharedModule,FormsModule,ReactiveFormsModule
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LocationRoutingModule,
+  ],
 })
-export class LocationModule { }
+export class LocationModule {}

@@ -7,9 +7,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProviderMembershipService {
-
-  constructor() { }
-
   apiUrl: string = environment.apiUrl;
 
   static editId: any;
