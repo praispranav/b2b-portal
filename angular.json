@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "85dafa45-d404-471a-a110-f0bb96bbf1cc"
+    "analytics": "5d197a65-ca56-41ca-af3c-7a2c2c93db88"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -34,12 +34,15 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/assets/assets/plugins/pace/pace-theme-flash.css",
+              "src/assets/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "src/assets/assets/plugins/jquery-scrollbar/jquery.scrollbar.css",
+              "src/assets/assets/plugins/select2/css/select2.min.css",
+              "src/assets/pages/css/themes/light.css",
+              "src/assets/assets/css/style.css",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
