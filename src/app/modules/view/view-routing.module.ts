@@ -14,13 +14,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageError404Component,
+    redirectTo: 'error-404',
   }
 ];
 
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ViewRoutingModule { }
+export class ViewRoutingModule {}

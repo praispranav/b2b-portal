@@ -7,11 +7,6 @@ import { SellerLayoutComponent } from 'src/app/shared/layouts/layout-structures/
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () =>
-      import('./modules/view/view.module').then((m) => m.ViewModule),
-  },
-  {
     path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>
@@ -43,6 +38,15 @@ const routes: Routes = [
     path: 'seller-auth',
     loadChildren: () =>
       import('./modules/seller-auth/seller-auth.module').then((m) => m.SellerAuthModule),
+  },
+  {
+    path: 'view',
+    loadChildren: () =>
+      import('./modules/view/view.module').then((m) => m.ViewModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'view',
   },
 ];
 @NgModule({
