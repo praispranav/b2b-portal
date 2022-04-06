@@ -7,6 +7,11 @@ import { SellerLayoutComponent } from 'src/app/shared/layouts/layout-structures/
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'admin-auth'
+  },
+  {
     path: 'admin',
     component: AdminLayoutComponent,
     loadChildren: () =>
