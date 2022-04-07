@@ -18,11 +18,6 @@ const routes: Routes = [
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: 'admin-auth',
-    loadChildren: () =>
-      import('./modules/admin-auth/admin-auth.module').then((m) => m.AdminAuthModule),
-  },
-  {
     path: 'buyer',
     component: BuyerLayoutComponent,
     loadChildren: () =>
