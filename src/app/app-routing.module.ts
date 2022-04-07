@@ -29,20 +29,15 @@ const routes: Routes = [
       import('./modules/buyer/buyer.module').then((m) => m.BuyerModule),
   },
   {
-    path: 'buyer-auth',
-    loadChildren: () =>
-      import('./modules/buyer-auth/buyer-auth.module').then((m) => m.BuyerAuthModule),
-  },
-  {
     path: 'seller',
     component: SellerLayoutComponent,
     loadChildren: () =>
       import('./modules/seller/seller.module').then((m) => m.SellerModule),
   },
   {
-    path: 'seller-auth',
+    path: 'user-auth',
     loadChildren: () =>
-      import('./modules/seller-auth/seller-auth.module').then((m) => m.SellerAuthModule),
+      import('./modules/user-auth/user-auth.module').then((m) => m.UserAuthModule),
   },
   {
     path: 'view',
