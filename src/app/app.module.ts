@@ -1,6 +1,5 @@
 // Angular Core
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -97,10 +96,6 @@ import { BlankCorporateComponent } from './@pages/layouts/blank-corporate/blank-
 import { BlankSimplywhiteComponent } from './@pages/layouts/blank-simplywhite/blank-simplywhite.component';
 import { BlankCasualComponent } from './@pages/layouts/blank-casual/blank-casual.component';
 
-
-import { CoreModule } from './core/core.module';
-import { CommonSharedModule } from './common-shared/common-shared.module';
-
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -150,10 +145,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
-    CoreModule,
-    SharedModule,
     HttpClientModule,
     HttpModule,
+    SharedModule,
     ProgressModule,
     pgListViewModule,
     pgCardModule,
@@ -190,8 +184,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: AppHammerConfig
-    },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    }
   ],
   bootstrap: [AppComponent]
 })
