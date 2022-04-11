@@ -1,16 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PageAboutUsComponent } from './page-about-us/page-about-us.component';
+import { PageContactUsComponent } from './page-contact-us/page-contact-us.component';
 import { PageError404Component } from './page-error404/page-error404.component';
 import { PageError500Component } from './page-error500/page-error500.component';
+import { PagePatnerComponent } from './page-patner/page-patner.component';
+import { PageSupportComponent } from './page-support/page-support.component';
+import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
+import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 
 const routes: Routes = [
   {
+    path: 'about-us',
+    component: PageAboutUsComponent,
+  },
+  {
+    path: 'contact-us',
+    component: PageError500Component,
+  },
+  {
     path: 'error-404',
-    component: PageError404Component,
+    component: PageError500Component,
   },
   {
     path: 'error-500',
     component: PageError500Component,
+  },
+  {
+    path: 'patner',
+    component: PagePatnerComponent,
+  },
+  {
+    path: 'support',
+    component: PageSupportComponent,
+  },
+  {
+    path: 'terms-and-condition',
+    component: PageTermsAndConditionComponent,
+  },
+  {
+    path: 'terms-of-use',
+    component: PageTermsOfUseComponent,
   },
   {
     path: '**',

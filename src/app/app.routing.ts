@@ -14,12 +14,23 @@ export const AppRoutes: Routes = [
     redirectTo: 'user-auth'
   },
   {
+    path: 'admin',
+    component: AdminLayoutComponent,
+    loadChildren: './modules/admin/admin.module#AdminModule'
+  },
+  {
+    path: 'seller',
+    component: SellerLayoutComponent,
+    loadChildren: './modules/seller/seller.module#SellerModule'
+  },
+  {
     path: 'user-auth',
     component: BlankLayoutComponent,
     loadChildren: './modules/user-auth/user-auth.module#UserAuthModule'
   },
   {
-    path: 'view',
+    path: 'b2b',
+    component: BlankLayoutComponent,
     loadChildren: './modules/view/view.module#ViewModule'
   },
   {

@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-sign-up.component.scss'],
 })
 export class PageSignUpComponent implements OnInit {
+  txtfname;
+  txtlname;
+  txtusername;
+  txtpassword;
+  txtemail;
+
   constructor() {}
 
   ngOnInit(): void {}
