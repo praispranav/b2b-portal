@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -6,13 +7,32 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./page-forgot-password.component.scss"],
 })
 export class PageForgotPasswordComponent implements OnInit {
-  txtfname;
-  txtlname;
   txtusername;
-  txtpassword;
   txtemail;
 
-  constructor() {}
+  forgotPasswordForm: FormGroup;
 
-  ngOnInit() {}
+  constructor(
+    private formBuilder: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    thisbuildForgotPasswordForm();
+  }
+
+  get f(){ return  this.forgotPasswordForm.controls; }
+
+  buildForgotPasswordForm(){
+    this.forgotPasswordForm = this.formBuilder.group({
+      mobile: [''],
+      email: ['']
+    });
+  }
+
+  subForgotPasswordForm(){
+    const formData = this.forgotPasswordForm.value;
+
+    // API CALL
+    console.log(formData);
+  }
 }
