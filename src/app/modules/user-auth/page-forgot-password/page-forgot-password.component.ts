@@ -17,7 +17,7 @@ export class PageForgotPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    thisbuildForgotPasswordForm();
+    this.buildForgotPasswordForm();
   }
 
   get f(){ return  this.forgotPasswordForm.controls; }
