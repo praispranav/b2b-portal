@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyRoutingModule } from './company-routing.module';
+import { FormCompanyDetailComponent } from './components/form-company-detail/form-company-detail.component';
+import { FormCompanyProfileComponent } from './components/form-company-profile/form-company-profile.component';
 import { PageCompanyAddComponent } from './page-company-add/page-company-add.component';
 import { PageCompanyEditComponent } from './page-company-edit/page-company-edit.component';
 import { PageCompanyViewComponent } from './page-company-view/page-company-view.component';
@@ -10,6 +11,8 @@ import { PageCompanyViewComponent } from './page-company-view/page-company-view.
 
 @NgModule({
   declarations: [
+    FormCompanyDetailComponent,
+    FormCompanyProfileComponent,
     PageCompanyAddComponent,
     PageCompanyEditComponent,
     PageCompanyViewComponent
@@ -17,7 +20,6 @@ import { PageCompanyViewComponent } from './page-company-view/page-company-view.
   imports: [
     CommonModule,
     FormsModule,
-    TabsModule.forRoot(),
     ReactiveFormsModule,
     CompanyRoutingModule
   ]
