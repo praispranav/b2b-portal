@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagePatnerComponent } from './page-patner.component';
+import { PagePartnerComponent } from './page-partner.component';
 
-describe('PagePatnerComponent', () => {
-  let component: PagePatnerComponent;
-  let fixture: ComponentFixture<PagePatnerComponent>;
+describe('PagePartnerComponent', () => {
+  let component: PagePartnerComponent;
+  let fixture: ComponentFixture<PagePartnerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagePatnerComponent ]
+      declarations: [ PagePartnerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PagePatnerComponent);
+    fixture = TestBed.createComponent(PagePartnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
