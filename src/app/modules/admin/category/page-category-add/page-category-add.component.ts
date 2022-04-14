@@ -7,27 +7,36 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./page-category-add.component.scss'],
 })
 export class PageCategoryAddComponent implements OnInit {
-  forgotPasswordForm: FormGroup;
+  categoryForm: FormGroup;
+  options = [
+    { value: 'jack', label: 'Jacks' },
+    { value: 'lucy', label: 'Lucy' },
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ]
 
-  constructor(private formBuilder: FormBuilder) {}
+  selectedOption;
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
-    return this.forgotPasswordForm.controls;
+    return this.categoryForm.controls;
   }
+  tags = ['Smith', 'Jane'];
+
 
   ngOnInit() {
-    this.buildForgotPasswordForm();
+    this.buildCategoryForm();
   }
 
-  buildForgotPasswordForm() {
-    this.forgotPasswordForm = this.formBuilder.group({
-      mobile: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
+  buildCategoryForm() {
+    this.categoryForm = this.formBuilder.group({
+      name: ["", [Validators.required]],
+      title: ["", [Validators.required]],
+      description: ["", [Validators.required]],
     });
   }
 
-  subForgotPasswordForm() {
-    const formData = this.forgotPasswordForm.value;
+  subCategoryForm() {
+    const formData = this.categoryForm.value;
     // API CALL
     console.log(formData);
   }
