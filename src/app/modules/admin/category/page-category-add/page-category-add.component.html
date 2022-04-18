@@ -1,66 +1,66 @@
-<div class="register-container full-height sm-p-t-30">
-    <div class="d-flex justify-content-center flex-column full-height ">
-        <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
-            width="78" height="22">
-        <div class="card">
-            <div class="card-body">
-                <form [formGroup]="categoryForm">
-                    <div class="form-group row">
-                        <h6 class="col-md-3 control-label">Name</h6>
-                        <div pgFormGroupDefault class="form-group col-md-9"
-                            [class.has-error]="f.name.invalid && (f.name.dirty || f.name.touched)">
-                            <input type="text" class="form-control" formControlName="name">
-                            <span class="mb-4"> The name is how it appears on your site.</span>
-                        </div>
+<div class="conatiner-fluid p-3 h-100">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="categoryForm">
+                <div class="form-group">
+                    <h6 class="control-label">Name</h6>
+                    <p class="mb-0" style="font-size: 10px;">(The name is how it appears on your site.)</p>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="f.name.invalid && (f.name.dirty || f.name.touched)">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
-                    <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
-                        <label *ngIf="f.name.errors.required" class="error">Name field is required.</label>
-                    </div>
-                    <div class="form-group row">
-                        <h6 class="col-md-3 control-label">Title</h6>
-                        <div pgFormGroupDefault class="form-group col-md-9"
-                            [class.has-error]="f.title.invalid && (f.title.dirty || f.title.touched)">
-                            <input type="text" class="form-control" formControlName="title">
-                        </div>
-                    </div>
-                    <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
-                        <label *ngIf="f.title.errors.required" class="error">Title is required.</label>
-                    </div>
+                </div>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                    <label *ngIf="f.name.errors.required" class="error">Name field is required.</label>
+                </div>
 
-                    <!-- <h5>
-                Map Under
-            </h5> -->
-                    <div class="form-group ">
-                        <!-- <pg-select style="width: 100%;" [(ngModel)]="selectedOption" [PlaceHolder]="'Map Under'" AllowClear
-                    ShowSearch>
-                    <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
-                        [Disabled]="option.disabled">
-                    </pg-option>
-                </pg-select> -->
-                    </div>
+                <div class="form-group">
+                    <h6 class="control-label">Map Under</h6>
+                    <pg-select pgFormGroupDefault style="width: 100%;" formControlName="option"  [class.has-error]="f.name.invalid && (f.name.dirty || f.name.touched)" [PlaceHolder]="'Map Under'" AllowClear
+                        ShowSearch>
+                        <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
+                            [Disabled]="option.disabled">
+                        </pg-option>
+                    </pg-select>
+                </div>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                    <label *ngIf="f.name.errors.required" class="error">Name field is required.</label>
+                </div>
 
-                    <div class="form-group">
-                        <label>Description</label>
-                        <textarea class="form-control" cols="3" formControlName="description"></textarea>
+                <div class="form-group">
+                    <h6 class="control-label">Title</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="f.title.invalid && (f.title.dirty || f.title.touched)">
+                        <input type="text" class="form-control" formControlName="title">
                     </div>
-                    <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
-                        <label *ngIf="f.description.errors.required" class="error">Description is required.</label>
+                </div>
+                <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
+                    <label *ngIf="f.title.errors.required" class="error">Title is required.</label>
+                </div>
+                <div class="form-group">
+                    <h6 class="control-label">Description</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                        <textarea type="text" class="form-control" rows="10" formControlName="description"></textarea>
                     </div>
-                    <!-- <div class="form-group tag-group form-group-default required ">
-                <label>Tags</label>
-                <pg-tag-control [(ngModel)]="tags"></pg-tag-control>
-            </div> -->
-                    <div class="mx-4 ">
-                        <button type="submit" class="btn btn-primary">Active</button>
-                        <button type="submit" class="btn btn-primary">InActive</button>
-                    </div>
-                    <div class="mt-4">
-                        <button type="submit" class="me-4 btn btn-primary" (click)="subCategoryForm()">Submit</button>
-
-                    </div>
-
-                </form>
-            </div>
+                </div>
+                <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                    <label *ngIf="f.description.errors.required" class="error">Description is required.</label>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Active</button>
+                    <button type="submit" class="btn btn-primary">InActive</button>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="me-4 btn btn-primary" (click)="subCategoryForm()">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+
+<!-- <div class="form-group tag-group form-group-default required ">
+            <label>Tags</label>
+            <pg-tag-control [(ngModel)]="tags"></pg-tag-control>
+        </div> -->
