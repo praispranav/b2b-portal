@@ -1,0 +1,72 @@
+@media (max-width: 667px) {
+    .social-card.card {
+        width: 100%!important;
+    }
+}
+
+.img-size {
+    width: 400px;
+    height: 400px;
+}
+
+.day {
+    margin: 0 auto;
+}
+
+.bg-image {
+    // width: 100ch;
+    height: 70vh;
+}
+
+.bg-none {
+    background-color: none;
+    border: 0;
+}
+
+.widget-1-wrapper {
+    @media (max-width: 480px) {
+        height: 340px;
+    }
+}
+
+// image widget
+::ng-deep .dark-modal .modal-content {
+    background-color: #000000;
+    color: white;
+    background: none;
+    border: none;
+}
+
+ ::ng-deep .dark-modal .modal-header {
+    border: none
+}
+
+ ::ng-deep .dark-modal .close {
+    color: white;
+}
+
+.icon-white {
+    fill: white;
+}
+
+.bg-half {
+    padding: 94px 0 50px;
+    background-size: cover;
+    align-self: center;
+    position: relative;
+    background-position: center center;
+    // padding: 10.625rem 0;
+    -webkit-mask-size: 33.4% 140%;
+    -webkit-mask-repeat: no-repeat;
+    mask-size: 33.4% 140%;
+    mask-repeat: no-repeat;
+    // border: none;
+}
+
+.page-next-level .page-next {
+    position: relative;
+    top: 70px;
+    z-index: 99;
+}
+
+// image-widget

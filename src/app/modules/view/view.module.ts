@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +11,9 @@ import { PagePartnerComponent } from './page-partner/page-partner.component';
 import { PageSupportComponent } from './page-support/page-support.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
-
+//  tushar imported this module
+import { pgCardModule } from './../../@pages/components/card/card.module';
+import { pgTabsModule } from './../../@pages/components/tabs/tabs.module';
 @NgModule({
   declarations: [
     PageAboutUsComponent,
@@ -24,7 +27,8 @@ import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.c
   ],
   imports: [
     CommonModule,
-    ViewRoutingModule
+    ViewRoutingModule,
+    pgCardModule,pgTabsModule
   ]
 })
 export class ViewModule { }
