@@ -1,42 +1,216 @@
-<div class="register-container full-height sm-p-t-30">
-    <div class="d-flex justify-content-center flex-column full-height ">
-        <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
-            width="78" height="22">
-        <h3>Forgot Your Password ?</h3>
-        <p>Enter your phone number or recovery email</p>
+<div class=" full-height sm-p-t-30 ml-4">
+    <div class="d-flex justify-content-start flex-column full-height ">
+        <!-- <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
+            width="78" height="22"> -->
+        <h3>Company Profile</h3>
+
         <form class="p-t-15" role="form" [formGroup]="forgotPasswordForm">
             <div class="row">
                 <div class="col-md-12">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
-                        <label for="page-forgot-password-mobile">Mobile Number</label>
-                        <input type="text" formControlName="mobile" placeholder="Enter your mobile number here"
-                            class="form-control" id="page-forgot-password-mobile" />
-                    </div>
-                    <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
-                        <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Company Name</label>
+                                <input type="text" formControlName="companyName"
+                                    placeholder="Enter your company name here" class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">TAN</label>
+                                <input type="text" formControlName="companyName"
+                                    placeholder="Enter your TAN number here" class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">PAN</label>
+                                <input type="text" formControlName="companyName"
+                                    placeholder="Enter your PAN number here" class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h6 class="text-center">---------------------------OR---------------------------</h6>
             <div class="row">
                 <div class="col-md-12">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="f.email.invalid && (f.email.dirty || f.email.touched)">
-                        <label for="page-forgot-password-email">Email</label>
-                        <input type="email" formControlName="email" placeholder="Enter your email here"
-                            class="form-control" id="page-forgot-password-email" />
-                    </div>
-                    <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
-                        <label *ngIf="f.email.errors.required" class="error">This field is required.</label>
-                        <label *ngIf="f.email.errors.email" class="error">Email is invalid.</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">GST No</label>
+                                <input type="text" formControlName="companyName"
+                                    placeholder="Enter your GST number here" class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Import Export Code
+                                    (IEC)</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your IEC code here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Year Of Establishment</label>
+                                <input type="date" formControlName="companyName"
+                                    placeholder="Enter your PAN number here" class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="text-right">
-                <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Main Category</label>
+                                <select class="form-control">
+                                    <option>Select main category</option>
+                                    <option>One</option>
+                                    <option>One</option>
+                                </select>
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default w-75 float-left"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Main Products</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your IEC code here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div class="w-25 float-right mt-2 p-2">
+                                <button class="btn btn-primary p-2">Add</button>
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-primary btn-cons m-t-10" type="submit">Reset Password</button>
+
+            <h4>Registered Address</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Country</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your country here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">State</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your state here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">City</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your city here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Company Address</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your country here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Business Registration Certificate</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your state here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Landline Number</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your city here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div pgFormGroupDefault class="form-group form-group-default"
+                                [class.has-error]="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label for="company-name">Mobile number</label>
+                                <input type="text" formControlName="companyName" placeholder="Enter your country here"
+                                    class="form-control" id="company-name" />
+                            </div>
+                            <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
+                                <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>
