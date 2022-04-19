@@ -8,14 +8,24 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class PageCategoryAddComponent implements OnInit {
   categoryForm: FormGroup;
-  tags:string[] = ["Smith", "Jane"];
+  keywords = ["Smith", "Jane"];
+  handlePreview;
+
   options = [
     { value: "jack", label: "Jacks" },
     { value: "lucy", label: "Lucy" },
     { value: "disabled", label: "Disabled", disabled: true },
   ];
+  fileList = [
+    {
+      uid: -1,
+      name: 'xxx.png',
+      status: 'done',
+      url: 'http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg'
+    }
+  ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.categoryForm.controls;
@@ -31,6 +41,7 @@ export class PageCategoryAddComponent implements OnInit {
       option: ["", [Validators.required]],
       title: ["", [Validators.required]],
       description: ["", [Validators.required]],
+      keywords: ["", [Validators.required]],
     });
   }
 

@@ -4,7 +4,7 @@
             <form [formGroup]="categoryForm">
                 <div class="form-group">
                     <h6 class="control-label">Name</h6>
-                    <p class="mb-0" style="font-size: 10px;">(The name is how it appears on your site.)</p>
+                    <p class="mb-0 para">(The name is how it appears on your site.)</p>
                     <div pgFormGroupDefault class="form-group"
                         [class.has-error]="f.name.invalid && (f.name.dirty || f.name.touched)">
                         <input type="text" class="form-control" formControlName="name">
@@ -16,15 +16,16 @@
 
                 <div class="form-group">
                     <h6 class="control-label">Map Under</h6>
-                    <pg-select pgFormGroupDefault style="width: 100%;" formControlName="option"  [class.has-error]="f.name.invalid && (f.name.dirty || f.name.touched)" [PlaceHolder]="'Map Under'" AllowClear
-                        ShowSearch>
+                    <pg-select pgFormGroupDefault formControlName="option" class="w-100"
+                        [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)"
+                        [PlaceHolder]="'Map Under'" AllowClear ShowSearch>
                         <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
                             [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>
                 </div>
-                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
-                    <label *ngIf="f.name.errors.required" class="error">Name field is required.</label>
+                <div *ngIf="f.option.invalid && (f.option.dirty || f.option.touched)">
+                    <label *ngIf="f.option.errors.required" class="error">Map field is required.</label>
                 </div>
 
                 <div class="form-group">
@@ -47,10 +48,32 @@
                 <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
                     <label *ngIf="f.description.errors.required" class="error">Description is required.</label>
                 </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Active</button>
-                    <button type="submit" class="btn btn-primary">InActive</button>
+                <div class="form-group  tag-group">
+                    <h6 class="control-label">Keywords</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="f.keywords.invalid && (f.keywords.dirty || f.keywords.touched)">
+
+                        <pg-tag-control formControlName="keywords"></pg-tag-control>
+                    </div>
                 </div>
+                <div *ngIf="f.keywords.invalid && (f.keywords.dirty || f.keywords.touched)">
+                    <label *ngIf="f.keywords.errors.required" class="error">Keywords is required.</label>
+                </div>
+                <div>
+                    <pg-upload ListType="picture-card" [(FileList)]="fileList" [ShowButton]="fileList.length < 3"
+                        [Preview]="handlePreview">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload>
+                </div>
+
+                <div class="form-check form-check-inline switch switch-lg complete">
+                    <input type="checkbox" id="switch-lg">
+                    <label for="switch-lg"></label>
+                </div>
+
                 <div class="mt-4">
                     <button type="submit" class="me-4 btn btn-primary" (click)="subCategoryForm()">Submit</button>
                 </div>
