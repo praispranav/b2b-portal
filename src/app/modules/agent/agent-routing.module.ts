@@ -4,11 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: './admin-dashboard/dashboard.module#DashboardModule'
-  },
-  {
-    path: 'category',
-    loadChildren: './category/category.module#CategoryModule'
+    loadChildren: './agent-dashboard/dashboard.module#DashboardModule'
   },
 ];
 
@@ -16,4 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AgentRoutingModule { }
