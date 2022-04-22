@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class FormCompanyProfileComponent implements OnInit {
   forgotPasswordForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.forgotPasswordForm.controls;
