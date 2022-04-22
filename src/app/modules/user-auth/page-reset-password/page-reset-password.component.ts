@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-page-reset-password',
@@ -6,15 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-reset-password.component.scss']
 })
 export class PageResetPasswordComponent implements OnInit {
-  txtfname;
-  txtlname;
-  txtusername;
-  txtpassword;
-  txtemail;
-  
-  constructor() { }
+  forgotPasswordForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) {}
+
+  get f() {
+    return this.forgotPasswordForm.controls;
   }
 
+  ngOnInit() {
+    this.buildForgotPasswordForm();
+  }
+
+  buildForgotPasswordForm() {
+    this.forgotPasswordForm = this.formBuilder.group({
+      mobile: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+    });
+  }
+
+  subForgotPasswordForm() {
+    const formData = this.forgotPasswordForm.value;
+    // API CALL
+    console.log(formData);
+  }
 }
