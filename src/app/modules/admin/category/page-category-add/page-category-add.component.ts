@@ -10,7 +10,6 @@ export class PageCategoryAddComponent implements OnInit {
   categoryForm: FormGroup;
   keywords = ["Smith", "Jane"];
   handlePreview;
-
   options = [
     { value: "jack", label: "Jacks" },
     { value: "lucy", label: "Lucy" },
@@ -19,13 +18,13 @@ export class PageCategoryAddComponent implements OnInit {
   fileList = [
     {
       uid: -1,
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg'
-    }
+      name: "xxx.png",
+      status: "done",
+      url: "http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg",
+    },
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   get f() {
     return this.categoryForm.controls;
