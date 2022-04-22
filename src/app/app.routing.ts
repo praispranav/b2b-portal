@@ -1,7 +1,9 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
 
 import {
   AdminLayoutComponent,
+  AgentLayoutComponent,
+  AssociateLayoutComponent,
   BlankLayoutComponent,
   BuyerLayoutComponent,
   SellerLayoutComponent,
@@ -9,32 +11,42 @@ import {
 
 export const AppRoutes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'user-auth'
+    path: "",
+    pathMatch: "full",
+    redirectTo: "user-auth",
   },
   {
-    path: 'admin',
+    path: "admin",
     component: AdminLayoutComponent,
-    loadChildren: './modules/admin/admin.module#AdminModule'
+    loadChildren: "./modules/admin/admin.module#AdminModule",
   },
   {
-    path: 'seller',
+    path: "agent",
+    component: AgentLayoutComponent,
+    loadChildren: "./modules/agent/agent.module#AgentModule",
+  },
+  {
+    path: "associate",
+    component: AssociateLayoutComponent,
+    loadChildren: "./modules/associate/associate.module#AssociateModule",
+  },
+  {
+    path: "seller",
     component: SellerLayoutComponent,
-    loadChildren: './modules/seller/seller.module#SellerModule'
+    loadChildren: "./modules/seller/seller.module#SellerModule",
   },
   {
-    path: 'user-auth',
+    path: "user-auth",
     component: BlankLayoutComponent,
-    loadChildren: './modules/user-auth/user-auth.module#UserAuthModule'
+    loadChildren: "./modules/user-auth/user-auth.module#UserAuthModule",
   },
   {
-    path: 'b2b',
+    path: "b2b",
     component: BlankLayoutComponent,
-    loadChildren: './modules/view/view.module#ViewModule'
+    loadChildren: "./modules/view/view.module#ViewModule",
   },
   {
-    path: '**',
-    redirectTo: 'view',
-  }
+    path: "**",
+    redirectTo: "view",
+  },
 ];
