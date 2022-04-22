@@ -7,27 +7,28 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./form-company-profile.component.scss"],
 })
 export class FormCompanyProfileComponent implements OnInit {
-  forgotPasswordForm: FormGroup;
+  companyProfileForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   get f() {
-    return this.forgotPasswordForm.controls;
+    return this.companyProfileForm.controls;
   }
 
   ngOnInit() {
-    this.buildForgotPasswordForm();
+    this.buildCompanyProfileForm();
   }
 
-  buildForgotPasswordForm() {
-    this.forgotPasswordForm = this.formBuilder.group({
-      mobile: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
+  buildCompanyProfileForm() {
+    this.companyProfileForm = this.formBuilder.group({
+      companyName: ['', [Validators.required]],
+      companyTanNo: ['', [Validators.required]],
+      companyPanNo: ['', [Validators.required]],
     });
   }
 
-  subForgotPasswordForm() {
-    const formData = this.forgotPasswordForm.value;
+  subCompanyProfileForm() {
+    const formData = this.companyProfileForm.value;
     // API CALL
     console.log(formData);
   }
