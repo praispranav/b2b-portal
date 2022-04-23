@@ -23,6 +23,8 @@ import { pagesToggleService } from "./@pages/services/toggler.service";
 import {
   RootLayout,
   AdminLayoutComponent,
+  AgentLayoutComponent,
+  AssociateLayoutComponent,
   BlankLayoutComponent,
   BuyerLayoutComponent,
   SellerLayoutComponent,
@@ -92,6 +94,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     HorizontalMenuComponent,
     RootLayout,
     AdminLayoutComponent,
+    AgentLayoutComponent,
+    AssociateLayoutComponent,
     BlankLayoutComponent,
     BuyerLayoutComponent,
     SellerLayoutComponent,

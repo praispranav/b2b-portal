@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'category',
-    loadChildren: './category/category.module#CategoryModule'
+    path: 'dashboard',
+    loadChildren: './admin-dashboard/dashboard.module#DashboardModule'
   },
   {
-    path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
+    path: 'category',
+    loadChildren: './category/category.module#CategoryModule'
   },
 ];
 
