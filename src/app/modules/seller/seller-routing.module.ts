@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'trade-services',
-    loadChildren: './seller-profile/profile.module#ProfileModule'
+    loadChildren: './trade-services/trade-services.module#TradeServicesModule'
   },
 ];
 
