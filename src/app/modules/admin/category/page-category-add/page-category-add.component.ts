@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class PageCategoryAddComponent implements OnInit {
   categoryForm: FormGroup;
-  keywords = ["Smith", "Jane"];
   handlePreview;
+  status: boolean = false;
   options = [
     { value: "jack", label: "Jacks" },
     { value: "lucy", label: "Lucy" },
@@ -24,7 +24,7 @@ export class PageCategoryAddComponent implements OnInit {
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.categoryForm.controls;
@@ -40,7 +40,9 @@ export class PageCategoryAddComponent implements OnInit {
       option: ["", [Validators.required]],
       title: ["", [Validators.required]],
       description: ["", [Validators.required]],
-      keywords: ["", [Validators.required]],
+      keywords: [["Smith", "Jane"], [Validators.required]],
+      image: [""],
+      status: [""]
     });
   }
 
@@ -48,5 +50,8 @@ export class PageCategoryAddComponent implements OnInit {
     const formData = this.categoryForm.value;
     // API CALL
     console.log(formData);
+  }
+  showStatus(changeEvent: any) {
+    this.status = changeEvent.target.checked;
   }
 }

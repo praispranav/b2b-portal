@@ -16,13 +16,18 @@
 
                 <div class="form-group">
                     <h6 class="control-label">Map Under</h6>
-                    <pg-select pgFormGroupDefault formControlName="option" class="w-100"
-                        [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)"
-                        [PlaceHolder]="'Map Under'" AllowClear ShowSearch>
-                        <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
-                            [Disabled]="option.disabled">
-                        </pg-option>
-                    </pg-select>
+                    <p class="mb-0 para">(Categories,unlike tags,can have a hierarchy.You might have a jazz category,and
+                        under that have children categories for Bebop and Big Band.Totally optional.)</p>
+
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
+                        <pg-select formControlName="option" class="w-100" [PlaceHolder]="'Map Under'" AllowClear
+                            ShowSearch>
+                            <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
+                                [Disabled]="option.disabled">
+                            </pg-option>
+                        </pg-select>
+                    </div>
                 </div>
                 <div *ngIf="f.option.invalid && (f.option.dirty || f.option.touched)">
                     <label *ngIf="f.option.errors.required" class="error">Map field is required.</label>
@@ -48,7 +53,7 @@
                 <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
                     <label *ngIf="f.description.errors.required" class="error">Description is required.</label>
                 </div>
-                <div class="form-group  tag-group">
+                <div class="form-group tag-group">
                     <h6 class="control-label">Keywords</h6>
                     <div pgFormGroupDefault class="form-group"
                         [class.has-error]="f.keywords.invalid && (f.keywords.dirty || f.keywords.touched)">
@@ -58,19 +63,25 @@
                 <div *ngIf="f.keywords.invalid && (f.keywords.dirty || f.keywords.touched)">
                     <label *ngIf="f.keywords.errors.required" class="error">Keywords is required.</label>
                 </div>
-                <div>
+                <h6 class="control-label">Upload Image</h6>
+                <div pgFormGroupDefault class="form-group"
+                    [class.has-error]="f.image.invalid && (f.image.dirty || f.image.touched)">
                     <pg-upload ListType="picture-card" [(FileList)]="fileList" [ShowButton]="fileList.length < 3"
                         [Preview]="handlePreview">
+
                         <div class="pic-placeholder">
                             <i class="pg-icon p-b-5">upload</i>
                             <div class="fs-12">Upload</div>
                         </div>
                     </pg-upload>
                 </div>
+                <h6 class="control-label">Status</h6>
 
                 <div class="form-check form-check-inline switch switch-lg complete">
-                    <input type="checkbox" id="switch-lg">
-                    <label for="switch-lg"></label>
+                    <input type="checkbox" id="switch-lg" (change)="showStatus($event)" [checked]="status"
+                        formControlName="status">
+                    <label for="switch-lg" *ngIf="!status">InActive</label>
+                    <label for="switch-lg" *ngIf="status">Active</label>
                 </div>
 
                 <div class="mt-4">
