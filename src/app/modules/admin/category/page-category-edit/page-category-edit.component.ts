@@ -9,9 +9,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 export class PageCategoryEditComponent implements OnInit {
   categoryForm: FormGroup;
-  keywords = ["Smith", "Jane"];
   handlePreview;
-
+  status: boolean = false;
   options = [
     { value: "jack", label: "Jacks" },
     { value: "lucy", label: "Lucy" },
@@ -20,10 +19,10 @@ export class PageCategoryEditComponent implements OnInit {
   fileList = [
     {
       uid: -1,
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg'
-    }
+      name: "xxx.png",
+      status: "done",
+      url: "http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg",
+    },
   ];
 
   constructor(private formBuilder: FormBuilder) { }
@@ -42,7 +41,9 @@ export class PageCategoryEditComponent implements OnInit {
       option: ["", [Validators.required]],
       title: ["", [Validators.required]],
       description: ["", [Validators.required]],
-      keywords: ["", [Validators.required]],
+      keywords: [["Smith", "Jane"], [Validators.required]],
+      image: [""],
+      status: [""]
     });
   }
 
@@ -51,4 +52,8 @@ export class PageCategoryEditComponent implements OnInit {
     // API CALL
     console.log(formData);
   }
+  showStatus(changeEvent: any) {
+    this.status = changeEvent.target.checked;
+  }
 }
+
