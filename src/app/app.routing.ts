@@ -13,7 +13,7 @@ export const AppRoutes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "user-auth",
+    redirectTo: "seller",
   },
   {
     path: "admin",
@@ -29,6 +29,11 @@ export const AppRoutes: Routes = [
     path: "associate",
     component: AssociateLayoutComponent,
     loadChildren: "./modules/associate/associate.module#AssociateModule",
+  },
+  {
+    path: "buyer",
+    component: BuyerLayoutComponent,
+    loadChildren: "./modules/seller/seller.module#SellerModule",
   },
   {
     path: "seller",

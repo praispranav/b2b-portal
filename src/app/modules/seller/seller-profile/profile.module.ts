@@ -26,4 +26,4 @@ import { FormQualityControlComponent } from './components/form-quality-control/f
     ProfileRoutingModule,
   ],
 })
-export class ProfileModule {}
+export class ProfileModule { }

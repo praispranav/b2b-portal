@@ -7,28 +7,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./page-category-add.component.scss'],
 })
 export class PageCategoryAddComponent implements OnInit {
-  forgotPasswordForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {}
-
-  get f() {
-    return this.forgotPasswordForm.controls;
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.buildForgotPasswordForm();
-  }
-
-  buildForgotPasswordForm() {
-    this.forgotPasswordForm = this.formBuilder.group({
-      mobile: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
-    });
-  }
-
-  subForgotPasswordForm() {
-    const formData = this.forgotPasswordForm.value;
-    // API CALL
-    console.log(formData);
   }
 }
