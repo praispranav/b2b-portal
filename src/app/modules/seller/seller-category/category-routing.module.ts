@@ -6,7 +6,7 @@ import { PageCategoryEditComponent } from './page-category-edit/page-category-ed
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'category-list',
+    redirectTo: 'category-add',
     pathMatch: 'full',
   },
   {
