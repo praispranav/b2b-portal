@@ -9,6 +9,7 @@ import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.com
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
 import { FormQualityControlComponent } from './components/form-quality-control/form-quality-control.component';
+import { RAndDFormComponent } from './components/r-and-d-form/r-and-d-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormQualityControlComponent } from './components/form-quality-control/f
     PageProfileEditComponent,
     PageProfileViewComponent,
     FormQualityControlComponent,
+    RAndDFormComponent,
   ],
   imports: [
     CommonModule,
