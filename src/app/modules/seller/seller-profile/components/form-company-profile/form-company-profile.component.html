@@ -37,9 +37,6 @@
                     <label *ngIf="f.companyPanNo.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-
-
-
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default"
                     [class.has-error]="f.gstNo.invalid && (f.gstNo.dirty || f.gstNo.touched)">
@@ -202,6 +199,7 @@
                     <label *ngIf="f.mobileNum.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
+            <div class="col-md-6"></div>
         </div>
         <h4>Additional Contact Details</h4>
         <div class="row">
