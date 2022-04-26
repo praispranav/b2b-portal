@@ -10,6 +10,8 @@ import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
 import { FormQualityControlComponent } from './components/form-quality-control/form-quality-control.component';
 import { RAndDFormComponent } from './components/r-and-d-form/r-and-d-form.component';
+import { CertificateCenterComponent } from './components/certificate-center/certificate-center.component';
+import { FormCompnyDetailComponent } from './components/form-compny-detail/form-compny-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { RAndDFormComponent } from './components/r-and-d-form/r-and-d-form.compo
     PageProfileViewComponent,
     FormQualityControlComponent,
     RAndDFormComponent,
+    CertificateCenterComponent,
+    FormCompnyDetailComponent,
   ],
   imports: [
     CommonModule,
