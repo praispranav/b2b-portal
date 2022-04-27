@@ -9,9 +9,10 @@ import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.com
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
 import { FormQualityControlComponent } from './components/form-quality-control/form-quality-control.component';
-import { RAndDFormComponent } from './components/r-and-d-form/r-and-d-form.component';
+import { FormRAndDComponent } from './components/form-r-and-d/form-r-and-d.component';
 import { CertificateCenterComponent } from './components/certificate-center/certificate-center.component';
 import { FormCompnyDetailComponent } from './components/form-compny-detail/form-compny-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +22,9 @@ import { FormCompnyDetailComponent } from './components/form-compny-detail/form-
     PageProfileEditComponent,
     PageProfileViewComponent,
     FormQualityControlComponent,
-    RAndDFormComponent,
     CertificateCenterComponent,
     FormCompnyDetailComponent,
+    FormRAndDComponent,
   ],
   imports: [
     CommonModule,
