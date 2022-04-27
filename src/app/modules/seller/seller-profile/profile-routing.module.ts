@@ -7,7 +7,7 @@ import { PageProfileViewComponent } from './page-profile-view/page-profile-view.
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'profile-view',
+    redirectTo: 'profile-add',
     pathMatch: 'full',
   },
   {
