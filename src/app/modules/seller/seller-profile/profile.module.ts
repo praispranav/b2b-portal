@@ -11,6 +11,7 @@ import { FormRAndDComponent } from './components/form-r-and-d/form-r-and-d.compo
 import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.component";
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
+import { FormExportCapabilityComponent } from './components/form-export-capability/form-export-capability.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.
     PageProfileAddComponent,
     PageProfileEditComponent,
     PageProfileViewComponent,
+    FormExportCapabilityComponent,
 
   ],
   imports: [
