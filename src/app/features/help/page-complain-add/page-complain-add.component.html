@@ -1,138 +1,36 @@
-
-<!--<div class="container">
-    <h2>Register your suggestions.</h2>
-    <p>This form is intended for use by intellectual property rights owners and their agents to notify 							
-    </p>
-    <div class="image">
-
-    </div>
-        <form>
-            <div>
-                <p><sup>*</sup>Please tell the type of complaint you want to report  </p>					
-              
-                <div class="row">
-                    <div class="col-6">
-                        <div><input type="checkbox">Activation/Deactivation of account</div>
-                        <div><input type="checkbox">Complaint against Buyer</div>
-                        <div><input type="checkbox">Complaint against Seller</div>
-                    </div>
-                    <div class="col-6">
-                        <div><input type="checkbox">Profile related</div><br>
-                        <div><input type="checkbox">other issues</div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <sup>*</sup>Complaint Subject<input type="text area">
-            </div>
-
-            <div class="card-body">
-                <h5>
-                  Traditional Standard Style
-                </h5>
-                <form role="form">
-                  <div class="form-group">
-                    <label>Your name</label>
-                    <input type="email" class="form-control" required>
-                    <span class="help">e.g. "Mona Lisa Portrait"</span>
-                  </div>
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" required>
-                    <span class="help">e.g. "Mona Lisa Portrait"</span>
-                  </div>
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" placeholder="ex: some@example.com" required>
-                    <span class="help">e.g. "some@example.com"</span>
-                  </div>
-                  <div class="form-group">
-                    <label>Placeholder</label>
-                    <input type="email" class="form-control" placeholder="ex: some@example.com" required>
-                    <span class="help">e.g. "some@example.com"</span>
-                  </div>
-                  <div class="form-group">
-                    <label>Disabled</label>
-                    <input type="email" class="form-control" value="You can put anything here" disabled>
-                    <span class="help">e.g. "some@example.com"</span>
-                  </div>
-                </form>
-              </div>
-        </form>
-</div>-->
-<div class="card-body">
-    <h2>
-        Register your suggestions.				
-    </h2>
-    <p class="paratxt">This form is intended for use by intellectual property rights owners and their agents to notify 							
-    </p>
-    <form role="form">
-        <div class="form-group">
-            <p><sup>*</sup>Please tell the type of complaint you want to report</p>
-                <div class="container-box">
-                  <div class="col-box1">
-                    <div class="form-check primary">
-                      <input type="checkbox" id="checkColorOpt2" checked>
-                      <label for="checkColorOpt2">
-                        Activation/Deactivation of account
-                      </label>
-                    </div>
-                    <div class="form-check primary">
-                      <input type="checkbox" id="checkColorOpt2" checked>
-                      <label for="checkColorOpt2">
-                        Complaint against Buyer
-                      </label>
-                    </div>
-                    <div class="form-check primary">
-                      <input type="checkbox" id="checkColorOpt2" checked>
-                      <label for="checkColorOpt2">
-                         Complaint against Seller
-                      </label>
-                    </div>
-                  </div>
-                  
-                  <div class="col-box2">
-                    <div class="form-check complete">
-                      <input type="checkbox" id="checkColorOpt1">
-                      <label for="checkColorOpt1">
-                        Profile related
-                      </label>
-                    </div>
-                    <div class="form-check complete">
-                      <input type="checkbox" id="checkColorOpt1">
-                      <label for="checkColorOpt1">
-                        other issues
-                      </label>
-                    </div>
-                  </div>
-                </div>               
-        </div>
-          
-
-        <div class="form-group">
-          <div class="flx-box">
-              <label><sup>*</sup>Complaint&nbsp;subject</label>
-              <input type="email" class="form-control" required>
+<div class="p-3">
+  <div class="container-fluid p-3 bg-white">
+    <h3>Complain Form</h3>
+    <form role="form" [formGroup]="complainForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" formControlName="subject" class="form-control"
+              [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
+              placeholder="Enter Subject here">
+            <span class="help">e.g. "Mona Lisa Portrait"</span>
           </div>
-          <span class="help">e.g. "Mona Lisa Portrait"</span>
-        </div>
-
-        <div class="form-group row">
-            <label for="name" class="col-md-3 control-label"><sup>*</sup>Description</label>
-            <div class="col-md-9">
-              <textarea class="form-control" id="name" placeholder="Briefly Describe your Abilities"></textarea>
-            </div>
-        </div>
-
-        <div class="card card-transparent">
-            <div class="card-header ">
-              <div class="card-title">Pages condensed Table
-              </div>
-            </div>
-            
+          <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
+            <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
+            <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
           </div>
-
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" id="description" formControlName="description" class="form-control"
+              [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
+              placeholder="Enter Description here" rows="10"></textarea>
+            <span class="help">e.g. "Mona Lisa Portrait"</span>
+          </div>
+          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+            <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
     </form>
+  </div>
 </div>
