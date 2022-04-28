@@ -22,7 +22,7 @@ export class PageResetPasswordComponent implements OnInit {
   buildresetPasswordForm() {
     this.resetPasswordForm = this.formBuilder.group({
       newPassword: ["", [Validators.required]],
-      confirmPassword: ["", [Validators.required, ]],
+      confirmPassword: ["", [Validators.required]],
     });
   }
 
