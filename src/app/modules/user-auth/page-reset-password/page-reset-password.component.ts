@@ -7,27 +7,27 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ['./page-reset-password.component.scss']
 })
 export class PageResetPasswordComponent implements OnInit {
-  forgotPasswordForm: FormGroup;
+  resetPasswordForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   get f() {
-    return this.forgotPasswordForm.controls;
+    return this.resetPasswordForm.controls;
   }
 
   ngOnInit() {
-    this.buildForgotPasswordForm();
+    this.buildresetPasswordForm();
   }
 
-  buildForgotPasswordForm() {
-    this.forgotPasswordForm = this.formBuilder.group({
-      mobile: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]],
+  buildresetPasswordForm() {
+    this.resetPasswordForm = this.formBuilder.group({
+      newPassword: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required, ]],
     });
   }
 
-  subForgotPasswordForm() {
-    const formData = this.forgotPasswordForm.value;
+  subresetPasswordForm() {
+    const formData = this.resetPasswordForm.value;
     // API CALL
     console.log(formData);
   }
