@@ -13,7 +13,8 @@
 .margin{
     margin-top: 142px;
     margin-bottom: 167px;
-}
+    font-size: 3.125rem;
+    line-height: 4.0625rem;}
 .image{
     height: 450px;
     width: 700px;
@@ -46,12 +47,27 @@ color: #202124;
     color: #202124;
 
 }
+.subhead{
+    margin-right: -16px;
+   
+    color: #fff;
+
+}
+.subhead h3{
+    font-size: 48px;
+    position: relative;
+    top: 165px;
+    margin-left: 48px;
+}
+.sub-div-image{
+    height: 650px;
+}
 .sub-image{
     margin-top: 89px;
     width: 60px;
 }
 .sub-div{
-    margin-top: 22px;
+    margin-top: 32px;
 }
 .sub-text1{
     color:#5f6368;
@@ -59,4 +75,7 @@ color: #202124;
     font-weight: 400;
     letter-spacing: -.25px;
     // line-height: 44px;
+}
+.btn-margin{
+    margin-bottom: 54px;
 }

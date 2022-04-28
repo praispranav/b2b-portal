@@ -7,6 +7,7 @@ import { PageSupplierBackgroundSearchComponent } from "./page-supplier-backgroun
 import { PageSupplierReportComponent } from "./page-supplier-report/page-supplier-report.component";
 import { pgCardModule } from '../../../@pages/components/card/card.module';
 
+
 @NgModule({
   declarations: [
     PageInspectionServiceComponent,
