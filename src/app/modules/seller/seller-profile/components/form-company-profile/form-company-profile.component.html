@@ -92,20 +92,22 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
                     [class.has-error]="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Main Product"
-                            aria-label="Recipient's username" aria-describedby="basic-addon2"
-                            formControlName="mainProduct">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">Add</button>
-                        </div>
+                    <div class="form-input-group">
+                        <label for="mainProduct-number">Main Product</label>
+                        <input type="text" formControlName="mainProduct" placeholder="Enter Main Product"
+                            class="form-control" id="mainProduct-number">
                     </div>
-                    <div *ngIf="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
-                        <label *ngIf="f.mainProduct.errors.required" class="error">This field is required.</label>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
+                <div *ngIf="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
+                    <label *ngIf="f.mainProduct.errors.required" class="error">This field is required.</label>
+                </div>
+
             </div>
         </div>
         <h4>Registered Address</h4>
@@ -160,12 +162,17 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Business Registration Certificate"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="registration">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.registration.invalid && (f.registration.dirty || f.registration.touched)">
+                    <div class="form-input-group">
+                        <label for="registration-number">Business Registration Certificate</label>
+                        <input type="text" formControlName="registration"
+                            placeholder="Enter Business Registration Certificate" class="form-control"
+                            id="registration-number">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.registration.invalid && (f.registration.dirty || f.registration.touched)">
@@ -173,12 +180,16 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Landline Number"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="landlineNumber">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.landlineNumber.invalid && (f.landlineNumber.dirty || f.landlineNumber.touched)">
+                    <div class="form-input-group">
+                        <label for="land-number">Landline Number </label>
+                        <input type="text" formControlName="landlineNumber" placeholder="Enter Landline Number "
+                            class="form-control" id="land-number">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.landlineNumber.invalid && (f.landlineNumber.dirty || f.landlineNumber.touched)">
@@ -186,13 +197,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-6">
-                <div class="input-group mt-2">
-                    <input type="text" class="form-control" placeholder="Mobile Number"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="mobileNum">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.mobileNum.invalid && (f.mobileNum.dirty || f.mobileNum.touched)">
+                    <div class="form-input-group">
+                        <label for="mob-number">Mobile Number </label>
+                        <input type="text" formControlName="mobileNum" placeholder="Enter Mobile Number"
+                            class="form-control" id="mob-number">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.mobileNum.invalid && (f.mobileNum.dirty || f.mobileNum.touched)">
