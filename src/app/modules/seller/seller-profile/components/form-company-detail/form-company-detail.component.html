@@ -14,13 +14,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="input-group mt-2">
-                    <input type="file" class="form-control" placeholder="Company Pictures"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="companyPicture">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
-                    </div>
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.companyPicture.invalid && (f.companyPicture.dirty || f.companyPicture.touched)">
+                    <label for="company-pic">Company Picture</label>
+                    <input type="file" formControlName="companyPicture" placeholder="" class="form-control"
+                        id="company-pic" />
                 </div>
                 <div *ngIf="f.companyPicture.invalid && (f.companyPicture.dirty || f.companyPicture.touched)">
                     <label *ngIf="f.companyPicture.errors.required" class="error">This field is required.</label>
@@ -32,12 +30,16 @@
         <div class="row">
 
             <div class="col-md-6">
-                <div class="input-group mt-2">
-                    <input type="text" class="form-control" placeholder="Company Video"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="companyVideo">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.companyVideo.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
+                    <div class="form-input-group">
+                        <label for="comp-video">Company Video </label>
+                        <input type="text" formControlName="companyVideo" placeholder="Company Video"
+                            class="form-control" id="comp-video">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.companyVideo.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
@@ -273,27 +275,39 @@
 
         <div class="row mt-2">
             <div class="col-md-6">
-                <div class="input-group mt-2">
-                    <input type="text" class="form-control" placeholder="Language Spoken"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="languageSpoken">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.languageSpoken.invalid && (f.languageSpoken.dirty || f.languageSpoken.touched)">
+                    <div class="form-input-group">
+                        <label for="language-spoken">Language Spoken</label>
+                        <input type="text" formControlName="languageSpoken" placeholder="Language Spoken"
+                            class="form-control" id="language-spoken">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.languageSpoken.invalid && (f.languageSpoken.dirty || f.languageSpoken.touched)">
                     <label *ngIf="f.languageSpoken.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.companyPhilosophy.invalid && (f.companyPhilosophy.dirty || f.companyPhilosophy.touched)">
-                    <label for="companyPhilosophy-name">Company Philosophy</label>
-                    <textarea type="text" formControlName="companyPhilosophy" placeholder="Company Philosophy"
-                        class="form-control" id="companyPhilosophy-name"></textarea>
+                    [class.has-error]="f.strenth.invalid && (f.strenth.dirty || f.strenth.touched)">
+                    <label for="main-strenth">Employee Strenth</label>
+                    <select class="form-control" formControlName="strenth" id="main-strenth"
+                        placeholder="Select Employee Strength">
+                        <option selected>Select Employee Strength</option>
+                        <option>10</option>
+                        <option>10-20</option>
+                        <option>20-30</option>
+
+
+                    </select>
                 </div>
-                <div *ngIf="f.companyPhilosophy.invalid && (f.companyPhilosophy.dirty || f.companyPhilosophy.touched)">
-                    <label *ngIf="f.companyPhilosophy.errors.required" class="error">This field is required.</label>
+                <div *ngIf="f.strenth.invalid && (f.strenth.dirty || f.strenth.touched)">
+                    <label *ngIf="f.strenth.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
         </div>
@@ -303,8 +317,8 @@
                 <div pgFormGroupDefault class="form-group form-group-default"
                     [class.has-error]="f.companyVision.invalid && (f.companyVision.dirty || f.companyVision.touched)">
                     <label for="company-vision">Company Mission and Vision</label>
-                    <textarea type="text" formControlName="companyVision" placeholder="Company Mission and Vision"
-                        class="form-control" id="company-vision"></textarea>
+                    <textarea rows="4" cols="100" type="text" formControlName="companyVision"
+                        placeholder="Company Mission and Vision" class="form-control" id="company-vision"></textarea>
                 </div>
                 <div *ngIf="f.companyVision.invalid && (f.companyVision.dirty || f.companyVision.touched)">
                     <label *ngIf="f.companyVision.errors.required" class="error">This field is required.</label>
@@ -325,22 +339,16 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.strenth.invalid && (f.strenth.dirty || f.strenth.touched)">
-                    <label for="main-strenth">Employee Strenth</label>
-                    <select class="form-control" formControlName="strenth" id="main-strenth"
-                        placeholder="Select Employee Strength">
-                        <option selected>Select Employee Strength</option>
-                        <option>10</option>
-                        <option>10-20</option>
-                        <option>20-30</option>
-
-
-                    </select>
+                    [class.has-error]="f.companyPhilosophy.invalid && (f.companyPhilosophy.dirty || f.companyPhilosophy.touched)">
+                    <label for="companyPhilosophy-name">Company Philosophy</label>
+                    <textarea type="text" formControlName="companyPhilosophy" placeholder="Company Philosophy"
+                        class="form-control" id="companyPhilosophy-name"></textarea>
                 </div>
-                <div *ngIf="f.strenth.invalid && (f.strenth.dirty || f.strenth.touched)">
-                    <label *ngIf="f.strenth.errors.required" class="error">This field is required.</label>
+                <div *ngIf="f.companyPhilosophy.invalid && (f.companyPhilosophy.dirty || f.companyPhilosophy.touched)">
+                    <label *ngIf="f.companyPhilosophy.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
+
         </div>
         <h6>Have you attended or Planed to attand any trade expo?</h6>
         <div class="form-check">
@@ -363,7 +371,7 @@
                     <label for="main-tradeShow">Trade Show Name</label>
                     <select class="form-control" formControlName="tradeShow" id="main-tradeShow"
                         placeholder="Select Employee Strength">
-                        <option selected>Select Employee Strength</option>
+                        <option selected>Select Trade Show Name</option>
                         <option>one</option>
                         <option>Two</option>
                         <option>Three</option>
@@ -438,12 +446,16 @@
         </div>
         <div class="row mt-2">
             <div class="col-md-6">
-                <div class="input-group mt-2">
-                    <input type="file" class="form-control" placeholder="Upload Picture"
-                        aria-label="Recipient's username" aria-describedby="basic-addon2"
-                        formControlName="uploadPicture">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Add</button>
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.uploadPicture.invalid && (f.uploadPicture.dirty || f.uploadPicture.touched)">
+                    <div class="form-input-group">
+                        <label for="upload-picture">Upload Picture</label>
+                        <input type="file" formControlName="uploadPicture" placeholder="Upload Picture"
+                            class="form-control" id="upload-picture">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text"><button>Add</button>
+                        </span>
                     </div>
                 </div>
                 <div *ngIf="f.uploadPicture.invalid && (f.uploadPicture.dirty || f.uploadPicture.touched)">

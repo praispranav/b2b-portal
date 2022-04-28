@@ -5,8 +5,12 @@
         <div class="row">
             <ng-container *ngFor="let certificate of certificateList; let i=index">
                 <div class="col-md-4">
-                    <input type="checkbox" [value]="certificate.value" />
-                    <label>{{certificate.name}}</label>
+                    <div class="form-check complete">
+                        <input type="checkbox" id="checkColorOpt1" [value]="certificate.value">
+                        <label for="checkColorOpt1">
+                            {{certificate.name}}
+                        </label>
+                    </div>
                 </div>
             </ng-container>
         </div>
