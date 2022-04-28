@@ -1,0 +1,76 @@
+<div class="container-fluid p-3 bg-white">
+    <h3>Quality Control</h3>
+    <form class="p-t-15" role="form" [formGroup]="randdForm">
+        <h6>Whether to demostrate Quality Control Process</h6>
+        <div class="form-check">
+            <input class="form-check-input" formControlName="selectYes" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Yes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked
+                formControlName="selectNo">
+            <label class="form-check-label" for="flexCheckChecked">
+                No
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
+                    <label for="certificate-name">Certificate Name</label>
+                    <input type="text" formControlName="certificateName" placeholder="Enter Certificate name here"
+                        class="form-control" id="certificate-name" />
+                </div>
+                <div *ngIf="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
+                    <label *ngIf="f.certificateName.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
+                    <label for="certified-by">Certified By</label>
+                    <input type="text" formControlName="certifiedBy" placeholder="Certified By" class="form-control"
+                        id="certified-by" />
+                </div>
+                <div *ngIf="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
+                    <label *ngIf="f.certifiedBy.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
+                    <label for="Business-Scope">Business Scope</label>
+                    <input type="text" formControlName="businessScope" placeholder="Business Scope here"
+                        class="form-control" id="Business-Scope">
+
+                </div>
+                <div *ngIf="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
+                    <label *ngIf="f.businessScope.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
+                    <label for="Date-Velidity">Date Velidity</label>
+                    <input type="date" formControlName="businessDate" placeholder="Business Scope here"
+                        class="form-control" id="Date-Velidity">
+
+                </div>
+                <div *ngIf="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
+                    <label *ngIf="f.businessDate.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </form>
+</div>

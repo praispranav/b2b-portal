@@ -1,0 +1,65 @@
+<div class="container-fluid p-3 bg-white">
+    <h3>Quality Control</h3>
+    <form class="p-t-15" role="form" [formGroup]="qualityControlForm">
+        <h6>Whether to demostrate Quality Control Process</h6>
+        <div class="form-check">
+            <input class="form-check-input" formControlName="selectYes" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Yes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked
+                formControlName="selectNo">
+            <label class="form-check-label" for="flexCheckChecked">
+                No
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
+                    <label for="process-name">Process Name</label>
+                    <input type="text" formControlName="processName" placeholder="Enter process name here"
+                        class="form-control" id="process-name" />
+                </div>
+                <div *ngIf="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
+                    <label *ngIf="f.processName.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
+                    <label for="process-picture">Process Picture</label>
+                    <input type="file" formControlName="processpicture" placeholder="Process Picture here"
+                        class="form-control" id="process-picture" />
+                </div>
+                <div *ngIf="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
+                    <label *ngIf="f.processpicture.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                    <label for="process-description">Description</label>
+                    <textarea type="file" formControlName="description" placeholder="Process Description here"
+                        class="form-control" id="process-description">
+                        </textarea>
+                </div>
+                <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                    <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+    </form>
+</div>
