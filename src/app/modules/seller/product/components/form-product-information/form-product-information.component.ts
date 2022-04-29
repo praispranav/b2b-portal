@@ -10,7 +10,7 @@ export class FormProductInformationComponent implements OnInit {
   productInformationForm: FormGroup;
   searchOptions = [
     { value: 'jack', label: 'Jack', disabled: false },
-    { value: 'lucy', label: 'Lucy', disabled: true },
+    { value: 'lucy', label: 'Lucy', disabled: false },
     { value: 'tom', label: 'Tom', disabled: false}
   ];
 
@@ -27,6 +27,14 @@ export class FormProductInformationComponent implements OnInit {
   buildProductInformationForm() {
     this.productInformationForm = this.formBuilder.group({
       productName: ['', [Validators.required]],
+      brandName: ['', [Validators.required]],
+      productkeywords: ['', [Validators.required]],
+      sellerOwnCategorySelect: ['', [Validators.required]],
+      sellerOwnCategoryCreate: ['', [Validators.required]],
+      placeOfOrigin: ['', [Validators.required]],
+      modelNo: ['', [Validators.required]],
+      otherDetails: ['', [Validators.required]],
+
       productXyz: ['', [Validators.required]],
       productAbc: ['', [Validators.required]],
       productCategory: ['', [Validators.required]],

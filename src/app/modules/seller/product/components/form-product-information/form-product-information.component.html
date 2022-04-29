@@ -15,45 +15,155 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.productXyz.invalid && (f.productXyz.dirty || f.productXyz.touched)">
-                    <label for="product-xyz">Product Xyz</label>
-                    <input type="text" formControlName="productXyz" placeholder="Enter Product Xyz" class="form-control"
-                        id="product-xyz" />
-                </div>
-                <div *ngIf="f.productXyz.invalid && (f.productXyz.dirty || f.productXyz.touched)">
-                    <label *ngIf="f.productXyz.errors.required" class="error">This field is required.</label>
+            <div class="col-md-3">
+                <label for="product-type">Type of Product</label>
+            </div>
+            <div class="col-md-2">
+                <div class="form-check ">
+                    <input type="checkbox" id="regular-product">
+                    <label for="regular-product">
+                        Regular Product </label>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.productAbc.invalid && (f.productAbc.dirty || f.productAbc.touched)">
-                    <label for="product-abc">Product Abc</label>
-                    <input type="text" formControlName="productAbc" placeholder="Enter Product Abc" class="form-control"
-                        id="product-abc" />
-                </div>
-                <div *ngIf="f.productAbc.invalid && (f.productAbc.dirty || f.productAbc.touched)">
-                    <label *ngIf="f.productAbc.errors.required" class="error">This field is required.</label>
+            <div class="col-md-2">
+                <div class="form-check ">
+                    <input type="checkbox" id="overstock">
+                    <label for="overstock">
+                        Overstock </label>
                 </div>
             </div>
-        </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="product-brand">Is product is under any brand?</label>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-radio">
+                        <input type="radio" name="product-brand" id="product-brand-yes">
+                        <label class="ml-1" for="product-brand-yes">
+                            Yes </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-radio">
+                        <input type="radio" name="product-brand" id="product-brand-no">
+                        <label class="ml-1" for="product-brand-no">
+                            No </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-11">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.brandName.invalid && (f.brandName.dirty || f.brandName.touched)">
+                    <label for="product-name">Brand Name</label>
+                    <input type="text" formControlName="brandName" placeholder="Enter Brand Name" class="form-control"
+                        id="brand-name" />
+                </div>
+                <div *ngIf="f.brandName.invalid && (f.brandName.dirty || f.brandName.touched)">
+                    <label *ngIf="f.brandName.errors.required" class="error">This field is required.</label>
+                </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary mt-2">Approval</button>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-11">
+                        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productkeywords.invalid && (f.productkeywords.dirty ||
+                            f.productkeywords.touched)">
+                            <label for="product-keywords">Prduct Keywords</label>
+                            <input type="text" formControlName="productkeywords" placeholder="Enter Prduct keywords"
+                                class="form-control" id="product-keywords" />
+                        </div>
+                        <div
+                            *ngIf="f.productkeywords.invalid && (f.productkeywords.dirty || f.productkeywords.touched)">
+                            <label *ngIf="f.productkeywords.errors.required" class="error">This field is
+                                required.</label>
+                        </div>
+                    </div>
+    <div class="col-md-1">
+        <button class="btn btn-primary mt-2">Add+</button>
+            </div>
+             </div>
+
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
-                    <label for="product-category">Project</label>
+                    <label for="seller-own-category">Seller Own Category</label>
                     <pg-select style="width: 100%;" id="product-category" [Mode]="'multiple'" [PlaceHolder]="'Select'"
-                        formControlName="productCategory" [NotFoundContent]="'Not found'">
+                        formControlName="sellerOwnCategorySelect" [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value"
                             [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>
                 </div>
-                <div *ngIf="f.productCategory.invalid && (f.productCategory.dirty || f.productCategory.touched)">
-                    <label *ngIf="f.productCategory.errors.required" class="error">This field is required.</label>
+                <div *ngIf="f.sellerOwnCategorySelect.invalid && (f.sellerOwnCategorySelect.dirty ||
+                    f.sellerOwnCategorySelect.touched)">
+                    <label *ngIf="f.sellerOwnCategorySelect.errors.required" class="error">This field is
+                        required.</label>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.sellerOwnCategoryCreate.invalid && (f.sellerOwnCategoryCreate.dirty ||
+                            f.sellerOwnCategoryCreate.touched)">
+                        <label for="seller-own-category-create">Or Creates</label>
+                        <input type="text" formControlName="sellerOwnCategoryCreate" placeholder="Enter Prduct keywords"
+                            class="form-control" id="seller-own-category-create" />
+                    </div>
+                    <div *ngIf="f.sellerOwnCategoryCreate.invalid && (f.sellerOwnCategoryCreate.dirty ||
+                    f.sellerOwnCategoryCreate.touched)">
+                        <label *ngIf="f.sellerOwnCategoryCreate.errors.required" class="error">This field is
+                            required.</label>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.placeOfOrigin.invalid && (f.placeOfOrigin.dirty ||
+                         f.placeOfOrigin.touched)">
+                            <label for="place-of-origin">Place of Origin</label>
+                            <input type="text" formControlName="placeOfOrigin" placeholder="Enter Place of origin"
+                                class="form-control" id="place-of-origin" />
+                        </div>
+                        <div *ngIf="f.placeOfOrigin.invalid && (f.placeOfOrigin.dirty || f.placeOfOrigin.touched)">
+                            <label *ngIf="f.placeOfOrigin.errors.required" class="error">This field is
+                                required.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default"
+                            [class.has-error]="f.modelNo.invalid && (f.modelNo.dirty || f.modelNo.touched)">
+                            <label for="model-no">Model No.</label>
+                            <input type="text" formControlName="modelNo" placeholder="Enter Model No."
+                                class="form-control" id="model-no" />
+                        </div>
+                        <div *ngIf="f.modelNo.invalid && (f.modelNo.dirty || f.modelNo.touched)">
+                            <label *ngIf="f.modelNo.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-10">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.otherDetails.invalid && (f.otherDetails.dirty || f.otherDetails.touched)">
+                    <label for="other-details">Other Details</label>
+                    <input type="text" formControlName="otherDetails" placeholder="Enter Details" class="form-control"
+                        id="other-details" />
+                </div>
+                <div *ngIf="f.otherDetails.invalid && (f.otherDetails.dirty || f.otherDetails.touched)">
+                    <label *ngIf="f.otherDetails.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary m-2 "> Add+</button>
+                <button class="btn btn-danger  m-2">Remove</button>
+            </div>
+        </div>
     </form>
 </div>

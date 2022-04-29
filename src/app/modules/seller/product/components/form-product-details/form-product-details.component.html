@@ -1,1 +1,67 @@
-<p>form-product-details works!</p>
+<div class="container-fluid p-3 bg-white">
+    <h3>Product Details</h3>
+    <form class="p-t-15" role="form" [formGroup]="productDetailsForm">
+
+
+        <div class="card card-default">
+            <div class="card-header ">
+                <div class="card-title">
+                    Product Images
+                </div>
+                <div class="tools">
+                    <a class="collapse" href="javascript:;"></a>
+                    <a class="config" data-toggle="modal" href="#grid-config"></a>
+                    <a class="reload" href="javascript:;"></a>
+                    <a class="remove" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div *ngFor="let i of [1,2,3,4,5,6]" class="col-md-2">
+                    <div class="card-body no-scroll no-padding">
+                        <pg-upload Type="drag" [Multiple]="true" [Limit]="2"
+                            Action="https://jsonplaceholder.typicode.com/posts/" (Change)="handleChange($event)"
+                            extraClass="dropzone" progressType="circle">
+                            <div class="d-flex flex-column align-items-center p-2">
+                                <h4 class="semi-bold no-margin text-center">Drop files to Upload</h4>
+                                <p>or click here</p>
+                            </div>
+                        </pg-upload>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
+                    f.productVideoLink.touched)">
+                    <label for="product-video-link">Product Video Link</label>
+                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link"
+                        class="form-control" id="product-video-link" />
+                </div>
+                <div *ngIf="f.productVideoLink.invalid && (f.productVideoLink.dirty || f.productVideoLink.touched)">
+                    <label *ngIf="f.productVideoLink.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-default">
+            <div class="card-header ">
+                <div class="card-title">Product Description
+                </div>
+                <div class="tools">
+                    <a class="collapse" href="javascript:;"></a>
+                    <a class="config" data-toggle="modal" href="#grid-config"></a>
+                    <a class="reload" href="javascript:;"></a>
+                    <a class="remove" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="card-body no-scroll card-toolbar">
+                <div class="">
+                    <!-- <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor> -->
+                </div>
+            </div>
+        </div>
+
+        </form>
+        </div>
