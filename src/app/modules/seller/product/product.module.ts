@@ -24,6 +24,7 @@ import { PageProductViewComponent } from "./page-product-view/page-product-view.
 import { FormBeginAddingProductsComponent } from './components/form-begin-adding-products/form-begin-adding-products.component';
 import { FormFindYourProductComponent } from './components/form-find-your-product/form-find-your-product.component';
 
+
 @NgModule({
   declarations: [
     FormProductDetailsComponent,

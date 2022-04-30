@@ -44,7 +44,7 @@
                     <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
                         <label for="bulk-price">MOQ (Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]" pgFormGroupDefault
+                        <div pgFormGroupDefault *ngFor="let number of [0,1,2,3,4,5,6,7,8]"
                             class="form-group form-group-default"
                             [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                             <input type="text" formControlName="Other" placeholder="" class="form-control" id="Other" />

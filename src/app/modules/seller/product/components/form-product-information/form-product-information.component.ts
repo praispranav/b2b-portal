@@ -27,6 +27,7 @@ export class FormProductInformationComponent implements OnInit {
   buildProductInformationForm() {
     this.productInformationForm = this.formBuilder.group({
       productName: ['', [Validators.required]],
+      productType: ['', [Validators.required]],
       brandName: ['', [Validators.required]],
       productkeywords: ['', [Validators.required]],
       sellerOwnCategorySelect: ['', [Validators.required]],
