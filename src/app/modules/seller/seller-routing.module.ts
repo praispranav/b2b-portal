@@ -39,6 +39,10 @@ const routes: Routes = [
     path: "trade-services",
     loadChildren: "./trade-services/trade-services.module#TradeServicesModule",
   },
+  {
+    path: "help",
+    loadChildren: "../../features/help/help.module#HelpModule",
+  },
 ];
 
 @NgModule({

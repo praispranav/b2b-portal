@@ -8,22 +8,21 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "product-add",
+    redirectTo: "brand-approval-add",
   },
   {
-    path: "product-add",
+    path: "brand-approval-add",
     component: PageBrandApprovalAddComponent
   },
   {
-    path: "product-list",
+    path: "brand-approval-list",
     component: PageBrandApprovalListComponent
   },
   {
-    path: "product-view",
+    path: "brand-approval-view",
     component: PageBrandApprovalViewComponent
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
