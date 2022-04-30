@@ -59,5 +59,27 @@
                 </div>
             </div>
         </div>
+        <pg-container>
+            <!-- START card -->
+            <div class="card card-default">
+                <div class="card-header ">
+                    <div class="card-title">WYSIWYG editor
+                    </div>
+                    <div class="tools">
+                        <a class="collapse" href="javascript:;"></a>
+                        <a class="config" data-toggle="modal" href="#grid-config"></a>
+                        <a class="reload" href="javascript:;"></a>
+                        <a class="remove" href="javascript:;"></a>
+                    </div>
+                </div>
+                <div class="card-body no-scroll card-toolbar">
+                    <h5>Quill Editor</h5>
+                    <div class="">
+                        <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor>
+                    </div>
+                </div>
+            </div>
+            <!-- END card -->
+        </pg-container>
     </form>
 </div>

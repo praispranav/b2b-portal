@@ -12,6 +12,8 @@ import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
 import { pgSelectfx } from '../../../@pages/components/cs-select/select.module';
 import { pgDatePickerModule } from '../../../@pages/components/datepicker/datepicker.module';
 import { pgUploadModule } from '../../../@pages/components/upload/upload.module'; 
+import { SharedModule } from "../../../@pages/components/shared.module";
+import { QuillModule } from 'ngx-quill';
 
 import { FormProductDetailsComponent } from './components/form-product-details/form-product-details.component';
 import { FormProductInformationComponent } from './components/form-product-information/form-product-information.component';
@@ -50,7 +52,9 @@ import { FormFindYourProductComponent } from './components/form-find-your-produc
     pgTabsModule,
     pgSelectfx,
     pgDatePickerModule,
-    pgUploadModule
+    pgUploadModule,
+    SharedModule,
+    QuillModule.forRoot()
   ],
 })
 export class ProductModule {}
