@@ -43,6 +43,10 @@ const routes: Routes = [
     component: PageTermsOfUseComponent,
   },
   {
+    path: "trade-services",
+    loadChildren: "./trade-services/trade-services.module#TradeServicesModule",
+  },
+  {
     path: '**',
     redirectTo: 'error-404',
   }

@@ -5,8 +5,8 @@ import { PageInspectionServiceComponent } from "./page-inspection-service/page-i
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
 import { PageSupplierBackgroundSearchComponent } from "./page-supplier-background-search/page-supplier-background-search.component";
 import { PageSupplierReportComponent } from "./page-supplier-report/page-supplier-report.component";
-import { pgCardModule } from '../../../@pages/components/card/card.module';
-
+import { pgCardModule } from "../../../@pages/components/card/card.module";
+import { SharedModule } from "../../../@pages/components/shared.module";
 
 @NgModule({
   declarations: [
@@ -15,6 +15,11 @@ import { pgCardModule } from '../../../@pages/components/card/card.module';
     PageSupplierBackgroundSearchComponent,
     PageSupplierReportComponent,
   ],
-  imports: [CommonModule, TradeServicesRoutingModule, pgCardModule],
+  imports: [
+    CommonModule,
+    TradeServicesRoutingModule,
+    pgCardModule,
+    SharedModule,
+  ],
 })
-export class TradeServicesModule { }
+export class TradeServicesModule {}
