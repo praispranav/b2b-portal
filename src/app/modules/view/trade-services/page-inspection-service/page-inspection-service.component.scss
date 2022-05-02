@@ -17,7 +17,7 @@
     line-height: 4.0625rem;}
 .image{
     height: 450px;
-    width: 700px;
+    width: 600px;
 }
 .headline{
     font-size: 110px;
@@ -47,10 +47,15 @@ color: #202124;
     color: #202124;
 
 }
+.module-spacer{
+    margin-top: 118px;
+    // background-color: #E8E8E8;
+}
 .subhead{
     margin-right: -16px;
    
     color: #fff;
+    
 
 }
 .subhead h3{
@@ -69,6 +74,13 @@ color: #202124;
 .sub-div{
     margin-top: 32px;
 }
+.side-spacer{
+    margin-left: 8px;
+}
+.side-spacer1{
+    margin-left: 21px;
+    margin-right: 15px;
+}
 .sub-text1{
     color:#5f6368;
     font-size: 26px;
@@ -78,4 +90,16 @@ color: #202124;
 }
 .btn-margin{
     margin-bottom: 54px;
+}
+@media (max-width: 576px) {
+
+.main-container{
+    width: 100%;
+    height: 100%;
+}
+.sub-div-image{
+    width: 100%;
+}
+
+
 }
