@@ -1,18 +1,28 @@
-import { ReactiveFormsModule } from "@angular/forms";
-import { FormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProfileRoutingModule } from "./profile-routing.module";
+import { pgTabsModule } from "../../../@pages/components/tabs/tabs.module";
+import { pgSelectModule } from '../../../@pages/components/select/select.module';
+
+import { FormCertificateCenterComponent } from "./components/form-certificate-center/form-certificate-center.component";
 import { FormCompanyDetailComponent } from "./components/form-company-detail/form-company-detail.component";
 import { FormCompanyProfileComponent } from "./components/form-company-profile/form-company-profile.component";
+import { FormExportCapabilityComponent } from "./components/form-export-capability/form-export-capability.component";
+import { FormQualityControlComponent } from "./components/form-quality-control/form-quality-control.component";
+import { FormResearchAndDevelopmentComponent } from "./components/form-research-and-development/form-research-and-development.component";
 import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.component";
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
 
 @NgModule({
   declarations: [
+    FormCertificateCenterComponent,
     FormCompanyDetailComponent,
     FormCompanyProfileComponent,
+    FormExportCapabilityComponent,
+    FormQualityControlComponent,
+    FormResearchAndDevelopmentComponent,
     PageProfileAddComponent,
     PageProfileEditComponent,
     PageProfileViewComponent,
@@ -22,6 +32,8 @@ import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.
     FormsModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
+    pgTabsModule,
+    pgSelectModule
   ],
 })
 export class ProfileModule {}
