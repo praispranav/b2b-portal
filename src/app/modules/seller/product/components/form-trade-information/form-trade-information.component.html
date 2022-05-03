@@ -1,49 +1,47 @@
 <div class="container-fluid p-3 bg-white">
     <h3>Trade Information</h3>
     <form class="p-t-15" role="form" [formGroup]="tradeInformationForm">
-        <label for="selling-price">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="selling-price">Selling Price</label>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-radio">
-                        <input type="radio" id="set-uniform-price-of-fob" name="selling-price">
-                        <label class="ml-2" for="set-uniform-price-of-fob">
-                            Set Uniform Price of FOB </label>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="selling-price">Selling Price</label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-radio">
+                            <input type="radio" id="set-uniform-price-of-fob" name="selling-price">
+                            <label class="ml-2" for="set-uniform-price-of-fob">
+                                Set Uniform Price of FOB </label>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-radio">
-                        <input type="radio" id="set-one-fob-price" name="selling-price">
-                        <label class="ml-2" for="set-one-fob-price">
-                            Set One FOB Price</label>
+                    <div class="col-md-4">
+                        <div class="form-radio">
+                            <input type="radio" id="set-one-fob-price" name="selling-price">
+                            <label class="ml-2" for="set-one-fob-price">
+                                Set One FOB Price</label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </label>
-
-        <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="f.unit.invalid && (f.unit.dirty || f.unit.touched)">
-            <label>Unit</label>
-            <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" [NotFoundContent]="'Not found'">
-                <pg-option *ngFor="let option of unitList" [Label]="option.unit" [Value]="option.unit">
-                </pg-option>
-            </pg-select>
-        </div>
-        <div *ngIf="f.unit.invalid && (f.unit.dirty || f.unit.touched)">
-            <label *ngIf="f.unit.errors.required" class="error">This field is required.</label>
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2 required">
+                    <label class="">Unit</label>
+                    <pg-select style="width: 100%;" [(ngModel)]="selectedOption" [PlaceHolder]="'Select Option'"
+                        AllowClear ShowSearch>
+                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
+                            [Disabled]="false">
+                        </pg-option>
+                    </pg-select>
+                </div>
+            </div>
         </div>
 
         <!-- Start Set Uniform Price of FOB -->
         <div class="form-group form-group-default">
             <label class="mb-2" for="bulk-price">Bulk Price</label>
-
             <div class="row">
                 <div class="col-md-6">
                     <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
-                        <label for="bulk-price">MOQ (Unit)</label>
+                        <label class="mb-2" for="bulk-price">MOQ (Unit)</label>
                         <div pgFormGroupDefault *ngFor="let number of [0,1,2,3,4,5,6,7,8]"
                             class="form-group form-group-default"
                             [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
@@ -57,7 +55,7 @@
                 <div class="col-md-6">
                     <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
-                        <label for="bulk-price">FOB Price (Unit)</label>
+                        <label class="mb-2" for="bulk-price">FOB Price (Unit)</label>
                         <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]" pgFormGroupDefault
                             class="form-group form-group-default"
                             [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
@@ -74,27 +72,33 @@
         <!--End Set Uniform Price of FOB -->
 
         <!-- Start Set One FOB Price -->
-        <div class="form-group form-group-default form-group-default-select2">
-            <label>FOB Price </label>
-            <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" [NotFoundContent]="'Not found'">
-                <pg-option *ngFor="let option of fobPriceUnitList" [Label]="option.unit" [Value]="option.unit">
-                </pg-option>
-            </pg-select>
-        </div>
-
-        <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
-            <label for="Other">MOQ</label>
-            <input type="text" formControlName="moq" placeholder="Per Unit" class="form-control" id="moq" />
-        </div>
-        <div *ngIf="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
-            <label *ngIf="f.moq.errors.required" class="error">This field is required.</label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2">
+                    <label>FOB Price </label>
+                    <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'"
+                        [NotFoundContent]="'Not found'">
+                        <pg-option *ngFor="let option of fobPriceUnitList" [Label]="option.unit" [Value]="option.unit">
+                        </pg-option>
+                    </pg-select>
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
+                    <label for="Other">MOQ</label>
+                    <input type="text" formControlName="moq" placeholder="Per Unit" class="form-control" id="moq" />
+                </div>
+                <div *ngIf="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
+                    <label *ngIf="f.moq.errors.required" class="error">This field is required.</label>
+                </div>
+                </div>
         </div>
         <!-- End Set One FOB Price -->
 
         <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.paymentType.invalid && (f.paymentType.dirty ||
                     f.paymentType.touched)">
-            <label for="payment-type">Payment Type</label>
+            <label class="mb-2" for="payment-type">Payment Type</label>
             <div>
                 <div *ngFor="let paymentType of paymentTypeList" class="form-check complete">
                     <input type="checkbox" formControlName="paymentType" id="{{paymentType.type}}">

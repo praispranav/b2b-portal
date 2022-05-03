@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="row">
-                <div *ngFor="let i of [1,2,3,4,5,6]" class="col-md-2">
+                <div class="col-md-12 pt-2 pb-2 pl-1 pr-1 ">
                     <div class="card-body no-scroll no-padding">
-                        <pg-upload Type="drag" [Multiple]="true" [Limit]="2"
+                        <pg-upload Type="drag" [Multiple]="true" [Limit]="6"
                             Action="https://jsonplaceholder.typicode.com/posts/" (Change)="handleChange($event)"
                             extraClass="dropzone" progressType="circle">
                             <div class="d-flex flex-column align-items-center p-2">
@@ -30,7 +30,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
@@ -44,8 +43,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="card card-default">
+        <div class="card card-default p">
             <div class="card-header ">
                 <div class="card-title">Product Description
                 </div>
@@ -58,10 +56,9 @@
             </div>
             <div class="card-body no-scroll card-toolbar">
                 <div class="">
-                    <!-- <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor> -->
+                    <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor>
                 </div>
             </div>
         </div>
-
         </form>
         </div>

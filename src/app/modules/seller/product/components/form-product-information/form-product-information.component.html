@@ -1,4 +1,4 @@
-<div class="container-fluid p-3 bg-white">
+<div class="container-fluid p-3 bg-white ">
     <h3>Product Information</h3>
     <form class="p-t-15" role="form" [formGroup]="productInformationForm">
         <div class="row">
@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-2 mt-2">
             <div class="col-md-3">
                 <label for="product-type">Type of Product</label>
             </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             </div>
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-md-3">
                     <label for="product-brand">Is product is under any brand?</label>
                 </div>
@@ -69,22 +69,12 @@
                 </div>
             </div>
             <div class="row">
-                    <div class="col-md-11">
-                        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productkeywords.invalid && (f.productkeywords.dirty ||
-                            f.productkeywords.touched)">
-                            <label for="product-keywords">Prduct Keywords</label>
-                            <input type="text" formControlName="productkeywords" placeholder="Enter Prduct keywords"
-                                class="form-control" id="product-keywords" />
-                        </div>
-                        <div
-                            *ngIf="f.productkeywords.invalid && (f.productkeywords.dirty || f.productkeywords.touched)">
-                            <label *ngIf="f.productkeywords.errors.required" class="error">This field is
-                                required.</label>
+                    <div class="col-md-12">
+                        <div class="form-group tag-group form-group-default required ">
+                            <label>Product Keywords</label>
+                            <pg-tag-control [(ngModel)]="tags"></pg-tag-control>
                         </div>
                     </div>
-    <div class="col-md-1">
-        <button class="btn btn-primary mt-2">Add+</button>
-            </div>
              </div>
 
         <div class="row">
@@ -120,7 +110,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.placeOfOrigin.invalid && (f.placeOfOrigin.dirty ||
                          f.placeOfOrigin.touched)">
                             <label for="place-of-origin">Place of Origin</label>
@@ -131,11 +121,8 @@
                             <label *ngIf="f.placeOfOrigin.errors.required" class="error">This field is
                                 required.</label>
                         </div>
-                    </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div pgFormGroupDefault class="form-group form-group-default"
                             [class.has-error]="f.modelNo.invalid && (f.modelNo.dirty || f.modelNo.touched)">
                             <label for="model-no">Model No.</label>
@@ -153,16 +140,24 @@
                 <div pgFormGroupDefault class="form-group form-group-default"
                     [class.has-error]="f.otherDetails.invalid && (f.otherDetails.dirty || f.otherDetails.touched)">
                     <label for="other-details">Other Details</label>
-                    <input type="text" formControlName="otherDetails" placeholder="Enter Details" class="form-control"
-                        id="other-details" />
+               <div class="row">
+                   <div class="col-md-6">
+                       <input type="text" formControlName="otherDetails" placeholder="Enter Details"
+                           class="form-control" id="other-details" />
+                   </div>
+                   <div class="col-md-6">
+                       <input type="text" formControlName="otherDetails" placeholder="" class="form-control"
+                           id="other-details" />
+                   </div>
+                   </div>
                 </div>
                 <div *ngIf="f.otherDetails.invalid && (f.otherDetails.dirty || f.otherDetails.touched)">
                     <label *ngIf="f.otherDetails.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-primary m-2 "> Add+</button>
-                <button class="btn btn-danger  m-2">Remove</button>
+                <button class="btn btn-primary m-1 "> Add+</button>
+                <button class="btn btn-danger  m-1">Remove</button>
             </div>
         </div>
     </form>

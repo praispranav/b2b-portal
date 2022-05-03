@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormProductInformationComponent implements OnInit {
   productInformationForm: FormGroup;
+  tags: string;
   searchOptions = [
     { value: 'jack', label: 'Jack', disabled: false },
     { value: 'lucy', label: 'Lucy', disabled: false },
