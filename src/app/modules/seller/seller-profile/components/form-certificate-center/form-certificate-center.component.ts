@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: "app-certificate-center",
-  templateUrl: "./certificate-center.component.html",
-  styleUrls: ["./certificate-center.component.scss"],
+  selector: "app-form-certificate-center",
+  templateUrl: "./form-certificate-center.component.html",
+  styleUrls: ["./form-certificate-center.component.scss"],
 })
-export class CertificateCenterComponent implements OnInit {
+export class FormCertificateCenterComponent implements OnInit {
   certificateForm: FormGroup;
   certificateList: any[] = [
     { name: "ISO", value: "ISO" },

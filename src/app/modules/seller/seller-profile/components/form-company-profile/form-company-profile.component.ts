@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators} from "@angular/forms";
 
 @Component({
   selector: "app-form-company-profile",
@@ -8,11 +8,20 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormCompanyProfileComponent implements OnInit {
   companyProfileForm: FormGroup;
+  mainCategoryList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
 
   constructor(private formBuilder: FormBuilder) {}
 
   get f() {
     return this.companyProfileForm.controls;
+  }
+
+  get mainProductFormArray() {
+    return this.companyProfileForm.controls.mainProductFormArray as FormArray;
   }
 
   ngOnInit() {
@@ -28,7 +37,7 @@ export class FormCompanyProfileComponent implements OnInit {
       iecCode: ["", [Validators.required]],
       establishment: ["", [Validators.required]],
       mainCategory: ["", [Validators.required]],
-      mainProduct: ["", [Validators.required]],
+      mainProductFormArray: this.formBuilder.array([]),
       country: ["", [Validators.required]],
       state: ["", [Validators.required]],
       city: ["", [Validators.required]],
@@ -46,6 +55,18 @@ export class FormCompanyProfileComponent implements OnInit {
       regionMobile: ["", [Validators.required]],
       regionEmail: ["", [Validators.required]],
     });
+    this.addMainProduct();
+  }
+
+  addMainProduct() {
+    const mainProductForm = this.formBuilder.group({
+      mainProduct: ["", Validators.required],
+    });
+    this.mainProductFormArray.push(mainProductForm);
+  }
+
+  delMainProduct(mainProductIndex: number) {
+    this.mainProductFormArray.removeAt(mainProductIndex);
   }
 
   subCompanyProfileForm() {
