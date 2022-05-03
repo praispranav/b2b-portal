@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-form-product-details',
-  templateUrl: './form-product-details.component.html',
-  styleUrls: ['./form-product-details.component.scss']
+  selector: "app-form-product-details",
+  templateUrl: "./form-product-details.component.html",
+  styleUrls: ["./form-product-details.component.scss"],
 })
 export class FormProductDetailsComponent implements OnInit {
   productDetailsForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
-  handleChange(event) { }
+  handleChange(event) {}
 
   get f() {
     return this.productDetailsForm.controls;
@@ -22,8 +22,7 @@ export class FormProductDetailsComponent implements OnInit {
   }
   buildProductDetails() {
     this.productDetailsForm = this.formBuilder.group({
-      productVideoLink: ['', [Validators.required]],
-
+      productVideoLink: ["", [Validators.required]],
     });
   }
 }
