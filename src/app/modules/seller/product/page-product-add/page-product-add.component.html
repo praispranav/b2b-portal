@@ -1,3 +1,30 @@
-<div class="p-3">
-    <app-form-product-information></app-form-product-information>
+<div class="p-5">
+    <div class="card card-transparent ">
+        <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white">
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>Product Information</span>
+                </ng-template>
+                <app-form-product-information></app-form-product-information>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>Product Details</span>
+                </ng-template>
+                <app-form-product-details></app-form-product-details>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>Trade Information</span>
+                </ng-template>
+                <app-form-trade-information></app-form-trade-information>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>Shipping Details</span>
+                </ng-template>
+                <app-form-shipping-details></app-form-shipping-details>
+            </pg-tab>
+        </pg-tabset>
+    </div>
 </div>
