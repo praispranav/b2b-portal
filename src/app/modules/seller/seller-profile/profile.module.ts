@@ -6,6 +6,7 @@ import { pgTabsModule } from "../../../@pages/components/tabs/tabs.module";
 import { pgSelectModule } from '../../../@pages/components/select/select.module';
 import { pgTagModule } from "../../../@pages/components/tag/tag.module";
 import { pgDatePickerModule } from "../../../@pages/components/datepicker/datepicker.module";
+import { pgUploadModule } from "../../../@pages/components/upload/upload.module";
 
 import { FormCertificateCenterComponent } from "./components/form-certificate-center/form-certificate-center.component";
 import { FormCompanyDetailComponent } from "./components/form-company-detail/form-company-detail.component";
@@ -16,6 +17,7 @@ import { FormResearchAndDevelopmentComponent } from "./components/form-research-
 import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.component";
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
+
 
 
 
@@ -39,7 +41,8 @@ import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.
     pgTabsModule,
     pgSelectModule,
     pgTagModule,
-    pgDatePickerModule
+    pgDatePickerModule,
+    pgUploadModule
   ],
 })
 export class ProfileModule { }

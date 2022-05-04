@@ -8,6 +8,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormExportCapabilityComponent implements OnInit {
   companyExportCapabilityForm: FormGroup;
+  yearlyTurnoverList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
+  nearestPortList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
   constructor(private formBuilder: FormBuilder) { }
 
   get f() {

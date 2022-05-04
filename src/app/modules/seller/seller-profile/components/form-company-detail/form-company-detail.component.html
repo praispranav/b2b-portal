@@ -5,8 +5,11 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.companyLogo.invalid && (f.companyLogo.dirty || f.companyLogo.touched)">
                 <label for="company-logo">Company Logo</label>
-                <input type="file" formControlName="companyLogo" placeholder="" class="form-control"
-                    id="company-logo" />
+                <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
+                    <button class="btn btn-success btn-cons">
+                        <i class="pg-icon">upload</i><span>Upload</span>
+                    </button>
+                </pg-upload>
             </div>
             <div *ngIf="f.companyLogo.invalid && (f.companyLogo.dirty || f.companyLogo.touched)">
                 <label *ngIf="f.companyLogo.errors.required" class="error">This field is required.</label>
@@ -16,8 +19,11 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.companyPicture.invalid && (f.companyPicture.dirty || f.companyPicture.touched)">
                 <label for="company-pic">Company Picture</label>
-                <input type="file" formControlName="companyPicture" placeholder="" class="form-control"
-                    id="company-pic" />
+                <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
+                    <button class="btn btn-success btn-cons">
+                        <i class="pg-icon">upload</i><span>Upload</span>
+                    </button>
+                </pg-upload>
             </div>
             <div *ngIf="f.companyPicture.invalid && (f.companyPicture.dirty || f.companyPicture.touched)">
                 <label *ngIf="f.companyPicture.errors.required" class="error">This field is required.</label>
@@ -428,7 +434,11 @@
         <div class="col-md-6">
             <div class="form-group tag-group form-group-default required ">
                 <label>Upload Picture</label>
-                <pg-tag-control [(ngModel)]="tags" placeholder=""></pg-tag-control>
+                <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
+                    <button class="btn btn-success btn-cons">
+                        <i class="pg-icon">upload</i><span>Upload</span>
+                    </button>
+                </pg-upload>
             </div>
             <div *ngIf="f.uploadPicture.invalid && (f.uploadPicture.dirty || f.uploadPicture.touched)">
                 <label *ngIf="f.uploadPicture.errors.required" class="error">This field is required.</label>

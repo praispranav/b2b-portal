@@ -3,37 +3,31 @@
     <form [formGroup]="companyExportCapabilityForm">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-group-default input-group" pgFormGroupDefault
-                    [class.has-error]="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
-                    <div class="form-input-group">
-                        <label for="exporting-percent">Export Contribution Precentage</label>
-                        <select class="form-control" formControlName="yearlyTurnover" id="Yearly-Turnover"
-                            placeholder="Yearly-Turnover">
-                            <option selected>Select division</option>
-                            <option>One</option>
-                            <option>One</option>
-                        </select>
-                    </div>
+                <div class="form-group form-group-default form-group-default-select2">
+                    <label class="">Export Contribution Precentage</label>
+                    <pg-select style="width: 100%;" formControlName="yearlyTurnover" [PlaceHolder]="'Select Option'"
+                        AllowClear ShowSearch>
+                        <pg-option *ngFor="let yearlyTurnoverItem of yearlyTurnoverList"
+                            [Label]="yearlyTurnoverItem.label" [Value]="yearlyTurnoverItem">
+                        </pg-option>
+                    </pg-select>
                 </div>
                 <div *ngIf="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
                     <label *ngIf="f.yearlyTurnover.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-group-default input-group" pgFormGroupDefault
-                    [class.has-error]="f.nearestPort.invalid && (f.nearestPort.dirty || f.nearestPort.touched)">
-                    <div class="form-input-group">
-                        <label for="Nearest-Port">Nearest Port</label>
-                        <select class="form-control" formControlName="nearestPort" id="Nearest-Port"
-                            placeholder="Nearest Port">
-                            <option selected>Select division</option>
-                            <option>One</option>
-                            <option>One</option>
-                        </select>
-                    </div>
+                <div class="form-group form-group-default form-group-default-select2">
+                    <label class="">Nearest Port</label>
+                    <pg-select style="width: 100%;" formControlName="nearestPort" [PlaceHolder]="'Select Option'"
+                        AllowClear ShowSearch>
+                        <pg-option *ngFor="let nearestPortItem of nearestPortList" [Label]="nearestPortItem.label"
+                            [Value]="nearestPortItem">
+                        </pg-option>
+                    </pg-select>
                 </div>
-                <div *ngIf="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
-                    <label *ngIf="f.yearlyTurnover.errors.required" class="error">This field is required.</label>
+                <div *ngIf="f.nearestPort.invalid && (f.nearestPort.dirty || f.nearestPort.touched)">
+                    <label *ngIf="f.nearestPort.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
         </div>
