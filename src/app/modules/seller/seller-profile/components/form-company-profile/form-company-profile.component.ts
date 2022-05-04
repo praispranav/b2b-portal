@@ -30,9 +30,9 @@ export class FormCompanyProfileComponent implements OnInit {
 
   buildCompanyProfileForm() {
     this.companyProfileForm = this.formBuilder.group({
-      companyName: ["", [Validators.required]],
-      companyTanNo: ["", [Validators.required]],
-      companyPanNo: ["", [Validators.required]],
+      companyName: ["", [Validators.required, Validators.minLength(20)]],
+      companyTanNo: ["", [Validators.required, Validators.maxLength(20)]],
+      companyPanNo: ["", [Validators.required, Validators.maxLength(20)]],
       gstNo: ["", [Validators.required]],
       iecCode: ["", [Validators.required]],
       establishment: ["", [Validators.required]],

@@ -8,8 +8,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormCompanyDetailComponent implements OnInit {
   companyDetailsForm: FormGroup;
+  designationList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.companyDetailsForm.controls;
