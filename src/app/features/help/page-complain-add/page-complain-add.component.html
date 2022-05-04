@@ -1,1 +1,87 @@
-<p>page-complain-add works!</p>
+<div class="p-3">
+  <div class="container-fluid p-3 bg-white">
+    <h3>Register your suggestion</h3>
+    <p>This form is intended for use by intellectual property rights owner and their agents to notify.</p>
+    <div class="row">
+      <h4>*Please tell the type of complaint you want to report	</h4>	
+      <div class="col-md-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-end">
+              <h5>Activation/Deactivation of Account</h5>
+            </div>
+            <div class="col-md-6 text-end">
+              <h5>profile update</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-end">
+              <h5>Complaint against buyer</h5>
+            </div>
+            <div class="col-md-6 text-end">
+              <h5>other issue</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 text-end">
+              <h5>Complaint against seller</h5>
+            </div>
+            <div class="col-md-6 text-end">
+              <h5></h5>
+            </div>
+          </div>
+        </div>
+      </div>			
+    </div>
+    <form role="form" [formGroup]="complainForm">
+      <div class="row">
+        <div class=" col-md-3">
+          <h5>*complaint subject</h5>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <input type="text" id="subject" formControlName="subject" class="form-control"
+              [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
+              placeholder="Enter Subject here">
+            <span class="help">e.g. "complain against seller"</span>
+          </div>
+          <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
+            <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
+            <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h5>*Discription</h5>
+        </div>
+        <div class="col-md-9">
+          <div class="form-group">
+            <textarea type="text" id="description" formControlName="description" class="form-control"
+              [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
+              placeholder="Enter Description here" rows="10"></textarea>
+            <span class="help">e.g. "Mona Lisa Portrait"</span>
+          </div>
+          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+            <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-3">
+          <h5>*Upload a file</h5>
+        </div>
+        <div class="col-md-9">
+          <button type="button" class="btn btn-success">Upload</button>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <div class="d-grid gap-2  justify-content-md-end">
+            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

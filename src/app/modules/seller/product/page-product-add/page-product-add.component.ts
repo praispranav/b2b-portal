@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PageProductAddComponent implements OnInit {
 
   constructor() { }
-
+  // Fileupload HandleChange
   ngOnInit() {
   }
 
