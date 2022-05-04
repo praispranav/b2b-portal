@@ -3,7 +3,7 @@
     <form [formGroup]="companyExportCapabilityForm">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group form-group-default form-group-default-select2">
+                <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Export Contribution Precentage</label>
                     <pg-select style="width: 100%;" formControlName="yearlyTurnover" [PlaceHolder]="'Select Option'"
                         AllowClear ShowSearch>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group form-group-default form-group-default-select2">
+                <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Nearest Port</label>
                     <pg-select style="width: 100%;" formControlName="nearestPort" [PlaceHolder]="'Select Option'"
                         AllowClear ShowSearch>

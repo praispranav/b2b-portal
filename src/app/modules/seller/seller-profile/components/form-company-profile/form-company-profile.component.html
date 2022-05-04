@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyTanNo.invalid && (f.companyTanNo.dirty || f.companyTanNo.touched)">
                 <label for="company-tan-no">TAN</label>
                 <input type="text" formControlName="companyTanNo" placeholder="Enter your TAN number here"
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyPanNo.invalid && (f.companyPanNo.dirty || f.companyPanNo.touched)">
                 <label for="company-pan-no">PAN</label>
                 <input type="text" formControlName="companyPanNo" placeholder="Enter your PAN number here"
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.gstNo.invalid && (f.gstNo.dirty || f.gstNo.touched)">
                 <label for="gst-number">GST No</label>
                 <input type="text" formControlName="gstNo" placeholder="Enter your GST number here" class="form-control"
@@ -50,7 +50,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.iecCode.invalid && (f.iecCode.dirty || f.iecCode.touched)">
                 <label for="code">Import Export Code
                     (IEC)</label>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group form-group-default input-group col-md-12"
+            <div class="form-group form-group-default input-group col-md-12 required"
                 [class.has-error]="f.establishment.invalid && (f.establishment.dirty || f.establishment.touched)">
                 <div class="form-input-group">
                     <label>Year Of Establishment</label>
@@ -82,7 +82,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group form-group-default form-group-default-select2">
+            <div class="form-group form-group-default form-group-default-select2 required">
                 <label class="">Main Category</label>
                 <pg-select style="width: 100%;" formControlName="mainCategory" [PlaceHolder]="'Select Option'"
                     AllowClear ShowSearch>
@@ -97,7 +97,7 @@
         </div>
 
         <div class="col-md-6 mt-1">
-            <div class="form-group tag-group form-group-default required ">
+            <div class="form-group tag-group form-group-default required required">
                 <label>Main Product</label>
                 <pg-tag-control [(ngModel)]="tags" placeholder="Add Main Product"></pg-tag-control>
             </div>
@@ -110,7 +110,7 @@
     <h4>Registered Address</h4>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
                 <label for="company">Country</label>
                 <input type="text" formControlName="country" placeholder="Enter your country name here"
@@ -121,7 +121,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.state.invalid && (f.state.dirty || f.state.touched)">
                 <label for="state-name">State</label>
                 <input type="text" formControlName="state" placeholder="Enter your state number here"
@@ -134,7 +134,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
                 <label for="city-name">City</label>
                 <input type="text" formControlName="city" placeholder="Enter your city number here" class="form-control"
@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyAddr.invalid && (f.companyAddr.dirty || f.companyAddr.touched)">
                 <label for="company-add">Company Address</label>
                 <input type="text" formControlName="companyAddr" placeholder="Enter your Company Address here"
@@ -167,7 +167,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="form-group tag-group form-group-default required ">
+            <div class="form-group tag-group form-group-default required required">
                 <label>Landline Number</label>
                 <pg-tag-control [(ngModel)]="tags" placeholder="Add Landline Number"></pg-tag-control>
             </div>
@@ -178,7 +178,7 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-6">
-            <div class="form-group tag-group form-group-default required ">
+            <div class="form-group tag-group form-group-default required required">
                 <label>Mobile Number</label>
                 <pg-tag-control [(ngModel)]="tags" placeholder="Add Mobile Number"></pg-tag-control>
             </div>

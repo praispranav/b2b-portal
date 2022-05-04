@@ -2,7 +2,7 @@
 <form class="p-t-15" role="form" [formGroup]="companyDetailsForm">
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyLogo.invalid && (f.companyLogo.dirty || f.companyLogo.touched)">
                 <label for="company-logo">Company Logo</label>
                 <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyPicture.invalid && (f.companyPicture.dirty || f.companyPicture.touched)">
                 <label for="company-pic">Company Picture</label>
                 <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPerson.invalid && (f.contactPerson.dirty || f.contactPerson.touched)">
                 <label for="company-logo">Contact Person</label>
                 <input type="text" formControlName="contactPerson" placeholder="Contact Person" class="form-control"
@@ -57,7 +57,7 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactName.invalid && (f.contactName.dirty || f.contactName.touched)">
                 <label for="person-name">Name</label>
                 <input type="text" formControlName="contactName" placeholder="Name" class="form-control"
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactSurname.invalid && (f.contactSurname.dirty || f.contactSurname.touched)">
                 <label for="company-contactSurname">Surname</label>
                 <input type="text" formControlName="contactSurname" placeholder="Surname" class="form-control"
@@ -83,7 +83,7 @@
     <div class="row mt-2">
 
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactEmail.invalid && (f.contactEmail.dirty || f.contactEmail.touched)">
                 <label for="person-name">Email</label>
                 <input type="text" formControlName="contactEmail" placeholder="Email" class="form-control"
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.alternativeEmail.invalid && (f.alternativeEmail.dirty || f.alternativeEmail.touched)">
                 <label for="person-alternativeEmail">Alternative Email</label>
                 <input type="text" formControlName="alternativeEmail" placeholder="Email" class="form-control"
@@ -108,7 +108,7 @@
 
     <div class="row mt-2">
         <div class="col-md-6">
-            <div class="form-group form-group-default form-group-default-select2">
+            <div class="form-group form-group-default form-group-default-select2 required">
                 <label class="">Designation</label>
                 <pg-select style="width: 100%;" formControlName="designation" [PlaceHolder]="'Select Option'" AllowClear
                     ShowSearch>
@@ -122,7 +122,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.compnyWebsite.invalid && (f.compnyWebsite.dirty || f.compnyWebsite.touched)">
                 <label for="compny-website">Company Website</label>
                 <input type="text" formControlName="compnyWebsite" placeholder="Compny Website" class="form-control"
@@ -137,7 +137,7 @@
 
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.googleBusiness.invalid && (f.googleBusiness.dirty || f.googleBusiness.touched)">
                 <label for="google-Business-URL">Google Business URL</label>
                 <input type="text" formControlName="googleBusiness" placeholder="Google Business URL"
@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.facebookBusiness.invalid && (f.facebookBusiness.dirty || f.facebookBusiness.touched)">
                 <label for="facebook-Business-URL">Facebook Business Page</label>
                 <input type="text" formControlName="facebookBusiness" placeholder="Google Business URL"
@@ -163,7 +163,7 @@
 
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.instagramBusiness.invalid && (f.instagramBusiness.dirty || f.instagramBusiness.touched)">
                 <label for="instagram-Business-URL">Instagram Business URL</label>
                 <input type="text" formControlName="instagramBusiness" placeholder="Instagram Business URL"
@@ -174,7 +174,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyPage.invalid && (f.companyPage.dirty || f.companyPage.touched)">
                 <label for="company-page">Company Page</label>
                 <input type="text" formControlName="companyPage" placeholder="Company Page" class="form-control"
@@ -189,7 +189,7 @@
     <h4>Bank Details</h4>
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accountNumber.invalid && (f.accountNumber.dirty || f.accountNumber.touched)">
                 <label for="Account-Number">Account Number</label>
                 <input type="text" formControlName="accountNumber" placeholder="Account Number" class="form-control"
@@ -200,7 +200,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accountType.invalid && (f.accountType.dirty || f.accountType.touched)">
                 <label for="Account-Type">Account Type</label>
                 <input type="text" formControlName="accountType" placeholder="Account Type" class="form-control"
@@ -213,7 +213,7 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.ifscCode.invalid && (f.ifscCode.dirty || f.ifscCode.touched)">
                 <label for="Account-Number">IFSC Code</label>
                 <input type="text" formControlName="ifscCode" placeholder="IFSC-Code" class="form-control"
@@ -224,7 +224,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.swiftCode.invalid && (f.swiftCode.dirty || f.swiftCode.touched)">
                 <label for="SWIFT-Code">SWIFT Code</label>
                 <input type="text" formControlName="swiftCode" placeholder="SWIFT-Code" class="form-control"
@@ -237,7 +237,7 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.bankName.invalid && (f.bankName.dirty || f.bankName.touched)">
                 <label for="Bank-Name">Bank Name</label>
                 <input type="text" formControlName="bankName" placeholder="Bank Name" class="form-control"
@@ -248,7 +248,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.branch.invalid && (f.branch.dirty || f.branch.touched)">
                 <label for="branch-name">Branch</label>
                 <input type="text" formControlName="branch" placeholder="Branch" class="form-control"
@@ -262,7 +262,7 @@
 
     <div class="row mt-2">
         <div class="col-md-6">
-            <div class="form-group tag-group form-group-default required ">
+            <div class="form-group tag-group form-group-default required required">
                 <label>Language Spoken</label>
                 <pg-tag-control [(ngModel)]="tags" placeholder=""></pg-tag-control>
             </div>
@@ -272,7 +272,7 @@
         </div>
 
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.strenth.invalid && (f.strenth.dirty || f.strenth.touched)">
                 <label for="main-strenth">Employee Strenth</label>
                 <select class="form-control" formControlName="strenth" id="main-strenth"
@@ -293,7 +293,7 @@
 
     <div class="row mt-2">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyVision.invalid && (f.companyVision.dirty || f.companyVision.touched)">
                 <label for="company-vision">Company Mission and Vision</label>
                 <textarea rows="4" cols="100" type="text" formControlName="companyVision"
@@ -304,7 +304,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyDetail.invalid && (f.companyDetail.dirty || f.companyDetail.touched)">
                 <label for="company-detail">Company Detailed Introduction</label>
                 <textarea type="text" formControlName="companyDetail" placeholder="Company Detailed Introduction"
@@ -317,7 +317,7 @@
     </div>
     <div class="row mt-4">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyPhilosophy.invalid && (f.companyPhilosophy.dirty || f.companyPhilosophy.touched)">
                 <label for="companyPhilosophy-name">Company Philosophy</label>
                 <textarea type="text" formControlName="companyPhilosophy" placeholder="Company Philosophy"
@@ -329,7 +329,7 @@
         </div>
 
     </div>
-    <h6>Have you attended or Planed to attand any trade expo?</h6>
+    <h6>Have you attended or Planed to attand any trade expo?<span class="text-danger">*</span></h6>
     <div class="form-check">
         <input class="form-check-input" formControlName="selectYes" type="checkbox" value="" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
