@@ -31,8 +31,11 @@
                 <div pgFormGroupDefault class="form-group form-group-default"
                     [class.has-error]="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
                     <label for="process-picture">Process Picture</label>
-                    <input type="file" formControlName="processpicture" placeholder="Process Picture here"
-                        class="form-control" id="process-picture" />
+                    <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="fileList2">
+                        <button class="btn btn-success btn-cons">
+                            <i class="pg-icon">upload</i><span>Upload</span>
+                        </button>
+                    </pg-upload>
                 </div>
                 <div *ngIf="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
                     <label *ngIf="f.processpicture.errors.required" class="error">This field is required.</label>

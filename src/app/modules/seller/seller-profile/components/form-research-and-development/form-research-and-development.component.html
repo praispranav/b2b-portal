@@ -55,12 +55,19 @@
 
 
             <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
+                <div class="form-group form-group-default input-group col-md-12"
                     [class.has-error]="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
-                    <label for="Date-Velidity">Date Velidity</label>
-                    <input type="date" formControlName="businessDate" placeholder="Business Scope here"
-                        class="form-control" id="Date-Velidity">
-
+                    <div class="form-input-group">
+                        <label>Date Velidity</label>
+                        <pg-datepicker formControlName="businessDate" placeholder="Enter date here" class="form-control"
+                            id="date">
+                        </pg-datepicker>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="pg-icon">text_align_justify</i>
+                        </span>
+                    </div>
                 </div>
                 <div *ngIf="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
                     <label *ngIf="f.businessDate.errors.required" class="error">This field is required.</label>

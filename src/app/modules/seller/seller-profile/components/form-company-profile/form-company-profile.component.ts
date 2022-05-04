@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, FormArray, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-form-company-profile",
@@ -14,7 +14,7 @@ export class FormCompanyProfileComponent implements OnInit {
     { value: "tom", label: "Tom" },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.companyProfileForm.controls;
@@ -30,14 +30,15 @@ export class FormCompanyProfileComponent implements OnInit {
 
   buildCompanyProfileForm() {
     this.companyProfileForm = this.formBuilder.group({
-      companyName: ["", [Validators.required]],
-      companyTanNo: ["", [Validators.required]],
-      companyPanNo: ["", [Validators.required]],
+      companyName: ["", [Validators.required, Validators.minLength(20)]],
+      companyTanNo: ["", [Validators.required, Validators.maxLength(20)]],
+      companyPanNo: ["", [Validators.required, Validators.maxLength(20)]],
       gstNo: ["", [Validators.required]],
       iecCode: ["", [Validators.required]],
       establishment: ["", [Validators.required]],
       mainCategory: ["", [Validators.required]],
       mainProductFormArray: this.formBuilder.array([]),
+      mainsProduct: ["", [Validators.required]],
       country: ["", [Validators.required]],
       state: ["", [Validators.required]],
       city: ["", [Validators.required]],
