@@ -1,0 +1,59 @@
+<div class="container-fluid p-3 bg-white">
+    <h3>Product Information</h3>
+    <form class="p-t-15" role="form" [formGroup]="productInformationForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.productName.invalid && (f.productName.dirty || f.productName.touched)">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" formControlName="productName" placeholder="Enter Product Name"
+                        class="form-control" id="product-name" />
+                </div>
+                <div *ngIf="f.productName.invalid && (f.productName.dirty || f.productName.touched)">
+                    <label *ngIf="f.productName.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.productXyz.invalid && (f.productXyz.dirty || f.productXyz.touched)">
+                    <label for="product-xyz">Product Xyz</label>
+                    <input type="text" formControlName="productXyz" placeholder="Enter Product Xyz" class="form-control"
+                        id="product-xyz" />
+                </div>
+                <div *ngIf="f.productXyz.invalid && (f.productXyz.dirty || f.productXyz.touched)">
+                    <label *ngIf="f.productXyz.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.productAbc.invalid && (f.productAbc.dirty || f.productAbc.touched)">
+                    <label for="product-abc">Product Abc</label>
+                    <input type="text" formControlName="productAbc" placeholder="Enter Product Abc" class="form-control"
+                        id="product-abc" />
+                </div>
+                <div *ngIf="f.productAbc.invalid && (f.productAbc.dirty || f.productAbc.touched)">
+                    <label *ngIf="f.productAbc.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-default form-group-default-select2">
+                    <label for="product-category">Project</label>
+                    <pg-select style="width: 100%;" id="product-category" [Mode]="'multiple'" [PlaceHolder]="'Select'"
+                        formControlName="productCategory" [NotFoundContent]="'Not found'">
+                        <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value"
+                            [Disabled]="option.disabled">
+                        </pg-option>
+                    </pg-select>
+                </div>
+                <div *ngIf="f.productCategory.invalid && (f.productCategory.dirty || f.productCategory.touched)">
+                    <label *ngIf="f.productCategory.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
