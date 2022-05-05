@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormResearchAndDevelopmentComponent implements OnInit {
   randdForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
   get f() {
     return this.randdForm.controls;
   }
@@ -19,12 +19,12 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
 
   buildRanddForm() {
     this.randdForm = this.formBuilder.group({
-      certificateName: ["", [Validators.required]],
-      certifiedBy: ["", [Validators.required]],
-      businessScope: ["", [Validators.required]],
-      selectNo: ["", [Validators.required]],
-      selectYes: ["", [Validators.required]],
-      businessDate: ["", [Validators.required]],
+      certificateName: [""],
+      certifiedBy: [""],
+      businessScope: [""],
+      selectNo: [""],
+      selectYes: [""],
+      businessDate: [""],
     });
   }
 }
