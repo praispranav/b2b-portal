@@ -9,7 +9,6 @@ import { PageSellerCatalogueHomeComponent } from './page-seller-catalogue-home/p
 import { PageSellerCatalogueProductComponent } from './page-seller-catalogue-product/page-seller-catalogue-product.component';
 import { PageSellerCatalogueProfileComponent } from './page-seller-catalogue-profile/page-seller-catalogue-profile.component';
 import { PageSellerCatalogueContactComponent } from './page-seller-catalogue-contact/page-seller-catalogue-contact.component';
-import { PageSellerCatalogueFeedComponent } from './page-seller-catalogue-feed/page-seller-catalogue-feed.component';
 import { PageSupportComponent } from './page-support/page-support.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
@@ -38,10 +37,6 @@ const routes: Routes = [
   {
     path: 'seller-catalogue-contact',
     component: PageSellerCatalogueContactComponent,
-  },
-  {
-    path: 'seller-catalogue-feed',
-    component: PageSellerCatalogueFeedComponent,
   },
   {
     path: 'seller-catalogue-home',

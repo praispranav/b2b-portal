@@ -1,5 +1,8 @@
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { pgCardModule } from '../../@pages/components/card/card.module';
 
 import { ViewRoutingModule } from './view-routing.module';
 import { PageAboutUsComponent } from './page-about-us/page-about-us.component';
@@ -11,10 +14,11 @@ import { PageSellerCatalogueHomeComponent } from './page-seller-catalogue-home/p
 import { PageSellerCatalogueProductComponent } from './page-seller-catalogue-product/page-seller-catalogue-product.component';
 import { PageSellerCatalogueProfileComponent } from './page-seller-catalogue-profile/page-seller-catalogue-profile.component';
 import { PageSellerCatalogueContactComponent } from './page-seller-catalogue-contact/page-seller-catalogue-contact.component';
-import { PageSellerCatalogueFeedComponent } from './page-seller-catalogue-feed/page-seller-catalogue-feed.component';
 import { PageSupportComponent } from './page-support/page-support.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
+import { BannerImgWidgetComponent } from './components/banner-img-widget/banner-img-widget.component';
+import { CompSellerCatalogueHeaderComponent } from './components/comp-seller-catalogue-header/comp-seller-catalogue-header.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +31,17 @@ import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.c
     PageSellerCatalogueProductComponent,
     PageSellerCatalogueProfileComponent,
     PageSellerCatalogueContactComponent,
-    PageSellerCatalogueFeedComponent,
     PageSupportComponent,
     PageTermsAndConditionComponent,
-    PageTermsOfUseComponent
+    PageTermsOfUseComponent,
+    BannerImgWidgetComponent,
+    CompSellerCatalogueHeaderComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    pgCardModule,
     ViewRoutingModule
   ]
 })
