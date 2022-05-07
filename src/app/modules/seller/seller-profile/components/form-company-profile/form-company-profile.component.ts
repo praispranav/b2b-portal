@@ -46,28 +46,16 @@ export class FormCompanyProfileComponent implements OnInit {
       registration: ["", [Validators.required]],
       landlineNumber: ["", [Validators.required]],
       mobileNum: ["", [Validators.required]],
-      division: ["", [Validators.required]],
-      area: ["", [Validators.required]],
-      regionCountry: ["", [Validators.required]],
-      regionState: ["", [Validators.required]],
-      anuualTernover: ["", [Validators.required]],
-      contactPerson: ["", [Validators.required]],
-      regionPhone: ["", [Validators.required]],
-      regionMobile: ["", [Validators.required]],
-      regionEmail: ["", [Validators.required]],
+      division: [""],
+      area: [""],
+      regionCountry: [""],
+      regionState: [""],
+      anuualTernover: [""],
+      contactPerson: [""],
+      regionPhone: [""],
+      regionMobile: [""],
+      regionEmail: [""],
     });
-    this.addMainProduct();
-  }
-
-  addMainProduct() {
-    const mainProductForm = this.formBuilder.group({
-      mainProduct: ["", Validators.required],
-    });
-    this.mainProductFormArray.push(mainProductForm);
-  }
-
-  delMainProduct(mainProductIndex: number) {
-    this.mainProductFormArray.removeAt(mainProductIndex);
   }
 
   subCompanyProfileForm() {

@@ -99,7 +99,7 @@
         <div class="col-md-6 mt-1">
             <div class="form-group tag-group form-group-default required required">
                 <label>Main Product</label>
-                <pg-tag-control [(ngModel)]="tags" placeholder="Add Main Product"></pg-tag-control>
+                <pg-tag-control placeholder="Add Main Product"></pg-tag-control>
             </div>
             <div *ngIf="f.mainsProduct.invalid && (f.mainsProduct.dirty || f.mainsProduct.touched)">
                 <label *ngIf="f.mainsProduct.errors.required" class="error">This field is required.</label>
@@ -160,7 +160,7 @@
         <div class="col-md-6">
             <div class="form-group tag-group form-group-default required ">
                 <label>Business Registration Certificate</label>
-                <pg-tag-control [(ngModel)]="tags" placeholder="Add Business Registration Certificate"></pg-tag-control>
+                <pg-tag-control placeholder="Add Business Registration Certificate"></pg-tag-control>
             </div>
             <div *ngIf="f.registration.invalid && (f.registration.dirty || f.registration.touched)">
                 <label *ngIf="f.registration.errors.required" class="error">This field is required.</label>
@@ -169,7 +169,7 @@
         <div class="col-md-6">
             <div class="form-group tag-group form-group-default required required">
                 <label>Landline Number</label>
-                <pg-tag-control [(ngModel)]="tags" placeholder="Add Landline Number"></pg-tag-control>
+                <pg-tag-control placeholder="Add Landline Number"></pg-tag-control>
             </div>
             <div *ngIf="f.landlineNumber.invalid && (f.landlineNumber.dirty || f.landlineNumber.touched)">
                 <label *ngIf="f.landlineNumber.errors.required" class="error">This field is required.</label>
@@ -180,7 +180,7 @@
         <div class="col-md-6">
             <div class="form-group tag-group form-group-default required required">
                 <label>Mobile Number</label>
-                <pg-tag-control [(ngModel)]="tags" placeholder="Add Mobile Number"></pg-tag-control>
+                <pg-tag-control placeholder="Add Mobile Number"></pg-tag-control>
             </div>
 
             <div *ngIf="f.mobileNum.invalid && (f.mobileNum.dirty || f.mobileNum.touched)">

@@ -46,43 +46,43 @@
       }
     }
   }
-  button{
+  button {
     margin-top: 54px;
     color: #fff;
     background-color: rgb(9, 9, 247);
   }
 }
-.sub-container{
+.sub-container {
   text-align: center;
-   .img{
-      width: 30px;
-      height: 20px;
+  .img {
+    width: 30px;
+    height: 20px;
   }
-  h2{
+  h2 {
     font-size: 60px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    line-height: 72px;
+    margin-top: 73px;
+    color: #202124;
+    @media (max-width: 576px) {
+      font-size: 40px;
       font-weight: 400;
       letter-spacing: -0.5px;
       line-height: 72px;
       margin-top: 73px;
       color: #202124;
-      @media (max-width: 576px) {
-        font-size: 40px;
-        font-weight: 400;
-        letter-spacing: -0.5px;
-        line-height: 72px;
-        margin-top: 73px;
-        color: #202124;
-}
+    }
   }
-  span{
+  span {
     text-align: center;
     color: #5f6368;
-      font-size: 26px;
-      font-weight: 400;
-      letter-spacing: -0.25px;
-      line-height: 2.0623rem;
-    }
-  .row{
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.25px;
+    line-height: 2.0623rem;
+  }
+  .row {
     @media (max-width: 768px) {
       margin: 0;
     }
@@ -91,40 +91,43 @@
     }
   }
 }
-.head-container{
+.head-container {
   text-align: center;
-  h4{
+  h4 {
     margin-bottom: 167px;
     font-size: 3.125rem;
     line-height: 4.0625rem;
     @media (max-width: 992px) {
-      font-size:42px;
-      line-height: 4.0625rem;    }
-      @media (max-width: 768px) {
-        font-size: 28px;
-        line-height: 2.0625rem;    }
-        @media (max-width: 576px) {
-          font-size: 21px;
-          line-height: 2.0625rem;    }
-}
+      font-size: 42px;
+      line-height: 4.0625rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 28px;
+      line-height: 2.0625rem;
+    }
+    @media (max-width: 576px) {
+      font-size: 21px;
+      line-height: 2.0625rem;
+    }
+  }
 
-.blue {
-  color: #4285f4;
-}
+  .blue {
+    color: #4285f4;
+  }
 
-.red {
-  color: #ea4335;
-}
+  .red {
+    color: #ea4335;
+  }
 
-.green {
-  color: #34a853;
-}
+  .green {
+    color: #34a853;
+  }
 
-.yellow {
-  color: #f9ab00;
+  .yellow {
+    color: #f9ab00;
+  }
 }
-}
-.card-container{
+.card-container {
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -132,10 +135,10 @@
     width: 100%;
   }
 }
-.module-spacer{
+.module-spacer {
   padding-top: 100px;
 }
-.subcard-container{
+.subcard-container {
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -143,37 +146,46 @@
     width: 100%;
   }
 }
-.box-container{
-  .container-fluid,.container-fixed-lg,.ng-star-inserted,.card,.card-body{
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 0;
-  }
-  @media (max-width: 576px) {
-    padding: 0;
-    width: 100%;
-  }
-}
-}
-.rapper-container{
-  .card-body,.ng-trigger,.ng-trigger-collapseState,.col-md-4,.card,.card-header{
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 0;
-  }
-  @media (max-width: 576px) {
-    padding: 0;
-    width: 100%;
+.box-container {
+  .container-fluid,
+  .container-fixed-lg,
+  .ng-star-inserted,
+  .card,
+  .card-body {
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
+    }
+    @media (max-width: 576px) {
+      padding: 0;
+      width: 100%;
+    }
   }
 }
+.rapper-container {
+  .card-body,
+  .ng-trigger,
+  .ng-trigger-collapseState,
+  .col-md-4,
+  .card,
+  .card-header {
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0;
+    }
+    @media (max-width: 576px) {
+      padding: 0;
+      width: 100%;
+    }
+  }
 }
-.box-wrapper{
+.box-wrapper {
   width: 100%;
   margin: 0;
-  .image-wapper{
-      // height: 350px;
-      // width: 400px;
-      @media (max-width: 992px) {
+  .image-wapper {
+    // height: 350px;
+    // width: 400px;
+    @media (max-width: 992px) {
       transition: 0.5s;
       padding-top: 40px;
     }
@@ -182,23 +194,25 @@
       padding: 60px 0 10px;
       text-align: center;
     }
-}
-.card-body,.ng-trigger, .ng-trigger-collapseState{
-  @media (max-width: 992px) {
-   padding: 0;
-   margin: 0;
   }
-  @media (max-width: 768px) {
-    padding: 0;
+  .card-body,
+  .ng-trigger,
+  .ng-trigger-collapseState {
+    @media (max-width: 992px) {
+      padding: 0;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      padding: 0;
+    }
   }
 }
-}
-.child-container{
+.child-container {
   @media (max-width: 768px) {
     padding: 0;
     width: 100%;
   }
-  .heading{
+  .heading {
     background-color: #4285f4;
     color: #fff;
     margin-left: -17px;
@@ -206,35 +220,25 @@
       padding: 0;
     }
   }
-   h3{
+  h3 {
     text-align: center;
     margin: 0;
   }
 }
-.child-containerTwo{
+.child-containerTwo {
   @media (max-width: 768px) {
     padding: 0;
     width: 100%;
   }
-  .heading1{
+  .heading1 {
     background-color: #4285f4;
     color: #fff;
     @media (max-width: 768px) {
       padding: 0;
     }
   }
-   h3{
+  h3 {
     text-align: center;
     margin: 0;
   }
-  .image{
-    margin-left: -22px;
-  }
 }
-
-
-
-
-  
-
-

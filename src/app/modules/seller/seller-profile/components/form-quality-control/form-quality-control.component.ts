@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormQualityControlComponent implements OnInit {
   qualityControlForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
   get f() {
     return this.qualityControlForm.controls;
   }
@@ -16,14 +16,14 @@ export class FormQualityControlComponent implements OnInit {
   ngOnInit() {
     this.buildQualityControlForm();
   }
-  
+
   buildQualityControlForm() {
     this.qualityControlForm = this.formBuilder.group({
-      processName: ["", [Validators.required]],
-      processpicture: ["", [Validators.required]],
-      description: ["", [Validators.required]],
-      selectNo: ["", [Validators.required]],
-      selectYes: ["", [Validators.required]],
+      processName: [""],
+      processpicture: [""],
+      description: [""],
+      selectNo: [""],
+      selectYes: [""],
     });
   }
 }
