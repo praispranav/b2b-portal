@@ -4,6 +4,9 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { FormsModule } from "@angular/forms";
 import { ViewRoutingModule } from "./view-routing.module";
 import { pgCardModule } from "../../@pages/components/card/card.module";
+import { NvD3Module } from "ngx-nvd3";
+
+import { SwiperModule, SWIPER_CONFIG, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { BannerImgWidgetComponent } from "./components/banner-img-widget/banner-img-widget.component";
 import { CompSellerCatalogueHeaderComponent } from "./components/comp-seller-catalogue-header/comp-seller-catalogue-header.component";
@@ -22,6 +25,11 @@ import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-con
 import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
+import { ButtonTileWidgetComponent } from './components/button-tile-widget/button-tile-widget.component';
+import { ButtonTwoWidgetComponent } from './components/button-two-widget/button-two-widget.component';
+import { ButtonThreeWidgetComponent } from './components/button-three-widget/button-three-widget.component';
+import { ButtonFourWidgetComponent } from './components/button-four-widget/button-four-widget.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +50,10 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
     PageSupportComponent,
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
+    ButtonTileWidgetComponent,
+    ButtonTwoWidgetComponent,
+    ButtonThreeWidgetComponent,
+    ButtonFourWidgetComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +61,8 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
     ReactiveFormsModule,
     pgCardModule,
     ViewRoutingModule,
+    NvD3Module,
+    SwiperModule
   ],
 })
-export class ViewModule {}
+export class ViewModule { }
