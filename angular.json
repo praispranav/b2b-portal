@@ -27,10 +27,12 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+             "src/assets/plugins/bootstrap/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/plugins/codrops-stepsform/css/component.css"
             ],
             "scripts": [
+              
               "node_modules/focus-visible/dist/focus-visible.min.js",
               "node_modules/scrollreveal/dist/scrollreveal.js",
               "node_modules/echarts/dist/echarts.min.js",
@@ -41,7 +43,8 @@
               "src/assets/plugins/modernizr.custom.js",
               "src/assets/plugins/codrops-stepsform/js/classie.js",
               "src/assets/plugins/codrops-stepsform/js/stepsForm.js",
-              "src/assets/plugins/skycons/skycons.js"
+              "src/assets/plugins/skycons/skycons.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {
