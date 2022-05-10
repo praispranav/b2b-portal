@@ -7,6 +7,13 @@ import { SharedModule } from "./../../@pages/components/shared.module";
 import { pgCardModule } from "../../@pages/components/card/card.module";
 
 import { BannerImgWidgetComponent } from "./components/banner-img-widget/banner-img-widget.component";
+import { CompFooter1Component } from './components/comp-footer1/comp-footer1.component';
+import { CompFooter2Component } from './components/comp-footer2/comp-footer2.component';
+import { CompFooter3Component } from './components/comp-footer3/comp-footer3.component';
+import { CompHeader1Component } from './components/comp-header1/comp-header1.component';
+import { CompHeader2Component } from './components/comp-header2/comp-header2.component';
+import { CompHeader3Component } from './components/comp-header3/comp-header3.component';
+import { CompHeader4Component } from './components/comp-header4/comp-header4.component';
 import { CompSellerCatalogueHeaderComponent } from "./components/comp-seller-catalogue-header/comp-seller-catalogue-header.component";
 import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
@@ -31,6 +38,13 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
 @NgModule({
   declarations: [
     BannerImgWidgetComponent,
+    CompFooter1Component,
+    CompFooter2Component,
+    CompFooter3Component,
+    CompHeader1Component,
+    CompHeader2Component,
+    CompHeader3Component,
+    CompHeader4Component,
     CompSellerCatalogueHeaderComponent,
     PageAboutUsComponent,
     PageContactUsComponent,
