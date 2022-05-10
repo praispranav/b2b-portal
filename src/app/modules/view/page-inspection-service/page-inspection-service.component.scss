@@ -127,64 +127,13 @@
     color: #f9ab00;
   }
 }
-.card-container {
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-  @media (max-width: 576px) {
-    width: 100%;
-  }
-}
 .module-spacer {
   padding-top: 100px;
 }
-.subcard-container {
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-  @media (max-width: 576px) {
-    width: 100%;
-  }
-}
-.box-container {
-  .container-fluid,
-  .container-fixed-lg,
-  .ng-star-inserted,
-  .card,
-  .card-body {
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 0;
-    }
-    @media (max-width: 576px) {
-      padding: 0;
-      width: 100%;
-    }
-  }
-}
-.rapper-container {
-  .card-body,
-  .ng-trigger,
-  .ng-trigger-collapseState,
-  .col-md-4,
-  .card,
-  .card-header {
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 0;
-    }
-    @media (max-width: 576px) {
-      padding: 0;
-      width: 100%;
-    }
-  }
-}
+
 .box-wrapper {
-  width: 100%;
   margin: 0;
   .image-wapper {
-    // height: 350px;
-    // width: 400px;
     @media (max-width: 992px) {
       transition: 0.5s;
       padding-top: 40px;
@@ -193,17 +142,6 @@
       transition: 0.5s;
       padding: 60px 0 10px;
       text-align: center;
-    }
-  }
-  .card-body,
-  .ng-trigger,
-  .ng-trigger-collapseState {
-    @media (max-width: 992px) {
-      padding: 0;
-      margin: 0;
-    }
-    @media (max-width: 768px) {
-      padding: 0;
     }
   }
 }
@@ -226,16 +164,9 @@
   }
 }
 .child-containerTwo {
-  @media (max-width: 768px) {
-    padding: 0;
-    width: 100%;
-  }
   .heading1 {
     background-color: #4285f4;
     color: #fff;
-    @media (max-width: 768px) {
-      padding: 0;
-    }
   }
   h3 {
     text-align: center;
