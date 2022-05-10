@@ -36,10 +36,6 @@ const routes: Routes = [
     loadChildren: "./seller-profile/profile.module#ProfileModule",
   },
   {
-    path: "trade-services",
-    loadChildren: "./trade-services/trade-services.module#TradeServicesModule",
-  },
-  {
     path: "help",
     loadChildren: "../../features/help/help.module#HelpModule",
   },

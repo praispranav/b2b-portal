@@ -65,25 +65,25 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Logistics Solutions",
-          routerLink: "trade-services/logistic-solutions",
+          routerLink: "/b2b/logistic-solutions",
           iconType: "letter",
           iconName: "dl",
         },
         {
           label: "Inspection Service",
-          routerLink: "trade-services/inspection-service",
+          routerLink: "/b2b/inspection-service",
           iconType: "letter",
           iconName: "sl",
         },
         {
           label: "Suppiler Report",
-          routerLink: "trade-services/supplier-report",
+          routerLink: "/b2b/supplier-report",
           iconType: "letter",
           iconName: "bl",
         },
         {
           label: "Suppiler Background Search",
-          routerLink: "trade-services/supplier-background-search",
+          routerLink: "/b2b/supplier-background-search",
           iconType: "letter",
           iconName: "bl",
         },

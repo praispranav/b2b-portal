@@ -85,13 +85,13 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Logistics Solutions",
-          routerLink: "trade-services/logistic-solutions",
+          routerLink: "/b2b/logistic-solutions",
           iconType: "letter",
           iconName: "dl",
         },
         {
           label: "Inspection Service",
-          routerLink: "trade-services/inspection-service",
+          routerLink: "/b2b/inspection-service",
           iconType: "letter",
           iconName: "sl",
         },
