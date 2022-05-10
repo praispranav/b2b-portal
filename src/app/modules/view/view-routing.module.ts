@@ -6,7 +6,7 @@ import { PageError404Component } from "./page-error404/page-error404.component";
 import { PageError500Component } from "./page-error500/page-error500.component";
 import { PageHomeComponent } from "./page-home/page-home.component";
 import { PagePartnerComponent } from "./page-partner/page-partner.component";
-import { PageProductListComponent } from "./page-product-list/page-product-list.component";
+import { PageProductSearchComponent } from './page-product-search/page-product-search.component';
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
 import { PageSellerCatalogueProductComponent } from "./page-seller-catalogue-product/page-seller-catalogue-product.component";
@@ -42,8 +42,8 @@ const routes: Routes = [
     component: PagePartnerComponent,
   },
   {
-    path: "product-list",
-    component: PageProductListComponent,
+    path: "product-search",
+    component: PageProductSearchComponent,
   },
   {
     path: "product-view",

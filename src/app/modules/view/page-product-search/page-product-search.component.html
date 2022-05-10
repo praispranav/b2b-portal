@@ -1,0 +1,193 @@
+<div class="container-fluid m-1">
+    <div class="row">
+        <div class="col-md-2 bg-white">
+            <label for="categories">
+                <h5>CATEGORIES
+                </h5>
+                <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
+                    <li>
+                        <a class="text-muted" href="">{{categorie.name}}</a>
+                    </li>
+                </ul>
+            </label>
+            <label for="supplier-types">
+                <h5>
+                    Supplier Types
+                </h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <input type="checkbox">
+                        <span>
+                            Trade Assurance
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <span>
+                            Supplier
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <span>
+                            ≤1h response time
+                        </span>
+                    </li>
+                </ul>
+            </label>
+            <label for="product-type">
+                <h5>
+                    Product Type
+                </h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <input type="checkbox">
+                        <span>
+                            Ready to Ship
+                        </span>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <span>
+                            Paid samples
+                        </span>
+                    </li>
+                </ul>
+            </label>
+            <div>
+                <h5>
+                    Min. Order
+                </h5>
+                <div class="row">
+                    <div class="col-8 p-1">
+                        <input class="form-control" type="text" placeholder="less than">
+                    </div>
+                    <div class="col-4 p-1">
+                        <button class="btn rounded-pill">Ok</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h5>
+                    Price
+                </h5>
+                <div class="row">
+                    <div class="col-8 p-1 d-flex align-items-center">
+                        <input class="form-control" type="text" placeholder="min">
+                        <span class="fw-bold">&nbsp;-&nbsp;</span>
+                        <input class="form-control" type="text" placeholder="max">
+                    </div>
+                    <div class="col-4 p-1">
+                        <button class="btn rounded-pill">Ok</button>
+                    </div>
+                </div>
+            </div>
+            <label for="supplier-country">
+                <h5>
+                    Supplier Country
+                </h5>
+                <div class="form-group input-group ">
+                    <div class="input-group-append">
+                        <span class="input-group-text primary"><i class="pg-icon ">search</i>
+                        </span>
+                    </div>
+                    <input type="text" formControlName="search" placeholder="Search" class="form-control ">
+                </div>
+                <p class="text-muted">Suggestions</p>
+                <ul class="list-unstyled">
+                    <li *ngFor="let country of countryList">
+                        <input type="checkbox" class="mt-2">
+                        <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt="">
+                        <span>
+                            {{country.name}}
+                        </span>
+                    </li>
+                </ul>
+            </label>
+            <label for="past-export-country">
+                <h5>
+                    Past Export Country
+                </h5>
+                <div class="form-group input-group ">
+                    <div class="input-group-append">
+                        <span class="input-group-text primary"><i class="pg-icon">search</i>
+                        </span>
+                    </div>
+                    <input type="text" formControlName="search" placeholder="Search" class="form-control">
+                </div>
+                <p class="text-muted">All Countries & Regions</p>
+                <ul class="list-unstyled">
+                    <li *ngFor="let country of countryList">
+                        <input type="checkbox" class="mt-2">
+                        <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt="">
+                        <span>
+                            {{country.name}}
+                        </span>
+                    </li>
+                </ul>
+            </label>
+
+            <h5>Management Certification
+            </h5>
+
+        </div>
+        <div class="col-md-10">
+            <div class="container-fluid bg-white mb-4">
+                <div class="row">
+                    <div *ngFor="let i of [1,2,3,4,5]" class="col-md-2 p-3 text-center">
+                        <img src="https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/H034b54eb143b4da6a93cd82aa88fe57eC.jpg_100x100.jpg"
+                            class="rounded-circle" alt="...">
+                        <br>
+                        <a class="" href="">Warm</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div *ngFor="let product of productList" class="col-md-3">
+                    <div class="card shadow p-2 container-fluid" style=" width: auto">
+                        <i class="pg-icon ml-auto rounded-circle border">heart</i>
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{product.image}}" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/High-Quality-long-lined-new-fashion-denim.jpg_100x100.jpg"
+                                        class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="..." class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="">
+                            {{product.name}}
+                        </a>
+                        <h5>
+                            US${{product.price}}.00
+                        </h5>
+                        <span>
+                            <b>{{product.year}} Pieces </b>
+                            <span class="text-muted mb-3">
+                                (Min. Order)
+                            </span>
+                        </span>
+                        <span class="mt-3 mb-3 text-center d-flex align-items-center">
+                            <b class="bg-muted">{{product.year}}YRS&nbsp;</b>
+                            <i class="pg-icon">star</i>&nbsp;
+                            <a class="text-muted" href="#">{{product.supplier}}
+                                Supplier>
+                            </a>
+                        </span>
+                        <div class="border-top py-2 d-flex align-items-center">
+                            <button class="rounded-pill btn btn-primary">Contact Supplier</button>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            <i class="pg-icon">comment</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
