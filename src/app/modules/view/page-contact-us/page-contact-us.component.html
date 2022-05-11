@@ -55,40 +55,40 @@
         <!--end row-->
 
 
-        <ng-container *ngFor="let data of blogData">
-            <ng-template carouselSlide>
-                <div class="tiny-slide">
-                    <div class="d-flex client-testi m-2 ">
+        <ng-container>
 
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{{data.image}}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">{{data.title}}</a>
-                                </h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <!-- <ul class="list-unstyled mb-0">
+            <div class="tiny-slide ">
+                <div class="d-flex   row m-0 ">
+
+                    <div class="card blog rounded border-0 shadow col-lg-4 col-sm-12 col-md-6 mr-2" *ngFor=" let data of blogData ">
+                        <div class="position-relative">
+                            <img src="{{data.image}}" class="card-img-top rounded-top" alt="...">
+                            <!-- <div class="overlay rounded-top bg-dark"></div> -->
+                        </div>
+                        <div class="card-body content">
+                            <h5><a href="javascript:void(0)" class="card-title title text-dark">{{data.title}}</a>
+                            </h5>
+                            <div class="post-meta d-flex justify-content-between mt-3">
+                                <!-- <ul class="list-unstyled mb-0">
                                         <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i
                                                     class="uil uil-heart me-1"></i>{{data.like}}</a></li>
                                         <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i
                                                     class="uil uil-comment me-1"></i>{{data.message}}</a></li>
                                     </ul> -->
-                                    <a routerLink="/page-blog-detail" href="javascript:void(0);" class="text-muted readmore">Read More
+                                <a routerLink="/page-blog-detail" href="javascript:void(0);" class="text-muted readmore">Read More
                                         <i class="uil uil-angle-right-b"></i></a>
-                                </div>
                             </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> {{data.name}}</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> {{data.date}}</small>
-                            </div>
+                        </div>
+                        <div class="author">
+                            <small class="text-light user d-block"><i class="uil uil-user"></i> {{data.name}}</small>
+                            <small class="text-light date"><i class="uil uil-calendar-alt"></i> {{data.date}}</small>
                         </div>
                     </div>
                 </div>
-            </ng-template>
+            </div>
+
         </ng-container>
-        <!-- </owl-carousel-o> -->-->
+        <!-- </owl-carousel-o> -->
 
         <!--end row-->
     </div>
@@ -157,7 +157,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="d-grid">
-                                            <button type="submit" id="submit" name="send" class="btn btn-secondary form-control">Send Message</button>
+                                            <button type="submit" id="submit" name="send" class="btn  form-control  text-white" style="background-color: rgb(0, 51, 255);">Send Message</button>
                                         </div>
                                     </div>
                                     <!--end col-->
