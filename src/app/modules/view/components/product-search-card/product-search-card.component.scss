@@ -1,0 +1,21 @@
+.card:hover {
+    transform: scale(1.07);
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .btn {
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(143, 136, 136, 0.37);
+    color: black;
+  }

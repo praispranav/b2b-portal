@@ -27,6 +27,9 @@ import { PageSupplierReportComponent } from "./page-supplier-report/page-supplie
 import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
+import { ProductSearchCategoriesComponent } from './components/product-search-categories/product-search-categories.component';
+import { ProductSearchCardComponent } from './components/product-search-card/product-search-card.component';
+import { ProductSearchFilterComponent } from './components/product-search-filter/product-search-filter.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
     PageSupportComponent,
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
+    ProductSearchCategoriesComponent,
+    ProductSearchCardComponent,
+    ProductSearchFilterComponent,
   ],
   imports: [
     CommonModule,
