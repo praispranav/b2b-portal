@@ -29,6 +29,7 @@ import { ButtonTileWidgetComponent } from './components/button-tile-widget/butto
 import { ButtonTwoWidgetComponent } from './components/button-two-widget/button-two-widget.component';
 import { ButtonThreeWidgetComponent } from './components/button-three-widget/button-three-widget.component';
 import { ButtonFourWidgetComponent } from './components/button-four-widget/button-four-widget.component';
+import { SellerCatalogueProfileMenuComponent } from './components/seller-catalogue-profile-menu/seller-catalogue-profile-menu.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { ButtonFourWidgetComponent } from './components/button-four-widget/butto
     ButtonTwoWidgetComponent,
     ButtonThreeWidgetComponent,
     ButtonFourWidgetComponent,
+    SellerCatalogueProfileMenuComponent,
   ],
   imports: [
     CommonModule,
