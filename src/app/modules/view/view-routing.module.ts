@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'contact-us',
-    component: PageError500Component,
+    component: PageContactUsComponent,
   },
   {
     path: 'error-404',
