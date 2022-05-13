@@ -11,7 +11,6 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
 import { RouterModule } from "@angular/router";
-
 // Routing
 import { AppRoutes } from "./app.routing";
 import { AppComponent } from "./app.component";
@@ -23,6 +22,8 @@ import { pagesToggleService } from "./@pages/services/toggler.service";
 import {
   RootLayout,
   AdminLayoutComponent,
+  AgentLayoutComponent,
+  AssociateLayoutComponent,
   BlankLayoutComponent,
   BuyerLayoutComponent,
   SellerLayoutComponent,
@@ -67,6 +68,7 @@ import { PerfectScrollbarModule } from "ngx-perfect-scrollbar";
 import { PERFECT_SCROLLBAR_CONFIG } from "ngx-perfect-scrollbar";
 import { PerfectScrollbarConfigInterface } from "ngx-perfect-scrollbar";
 
+
 import { CoreModule } from "./core/core.module";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -92,6 +94,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     HorizontalMenuComponent,
     RootLayout,
     AdminLayoutComponent,
+    AgentLayoutComponent,
+    AssociateLayoutComponent,
     BlankLayoutComponent,
     BuyerLayoutComponent,
     SellerLayoutComponent,
@@ -127,6 +131,8 @@ export class AppHammerConfig extends HammerGestureConfig {
     QuillModule.forRoot(),
     PerfectScrollbarModule,
     CoreModule,
+    
+
   ],
   providers: [
     QuickviewService,

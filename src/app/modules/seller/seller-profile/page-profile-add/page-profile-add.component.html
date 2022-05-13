@@ -1,0 +1,54 @@
+<div class="p-3">
+    <div class="card card-borderless">
+        <pg-tabset tabAnimation="slide-left" Type="simple" ShowPagination="true">
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Company Profile
+                </ng-template>
+                <div>
+                    <app-form-company-profile></app-form-company-profile>
+                </div>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Company Details
+                </ng-template>
+                <div>
+                    <app-form-company-detail></app-form-company-detail>
+                </div>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Export Capability
+                </ng-template>
+                <div>
+                    <app-form-export-capability></app-form-export-capability>
+                </div>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Certificate Center
+                </ng-template>
+                <div>
+                    <app-form-certificate-center></app-form-certificate-center>
+                </div>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Quality Control
+                </ng-template>
+                <div>
+                    <app-form-quality-control></app-form-quality-control>
+                </div>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    Research & Development
+                </ng-template>
+                <div>
+                    <app-form-research-and-development></app-form-research-and-development>
+                </div>
+            </pg-tab>
+        </pg-tabset>
+    </div>
+</div>
