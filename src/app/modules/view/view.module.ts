@@ -30,6 +30,7 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
 import { ProductSearchCategoriesComponent } from './components/product-search-categories/product-search-categories.component';
 import { ProductSearchCardComponent } from './components/product-search-card/product-search-card.component';
 import { ProductSearchFilterComponent } from './components/product-search-filter/product-search-filter.component';
+import { ProductSearchCardListComponent } from './components/product-search-card-list/product-search-card-list.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProductSearchFilterComponent } from './components/product-search-filter
     ProductSearchCategoriesComponent,
     ProductSearchCardComponent,
     ProductSearchFilterComponent,
+    ProductSearchCardListComponent,
   ],
   imports: [
     CommonModule,

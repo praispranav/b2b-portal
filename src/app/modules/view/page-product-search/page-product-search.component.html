@@ -1,11 +1,18 @@
 <div class="container-fluid m-1">
+     <div class="d-flex flex-row ml-0">
+         <div class="p-2 ml-1 bg-white"><button>All</button></div>
+         <div class="p-2 ml-1 bg-white"><button>Customization</button></div>
+         <div class="p-2 ml-1 bg-white"><button>Ready to Ship</button></div>
+         <div class="p-2 ml-1 bg-white"><button>Over Stock</button></div>
+     </div>
     <div class="row">
-        <div class="col-md-2 bg-white">
+        <div class="col-md-2 bg-white mt-1">
             <app-product-search-categories></app-product-search-categories>
         </div>
         <div class="col-md-10">
             <app-product-search-filter></app-product-search-filter>
             <app-product-search-card></app-product-search-card>
+            <app-product-search-card-list></app-product-search-card-list>
         </div>
     </div>
 </div>
