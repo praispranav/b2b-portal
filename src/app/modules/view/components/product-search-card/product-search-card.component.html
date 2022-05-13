@@ -1,7 +1,16 @@
+    <div class="d-flex flex-row-reverse  ">
+        <div class="p-2 ">
+            <i class="pg-icon">grid_alt</i>
+        </div>
+        <div class="p-2 ">
+            <i class="pg-icon">menu</i>
+        </div>
+
+    </div>
     <div class="row">
         <div *ngFor="let product of productList" class="col-md-3">
             <div class="card mt-2 shadow p-2 container-fluid" style=" width: auto">
-                <i class="pg-icon ml-auto rounded-circle border">heart</i>
+                <i class="pg-icon">heart</i>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -16,9 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="">
-                    {{product.name}}
-                </a>
+               <h2> <a href=""> {{product.name}} </a></h2>
                 <h5>
                     US${{product.price}}.00
                 </h5>
