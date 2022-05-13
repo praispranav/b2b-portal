@@ -32,6 +32,8 @@ import { ProductSearchCardComponent } from './components/product-search-card/pro
 import { ProductSearchFilterComponent } from './components/product-search-filter/product-search-filter.component';
 import { ProductSearchCardListComponent } from './components/product-search-card-list/product-search-card-list.component';
 
+import { AlertModule } from 'ngx-bootstrap';
+
 @NgModule({
   declarations: [
     BannerImgWidgetComponent,
@@ -59,6 +61,7 @@ import { ProductSearchCardListComponent } from './components/product-search-card
     ProductSearchCardComponent,
     ProductSearchFilterComponent,
     ProductSearchCardListComponent,
+
   ],
   imports: [
     CommonModule,
@@ -67,6 +70,8 @@ import { ProductSearchCardListComponent } from './components/product-search-card
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
+    AlertModule.forRoot(),
+
   ],
 })
 export class ViewModule {}
