@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: 'app-page-contact-us',
   templateUrl: './page-contact-us.component.html',
@@ -35,27 +35,7 @@ export class PageContactUsComponent implements OnInit {
       date: "13th August, 2019"
     }
   ];
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    autoplay: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 2
-      },
-      900: {
-        items: 3
-      }
-    },
-    nav: false
-  };
+
   ngOnInit() {
   }
   // mapView(content) {
