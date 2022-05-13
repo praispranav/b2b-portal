@@ -1,0 +1,27 @@
+<h3>Certificate Center</h3>
+<form class="p-t-15" role="form" [formGroup]="certificateForm">
+    <h6>Certificate You Have</h6>
+    <div class="row">
+        <ng-container *ngFor="let certificate of certificateList; let i=index">
+            <div class="col-md-4">
+                <div class="form-check complete">
+                    <input type="checkbox" id="checkColorOpt1" [value]="certificate.value">
+                    <label for="checkColorOpt1">
+                        {{certificate.name}}
+                    </label>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label>Other Certifications</label>
+            <pg-upload Action="https://jsonplaceholder.typicode.com/posts/" [FileList]="[]">
+                <button class="btn btn-success btn-cons">
+                    <i class="pg-icon">upload</i><span>Upload</span>
+                </button>
+            </pg-upload>
+
+        </div>
+    </div>
+</form>
