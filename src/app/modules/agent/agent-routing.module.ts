@@ -3,6 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "dashboard",
+  },
+  {
     path: 'dashboard',
     loadChildren: './agent-dashboard/dashboard.module#DashboardModule'
   },
