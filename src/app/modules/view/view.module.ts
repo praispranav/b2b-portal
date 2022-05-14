@@ -10,6 +10,8 @@ import { PagePartnerComponent } from './page-partner/page-partner.component';
 import { PageSupportComponent } from './page-support/page-support.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
+import { pgCollapseModule } from '../../@pages/components/collapse';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +22,12 @@ import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.c
     PagePartnerComponent,
     PageSupportComponent,
     PageTermsAndConditionComponent,
-    PageTermsOfUseComponent
+    PageTermsOfUseComponent,
   ],
   imports: [
     CommonModule,
-    ViewRoutingModule
+    ViewRoutingModule,
+    pgCollapseModule
   ]
 })
 export class ViewModule { }
