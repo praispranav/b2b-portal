@@ -1,0 +1,31 @@
+<div class="container-fluid p-3 bg-white ">
+    <h3>To begin adding products</h3>
+    <form class="p-t-15" role="form" [formGroup]="beginAddingProductForm">
+
+        <div class="row justify-content-center align-self-center t-p">
+            <div class="col-md-8 ">
+                <div class="form-group input-group ">
+                    <input type="text" formControlName="search" placeholder="Search Your Product with the Product name"
+                        class="form-control">
+                    <div class="input-group-append">
+                        <span class="input-group-text primary"><i class="pg-icon">search</i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4 ">
+                    <a href="">I’m adding a product not sold on Bizzexpo</a>
+                </div>
+                <div class="col-md-4 float-right">
+                    <a class="float-right" href="">Need Help</a>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </form>
+</div>

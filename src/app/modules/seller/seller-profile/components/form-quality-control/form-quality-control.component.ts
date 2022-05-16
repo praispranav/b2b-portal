@@ -1,0 +1,29 @@
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
+@Component({
+  selector: "app-form-quality-control",
+  templateUrl: "./form-quality-control.component.html",
+  styleUrls: ["./form-quality-control.component.scss"],
+})
+export class FormQualityControlComponent implements OnInit {
+  qualityControlForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) { }
+  get f() {
+    return this.qualityControlForm.controls;
+  }
+
+  ngOnInit() {
+    this.buildQualityControlForm();
+  }
+
+  buildQualityControlForm() {
+    this.qualityControlForm = this.formBuilder.group({
+      processName: [""],
+      processpicture: [""],
+      description: [""],
+      selectNo: [""],
+      selectYes: [""],
+    });
+  }
+}
