@@ -29,6 +29,7 @@ import { ButtonTileWidgetComponent } from './components/button-tile-widget/butto
 import { ButtonTwoWidgetComponent } from './components/button-two-widget/button-two-widget.component';
 import { ButtonThreeWidgetComponent } from './components/button-three-widget/button-three-widget.component';
 import { ButtonFourWidgetComponent } from './components/button-four-widget/button-four-widget.component';
+import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
 
 
 
@@ -55,6 +56,7 @@ import { ButtonFourWidgetComponent } from './components/button-four-widget/butto
     ButtonTwoWidgetComponent,
     ButtonThreeWidgetComponent,
     ButtonFourWidgetComponent,
+    ButtonFiveWidgetComponent,
 
   ],
   imports: [
