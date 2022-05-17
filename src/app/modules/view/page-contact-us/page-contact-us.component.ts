@@ -1,4 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import { pgSelectfx } from '../../../@pages/components/cs-select/select.module';
+import * as moment from 'moment';
 // import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-page-contact-us',
@@ -6,62 +10,63 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./page-contact-us.component.scss']
 })
 export class PageContactUsComponent implements OnInit { 
- 
- constructor() { }
+ contactUsForm:FormGroup;
+ mask = {
+  date: [/[1-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+  telephone: ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  custom: [/[1-9]/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
+  ssn: [/[1-9]/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+};
+numberMask = createNumberMask({
+  prefix: '$ ',
+  suffix: ''
+});
+wierdMask = createNumberMask({
+  prefix: '',
+  suffix: '',
+  thousandsSeparatorSymbol: '.',
+  allowDecimal: true,
+  decimalSymbol: ','
+});
+dollarPrefix = createNumberMask({
+  prefix: '$ ',
+  suffix: '',
+  allowDecimal: true
+});
+range = createNumberMask({
+  prefix: '',
+  suffix: '',
+  integerLimit: 4
+});
 
-  blogData = [
+ constructor(private fb:FormBuilder) {
+  this.contactUsForm=this.fb.group(
     {
-      image: "assets/img/blog/01.jpg",
-      title: "Design your apps in your own way",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/img/blog/02.jpg",
-      title: "How apps is changing the IT world",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
-    },
-    {
-      image: "assets/img/blog/03.jpg",
-      title: "Smartest Applications for Business",
-      like: "33",
-      message: "08",
-      name: "Calvin Carlo",
-      date: "13th August, 2019"
+     firstName:[''],
+     lastName:[''],
+     companyName:[''],
+     State:[''],
+     City:[''],
+     Country:[''],
+     mobile:[''],
+     countryCode:[''],
+     email:['',[Validators.email]],
+     description:['',[Validators.required]]
+
+
+
     }
-  ];
-  // customOptions: OwlOptions = {
-  //   loop: true,
-  //   mouseDrag: true,
-  //   touchDrag: false,
-  //   pullDrag: false,
-  //   autoplay: false,
-  //   navSpeed: 700,
-  //   navText: ['', ''],
-  //   responsive: {
-  //     0: {
-  //       items: 1
-  //     },
-  //     600: {
-  //       items: 2
-  //     },
-  //     900: {
-  //       items: 3
-  //     }
-  //   },
-  //   nav: false
-  // };
-  ngOnInit() {
+  )
   }
-  // mapView(content) {
-  //   this.modalService.open(content, { windowClass: 'dark-modal', size: 'lg', centered: true })
-  // }
 
 
+ 
+  ngOnInit() {
+   
+  }
+  
+  getFormControl(name) {
+    return this.contactUsForm.controls[name];
+  }
 
 }

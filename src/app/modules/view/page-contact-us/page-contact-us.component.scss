@@ -1,20 +1,4 @@
-::ng-deep .dark-modal .modal-content {
-    background-color: #000000;
-    color: white;
-    background: none;
-    border: none;
-}
-
- ::ng-deep .dark-modal .modal-header {
-    border: none
-}
-
- ::ng-deep .dark-modal .close {
-    color: white;
-}
-
-.card-img-top,
-.rounded-top {
-    // width: 400px;
-    // height: 400px;
+:placeholder,
+:select::placeholder {
+    color: grey;
 }

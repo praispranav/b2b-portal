@@ -1,3 +1,5 @@
+import { pgSelectfx } from './../../@pages/components/cs-select/select.module';
+import { TextMaskModule } from 'angular2-text-mask';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -73,6 +75,8 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
+    ReactiveFormsModule,FormsModule,
+    pgSelectfx,TextMaskModule
   ],
 })
 export class ViewModule {}
