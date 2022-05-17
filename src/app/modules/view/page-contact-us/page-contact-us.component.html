@@ -371,9 +371,9 @@
 
 
                     <div class="col-lg-12">
-                        <label for="" class="mb-0 ">Mobile</label>
-                        <div class="row">
-                            <div class="col-lg-6 col-sm-12 col-md-6 mt-2">
+
+                        <div class="form-group form-group-default input-group" pgFormGroupDefault>
+                            <div class="input-group-prepend ">
                                 <select name="countryCode" id="" formControlName="countryCode" class="form-control form-select">
                                     <option value="#" selected>Select Country Code </option>
                                     <option data-countryCode="GB" value="44">UK (+44)</option>
@@ -596,12 +596,10 @@
                                     </optgroup>
                                 </select>
                             </div>
-                            <div class="col-lg-6 col-sm-12 col-md-6 mt-2">
-                                <div class="form-group">
+                            <div class="form-input-group">
+                                <label>Mobile</label>
+                                <input [textMask]="{mask: mask.ssn}" type="tel" id="ssn" class="form-control" placeholder="xxx-xxx-xxxx">
 
-                                    <input [textMask]="{mask: mask.ssn}" type="tel" id="ssn" class="form-control" placeholder="xxx-xxx-xxxx">
-                                    <span class="help">e.g. "432-433-2432"</span>
-                                </div>
                             </div>
 
                         </div>
@@ -620,7 +618,9 @@
 
                 </div>
             </form>
-
+            <div class="bg-warning-lighter d-flex align-items-center p-4 ">
+                <p class="">We value your enquiry and we will make every effort to contact you as soon as possible.</p>
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="card p-3" MinimalHeader="true" TimeOut="2500">
