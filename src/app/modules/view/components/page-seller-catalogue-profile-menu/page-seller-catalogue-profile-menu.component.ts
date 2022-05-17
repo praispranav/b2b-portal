@@ -7,7 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 })
 export class PageSellerCatalogueProfileMenuComponent implements OnInit {
-
+ 
   constructor() { }
 
   ngOnInit() {
