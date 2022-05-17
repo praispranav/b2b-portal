@@ -30,6 +30,9 @@ import { ButtonTwoWidgetComponent } from './components/button-two-widget/button-
 import { ButtonThreeWidgetComponent } from './components/button-three-widget/button-three-widget.component';
 import { ButtonFourWidgetComponent } from './components/button-four-widget/button-four-widget.component';
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
+import { PageSellerCatalogueProfileMenuComponent } from './components/page-seller-catalogue-profile-menu/page-seller-catalogue-profile-menu.component';
+import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
+import { pgTagModule } from "../../@pages/components/tag/tag.module";
 
 
 
@@ -57,6 +60,7 @@ import { ButtonFiveWidgetComponent } from './components/button-five-widget/butto
     ButtonThreeWidgetComponent,
     ButtonFourWidgetComponent,
     ButtonFiveWidgetComponent,
+    PageSellerCatalogueProfileMenuComponent,
 
   ],
   imports: [
@@ -66,7 +70,10 @@ import { ButtonFiveWidgetComponent } from './components/button-five-widget/butto
     pgCardModule,
     ViewRoutingModule,
     NvD3Module,
-    SwiperModule
+    SwiperModule,
+    pgTabsModule,
+    pgTagModule,
+
   ],
 })
 export class ViewModule { }
