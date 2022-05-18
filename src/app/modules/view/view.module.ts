@@ -25,7 +25,7 @@ import { PageInspectionServiceComponent } from "./page-inspection-service/page-i
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
 import { PageNewsAndUpdateComponent } from './page-news-and-update/page-news-and-update.component';
 import { PagePartnerComponent } from "./page-partner/page-partner.component";
-import { PageProductListComponent } from "./page-product-list/page-product-list.component";
+import { PageProductSearchComponent } from './page-product-search/page-product-search.component';
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
 import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-contact/page-seller-catalogue-contact.component";
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
@@ -37,6 +37,11 @@ import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
+import { ProductSearchCategoriesComponent } from './components/product-search-categories/product-search-categories.component';
+import { ProductSearchCardComponent } from './components/product-search-card/product-search-card.component';
+import { ProductSearchFilterComponent } from './components/product-search-filter/product-search-filter.component';
+import { ProductSearchCardListComponent } from './components/product-search-card-list/product-search-card-list.component';
+import { AlertModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,7 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     PageLogisticSolutionsComponent,
     PageNewsAndUpdateComponent,
     PagePartnerComponent,
-    PageProductListComponent,
+    PageProductSearchComponent,
     PageProductViewComponent,
     PageSellerCatalogueHomeComponent,
     PageSellerCatalogueProductComponent,
@@ -71,6 +76,10 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
     PageTradeShowComponent,
+    ProductSearchCategoriesComponent,
+    ProductSearchCardComponent,
+    ProductSearchFilterComponent,
+    ProductSearchCardListComponent,
   ],
   imports: [
     CommonModule,
@@ -79,6 +88,8 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
+    AlertModule.forRoot(),
+
   ],
 })
 export class ViewModule {}

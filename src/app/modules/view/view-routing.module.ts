@@ -8,7 +8,7 @@ import { PageHomeComponent } from "./page-home/page-home.component";
 import { PageInspectionServiceComponent } from "./page-inspection-service/page-inspection-service.component";
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
 import { PagePartnerComponent } from "./page-partner/page-partner.component";
-import { PageProductListComponent } from "./page-product-list/page-product-list.component";
+import { PageProductSearchComponent } from './page-product-search/page-product-search.component';
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
 import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-contact/page-seller-catalogue-contact.component";
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
@@ -55,8 +55,8 @@ const routes: Routes = [
     component: PagePartnerComponent,
   },
   {
-    path: "product-list",
-    component: PageProductListComponent,
+    path: "product-search",
+    component: PageProductSearchComponent,
   },
   {
     path: "product-view",
