@@ -24,6 +24,7 @@ import { PageProductViewComponent } from "./page-product-view/page-product-view.
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
 import { PageSellerCatalogueProductComponent } from "./page-seller-catalogue-product/page-seller-catalogue-product.component";
 import { PageSellerCatalogueProfileComponent } from "./page-seller-catalogue-profile/page-seller-catalogue-profile.component";
+import { PageSellerReportCheckComponent } from './page-seller-report-check/page-seller-report-check.component';
 import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-contact/page-seller-catalogue-contact.component";
 import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
@@ -35,9 +36,6 @@ import { ButtonFourWidgetComponent } from './components/button-four-widget/butto
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
 import { PageSellerCatalogueProfileMenuComponent } from './components/page-seller-catalogue-profile-menu/page-seller-catalogue-profile-menu.component';
 import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
-
-
-
 
 
 @NgModule({
@@ -57,6 +55,7 @@ import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
     PageSellerCatalogueHomeComponent,
     PageSellerCatalogueProductComponent,
     PageSellerCatalogueProfileComponent,
+    PageSellerReportCheckComponent,
     PageSellerCatalogueContactComponent,
     PageSupportComponent,
     PageTermsAndConditionComponent,
@@ -67,6 +66,7 @@ import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
     ButtonFourWidgetComponent,
     ButtonFiveWidgetComponent,
     PageSellerCatalogueProfileMenuComponent,
+
 
   ],
   imports: [

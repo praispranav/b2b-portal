@@ -17,6 +17,7 @@ import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
 import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
 import { PageFaqComponent } from "./page-faq/page-faq.component";
+import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
 
 const routes: Routes = [
   {
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: "seller-catalogue-profile",
     component: PageSellerCatalogueProfileComponent,
+  },
+  {
+    path: "seller-report-check",
+    component: PageSellerReportCheckComponent,
   },
   {
     path: "support",
