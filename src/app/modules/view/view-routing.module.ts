@@ -16,6 +16,7 @@ import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
 import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
+import { PageFaqComponent } from "./page-faq/page-faq.component";
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: "error-500",
     component: PageError500Component,
+  },
+  {
+    path: "faq",
+    component: PageFaqComponent,
   },
   {
     path: "home",

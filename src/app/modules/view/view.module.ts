@@ -14,6 +14,8 @@ import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
 import { PageError404Component } from "./page-error404/page-error404.component";
 import { PageError500Component } from "./page-error500/page-error500.component";
+import { pgTagModule } from "../../@pages/components/tag/tag.module";
+import { PageFaqComponent } from './page-faq/page-faq.component';
 import { PageHomeComponent } from "./page-home/page-home.component";
 import { PageJoinNowForFreeComponent } from './page-join-now-for-free/page-join-now-for-free.component';
 import { PagePartnerComponent } from "./page-partner/page-partner.component";
@@ -33,7 +35,7 @@ import { ButtonFourWidgetComponent } from './components/button-four-widget/butto
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
 import { PageSellerCatalogueProfileMenuComponent } from './components/page-seller-catalogue-profile-menu/page-seller-catalogue-profile-menu.component';
 import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
-import { pgTagModule } from "../../@pages/components/tag/tag.module";
+
 
 
 
@@ -46,6 +48,7 @@ import { pgTagModule } from "../../@pages/components/tag/tag.module";
     PageContactUsComponent,
     PageError404Component,
     PageError500Component,
+    PageFaqComponent,
     PageHomeComponent,
     PageJoinNowForFreeComponent,
     PagePartnerComponent,
@@ -64,7 +67,6 @@ import { pgTagModule } from "../../@pages/components/tag/tag.module";
     ButtonFourWidgetComponent,
     ButtonFiveWidgetComponent,
     PageSellerCatalogueProfileMenuComponent,
-
 
   ],
   imports: [
