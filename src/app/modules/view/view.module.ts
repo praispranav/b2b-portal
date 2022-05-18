@@ -57,7 +57,7 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     ProductSearchCardComponent,
     ProductSearchCardListComponent,
     ProductSearchCategoriesComponent,
-    ProductSearchFilterComponent.
+    ProductSearchFilterComponent,
     PageAboutUsComponent,
     PageBlogComponent,
     PageContactUsComponent,
