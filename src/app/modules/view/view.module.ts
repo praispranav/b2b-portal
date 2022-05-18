@@ -15,6 +15,7 @@ import { PageContactUsComponent } from "./page-contact-us/page-contact-us.compon
 import { PageError404Component } from "./page-error404/page-error404.component";
 import { PageError500Component } from "./page-error500/page-error500.component";
 import { PageHomeComponent } from "./page-home/page-home.component";
+import { PageJoinNowForFreeComponent } from './page-join-now-for-free/page-join-now-for-free.component';
 import { PagePartnerComponent } from "./page-partner/page-partner.component";
 import { PageProductListComponent } from "./page-product-list/page-product-list.component";
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
@@ -36,6 +37,7 @@ import { pgTagModule } from "../../@pages/components/tag/tag.module";
 
 
 
+
 @NgModule({
   declarations: [
     BannerImgWidgetComponent,
@@ -45,6 +47,7 @@ import { pgTagModule } from "../../@pages/components/tag/tag.module";
     PageError404Component,
     PageError500Component,
     PageHomeComponent,
+    PageJoinNowForFreeComponent,
     PagePartnerComponent,
     PageProductListComponent,
     PageProductViewComponent,
@@ -61,6 +64,7 @@ import { pgTagModule } from "../../@pages/components/tag/tag.module";
     ButtonFourWidgetComponent,
     ButtonFiveWidgetComponent,
     PageSellerCatalogueProfileMenuComponent,
+
 
   ],
   imports: [

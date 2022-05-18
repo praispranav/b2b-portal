@@ -15,6 +15,7 @@ import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-con
 import { PageSupportComponent } from "./page-support/page-support.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
+import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: "home",
     component: PageHomeComponent,
+  },
+  {
+    path: "join-now",
+    component: PageJoinNowForFreeComponent,
   },
   {
     path: "partner",
@@ -87,4 +92,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ViewRoutingModule {}
+export class ViewRoutingModule { }
