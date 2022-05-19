@@ -37,6 +37,7 @@ import { ButtonFiveWidgetComponent } from './components/button-five-widget/butto
 import { PageSellerCatalogueProfileMenuComponent } from './components/page-seller-catalogue-profile-menu/page-seller-catalogue-profile-menu.component';
 import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
 import { PageBuyComponent } from './page-buy/page-buy.component';
+import { PageRfqComponent } from './page-rfq/page-rfq.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { PageBuyComponent } from './page-buy/page-buy.component';
     ButtonFiveWidgetComponent,
     PageSellerCatalogueProfileMenuComponent,
     PageBuyComponent,
+    PageRfqComponent,
 
 
   ],

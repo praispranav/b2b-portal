@@ -19,6 +19,7 @@ import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-
 import { PageFaqComponent } from "./page-faq/page-faq.component";
 import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
+import { PageRfqComponent } from "./page-rfq/page-rfq.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: "faq",
     component: PageFaqComponent,
+  },
+  {
+    path: "rfq",
+    component: PageRfqComponent,
   },
   {
     path: "home",
