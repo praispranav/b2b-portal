@@ -20,6 +20,7 @@ import { PageFaqComponent } from "./page-faq/page-faq.component";
 import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
 import { PageRfqComponent } from "./page-rfq/page-rfq.component";
+import { PageSellComponent } from "./page-sell/page-sell.component";
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
   {
     path: "rfq",
     component: PageRfqComponent,
+  },
+  {
+    path: "sell",
+    component: PageSellComponent,
   },
   {
     path: "home",

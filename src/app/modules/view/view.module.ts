@@ -38,6 +38,7 @@ import { PageSellerCatalogueProfileMenuComponent } from './components/page-selle
 import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
 import { PageBuyComponent } from './page-buy/page-buy.component';
 import { PageRfqComponent } from './page-rfq/page-rfq.component';
+import { PageSellComponent } from './page-sell/page-sell.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { PageRfqComponent } from './page-rfq/page-rfq.component';
     PageSellerCatalogueProfileMenuComponent,
     PageBuyComponent,
     PageRfqComponent,
+    PageSellComponent,
 
 
   ],
