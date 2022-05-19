@@ -36,6 +36,7 @@ import { ButtonFourWidgetComponent } from './components/button-four-widget/butto
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
 import { PageSellerCatalogueProfileMenuComponent } from './components/page-seller-catalogue-profile-menu/page-seller-catalogue-profile-menu.component';
 import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
+import { PageBuyComponent } from './page-buy/page-buy.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { pgTabsModule } from "../../@pages/components/tabs/tabs.module";
     ButtonFourWidgetComponent,
     ButtonFiveWidgetComponent,
     PageSellerCatalogueProfileMenuComponent,
+    PageBuyComponent,
 
 
   ],

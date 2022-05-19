@@ -18,6 +18,7 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
 import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
 import { PageFaqComponent } from "./page-faq/page-faq.component";
 import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
+import { PageBuyComponent } from "./page-buy/page-buy.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: "home",
     component: PageHomeComponent,
+  },
+  {
+    path: "buy",
+    component: PageBuyComponent,
   },
   {
     path: "join-now",
