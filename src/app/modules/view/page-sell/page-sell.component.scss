@@ -2,31 +2,47 @@
     color: black;
     text-align: center;
     padding-top: 200px;
+    font-size: 56px;
+    line-height: 70px;
 }
 .paraOne{
     text-align: center;
     padding-top: 20px;
     line-height: 30px;
+    font-size: 20px;
 }
 .sectionTwo{
     padding-top: 200px;
-    height: 700px;
+    height: 900px;
 }
 .headingTwo{
 text-align: center;
 color: black;
 padding-bottom: 20px;
+font-size: 40px;
+    line-height: 60px;
 }
 .contentOne{
-    float: left;
+    // float: left;
     border-left: 2px solid cornflowerblue;
+    margin-top: 50px;
+    
 
 }
+.paraContent{
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 30px;
+}
 .contenttwo{
-float: right;
-margin-top: 100px;
+// float: right;
+// margin-top: 250px;
+text-align: center;
+margin-top: 200px;
+height: 500px;
 }
 .contenttwoPara{
     color: black;
-     font-size: 15px;
+     font-size: 50px;
+     line-height: 50px;
 }
