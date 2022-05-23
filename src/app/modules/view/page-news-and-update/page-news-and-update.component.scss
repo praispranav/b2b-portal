@@ -1,0 +1,18 @@
+ul {
+    list-style-type: none;
+}
+
+.char-show {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+input:focus~label {
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+input:checked+p {
+    -webkit-line-clamp: unset;
+}
