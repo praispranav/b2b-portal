@@ -66,14 +66,14 @@ export class PageContactUsComponent implements OnInit {
     this.contactUsForm = this.fb.group({
       companyName: ["", [Validators.required]],
       firstName: ["", [Validators.required]],
-      lastName: [""],
+      lastName: ["",[Validators.required]],
+      email: ["", [Validators.email,Validators.required]],
+      Country: ["", [Validators.required]],
+      State: ["", [Validators.required]],
 
-      State: [""],
-      City: [""],
-      Country: [""],
-      mobile: [""],
-      countryCode: [""],
-      email: ["", [Validators.email]],
+      City: ["", [Validators.required]],
+      countryCode: ["",[Validators.required]],
+      mobile: ["",[Validators.required]],
       description: ["", [Validators.required]],
     });
   }
