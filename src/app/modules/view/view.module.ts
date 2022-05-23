@@ -90,7 +90,6 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
-    AlertModule.forRoot(),
     pgSelectfx,
     TextMaskModule
   ],
