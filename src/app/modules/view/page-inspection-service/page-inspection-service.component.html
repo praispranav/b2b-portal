@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="sectionOne">
-            <div class="col-md-12">
-                <div class="row">
+        <div class="sectionOne  row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="row ">
                     <div class="col-md-12">
                         <h2 class="heading">Quality Inspection Services
                         </h2>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <p>Our Professional and High-efficient partners visit the manufacturing facilities
                                     and
                                     randomly
@@ -20,10 +20,8 @@
                     </div>
                     <form [formGroup]="inspectionForm">
                         <div class="row">
-                            <div class="col-md-6">
-
+                            <div class="col-md-12">
                                 <div class="form-group">
-
                                     <div pgFormGroupDefault class="form-group"
                                         [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
                                         <pg-select formControlName="option" class="w-100"
@@ -42,7 +40,7 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <h6 class="control-label">Description</h6>
                                     <div pgFormGroupDefault class="form-group"
@@ -57,7 +55,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row d-flex justify-content-end">
                             <button aria-label="" type="button" (click)="subInspectionForm()"
                                 class="btn btn-block btn-primary btn-lg btn-icon-right">
                                 <span>Submit</span>
