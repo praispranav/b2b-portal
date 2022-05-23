@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { pgSelectModule } from '../../@pages/components/select/select.module';
+import { pgSliderModule } from '../../@pages/components/slider/slider.module';
+
 import { ViewRoutingModule } from './view-routing.module';
 import { SharedModule } from './../../@pages/components/shared.module';
 import { pgCardModule } from '../../@pages/components/card/card.module';
@@ -43,6 +46,7 @@ import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
 
+
 @NgModule({
   declarations: [
     BannerImgWidgetComponent,
@@ -80,16 +84,19 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     PageTermsComponent,
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
-    PageTradeShowComponent    
+    PageTradeShowComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    pgSelectModule,
+    pgSliderModule,
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
+
     AlertModule.forRoot(),
   ],
 })
-export class ViewModule {}
+export class ViewModule { }
