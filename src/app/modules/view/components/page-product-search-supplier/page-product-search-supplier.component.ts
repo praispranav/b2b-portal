@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-product-search-supplier.component.scss']
 })
 export class PageProductSearchSupplierComponent implements OnInit {
-
+  page: number = 1;
   constructor() { }
 
   ngOnInit() {

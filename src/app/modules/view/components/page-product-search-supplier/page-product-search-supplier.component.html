@@ -5,7 +5,16 @@
         </div>
         <div class="col-md-10">
             <app-page-product-search-supplier-list></app-page-product-search-supplier-list>
-            <div class="bg-white shadow p-3 ml-2 mr-2">
+          <!-- pagenation  start-->
+          <div class="d-flex justify-content-end pr-5">
+              <div *ngFor="let i of [1,2,3,4,5]" [ngClass]="{'text-primary':page == i,'font-weight-bold':page == i}"
+                  class="p-3">
+                  {{i}}
+              </div>
+              <div class="text-primary d-flex align-items-center">Next</div>
+          </div>
+          <!-- pagenation  end-->
+          <div class="bg-white shadow p-3 m,l-2 mr-2">
                 <h3>Premium Related Products</h3>
                 <div class="row">
                     <div *ngFor="let i of [0,1,2,3,4,5]" class="col-md-2 m-2">
@@ -16,7 +25,7 @@
                                 <a href="">Jacket Women Down Italian Down </a>
                             </p>
                             <div class="d-flex bd-highlight mb-3">
-                                <div class="mr-auto text-danger">Verified</div>
+                                <div class="mr-auto text-orange">Verified</div>
                                 <div>Messages</div>
                             </div>
                         </div>

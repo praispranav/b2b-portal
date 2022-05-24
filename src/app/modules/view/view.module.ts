@@ -7,6 +7,8 @@ import { SharedModule } from './../../@pages/components/shared.module';
 import { pgCardModule } from '../../@pages/components/card/card.module';
 import { pgSelectfx } from './../../@pages/components/cs-select/select.module';
 import { TextMaskModule } from 'angular2-text-mask';
+import { AlertModule } from 'ngx-bootstrap';
+
 import { BannerImgWidgetComponent } from './components/banner-img-widget/banner-img-widget.component';
 import { CompFooter1Component } from './components/comp-footer1/comp-footer1.component';
 import { CompFooter2Component } from './components/comp-footer2/comp-footer2.component';
@@ -43,6 +45,10 @@ import { PageTermsComponent } from './page-terms/page-terms.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
+import { PageProductSearchProductsComponent } from './components/page-product-search-products/page-product-search-products.component';
+import { PageProductSearchSupplierComponent } from './components/page-product-search-supplier/page-product-search-supplier.component';
+import { PageProductSearchSupplierListComponent } from './components/page-product-search-supplier-list/page-product-search-supplier-list.component';
+import { PageProductSearchSupplierCategoriesComponent } from './components/page-product-search-supplier-categories/page-product-search-supplier-categories.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +87,11 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     PageTermsComponent,
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
-    PageTradeShowComponent    
+    PageTradeShowComponent,
+    PageProductSearchProductsComponent,
+    PageProductSearchSupplierComponent,
+    PageProductSearchSupplierListComponent,
+    PageProductSearchSupplierCategoriesComponent
   ],
   imports: [
     CommonModule,
@@ -91,7 +101,9 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     SharedModule,
     pgCardModule,
     pgSelectfx,
-    TextMaskModule
+    TextMaskModule,
+    AlertModule.forRoot(),
+
   ],
 })
 export class ViewModule {}
