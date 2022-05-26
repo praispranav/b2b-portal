@@ -1,3 +1,4 @@
+import { AlertModule } from 'ngx-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -91,7 +92,8 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     SharedModule,
     pgCardModule,
     pgSelectfx,
-    TextMaskModule
+    TextMaskModule,
+    AlertModule.forRoot()
   ],
 })
 export class ViewModule {}
