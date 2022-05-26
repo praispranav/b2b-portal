@@ -1,3 +1,4 @@
+import { AlertModule } from 'ngx-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -68,7 +69,7 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     PageInspectionServiceComponent,
     PageLogisticSolutionsComponent,
     PageNewsAndUpdateComponent,
-    PagePartnerComponent,
+    PagePartnerComponent,     
     PageProductSearchComponent,
     PageProductViewComponent,
     PageSellerCatalogueContactComponent,
@@ -91,6 +92,7 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     SharedModule,
     pgCardModule,
     pgSelectfx,
+    AlertModule.forRoot(),
     TextMaskModule
   ],
 })
