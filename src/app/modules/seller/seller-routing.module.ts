@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: "buyer-profile",
-    loadChildren: "./seller-dashboard/dashboard.module#DashboardModule",
+    loadChildren: "./buyer-profile/profile.module#ProfileModule",
   },
   {
     path: "product",

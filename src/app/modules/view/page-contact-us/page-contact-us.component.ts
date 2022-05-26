@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import { pgSelectfx } from "../../../@pages/components/cs-select/select.module";
 import * as moment from "moment";
-// import { OwlOptions } from 'ngx-owl-carousel-o';
+
 @Component({
   selector: "app-page-contact-us",
   templateUrl: "./page-contact-us.component.html",
