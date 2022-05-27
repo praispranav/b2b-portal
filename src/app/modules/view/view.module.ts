@@ -8,7 +8,8 @@ import { pgSliderModule } from '../../@pages/components/slider/slider.module';
 import { ViewRoutingModule } from './view-routing.module';
 import { SharedModule } from './../../@pages/components/shared.module';
 import { pgCardModule } from '../../@pages/components/card/card.module';
-import { AlertModule } from 'ngx-bootstrap';
+import { pgSelectfx } from './../../@pages/components/cs-select/select.module';
+import { TextMaskModule } from 'angular2-text-mask';
 import { BannerImgWidgetComponent } from './components/banner-img-widget/banner-img-widget.component';
 import { CompFooter1Component } from './components/comp-footer1/comp-footer1.component';
 import { CompFooter2Component } from './components/comp-footer2/comp-footer2.component';
@@ -95,8 +96,9 @@ import { PageTradeShowComponent } from './page-trade-show/page-trade-show.compon
     ViewRoutingModule,
     SharedModule,
     pgCardModule,
-
     AlertModule.forRoot(),
+    pgSelectfx,
+    TextMaskModule
   ],
 })
 export class ViewModule { }

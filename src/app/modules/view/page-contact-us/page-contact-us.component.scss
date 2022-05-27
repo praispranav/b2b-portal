@@ -1,14 +1,8 @@
-::ng-deep .dark-modal .modal-content {
-    background-color: #000000;
-    color: white;
-    background: none;
-    border: none;
+:placeholder,
+:select::placeholder {
+    color: grey;
 }
 
- ::ng-deep .dark-modal .modal-header {
-    border: none
-}
-
- ::ng-deep .dark-modal .close {
-    color: white;
+.h-68 {
+    height: 68px;
 }
