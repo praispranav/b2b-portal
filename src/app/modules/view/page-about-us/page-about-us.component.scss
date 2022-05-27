@@ -1,77 +1,80 @@
-@media (max-width: 667px) {
-    .social-card.card {
-        width: 100%!important;
-    }
+.heading{
+    color: #202124;
+    font-size: calc(40px + 20 * (100vw - 1024px) / 416);
+    line-height: 1.2;
+    // font-family: "Google Sans Display","Google Sans","Google Sans Text",Arial,sans-serif;
+    margin: auto;
+    text-align: center;
+    margin-top: 250px;
+}
+// .headingTwo{
+//     text-align: center;
+//     margin-top: 200px;
+//     margin-bottom: 50px;
+//     font-weight: bold;
+   
+// }
+// .imgDiv{
+//     float: left;
+//     background-image: url("../../../../assets/assets/img/deal.jpg");
+//     width: 50%;
+//     height: 500px;
+//     background-size: cover;
+  
+   
+// }
+// .contentDiv{
+//     float: right;
+//     width: 50%;
+//     height: 500px;
+//     background-color:rgb(206, 199, 199);
+   
+// }
+// .contentPara{
+//     text-align: center;
+//     margin-top: 25px;
+//     width: 100%;
+  
+//     line-height: 38px;
+//     font-size: 20px;
+//     font-weight: bold;
+//     color: #202124;
+
+   
+// }
+// .contentPara{
+//     padding: 70px;
+//     color: black;
+// }
+.headingTwo{
+    margin-top: 310px;
+    margin-left: 100px;
+    color: black;
 }
 
-.img-size {
-    width: 400px;
-    height: 400px;
-}
-
-.day {
-    margin: 0 auto;
-}
-
-.bg-image {
-    // width: 100ch;
-    height: 70vh;
-}
-
-.bg-none {
-    background-color: none;
-    border: 0;
-}
-
-.widget-1-wrapper {
-    @media (max-width: 480px) {
-        height: 340px;
-    }
-}
-
-// image widget
-::ng-deep .dark-modal .modal-content {
-    background-color: #000000;
-    color: white;
-    background: none;
-    border: none;
-}
-
- ::ng-deep .dark-modal .modal-header {
-    border: none
-}
-
- ::ng-deep .dark-modal .close {
-    color: white;
-}
-
-.icon-white {
-    fill: white;
-}
-
-.bg-half {
-    padding: 94px 0 50px;
-    background-size: cover;
-    align-self: center;
-    position: relative;
-    background-position: center center;
-    // padding: 10.625rem 0;
-    -webkit-mask-size: 33.4% 140%;
-    -webkit-mask-repeat: no-repeat;
-    mask-size: 33.4% 140%;
-    mask-repeat: no-repeat;
-    // border: none;
-}
-
-.page-next-level .page-next {
-    position: relative;
-    top: 70px;
-    z-index: 99;
-}
-
-.card-icon-list {
-    list-style-type: none;
-    list-style: none;
-}
-
-// image-widget
+  .mainContainerTwo{
+      height: 500px;
+  }
+  .para{
+    border-left: 2px solid cornflowerblue;
+      width: 50%;
+      padding-left: 20px;
+      line-height: 27px;
+     
+  }
+  .containerOne{
+      float: left;
+    //   border-left: 2px solid cornflowerblue;
+    //   width: 50%;
+  }
+  .containerTwo{
+      float: right;
+      width: 50%;
+  }
+  .imgDiv{
+       background-image: url("../../../../assets/assets/img/deal.jpg"); 
+       margin-top: -250px;
+       height: 300px;
+       background-size: cover;
+      
+  }
