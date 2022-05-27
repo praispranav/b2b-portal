@@ -30,6 +30,7 @@
     "angular-tree-component": "^8.5.2",
     "angular2-text-mask": "^8.0.5",
     "angularfire2": "5.0.0-rc.4",
+    "bootstrap-icons": "^1.8.1",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.11",
     "d3": "^3.5.17",
