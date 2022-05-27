@@ -35,10 +35,6 @@ const routes: Routes = [
     path: "seller-profile",
     loadChildren: "./seller-profile/profile.module#ProfileModule",
   },
-  {
-    path: "help",
-    loadChildren: "../../features/help/help.module#HelpModule",
-  },
 ];
 
 @NgModule({

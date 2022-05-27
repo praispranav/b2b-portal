@@ -11,6 +11,14 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: './associate-dashboard/dashboard.module#DashboardModule'
   },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule'
+  },
+  {
+    path: 'seller-account',
+    loadChildren: './seller-account/seller-account.module#SellerAccountModule'
+  },
 ];
 
 @NgModule({
