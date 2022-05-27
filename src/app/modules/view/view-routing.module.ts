@@ -46,6 +46,18 @@ const routes: Routes = [
     component: PageError500Component,
   },
   {
+    path: "faq",
+    component: PageFaqComponent,
+  },
+  {
+    path: "rfq",
+    component: PageRfqComponent,
+  },
+  {
+    path: "sell",
+    component: PageSellComponent,
+  },
+  {
     path: "home",
     component: PageHomeComponent,
   },
@@ -127,4 +139,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ViewRoutingModule {}
+export class ViewRoutingModule { }

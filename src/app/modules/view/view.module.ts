@@ -27,6 +27,8 @@ import { PageBlogComponent } from "./page-blog/page-blog.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
 import { PageError404Component } from "./page-error404/page-error404.component";
 import { PageError500Component } from "./page-error500/page-error500.component";
+import { pgTagModule } from "../../@pages/components/tag/tag.module";
+import { PageFaqComponent } from './page-faq/page-faq.component';
 import { PageHomeComponent } from "./page-home/page-home.component";
 import { PageInspectionServiceComponent } from "./page-inspection-service/page-inspection-service.component";
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
@@ -66,6 +68,7 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     PageContactUsComponent,
     PageError404Component,
     PageError500Component,
+    PageFaqComponent,
     PageHomeComponent,
     PageInspectionServiceComponent,
     PageLogisticSolutionsComponent,
@@ -98,6 +101,10 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     pgCardModule,
     pgSelectfx,
     ViewRoutingModule,
+    NvD3Module,
+    SwiperModule,
+    pgTabsModule,
+    pgTagModule,
   ],
 })
-export class ViewModule {}
+export class ViewModule { }
