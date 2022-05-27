@@ -1,5 +1,152 @@
-<div class="container-fluid">
-    <div class="banner-container">
+<div class="container">
+    <div class="row">
+        <div class="sectionOne  row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="row ">
+                    <div class="p-1">
+                        <div class="col-md-12">
+                            <h2 class="heading">Quality Inspection Services
+                            </h2>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Our Professional and High-efficient partners visit the manufacturing facilities
+                                        and
+                                        randomly
+                                        check
+                                        products
+                                        against order specifications.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-1">
+                        <form [formGroup]="inspectionForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div pgFormGroupDefault class="form-group"
+                                            [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
+                                            <pg-select formControlName="option" class="w-100"
+                                                [PlaceHolder]="'Ask Your Categories For'" AllowClear ShowSearch>
+                                                <pg-option *ngFor="let option of options" [Label]="option.label"
+                                                    [Value]="option" [Disabled]="option.disabled">
+                                                </pg-option>
+                                            </pg-select>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="f.option.invalid && (f.option.dirty || f.option.touched)">
+                                        <label *ngIf="f.option.errors.required" class="error">Select field is
+                                            required.</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h6 class="control-label">Description</h6>
+                                        <div pgFormGroupDefault class="form-group"
+                                            [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                                            <textarea type="text" class="form-control" rows="10" cols="50"
+                                                formControlName="description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div
+                                        *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                                        <label *ngIf="f.description.errors.required" class="error">Description is
+                                            required.</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-end">
+                                <button aria-label="" type="button" (click)="subInspectionForm()"
+                                    class="btn btn-block btn-primary btn-lg btn-icon-right">
+                                    <span>Submit</span>
+                                    <i class="pg-icon md-18">arrow_right</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid">
+
+    <div class="col-md-6">
+        <div class="main-header">
+            <h2>Quality Inspection Services</h2>
+            <pre>Our Professional and High efficient partners visit the manufacturing
+                    facilities and randomly check products against order
+                    specification</pre>
+        </div>
+        <div class="row">
+            <form [formGroup]="inspectionForm">
+                <div class="row form-box">
+                    <div class="form-group">
+                        <div class="row">
+                            <h6 class="col-md-6 control-label">Ask Your Queries For</h6>
+                            <div class="col-md-6">
+                                <div pgFormGroupDefault class="form-group"
+                                    [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
+                                    <pg-select formControlName="option" class="w-100" [PlaceHolder]="'Map Under'"
+                                        AllowClear ShowSearch>
+                                        <pg-option *ngFor="let option of options" [Label]="option.label"
+                                            [Value]="option" [Disabled]="option.disabled">
+                                        </pg-option>
+                                    </pg-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="f.option.invalid && (f.option.dirty || f.option.touched)">
+                            <label *ngIf="f.option.errors.required" class="error"> Query field is required.</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="form-group">
+                            <h6 class="control-label">Description</h6>
+                            <div pgFormGroupDefault class="form-group"
+                                [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                                <textarea type="text" class="form-control" rows="10"
+                                    formControlName="description"></textarea>
+                            </div>
+                        </div>
+                        <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                            <label *ngIf="f.description.errors.required" class="error"> Description is
+                                required.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button aria-label="" type="button" class="btn btn-block btn-primary btn-lg btn-icon-right">
+                        <span>Submit</span>
+                        <i class="pg-icon md-18">arrow_right</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div> -->
+<!-- <div class="banner-container">
         <div class="row">
             <div class="col-md-6 text-wapper">
                 <h1> Helpful <br class="d-none d-md-block"> products. </h1>
@@ -356,4 +503,4 @@
             <img src="../../../../../assets/img/cover5.jpg" class="img-fluid" alt="" width="100%">
         </div>
     </div>
-</div>
+</div> -->
