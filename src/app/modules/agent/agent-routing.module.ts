@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: './agent-profile/profile.module#ProfileModule'
   },
-  {
-    path: 'account',
-    loadChildren: './seller-account/account.module#AccountModule'
-  },
 ];
 
 @NgModule({
