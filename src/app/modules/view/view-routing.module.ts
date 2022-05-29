@@ -13,7 +13,6 @@ import { PageInspectionServiceComponent } from "./page-inspection-service/page-i
 import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
 import { PageNewsAndUpdateComponent } from "./page-news-and-update/page-news-and-update.component";
-import { PagePartnerComponent } from "./page-partner/page-partner.component";
 import { PageProductSearchComponent } from "./page-product-search/page-product-search.component";
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
 import { PageSellComponent } from "./page-sell/page-sell.component";
@@ -21,10 +20,12 @@ import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-con
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
 import { PageSellerCatalogueProductComponent } from "./page-seller-catalogue-product/page-seller-catalogue-product.component";
 import { PageSellerCatalogueProfileComponent } from "./page-seller-catalogue-profile/page-seller-catalogue-profile.component";
+import { PageSellerDocumentWeConsiderComponent } from './page-seller-document-we-consider/page-seller-document-we-consider.component';
 import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
 import { PageSupplierBackgroundSearchComponent } from "./page-supplier-background-search/page-supplier-background-search.component";
 import { PageSupplierReportComponent } from "./page-supplier-report/page-supplier-report.component";
 import { PageSupportComponent } from "./page-support/page-support.component";
+import { PageTeamsComponent } from './page-teams/page-teams.component';
 import { PageTermsComponent } from "./page-terms/page-terms.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
@@ -84,10 +85,6 @@ const routes: Routes = [
     component: PageNewsAndUpdateComponent,
   },
   {
-    path: "partner",
-    component: PagePartnerComponent,
-  },
-  {
     path: "product-search",
     component: PageProductSearchComponent,
   },
@@ -116,6 +113,10 @@ const routes: Routes = [
     component: PageSellerCatalogueProfileComponent,
   },
   {
+    path: "seller-document-we-consider",
+    component: PageSellerDocumentWeConsiderComponent,
+  },
+  {
     path: "seller-report-check",
     component: PageSellerReportCheckComponent,
   },
@@ -132,8 +133,12 @@ const routes: Routes = [
     component: PageSupportComponent,
   },
   {
+    path: "teams",
+    component: PageTeamsComponent,
+  },
+  {
     path: "terms",
-    component: PageSupportComponent,
+    component: PageTermsComponent,
   },
   {
     path: "terms-and-condition",
