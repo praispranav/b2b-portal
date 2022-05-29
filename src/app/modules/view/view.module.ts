@@ -34,6 +34,7 @@ import { ProductSearchCardListComponent } from "./components/product-search-card
 import { ProductSearchCategoriesComponent } from "./components/product-search-categories/product-search-categories.component";
 import { ProductSearchFilterComponent } from "./components/product-search-filter/product-search-filter.component";
 import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
+import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
 import { PageBlogComponent } from "./page-blog/page-blog.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
@@ -90,6 +91,7 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     ProductSearchCategoriesComponent,
     ProductSearchFilterComponent,
     PageAboutUsComponent,
+    PageAskSupportForServicePartnerComponent,
     PageBlogComponent,
     PageBuyComponent,
     PageContactUsComponent,

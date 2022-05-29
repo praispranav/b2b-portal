@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
+import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
 import { PageBlogComponent } from "./page-blog/page-blog.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: "about-us",
     component: PageAboutUsComponent,
+  },
+  {
+    path: "ask-support-for-service-partner",
+    component: PageAskSupportForServicePartnerComponent,
   },
   {
     path: "blog",
