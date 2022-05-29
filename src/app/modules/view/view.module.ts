@@ -1,8 +1,9 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { TextMaskModule } from "angular2-text-mask";
 import { AlertModule } from "ngx-bootstrap";
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { TextMaskModule } from "angular2-text-mask";
 import { SharedModule } from "./../../@pages/components/shared.module";
 import { pgCardModule } from "../../@pages/components/card/card.module";
 import { pgSelectfx } from "./../../@pages/components/cs-select/select.module";
@@ -121,8 +122,9 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TextMaskModule,
     AlertModule.forRoot(),
+    SwiperModule,
+    TextMaskModule,
     SharedModule,
     pgCardModule,
     pgSelectfx,
