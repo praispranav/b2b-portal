@@ -62,6 +62,8 @@ import { PageTermsComponent } from "./page-terms/page-terms.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
 import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.component";
+import { PageProductViewDetailsComponent } from './components/page-product-view-details/page-product-view-details.component';
+import { PageProductViewMessageSupplierComponent } from './components/page-product-view-message-supplier/page-product-view-message-supplier.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +119,8 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
     PageTradeShowComponent,
+    PageProductViewDetailsComponent,
+    PageProductViewMessageSupplierComponent,
   ],
   imports: [
     CommonModule,
