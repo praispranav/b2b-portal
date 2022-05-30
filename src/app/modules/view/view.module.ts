@@ -92,7 +92,7 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     ProductSearchCategoriesComponent,
     ProductSearchFilterComponent,
     PageAboutUsComponent,
-    PageActiveAccountComponent
+    PageActiveAccountComponent,
     PageAskSupportForServicePartnerComponent,
     PageBlogComponent,
     PageBuyComponent,
@@ -139,4 +139,4 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     ViewRoutingModule,
   ],
 })
-export class ViewModule {}
+export class ViewModule { }
