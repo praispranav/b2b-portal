@@ -53,6 +53,7 @@ import { PageProductViewComponent } from "./page-product-view/page-product-view.
 import { PageSellComponent } from "./page-sell/page-sell.component";
 import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-contact/page-seller-catalogue-contact.component";
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
+import { PageSellerCatalogueManageGuideComponent } from './page-seller-catalogue-manage-guide/page-seller-catalogue-manage-guide.component';
 import { PageSellerCatalogueProductComponent } from "./page-seller-catalogue-product/page-seller-catalogue-product.component";
 import { PageSellerCatalogueProfileComponent } from "./page-seller-catalogue-profile/page-seller-catalogue-profile.component";
 import { PageSellerDocumentWeConsiderComponent } from './page-seller-document-we-consider/page-seller-document-we-consider.component';
@@ -111,6 +112,7 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     PageSellComponent,
     PageSellerCatalogueContactComponent,
     PageSellerCatalogueHomeComponent,
+    PageSellerCatalogueManageGuideComponent,
     PageSellerCatalogueProductComponent,
     PageSellerCatalogueProfileComponent,
     PageSellerDocumentWeConsiderComponent,
