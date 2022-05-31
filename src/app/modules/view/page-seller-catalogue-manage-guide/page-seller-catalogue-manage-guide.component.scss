@@ -31,19 +31,14 @@
         line-height: 80px;
         font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
     }
-    // ul {
-    //     margin-top: 3rem;
-    // }
-    span {
-        // margin-top: 2px;
-    }
+   
     li::marker {
         color: blue;
-        font-size: 30px;
+        font-size: 40px;
         /* or whatever */
     }
     li {
         font-size: 20px;
-        padding: 4px;
+        padding: 25px;
     }
 }
