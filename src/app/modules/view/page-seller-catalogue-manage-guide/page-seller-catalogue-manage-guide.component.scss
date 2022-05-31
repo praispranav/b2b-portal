@@ -1,50 +1,47 @@
-.main-container{
+.main-container {
     height: 100%;
-text-align: center;
-margin-top: 245px;
-h1{
-    color: #202124;
-    font-size: 50px;
-    line-height: 80px;
-    font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
-    @media(max-width:992px){
-        font-size: 40px;
+    text-align: center;
+    margin-top: 245px;
+    h1 {
+        color: #202124;
+        font-size: 50px;
+        line-height: 80px;
+        font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
+        @media(max-width: 992px) {
+            font-size: 40px;
+        }
+        @media(max-width:768px) {
+            font-size: 35px;
+            line-height: 60px;
+        }
+        @media(max-width:576px) {
+            font-size: 30px;
+            text-align: center;
+        }
     }
-    @media(max-width:768px){
-        font-size: 35px;
-        line-height: 60px;
+}
 
-    }
-    @media(max-width:576px){
-        font-size: 30px;
+.banner-container {
+    text-align: center;
+    h2 {
         text-align: center;
+        padding-top: 27rem;
+        color: #202124;
+        font-size: 40px;
+        line-height: 80px;
+        font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
     }
-    
-}
-}
-.banner-container{
-    text-align: center;
-h2{
-    text-align: center;
-padding-top: 27rem;
-    color: #202124;
-
-    font-size: 40px;
-    line-height: 80px;
-    font-family: "Google Sans Display", Arial, Helvetica, sans-serif; 
-}
-ul{
-    margin-top: 3rem;
-}
-span{
-    margin-top: 2px;
-    font-size: 20px;
-}
-
- li::marker {
-padding-right: 0px;
-    color: blue;
-    
-    font-size: 500%; /* or whatever */
- }
+    ul {
+        margin-top: 3rem;
+    }
+    span {
+        margin-top: 2px;
+        font-size: 20px;
+    }
+    li::marker {
+        padding-right: 0px;
+        color: blue;
+        font-size: 500%;
+        /* or whatever */
+    }
 }
