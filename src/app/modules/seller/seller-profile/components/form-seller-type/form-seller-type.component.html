@@ -1,1 +1,17 @@
-<p>form-seller-type works!</p>
+<div class="container-fluid p-3 bg-white">
+    <h3>Seller Type</h3>
+    <form class="p-t-15" role="form" [formGroup]="sellerTypeForm">
+        <ng-container>
+            <div class="" *ngFor="let seller of sellerTypeList; let i=index">
+                <div class="form-check complete">
+                    <input type="checkbox" id="checkColorOpt1" [value]="seller.value">
+                    <label for="checkColorOpt1">
+                        {{seller.value}}
+                    </label>
+                </div>
+            </div>
+        </ng-container>
+
+    </form>
+
+</div>
