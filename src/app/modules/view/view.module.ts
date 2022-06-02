@@ -95,7 +95,7 @@ import { PageProductViewMessageSupplierComponent } from './components/page-produ
     ProductSearchCategoriesComponent,
     ProductSearchFilterComponent,
     PageAboutUsComponent,
-    PageActiveAccountComponent
+    PageActiveAccountComponent,
     PageAskSupportForServicePartnerComponent,
     PageBlogComponent,
     PageBuyComponent,
