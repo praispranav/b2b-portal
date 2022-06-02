@@ -20,25 +20,29 @@
         }
     }
 }
-
 .banner-container {
-    text-align: center;
     h2 {
         text-align: center;
         padding-top: 27rem;
         color: #202124;
-        font-size: 40px;
+        font-size: 50px;
         line-height: 80px;
         font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
+    }
+    span{
+        margin-left:6rem;
+       
     }
    
     li::marker {
         color: blue;
-        font-size: 40px;
-        /* or whatever */
-    }
+        font-size: 70px;
+         }
     li {
         font-size: 20px;
-        padding: 25px;
+        padding-top: 25px;
+    }
+    div{
+        left: 34px;
     }
 }
