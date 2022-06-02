@@ -93,7 +93,7 @@ import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.compon
     ProductSearchCategoriesComponent,
     ProductSearchFilterComponent,
     PageAboutUsComponent,
-    PageActiveAccountComponent
+    PageActiveAccountComponent,
     PageAskSupportForServicePartnerComponent,
     PageBlogComponent,
     PageBuyComponent,

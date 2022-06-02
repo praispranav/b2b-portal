@@ -42,7 +42,7 @@ const routes: Routes = [
   {
     path: "active-account",
     component: PageActiveAccountComponent,
-  }
+  },
   {
     path: "ask-support-for-service-partner",
     component: PageAskSupportForServicePartnerComponent,
