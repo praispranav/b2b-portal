@@ -2,18 +2,30 @@
     <h3>Quality Control</h3>
     <form class="p-t-15" role="form" [formGroup]="qualityControlForm">
         <h6>Whether to demostrate Quality Control Process</h6>
-        <div class="form-check">
-            <input class="form-check-input" formControlName="selectYes" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
+        <div class="form-check form-check-inline complete">
+            <input type="radio" name="state" id="radioInline" value="Default" checked>
+            <label for="radioInline">
                 Yes
             </label>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked
-                formControlName="selectNo">
-            <label class="form-check-label" for="flexCheckChecked">
+        <div class="form-check form-check-inline">
+            <input type="radio" name="state" id="radioDisabled" value="disabled">
+            <label for="radioDisabled">
                 No
             </label>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <label style="margin-left:54px">Process Picture <span class="text-danger">*</span></label>
+            </div>
+            <div class="col-md-9 mb-4" style="margin-left: -86px;">
+                <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                    <div class="pic-placeholder">
+                        <i class="pg-icon p-b-5">upload</i>
+                        <div class="fs-12">Upload</div>
+                    </div>
+                </pg-upload>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -27,7 +39,7 @@
                     <label *ngIf="f.processName.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default"
                     [class.has-error]="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
                     <label for="process-picture">Process Picture</label>
@@ -40,7 +52,7 @@
                 <div *ngIf="f.processpicture.invalid && (f.processpicture.dirty || f.processpicture.touched)">
                     <label *ngIf="f.processpicture.errors.required" class="error">This field is required.</label>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-md-6">
