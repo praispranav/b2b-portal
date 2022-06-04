@@ -20,7 +20,6 @@
         }
     }
 }
-
 .banner-container {
     h2 {
         text-align: center;
@@ -32,17 +31,16 @@
     }
     ul {
         list-style-type: none;
+        padding-top: 33px;
     }
     li p {
         font-size: 20px;
+        line-height: 26px;
     }
     .blue-disc {
         width: 20px;
         height: 20px;
-        border-radius: 10px;
+        border-radius: 50%;
         background: blue;
+            }
     }
-    // div {
-    //     left: 34px;
-    // }
-}
