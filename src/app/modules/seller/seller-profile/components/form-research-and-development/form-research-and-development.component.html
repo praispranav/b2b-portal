@@ -2,19 +2,7 @@
     <h3>R & D</h3>
     <form class="p-t-15" role="form" [formGroup]="randdForm">
         <h6>Whether to demostrate Quality Control Process</h6>
-        <!-- <div class="form-check">
-            <input class="form-check-input" formControlName="selectYes" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                Yes
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked
-                formControlName="selectNo">
-            <label class="form-check-label" for="flexCheckChecked">
-                No
-            </label>
-        </div> -->
+
         <div class="form-check form-check-inline complete">
             <input type="radio" name="state" id="radioInline" value="Default" checked>
             <label for="radioInline">
@@ -39,17 +27,7 @@
                     <label *ngIf="f.certificateName.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-            <!-- <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
-                    <label for="certified-by">Certified By</label>
-                    <input type="text" formControlName="certifiedBy" placeholder="Certified By" class="form-control"
-                        id="certified-by" />
-                </div>
-                <div *ngIf="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
-                    <label *ngIf="f.certifiedBy.errors.required" class="error">This field is required.</label>
-                </div>
-            </div> -->
+
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -77,25 +55,7 @@
             </div>
 
 
-            <!-- <div class="col-md-6">
-                <div class="form-group form-group-default input-group col-md-12"
-                    [class.has-error]="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
-                    <div class="form-input-group">
-                        <label>Date Velidity</label>
-                        <pg-datepicker formControlName="businessDate" placeholder="Enter date here" class="form-control"
-                            id="date">
-                        </pg-datepicker>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="pg-icon">text_align_justify</i>
-                        </span>
-                    </div>
-                </div>
-                <div *ngIf="f.businessDate.invalid && (f.businessDate.dirty || f.businessDate.touched)">
-                    <label *ngIf="f.businessDate.errors.required" class="error">This field is required.</label>
-                </div>
-            </div> -->
+
 
 
         </div>
@@ -113,9 +73,7 @@
                         </span>
                     </div>
                 </div>
-                <!-- <div *ngIf="f.date.invalid && (f.date.dirty || f.date.touched)">
-                <label *ngIf="f.date.errors.required" class="error">This field is required.</label>
-            </div> -->
+
             </div>
 
             <div class="col-md-4">
@@ -131,9 +89,7 @@
                         </span>
                     </div>
                 </div>
-                <!-- <div *ngIf="f.date.invalid && (f.date.dirty || f.date.touched)">
-                <label *ngIf="f.date.errors.required" class="error">This field is required.</label>
-            </div> -->
+
             </div>
         </div>
         <div class="row mt-4">
