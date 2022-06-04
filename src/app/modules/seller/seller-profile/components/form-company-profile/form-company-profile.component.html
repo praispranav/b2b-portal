@@ -134,7 +134,7 @@
     </div>
     <hr>
     <h4>Registered Address</h4>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6">
             <div class="form-group tag-group form-group-default required ">
                 <label>Business Registration Certificate</label>
@@ -144,6 +144,23 @@
                 <label *ngIf="f.registration.errors.required" class="error">This field is required.</label>
             </div>
         </div>
+    </div> -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <h6>Business Registration Certificate<span class="text-danger">*</span></h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                <div class="pic-placeholder">
+                    <i class="pg-icon p-b-5">upload</i>
+                    <div class="fs-12">Upload</div>
+                </div>
+            </pg-upload>
+        </div>
+
+
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -308,7 +325,22 @@
         <div class="col-md-6"></div>
     </div> -->
     <hr>
+    <h6>Do you have another office ?<span class="text-danger">*</span></h6>
+
+    <div class="form-check form-check-inline complete">
+        <input type="radio" name="state" id="radioInline" value="Default" checked>
+        <label for="radioInline">
+            Yes
+        </label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="radio" name="state" id="radioDisabled" value="disabled">
+        <label for="radioDisabled">
+            No
+        </label>
+    </div>
     <h4>Additional Contact Details</h4>
+    <p>This information is required if you have another offer into different location also.</p>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group form-group-default form-group-default-select2">
