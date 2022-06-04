@@ -20,6 +20,7 @@
         }
     }
 }
+
 .banner-container {
     h2 {
         text-align: center;
@@ -29,20 +30,19 @@
         line-height: 80px;
         font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
     }
-    span{
-        margin-left:6rem;
-       
+    ul {
+        list-style-type: none;
     }
-   
-    li::marker {
-        color: blue;
-        font-size: 70px;
-         }
-    li {
+    li p {
         font-size: 20px;
-        padding-top: 25px;
     }
-    div{
-        left: 34px;
+    .blue-disc {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        background: blue;
     }
+    // div {
+    //     left: 34px;
+    // }
 }
