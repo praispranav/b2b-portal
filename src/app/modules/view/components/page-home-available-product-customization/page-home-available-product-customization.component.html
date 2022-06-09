@@ -1,27 +1,29 @@
-     <div class="d-flex flex-wrap mt-2">
-         <div class="bg-grey">
+        <div class="bg-white  mt-5 p-2">
+            <div class="d-flex flex-wrap">
+                <div class="">
              <h3 class="p-2">Available Product Customization</h3>
-         </div>
-         <div class="ml-auto bg-grey text-center p-2 pt-4">
-             <a href="#">View More ></a>
-         </div>
-     </div>
+                </div>
+                <div class="ml-auto text-center p-2 pt-4">
+                    <a href="#">View More ></a>
+                </div>
+                </div>
 
-     <div class="row bg-grey mt-2 ">
-         <div class="col-md-2 border-bottom pt-3">
-             <h5 class="pb-3 pr-0">COMPETITIVE PRICE AND GREAT QUALITY</h5>
-             <button class="btn btn-orange">Shop Now</button>
-         </div>
-         <div class="col-md-2 border-bottom border-right pt-3">
-             <img src="https://rukminim1.flixcart.com/image/495/594/l0tweq80/jewellery-set/h/f/i/na-na-ad-545-ig-nker-estele-original-imagcj9xdpywetpj.jpeg?q=50"
-                 alt="" class="img-fluid">
-         </div>
-         <div *ngFor="let  i of [1,2,3,4,5,6,7,8,9,10]"
-             [ngClass]="{'border-bottom-0':i>4,'border-right-0':i==4 || i==10}"
-             class="col-md-2 bg-pr p-1 border-bottom border-right">
-             <img class="img-fluid"
-                 src="https://rukminim1.flixcart.com/image/495/594/k4bms280/jewellery-set/d/r/3/white-markis-kundan-choker-necklace-set-with-earring-mangtikka-original-imafn9gyhhrb5agz.jpeg?q=50"
-                 alt="">
-             <p class="text-center p-2">Alloy Gold-plated</p>
-         </div>
-     </div>
+            <div class="row mt-2 ">
+                <div class="col-md-2 border-bottom pt-3">
+                    <h5 class="pb-3 pr-0">COMPETITIVE PRICE AND GREAT QUALITY</h5>
+                    <button class="btn btn-orange">Shop Now</button>
+                </div>
+                <div class="col-md-2 border-bottom border-right pt-3">
+                    <img src="https://rukminim1.flixcart.com/image/495/594/l0tweq80/jewellery-set/h/f/i/na-na-ad-545-ig-nker-estele-original-imagcj9xdpywetpj.jpeg?q=50"
+                        alt="" class="img-fluid">
+                </div>
+                <div *ngFor="let  i of [1,2,3,4,5,6,7,8,9,10]"
+                    [ngClass]="{'border-bottom-0':i>4,'border-right-0':i==4 || i==10}"
+                    class="col-md-2 bg-pr p-1 border-bottom border-right">
+                    <img class="img-fluid"
+                        src="https://rukminim1.flixcart.com/image/495/594/k4bms280/jewellery-set/d/r/3/white-markis-kundan-choker-necklace-set-with-earring-mangtikka-original-imafn9gyhhrb5agz.jpeg?q=50"
+                        alt="">
+                    <p class="text-center p-2">Alloy Gold-plated</p>
+                </div>
+            </div>
+        </div>
