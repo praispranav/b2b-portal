@@ -68,6 +68,12 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
 import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.component";
 import { PageProductViewDetailsComponent } from './components/page-product-view-details/page-product-view-details.component';
 import { PageProductViewMessageSupplierComponent } from './components/page-product-view-message-supplier/page-product-view-message-supplier.component';
+import { PageHomeAvailableProductCustomizationComponent } from './components/page-home-available-product-customization/page-home-available-product-customization.component';
+import { PageHomeTopSellingCategoriesComponent } from './components/page-home-top-selling-categories/page-home-top-selling-categories.component';
+import { PageHomeFlashDealsComponent } from './components/page-home-flash-deals/page-home-flash-deals.component';
+import { PageHomeTradeFairComponent } from './components/page-home-trade-fair/page-home-trade-fair.component';
+import { PageHomeRequestForQuotationComponent } from './components/page-home-request-for-quotation/page-home-request-for-quotation.component';
+import { PageHomeCategoriesComponent } from './components/page-home-categories/page-home-categories.component';
 
 @NgModule({
   declarations: [
@@ -129,6 +135,12 @@ import { PageProductViewMessageSupplierComponent } from './components/page-produ
     PageTradeShowComponent,
     PageProductViewDetailsComponent,
     PageProductViewMessageSupplierComponent,
+    PageHomeAvailableProductCustomizationComponent,
+    PageHomeTopSellingCategoriesComponent,
+    PageHomeFlashDealsComponent,
+    PageHomeTradeFairComponent,
+    PageHomeRequestForQuotationComponent,
+    PageHomeCategoriesComponent,
   ],
   imports: [
     CommonModule,
