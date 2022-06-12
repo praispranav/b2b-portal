@@ -49,8 +49,6 @@ export class PageCategoryEditComponent implements OnInit {
 
   subCategoryForm() {
     const formData = this.categoryForm.value;
-    // API CALL
-    console.log(formData);
   }
   showStatus(changeEvent: any) {
     this.status = changeEvent.target.checked;

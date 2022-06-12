@@ -23,15 +23,4 @@ export class FormFindYourProductComponent implements OnInit {
 
     });
   }
-
-  // //Expandable Table Code;
-  // @ViewChild('expTable', { static: true }) expTable: any;
-  // expanded: any = {};
-
-  // toggleExpandRow(row) {
-  //   console.log(row);
-  //   this.expTable.rowDetail.toggleExpandRow(row);
-  // }
-
-  // onDetailToggle(event) { }
 }

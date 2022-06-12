@@ -13,6 +13,11 @@ export class PageCategoryAddComponent implements OnInit {
   iconList: any[] = [];
   imageList: any[] = [];
   keywordsList: string[] = [];
+  apiPagination = {
+    index: 0,
+    length: 10,
+    query: {},
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,6 +30,11 @@ export class PageCategoryAddComponent implements OnInit {
 
   ngOnInit() {
     this.buildCategoryForm();
+    this.getMaterCategoryListByFilter(
+      this.apiPagination.index,
+      this.apiPagination.length,
+      this.apiPagination.query
+    );
   }
 
   buildCategoryForm() {
@@ -75,13 +85,29 @@ export class PageCategoryAddComponent implements OnInit {
       this.markFormGroupTouched(this.categoryForm);
       return;
     }
-    const formData = this.categoryForm.value;
-    this.providerMaterCategoryService.addMaterCategory(formData).subscribe(res => {
-      console.log(res);
-    }, err => {
-      console.log(err);
-    });
-    console.log(formData);
+    if (this.f.parentId.value['_id'] !== undefined) {
+      this.f.level.setValue(Number(this.f.parentId.value.level) + 1);
+      this.f.parentId.setValue(this.f.parentId.value._id);
+    }
+    console.log(this.categoryForm.value);
+    return;
+    this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.categoryForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+
+  getMaterCategoryListByFilter(index: number, length: number, query: any = {}) {
+    this.providerMaterCategoryService
+      .getMaterCategoryListByFilter(index, length, query)
+      .subscribe((res) => {
+        this.masterCategoryList = res.data;
+      });
   }
 
   async toBase64(file) {
@@ -96,10 +122,16 @@ export class PageCategoryAddComponent implements OnInit {
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
-
       if ((control as any).controls) {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
+  }
+
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+    this.iconList = [];
+    this.imageList = [];
+    this.keywordsList = [];
   }
 }

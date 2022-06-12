@@ -25,7 +25,7 @@
                         <pg-select formControlName="parentId" class="w-100" [PlaceHolder]="'Map Under'" AllowClear
                             ShowSearch>
                             <pg-option *ngFor="let masterCategory of masterCategoryList" [Label]="masterCategory.name"
-                                [Value]="masterCategory" [Disabled]="masterCategory.isActivated">
+                                [Value]="masterCategory">
                             </pg-option>
                         </pg-select>
                     </div>

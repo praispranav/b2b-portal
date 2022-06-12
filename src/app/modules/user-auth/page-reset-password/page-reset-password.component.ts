@@ -28,7 +28,5 @@ export class PageResetPasswordComponent implements OnInit {
 
   subresetPasswordForm() {
     const formData = this.resetPasswordForm.value;
-    // API CALL
-    console.log(formData);
   }
 }
