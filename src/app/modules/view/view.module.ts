@@ -68,6 +68,7 @@ import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.c
 import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.component";
 import { PageProductViewDetailsComponent } from './components/page-product-view-details/page-product-view-details.component';
 import { PageProductViewMessageSupplierComponent } from './components/page-product-view-message-supplier/page-product-view-message-supplier.component';
+import { pgCollapseModule } from "../../@pages/components/collapse";
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { PageProductViewMessageSupplierComponent } from './components/page-produ
     pgSelectModule,
     pgSliderModule,
     ViewRoutingModule,
+    pgCollapseModule.forRoot(),
   ],
 })
 export class ViewModule {}
