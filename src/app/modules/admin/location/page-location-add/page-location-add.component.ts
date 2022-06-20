@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
+import { ProviderMaterLocationService } from './../../../../core/providers/master/provider-mater-location.service';
 
 @Component({
-  selector: 'app-page-category-add',
-  templateUrl: './page-category-add.component.html',
-  styleUrls: ['./page-category-add.component.scss'],
+  selector: 'app-page-location-add',
+  templateUrl: './page-location-add.component.html',
+  styleUrls: ['./page-location-add.component.scss'],
 })
-export class PageCategoryAddComponent implements OnInit {
-  categoryForm: FormGroup;
-  masterCategoryList: any[] = [];
+export class PageLocationAddComponent implements OnInit {
+  locationForm: FormGroup;
+  masterLocationList: any[] = [];
   iconList: any[] = [];
   imageList: any[] = [];
   keywordsList: string[] = [];
@@ -21,24 +21,24 @@ export class PageCategoryAddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private providerMaterCategoryService: ProviderMaterCategoryService
+    private providerMaterLocationService: ProviderMaterLocationService
   ) {}
 
   get f() {
-    return this.categoryForm.controls;
+    return this.locationForm.controls;
   }
 
   ngOnInit() {
-    this.buildCategoryForm();
-    this.getMaterCategoryListByFilter(
+    this.buildLocationForm();
+    this.getMaterLocationListByFilter(
       this.apiPagination.index,
       this.apiPagination.length,
       this.apiPagination.query
     );
   }
 
-  buildCategoryForm() {
-    this.categoryForm = this.formBuilder.group({
+  buildLocationForm() {
+    this.locationForm = this.formBuilder.group({
       name: [
         '',
         [
@@ -72,7 +72,7 @@ export class PageCategoryAddComponent implements OnInit {
     });
   }
 
-  async subCategoryForm() {
+  async subLocationForm() {
     if (this.iconList.length > 0) {
       this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
     }
@@ -81,8 +81,8 @@ export class PageCategoryAddComponent implements OnInit {
         await this.toBase64(this.imageList[0].originFileObj)
       );
     }
-    if (this.categoryForm.invalid) {
-      this.markFormGroupTouched(this.categoryForm);
+    if (this.locationForm.invalid) {
+      this.markFormGroupTouched(this.locationForm);
       return;
     }
     if (this.f.parentId.value['_id'] !== undefined) {
@@ -90,9 +90,9 @@ export class PageCategoryAddComponent implements OnInit {
       this.f.parentId.setValue(this.f.parentId.value._id);
     }
 
-    this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
+    this.providerMaterLocationService.addMaterLocation(this.locationForm.value).subscribe(
       (res) => {
-        this.resetFormGroup(this.categoryForm);
+        this.resetFormGroup(this.locationForm);
         window.alert('API Success');
       },
       (err) => {
@@ -101,11 +101,11 @@ export class PageCategoryAddComponent implements OnInit {
     );
   }
 
-  getMaterCategoryListByFilter(index: number, length: number, query: any = {}) {
-    this.providerMaterCategoryService
-      .getMaterCategoryListByFilter(index, length, query)
+  getMaterLocationListByFilter(index: number, length: number, query: any = {}) {
+    this.providerMaterLocationService
+      .getMaterLocationListByFilter(index, length, query)
       .subscribe((res) => {
-        this.masterCategoryList = res.data;
+        this.masterLocationList = res.data;
       });
   }
 
