@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   Router,
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-} from "@angular/router";
-import { ProviderAuthService } from "../providers/provider-auth.service";
+} from '@angular/router';
+import { ProviderAuthService } from '../providers/provider-auth.service';
 
 @Injectable()
 
