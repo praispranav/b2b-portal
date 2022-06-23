@@ -9,6 +9,7 @@ import { pgCardModule } from "../../@pages/components/card/card.module";
 import { pgSelectfx } from "./../../@pages/components/cs-select/select.module";
 import { pgSelectModule } from "../../@pages/components/select/select.module";
 import { pgSliderModule } from "../../@pages/components/slider/slider.module";
+import { pgCollapseModule } from "../../@pages/components/collapse";
 import { ViewRoutingModule } from "./view-routing.module";
 import { BannerImgWidgetComponent } from "./components/banner-img-widget/banner-img-widget.component";
 import { ButtonFiveWidgetComponent } from "./components/button-five-widget/button-five-widget.component";
@@ -74,6 +75,7 @@ import { PageHomeFlashDealsComponent } from './components/page-home-flash-deals/
 import { PageHomeTradeFairComponent } from './components/page-home-trade-fair/page-home-trade-fair.component';
 import { PageHomeRequestForQuotationComponent } from './components/page-home-request-for-quotation/page-home-request-for-quotation.component';
 import { PageHomeCategoriesComponent } from './components/page-home-categories/page-home-categories.component';
+
 
 @NgModule({
   declarations: [
@@ -155,6 +157,7 @@ import { PageHomeCategoriesComponent } from './components/page-home-categories/p
     pgSelectModule,
     pgSliderModule,
     ViewRoutingModule,
+    pgCollapseModule.forRoot(),
   ],
 })
 export class ViewModule {}
