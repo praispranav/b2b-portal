@@ -160,4 +160,4 @@ import { PageHomeCategoriesComponent } from './components/page-home-categories/p
     pgCollapseModule.forRoot(),
   ],
 })
-export class ViewModule {}
+export class ViewModule { }
