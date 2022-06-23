@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
+import { PageActiveAccountComponent } from './page-active-account/page-active-account.component';
+import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
 import { PageBlogComponent } from "./page-blog/page-blog.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
@@ -13,18 +15,20 @@ import { PageInspectionServiceComponent } from "./page-inspection-service/page-i
 import { PageJoinNowForFreeComponent } from "./page-join-now-for-free/page-join-now-for-free.component";
 import { PageLogisticSolutionsComponent } from "./page-logistic-solutions/page-logistic-solutions.component";
 import { PageNewsAndUpdateComponent } from "./page-news-and-update/page-news-and-update.component";
-import { PagePartnerComponent } from "./page-partner/page-partner.component";
 import { PageProductSearchComponent } from "./page-product-search/page-product-search.component";
 import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
 import { PageSellComponent } from "./page-sell/page-sell.component";
 import { PageSellerCatalogueContactComponent } from "./page-seller-catalogue-contact/page-seller-catalogue-contact.component";
 import { PageSellerCatalogueHomeComponent } from "./page-seller-catalogue-home/page-seller-catalogue-home.component";
+import { PageSellerCatalogueManageGuideComponent } from './page-seller-catalogue-manage-guide/page-seller-catalogue-manage-guide.component';
 import { PageSellerCatalogueProductComponent } from "./page-seller-catalogue-product/page-seller-catalogue-product.component";
 import { PageSellerCatalogueProfileComponent } from "./page-seller-catalogue-profile/page-seller-catalogue-profile.component";
+import { PageSellerDocumentWeConsiderComponent } from './page-seller-document-we-consider/page-seller-document-we-consider.component';
 import { PageSellerReportCheckComponent } from "./page-seller-report-check/page-seller-report-check.component";
 import { PageSupplierBackgroundSearchComponent } from "./page-supplier-background-search/page-supplier-background-search.component";
 import { PageSupplierReportComponent } from "./page-supplier-report/page-supplier-report.component";
 import { PageSupportComponent } from "./page-support/page-support.component";
+import { PageTeamsComponent } from './page-teams/page-teams.component';
 import { PageTermsComponent } from "./page-terms/page-terms.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
@@ -34,6 +38,14 @@ const routes: Routes = [
   {
     path: "about-us",
     component: PageAboutUsComponent,
+  },
+  {
+    path: "active-account",
+    component: PageActiveAccountComponent,
+  },
+  {
+    path: "ask-support-for-service-partner",
+    component: PageAskSupportForServicePartnerComponent,
   },
   {
     path: "blog",
@@ -84,10 +96,6 @@ const routes: Routes = [
     component: PageNewsAndUpdateComponent,
   },
   {
-    path: "partner",
-    component: PagePartnerComponent,
-  },
-  {
     path: "product-search",
     component: PageProductSearchComponent,
   },
@@ -108,12 +116,20 @@ const routes: Routes = [
     component: PageSellerCatalogueHomeComponent,
   },
   {
+    path: "seller-catalogue-manage-guide",
+    component: PageSellerCatalogueManageGuideComponent,
+  },
+  {
     path: "seller-catalogue-product",
     component: PageSellerCatalogueProductComponent,
   },
   {
     path: "seller-catalogue-profile",
     component: PageSellerCatalogueProfileComponent,
+  },
+  {
+    path: "seller-document-we-consider",
+    component: PageSellerDocumentWeConsiderComponent,
   },
   {
     path: "seller-report-check",
@@ -132,8 +148,12 @@ const routes: Routes = [
     component: PageSupportComponent,
   },
   {
+    path: "teams",
+    component: PageTeamsComponent,
+  },
+  {
     path: "terms",
-    component: PageSupportComponent,
+    component: PageTermsComponent,
   },
   {
     path: "terms-and-condition",

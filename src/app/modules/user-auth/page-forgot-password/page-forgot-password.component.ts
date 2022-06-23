@@ -28,7 +28,5 @@ export class PageForgotPasswordComponent implements OnInit {
 
   subForgotPasswordForm() {
     const formData = this.forgotPasswordForm.value;
-    // API CALL
-    console.log(formData);
   }
 }

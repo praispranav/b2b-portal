@@ -35,6 +35,5 @@ export class PageInspectionServiceComponent implements OnInit {
 
   subInspectionForm() {
     const formData = this.inspectionForm.value;
-    console.log(formData)
   }
 }

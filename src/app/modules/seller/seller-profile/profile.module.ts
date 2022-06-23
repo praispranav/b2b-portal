@@ -17,6 +17,7 @@ import { FormResearchAndDevelopmentComponent } from "./components/form-research-
 import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.component";
 import { PageProfileEditComponent } from "./page-profile-edit/page-profile-edit.component";
 import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.component";
+import { FormSellerTypeComponent } from './components/form-seller-type/form-seller-type.component';
 
 
 
@@ -32,6 +33,7 @@ import { PageProfileViewComponent } from "./page-profile-view/page-profile-view.
     PageProfileAddComponent,
     PageProfileEditComponent,
     PageProfileViewComponent,
+    FormSellerTypeComponent,
   ],
   imports: [
     CommonModule,
