@@ -1,4 +1,3 @@
-import { ProviderAuthService } from '../providers/provider-auth.service';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -8,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ProviderAuthService } from '../providers/provider-auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {

@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://b2b-portal-api.azurewebsites.net/',
-  // apiUrl: 'http://localhost:4000/',
-  // apiUrl: 'http://192.168.6:4000//',
-  // apiUrl:
-  //   'https://4001-ajayshankar-b2bportalapi-scw3jmk26d6.ws-us34.gitpod.io/',
+  apiUrl: 'http://localhost:4001',
 };
 /*
  * For easier debugging in development mode, you can import the following file
