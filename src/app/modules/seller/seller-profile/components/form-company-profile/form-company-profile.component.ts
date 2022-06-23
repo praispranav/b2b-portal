@@ -60,7 +60,5 @@ export class FormCompanyProfileComponent implements OnInit {
 
   subCompanyProfileForm() {
     const formData = this.companyProfileForm.value;
-    // API CALL
-    console.log(formData);
   }
 }
