@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProviderCompanyDetailService } from "../../../../../core/providers/seller/provider-company-detail.service";
 
 @Component({
   selector: "app-form-company-detail",
@@ -14,7 +15,7 @@ export class FormCompanyDetailComponent implements OnInit {
     { value: "tom", label: "Tom" },
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private providerCompanyDetailService: ProviderCompanyDetailService) { }
 
   get f() {
     return this.companyDetailsForm.controls;
@@ -35,7 +36,7 @@ export class FormCompanyDetailComponent implements OnInit {
       contactEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       alternativeEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       designation: ["", [Validators.required]],
-      compnyWebsite: ["", [Validators.required]],
+      companyWebsite: ["", [Validators.required]],
       googleBusiness: ["", [Validators.required]],
       facebookBusiness: ["", [Validators.required]],
       instagramBusiness: ["", [Validators.required]],
@@ -50,7 +51,7 @@ export class FormCompanyDetailComponent implements OnInit {
       companyPhilosophy: ["", [Validators.required]],
       companyVision: ["", [Validators.required]],
       companyDetail: ["", [Validators.required]],
-      strenth: ["", [Validators.required]],
+      strength: ["", [Validators.required]],
       selectYes: ["", [Validators.required]],
       selectNo: ["", [Validators.required]],
       tradeShow: [""],
@@ -62,4 +63,31 @@ export class FormCompanyDetailComponent implements OnInit {
       uploadPicture: [""],
     });
   }
+
+  async subCompanyDetailForm() {
+
+
+    this.providerCompanyDetailService.addCompanyDetail(this.companyDetailsForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.companyDetailsForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+
+  async toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+  }
+
 }

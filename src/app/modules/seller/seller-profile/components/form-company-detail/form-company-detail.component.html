@@ -284,6 +284,7 @@
                 <label>Language Spoken</label>
                 <pg-tag-control placeholder=""></pg-tag-control>
             </div>
+            <button type="button" class="me-4 btn btn-primary">Add</button>
             <div *ngIf="f.languageSpoken.invalid && (f.languageSpoken.dirty || f.languageSpoken.touched)">
                 <label *ngIf="f.languageSpoken.errors.required" class="error">This field is required.</label>
             </div>
@@ -490,5 +491,12 @@
             </pg-upload>
         </div>
 
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="d-flex justify-content-end btn btn-primary" (click)="subCompanyDetailForm()">Save
+            And Continue</button>
     </div>
 </form>
