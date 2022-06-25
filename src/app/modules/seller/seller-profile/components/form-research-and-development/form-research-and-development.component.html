@@ -96,16 +96,19 @@
             <div class="col-md-2">
                 <label style="margin-left:54px">Upload Image <span class="text-danger">*</span></label>
             </div>
-            <div class="col-md-10 mb-4">
-                <pg-upload ListType="picture-card" [Preview]="handlePreview">
-                    <div class="pic-placeholder">
-                        <i class="pg-icon p-b-5">upload</i>
-                        <div class="fs-12">Upload</div>
-                    </div>
-                </pg-upload>
+            <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                Action="https://jsonplaceholder.typicode.com/posts/">
+                <div class="pic-placeholder">
+                    <i class="pg-icon p-b-5">upload</i>
+                    <div class="fs-12">Upload</div>
+                </div>
+            </pg-upload>
+            <div *ngIf="f.image.invalid && (f.image.dirty || f.image.touched)">
+                <label *ngIf="f.image.errors.required" class="error">Image is required.</label>
             </div>
-
-
+        </div>
+        <div class="mt-4">
+            <button type="button" class="btn btn-primary" (click)="subRAndForm()">Save</button>
         </div>
     </form>
 </div>
