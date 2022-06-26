@@ -54,7 +54,7 @@ export class FormCompanyProfileComponent implements OnInit {
       area: [""],
       regionCountry: [""],
       regionState: [""],
-      annualTernover: [""],
+      annualTurnover: [""],
       contactPerson: [""],
       regionPhone: [""],
       regionMobile: [""],
