@@ -62,7 +62,7 @@ import { ProgressModule } from './@pages/components/progress/progress.module';
 import { NvD3Module } from 'ngx-nvd3';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { IsotopeModule } from 'ngx-isotope';
-import { NgxDnDModule } from '@swimlane/ngx-dnd';
+// import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { QuillModule } from 'ngx-quill';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -127,7 +127,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     pgTabsModule,
     NgxEchartsModule,
     IsotopeModule,
-    NgxDnDModule,
+    // NgxDnDModule,
     QuillModule.forRoot(),
     PerfectScrollbarModule,
     CoreModule,
