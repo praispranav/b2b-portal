@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { QualityControlService } from "../../../../../provider/quality-control.service";
+import { QualityControlService } from "../../../../../core/providers/seller/provider-quality-control.service";
 @Component({
   selector: "app-form-quality-control",
   templateUrl: "./form-quality-control.component.html",
