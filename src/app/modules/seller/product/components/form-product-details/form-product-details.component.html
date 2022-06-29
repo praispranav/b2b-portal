@@ -54,9 +54,13 @@
             </div>
             <div class="card-body no-scroll card-toolbar">
                 <div class="">
-                    <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor>
+                    <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="productDescription">
+                    </quill-editor>
                 </div>
             </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="me-4 btn btn-primary" (click)="subProductDetailsForm()">Submit</button>
         </div>
     </form>
 </div>

@@ -8,8 +8,7 @@
                     <div pgFormGroupDefault [class.has-error]="f.quantity.invalid && (f.quantity.dirty ||
                     f.quantity.touched)">
                         <label class="mb-2" for="Quantity-Unit">Quantity (Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault
-                            class="form-group form-group-default"
+                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default"
                             [class.has-error]="f.quantity.invalid && (f.quantity.dirty || f.quantity.touched)">
                             <input type="text" formControlName="quantity" placeholder="" class="form-control"
                                 id="Quantity-Unit" />
@@ -23,8 +22,7 @@
                     <div pgFormGroupDefault [class.has-error]="f.estLoadTime.invalid && (f.estLoadTime.dirty ||
                     f.estLoadTime.touched)">
                         <label class="mb-2" for="est-load-time">Est Load Time(Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault
-                            class="form-group form-group-default"
+                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default"
                             [class.has-error]="f.estLoadTime.invalid && (f.estLoadTime.dirty || f.estLoadTime.touched)">
                             <input type="text" formControlName="estLoadTime" placeholder="" class="form-control"
                                 id="est-load-time" />
@@ -53,10 +51,10 @@
                     f.shippingMode.touched)">
             <label class="mb-2" for="shipping-mode">Shipping Mode</label>
             <div>
-                <div *ngFor="let shippingMode of shippingModeList" class="form-check complete">
+                <div *ngFor="let mode of shippingModeList" class="form-check complete">
                     <input type="checkbox" formControlName="shippingMode" id="{{shippingMode.mode}}">
-                    <label for="{{shippingMode.mode}}">
-                        {{shippingMode.mode}}
+                    <label for="{{mode.shippingMode}}">
+                        {{mode.shippingMode}}
                     </label>
                 </div>
             </div>
@@ -85,14 +83,14 @@
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" name="customizationAvailable">
+                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailableYes">
                     <label class="ml-2" for="yes">
                         Yes </label>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" name="customizationAvailable">
+                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailableNo">
                     <label class="ml-2" for="no">
                         No </label>
                 </div>
@@ -104,18 +102,21 @@
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" name="productPrivateLabeling">
+                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabelingYes">
                     <label class="ml-2" for="yes">
                         Yes </label>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" name="productPrivateLabeling">
+                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabelingNo">
                     <label class="ml-2" for="no">
                         No </label>
                 </div>
             </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="me-4 btn btn-primary" (click)="subShippingDetailsForm()">Submit</button>
         </div>
     </form>
 </div>

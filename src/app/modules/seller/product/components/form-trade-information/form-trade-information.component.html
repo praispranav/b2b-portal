@@ -24,8 +24,8 @@
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Unit</label>
-                    <pg-select style="width: 100%;" [(ngModel)]="selectedOption" [PlaceHolder]="'Select Option'"
-                        AllowClear ShowSearch>
+                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="unit" AllowClear
+                        ShowSearch>
                         <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
                             [Disabled]="false">
                         </pg-option>
