@@ -59,9 +59,12 @@
                     <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
+            <div>
+                <button type="submit" class="my-4 btn btn-primary" (click)="addForm()">Add+</button>
+            </div>
         </div>
         <div>
-            <button type="submit" class="me-4 btn btn-primary" (click)="addForm()">Continue</button>
+            <button type="submit" class="mt-4 btn btn-primary" (click)="addForm()">Continue</button>
         </div>
     </form>
 </div>

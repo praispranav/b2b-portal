@@ -53,11 +53,6 @@
                     <label *ngIf="f.businessScope.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-
-
-
-
-
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -105,6 +100,9 @@
             </pg-upload>
             <div *ngIf="f.image.invalid && (f.image.dirty || f.image.touched)">
                 <label *ngIf="f.image.errors.required" class="error">Image is required.</label>
+            </div>
+            <div class="mt-4">
+                <button type="button" class="btn btn-primary" (click)="subRAndForm()">Add+</button>
             </div>
         </div>
         <div class="mt-4">

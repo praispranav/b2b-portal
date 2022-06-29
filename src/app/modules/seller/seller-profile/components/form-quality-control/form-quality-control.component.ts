@@ -33,6 +33,10 @@ export class FormQualityControlComponent implements OnInit {
     //     await this.toBase64(this.processPicture[0].originFileObj)
     //   );
     // }
+    if (this.qualityControlForm.invalid) {
+      this.markFormGroupTouched(this.qualityControlForm);
+      return;
+    }
     this.qualityControlService.addQualityControl(this.qualityControlForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.qualityControlForm);
@@ -42,6 +46,16 @@ export class FormQualityControlComponent implements OnInit {
         window.alert('API Error');
       }
     );
+  }
+
+
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
   // async toBase64(file) {
   //   return new Promise((resolve, reject) => {

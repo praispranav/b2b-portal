@@ -31,7 +31,10 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     });
   }
   async subRAndForm() {
-
+    if (this.randdForm.invalid) {
+      this.markFormGroupTouched(this.randdForm);
+      return;
+    }
     if (this.imageList.length > 0) {
       this.f.image.setValue(
         await this.toBase64(this.imageList[0].originFileObj)
@@ -47,7 +50,14 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       }
     );
   }
-
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
+  }
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

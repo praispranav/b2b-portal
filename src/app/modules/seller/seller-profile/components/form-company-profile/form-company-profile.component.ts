@@ -63,6 +63,10 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   async subCompanyProfileForm() {
+    if (this.companyProfileForm.invalid) {
+      this.markFormGroupTouched(this.companyProfileForm);
+      return;
+    }
     if (this.imageList.length > 0) {
       this.f.image.setValue(
         await this.toBase64(this.imageList[0].originFileObj)
@@ -87,7 +91,14 @@ export class FormCompanyProfileComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
-
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
+  }
 
   private resetFormGroup(form: FormGroup) {
     form.reset();

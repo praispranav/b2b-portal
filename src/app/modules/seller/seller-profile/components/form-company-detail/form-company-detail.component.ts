@@ -65,7 +65,10 @@ export class FormCompanyDetailComponent implements OnInit {
   }
 
   async subCompanyDetailForm() {
-
+    if (this.companyDetailsForm.invalid) {
+      this.markFormGroupTouched(this.companyDetailsForm);
+      return;
+    }
 
     this.providerCompanyDetailService.addCompanyDetail(this.companyDetailsForm.value).subscribe(
       (res) => {
@@ -84,6 +87,14 @@ export class FormCompanyDetailComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
+    });
+  }
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
     });
   }
   private resetFormGroup(form: FormGroup) {
