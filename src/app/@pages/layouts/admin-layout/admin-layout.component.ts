@@ -10,273 +10,284 @@ import { RootLayout } from '../root/root.component';
 export class AdminLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
-      label: 'Dashboard',
-      details: '12 New Updates',
-      routerLink: 'dashboard',
-      iconType: 'fi',
-      iconName: 'shield'
+      label: "Add Banners",
+      routerLink: "buyer-profile",
+      iconType: "fi",
+      iconName: "shield",
     },
     {
-      label: 'Email',
-      details: '234 New Emails',
-      routerLink: 'email/light/list',
-      iconType: 'fi',
-      iconName: 'mail'
-    },
-    {
-      label: 'Social',
-      routerLink: 'social',
-      iconType: 'fi',
-      iconName: 'users'
-    },
-    {
-      label: 'Builder',
-      routerLink: 'builder/simplywhite-builder',
-      iconType: 'fi',
-      iconName: 'cpu'
-    },
-    {
-      label: 'Layouts',
-      iconType: 'fi',
-      iconName: 'layout',
-      toggle: 'close',
+      label: "Seller/Buyers",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Default',
-          routerLink: 'layouts/default',
-          iconType: 'letter',
-          iconName: 'dl'
+          label: "Seller ",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Secondary',
-          routerLink: 'layouts/secondary-light',
-          iconType: 'letter',
-          iconName: 'sl'
+          label: "Buyers",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Boxed',
-          routerLink: 'layouts/boxed-alt',
-          iconType: 'letter',
-          iconName: 'bl'
-        }
-      ]
+          label: "Buyers Live Status",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Sellers Live status",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "MOQ",
+          routerLink: "buyer-dashboard",
+        },
+      ],
     },
     {
-      label: 'UI Elements',
-      iconType: 'fi',
-      iconName: 'triangle',
-      toggle: 'close',
+      label: "Product",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Color',
-          routerLink: 'ui/color',
-          iconType: 'letter',
-          iconName: 'c'
+          label: "Products For Approval ",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Typography',
-          routerLink: 'ui/typography',
-          iconType: 'letter',
-          iconName: 't'
+          label: "Approval Status",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Icons',
-          routerLink: 'ui/icons',
-          iconType: 'letter',
-          iconName: 'i'
+          label: "Brand Approval Requests",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Buttons',
-          routerLink: 'ui/buttons',
-          iconType: 'letter',
-          iconName: 'b'
+          label: "Brands",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Notifications',
-          routerLink: 'ui/notifications',
-          iconType: 'letter',
-          iconName: 'n'
+          label: "Limits For Free Seller",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Modals',
-          routerLink: 'ui/modal',
-          iconType: 'letter',
-          iconName: 'm'
+          label: "Limits For Free Seller",
+          routerLink: "buyer-dashboard",
         },
-        {
-          label: 'Progress & Activity',
-          routerLink: 'ui/progress',
-          iconType: 'letter',
-          iconName: 'pa'
-        },
-        {
-          label: 'Tabs & Accordians',
-          routerLink: 'ui/tabs',
-          iconType: 'letter',
-          iconName: 'a'
-        },
-        {
-          label: 'Sliders',
-          routerLink: 'ui/sliders',
-          iconType: 'letter',
-          iconName: 's'
-        },
-        {
-          label: 'Treeview',
-          routerLink: 'ui/tree',
-          iconType: 'letter',
-          iconName: 'tv'
-        }
-      ]
+      ],
     },
     {
-      label: 'Forms',
-      iconType: 'fi',
-      iconName: 'list',
-      toggle: 'close',
+      label: "Leads",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Form Elements',
-          routerLink: 'forms/elements',
-          iconType: 'letter',
-          iconName: 'fe'
+          label: "RFQ Leads",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Form Layouts',
-          routerLink: 'forms/layouts',
-          iconType: 'letter',
-          iconName: 'fl'
+          label: "Associate CRM",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Form Wizard',
-          routerLink: 'forms/wizard',
-          iconType: 'letter',
-          iconName: 'fq'
+          label: "Verification Request",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Account Creation Requests",
+          routerLink: "buyer-dashboard",
         }
-      ]
+      ],
     },
     {
-      label: 'Cards',
-      routerLink: 'cards',
-      iconType: 'fi',
-      iconName: 'grid'
-    },
-    {
-      label: 'Views',
-      routerLink: 'views',
-      iconType: 'fi',
-      iconName: 'airplay'
-    },
-    {
-      label: 'Tables',
-      iconType: 'fi',
-      iconName: 'square',
-      toggle: 'close',
+      label: "Partners",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Basic Tables',
-          routerLink: 'tables/basic',
-          iconType: 'letter',
-          iconName: 'bt'
+          label: "TP Agents",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Advance Tables',
-          routerLink: 'tables/advance',
-          iconType: 'letter',
-          iconName: 'dt'
+          label: "Craete new TP Agent",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Agents Portfolio",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Associates",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Craete new Associate",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Associate Protfolio",
+          routerLink: "buyer-dashboard",
         }
-      ]
+      ],
     },
     {
-      label: 'Maps',
-      iconType: 'fi',
-      iconName: 'map-pin',
-      toggle: 'close',
+      label: "Help",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Google Maps',
-          routerLink: 'maps/google',
-          iconType: 'letter',
-          iconName: 'gm'
+          label: "Complaints",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Disputes",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Suggestions",
+          routerLink: "buyer-dashboard",
         }
-      ]
+      ],
     },
     {
-      label: 'Charts',
-      routerLink: 'charts',
-      iconType: 'fi',
-      iconName: 'bar-chart'
-    },
-    {
-      label: 'Extra',
-      iconType: 'fi',
-      iconName: 'box',
-      toggle: 'close',
+      label: "Locations",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
       submenu: [
         {
-          label: 'Invoice',
-          routerLink: 'extra/invoice',
-          iconType: 'letter',
-          iconName: 'in'
+          label: "Find Country",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: '404 Page',
-          routerLink: 'session/error/404',
-          iconType: 'letter',
-          iconName: 'pg'
+          label: "Add New Location",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: '500 Page',
-          routerLink: 'session/error/500',
-          iconType: 'letter',
-          iconName: 'pg'
+          label: "Add Pricing for Country",
+          routerLink: "buyer-dashboard",
         },
         {
-          label: 'Login',
-          routerLink: 'session/login',
-          iconType: 'letter',
-          iconName: 'l'
-        },
-        {
-          label: 'Register',
-          routerLink: 'session/register',
-          iconType: 'letter',
-          iconName: 're'
-        },
-        {
-          label: 'Lockscreen',
-          routerLink: 'session/lock',
-          iconType: 'letter',
-          iconName: 'ls'
-        },
-        {
-          label: 'Gallery',
-          routerLink: 'extra/gallery',
-          iconType: 'letter',
-          iconName: 'gl'
-        },
-        {
-          label: 'Timeline',
-          routerLink: 'extra/timeline',
-          iconType: 'letter',
-          iconName: 't'
+          label: "Assign Trade Products",
+          routerLink: "buyer-dashboard",
         }
-      ]
+      ],
     },
     {
-      label: 'Docs',
-      externalLink: 'https://docs.pages.revox.io/v/angular/',
-      target: '_blank',
-      iconType: 'fi',
-      iconName: 'life-buoy'
+      label: "Categories",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Find Categories",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Add Category",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Add filter",
+          routerLink: "buyer-dashboard",
+        }
+
+      ],
     },
     {
-      label: 'Changelog',
-      externalLink: 'http://changelog.pages.revox.io/',
-      target: '_blank',
-      iconType: 'letter',
-      iconName: 'CG'
-    }
+      label: "News",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Add News",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Create Categories",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Create Tags",
+          routerLink: "buyer-dashboard",
+        }
+      ],
+    },
+
+    {
+      label: "Blogs-Defale Countries/Cetegory",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Create Tags",
+          routerLink: "buyer-dashboard",
+        }
+      ],
+    },
+    {
+      label: "Trade Fair",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Search Trade Shows",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Add Trade Shows",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Add Type",
+          routerLink: "buyer-dashboard",
+        }
+      ],
+    },
+    {
+      label: "Brand",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Search Brand",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Approve Brands",
+          routerLink: "buyer-dashboard",
+        },
+        {
+          label: "Add Brands",
+          routerLink: "buyer-dashboard",
+        }
+      ],
+    },
+    {
+      label: "Notice Bar",
+      routerLink: "seller-dashboard",
+      iconType: "fi",
+      iconName: "shield",
+    },
+    {
+      label: "Popular Questions And Answers",
+      toggle: "close",
+      iconType: "fi",
+      iconName: "shield",
+      submenu: [
+        {
+          label: "Add Category",
+          routerLink: "buyer-dashboard",
+        }
+      ],
+    },
+
   ];
   ngOnInit() {
     this.changeLayout('menu-pin');

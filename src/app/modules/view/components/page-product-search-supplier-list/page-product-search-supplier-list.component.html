@@ -1,0 +1,125 @@
+    <div class="d-flex mb-3">
+        <div class="p-2">
+            <a href="">Suppliers ›</a>
+        </div>
+        <div class="p-2">
+            <div class="form-group input-group ">
+                <div class="input-group-append">
+                    <span class="input-group-text primary"><i class="pg-icon ">search</i>
+                    </span>
+                </div>
+                <input type="text" formControlName="search" placeholder="Search" class="form-control">
+            </div>
+        </div>
+        <div class="p-2">
+            4,021 Supplier(s)
+        </div>
+    </div>
+    <div class="m-2">
+        <div class="d-flex">
+            <div class="border p-2 bg-white">
+                <a href="">PRODUCTS</a>
+            </div>
+            <div class="border-right border-top p-2 bg-white">
+                <a href="">SUPPLIERS</a>
+            </div>
+        </div>
+        <div class="bg-white border-top-0 mb-2">
+            <div class="border-top border-margin"></div>
+            <div class="bg-white border-left border-right border-bottom p-3">
+                <div class="d-flex">
+                    <div class="p-2">
+                        <input type="checkbox">
+                        <span>
+                            Trade Assurance </span>
+                    </div>
+                    <div class="p-2">
+                        <input type="checkbox">
+                        <span>
+                            Supplier </span>
+                    </div>
+                    <div class="p-2">
+                        Sort By:
+                    </div>
+                    <div class="ml-auto p-2">Location: All</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let product of [0,1,2,3]" class="row shadow p-2 mt-1 bg-white m-2">
+        <div class="d-flex bd-highlight mb-3">
+            <div class="mr-auto p-2 bd-highlight">
+                <h3 class="primary-color">
+                    Dongguan Boxiang Garment Co., Ltd.
+                </h3>
+            </div>
+            <div class="p-2 bd-highlight">
+                <i class="pg-icon">heart</i>
+            </div>
+            <div class="p-2 bd-highlight">
+                <p>Compare</p>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="d-flex bd-highlight mb-3 text-center">
+                <div class="p-2"><b>2 yrs</b></div>
+                <div class="p-2 text-orange"><b>Not Verified Yet</b></div>
+                <div class="p-2 "><b>Uttarakhand, India</b></div>
+            </div>
+            <div class="d-flex flex-row m-2">
+                <div class="p-1">
+                    <img src="https://sc04.alicdn.com/kf/Hf1da6f17a5954d68a89daeaa8622c1daX.jpg_100x100.jpg"
+                        class="img-fluid" alt="">
+                    <p>
+                        <a href="">Hot Sale</a>
+                    </p>
+                </div>
+                <div class="p-1">
+                    <img src="https://sc04.alicdn.com/kf/HTB1rI7raMsSMeJjSsphq6xuJFXaH.jpg_100x100.jpg"
+                        class="img-fluid" alt="">
+                    <p>
+                        <a href="">Hot Sale</a>
+                    </p>
+                </div>
+                <div class="p-1">
+                    <img src="https://sc04.alicdn.com/kf/HTB1rI7raMsSMeJjSsphq6xuJFXaH.jpg_100x100.jpg"
+                        class="img-fluid" alt="">
+                    <p>
+                        <a href="">Hot Sale Slim </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="mt-5">
+                <tr>
+                    <td>Main Products</td>
+                    <td class="pl-4">Shirt/ Coat/Dress/Blazer/Trouser</td>
+                </tr>
+                <tr>
+                    <td>Turnover</td>
+                    <td class="pl-4">US$ 1 M to US$ 2.5 </td>
+                </tr>
+                <tr>
+                    <td>Main Markets</td>
+                    <td class="pl-4">Miltdonr</td>
+                </tr>
+                <tr>
+                    <td>Seller Review</td>
+                    <td class="pl-4">
+                        <i class="pg-icon text-orange">star</i>
+                        <i class="pg-icon text-orange">star</i>
+                        <i class="pg-icon text-orange">star</i>
+                        <i class="pg-icon">star</i>
+                        <i class="pg-icon">star</i>
+
+                    </td>
+                </tr>
+            </table>
+            <div class="d-flex flex-row bd-highlight mb-3 mt-2">
+                <div class="p-2 bd-highlight text-orange"><b>Contact Suppliers</b></div>
+                <div class="p-2 bd-highlight text-muted">View Number</div>
+                <div class="p-2 bd-highlight primary-color">Chat</div>
+            </div>
+        </div>
+    </div>

@@ -134,10 +134,6 @@ export class pgUploadBtnComponent implements OnInit, OnChanges, OnDestroy {
           } else {
             this.post(file);
           }
-        },
-        err => {
-          // tslint:disable-next-line:no-unused-expression
-          console && console.log(err);
         }
       );
     } else if (before !== false) {

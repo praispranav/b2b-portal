@@ -1,0 +1,41 @@
+.card:hover {
+    transform: scale(1.07);
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .btn {
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(143, 136, 136, 0.37);
+    color: black;
+  }
+
+  h2{
+    font-size: medium;
+  }
+
+  .border-margin{
+    margin-left: 166px;
+  }
+ 
+  .primary{
+    background-color: #1374E8;
+  }
+
+  .primary-color{
+color: #1374E8;
+  }
+
+  .text-orange{
+    color: #FB3601;
+  }

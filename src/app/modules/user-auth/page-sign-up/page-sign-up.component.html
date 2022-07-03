@@ -1,107 +1,160 @@
-<div class="register-container full-height sm-p-t-30">
-    <div class="d-flex justify-content-center flex-column full-height ">
-
-        <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
-            width="78" height="22">
-        <h3>Pages makes it easy to enjoy what matters the most in your life</h3>
-        <p>
-            Create a pages account. If you have a facebook account, log into it for this process. Sign in with <a
-                href="javascript:void(0)" class="text-info">Facebook</a> or <a href="javascript:void(0)"
-                class="text-info">Google</a>
-        </p>
-        <form class="p-t-15" role="form" #registerForm="ngForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="fName.invalid && (fName.dirty || fName.touched)">
-                        <label>First Name</label>
-                        <input type="text" placeholder="John" class="form-control" id="txtfname" name="txtfname"
-                            [(ngModel)]="txtfname" #fName="ngModel" required>
-                    </div>
-                    <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
-                        <label *ngIf="fName.errors.required" class="error">This field is required.</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="LName.invalid && (LName.dirty || LName.touched)">
-                        <label>Last Names</label>
-                        <input type="text" placeholder="Smith" class="form-control" id="txtlname" name="txtlname"
-                            [(ngModel)]="txtlname" #LName="ngModel" required>
-                    </div>
-                    <div *ngIf="LName.invalid && (LName.dirty || LName.touched)">
-                        <label *ngIf="LName.errors.required" class="error">This field is required.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="userName.invalid && (userName.dirty || userName.touched)">
-                        <label>Pages User name</label>
-                        <input type="text" placeholder="yourname.pages.com (this can be changed later)"
-                            class="form-control" id="txtusername" name="txtusername" [(ngModel)]="txtusername"
-                            #userName="ngModel" required>
-                    </div>
-                    <div *ngIf="userName.invalid && (userName.dirty || userName.touched)">
-                        <label *ngIf="userName.errors.required" class="error">This field is required.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="password.invalid && (password.dirty || password.touched)">
-                        <label>Password</label>
-                        <input type="password" placeholder="Minimum of 4 Charactors" class="form-control"
-                            id="txtpassword" name="txtpassword" [(ngModel)]="txtpassword" #password="ngModel" required>
-                    </div>
-                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
-                        <label *ngIf="password.errors.required" class="error">This field is required.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div pgFormGroupDefault class="form-group form-group-default"
-                        [class.has-error]="email.invalid && (email.dirty || email.touched)">
-                        <label>Email</label>
-                        <input type="email" placeholder="We will send loging details to you" class="form-control"
-                            id="txtemail" name="txtemail" [(ngModel)]="txtemail" #email="ngModel" required>
-                    </div>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                        <label *ngIf="email.errors.required" class="error">This field is required.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row m-t-10">
-                <div class="col-lg-6">
-                    <p><small>I agree to the <a href="javascript:void(0)" class="text-info">Pages Terms</a> and <a
-                                href="javascript:void(0)" class="text-info">Privacy</a>.</small></p>
-                </div>
-                <div class="col-lg-6 text-right">
-                    <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
-                </div>
-            </div>
-            <button class="btn btn-primary btn-cons m-t-10" type="submit" [class.disabled]="registerForm.invalid">Create
-                a new account</button>
-        </form>
-
-    </div>
-</div>
-<div class=" full-width">
-    <div class="register-container m-b-10 clearfix">
-        <div class="m-b-30 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix d-flex-md-up">
-            <div class="col-md-2 no-padding d-flex align-items-center">
-                <img src="assets/img/demo/pages_icon.png" alt="" class="" pgRetina
-                    src1x="assets/img/demo/pages_icon.png" src2x="assets/img/demo/pages_icon_2x.png" width="60"
-                    height="60">
-            </div>
-            <div class="col-md-9 no-padding d-flex align-items-center">
-                <p class="hinted-text small inline sm-p-t-10">No part of this website or any of its contents may be
-                    reproduced, copied, modified or adapted, without the prior written consent of the author, unless
-                    otherwise indicated for stand-alone materials.</p>
-            </div>
+<div class="register-container h-auto py-5">
+  <div class="d-flex justify-content-center flex-column">
+    <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
+      width="78" height="22" />
+    <h3>Create Account On Bizzexpo</h3>
+    <form class="p-t-15" role="form" #registerForm="ngForm">
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+                Cname.invalid && (Cname.dirty || Cname.touched)
+              ">
+            <label>Company Name </label>
+            <input type="text" placeholder="ABC Company" class="form-control" id="txtCname" name="txtCname"
+              [(ngModel)]="txtCname" #Cname="ngModel" required />
+          </div>
         </div>
-    </div>
+        <div *ngIf="Cname.invalid && (Cname.dirty || Cname.touched)">
+          <label *ngIf="Cname.errors.required" class="error">This field is required.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="fName.invalid && (fName.dirty || fName.touched)">
+            <label>First Name</label>
+            <input type="text" placeholder="John" class="form-control" id="txtfname" name="txtfname"
+              [(ngModel)]="txtfname" #fName="ngModel" required />
+          </div>
+          <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
+            <label *ngIf="fName.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="LName.invalid && (LName.dirty || LName.touched)">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" class="form-control" id="txtsName" name="txtlname"
+              [(ngModel)]="txtsname" #LName="ngModel" required />
+          </div>
+          <div *ngIf="LName.invalid && (LName.dirty || LName.touched)">
+            <label *ngIf="LName.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="email.invalid && (email.dirty || email.touched)">
+            <label>Email Address</label>
+            <input type="email" placeholder="We will send loging details to you" class="form-control" id="txtemail"
+              name="txtemail" [(ngModel)]="txtemail" #email="ngModel" required />
+          </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <label *ngIf="email.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+              password.invalid && (password.dirty || password.touched)
+            ">
+            <label>Password</label>
+            <input type="password" placeholder="Minimum of 4 Charactors" class="form-control" id="txtpassword"
+              name="txtpassword" [(ngModel)]="txtpassword" #password="ngModel" required />
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+            <label *ngIf="password.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+              cpassword.invalid && (cpassword.dirty || cpassword.touched)
+            ">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Minimum of 4 Charactors" class="form-control" id="txtcpassword"
+              name="txtcpassword" [(ngModel)]="txtcpassword" #cpassword="ngModel" required />
+          </div>
+          <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)">
+            <label *ngIf="cpassword.errors.required" class="error">This field is required.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+              country.invalid && (country.dirty || country.touched)
+              ">
+            <label>Country / Region </label>
+            <input type="text" placeholder="ABC Country" class="form-control" id="txtCountry" name="txtCountry"
+              [(ngModel)]="txtCountry" #country="ngModel" required />
+          </div>
+        </div>
+        <div *ngIf="country.invalid && (country.dirty || country.touched)">
+          <label *ngIf="country.errors.required" class="error">This field is required.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+                address1.invalid && (address1.dirty || address1.touched)
+              ">
+            <label>Address 1 </label>
+            <input type="text" placeholder="Apt/Suit Street Address " class="form-control" id="txtaddress1"
+              name="txtaddress1" [(ngModel)]="txtaddress1" #address1="ngModel" required />
+          </div>
+        </div>
+        <div *ngIf="address1.invalid && (address1.dirty || address1.touched)">
+          <label *ngIf="address1.errors.required" class="error">This field is required.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+                address2.invalid && (address2.dirty || address2.touched)
+              ">
+            <label>Address 2 </label>
+            <input type="text" placeholder="Street & State Address " class="form-control" id="txtaddress2"
+              name="txtaddress2" [(ngModel)]="txtaddress2" #address2="ngModel" required />
+          </div>
+        </div>
+        <div *ngIf="address2.invalid && (address2.dirty || address2.touched)">
+          <label *ngIf="address2.errors.required" class="error">This field is required.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
+                mNumber.invalid && (mNumber.dirty || mNumber.touched)
+              ">
+            <label>Mobile Number </label>
+            <input type="text" placeholder="Street & State Address " class="form-control" id="txtmNumber"
+              name="txtmNumber" [(ngModel)]="txtmNumber" #mNumber="ngModel" required />
+          </div>
+        </div>
+        <div *ngIf="mNumber.invalid && (mNumber.dirty || mNumber.touched)">
+          <label *ngIf="mNumber.errors.required" class="error">This field is required.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <p>
+            <small>I agree to abide by the
+              <a href="javascript:void(0)" class="text-info">Bizzexpo.com Membership</a>
+              &
+              <a href="javascript:void(0)" class="text-info">Agreement</a>.</small>
+          </p>
+        </div>
+        <div class="col-lg-6 text-right">
+          <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="registerForm.invalid">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>

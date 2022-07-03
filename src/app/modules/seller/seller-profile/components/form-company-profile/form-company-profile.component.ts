@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-form-company-profile",
@@ -8,11 +8,20 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormCompanyProfileComponent implements OnInit {
   companyProfileForm: FormGroup;
+  mainCategoryList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.companyProfileForm.controls;
+  }
+
+  get mainProductFormArray() {
+    return this.companyProfileForm.controls.mainProductFormArray as FormArray;
   }
 
   ngOnInit() {
@@ -21,14 +30,15 @@ export class FormCompanyProfileComponent implements OnInit {
 
   buildCompanyProfileForm() {
     this.companyProfileForm = this.formBuilder.group({
-      companyName: ["", [Validators.required]],
-      companyTanNo: ["", [Validators.required]],
-      companyPanNo: ["", [Validators.required]],
+      companyName: ["", [Validators.required, Validators.minLength(20)]],
+      companyTanNo: ["", [Validators.required, Validators.maxLength(20)]],
+      companyPanNo: ["", [Validators.required, Validators.maxLength(20)]],
       gstNo: ["", [Validators.required]],
       iecCode: ["", [Validators.required]],
       establishment: ["", [Validators.required]],
       mainCategory: ["", [Validators.required]],
-      mainProduct: ["", [Validators.required]],
+      mainProductFormArray: this.formBuilder.array([]),
+      mainsProduct: ["", [Validators.required]],
       country: ["", [Validators.required]],
       state: ["", [Validators.required]],
       city: ["", [Validators.required]],
@@ -36,21 +46,19 @@ export class FormCompanyProfileComponent implements OnInit {
       registration: ["", [Validators.required]],
       landlineNumber: ["", [Validators.required]],
       mobileNum: ["", [Validators.required]],
-      division: ["", [Validators.required]],
-      area: ["", [Validators.required]],
-      regionCountry: ["", [Validators.required]],
-      regionState: ["", [Validators.required]],
-      anuualTernover: ["", [Validators.required]],
-      contactPerson: ["", [Validators.required]],
-      regionPhone: ["", [Validators.required]],
-      regionMobile: ["", [Validators.required]],
-      regionEmail: ["", [Validators.required]],
+      division: [""],
+      area: [""],
+      regionCountry: [""],
+      regionState: [""],
+      anuualTernover: [""],
+      contactPerson: [""],
+      regionPhone: [""],
+      regionMobile: [""],
+      regionEmail: [""],
     });
   }
 
   subCompanyProfileForm() {
     const formData = this.companyProfileForm.value;
-    // API CALL
-    console.log(formData);
   }
 }

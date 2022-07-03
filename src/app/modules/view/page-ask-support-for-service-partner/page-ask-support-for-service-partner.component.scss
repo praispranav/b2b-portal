@@ -1,0 +1,73 @@
+//  .H4{  
+
+//      align-items: center;
+//      text-align: center;
+//      justify-content: center;
+
+//  }
+.H1 {
+  color: #174ea6;
+  font-size: calc(23px + 20 * (100vw - 1024px) / 416);
+  line-height: 1.2;
+}
+
+.slide1 {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.ask-button {
+
+  height: 50px;
+  width: 30%;
+  border-radius: 3px;
+}
+
+.ask-button:hover {
+  background-color: #257ad5 !important;
+}
+
+.span-size {
+  font-size: 18px;
+}
+
+.slide2 {
+
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.slideH2 {
+  color: #174ea6;
+  // color: #202124;
+  font-size: calc(20px + 20 * (100vw - 1024px) / 416);
+  line-height: 1.2;
+}
+
+.arrow1 {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-right: 50px;
+  margin-bottom: 40px;
+}
+
+.arrows {
+  font-size: 35px;
+}
+
+.bluecolor {
+  background-color: #0072EC;
+  border-radius: 5px;
+}
+
+.cardContetnt {
+  color: white;
+  letter-spacing: 1px;
+}
+
+.card {
+  height: 300px;
+}

@@ -1,0 +1,111 @@
+<div class="container-fluid p-3 bg-white">
+    <h3>R & D</h3>
+    <form class="p-t-15" role="form" [formGroup]="randdForm">
+        <h6>Whether to demostrate Quality Control Process</h6>
+
+        <div class="form-check form-check-inline complete">
+            <input type="radio" name="state" id="radioInline" value="Default" checked>
+            <label for="radioInline">
+                Yes
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" name="state" id="radioDisabled" value="disabled">
+            <label for="radioDisabled">
+                No
+            </label>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
+                    <label for="certificate-name">Certificate Name</label>
+                    <input type="text" formControlName="certificateName" placeholder="Enter Certificate name here"
+                        class="form-control" id="certificate-name" />
+                </div>
+                <div *ngIf="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
+                    <label *ngIf="f.certificateName.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
+                    <label for="certified-by">Certified By</label>
+                    <input type="text" formControlName="certifiedBy" placeholder="Certified By" class="form-control"
+                        id="certified-by" />
+                </div>
+                <div *ngIf="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
+                    <label *ngIf="f.certifiedBy.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
+                    <label for="Business-Scope">Business Scope</label>
+                    <input type="text" formControlName="businessScope" placeholder="Business Scope here"
+                        class="form-control" id="Business-Scope">
+
+                </div>
+                <div *ngIf="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
+                    <label *ngIf="f.businessScope.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group col-md-12">
+                    <div class="form-input-group">
+                        <label>Start Date</label>
+                        <pg-datepicker formControlName="" placeholder="Enter date here" class="form-control" id="date">
+                        </pg-datepicker>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="pg-icon">text_align_justify</i>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group col-md-12">
+                    <div class="form-input-group">
+                        <label>End Date</label>
+                        <pg-datepicker formControlName="" placeholder="Enter date here" class="form-control" id="date">
+                        </pg-datepicker>
+                    </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="pg-icon">text_align_justify</i>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-2">
+                <label style="margin-left:54px">Upload Image <span class="text-danger">*</span></label>
+            </div>
+            <div class="col-md-10 mb-4">
+                <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                    <div class="pic-placeholder">
+                        <i class="pg-icon p-b-5">upload</i>
+                        <div class="fs-12">Upload</div>
+                    </div>
+                </pg-upload>
+            </div>
+
+
+        </div>
+    </form>
+</div>

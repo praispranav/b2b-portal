@@ -1,0 +1,334 @@
+<div class="container">
+    <h4>Export Capability</h4>
+    <form [formGroup]="companyExportCapabilityForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2 required">
+                    <label class="">Export Contribution Precentage</label>
+                    <pg-select style="width: 100%;" formControlName="yearlyTurnover" [PlaceHolder]="'Select Option'"
+                        AllowClear ShowSearch>
+                        <pg-option *ngFor="let yearlyTurnoverItem of yearlyTurnoverList"
+                            [Label]="yearlyTurnoverItem.label" [Value]="yearlyTurnoverItem">
+                        </pg-option>
+                    </pg-select>
+                </div>
+                <div *ngIf="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
+                    <label *ngIf="f.yearlyTurnover.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2 required">
+                    <label class="">Nearest Port</label>
+                    <pg-select style="width: 100%;" formControlName="nearestPort" [PlaceHolder]="'Select Option'"
+                        AllowClear ShowSearch>
+                        <pg-option *ngFor="let nearestPortItem of nearestPortList" [Label]="nearestPortItem.label"
+                            [Value]="nearestPortItem">
+                        </pg-option>
+                    </pg-select>
+                </div>
+                <div *ngIf="f.nearestPort.invalid && (f.nearestPort.dirty || f.nearestPort.touched)">
+                    <label *ngIf="f.nearestPort.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.exportingScience.invalid && (f.exportingScience.dirty || f.exportingScience.touched)">
+                    <div class="form-input-group">
+                        <label for="exporting-science">Exporting Science</label>
+                        <input type="number" formControlName="exportingScience"
+                            placeholder="Enter Exporting Science here" class="form-control" id="exporting-science">
+                    </div>
+                </div>
+                <div *ngIf="f.exportingScience.invalid && (f.exportingScience.dirty || f.exportingScience.touched)">
+                    <label *ngIf="f.exportingScience.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.exportPercent.invalid && (f.exportPercent.dirty || f.exportPercent.touched)">
+                    <div class="form-input-group">
+                        <label for="exporting-percent">Export Contribution Precentage</label>
+                        <input type="number" formControlName="exportPercent"
+                            placeholder="Export Contribution Precentage" class="form-control default-input"
+                            id="exporting-percent">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.exportPercent.invalid && (f.exportPercent.dirty || f.exportPercent.touched)">
+                    <label *ngIf="f.exportPercent.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h4>Export markets and Distibution</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.northAmerica.invalid && (f.northAmerica.dirty || f.northAmerica.touched)">
+                    <div class="form-input-group">
+                        <label for="north-america">North America </label>
+                        <input type="number" formControlName="northAmerica" placeholder="Enter North America percent"
+                            class="form-control" id="north-america">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.northAmerica.invalid && (f.northAmerica.dirty || f.northAmerica.touched)">
+                    <label *ngIf="f.northAmerica.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.westernEurope.invalid && (f.westernEurope.dirty || f.westernEurope.touched)">
+                    <div class="form-input-group">
+                        <label for="west-america">Western Europe</label>
+                        <input type="number" formControlName="westernEurope" placeholder="Enter Western Europe percent"
+                            class="form-control" id="west-america">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.westernEurope.invalid && (f.westernEurope.dirty || f.westernEurope.touched)">
+                    <label *ngIf="f.westernEurope.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.easternAsia.invalid && (f.easternAsia.dirty || f.easternAsia.touched)">
+                    <div class="form-input-group">
+                        <label for="eastern-asia">Eastern Asia </label>
+                        <input type="number" formControlName="easternAsia" placeholder="Enter Eastern Asia percent"
+                            class="form-control" id="eastern-asia">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.easternAsia.invalid && (f.easternAsia.dirty || f.easternAsia.touched)">
+                    <label *ngIf="f.easternAsia.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.southAmerica.invalid && (f.southAmerica.dirty || f.southAmerica.touched)">
+                    <div class="form-input-group">
+                        <label for="south-america">South America</label>
+                        <input type="number" formControlName="southAmerica" placeholder="Enter South America percent"
+                            class="form-control" id="south-america">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.southAmerica.invalid && (f.southAmerica.dirty || f.southAmerica.touched)">
+                    <label *ngIf="f.southAmerica.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.northanEurope.invalid && (f.northanEurope.dirty || f.northanEurope.touched)">
+                    <div class="form-input-group">
+                        <label for="northan-europe">Northan Europe </label>
+                        <input type="number" formControlName="northanEurope" placeholder="Enter Northan Europe percent"
+                            class="form-control" id="northan-europe ">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.northanEurope.invalid && (f.northanEurope.dirty || f.northanEurope.touched)">
+                    <label *ngIf="f.northanEurope.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.africa.invalid && (f.africa.dirty || f.africa.touched)">
+                    <div class="form-input-group">
+                        <label for="south-africa ">Africa </label>
+                        <input type="number" formControlName="africa" placeholder="Enter Africa  percent"
+                            class="form-control" id="south-africa">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.africa.invalid && (f.africa.dirty || f.africa.touched)">
+                    <label *ngIf="f.africa.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.centralAmerica.invalid && (f.centralAmerica.dirty || f.centralAmerica.touched)">
+                    <div class="form-input-group">
+                        <label for="central-america">Central America </label>
+                        <input type="number" formControlName="centralAmerica"
+                            placeholder="Enter Central America  percent" class="form-control" id="central-america">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.centralAmerica.invalid && (f.centralAmerica.dirty || f.centralAmerica.touched)">
+                    <label *ngIf="f.centralAmerica.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.southernEurope.invalid && (f.southernEurope.dirty || f.southernEurope.touched)">
+                    <div class="form-input-group">
+                        <label for="south-europe">Southern Europe </label>
+                        <input type="number" formControlName="southernEurope"
+                            placeholder="Enter Southern Europe percent" class="form-control" id="south-europe">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.southernEurope.invalid && (f.southernEurope.dirty || f.southernEurope.touched)">
+                    <label *ngIf="f.southernEurope.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.middileEast.invalid && (f.middileEast.dirty || f.middileEast.touched)">
+                    <div class="form-input-group">
+                        <label for="middile-east">Middile East</label>
+                        <input type="number" formControlName="middileEast" placeholder="Enter Middile East percent"
+                            class="form-control" id="middile-east">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.middileEast.invalid && (f.middileEast.dirty || f.middileEast.touched)">
+                    <label *ngIf="f.middileEast.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.easternEurope.invalid && (f.easternEurope.dirty || f.easternEurope.touched)">
+                    <div class="form-input-group">
+                        <label for="eastern-europe">Eastern Europe</label>
+                        <input type="number" formControlName="easternEurope" placeholder="Enter Eastern Europe percent"
+                            class="form-control" id="eastern-europe">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.easternEurope.invalid && (f.easternEurope.dirty || f.easternEurope.touched)">
+                    <label *ngIf="f.easternEurope.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.southAsia.invalid && (f.southAsia.dirty || f.southAsia.touched)">
+                    <div class="form-input-group">
+                        <label for="south-asia">South Asia </label>
+                        <input type="number" formControlName="southAsia" placeholder="Enter South Asia percent"
+                            class="form-control" id="south-asia">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.southAsia.invalid && (f.southAsia.dirty || f.southAsia.touched)">
+                    <label *ngIf="f.southAsia.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.easternEurope.invalid && (f.easternEurope.dirty || f.easternEurope.touched)">
+                    <div class="form-input-group">
+                        <label for="eastern-gulf">Gulf</label>
+                        <input type="number" formControlName="gulf" placeholder="Enter Gulf percent"
+                            class="form-control" id="eastern-gulf">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.gulf.invalid && (f.gulf.dirty || f.gulf.touched)">
+                    <label *ngIf="f.gulf.errors.required" class="error">This field is required.</label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group form-group-default input-group" pgFormGroupDefault
+                    [class.has-error]="f.market.invalid && (f.market.dirty || f.market.touched)">
+                    <div class="form-input-group">
+                        <label for="south-market">Local and Domestic Market</label>
+                        <input type="number" formControlName="market"
+                            placeholder="Enter Local and Domestic Market percent" class="form-control"
+                            id="south-market">
+                    </div>
+                    <div class="input-group-append ">
+                        <span class="input-group-text">%
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="f.market.invalid && (f.market.dirty || f.market.touched)">
+                    <label *ngIf="f.market.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</div>

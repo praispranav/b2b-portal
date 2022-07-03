@@ -8,8 +8,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class FormCompanyDetailComponent implements OnInit {
   companyDetailsForm: FormGroup;
+  designationList: any[] = [
+    { value: "jack", label: "Jack" },
+    { value: "lucy", label: "Lucy" },
+    { value: "tom", label: "Tom" },
+  ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   get f() {
     return this.companyDetailsForm.controls;
@@ -27,8 +32,8 @@ export class FormCompanyDetailComponent implements OnInit {
       contactPerson: ["", [Validators.required]],
       contactName: ["", [Validators.required]],
       contactSurname: ["", [Validators.required]],
-      contactEmail: ["", [Validators.required]],
-      alternativeEmail: ["", [Validators.required]],
+      contactEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      alternativeEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       designation: ["", [Validators.required]],
       compnyWebsite: ["", [Validators.required]],
       googleBusiness: ["", [Validators.required]],
@@ -48,13 +53,13 @@ export class FormCompanyDetailComponent implements OnInit {
       strenth: ["", [Validators.required]],
       selectYes: ["", [Validators.required]],
       selectNo: ["", [Validators.required]],
-      tradeShow: ["", [Validators.required]],
-      date: ["", [Validators.required]],
-      host: ["", [Validators.required]],
-      region: ["", [Validators.required]],
-      tradeCity: ["", [Validators.required]],
-      aboutShow: ["", [Validators.required]],
-      uploadPicture: ["", [Validators.required]],
+      tradeShow: [""],
+      date: [""],
+      host: [""],
+      region: [""],
+      tradeCity: [""],
+      aboutShow: [""],
+      uploadPicture: [""],
     });
   }
 }

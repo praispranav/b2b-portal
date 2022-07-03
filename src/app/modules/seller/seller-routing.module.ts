@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: "buyer-profile",
-    loadChildren: "./seller-dashboard/dashboard.module#DashboardModule",
+    loadChildren: "./buyer-profile/profile.module#ProfileModule",
   },
   {
     path: "product",
@@ -34,14 +34,6 @@ const routes: Routes = [
   {
     path: "seller-profile",
     loadChildren: "./seller-profile/profile.module#ProfileModule",
-  },
-  {
-    path: "trade-services",
-    loadChildren: "./trade-services/trade-services.module#TradeServicesModule",
-  },
-  {
-    path: "help",
-    loadChildren: "../../features/help/help.module#HelpModule",
   },
 ];
 
