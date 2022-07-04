@@ -6,15 +6,8 @@ import { Component, OnInit, } from '@angular/core';
   styleUrls: ['./page-complain-list.component.scss']
 })
 export class PageComplainListComponent implements OnInit {
-
- 
-  constructor() {
-    
-   }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  
-
 }
