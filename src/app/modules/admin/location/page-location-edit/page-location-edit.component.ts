@@ -33,8 +33,14 @@ export class PageLocationEditComponent implements OnInit {
     private providerMaterCountryService: ProviderMaterCountryService
   ) { }
 
-  get f() {
+  get lf() {
     return this.locationForm.controls;
+  }
+  get sf() {
+    return this.stateForm.controls;
+  }
+  get cf() {
+    return this.countryForm.controls;
   }
 
   ngOnInit() {
