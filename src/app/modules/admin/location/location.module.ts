@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TreeModule } from 'angular-tree-component';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { LocationRoutingModule } from './location-routing.module';
 import { pgSelectModule } from '../../../@pages/components/select/select.module';
 import { pgTagModule } from '../../../@pages/components/tag/tag.module';
 import { pgUploadModule } from '../../../@pages/components/upload/upload.module';
-import { ProgressModule } from '../../../@pages/components/progress/progress.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../@pages/components/shared.module';
+import { ProgressModule } from '../../../@pages/components/progress/progress.module';
+import { TreeModule } from 'angular-tree-component';
 
 import { PageLocationAddComponent } from './page-location-add/page-location-add.component';
 import { PageLocationEditComponent } from './page-location-edit/page-location-edit.component';
 import { PageLocationListComponent } from './page-location-list/page-location-list.component';
-import { PageLocationViewComponent } from './page-location-view/page-location-view.component';
 
 @NgModule({
   declarations: [
     PageLocationAddComponent,
     PageLocationEditComponent,
-    PageLocationListComponent,
-    PageLocationViewComponent,
+    PageLocationListComponent
   ],
   imports: [
     CommonModule,
@@ -31,9 +29,9 @@ import { PageLocationViewComponent } from './page-location-view/page-location-vi
     pgTagModule,
     pgUploadModule,
     NgxDatatableModule,
-    TreeModule.forRoot(),
+    SharedModule,
     ProgressModule,
-    SharedModule
+    TreeModule.forRoot()
   ],
 })
 export class LocationModule { }

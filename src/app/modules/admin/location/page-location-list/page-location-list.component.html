@@ -1,1 +1,22 @@
-<p>page-location-list works!</p>
+<div class="conatiner-fluid p-3 h-100">
+    <div class="card">
+        <div class="card-body">
+            <div class="card card-default">
+                <div class="card-header">
+                    <div class="card-title">All Location</div>
+                </div>
+                <div class="card-body">
+                    <div class="input-group transparent">
+                        <input type="text" placeholder="Type here to Search" class="form-control" #filter3
+                            (keyup)="filterFn(filter3.value, tree.treeModel)">
+                        <div class="input-group-append">
+                            <span class="input-group-text transparent"><i class="pg-icon">search</i>
+                            </span>
+                        </div>
+                    </div>
+                    <tree-root #tree [focused]="true" [nodes]="masterCountryList"></tree-root>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
