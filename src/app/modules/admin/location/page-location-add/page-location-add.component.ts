@@ -45,6 +45,8 @@ export class PageLocationAddComponent implements OnInit {
 
   ngOnInit() {
     this.buildLocationForm();
+    this.buildStateForm();
+    this.buildCountryForm();
     this.getMaterStateListByFilter(
       this.apiStatePagination.index,
       this.apiStatePagination.length,
@@ -68,7 +70,7 @@ export class PageLocationAddComponent implements OnInit {
   }
 
   buildStateForm() {
-    this.locationForm = this.formBuilder.group({
+    this.stateForm = this.formBuilder.group({
       state: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
       isActivated: [true],
@@ -76,7 +78,7 @@ export class PageLocationAddComponent implements OnInit {
   }
 
   buildCountryForm() {
-    this.locationForm = this.formBuilder.group({
+    this.countryForm = this.formBuilder.group({
       country: ['', [Validators.required]],
       isActivated: [true],
     });
