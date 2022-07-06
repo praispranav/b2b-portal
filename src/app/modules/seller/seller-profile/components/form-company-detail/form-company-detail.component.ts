@@ -9,11 +9,8 @@ import { ProviderCompanyDetailService } from "../../../../../core/providers/sell
 })
 export class FormCompanyDetailComponent implements OnInit {
   companyDetailsForm: FormGroup;
-  designationList: any[] = [
-    { value: "jack", label: "Jack" },
-    { value: "lucy", label: "Lucy" },
-    { value: "tom", label: "Tom" },
-  ];
+  designationList: any[] = [];
+  tradeShowList: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private providerCompanyDetailService: ProviderCompanyDetailService) { }
 
@@ -24,7 +21,6 @@ export class FormCompanyDetailComponent implements OnInit {
   ngOnInit() {
     this.buildCompanyDetailsForm();
   }
-
   buildCompanyDetailsForm() {
     this.companyDetailsForm = this.formBuilder.group({
       companyLogo: ["", [Validators.required]],

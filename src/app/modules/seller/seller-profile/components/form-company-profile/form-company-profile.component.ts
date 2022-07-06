@@ -11,11 +11,7 @@ export class FormCompanyProfileComponent implements OnInit {
   companyProfileForm: FormGroup;
   imageList: any[] = [];
 
-  mainCategoryList: any[] = [
-    { value: "jack", label: "Jack" },
-    { value: "lucy", label: "Lucy" },
-    { value: "tom", label: "Tom" },
-  ];
+  mainCategoryList: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private providerCompanyProfileService: ProviderCompanyProfileService) { }
 
@@ -103,7 +99,5 @@ export class FormCompanyProfileComponent implements OnInit {
   private resetFormGroup(form: FormGroup) {
     form.reset();
     this.imageList = [];
-
-
   }
 }

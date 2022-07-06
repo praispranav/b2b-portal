@@ -22,7 +22,7 @@ export class PageLocationAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private providerMaterLocationService: ProviderMaterLocationService
-  ) {}
+  ) { }
 
   get f() {
     return this.locationForm.controls;

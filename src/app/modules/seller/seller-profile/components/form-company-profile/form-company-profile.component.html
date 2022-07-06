@@ -89,8 +89,7 @@
                     <label class="">Main Category</label>
                     <pg-select style="width: 100%;" formControlName="mainCategory" [PlaceHolder]="'Select Option'"
                         AllowClear ShowSearch>
-                        <pg-option *ngFor="let mainCategoryItem of mainCategoryList" [Label]="mainCategoryItem.label"
-                            [Value]="mainCategoryItem">
+                        <pg-option *ngFor="let mainCategoryItem of mainCategoryList" {{mainCategoryItem.value}}>
                         </pg-option>
                     </pg-select>
                 </div>
@@ -111,6 +110,9 @@
                 <div *ngIf="f.mainsProduct.invalid && (f.mainsProduct.dirty || f.mainsProduct.touched)">
                     <label *ngIf="f.mainsProduct.errors.required" class="error">This field is required.</label>
                 </div>
+            </div>
+            <div class="col-md-3 mt-4">
+                <button type="button" class="btn btn-primary">Add+</button>
             </div>
         </div>
     </div>
@@ -200,6 +202,9 @@
             </div>
         </div>
         <div class="col-md-3">
+            <button type="button" class="btn btn-primary">Add+</button>
+        </div>
+        <div class="col-md-3">
             <div class="form-group tag-group form-group-default required required">
                 <label>Mobile Number</label>
                 <pg-tag-control placeholder="Add Mobile Number"></pg-tag-control>
@@ -208,6 +213,9 @@
             <div *ngIf="f.mobileNum.invalid && (f.mobileNum.dirty || f.mobileNum.touched)">
                 <label *ngIf="f.mobileNum.errors.required" class="error">This field is required.</label>
             </div>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary">Add+</button>
         </div>
     </div>
 
@@ -291,13 +299,13 @@
     <div class="row">
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.anuualTurnover.invalid && (f.anuualTurnover.dirty || f.anuualTurnover.touched)">
-                <label for="anuualTurnover-name">Annual Turnover</label>
-                <input type="text" formControlName="anuualTurnover" placeholder="Enter your Annual Turnover here"
+                [class.has-error]="f.annualTurnover.invalid && (f.annualTurnover.dirty || f.anuualTurnover.touched)">
+                <label for="annualTurnover-name">Annual Turnover</label>
+                <input type="text" formControlName="annualTurnover" placeholder="Enter your Annual Turnover here"
                     class="form-control" id="anuualTurnover-name" />
             </div>
-            <div *ngIf="f.anuualTurnover.invalid && (f.anuualTurnover.dirty || f.anuualTurnover.touched)">
-                <label *ngIf="f.anuualTurnover.errors.required" class="error">This field is required.</label>
+            <div *ngIf="f.annualTurnover.invalid && (f.annualTurnover.dirty || f.annualTurnover.touched)">
+                <label *ngIf="f.annualTurnover.errors.required" class="error">This field is required.</label>
             </div>
         </div>
 
@@ -351,7 +359,9 @@
         </div>
     </div>
     <div class="mt-4">
-        <button type="submit" class="d-flex justify-content-end btn btn-primary"
-            (click)="subCompanyProfileForm()">Submit</button>
+        <button type="submit" class="btn btn-primary">Add+</button>
+    </div>
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary" (click)="subCompanyProfileForm()">Save And Continue</button>
     </div>
 </form>

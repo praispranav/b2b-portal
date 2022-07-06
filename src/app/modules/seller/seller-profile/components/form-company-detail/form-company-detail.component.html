@@ -115,7 +115,7 @@
                 <label class="">Designation</label>
                 <pg-select style="width: 100%;" formControlName="designation" [PlaceHolder]="'Select Option'" AllowClear
                     ShowSearch>
-                    <pg-option *ngFor="let designationItem of designationList" [Label]="designationItem.label"
+                    <pg-option *ngFor="let designationItem of designationList" [Label]="designationItem.name"
                         [Value]="designationItem">
                     </pg-option>
                 </pg-select>
@@ -376,15 +376,15 @@
         <div class="col-md-4">
             <div class="form-group form-group-default form-group-default-select2 required">
                 <label class="">Trade Show Name</label>
-                <pg-select style="width: 100%;" formControlName="designation" [PlaceHolder]="'Select Option'" AllowClear
+                <pg-select style="width: 100%;" formControlName="tradeShow" [PlaceHolder]="'Select Option'" AllowClear
                     ShowSearch>
-                    <pg-option *ngFor="let designationItem of designationList" [Label]="designationItem.label"
-                        [Value]="designationItem">
+                    <pg-option *ngFor="let tradeShowItem of tradeShowList" [Label]="tradeShowItem.name"
+                        [Value]="tradeShowItem">
                     </pg-option>
                 </pg-select>
             </div>
-            <div *ngIf="f.designation.invalid && (f.designation.dirty || f.designation.touched)">
-                <label *ngIf="f.designation.errors.required" class="error">This field is required.</label>
+            <div *ngIf="f.tradeShow.invalid && (f.tradeShow.dirty || f.tradeShow.touched)">
+                <label *ngIf="f.tradeShow.errors.required" class="error">This field is required.</label>
             </div>
         </div>
 
@@ -482,7 +482,7 @@
         <div class="col-md-3">
             <label style="margin-left:54px">Upload Picture <span class="text-danger">*</span></label>
         </div>
-        <div class="col-md-9 mb-4" style="margin-left: -86px;">
+        <div class="col-md-9 mb-4">
             <pg-upload ListType="picture-card" [Preview]="handlePreview">
                 <div class="pic-placeholder">
                     <i class="pg-icon p-b-5">upload</i>
