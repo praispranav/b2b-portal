@@ -89,7 +89,8 @@
                     <label class="">Main Category</label>
                     <pg-select style="width: 100%;" formControlName="mainCategory" [PlaceHolder]="'Select Option'"
                         AllowClear ShowSearch>
-                        <pg-option *ngFor="let mainCategoryItem of mainCategoryList" {{mainCategoryItem.value}}>
+                        <pg-option *ngFor="let mainCategoryItem of mainCategoryList">
+                            {{mainCategoryItem.mainCategory}}
                         </pg-option>
                     </pg-select>
                 </div>
