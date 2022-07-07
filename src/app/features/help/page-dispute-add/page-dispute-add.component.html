@@ -91,13 +91,13 @@
                   <label for="subject">Seller link</label>
                 </div>
                 <div class="col-md-9">
-                  <input type="text" id="sellerlink" formControlName="sellerlink" class="form-control"
-                    [class.is-invalid]="f.sellerlink.invalid && (f.sellerlink.dirty || f.sellerlink.touched)"
+                  <input type="text" id="pageLink" formControlName="pageLink" class="form-control"
+                    [class.is-invalid]="f.pageLink.invalid && (f.pageLink.dirty || f.pageLink.touched)"
                     placeholder="Enter URL here">
                   <span class="help">e.g. "http/kjdfbjs/234jir.com"</span>
-                  <div *ngIf="f.sellerlink.invalid && (f.sellerlink.dirty || f.sellerlink.touched)">
-                    <label *ngIf="f.sellerlink.errors.required" class="error">This field is required.</label>
-                    <label *ngIf="f.sellerlink.errors.maxlength" class="error">Invalid maxLength.</label>
+                  <div *ngIf="f.pageLink.invalid && (f.pageLink.dirty || f.pageLink.touched)">
+                    <label *ngIf="f.pageLink.errors.required" class="error">This field is required.</label>
+                    <label *ngIf="f.pageLink.errors.maxlength" class="error">Invalid maxLength.</label>
                   </div>
                 </div>
 

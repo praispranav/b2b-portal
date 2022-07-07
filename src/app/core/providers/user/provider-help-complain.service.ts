@@ -7,7 +7,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root'
 })
 export class ProviderHelpComplainService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   addHelpComplain(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/help-complain/add`, params);
@@ -16,6 +16,7 @@ export class ProviderHelpComplainService {
   getHelpComplainById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/help-complain/get/${id}`);
   }
+
 
   getHelpComplainListByFilter(index: number = 0, length: number = 10, query: any = {}): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/help-complain/get-list/${index}/${length}/${JSON.stringify(query)}`);

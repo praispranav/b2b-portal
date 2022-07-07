@@ -16,11 +16,11 @@ export class PageDisputeAddComponent implements OnInit {
   ngOnInit() {
     this.buildcomplaintdispute()
   }
-  
+
   buildcomplaintdispute() {
     this.complaintdispute = this.formbuilder.group({
       subject: ['', [Validators.required, Validators.maxLength(200)]],
-      sellerlink: ['', [Validators.required]],
+      pageLink: ['', [Validators.required]],
       description: ['', [Validators.required]],
       type: ['', [Validators.required]],
       file: ['', [Validators.required]]
