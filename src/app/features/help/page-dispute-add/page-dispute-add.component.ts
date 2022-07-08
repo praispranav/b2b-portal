@@ -8,7 +8,8 @@ import { ProviderHelpDisputeService } from '../../../core/providers/user/provide
 })
 export class PageDisputeAddComponent implements OnInit {
   complaintdispute: FormGroup
-
+  fileName: any;
+  checkRadioValue: boolean;
   constructor(private formbuilder: FormBuilder, private providerHelpDisputeService: ProviderHelpDisputeService) { }
 
   get f() { return this.complaintdispute.controls }
@@ -23,22 +24,27 @@ export class PageDisputeAddComponent implements OnInit {
       pageLink: ['', [Validators.required]],
       description: ['', [Validators.required]],
       type: ['', [Validators.required]],
-      file: ['', [Validators.required]]
+      file: [File, [Validators.required]]
 
     })
   }
 
   async complaintdisputeHandler() {
 
-    if (this.complaintdispute.invalid) {
-      this.markFormGroupTouched(this.complaintdispute);
-      return;
-    }
+    // if (this.complaintdispute.invalid) {
+    //   this.markFormGroupTouched(this.complaintdispute);
+    //   return;
+    // }
+
+    let formData = this.complaintdispute.value;
+    console.log(formData);
 
     this.providerHelpDisputeService.addHelpDispute(this.complaintdispute.value).subscribe(
       (res) => {
-        this.resetFormGroup(this.complaintdispute);
+        // this.resetFormGroup(formData);
         window.alert('API Success');
+        this.complaintdispute.reset();
+        this.checkRadioValue = false;
       },
       (err) => {
         window.alert('API Error');
@@ -46,17 +52,42 @@ export class PageDisputeAddComponent implements OnInit {
     );
   }
 
-  private markFormGroupTouched(form: FormGroup) {
-    Object.values(form.controls).forEach((control) => {
-      control.markAsTouched();
-      if ((control as any).controls) {
-        this.markFormGroupTouched(control as FormGroup);
-      }
-    });
-  }
+  // private markFormGroupTouched(form: FormGroup) {
+  //   Object.values(form.controls).forEach((control) => {
+  //     control.markAsTouched();
+  //     if ((control as any).controls) {
+  //       this.markFormGroupTouched(control as FormGroup);
+  //     }
+  //   });
+  // }
 
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
+  checkRadio(event: any) {
+    let radioValue = event.target.value;
+    console.log(radioValue);
+    this.complaintdispute.controls.type.setValue(radioValue);
+  }
+  openFile(fileInputDoc) {
+    fileInputDoc.click();
+
+  }
+  onSelectFile(event: object) {
+
+    let fileName = event['target'].files[0].name;
+    // console.log(fileName);
+    let reader = new FileReader();
+    reader.readAsDataURL(event['target'].files[0]);
+    reader.onload = (event) => {
+
+      this.fileName = event['target'].result;
+
+
+    }
+    this.complaintdispute.controls.file.setValue(fileName)
+
+
+
+
 
   }
 }
+
