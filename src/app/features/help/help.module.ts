@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -24,7 +25,8 @@ import { PageSuggestionViewComponent } from "./page-suggestion-view/page-suggest
     PageSuggestionAddComponent,
     PageSuggestionListComponent,
     PageSuggestionViewComponent,
+    
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HelpRoutingModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HelpRoutingModule,NgxDatatableModule],
 })
 export class HelpModule {}

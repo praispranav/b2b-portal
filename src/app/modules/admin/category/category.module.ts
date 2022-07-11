@@ -6,18 +6,19 @@ import { pgSelectModule } from '../../../@pages/components/select/select.module'
 import { pgTagModule } from '../../../@pages/components/tag/tag.module';
 import { pgUploadModule } from '../../../@pages/components/upload/upload.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { SharedModule } from '../../../@pages/components/shared.module';
+import { ProgressModule } from '../../../@pages/components/progress/progress.module';
+import { TreeModule } from 'angular-tree-component';
 
 import { PageCategoryAddComponent } from './page-category-add/page-category-add.component';
 import { PageCategoryEditComponent } from './page-category-edit/page-category-edit.component';
 import { PageCategoryListComponent } from './page-category-list/page-category-list.component';
-import { PageCategoryViewComponent } from './page-category-view/page-category-view.component';
 
 @NgModule({
   declarations: [
     PageCategoryAddComponent,
     PageCategoryEditComponent,
-    PageCategoryListComponent,
-    PageCategoryViewComponent,
+    PageCategoryListComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +28,10 @@ import { PageCategoryViewComponent } from './page-category-view/page-category-vi
     pgSelectModule,
     pgTagModule,
     pgUploadModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    SharedModule,
+    ProgressModule,
+    TreeModule.forRoot()
   ],
 })
 export class CategoryModule { }

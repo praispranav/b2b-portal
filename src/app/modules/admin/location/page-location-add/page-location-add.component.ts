@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProviderMaterLocationService } from './../../../../core/providers/master/provider-mater-location.service';
+import { ProviderMaterCountryService } from '../../../../core/providers/master/provider-mater-country.service';
+import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
+import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
 
 @Component({
   selector: 'app-page-location-add',
@@ -9,87 +11,85 @@ import { ProviderMaterLocationService } from './../../../../core/providers/maste
 })
 export class PageLocationAddComponent implements OnInit {
   locationForm: FormGroup;
-  masterLocationList: any[] = [];
-  iconList: any[] = [];
-  imageList: any[] = [];
-  keywordsList: string[] = [];
-  apiPagination = {
+  stateForm: FormGroup;
+  countryForm: FormGroup;
+  masterStateList: any[] = [];
+  masterCountryList: any[] = [];
+  apiStatePagination = {
     index: 0,
-    length: 10,
+    length: 1000,
+    query: {},
+  };
+  apiCountryPagination = {
+    index: 0,
+    length: 1000,
     query: {},
   };
 
   constructor(
     private formBuilder: FormBuilder,
-    private providerMaterLocationService: ProviderMaterLocationService
+    private providerMaterLocationService: ProviderMaterLocationService,
+    private providerMaterStateService: ProviderMaterStateService,
+    private providerMaterCountryService: ProviderMaterCountryService
   ) { }
 
-  get f() {
+  get lf() {
     return this.locationForm.controls;
+  }
+  get sf() {
+    return this.stateForm.controls;
+  }
+  get cf() {
+    return this.countryForm.controls;
   }
 
   ngOnInit() {
     this.buildLocationForm();
-    this.getMaterLocationListByFilter(
-      this.apiPagination.index,
-      this.apiPagination.length,
-      this.apiPagination.query
+    this.buildStateForm();
+    this.buildCountryForm();
+    this.getMaterStateListByFilter(
+      this.apiStatePagination.index,
+      this.apiStatePagination.length,
+      this.apiStatePagination.query
+    );
+    this.getMaterCountryListByFilter(
+      this.apiCountryPagination.index,
+      this.apiCountryPagination.length,
+      this.apiCountryPagination.query
     );
   }
 
   buildLocationForm() {
     this.locationForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
-      icon: [''],
-      image: ['', [Validators.required]],
-      title: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
-      description: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
-      keywords: [[]],
-      level: [0],
-      parentId: [''],
+      city: ['', [Validators.required]],
+      stateId: ['', [Validators.required]],
+      countryId: ['', [Validators.required]],
+      pincode: ['', [Validators.required]],
+      isActivated: [true],
+    });
+  }
+
+  buildStateForm() {
+    this.stateForm = this.formBuilder.group({
+      state: ['', [Validators.required]],
+      countryId: ['', [Validators.required]],
+      isActivated: [true],
+    });
+  }
+
+  buildCountryForm() {
+    this.countryForm = this.formBuilder.group({
+      country: ['', [Validators.required]],
       isActivated: [true],
     });
   }
 
   async subLocationForm() {
-    if (this.iconList.length > 0) {
-      this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
-    }
-    if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
-    }
     if (this.locationForm.invalid) {
       this.markFormGroupTouched(this.locationForm);
       return;
     }
-    if (this.f.parentId.value['_id'] !== undefined) {
-      this.f.level.setValue(Number(this.f.parentId.value.level) + 1);
-      this.f.parentId.setValue(this.f.parentId.value._id);
-    }
-
+    
     this.providerMaterLocationService.addMaterLocation(this.locationForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.locationForm);
@@ -101,11 +101,53 @@ export class PageLocationAddComponent implements OnInit {
     );
   }
 
-  getMaterLocationListByFilter(index: number, length: number, query: any = {}) {
-    this.providerMaterLocationService
-      .getMaterLocationListByFilter(index, length, query)
+  async subStateForm() {
+    if (this.stateForm.invalid) {
+      this.markFormGroupTouched(this.stateForm);
+      return;
+    }
+    
+    this.providerMaterStateService.addMaterState(this.stateForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.stateForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+
+  async subCountryForm() {
+    if (this.countryForm.invalid) {
+      this.markFormGroupTouched(this.countryForm);
+      return;
+    }
+    
+    this.providerMaterCountryService.addMaterCountry(this.countryForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.countryForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+
+  getMaterStateListByFilter(index: number, length: number, query: any = {}) {
+    this.providerMaterStateService
+      .getMaterStateListByFilter(index, length, query)
       .subscribe((res) => {
-        this.masterLocationList = res.data;
+        this.masterStateList = res.data;
+      });
+  }
+
+  getMaterCountryListByFilter(index: number, length: number, query: any = {}) {
+    this.providerMaterCountryService
+      .getMaterCountryListByFilter(index, length, query)
+      .subscribe((res) => {
+        this.masterCountryList = res.data;
       });
   }
 
@@ -129,8 +171,5 @@ export class PageLocationAddComponent implements OnInit {
 
   private resetFormGroup(form: FormGroup) {
     form.reset();
-    this.iconList = [];
-    this.imageList = [];
-    this.keywordsList = [];
   }
 }

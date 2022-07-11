@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 
 @Component({
   selector: 'app-page-complain-list',
@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-complain-list.component.scss']
 })
 export class PageComplainListComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
-
 }

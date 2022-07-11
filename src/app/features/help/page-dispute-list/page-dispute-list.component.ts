@@ -11,5 +11,4 @@ export class PageDisputeListComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 
 @Component({
   selector: 'app-page-suggestion-add',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-suggestion-add.component.scss']
 })
 export class PageSuggestionAddComponent implements OnInit {
+  complaintsuggest: FormGroup
 
-  constructor() { }
+  constructor(private formbuilder: FormBuilder) { }
 
+  get f() { return this.complaintsuggest.controls }
+  
   ngOnInit() {
+    this.buildcomplaintsugesstion()
   }
 
+  buildcomplaintsugesstion() {
+    this.complaintsuggest = this.formbuilder.group({
+      complaintsubject: ['', [Validators.required]],
+      sellerlink: ['', [Validators.required, Validators.maxLength(200)]],
+      discription: ['', [Validators.required]]
+    })
+  }
 }

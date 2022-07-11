@@ -15,7 +15,7 @@ export class PageCategoryAddComponent implements OnInit {
   keywordsList: string[] = [];
   apiPagination = {
     index: 0,
-    length: 10,
+    length: 1000,
     query: {},
   };
 

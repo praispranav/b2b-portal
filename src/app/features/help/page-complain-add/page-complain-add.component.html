@@ -1,85 +1,134 @@
 <div class="p-3">
   <div class="container-fluid p-3 bg-white">
-    <h3>Register your suggestion</h3>
-    <p>This form is intended for use by intellectual property rights owner and their agents to notify.</p>
+    <h1>Register your complaints</h1>
+    <p class="text-muted">
+      Register your complaints with here with detailed discription.
+    </p>
     <div class="row">
-      <h4>*Please tell the type of complaint you want to report </h4>
+      <h3>Please tell the type of complaint you want to report</h3>
       <div class="col-md-12">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 text-end">
-              <h5>Activation/Deactivation of Account</h5>
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                  value="option1">
+                <label class="form-check-label" for="inlineRadio1">Activation/Deactivation Account</label>
+              </div>
             </div>
-            <div class="col-md-6 text-end">
-              <h5>profile update</h5>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                  value="option2">
+                <label class="form-check-label" for="inlineRadio2">Profile related</label>
+              </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 text-end">
-              <h5>Complaint against buyer</h5>
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                  value="option3">
+                <label class="form-check-label" for="inlineRadio3">Complaint against buyer</label>
+              </div>
             </div>
-            <div class="col-md-6 text-end">
-              <h5>other issue</h5>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                  value="option4">
+                <label class="form-check-label" for="inlineRadio4">Other Issue</label>
+              </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6 text-end">
-              <h5>Complaint against seller</h5>
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
+                  value="option5">
+                <label class="form-check-label" for="inlineRadio5">Complaint against seller</label>
+              </div>
             </div>
-            <div class="col-md-6 text-end">
-              <h5></h5>
-            </div>
+            <div class="col-md-4"></div>
           </div>
         </div>
       </div>
     </div>
-    <form role="form" [formGroup]="complainForm">
-      <div class="row">
-        <div class=" col-md-3">
-          <h5>*complaint subject</h5>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <input type="text" id="subject" formControlName="subject" class="form-control"
-              [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
-              placeholder="Enter Subject here">
-            <span class="help">e.g. "complain against seller"</span>
-          </div>
-          <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
-            <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
-            <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h5>*Discription</h5>
-        </div>
-        <div class="col-md-9">
-          <div class="form-group">
-            <textarea type="text" id="description" formControlName="description" class="form-control"
-              [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
-              placeholder="Enter Description here" rows="10"></textarea>
-            <span class="help">e.g. "Mona Lisa Portrait"</span>
-          </div>
-          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
-            <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-3">
-          <h5>*Upload a file</h5>
-        </div>
-        <div class="col-md-9">
-          <button type="button" class="btn btn-success">Upload</button>
-        </div>
-      </div>
-      <div class="row mt-3">
+    <form role="form" [formGroup]="complaintdispute">
+      <div class="row mt-4">
         <div class="col-md-12">
-          <div class="d-grid gap-2  justify-content-md-end">
-            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+          <div class="container">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="subject">Subject</label>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" id="subject" formControlName="subject" class="form-control"
+                    [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
+                    placeholder="Enter Subject here">
+                  <span class="help">e.g. "Mona Lisa Portrait"</span>
+                  <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
+                    <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
+                    <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="description">Description</label>
+                </div>
+                <div class="col-md-9">
+                  <textarea type="text" id="description" formControlName="description" class="form-control"
+                    [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
+                    placeholder="Enter Description here" rows="10"></textarea>
+                  <span class="help">e.g. "Mona Lisa Portrait"</span>
+                  <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                    <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <label for="upload file">Upload File</label>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input type="file" class="form-control" placeholder="Company Pictures"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="companyPicture">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">upload</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col md-6"></div>
+        <div class="d-grid gap-2 col-md-4 mx-auto">
+          <button class="btn btn-primary" type="button">Submit</button>
         </div>
       </div>
     </form>

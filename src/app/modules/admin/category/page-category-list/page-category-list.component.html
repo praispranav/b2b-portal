@@ -1,96 +1,22 @@
 <div class="conatiner-fluid p-3 h-100">
-    <table class="table">
-        <thead class="table-bordered">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Map Under</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Keywords</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitches9">
-                    <label class="custom-control-label" for="customSwitches9"></label>
+    <div class="card">
+        <div class="card-body">
+            <div class="card card-default">
+                <div class="card-header">
+                    <div class="card-title">Category</div>
                 </div>
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitches8">
-                    <label class="custom-control-label" for="customSwitches8"></label>
+                <div class="card-body">
+                    <div class="input-group transparent">
+                        <input type="text" placeholder="Type here to Search" class="form-control" #filter3
+                            (keyup)="filterFn(filter3.value, tree.treeModel)">
+                        <div class="input-group-append">
+                            <span class="input-group-text transparent"><i class="pg-icon">search</i>
+                            </span>
+                        </div>
+                    </div>
+                    <tree-root #tree [focused]="true" [nodes]="masterCategoryParentLevelList"></tree-root>
                 </div>
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitches4">
-                    <label class="custom-control-label" for="customSwitches4"></label>
-                </div>
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitches5">
-                    <label class="custom-control-label" for="customSwitches5"></label>
-                </div>
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitches3">
-                    <label class="custom-control-label" for="customSwitches3"></label>
-                </div>
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                    <label class="custom-control-label" for="customSwitch1"></label>
-                </div>
-
-            </tr>
-            <tr>
-                <th scope="row">Apparel</th>
-                <td>Shirt</td>
-                <td>Men</td>
-                <td>Fabric,Cotton</td>
-                <td>Men,Kids</td>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
-                    <label class="custom-control-label" for="customSwitch2"></label>
-                </div>
-
-            </tr>
-
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
