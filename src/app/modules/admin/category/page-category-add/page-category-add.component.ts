@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from '../../../../@pages/components/message/message.service';
 import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
 
 @Component({
@@ -16,13 +17,28 @@ export class PageCategoryAddComponent implements OnInit {
   apiPagination = {
     index: 0,
     length: 1000,
-    query: { level: 0 },
+    query: {},
   };
-
+  currentTab: number = 0;
+  notificationModel: any = {
+    type: 'bar',
+    message: 'Api success',
+    color: 'success',
+    position: 'top',
+    current: 0
+  };
+  notificationModel1: any = {
+    type: 'bar',
+    message: 'Api Error',
+    color: 'danger',
+    position: 'top',
+    current: 0
+  };
   constructor(
     private formBuilder: FormBuilder,
-    private providerMaterCategoryService: ProviderMaterCategoryService
-  ) {}
+    private providerMaterCategoryService: ProviderMaterCategoryService,
+    private _notification: MessageService
+  ) { }
 
   get f() {
     return this.categoryForm.controls;
@@ -94,9 +110,17 @@ export class PageCategoryAddComponent implements OnInit {
       (res) => {
         this.resetFormGroup(this.categoryForm);
         window.alert('API Success');
+        if (this.notificationModel.current != this.currentTab) {
+          this.notificationModel.current = this.currentTab;
+          this._notification.remove();
+        }
       },
       (err) => {
         window.alert('API Error');
+        if (this.notificationModel1.current != this.currentTab) {
+          this.notificationModel1.current = this.currentTab;
+          this._notification.remove();
+        }
       }
     );
   }
@@ -133,4 +157,14 @@ export class PageCategoryAddComponent implements OnInit {
     this.imageList = [];
     this.keywordsList = [];
   }
+
+  // createBasicNotification() {
+  //   if (this.notificationModel.current != this.currentTab) {
+  //     this.notificationModel.current = this.currentTab;
+  //     this._notification.remove();
+  //   }
+
+
+
 }
+
