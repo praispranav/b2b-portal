@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProviderProductInformationService } from "../../../../../core/providers/seller/provider-product-information.service";
 
 @Component({
   selector: "app-form-product-information",
@@ -15,7 +16,7 @@ export class FormProductInformationComponent implements OnInit {
     { value: "tom", label: "Tom", disabled: false },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private providerProductInformationService: ProviderProductInformationService) { }
 
   get f() {
     return this.productInformationForm.controls;
@@ -41,5 +42,19 @@ export class FormProductInformationComponent implements OnInit {
       productAbc: ["", [Validators.required]],
       productCategory: ["", [Validators.required]],
     });
+  }
+  async subProductInformationForm() {
+    this.providerProductInformationService.addProductInformation(this.productInformationForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.productInformationForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
   }
 }

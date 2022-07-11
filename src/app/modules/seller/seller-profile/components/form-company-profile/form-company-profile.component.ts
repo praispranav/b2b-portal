@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
+import { ProviderCompanyProfileService } from "../../../../../core/providers/seller/provider-company-profile.service";
 
 @Component({
   selector: "app-form-company-profile",
@@ -8,13 +9,11 @@ import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 })
 export class FormCompanyProfileComponent implements OnInit {
   companyProfileForm: FormGroup;
-  mainCategoryList: any[] = [
-    { value: "jack", label: "Jack" },
-    { value: "lucy", label: "Lucy" },
-    { value: "tom", label: "Tom" },
-  ];
+  imageList: any[] = [];
 
-  constructor(private formBuilder: FormBuilder) { }
+  mainCategoryList: any[] = [];
+
+  constructor(private formBuilder: FormBuilder, private providerCompanyProfileService: ProviderCompanyProfileService) { }
 
   get f() {
     return this.companyProfileForm.controls;
@@ -38,6 +37,7 @@ export class FormCompanyProfileComponent implements OnInit {
       establishment: ["", [Validators.required]],
       mainCategory: ["", [Validators.required]],
       mainProductFormArray: this.formBuilder.array([]),
+      image: ['', [Validators.required]],
       mainsProduct: ["", [Validators.required]],
       country: ["", [Validators.required]],
       state: ["", [Validators.required]],
@@ -50,7 +50,7 @@ export class FormCompanyProfileComponent implements OnInit {
       area: [""],
       regionCountry: [""],
       regionState: [""],
-      anuualTernover: [""],
+      annualTurnover: [""],
       contactPerson: [""],
       regionPhone: [""],
       regionMobile: [""],
@@ -58,7 +58,46 @@ export class FormCompanyProfileComponent implements OnInit {
     });
   }
 
-  subCompanyProfileForm() {
-    const formData = this.companyProfileForm.value;
+  async subCompanyProfileForm() {
+    if (this.companyProfileForm.invalid) {
+      this.markFormGroupTouched(this.companyProfileForm);
+      return;
+    }
+    if (this.imageList.length > 0) {
+      this.f.image.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
+    this.providerCompanyProfileService.addCompanyProfile(this.companyProfileForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.companyProfileForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+
+  }
+  async toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
+  }
+
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+    this.imageList = [];
   }
 }

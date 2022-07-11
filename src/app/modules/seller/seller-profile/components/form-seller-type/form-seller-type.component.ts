@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { ProviderSellerTypeService } from '../../../../../core/providers/seller/provider-seller-type.service';
 @Component({
   selector: 'app-form-seller-type',
   templateUrl: './form-seller-type.component.html',
@@ -27,7 +28,12 @@ export class FormSellerTypeComponent implements OnInit {
     { name: "Other", value: "Other" }
 
   ]
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private providerSellerTypeService: ProviderSellerTypeService) {
+    this.sellerTypeForm = this.formBuilder.group({
+      checkArray: this.formBuilder.array([])
+    })
+
+  }
   get f() {
     return this.sellerTypeForm.controls;
   }
@@ -36,11 +42,38 @@ export class FormSellerTypeComponent implements OnInit {
   }
   buildSellerTypeForm() {
     this.sellerTypeForm = this.formBuilder.group({
-      // processName: [""],
-      // processpicture: [""],
-      // description: [""],
-      // selectNo: [""],
-      // selectYes: [""],
+      sellerType: ["", [Validators.required]]
+
     });
+  }
+  async subSellerTypeForm() {
+    this.providerSellerTypeService.addSellerType(this.sellerTypeForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.sellerTypeForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    )
+
+  }
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+  }
+  onCheckboxChange(e) {
+    const checkArray: FormArray = this.sellerTypeForm.get('checkArray') as FormArray;
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: FormControl) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
   }
 }
