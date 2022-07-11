@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITreeOptions, TreeModel, TreeNode } from 'angular-tree-component';
-import { TreeOptions } from 'angular-tree-component/dist/models/tree-options.model';
+import { TreeModel, TreeNode } from 'angular-tree-component';
 import { ProviderMaterCategoryService } from '../../../../core/providers/master/provider-mater-category.service';
 @Component({
   selector: "app-page-category-list",
@@ -9,13 +8,16 @@ import { ProviderMaterCategoryService } from '../../../../core/providers/master/
 })
 export class PageCategoryListComponent implements OnInit {
   masterCategoryParentLevelList: any[] = [];
+  asyncOptions = {
+    getChildren: this.getChildren.bind(this)
+  };
 
   constructor(
     private providerMaterCategoryService: ProviderMaterCategoryService
   ) { }
 
   ngOnInit() {
-    this.getMaterCategoryListByFilter(0, 1000, {});
+    this.getMaterCategoryListByFilter(0, 1000, { level: "0" });
   }
 
   getMaterCategoryListByFilter(index: number, length: number, query: any = {}) {
@@ -24,12 +26,26 @@ export class PageCategoryListComponent implements OnInit {
       .subscribe((res) => {
         this.masterCategoryParentLevelList = res.data.map(i => {
           return {
-            ...i, children: [
-              { name: 'Loading...' }
-            ]
+            ...i,
+            hasChildren: true
           }
         });
       });
+  }
+
+  getChildren(node: TreeNode) {
+    return new Promise((resolve, reject) => {
+      this.providerMaterCategoryService
+        .getMaterCategoryListByFilter(0, 1000, {parentId: node.data._id})
+        .subscribe((res) => {
+          resolve(res.data.map(i => {
+            return {
+              ...i,
+              hasChildren: true
+            }
+          }));
+        });
+    });
   }
 
   filterFn(value: string, treeModel: TreeModel) {

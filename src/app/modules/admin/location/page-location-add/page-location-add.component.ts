@@ -15,16 +15,6 @@ export class PageLocationAddComponent implements OnInit {
   countryForm: FormGroup;
   masterStateList: any[] = [];
   masterCountryList: any[] = [];
-  apiStatePagination = {
-    index: 0,
-    length: 1000,
-    query: {},
-  };
-  apiCountryPagination = {
-    index: 0,
-    length: 1000,
-    query: {},
-  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,16 +37,7 @@ export class PageLocationAddComponent implements OnInit {
     this.buildLocationForm();
     this.buildStateForm();
     this.buildCountryForm();
-    this.getMaterStateListByFilter(
-      this.apiStatePagination.index,
-      this.apiStatePagination.length,
-      this.apiStatePagination.query
-    );
-    this.getMaterCountryListByFilter(
-      this.apiCountryPagination.index,
-      this.apiCountryPagination.length,
-      this.apiCountryPagination.query
-    );
+    this.getMaterCountryListByFilter(0, 1000, {});
   }
 
   buildLocationForm() {
@@ -64,7 +45,7 @@ export class PageLocationAddComponent implements OnInit {
       city: ['', [Validators.required]],
       stateId: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
-      pincode: ['', [Validators.required]],
+      pincode: [''],
       isActivated: [true],
     });
   }
@@ -89,7 +70,7 @@ export class PageLocationAddComponent implements OnInit {
       this.markFormGroupTouched(this.locationForm);
       return;
     }
-    
+
     this.providerMaterLocationService.addMaterLocation(this.locationForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.locationForm);
@@ -106,7 +87,7 @@ export class PageLocationAddComponent implements OnInit {
       this.markFormGroupTouched(this.stateForm);
       return;
     }
-    
+
     this.providerMaterStateService.addMaterState(this.stateForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.stateForm);
@@ -123,7 +104,7 @@ export class PageLocationAddComponent implements OnInit {
       this.markFormGroupTouched(this.countryForm);
       return;
     }
-    
+
     this.providerMaterCountryService.addMaterCountry(this.countryForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.countryForm);
@@ -171,5 +152,9 @@ export class PageLocationAddComponent implements OnInit {
 
   private resetFormGroup(form: FormGroup) {
     form.reset();
+  }
+
+  lfCountryChange(e) {
+    this.getMaterStateListByFilter(0, 1000, { countryId: e._id })
   }
 }

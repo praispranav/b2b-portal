@@ -11,13 +11,11 @@ import { ProgressModule } from '../../../@pages/components/progress/progress.mod
 import { TreeModule } from 'angular-tree-component';
 
 import { PageLocationAddComponent } from './page-location-add/page-location-add.component';
-import { PageLocationEditComponent } from './page-location-edit/page-location-edit.component';
 import { PageLocationListComponent } from './page-location-list/page-location-list.component';
 
 @NgModule({
   declarations: [
     PageLocationAddComponent,
-    PageLocationEditComponent,
     PageLocationListComponent
   ],
   imports: [

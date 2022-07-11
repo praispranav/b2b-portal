@@ -71,23 +71,6 @@ export class PageDisputeAddComponent implements OnInit {
 
   }
   onSelectFile(event: object) {
-
-    let fileName = event['target'].files[0].name;
-    // console.log(fileName);
-    let reader = new FileReader();
-    reader.readAsDataURL(event['target'].files[0]);
-    reader.onload = (event) => {
-
-      this.fileName = event['target'].result;
-
-
-    }
-    this.complaintdispute.controls.file.setValue(fileName)
-
-
-
-
-
   }
 }
 

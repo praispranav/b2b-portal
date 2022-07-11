@@ -14,7 +14,12 @@
                             </span>
                         </div>
                     </div>
-                    <tree-root #tree [focused]="true" [nodes]="masterCountryList"></tree-root>
+                    <tree-root #tree [focused]="true" [nodes]="masterCountryList" [options]="asyncOptions"
+                        class="tree-wrapper bold-node-text level1-document-icon-only">
+                        <ng-template #loadingTemplate>
+                            <pg-progress type="circle" indeterminate="true" class=""></pg-progress>
+                        </ng-template>
+                    </tree-root>
                 </div>
             </div>
         </div>

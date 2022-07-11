@@ -11,13 +11,11 @@ import { ProgressModule } from '../../../@pages/components/progress/progress.mod
 import { TreeModule } from 'angular-tree-component';
 
 import { PageCategoryAddComponent } from './page-category-add/page-category-add.component';
-import { PageCategoryEditComponent } from './page-category-edit/page-category-edit.component';
 import { PageCategoryListComponent } from './page-category-list/page-category-list.component';
 
 @NgModule({
   declarations: [
     PageCategoryAddComponent,
-    PageCategoryEditComponent,
     PageCategoryListComponent
   ],
   imports: [
