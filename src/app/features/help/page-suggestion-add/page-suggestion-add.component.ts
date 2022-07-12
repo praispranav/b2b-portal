@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderHelpSuggestionService } from '../../../core/providers/user/provider-help-suggestion.service';
 
 @Component({
@@ -8,43 +8,41 @@ import { ProviderHelpSuggestionService } from '../../../core/providers/user/prov
   styleUrls: ['./page-suggestion-add.component.scss']
 })
 export class PageSuggestionAddComponent implements OnInit {
-  complaintsuggest: FormGroup
-  fileName: any;
-  checkRadioValue: boolean;
-  constructor(private formbuilder: FormBuilder, private providerHelpSuggestionService: ProviderHelpSuggestionService) { }
+  suggestionForm: FormGroup;
 
-  get f() { return this.complaintsuggest.controls }
-  
+  constructor(
+    private formBuilder: FormBuilder,
+    private providerHelpSuggestionService: ProviderHelpSuggestionService
+  ) { }
+
+  get f() {
+    return this.suggestionForm.controls;
+  }
+
   ngOnInit() {
-    this.buildcomplaintsugesstion()
+    this.buildSuggestionForm();
   }
 
-  buildcomplaintsugesstion() {
-    this.complaintsuggest = this.formbuilder.group({
-      complaintsubject: ['', [Validators.required]],
-      sellerlink: ['', [Validators.required, Validators.maxLength(200)]],
-      discription: ['', [Validators.required]],
+  buildSuggestionForm() {
+    this.suggestionForm = this.formBuilder.group({
       type: ['', [Validators.required]],
-      file: [File, [Validators.required]]
-    })
+      subject: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      link: ['', [Validators.required]],
+      file: [''],
+    });
   }
 
-  async complaintsuggestHandler() {
+  async subCategoryForm() {
+    if (this.suggestionForm.invalid) {
+      this.markFormGroupTouched(this.suggestionForm);
+      return;
+    }
 
-    // if (this.complaintsuggest.invalid) {
-    //   this.markFormGroupTouched(this.complaintsuggest);
-    //   return;
-    // }
-    let formData = this.complaintsuggest.value;
-    console.log(formData);
-
-
-    this.providerHelpSuggestionService.addHelpSuggestion(formData).subscribe(
+    this.providerHelpSuggestionService.addHelpSuggestion(this.suggestionForm.value).subscribe(
       (res) => {
-        // this.resetFormGroup(this.complaintsuggest);
+        this.resetFormGroup(this.suggestionForm);
         window.alert('API Success');
-        this.complaintsuggest.reset();
-        this.checkRadioValue = false;
       },
       (err) => {
         window.alert('API Error');
@@ -52,24 +50,24 @@ export class PageSuggestionAddComponent implements OnInit {
     );
   }
 
-  // private markFormGroupTouched(form: FormGroup) {
-  //   Object.values(form.controls).forEach((control) => {
-  //     control.markAsTouched();
-  //     if ((control as any).controls) {
-  //       this.markFormGroupTouched(control as FormGroup);
-  //     }
-  //   });
-  // }
-
-  checkRadio(event: any) {
-    let radioValue = event.target.value;
-    console.log(radioValue);
-    this.complaintsuggest.controls.type.setValue(radioValue);
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
-  openFile(fileInputDoc) {
-    fileInputDoc.click();
 
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
   }
-  onSelectFile(event: object) {
+
+  fileUpload(event){
+    console.log(event.target.files)
+  }
+
+  clickOnInputFile(el) {
+    el.click();
   }
 }

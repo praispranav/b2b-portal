@@ -6,40 +6,17 @@
           <thead>
             <tr>
               <th scope="col">Sr.No</th>
-              <th scope="col">Complaint Number</th>
-              <th scope="col">Complaint Issue</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Description</th>
               <th scope="col">Date</th>
-              <th scope="col">status</th>
-              <th scope="col">File and appeal</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>44677</td>
-              <td class="text-align-centre">This form is intended for use by intellectual property rights owners
-              </td>
-              <td>####</td>
-              <td>open</td>
-              <td>Reopen again</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>66876</td>
-              <td>This form is intended for use by intellectual property rights owners
-              </td>
-              <td>####</td>
-              <td>closed</td>
-              <td>Reopen again</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>68687</td>
-              <td>This form is intended for use by intellectual property rights owners
-              </td>
-              <td>####</td>
-              <td>open</td>
-              <td>Reopen again</td>
+            <tr *ngFor="let item of helpComplainList; let i = index">
+              <th>{{i+1}}</th>
+              <td>{{item.subject}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.timestamp | date}}</td>
             </tr>
           </tbody>
         </table>

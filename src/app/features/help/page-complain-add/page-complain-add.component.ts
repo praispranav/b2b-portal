@@ -1,50 +1,47 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderHelpComplainService } from '../../../core/providers/user/provider-help-complain.service';
+
 @Component({
   selector: 'app-page-complain-add',
   templateUrl: './page-complain-add.component.html',
   styleUrls: ['./page-complain-add.component.scss']
 })
 export class PageComplainAddComponent implements OnInit {
-  complaintdispute: FormGroup
-  fileName: any;
-  checkRadioValue: boolean;
-  // @ViewChild('fileInputDoc')fileInput:ElementRef
-  constructor(private formbuilder: FormBuilder,
-    private providerHelpComplainService: ProviderHelpComplainService) { }
+  complainForm: FormGroup;
 
-  get f() { return this.complaintdispute.controls }
+  constructor(
+    private formBuilder: FormBuilder,
+    private providerHelpComplainService: ProviderHelpComplainService
+  ) { }
+
+  get f() {
+    return this.complainForm.controls;
+  }
 
   ngOnInit() {
-    this.buildcomplaintdispute()
+    this.buildComplainForm();
   }
 
-  buildcomplaintdispute() {
-    this.complaintdispute = this.formbuilder.group({
-      subject: ['', [Validators.required, Validators.maxLength(200)]],
-      description: ['', [Validators.required]],
+  buildComplainForm() {
+    this.complainForm = this.formBuilder.group({
       type: ['', [Validators.required]],
-      file: [File, [Validators.required]]
-    })
+      subject: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      file: [''],
+    });
   }
 
-  async complaintdisputeHandler() {
+  async subCategoryForm() {
+    if (this.complainForm.invalid) {
+      this.markFormGroupTouched(this.complainForm);
+      return;
+    }
 
-    // if (this.complaintdispute.invalid) {
-    //   this.markFormGroupTouched(this.complaintdispute);
-    //   return;
-    // }
-    let formData = this.complaintdispute.value;
-    console.log(formData);
-
-
-    this.providerHelpComplainService.addHelpComplain(formData).subscribe(
+    this.providerHelpComplainService.addHelpComplain(this.complainForm.value).subscribe(
       (res) => {
-        // this.resetFormGroup(formData);
+        this.resetFormGroup(this.complainForm);
         window.alert('API Success');
-        this.complaintdispute.reset();
-        this.checkRadioValue = false;
       },
       (err) => {
         window.alert('API Error');
@@ -52,26 +49,24 @@ export class PageComplainAddComponent implements OnInit {
     );
   }
 
-  // private markFormGroupTouched(form: FormGroup) {
-  //   Object.values(form.controls).forEach((control) => {
-  //     control.markAsTouched();
-  //     if ((control as any).controls) {
-  //       this.markFormGroupTouched(control as FormGroup);
-  //     }
-  //   });
-  // }
-
-  checkRadio(event: any) {
-    let radioValue = event.target.value;
-    console.log(radioValue);
-    this.complaintdispute.controls.type.setValue(radioValue);
-  }
-  openFile(fileInputDoc) {
-    fileInputDoc.click();
-
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
 
-  onSelectFile(event: object) {
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+  }
+
+  fileUpload(files){
+    console.log(files.target.files)
+  }
+
+  clickOnInputFile(el) {
+    el.click();
   }
 }
-
