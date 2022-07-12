@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProviderHelpComplainService } from '../../../core/providers/user/provider-help-complain.service';
 
 @Component({
@@ -7,9 +7,21 @@ import { ProviderHelpComplainService } from '../../../core/providers/user/provid
   styleUrls: ['./page-complain-list.component.scss']
 })
 export class PageComplainListComponent implements OnInit {
-  constructor(private providerHelpComplainService: ProviderHelpComplainService) { }
+  helpComplainList: any[] = [];
+
+  constructor(
+    private providerHelpComplainService: ProviderHelpComplainService,
+  ) { }
 
   ngOnInit() {
+    this.getHelpComplainListByFilter(0, 1000, {});
   }
 
+  getHelpComplainListByFilter(index: number, length: number, query: any = {}) {
+    this.providerHelpComplainService
+      .getHelpComplainListByFilter(index, length, query)
+      .subscribe((res) => {
+        this.helpComplainList = res.data;
+      });
+  }
 }
