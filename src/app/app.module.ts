@@ -70,6 +70,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
 import { CoreModule } from './core/core.module';
+import { MessageService } from './@pages/components/message/message.service';
 // import { ProviderComponent } from './provider/provider.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
