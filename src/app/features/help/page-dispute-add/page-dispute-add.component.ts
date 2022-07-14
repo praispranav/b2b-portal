@@ -1,50 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderHelpDisputeService } from '../../../core/providers/user/provider-help-dispute.service';
+
 @Component({
   selector: 'app-page-dispute-add',
   templateUrl: './page-dispute-add.component.html',
   styleUrls: ['./page-dispute-add.component.scss']
 })
 export class PageDisputeAddComponent implements OnInit {
-  complaintdispute: FormGroup
-  fileName: any;
-  checkRadioValue: boolean;
-  constructor(private formbuilder: FormBuilder, private providerHelpDisputeService: ProviderHelpDisputeService) { }
+  disputeForm: FormGroup;
 
-  get f() { return this.complaintdispute.controls }
+  constructor(
+    private formBuilder: FormBuilder,
+    private providerHelpDisputeService: ProviderHelpDisputeService
+  ) { }
+
+  get f() {
+    return this.disputeForm.controls;
+  }
 
   ngOnInit() {
-    this.buildcomplaintdispute()
+    this.buildDisputeForm();
   }
 
-  buildcomplaintdispute() {
-    this.complaintdispute = this.formbuilder.group({
-      subject: ['', [Validators.required, Validators.maxLength(200)]],
-      pageLink: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+  buildDisputeForm() {
+    this.disputeForm = this.formBuilder.group({
       type: ['', [Validators.required]],
-      file: [File, [Validators.required]]
-
-    })
+      subject: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      link: ['', [Validators.required]],
+      file: [''],
+    });
   }
 
-  async complaintdisputeHandler() {
+  async subCategoryForm() {
+    if (this.disputeForm.invalid) {
+      this.markFormGroupTouched(this.disputeForm);
+      return;
+    }
 
-    // if (this.complaintdispute.invalid) {
-    //   this.markFormGroupTouched(this.complaintdispute);
-    //   return;
-    // }
-
-    let formData = this.complaintdispute.value;
-    console.log(formData);
-
-    this.providerHelpDisputeService.addHelpDispute(this.complaintdispute.value).subscribe(
+    this.providerHelpDisputeService.addHelpDispute(this.disputeForm.value).subscribe(
       (res) => {
-        // this.resetFormGroup(formData);
+        this.resetFormGroup(this.disputeForm);
         window.alert('API Success');
-        this.complaintdispute.reset();
-        this.checkRadioValue = false;
       },
       (err) => {
         window.alert('API Error');
@@ -52,42 +50,24 @@ export class PageDisputeAddComponent implements OnInit {
     );
   }
 
-  // private markFormGroupTouched(form: FormGroup) {
-  //   Object.values(form.controls).forEach((control) => {
-  //     control.markAsTouched();
-  //     if ((control as any).controls) {
-  //       this.markFormGroupTouched(control as FormGroup);
-  //     }
-  //   });
-  // }
-
-  checkRadio(event: any) {
-    let radioValue = event.target.value;
-    console.log(radioValue);
-    this.complaintdispute.controls.type.setValue(radioValue);
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
-  openFile(fileInputDoc) {
-    fileInputDoc.click();
 
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
   }
-  onSelectFile(event: object) {
 
-    let fileName = event['target'].files[0].name;
-    // console.log(fileName);
-    let reader = new FileReader();
-    reader.readAsDataURL(event['target'].files[0]);
-    reader.onload = (event) => {
+  fileUpload(files) {
+    console.log(files.target.files)
+  }
 
-    //  this.fileName = event['target'].result;
-
-
-    }
-    this.complaintdispute.controls.file.setValue(fileName)
-
-
-
-
-
+  clickOnInputFile(el) {
+    el.click();
   }
 }
-

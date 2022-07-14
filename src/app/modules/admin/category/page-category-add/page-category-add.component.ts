@@ -16,7 +16,7 @@ export class PageCategoryAddComponent implements OnInit {
   apiPagination = {
     index: 0,
     length: 1000,
-    query: {},
+    query: { level: 0 },
   };
 
   constructor(

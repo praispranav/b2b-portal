@@ -70,6 +70,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 
 import { CoreModule } from './core/core.module';
+// import { ProviderComponent } from './provider/provider.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -99,6 +100,7 @@ export class AppHammerConfig extends HammerGestureConfig {
     BlankLayoutComponent,
     BuyerLayoutComponent,
     SellerLayoutComponent,
+    // ProviderComponent,
   ],
   imports: [
     BrowserModule,
@@ -146,4 +148,4 @@ export class AppHammerConfig extends HammerGestureConfig {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

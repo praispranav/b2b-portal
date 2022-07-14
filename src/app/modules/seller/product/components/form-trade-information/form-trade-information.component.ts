@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProviderTradeInformationService } from '../../../../../core/providers/seller/provider-trade-information.service';
 
 @Component({
   selector: 'app-form-trade-information',
@@ -95,27 +96,41 @@ export class FormTradeInformationComponent implements OnInit {
 
 
     ]
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private providerTradeInformationService: ProviderTradeInformationService) { }
 
   get f() {
     return this.tradeInformationForm.controls;
   }
 
   ngOnInit() {
-    this.buildtradeInformation();
+    this.buildTradeInformation();
   }
-
-  buildtradeInformation() {
+  buildTradeInformation() {
     this.tradeInformationForm = this.formBuilder.group({
       sellingPrice: ['', [Validators.required]],
       unit: ['', [Validators.required]],
       moq: ['', [Validators.required]],
-      moqUnit: ['', [Validators.required]],
+      MoqPerUnit: ['', [Validators.required]],
       paymentType: ['', [Validators.required]],
+      fobUnit: ['', [Validators.required]],
       fobPriceUnit: ['', [Validators.required]],
-
       Other: ['', [Validators.required]],
     });
   }
 
+  async subTradeInformationForm() {
+
+    this.providerTradeInformationService.addTradeInformation(this.tradeInformationForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.tradeInformationForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+    );
+  }
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+  }
 }

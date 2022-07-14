@@ -2,16 +2,20 @@
     <h3>Seller Type</h3>
     <form class="p-t-15" role="form" [formGroup]="sellerTypeForm">
         <ng-container>
-            <div class="" *ngFor="let seller of sellerTypeList; let i=index">
+            <div *ngFor="let seller of sellerTypeList; let i=index">
                 <div class="form-check complete">
-                    <input type="checkbox" id="checkColorOpt1" [value]="seller.value">
+                    <input type="checkbox" id="checkColorOpt1" [value]="seller.value"
+                        (change)="onCheckboxChange($event)">
                     <label for="checkColorOpt1">
-                        {{seller.value}}
+                        {{seller.name}}
                     </label>
                 </div>
             </div>
         </ng-container>
-
+        <div class="mt-4">
+            <button type="button" class="btn btn-primary" (click)="subSellerForm()">Save And Continue</button>
+        </div>
     </form>
+
 
 </div>

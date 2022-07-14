@@ -341,9 +341,9 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-2">
-                <label style="margin-left:54px">Company Logo <span class="text-danger">*</span></label>
+                <label style="margin-left:54px">Upload Image <span class="text-danger">*</span></label>
             </div>
-            <div class="col-md-10 mb-4">
+            <div class="col-md-8 mb-4">
                 <pg-upload ListType="picture-card" [Preview]="handlePreview">
                     <div class="pic-placeholder">
                         <i class="pg-icon p-b-5">upload</i>
@@ -351,8 +351,17 @@
                     </div>
                 </pg-upload>
             </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary">Add+</button>
+            </div>
 
 
         </div>
+        <div class="mt-4">
+            <button type="button" class="btn btn-primary w-25">Add+</button>
+        </div>
+    </div>
+    <div class="mt-4">
+        <button type="button" class="btn btn-primary w-25">Save And Continue</button>
     </div>
 </form>
