@@ -78,7 +78,7 @@ export class PageDisputeAddComponent implements OnInit {
     reader.readAsDataURL(event['target'].files[0]);
     reader.onload = (event) => {
 
-      this.fileName = event['target'].result;
+    //  this.fileName = event['target'].result;
 
 
     }
