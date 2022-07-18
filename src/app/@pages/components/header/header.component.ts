@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input()
   extraClass: string = '';
 
-  constructor(private toggler: pagesToggleService) {}
+  constructor(private toggler: pagesToggleService) { }
 
   ngOnInit() {
     this.isHorizontalLayout = pg.isHorizontalLayout;

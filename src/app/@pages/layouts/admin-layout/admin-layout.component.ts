@@ -264,6 +264,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
   ];
   ngOnInit() {
     this.changeLayout('menu-pin');
+    this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
   }
