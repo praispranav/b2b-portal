@@ -62,7 +62,7 @@ export class PageComplainAddComponent implements OnInit {
     form.reset();
   }
 
-  fileUpload(files){
+  fileUpload(files) {
     console.log(files.target.files)
   }
 

@@ -63,7 +63,7 @@ export class PageSuggestionAddComponent implements OnInit {
     form.reset();
   }
 
-  fileUpload(event){
+  fileUpload(event) {
     console.log(event.target.files)
   }
 

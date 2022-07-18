@@ -63,7 +63,7 @@ export class PageDisputeAddComponent implements OnInit {
     form.reset();
   }
 
-  fileUpload(files){
+  fileUpload(files) {
     console.log(files.target.files)
   }
 
