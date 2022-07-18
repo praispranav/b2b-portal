@@ -1,0 +1,48 @@
+<div class="conatiner-fluid p-3 h-100">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form [formGroup]="filterForm" (keydown.enter)="$event.preventDefault()">
+                        <div class="form-group">
+                            <h6 class="control-label">Filter</h6>
+                            <div pgFormGroupDefault class="form-group"
+                                [class.has-error]="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
+                                <input type="text" class="form-control" formControlName="filter">
+                            </div>
+                        </div>
+                        <div *ngIf="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
+                            <label *ngIf="f.filter.errors.required" class="error">Filter is required.</label>
+                        </div>
+
+                        <div class="container px-5">
+                            <ng-container formArrayName="fields">
+                                <ng-container
+                                    *ngFor="let fieldForm of fields.controls; let i = index; let last = last; let first = first;">
+                                    <div [formGroup]="fieldForm">
+                                        <div class="form-group" style="display: flex;">
+                                            <input type="text" class="form-control" formControlName="field"
+                                                [placeholder]="'Field '+(i+1)">
+                                            <button (click)="deleteField(i)" *ngIf="!(last && first)">Delete</button>
+                                        </div>
+                                        <div *ngIf="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
+                                            <label *ngIf="f.filter.errors.required" class="error">Filter is
+                                                required.</label>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+
+                            <button (click)="addField()">add</button>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="me-4 btn btn-primary show-notification"
+                                (click)="subFilterForm()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

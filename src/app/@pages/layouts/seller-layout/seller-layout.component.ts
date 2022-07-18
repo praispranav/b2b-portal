@@ -10,22 +10,16 @@ import { RootLayout } from "../root/root.component";
 export class SellerLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
-      label: "Home",
+      label: "Dashboard",
       routerLink: "seller-dashboard",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Profile",
       routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Products",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Add Products",
@@ -42,19 +36,11 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       ],
     },
     {
-      label: "My Buying Intrests",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
-    },
-    {
       label: "Messages",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
-          label: "Inbox",
+          label: "Inbox [2]",
           routerLink: "seller-dashboard",
         },
         {
@@ -72,56 +58,52 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       ],
     },
     {
+      label: "Leads",
+      routerLink: "",
+    },
+    {
       label: "Multiple Quotes Request",
       routerLink: "seller-dashboard",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Trade Services",
-      iconType: "fi",
-      iconName: "shield",
       toggle: "close",
       submenu: [
         {
           label: "Logistics Solutions",
           routerLink: "/b2b/logistic-solutions",
-          iconType: "letter",
-          iconName: "dl",
         },
         {
           label: "Inspection Service",
           routerLink: "/b2b/inspection-service",
-          iconType: "letter",
-          iconName: "sl",
         },
       ],
     },
     {
+      label: "Participating in Trade Show",
+      routerLink: "seller-dashboard",
+    },
+    {
       label: "Help",
-      iconType: "fi",
-      iconName: "shield",
       toggle: "close",
       submenu: [
         {
           label: "Complaints",
-          routerLink: "help/complain-add",
-          iconType: "letter",
-          iconName: "dl",
+          routerLink: "#",
         },
         {
-          label: "Disputes",
-          routerLink: "help/dispute-add",
-          iconType: "letter",
-          iconName: "sl",
+          label: "Dispute",
+          routerLink: "#",
         },
         {
           label: "Suggestions",
-          routerLink: "help/suggestion-add",
-          iconType: "letter",
-          iconName: "bl",
+          routerLink: "#",
         },
       ],
+    },
+    {
+      label: "My Buying Interests",
+      routerLink: "#",
     },
   ];
 

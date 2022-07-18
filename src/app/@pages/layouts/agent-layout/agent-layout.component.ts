@@ -11,52 +11,40 @@ export class AgentLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Home",
-      routerLink: "seller-dashboard",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Profile",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Assigned Account",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Verify Accounts",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
-      label: "Accounts Status ",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      label: "Accounts Status",
+      routerLink: "#",
     },
     {
       label: "Help",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Complaints",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Disputes",
-          routerLink: "buyer-dashboard",
+          label: "Dispute",
+          routerLink: "#",
         },
         {
           label: "Suggestions",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
   ];

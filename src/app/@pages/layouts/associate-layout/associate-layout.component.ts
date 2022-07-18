@@ -11,67 +11,52 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Home",
-      routerLink: "seller-dashboard",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Profile",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Send Request",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
-      label: "Add into Protfolio",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      label: "Add into Portfolio",
+      routerLink: "#",
     },
     {
       label: "List Seller",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
-      label: "Request for Seller Verification",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      label: "Request For Seller Verification",
+      routerLink: "#",
     },
     {
       label: "Seller Verification Status",
-      routerLink: "seller-profile",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
       label: "Help",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Complaints",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Disputes",
-          routerLink: "buyer-dashboard",
+          label: "Dispute",
+          routerLink: "#",
         },
         {
           label: "Suggestions",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
   ];
+  
   ngOnInit() {
     this.changeLayout('menu-pin');
     //Will sidebar close on screens below 1024

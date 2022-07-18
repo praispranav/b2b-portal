@@ -10,284 +10,257 @@ import { RootLayout } from '../root/root.component';
 export class AdminLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
-      label: "Add Banners",
-      routerLink: "buyer-profile",
-      iconType: "fi",
-      iconName: "shield",
+      label: "Admin Dashboard",
+      routerLink: "#",
     },
     {
-      label: "Seller/Buyers",
+      label: "Add Banner",
+      routerLink: "#",
+    },
+    {
+      label: "Seller/Buyer",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
-          label: "Seller ",
-          routerLink: "buyer-dashboard",
+          label: "Seller",
+          routerLink: "#",
         },
         {
-          label: "Buyers",
-          routerLink: "buyer-dashboard",
+          label: "Buyer",
+          routerLink: "#",
         },
         {
-          label: "Buyers Live Status",
-          routerLink: "buyer-dashboard",
+          label: "Buyer Live Status",
+          routerLink: "#",
         },
         {
-          label: "Sellers Live status",
-          routerLink: "buyer-dashboard",
+          label: "Seller Live Status",
+          routerLink: "#",
         },
         {
           label: "MOQ",
-          routerLink: "buyer-dashboard",
-        },
+          routerLink: "#",
+        }
       ],
     },
     {
       label: "Product",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
-          label: "Products For Approval ",
-          routerLink: "buyer-dashboard",
+          label: "Products For Approval",
+          routerLink: "#",
         },
         {
           label: "Approval Status",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Brand Approval Requests",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Brands",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Limits For Free Seller",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Limits For Free Seller",
-          routerLink: "buyer-dashboard",
-        },
+          label: "Increase/Decrise Limit",
+          routerLink: "#",
+        }
       ],
     },
     {
       label: "Leads",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "RFQ Leads",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Associate CRM",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Verification Request",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Account Creation Requests",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Partners",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "TP Agents",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Craete new TP Agent",
-          routerLink: "buyer-dashboard",
+          label: "Create new TP Agent",
+          routerLink: "#",
         },
         {
           label: "Agents Portfolio",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Associates",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Craete new Associate",
-          routerLink: "buyer-dashboard",
+          label: "Create new Associates",
+          routerLink: "#",
         },
         {
-          label: "Associate Protfolio",
-          routerLink: "buyer-dashboard",
-        }
+          label: "Associate Portfolio",
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Help",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Complaints",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Disputes",
-          routerLink: "buyer-dashboard",
+          label: "Dispute",
+          routerLink: "#",
         },
         {
           label: "Suggestions",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
-      label: "Locations",
+      label: "Location",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Find Country",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Add New Location",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Add Pricing for Country",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Assign Trade Products",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Categories",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Find Categories",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
-          label: "Add Category",
-          routerLink: "buyer-dashboard",
+          label: "Add Categories",
+          routerLink: "#",
         },
         {
-          label: "Add filter",
-          routerLink: "buyer-dashboard",
-        }
-
+          label: "Add Filter",
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "News",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Add News",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Create Categories",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Create Tags",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
-
     {
-      label: "Blogs-Defale Countries/Cetegory",
+      label: "Blogs",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Create Tags",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Trade Fair",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Search Trade Shows",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Add Trade Shows",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Add Type",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Brand",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Search Brand",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Approve Brands",
-          routerLink: "buyer-dashboard",
+          routerLink: "#",
         },
         {
           label: "Add Brands",
-          routerLink: "buyer-dashboard",
-        }
+          routerLink: "#",
+        },
       ],
     },
     {
       label: "Notice Bar",
-      routerLink: "seller-dashboard",
-      iconType: "fi",
-      iconName: "shield",
+      routerLink: "#",
     },
     {
-      label: "Popular Questions And Answers",
+      label: "Popular Q&A",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
           label: "Add Category",
-          routerLink: "buyer-dashboard",
-        }
-      ],
+          routerLink: "#",
+        },
+      ]
     },
-
   ];
   ngOnInit() {
     this.changeLayout('menu-pin');
