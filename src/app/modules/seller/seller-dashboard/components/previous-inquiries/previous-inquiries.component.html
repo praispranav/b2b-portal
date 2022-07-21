@@ -1,0 +1,18 @@
+<div class="">
+    <div class="card card-transparent ">
+        <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white">
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>Last Conversation</span>
+                </ng-template>
+                <app-last-conversation></app-last-conversation>
+            </pg-tab>
+            <pg-tab>
+                <ng-template #TabHeading>
+                    <span>MQRs</span>
+                </ng-template>
+                <app-mrqs></app-mrqs>
+            </pg-tab>
+        </pg-tabset>
+    </div>
+</div>
