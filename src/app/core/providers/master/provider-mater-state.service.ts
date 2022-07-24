@@ -28,4 +28,8 @@ export class ProviderMaterStateService {
   deleteMaterStateById(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/master-state/delete/${id}`);
   }
+
+  deleteMaterStateByCountryId(countryId: string): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/master-state/delete-by-country-id/${countryId}`);
+  }
 }

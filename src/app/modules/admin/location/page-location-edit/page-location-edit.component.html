@@ -1,7 +1,7 @@
 <div class="conatiner-fluid p-3 h-100">
-    <div class="card">
+    <div class="card" *ngIf="country && !state && !location">
         <div class="card-body">
-            <h2>Add Country</h2>
+            <h2>Edit Country</h2>
             <form [formGroup]="countryForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
@@ -20,9 +20,9 @@
             </form>
         </div>
     </div>
-    <div class="card">
+    <div class="card" *ngIf="country && state && !location">
         <div class="card-body">
-            <h2>Add State</h2>
+            <h2>Edit State</h2>
             <form [formGroup]="stateForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
@@ -54,9 +54,9 @@
             </form>
         </div>
     </div>
-    <div class="card">
+    <div class="card" *ngIf="country && state && location">
         <div class="card-body">
-            <h2>Add Location</h2>
+            <h2>Edit Location</h2>
             <form [formGroup]="locationForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>

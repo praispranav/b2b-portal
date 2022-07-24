@@ -6,7 +6,7 @@
                     <form [formGroup]="filterForm" (keydown.enter)="$event.preventDefault()">
                         <div class="form-group">
                             <h6 class="control-label">Filter</h6>
-                            <div pgFormGroupDefault class="form-group"
+                            <div class="form-group"
                                 [class.has-error]="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
                                 <input type="text" class="form-control" formControlName="filter">
                             </div>

@@ -55,7 +55,9 @@ export class PageFilterAddComponent implements OnInit {
       this.markFormGroupTouched(this.filterForm);
       return;
     }
-    this.providerMaterFilterService.addMaterFilter(this.filterForm.value).subscribe(
+    const formValue = this.filterForm.value;
+    formValue.fields = formValue.fields.map(i=>i.field);
+    this.providerMaterFilterService.addMaterFilter(formValue).subscribe(
       (res) => { alert('Success'); this.resetFormGroup(this.filterForm) },
       (err) => { alert('Error') }
     );
