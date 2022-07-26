@@ -14,14 +14,12 @@ import { MessageModule } from '../../../@pages/components/message/message.module
 import { PageFilterAddComponent } from './page-filter-add/page-filter-add.component';
 import { PageFilterEditComponent } from './page-filter-edit/page-filter-edit.component';
 import { PageFilterListComponent } from './page-filter-list/page-filter-list.component';
-import { PageFilterViewComponent } from './page-filter-view/page-filter-view.component';
 
 @NgModule({
   declarations: [
     PageFilterAddComponent, 
     PageFilterEditComponent, 
-    PageFilterListComponent, 
-    PageFilterViewComponent
+    PageFilterListComponent
   ],
   imports: [
     CommonModule,

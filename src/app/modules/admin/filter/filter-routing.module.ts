@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageFilterAddComponent } from './page-filter-add/page-filter-add.component';
 import { PageFilterEditComponent } from './page-filter-edit/page-filter-edit.component';
 import { PageFilterListComponent } from './page-filter-list/page-filter-list.component';
-import { PageFilterViewComponent } from './page-filter-view/page-filter-view.component';
 
 const routes: Routes = [
   {
@@ -16,16 +15,12 @@ const routes: Routes = [
     component: PageFilterAddComponent,
   },
   {
-    path: 'filter-edit',
+    path: 'filter-edit/:filter',
     component: PageFilterEditComponent,
   },
   {
     path: 'filter-list',
     component: PageFilterListComponent,
-  },
-  {
-    path: 'filter-view',
-    component: PageFilterViewComponent,
   }
 ];
 
