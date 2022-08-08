@@ -23,7 +23,7 @@
                         <input type="text" readonly class="form-control" [value]="parentId.name">
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                     <h6 class="control-label">Title</h6>
                     <div pgFormGroupDefault class="form-group"
@@ -36,7 +36,6 @@
                     <label *ngIf="f.title.errors.minlength" class="error">Name field is min.</label>
                     <label *ngIf="f.title.errors.maxlength" class="error">Name field is max.</label>
                 </div>
-
                 <div class="form-group">
                     <h6 class="control-label">Description</h6>
                     <div pgFormGroupDefault class="form-group"
@@ -49,7 +48,6 @@
                     <label *ngIf="f.description.errors.minlength" class="error">Name field is min.</label>
                     <label *ngIf="f.description.errors.maxlength" class="error">Name field is max.</label>
                 </div>
-
                 <div class="form-group tag-group">
                     <h6 class="control-label">Keywords</h6>
                     <div pgFormGroupDefault class="form-group"
@@ -62,7 +60,42 @@
                     <label *ngIf="f.keywords.errors.minlength" class="error">Keywords field is min.</label>
                     <label *ngIf="f.keywords.errors.maxlength" class="error">Keywords field is max.</label>
                 </div>
-
+                
+                <div class="form-group">
+                    <h6 class="control-label">Search Filters</h6>
+                    <div class="form-group">
+                        <input type="search" class="form-control" (input)="getMaterFilterListByFilter($event.target.value)">
+                    </div>
+                    <ul class="ul-search-filter" *ngIf="filterList.length!==0">
+                        <li *ngFor="let item of filterList">
+                            <button [class.active]="item._checked" (click)="addFilter(item)">+</button>
+                            <input type="checkbox" [checked]="item._checked" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="item._checked">
+                            <b>&nbsp;{{item.filter}}</b>
+                            <ul>
+                                <li *ngFor="let field of item.fields; let i = index">
+                                    <input type="checkbox" [checked]="item._checked && item._child_Checked[i]"
+                                        [ngModelOptions]="{standalone: true}" [(ngModel)]="item._child_Checked[i]">
+                                    <b>&nbsp;{{field}}</b>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group" *ngIf="selectedFilterList.length!==0">
+                    <h6 class="control-label">Selected Filters</h6>
+                    <ul class="ul-selected-filter">
+                        <li *ngFor="let item of selectedFilterList; let i = index">
+                            <button (click)="removeFilter(i)">-</button>
+                            <b>&nbsp;{{item.filter}}</b>
+                            <ul>
+                                <li *ngFor="let field of item.fields">
+                                    <b>&nbsp;{{field}}</b>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 <div pgFormGroupDefault class="form-group">
                     <h6 class="control-label">Upload Icon</h6>
                     <pg-upload ListType="picture-card" [(FileList)]="iconList" [ShowButton]="iconList.length===0"

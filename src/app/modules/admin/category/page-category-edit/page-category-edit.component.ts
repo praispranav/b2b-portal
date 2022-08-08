@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProviderMaterCategoryService } from '../../../../core/providers/master/provider-mater-category.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProviderMaterFilterService } from '../../../../core/providers/master/provider-mater-filter.service';
+import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
 
 @Component({
   selector: 'app-page-category-edit',
@@ -14,12 +15,15 @@ export class PageCategoryEditComponent implements OnInit {
   categoryForm: FormGroup;
   iconList: any[] = [];
   imageList: any[] = [];
+  filterList: any[] = [];
+  selectedFilterList: any[] = [];
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
-    private providerMaterCategoryService: ProviderMaterCategoryService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private providerMaterCategoryService: ProviderMaterCategoryService,
+    private providerMaterFilterService: ProviderMaterFilterService,
   ) { }
 
   get f() {
@@ -27,7 +31,12 @@ export class PageCategoryEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setConfig();
+  }
+
+  setConfig() {
     this.buildCategoryForm();
+    this.getMaterFilterListByFilter();
     this.category = this.activatedRoute.snapshot.params['category'];
     this.parentId = this.activatedRoute.snapshot.params['parentId'];
     if (this.category) {
@@ -52,6 +61,8 @@ export class PageCategoryEditComponent implements OnInit {
         this.f.keywords.setValue(this.category['keywords']);
         this.f.level.setValue(this.category['level']);
         this.f.isActivated.setValue(this.category['isActivated']);
+        this.selectedFilterList = this.category['filters'];
+        this.f.filters.setValue(this.category['filters']);
       }, err => {
         this.router.navigateByUrl(`/admin/category/category-list`);
       });
@@ -65,7 +76,7 @@ export class PageCategoryEditComponent implements OnInit {
       });
     }
   }
-  
+
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
       _id: [''],
@@ -75,12 +86,13 @@ export class PageCategoryEditComponent implements OnInit {
       title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
       description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
       keywords: [[]],
+      filters: [[]],
       level: [0],
       parentId: [''],
       isActivated: [true],
     });
   }
-  
+
   async subCategoryForm() {
     if (this.iconList.length > 0) {
       this.f.icon.setValue(this.iconList[0].url || await this.toBase64(this.iconList[0].originFileObj));
@@ -96,6 +108,13 @@ export class PageCategoryEditComponent implements OnInit {
       this.f.level.setValue(Number(this.f.parentId.value.level) + 1);
       this.f.parentId.setValue(this.f.parentId.value._id);
     }
+    this.f.filters.setValue(this.selectedFilterList.map(item => {
+      return {
+        filter: item.filter,
+        fields: item.fields
+      }
+    }))
+
     this.providerMaterCategoryService.updateMaterCategory(this.categoryForm.value).subscribe(
       (res) => {
         alert('Success');
@@ -113,7 +132,7 @@ export class PageCategoryEditComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
-  
+
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -121,5 +140,41 @@ export class PageCategoryEditComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
+  }
+
+  private getMaterFilterListByFilter(filter = '') {
+    this.providerMaterFilterService.getMaterFilterListByFilter(0, 5, { filter }).subscribe(res => {
+      this.filterList = res.data.map(item => {
+        return {
+          ...item,
+          _checked: true,
+          _child_Checked: item.fields.map(() => true)
+        }
+      });
+    }, err => {
+      this.filterList = [];
+    })
+  }
+
+  addFilter(item: any) {
+    const index = this.selectedFilterList.findIndex((i) => i.filter === item.filter)
+    const obj = {
+      ...item,
+      _checked: true,
+      fields: item.fields.filter((v, i) => {
+        return item._child_Checked[i];
+      }),
+    }
+    obj._child_Checked = item.fields.map(() => true);
+
+    if (index === -1) {
+      this.selectedFilterList.push(obj);
+    } else {
+      this.selectedFilterList[index] = obj;
+    }
+  }
+
+  removeFilter(index: number) {
+    this.selectedFilterList.splice(index, 1);
   }
 }
