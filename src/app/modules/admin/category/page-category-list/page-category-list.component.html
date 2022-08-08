@@ -3,23 +3,45 @@
         <div class="card-body">
             <div class="card card-default">
                 <div class="card-header">
-                    <div class="card-title">Category</div>
+                    <div class="card-title">All Categorys</div>
                 </div>
                 <div class="card-body">
-                    <div class="input-group transparent">
-                        <input type="text" placeholder="Type here to Search" class="form-control" #filter3
-                            (keyup)="filterFn(filter3.value, tree.treeModel)">
+                    <!-- <div class="input-group transparent">
+                        <input type="text" placeholder="Type here to Search" class="form-control" #categoryInput
+                            (keyup)="categoryTreeContainer(categoryInput.value)">
                         <div class="input-group-append">
                             <span class="input-group-text transparent"><i class="pg-icon">search</i>
                             </span>
                         </div>
-                    </div>
-                    <tree-root #tree [focused]="true" [nodes]="masterCategoryParentLevelList" [options]="asyncOptions"
-                        class="tree-wrapper bold-node-text level1-document-icon-only">
-                        <ng-template #loadingTemplate>
-                            <pg-progress type="circle" indeterminate="true" class=""></pg-progress>
+                    </div> -->
+                    <div class="tree-container">
+                        <button (click)="addCategory()">Add Category At Parent Level</button>
+                        <ng-template [ngTemplateOutlet]="treeUlContainer"
+                            [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
+                        <ng-template #treeUlContainer let-list='list'>
+                            <ul>
+                                <li *ngFor="let item of list" #nodeEl>
+                                    <div>
+                                        <div [class.hideToggleContainer]="!item._hasChildren">
+                                            <button *ngIf="!item._toggle" [disabled]="!item._hasChildren"
+                                                (click)="item._toggle = true; getChildren(item)">OI</button>
+                                            <button *ngIf="item._toggle" [disabled]="!item._hasChildren"
+                                                (click)="item._toggle = false; remChildren(item)">CI</button>
+                                        </div>
+                                        <button>FI</button>
+                                        <button *ngIf="item._isEditable" (click)="editItem(item)">EI</button>
+                                        <button *ngIf="item._isDeletable" (click)="deleteItem(item, nodeEl)">DI</button>
+                                        <button (click)="addCategory(item)">Add Category Under</button>
+                                        <span>&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                    </div>
+                                    <ng-container *ngIf="item?.children && item.children.length>0">
+                                        <ng-template [ngTemplateOutlet]="treeUlContainer"
+                                            [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                    </ng-container>
+                                </li>
+                            </ul>
                         </ng-template>
-                    </tree-root>
+                    </div>
                 </div>
             </div>
         </div>

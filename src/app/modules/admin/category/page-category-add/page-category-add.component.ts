@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessageService } from '../../../../@pages/components/message/message.service';
+import { ProviderMaterFilterService } from '../../../../core/providers/master/provider-mater-filter.service';
 import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
 
 @Component({
@@ -9,106 +10,60 @@ import { ProviderMaterCategoryService } from './../../../../core/providers/maste
   styleUrls: ['./page-category-add.component.scss'],
 })
 export class PageCategoryAddComponent implements OnInit {
+  parentId: any;
   categoryForm: FormGroup;
-  masterCategoryList: any[] = [];
   iconList: any[] = [];
   imageList: any[] = [];
-  keywordsList: string[] = [];
-  apiPagination = {
-    index: 0,
-    length: 1000,
-    query: {},
-  };
-  heading: string;
-  description: string;
-  currentTab: number = 0;
-  notificationModel: any = {
-    type: 'flip',
-    message: 'Api success',
-    color: 'success',
-    position: 'top',
-    current: 0
-  };
-  notificationModel1: any = {
-    type: 'flip',
-    message: 'Api Error',
-    color: 'danger',
-    position: 'top',
-    current: 0
-  };
-  nofitcationStrings: any = [
-    {
-      heading: 'Simple Alert',
-      desc: 'Awesome Loading Circle Animation',
-      position: 'top',
-      type: 'flip'
-    }
-  ];
-  colors = [
-    { value: 'info', label: 'Info' },
-    { value: 'warning', label: 'Warning' },
-    { value: 'success', label: 'Success' },
-    { value: 'danger', label: 'Danger' },
-    { value: 'default', label: 'Default' }
-  ];
-  selectedColor;
-  selectedColor1;
-  constructor(
-    private formBuilder: FormBuilder,
-    private providerMaterCategoryService: ProviderMaterCategoryService,
-    private _notification: MessageService,
+  filterList: any[] = [];
+  selectedFilterList: any[] = [];
 
-  ) {
-    this.selectedColor = this.colors[2]['value'];
-    this.selectedColor1 = this.colors[3]['value'];
-    this.heading = this.nofitcationStrings[0].heading;
-    this.description = this.nofitcationStrings[0].desc;
-  }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private providerMaterCategoryService: ProviderMaterCategoryService,
+    private providerMaterFilterService: ProviderMaterFilterService,
+  ) { }
+
   get f() {
     return this.categoryForm.controls;
   }
+
   ngOnInit() {
-    this.buildCategoryForm();
-    this.getMaterCategoryListByFilter(
-      this.apiPagination.index,
-      this.apiPagination.length,
-      this.apiPagination.query
-    );
+    this.setConfig();
   }
+
+  setConfig() {
+    this.buildCategoryForm();
+    this.getMaterFilterListByFilter();
+    this.parentId = this.activatedRoute.snapshot.params['parentId'];
+    if (this.parentId) {
+      this.providerMaterCategoryService.getMaterCategoryById(this.parentId).subscribe(res => {
+        this.parentId = res.data[0];
+        this.selectedFilterList = this.parentId.filters
+        this.f.parentId.setValue(this.parentId);
+        this.f.filters.setValue(this.parentId.filters)
+      }, err => {
+        this.router.navigateByUrl(`/admin/category/category-list`);
+      });
+    }
+  }
+
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
-      name: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
       icon: [''],
       image: ['', [Validators.required]],
-      title: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
-      description: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(165),
-        ],
-      ],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
       keywords: [[]],
+      filters: [[]],
       level: [0],
       parentId: [''],
       isActivated: [true],
     });
   }
+
   async subCategoryForm() {
     if (this.iconList.length > 0) {
       this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
@@ -126,45 +81,24 @@ export class PageCategoryAddComponent implements OnInit {
       this.f.level.setValue(Number(this.f.parentId.value.level) + 1);
       this.f.parentId.setValue(this.f.parentId.value._id);
     }
+    this.f.filters.setValue(this.selectedFilterList.map(item => {
+      return {
+        filter: item.filter,
+        fields: item.fields
+      }
+    }))
+
     this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
       (res) => {
+        alert('Success');
         this.resetFormGroup(this.categoryForm);
-        if (this.notificationModel.current != this.currentTab) {
-          this.notificationModel.current = this.currentTab;
-          this._notification.remove();
-        }
-        this.notificationModel.position = this.nofitcationStrings[this.currentTab]['position'];
-        this.notificationModel.type = this.nofitcationStrings[this.currentTab]['type'];
-        this.notificationModel.color = this.selectedColor;
-        this._notification.create(this.notificationModel.color, this.notificationModel.message, {
-          Position: this.nofitcationStrings[this.currentTab]['position'],
-          Style: this.notificationModel.type,
-          Duration: 0
-        });
       },
       (err) => {
-        if (this.notificationModel1.current != this.currentTab) {
-          this.notificationModel1.current = this.currentTab;
-          this._notification.remove();
-        }
-        this.notificationModel1.position = this.nofitcationStrings[this.currentTab]['position'];
-        this.notificationModel1.type = this.nofitcationStrings[this.currentTab]['type'];
-        this.notificationModel1.color = this.selectedColor1;
-        this._notification.create(this.notificationModel1.color, this.notificationModel1.message, {
-          Position: this.nofitcationStrings[this.currentTab]['position'],
-          Style: this.notificationModel1.type,
-          Duration: 0
-        });
+        alert('Error');
       }
     );
   }
-  getMaterCategoryListByFilter(index: number, length: number, query: any = {}) {
-    this.providerMaterCategoryService
-      .getMaterCategoryListByFilter(index, length, query)
-      .subscribe((res) => {
-        this.masterCategoryList = res.data;
-      });
-  }
+
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -173,6 +107,7 @@ export class PageCategoryAddComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
+
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -181,11 +116,49 @@ export class PageCategoryAddComponent implements OnInit {
       }
     });
   }
+
   private resetFormGroup(form: FormGroup) {
     form.reset();
     this.iconList = [];
     this.imageList = [];
-    this.keywordsList = [];
+    this.filterList = [];
+    this.selectedFilterList = [];
+    this.setConfig();
+  }
+
+  private getMaterFilterListByFilter(filter = '') {
+    this.providerMaterFilterService.getMaterFilterListByFilter(0, 5, { filter }).subscribe(res => {
+      this.filterList = res.data.map(item => {
+        return {
+          ...item,
+          _checked: true,
+          _child_Checked: item.fields.map(() => true)
+        }
+      });
+    }, err => {
+      this.filterList = [];
+    })
+  }
+
+  addFilter(item: any) {
+    const index = this.selectedFilterList.findIndex((i) => i.filter === item.filter)
+    const obj = {
+      ...item,
+      _checked: true,
+      fields: item.fields.filter((v, i) => {
+        return item._child_Checked[i];
+      }),
+    }
+    obj._child_Checked = item.fields.map(() => true);
+
+    if (index === -1) {
+      this.selectedFilterList.push(obj);
+    } else {
+      this.selectedFilterList[index] = obj;
+    }
+  }
+
+  removeFilter(index: number) {
+    this.selectedFilterList.splice(index, 1);
   }
 }
-
