@@ -5,12 +5,13 @@ import { ProviderMaterFilterService } from '../../../../core/providers/master/pr
 import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
 
 @Component({
-  selector: 'app-page-category-add',
-  templateUrl: './page-category-add.component.html',
-  styleUrls: ['./page-category-add.component.scss'],
+  selector: 'app-page-category-edit',
+  templateUrl: './page-category-edit.component.html',
+  styleUrls: ['./page-category-edit.component.scss'],
 })
-export class PageCategoryAddComponent implements OnInit {
+export class PageCategoryEditComponent implements OnInit {
   parentId: any;
+  category: any;
   categoryForm: FormGroup;
   iconList: any[] = [];
   imageList: any[] = [];
@@ -36,13 +37,40 @@ export class PageCategoryAddComponent implements OnInit {
   setConfig() {
     this.buildCategoryForm();
     this.getMaterFilterListByFilter();
+    this.category = this.activatedRoute.snapshot.params['category'];
     this.parentId = this.activatedRoute.snapshot.params['parentId'];
+    if (this.category) {
+      this.providerMaterCategoryService.getMaterCategoryById(this.category).subscribe(res => {
+        this.category = res.data[0];
+        this.f._id.setValue(this.category['_id']);
+        this.f.name.setValue(this.category['name']);
+        this.iconList = [{
+          uid: -1,
+          name: 'xxx.png',
+          status: 'done',
+          url: this.category['icon']
+        }];
+        this.imageList = [{
+          uid: -1,
+          name: 'xxx.png',
+          status: 'done',
+          url: this.category['image']
+        }];
+        this.f.title.setValue(this.category['title']);
+        this.f.description.setValue(this.category['description']);
+        this.f.keywords.setValue(this.category['keywords']);
+        this.f.level.setValue(this.category['level']);
+        this.f.isActivated.setValue(this.category['isActivated']);
+        this.selectedFilterList = this.category['filters'];
+        this.f.filters.setValue(this.category['filters']);
+      }, err => {
+        this.router.navigateByUrl(`/admin/category/category-list`);
+      });
+    }
     if (this.parentId) {
       this.providerMaterCategoryService.getMaterCategoryById(this.parentId).subscribe(res => {
         this.parentId = res.data[0];
-        this.selectedFilterList = this.parentId.filters
         this.f.parentId.setValue(this.parentId);
-        this.f.filters.setValue(this.parentId.filters)
       }, err => {
         this.router.navigateByUrl(`/admin/category/category-list`);
       });
@@ -51,6 +79,7 @@ export class PageCategoryAddComponent implements OnInit {
 
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
+      _id: [''],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
       icon: [''],
       image: ['', [Validators.required]],
@@ -66,12 +95,10 @@ export class PageCategoryAddComponent implements OnInit {
 
   async subCategoryForm() {
     if (this.iconList.length > 0) {
-      this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
+      this.f.icon.setValue(this.iconList[0].url || await this.toBase64(this.iconList[0].originFileObj));
     }
     if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
+      this.f.image.setValue(this.imageList[0].url || await this.toBase64(this.imageList[0].originFileObj));
     }
     if (this.categoryForm.invalid) {
       this.markFormGroupTouched(this.categoryForm);
@@ -88,14 +115,12 @@ export class PageCategoryAddComponent implements OnInit {
       }
     }))
 
-    this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
+    this.providerMaterCategoryService.updateMaterCategory(this.categoryForm.value).subscribe(
       (res) => {
         alert('Success');
-        this.resetFormGroup(this.categoryForm);
+        this.router.navigateByUrl(`/admin/category/category-list`);
       },
-      (err) => {
-        alert('Error');
-      }
+      (err) => { alert('Error') }
     );
   }
 
@@ -115,15 +140,6 @@ export class PageCategoryAddComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
-  }
-
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
-    this.iconList = [];
-    this.imageList = [];
-    this.filterList = [];
-    this.selectedFilterList = [];
-    this.setConfig();
   }
 
   private getMaterFilterListByFilter(filter = '') {

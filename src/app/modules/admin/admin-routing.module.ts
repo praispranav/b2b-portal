@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: './category/category.module#CategoryModule',
   },
   {
+    path: 'filter',
+    loadChildren: './filter/filter.module#FilterModule',
+  },
+  {
     path: 'location',
     loadChildren: './location/location.module#LocationModule',
   },

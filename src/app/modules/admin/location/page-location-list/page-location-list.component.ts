@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TreeModel, TreeNode } from 'angular-tree-component';
+import { Router } from '@angular/router';
 import { ProviderMaterCountryService } from '../../../../core/providers/master/provider-mater-country.service';
 import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
 import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
@@ -10,11 +10,9 @@ import { ProviderMaterStateService } from '../../../../core/providers/master/pro
 })
 export class PageLocationListComponent implements OnInit {
   masterCountryList: any[] = [];
-  asyncOptions = {
-    getChildren: this.getChildren.bind(this)
-  };
 
   constructor(
+    private router: Router,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerMaterLocationService: ProviderMaterLocationService,
     private providerMaterStateService: ProviderMaterStateService
@@ -31,72 +29,78 @@ export class PageLocationListComponent implements OnInit {
         this.masterCountryList = res.data.map(i => {
           return {
             ...i,
-            name: i.country,
-            hasChildren: true
+            _name: i.country,
+            _hasChildren: true
           }
         });
       });
   }
 
-  getChildren(node: TreeNode) {
-    console.log(node)
-    if (node.data['countryId'] && node.data['state']) {
-      return new Promise((resolve, reject) => {
-        this.providerMaterLocationService
-          .getMaterLocationListByFilter(0, 1000, { stateId: node.data._id })
-          .subscribe((res) => {
-            resolve(res.data.map(i => {
-              return {
-                ...i,
-                name: i.city
-              }
-            }));
-          });
-      });
+  getChildren(item: any) {
+    if (item['countryId'] && item['state']) {
+      this.providerMaterLocationService
+        .getMaterLocationListByFilter(0, 1000, { stateId: item._id })
+        .subscribe((res) => {
+          item['children'] = res.data.map(i => {
+            return {
+              ...i,
+              _name: i.city
+            }
+          })
+        });
     } else {
-      return new Promise((resolve, reject) => {
-        this.providerMaterStateService
-          .getMaterStateListByFilter(0, 1000, { countryId: node.data._id })
-          .subscribe((res) => {
-            resolve(res.data.map(i => {
-              return {
-                ...i,
-                name: i.state,
-                hasChildren: true
-              }
-            }));
+      this.providerMaterStateService
+        .getMaterStateListByFilter(0, 1000, { countryId: item._id })
+        .subscribe((res) => {
+          item['children'] = res.data.map(i => {
+            return {
+              ...i,
+              _name: i.state,
+              _hasChildren: true
+            }
           });
+        });
+    }
+  }
+
+  remChildren(item: any) {
+    item['children'] = [];
+  }
+
+  editItem(item: any) {
+    if (item['countryId'] && item['stateId']) {
+      this.router.navigateByUrl(`/admin/location/location-edit/${item['countryId']}/${item['stateId']}/${item['_id']}`)
+    } else if (item['countryId']) {
+      this.router.navigateByUrl(`/admin/location/location-edit/${item['countryId']}/${item['_id']}`)
+    } else if (item['_id']) {
+      this.router.navigateByUrl(`/admin/location/location-edit/${item['_id']}`)
+    }
+  }
+
+  deleteItem(item: any, nodeEl: any) {
+    if (item['countryId'] && item['stateId']) {
+      this.providerMaterLocationService.deleteMaterLocationById(item['_id']).subscribe(res => {
+        window.alert('Location Deleted');
+        nodeEl.remove();
+      });
+    } else if (item['countryId']) {
+      this.providerMaterLocationService.deleteMaterLocationByStateId(item['_id']).subscribe(res => {
+        this.providerMaterStateService.deleteMaterStateById(item['_id']).subscribe(res => {
+          window.alert('State Deleted');
+          nodeEl.remove();
+        });
+      });
+    } else if (item['_id']) {
+      this.providerMaterLocationService.deleteMaterLocationByCountryId(item['_id']).subscribe(res => {
+        this.providerMaterStateService.deleteMaterStateByCountryId(item['_id']).subscribe(res => {
+          this.providerMaterCountryService.deleteMaterCountryById(item['_id']).subscribe(res => {
+            window.alert('Country Deleted');
+            nodeEl.remove();
+          });
+        });
       });
     }
   }
 
-  filterFn(value: string, treeModel: TreeModel) {
-    treeModel.filterNodes((node: TreeNode) => this.fuzzysearch(value, node.data.name));
-  }
-
-  fuzzysearch(needle: string, haystack: string) {
-    const haystackLC = haystack.toLowerCase();
-    const needleLC = needle.toLowerCase();
-
-    const hlen = haystack.length;
-    const nlen = needleLC.length;
-
-    if (nlen > hlen) {
-      return false;
-    }
-    if (nlen === hlen) {
-      return needleLC === haystackLC;
-    }
-    outer: for (let i = 0, j = 0; i < nlen; i++) {
-      const nch = needleLC.charCodeAt(i);
-
-      while (j < hlen) {
-        if (haystackLC.charCodeAt(j++) === nch) {
-          continue outer;
-        }
-      }
-      return false;
-    }
-    return true;
-  }
+  filterTreeContainer(val: string) { }
 }

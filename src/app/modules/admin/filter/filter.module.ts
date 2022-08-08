@@ -1,37 +1,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LocationRoutingModule } from './location-routing.module';
+import { FilterRoutingModule } from './filter-routing.module';
+import { TreeModule } from 'angular-tree-component';
 import { pgSelectModule } from '../../../@pages/components/select/select.module';
 import { pgTagModule } from '../../../@pages/components/tag/tag.module';
 import { pgUploadModule } from '../../../@pages/components/upload/upload.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { ProgressModule } from '../../../@pages/components/progress/progress.module';
-import { TreeModule } from 'angular-tree-component';
-
-import { PageLocationAddComponent } from './page-location-add/page-location-add.component';
-import { PageLocationEditComponent } from './page-location-edit/page-location-edit.component';
-import { PageLocationListComponent } from './page-location-list/page-location-list.component';
+import { MessageService } from '../../../@pages/components/message/message.service';
+import { MessageModule } from '../../../@pages/components/message/message.module';
+import { PageFilterAddComponent } from './page-filter-add/page-filter-add.component';
+import { PageFilterEditComponent } from './page-filter-edit/page-filter-edit.component';
+import { PageFilterListComponent } from './page-filter-list/page-filter-list.component';
 
 @NgModule({
   declarations: [
-    PageLocationAddComponent,
-    PageLocationEditComponent,
-    PageLocationListComponent
+    PageFilterAddComponent, 
+    PageFilterEditComponent, 
+    PageFilterListComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    LocationRoutingModule,
+    FilterRoutingModule,
     pgSelectModule,
     pgTagModule,
     pgUploadModule,
     NgxDatatableModule,
     SharedModule,
     ProgressModule,
+    MessageModule,
     TreeModule.forRoot()
   ],
+  providers: [MessageService]
+
 })
-export class LocationModule { }
+export class FilterModule { }

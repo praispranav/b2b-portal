@@ -3,13 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderMaterCountryService } from '../../../../core/providers/master/provider-mater-country.service';
 import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
 import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-page-location-add',
-  templateUrl: './page-location-add.component.html',
-  styleUrls: ['./page-location-add.component.scss'],
+  selector: 'app-page-location-edit',
+  templateUrl: './page-location-edit.component.html',
+  styleUrls: ['./page-location-edit.component.scss'],
 })
-export class PageLocationAddComponent implements OnInit {
+export class PageLocationEditComponent implements OnInit {
+  country: string;
+  state: string;
+  location: string;
   locationForm: FormGroup;
   stateForm: FormGroup;
   countryForm: FormGroup;
@@ -18,6 +22,8 @@ export class PageLocationAddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private providerMaterLocationService: ProviderMaterLocationService,
     private providerMaterStateService: ProviderMaterStateService,
     private providerMaterCountryService: ProviderMaterCountryService
@@ -38,10 +44,52 @@ export class PageLocationAddComponent implements OnInit {
     this.buildStateForm();
     this.buildCountryForm();
     this.getMaterCountryListByFilter(0, 1000, {});
+    this.country = this.activatedRoute.snapshot.params['country'];
+    this.state = this.activatedRoute.snapshot.params['state'];
+    this.location = this.activatedRoute.snapshot.params['location'];
+    if (this.country) {
+      this.getMaterStateListByFilter(0, 1000, { countryId: this.country });
+      this.providerMaterCountryService.getMaterCountryById(this.country).subscribe(res => {
+        this.country = res.data[0];
+        this.cf._id.setValue(this.country['_id']);
+        this.cf.country.setValue(this.country['country']);
+        this.cf.isActivated.setValue(this.country['isActivated']);
+        this.sf.countryId.setValue(this.country['_id']);
+        this.lf.countryId.setValue(this.country['_id']);
+      }, err => {
+        this.router.navigateByUrl(`/admin/location/location-list`);
+      });
+    }
+    if (this.state) {
+      this.providerMaterStateService.getMaterStateById(this.state).subscribe(res => {
+        this.state = res.data[0];
+        this.sf._id.setValue(this.state['_id']);
+        this.sf.state.setValue(this.state['state']);
+        this.sf.isActivated.setValue(this.state['isActivated']);
+        this.lf.stateId.setValue(this.state['_id']);
+      }, err => {
+        this.router.navigateByUrl(`/admin/location/location-list`);
+      });
+    }
+    if (this.location) {
+      this.providerMaterLocationService.getMaterLocationById(this.location).subscribe(res => {
+        this.location = res.data[0];
+        this.lf._id.setValue(this.location['_id']);
+        this.lf.city.setValue(this.location['city']);
+        this.lf.pincode.setValue(this.location['pincode']);
+        this.lf.isActivated.setValue(this.location['isActivated']);
+      }, err => {
+        this.router.navigateByUrl(`/admin/location/location-list`);
+      });
+    }
+    if (!this.country && !this.state && !this.location) {
+      this.router.navigateByUrl(`/admin/location/location-list`);
+    }
   }
 
   buildLocationForm() {
     this.locationForm = this.formBuilder.group({
+      _id: ['', [Validators.required]],
       city: ['', [Validators.required]],
       stateId: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
@@ -52,6 +100,7 @@ export class PageLocationAddComponent implements OnInit {
 
   buildStateForm() {
     this.stateForm = this.formBuilder.group({
+      _id: ['', [Validators.required]],
       state: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
       isActivated: [true],
@@ -60,6 +109,7 @@ export class PageLocationAddComponent implements OnInit {
 
   buildCountryForm() {
     this.countryForm = this.formBuilder.group({
+      _id: ['', [Validators.required]],
       country: ['', [Validators.required]],
       isActivated: [true],
     });
@@ -71,10 +121,10 @@ export class PageLocationAddComponent implements OnInit {
       return;
     }
 
-    this.providerMaterLocationService.addMaterLocation(this.locationForm.value).subscribe(
+    this.providerMaterLocationService.updateMaterLocation(this.locationForm.value).subscribe(
       (res) => {
-        this.resetFormGroup(this.locationForm);
         window.alert('API Success');
+        this.router.navigateByUrl(`/admin/location/location-list`);
       },
       (err) => {
         window.alert('API Error');
@@ -88,10 +138,10 @@ export class PageLocationAddComponent implements OnInit {
       return;
     }
 
-    this.providerMaterStateService.addMaterState(this.stateForm.value).subscribe(
+    this.providerMaterStateService.updateMaterState(this.stateForm.value).subscribe(
       (res) => {
-        this.resetFormGroup(this.stateForm);
         window.alert('API Success');
+        this.router.navigateByUrl(`/admin/location/location-list`);
       },
       (err) => {
         window.alert('API Error');
@@ -105,10 +155,10 @@ export class PageLocationAddComponent implements OnInit {
       return;
     }
 
-    this.providerMaterCountryService.addMaterCountry(this.countryForm.value).subscribe(
+    this.providerMaterCountryService.updateMaterCountry(this.countryForm.value).subscribe(
       (res) => {
-        this.resetFormGroup(this.countryForm);
         window.alert('API Success');
+        this.router.navigateByUrl(`/admin/location/location-list`);
       },
       (err) => {
         window.alert('API Error');
@@ -148,10 +198,6 @@ export class PageLocationAddComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
-  }
-
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
   }
 
   lfCountryChange(e) {

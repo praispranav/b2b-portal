@@ -10,25 +10,19 @@ import { RootLayout } from "../root/root.component";
 export class BuyerLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
-      label: "Home",
+      label: "Dashboard",
       routerLink: "buyer-dashboard",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Profile",
       routerLink: "buyer-profile",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Messages",
       toggle: "close",
-      iconType: "fi",
-      iconName: "shield",
       submenu: [
         {
-          label: "Inbox",
+          label: "Inbox [2]",
           routerLink: "buyer-dashboard",
         },
         {
@@ -48,77 +42,56 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
     {
       label: "Buying Offers",
       routerLink: "buyer-dashboard",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Multiple Quotes Request",
       routerLink: "buyer-dashboard",
-      iconType: "fi",
-      iconName: "shield",
     },
     {
       label: "Trade Services",
-      iconType: "fi",
-      iconName: "shield",
       toggle: "close",
       submenu: [
         {
           label: "Logistics Solutions",
           routerLink: "/b2b/logistic-solutions",
-          iconType: "letter",
-          iconName: "dl",
         },
         {
           label: "Inspection Service",
           routerLink: "/b2b/inspection-service",
-          iconType: "letter",
-          iconName: "sl",
         },
         {
           label: "Suppiler Report",
           routerLink: "/b2b/supplier-report",
-          iconType: "letter",
-          iconName: "bl",
         },
         {
           label: "Suppiler Background Search",
           routerLink: "/b2b/supplier-background-search",
-          iconType: "letter",
-          iconName: "bl",
         },
       ],
     },
     {
       label: "Help",
-      iconType: "fi",
-      iconName: "shield",
       toggle: "close",
       submenu: [
         {
           label: "Complaints",
-          routerLink: "buyer-dashboard",
-          iconType: "letter",
-          iconName: "dl",
+          routerLink: "#",
         },
         {
-          label: "Disputes",
-          routerLink: "buyer-dashboard",
-          iconType: "letter",
-          iconName: "sl",
+          label: "Dispute",
+          routerLink: "#",
         },
         {
           label: "Suggestions",
-          routerLink: "buyer-dashboard",
-          iconType: "letter",
-          iconName: "bl",
+          routerLink: "#",
         },
       ],
     },
   ];
-  
+
   ngOnInit() {
-    this.changeLayout("menu-pin");
+    this.changeLayout('menu-pin');
+    this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
   }
