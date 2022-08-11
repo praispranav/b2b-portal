@@ -108,24 +108,13 @@ export class PageFilterAddComponent implements OnInit {
     this.notificationModel.position = this.nofitcationStrings[this.currentTab]['position'];
     this.notificationModel.type = this.nofitcationStrings[this.currentTab]['type'];
     this.notificationModel.color = res;
-    this.notificationModel.message=msg;
-    // this.notificationModel.color = res;
-    //Create Notification
-
-    if (this.notificationModel.type != 'circle') {
+    this.notificationModel.message=msg;    
+    //Create Notification    
       this._notification.create(this.notificationModel.color, this.notificationModel.message, {
         Position: this.nofitcationStrings[this.currentTab]['position'],
         Style: this.notificationModel.type,
         Duration: 0
       });
-    } else {
-      this._notification.create(this.notificationModel.color, this.notificationModel.message, {
-        Title: this.nofitcationStrings[this.currentTab]['title'],
-        imgURL: this.nofitcationStrings[this.currentTab]['imgURL'],
-        Position: this.nofitcationStrings[this.currentTab]['position'],
-        Style: this.notificationModel.type,
-        Duration: 0
-      });
-    }
+    
   }
 }
