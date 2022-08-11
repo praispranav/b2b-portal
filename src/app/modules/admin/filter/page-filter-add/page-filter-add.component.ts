@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from '../../../../@pages/components/message/message.service';
 import { ProviderMaterFilterService } from './../../../../core/providers/master/provider-mater-filter.service';
 
 @Component({
@@ -9,8 +10,31 @@ import { ProviderMaterFilterService } from './../../../../core/providers/master/
 })
 export class PageFilterAddComponent implements OnInit {
   filterForm: FormGroup;
+  heading: string;
+  description: string;
+  currentTab: number = 0;
+  
+  
+  notificationModel: any = {
+    type: 'flip',
+    message: 'Filter added Successfully',
+    color: 'Success',
+    position: 'top-right',
+    current: 0
+  };
+  nofitcationStrings: any = [
+ 
+    {
+      heading: 'Flip Bar',
+      desc: 'Awesome Loading Circle Animation',
+      position: 'top-right',
+      type: 'flip'
+    },
 
+  
+  ];
   constructor(
+    private _notification: MessageService,
     private formBuilder: FormBuilder,
     private providerMaterFilterService: ProviderMaterFilterService
   ) { }
@@ -58,11 +82,12 @@ export class PageFilterAddComponent implements OnInit {
     const formValue = this.filterForm.value;
     formValue.fields = formValue.fields.map(i=>i.field);
     this.providerMaterFilterService.addMaterFilter(formValue).subscribe(
-      (res) => { alert('Success'); this.resetFormGroup(this.filterForm) },
-      (err) => { alert('Error') }
+      (res) => { this.createBasicNotification('success', "Filter Added Successfully"); this.resetFormGroup(this.filterForm) },
+      (err) => { this.createBasicNotification('success', "Filter Added Successfully")
+                  }
     );
   }
-
+  // this.createBasicNotification('error',"Something error")
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -74,5 +99,33 @@ export class PageFilterAddComponent implements OnInit {
 
   private resetFormGroup(form: FormGroup) {
     form.reset();
+  }
+  createBasicNotification(res:string,msg:string) {
+    if (this.notificationModel.current != this.currentTab) {
+      this.notificationModel.current = this.currentTab;
+      this._notification.remove();
+    }
+    this.notificationModel.position = this.nofitcationStrings[this.currentTab]['position'];
+    this.notificationModel.type = this.nofitcationStrings[this.currentTab]['type'];
+    this.notificationModel.color = res;
+    this.notificationModel.message=msg;
+    // this.notificationModel.color = res;
+    //Create Notification
+
+    if (this.notificationModel.type != 'circle') {
+      this._notification.create(this.notificationModel.color, this.notificationModel.message, {
+        Position: this.nofitcationStrings[this.currentTab]['position'],
+        Style: this.notificationModel.type,
+        Duration: 0
+      });
+    } else {
+      this._notification.create(this.notificationModel.color, this.notificationModel.message, {
+        Title: this.nofitcationStrings[this.currentTab]['title'],
+        imgURL: this.nofitcationStrings[this.currentTab]['imgURL'],
+        Position: this.nofitcationStrings[this.currentTab]['position'],
+        Style: this.notificationModel.type,
+        Duration: 0
+      });
+    }
   }
 }
