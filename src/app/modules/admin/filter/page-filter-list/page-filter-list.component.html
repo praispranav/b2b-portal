@@ -2,35 +2,49 @@
     <div class="card">
         <div class="card-body">
             <div class="card card-default">
-                <div class="card-header">
-                    <div class="card-title">All Filters</div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">ALL FILTER</h3>
+                    <div>
+                        <button class="btn btn-primary" routerLink="../filter-add">
+                            Add<i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <!-- <div class="input-group transparent">
-                        <input type="text" placeholder="Type here to Search" class="form-control" #filterInput
-                            (keyup)="filterTreeContainer(filterInput.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text transparent"><i class="pg-icon">search</i>
-                            </span>
-                        </div>
-                    </div> -->
-                    <div class="tree-container">
+                <div class="card-body d-flex">
+                    <div class="tree-container flex-grow-1">
                         <ng-template [ngTemplateOutlet]="treeUlContainer"
                             [ngTemplateOutletContext]="{list:masterFilterList}"></ng-template>
                         <ng-template #treeUlContainer let-list='list'>
                             <ul>
                                 <li *ngFor="let item of list" #nodeEl>
-                                    <div>
+                                    <div class="d-flex align-items-center">
                                         <div [class.hideToggleContainer]="!item._hasChildren">
-                                            <button *ngIf="!item._toggle" [disabled]="!item._hasChildren"
-                                                (click)="item._toggle = true; getChildren(item)">OI</button>
-                                            <button *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                                                (click)="item._toggle = false; remChildren(item)">CI</button>
+                                            <button class="btn btn-primary" *ngIf="!item._toggle"
+                                                [disabled]="!item._hasChildren"
+                                                (click)="getChildren(item)">
+                                                Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button class="btn btn-primary" *ngIf="item._toggle"
+                                                [disabled]="!item._hasChildren"
+                                                (click)="remChildren(item)">
+                                                Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                        <button>FI</button>
-                                        <button *ngIf="item._isEditable" (click)="editItem(item)">EI</button>
-                                        <button *ngIf="item._isDeletable" (click)="deleteItem(item, nodeEl)">DI</button>
-                                        <span>&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                        <button class="btn btn-warning" *ngIf="item._isEditable"
+                                            (click)="editItem(item)">
+                                            Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="item._isDeletable"
+                                            (click)="deleteItem(item, nodeEl)">
+                                            Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                                        </button>
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                        <span *ngIf="!item._hasChildren">&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                        <span *ngIf="item._hasChildren">
+                                            <b>&nbsp;{{item._name |
+                                                uppercase}}&nbsp;&nbsp;&nbsp;</b>
+                                        </span>
                                     </div>
                                     <ng-container *ngIf="item?.children && item.children.length>0">
                                         <ng-template [ngTemplateOutlet]="treeUlContainer"
@@ -39,6 +53,26 @@
                                 </li>
                             </ul>
                         </ng-template>
+                    </div>
+                    <div class="preview-el" *ngIf="preViewItem">
+                        <h4>Preview</h4>
+                        <div>
+                            <p>Filter Name : <b>{{preViewItem._name | uppercase}}</b></p>
+                            <ol *ngIf="preViewItem?.children && preViewItem.children.length>0">
+                                <li *ngFor="let item of preViewItem.children">Field 1 Name : <b>{{item._name}}</b></li>
+                            </ol>
+                        </div>
+                        <div>
+                            <button class="btn btn-warning" *ngIf="preViewItem._isEditable"
+                                (click)="editItem(preViewItem)">
+                                Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                            </button>
+                            <span>&nbsp;</span>
+                            <button class="btn btn-danger" *ngIf="preViewItem._isDeletable"
+                                (click)="deleteItem(preViewItem, preViewItem._nodeEl)">
+                                Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

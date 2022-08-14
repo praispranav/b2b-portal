@@ -1,5 +1,11 @@
 <div class="conatiner-fluid p-3 h-100">
     <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">ADD CATEGORY</h3>
+            <div>
+                <button class="btn btn-primary" routerLink="../category-list">Show All</button>
+            </div>
+        </div>
         <div class="card-body">
             <form [formGroup]="categoryForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
@@ -31,8 +37,8 @@
                 </div>
                 <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
                     <label *ngIf="f.title.errors.required" class="error">Title is required.</label>
-                    <label *ngIf="f.title.errors.minlength" class="error">Name field is min.</label>
-                    <label *ngIf="f.title.errors.maxlength" class="error">Name field is max.</label>
+                    <label *ngIf="f.title.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="f.title.errors.maxlength" class="error">Title field is max.</label>
                 </div>
                 <div class="form-group">
                     <h6 class="control-label">Description</h6>
@@ -61,7 +67,8 @@
                 <div class="form-group">
                     <h6 class="control-label">Search Filters</h6>
                     <div class="form-group">
-                        <input type="search" class="form-control" (input)="getMaterFilterListByFilter($event.target.value)">
+                        <input type="search" class="form-control"
+                            (input)="getMaterFilterListByFilter($event.target.value)">
                     </div>
                     <ul class="ul-search-filter" *ngIf="filterList.length!==0">
                         <li *ngFor="let item of filterList">
@@ -128,7 +135,7 @@
                 </div>
                 <div class="mt-4">
                     <button type="submit" class="me-4 btn btn-primary show-notification"
-                        (click)="subCategoryForm()">Submit</button>
+                        (click)="subCategoryForm()">Save Category</button>
                 </div>
             </form>
         </div>

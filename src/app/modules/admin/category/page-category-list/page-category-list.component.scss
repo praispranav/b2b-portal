@@ -1,7 +1,18 @@
+.card-title{
+    font-size: 24px !important;
+    font-weight: bold !important;
+}
+
+.preview-el{
+    width: 360px;
+    border: 1px solid black;
+    box-shadow: 0 0 8px #ccc;
+    padding: 10px;
+    padding-top: 4px;
+    transition: 1s;
+}
+
 .tree-container {
-    >button {
-        border: 0;
-    }
     ul {
         margin-left: 0;
         padding-left: 4px;
@@ -16,7 +27,6 @@
                 }
             }
             button {
-                border: 0;
                 margin-right: 4px;
             }
         }

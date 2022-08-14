@@ -1,5 +1,11 @@
 <div class="conatiner-fluid p-3 h-100">
     <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">UPDATE CATEGORY</h3>
+            <div>
+                <button class="btn btn-primary" routerLink="../category-list">Show All</button>
+            </div>
+        </div>
         <div class="card-body">
             <form [formGroup]="categoryForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
@@ -23,7 +29,7 @@
                         <input type="text" readonly class="form-control" [value]="parentId.name">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <h6 class="control-label">Title</h6>
                     <div pgFormGroupDefault class="form-group"
@@ -33,8 +39,8 @@
                 </div>
                 <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
                     <label *ngIf="f.title.errors.required" class="error">Title is required.</label>
-                    <label *ngIf="f.title.errors.minlength" class="error">Name field is min.</label>
-                    <label *ngIf="f.title.errors.maxlength" class="error">Name field is max.</label>
+                    <label *ngIf="f.title.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="f.title.errors.maxlength" class="error">Title field is max.</label>
                 </div>
                 <div class="form-group">
                     <h6 class="control-label">Description</h6>
@@ -60,7 +66,7 @@
                     <label *ngIf="f.keywords.errors.minlength" class="error">Keywords field is min.</label>
                     <label *ngIf="f.keywords.errors.maxlength" class="error">Keywords field is max.</label>
                 </div>
-                
+
                 <div class="form-group">
                     <h6 class="control-label">Search Filters</h6>
                     <div class="form-group">
@@ -131,10 +137,10 @@
                         <label for="category-isactivated-switch-lg" *ngIf="f.isActivated.value">Activated</label>
                     </div>
                 </div>
-
+                
                 <div class="mt-4">
                     <button type="submit" class="me-4 btn btn-primary show-notification"
-                        (click)="subCategoryForm()">Submit</button>
+                        (click)="subCategoryForm()">Update Category</button>
                 </div>
             </form>
         </div>

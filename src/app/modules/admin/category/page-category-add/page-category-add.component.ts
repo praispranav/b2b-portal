@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderMaterFilterService } from '../../../../core/providers/master/provider-mater-filter.service';
 import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
+import { MessageService } from '../../../../@pages/components/message/message.service';
 
 @Component({
   selector: 'app-page-category-add',
@@ -20,6 +21,7 @@ export class PageCategoryAddComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
     private providerMaterCategoryService: ProviderMaterCategoryService,
     private providerMaterFilterService: ProviderMaterFilterService,
@@ -89,13 +91,8 @@ export class PageCategoryAddComponent implements OnInit {
     }))
 
     this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
-      (res) => {
-        alert('Success');
-        this.resetFormGroup(this.categoryForm);
-      },
-      (err) => {
-        alert('Error');
-      }
+      (res) => { this.createBasicNotification('success', "Category Added Successfully"); this.router.navigateByUrl(`/admin/category/category-list`); },
+      (err) => { this.createBasicNotification('success', "Category Not Added") }
     );
   }
 
@@ -117,16 +114,46 @@ export class PageCategoryAddComponent implements OnInit {
     });
   }
 
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
-    this.iconList = [];
-    this.imageList = [];
-    this.filterList = [];
-    this.selectedFilterList = [];
-    this.setConfig();
+  createBasicNotification(res: string, msg: string) {
+    const currentTab: number = 0;
+
+
+    const notificationModel: any = {
+      type: 'flip',
+      message: 'Filter added Successfully',
+      color: 'Success',
+      position: 'top-right',
+      current: 0
+    };
+
+    const nofitcationStrings: any = [
+      {
+        heading: 'Flip Bar',
+        desc: 'Awesome Loading Circle Animation',
+        position: 'top-right',
+        type: 'flip'
+      },
+    ];
+
+    if (notificationModel.current != currentTab) {
+      notificationModel.current = currentTab;
+      this.messageService.remove();
+    }
+
+    notificationModel.position = nofitcationStrings[currentTab]['position'];
+    notificationModel.type = nofitcationStrings[currentTab]['type'];
+    notificationModel.color = res;
+    notificationModel.message = msg;
+
+    this.messageService.create(notificationModel.color, notificationModel.message, {
+      Position: nofitcationStrings[currentTab]['position'],
+      Style: notificationModel.type,
+      Duration: 0
+    });
+
   }
 
-  private getMaterFilterListByFilter(filter = '') {
+  getMaterFilterListByFilter(filter = '') {
     this.providerMaterFilterService.getMaterFilterListByFilter(0, 5, { filter }).subscribe(res => {
       this.filterList = res.data.map(item => {
         return {

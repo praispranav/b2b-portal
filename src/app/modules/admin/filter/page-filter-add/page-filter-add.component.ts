@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from '../../../../@pages/components/message/message.service';
 import { ProviderMaterFilterService } from './../../../../core/providers/master/provider-mater-filter.service';
 
@@ -10,31 +11,10 @@ import { ProviderMaterFilterService } from './../../../../core/providers/master/
 })
 export class PageFilterAddComponent implements OnInit {
   filterForm: FormGroup;
-  heading: string;
-  description: string;
-  currentTab: number = 0;
-  
-  
-  notificationModel: any = {
-    type: 'flip',
-    message: 'Filter added Successfully',
-    color: 'Success',
-    position: 'top-right',
-    current: 0
-  };
-  nofitcationStrings: any = [
- 
-    {
-      heading: 'Flip Bar',
-      desc: 'Awesome Loading Circle Animation',
-      position: 'top-right',
-      type: 'flip'
-    },
 
-  
-  ];
   constructor(
-    private _notification: MessageService,
+    private router: Router,
+    private messageService: MessageService,
     private formBuilder: FormBuilder,
     private providerMaterFilterService: ProviderMaterFilterService
   ) { }
@@ -80,14 +60,13 @@ export class PageFilterAddComponent implements OnInit {
       return;
     }
     const formValue = this.filterForm.value;
-    formValue.fields = formValue.fields.map(i=>i.field);
+    formValue.fields = formValue.fields.map(i => i.field);
     this.providerMaterFilterService.addMaterFilter(formValue).subscribe(
-      (res) => { this.createBasicNotification('success', "Filter Added Successfully"); this.resetFormGroup(this.filterForm) },
-      (err) => { this.createBasicNotification('success', "Filter Added Successfully")
-                  }
+      (res) => { this.createBasicNotification('success', "Filter Added Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
+      (err) => { this.createBasicNotification('success', "Filter Not Added") }
     );
   }
-  // this.createBasicNotification('error',"Something error")
+
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -97,24 +76,41 @@ export class PageFilterAddComponent implements OnInit {
     });
   }
 
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
-  }
-  createBasicNotification(res:string,msg:string) {
-    if (this.notificationModel.current != this.currentTab) {
-      this.notificationModel.current = this.currentTab;
-      this._notification.remove();
+  createBasicNotification(res: string, msg: string) {
+    const currentTab: number = 0;
+
+
+    const notificationModel: any = {
+      type: 'flip',
+      message: 'Filter added Successfully',
+      color: 'Success',
+      position: 'top-right',
+      current: 0
+    };
+
+    const nofitcationStrings: any = [
+      {
+        heading: 'Flip Bar',
+        desc: 'Awesome Loading Circle Animation',
+        position: 'top-right',
+        type: 'flip'
+      },
+    ];
+
+    if (notificationModel.current != currentTab) {
+      notificationModel.current = currentTab;
+      this.messageService.remove();
     }
-    this.notificationModel.position = this.nofitcationStrings[this.currentTab]['position'];
-    this.notificationModel.type = this.nofitcationStrings[this.currentTab]['type'];
-    this.notificationModel.color = res;
-    this.notificationModel.message=msg;    
-    //Create Notification    
-      this._notification.create(this.notificationModel.color, this.notificationModel.message, {
-        Position: this.nofitcationStrings[this.currentTab]['position'],
-        Style: this.notificationModel.type,
-        Duration: 0
-      });
-    
+
+    notificationModel.position = nofitcationStrings[currentTab]['position'];
+    notificationModel.type = nofitcationStrings[currentTab]['type'];
+    notificationModel.color = res;
+    notificationModel.message = msg;
+
+    this.messageService.create(notificationModel.color, notificationModel.message, {
+      Position: nofitcationStrings[currentTab]['position'],
+      Style: notificationModel.type,
+      Duration: 0
+    });
   }
 }

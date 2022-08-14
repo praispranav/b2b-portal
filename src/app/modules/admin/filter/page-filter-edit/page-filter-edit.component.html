@@ -1,5 +1,11 @@
 <div class="conatiner-fluid p-3 h-100">
     <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">UPDATE FILTER</h3>
+            <div>
+                <button class="btn btn-primary" routerLink="../filter-list">Show All</button>
+            </div>
+        </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -8,7 +14,8 @@
                             <h6 class="control-label">Filter</h6>
                             <div class="form-group"
                                 [class.has-error]="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
-                                <input type="text" class="form-control" formControlName="filter">
+                                <input type="text" class="form-control" formControlName="filter"
+                                    placeholder="Filter Name Here...">
                             </div>
                         </div>
                         <div *ngIf="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
@@ -22,22 +29,27 @@
                                     <div [formGroup]="fieldForm">
                                         <div class="form-group" style="display: flex;">
                                             <input type="text" class="form-control" formControlName="field"
-                                                [placeholder]="'Field '+(i+1)">
-                                            <button (click)="deleteField(i)" *ngIf="!(last && first)">Delete</button>
+                                                [placeholder]="'Field '+(i+1)+' Name Here...'">
+                                            <button class="btn btn-danger" (click)="deleteField(i)"
+                                                *ngIf="!(last && first)"><i class="fa fa-trash"
+                                                    aria-hidden="true"></i></button>
                                         </div>
-                                        <div *ngIf="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
-                                            <label *ngIf="f.filter.errors.required" class="error">Filter is
+                                        <div
+                                            *ngIf="fieldForm.get('field').invalid && (fieldForm.get('field').dirty || fieldForm.get('field').touched)">
+                                            <label *ngIf="fieldForm.get('field').errors.required" class="error">Field
+                                                {{i+1}} is
                                                 required.</label>
                                         </div>
                                     </div>
                                 </ng-container>
                             </ng-container>
-                            <button (click)="addField()">Add</button>
+                            <button class="btn btn-primary" (click)="addField()"> Add New Field<i
+                                    class="fa fa-plus ml-2" aria-hidden="true"></i></button>
                         </div>
 
                         <div class="mt-4">
                             <button type="submit" class="me-4 btn btn-primary show-notification"
-                                (click)="subFilterForm()">Submit</button>
+                                (click)="subFilterForm()">Update Filter</button>
                         </div>
                     </form>
                 </div>
