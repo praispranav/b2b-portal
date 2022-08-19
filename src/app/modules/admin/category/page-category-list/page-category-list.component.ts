@@ -39,7 +39,7 @@ export class PageCategoryListComponent implements OnInit {
 
   getChildren(item: any, nodeEl: any) {
     if (this.preViewItem) {
-      this.remChildren(this.preViewItem)
+      this.remChildren(item)
     }
     this.providerMaterCategoryService
       .getMaterCategoryListByFilter(0, 1000, { parentId: item['_id'] })
@@ -59,10 +59,20 @@ export class PageCategoryListComponent implements OnInit {
       });
   }
 
-  remChildren(item: any) {
-    item['children'] = [];
-    item['_toggle'] = false;
+  remChildren(cur: any) {
+    this.removeRecChild(cur, this.masterCategoryList)
     this.preViewItem = null;
+  }
+
+  removeRecChild(cur: any, arr: any[]) {
+    arr.forEach(item => {
+      if (item.parentId === cur.parentId) {
+        item['children'] = [];
+        item['_toggle'] = false;
+      } else {
+        this.removeRecChild(cur, item['children'])
+      }
+    })
   }
 
   addCategory(item: any) {
