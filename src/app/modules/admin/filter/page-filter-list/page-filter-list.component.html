@@ -59,7 +59,7 @@
                         <div>
                             <p>Filter Name : <b>{{preViewItem._name | uppercase}}</b></p>
                             <ol *ngIf="preViewItem?.children && preViewItem.children.length>0">
-                                <li *ngFor="let item of preViewItem.children">Field 1 Name : <b>{{item._name}}</b></li>
+                                <li *ngFor="let item of preViewItem.children; let i = index">Field {{i+1}} Name : <b>{{item._name}}</b></li>
                             </ol>
                         </div>
                         <div>
