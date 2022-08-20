@@ -71,6 +71,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { CoreModule } from './core/core.module';
 import { MessageService } from './@pages/components/message/message.service';
+import { MessageModule } from './@pages/components/message/message.module';
 // import { ProviderComponent } from './provider/provider.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -133,9 +134,11 @@ export class AppHammerConfig extends HammerGestureConfig {
     // NgxDnDModule,
     QuillModule.forRoot(),
     PerfectScrollbarModule,
+    MessageModule,
     CoreModule,
   ],
   providers: [
+    MessageService,
     QuickviewService,
     pagesToggleService,
     {

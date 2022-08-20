@@ -13,8 +13,6 @@ import { TreeModule } from 'angular-tree-component';
 import { PageCategoryAddComponent } from './page-category-add/page-category-add.component';
 import { PageCategoryEditComponent } from './page-category-edit/page-category-edit.component';
 import { PageCategoryListComponent } from './page-category-list/page-category-list.component';
-import { MessageService } from '../../../@pages/components/message/message.service';
-import { MessageModule } from '../../../@pages/components/message/message.module';
 
 @NgModule({
   declarations: [
@@ -33,10 +31,7 @@ import { MessageModule } from '../../../@pages/components/message/message.module
     NgxDatatableModule,
     SharedModule,
     ProgressModule,
-    MessageModule,
     TreeModule.forRoot()
   ],
-  providers: [MessageService]
-
 })
 export class CategoryModule { }
