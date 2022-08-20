@@ -1,3 +1,4 @@
+import { AppMessageServiceService } from './../../../../service/app-message-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +14,7 @@ export class PageFilterAddComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private messageService: MessageService,
+    private appmessageService:AppMessageServiceService,
     private formBuilder: FormBuilder,
     private providerMaterFilterService: ProviderMaterFilterService
   ) { }
@@ -61,8 +62,8 @@ export class PageFilterAddComponent implements OnInit {
     const formValue = this.filterForm.value;
     formValue.fields = formValue.fields.map(i => i.field);
     this.providerMaterFilterService.addMaterFilter(formValue).subscribe(
-      (res) => { this.createBasicNotification('success', "Filter Added Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
-      (err) => { this.createBasicNotification('success', "Filter Not Added") }
+      (res) => { this.appmessageService.createBasicNotification('success', "Filter Added Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
+      (err) => { this.appmessageService.createBasicNotification('error', "Filter Not Added") }
     );
   }
 
