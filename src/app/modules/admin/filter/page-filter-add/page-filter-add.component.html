@@ -12,8 +12,10 @@
                     <form [formGroup]="filterForm" (keydown.enter)="$event.preventDefault()">
                         <div class="form-group">
                             <h6 class="control-label">Filter</h6>
-                            <div class="form-group" [class.has-error]="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
-                                <input type="text" class="form-control" formControlName="filter" placeholder="Filter Name Here...">
+                            <div class="form-group"
+                                [class.has-error]="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
+                                <input type="text" class="form-control" formControlName="filter"
+                                    placeholder="Filter Name Here...">
                             </div>
                         </div>
                         <div *ngIf="f.filter.invalid && (f.filter.dirty || f.filter.touched)">
@@ -21,14 +23,18 @@
                         </div>
                         <div class="container px-5">
                             <ng-container formArrayName="fields">
-                                <ng-container *ngFor="let fieldForm of fields.controls; let i = index; let last = last; let first = first;">
+                                <ng-container
+                                    *ngFor="let fieldForm of fields.controls; let i = index; let last = last; let first = first;">
                                     <div [formGroup]="fieldForm">
                                         <div class="form-group" style="display: flex;">
-                                            <input type="text" class="form-control" formControlName="field" [placeholder]="'Field '+(i+1)+' Name Here...'">
-                                            <button class="btn btn-danger" (click)="deleteField(i)" *ngIf="!(last && first)"><i class="fa fa-trash"
+                                            <input type="text" class="form-control" formControlName="field"
+                                                [placeholder]="'Field '+(i+1)+' Name Here...'">
+                                            <button class="btn btn-danger" (click)="deleteField(i)"
+                                                *ngIf="!(last && first)"><i class="fa fa-trash"
                                                     aria-hidden="true"></i></button>
                                         </div>
-                                        <div *ngIf="fieldForm.get('field').invalid && (fieldForm.get('field').dirty || fieldForm.get('field').touched)">
+                                        <div
+                                            *ngIf="fieldForm.get('field').invalid && (fieldForm.get('field').dirty || fieldForm.get('field').touched)">
                                             <label *ngIf="fieldForm.get('field').errors.required" class="error">Field
                                                 {{i+1}} is
                                                 required.</label>
@@ -41,7 +47,8 @@
                         </div>
 
                         <div class="mt-4">
-                            <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subFilterForm()">Save Filter</button>
+                            <button type="submit" class="me-4 btn btn-primary show-notification"
+                                (click)="subFilterForm()">Save Filter</button>
                         </div>
                     </form>
                 </div>
