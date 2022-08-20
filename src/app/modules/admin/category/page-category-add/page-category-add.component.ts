@@ -1,9 +1,9 @@
-import { AppMessageServiceService } from './../../../../service/app-message-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderMaterFilterService } from '../../../../core/providers/master/provider-mater-filter.service';
 import { ProviderMaterCategoryService } from './../../../../core/providers/master/provider-mater-category.service';
+import { AppMessageService } from '../../../../core/services/app-message.service';
 
 
 @Component({
@@ -20,9 +20,9 @@ export class PageCategoryAddComponent implements OnInit {
   selectedFilterList: any[] = [];
 
   constructor(
-    private appmessageService:AppMessageServiceService,
+    private appMessageService: AppMessageService,
     private router: Router,
-    private formBuilder: FormBuilder,   
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private providerMaterCategoryService: ProviderMaterCategoryService,
     private providerMaterFilterService: ProviderMaterFilterService,
@@ -92,8 +92,8 @@ export class PageCategoryAddComponent implements OnInit {
     }))
 
     this.providerMaterCategoryService.addMaterCategory(this.categoryForm.value).subscribe(
-      (res) => { this.appmessageService.createBasicNotification('success', "Category Added Successfully"); this.router.navigateByUrl(`/admin/category/category-list`); },
-      (err) => { this.appmessageService.createBasicNotification('success', "Category Not Added") }
+      (res) => { this.appMessageService.createBasicNotification('success', "Category Added Successfully"); this.router.navigateByUrl(`/admin/category/category-list`); },
+      (err) => { this.appMessageService.createBasicNotification('success', "Category Not Added") }
     );
   }
 
@@ -115,7 +115,7 @@ export class PageCategoryAddComponent implements OnInit {
     });
   }
 
- 
+
 
   getMaterFilterListByFilter(filter = '') {
     this.providerMaterFilterService.getMaterFilterListByFilter(0, 5, { filter }).subscribe(res => {
