@@ -15,6 +15,7 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: './associate-profile/profile.module#ProfileModule'
   },
+
 ];
 
 @NgModule({
