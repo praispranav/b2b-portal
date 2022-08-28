@@ -11,19 +11,27 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'location-add',
+    path: 'location-add/:type',
     component: PageLocationAddComponent,
   },
   {
-    path: 'location-edit/:country',
+    path: 'location-add/:type/:countryId',
+    component: PageLocationAddComponent,
+  },
+  {
+    path: 'location-add/:type/:countryId/:stateId',
+    component: PageLocationAddComponent,
+  },
+  {
+    path: 'location-edit/:type/:countryId',
     component: PageLocationEditComponent,
   },
   {
-    path: 'location-edit/:country/:state',
+    path: 'location-edit/:type/:countryId/:stateId',
     component: PageLocationEditComponent,
   },
   {
-    path: 'location-edit/:country/:state/:location',
+    path: 'location-edit/:type/:countryId/:stateId/:locationId',
     component: PageLocationEditComponent,
   },
   {

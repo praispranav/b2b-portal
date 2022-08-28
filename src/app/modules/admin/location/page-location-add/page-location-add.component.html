@@ -1,110 +1,309 @@
 <div class="conatiner-fluid p-3 h-100">
     <div class="card">
-        <div class="card-body">
-            <h2>Add Country</h2>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title" *ngIf="formType==='country'">ADD COUNTRY</h3>
+            <h3 class="card-title" *ngIf="formType==='state'">ADD STATE</h3>
+            <h3 class="card-title" *ngIf="formType==='location'">ADD LOCATION</h3>
+            <div>
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/country" *ngIf="formType!=='country'">
+                    Add Country <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/state" *ngIf="formType!=='state'">
+                    Add State <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/location" *ngIf="formType!=='location'">
+                    Add Location <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-list">
+                    Show All
+                </button>
+            </div>
+        </div>
+        <div class="card-body" *ngIf="formType==='country'">
             <form [formGroup]="countryForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
-                    <h6 class="control-label">Country</h6>
-                    <div  class="form-group"
-                        [class.has-error]="cf.country.invalid && (cf.country.dirty || cf.country.touched)">
-                        <input type="text" class="form-control" formControlName="country">
+                    <h6 class="control-label">Name</h6>
+                    <p class="mb-0 para">(The name is how it appears on your site.)</p>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="cf.name.invalid && (cf.name.dirty || cf.name.touched)">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
                 </div>
-                <div *ngIf="cf.country.invalid && (cf.country.dirty || cf.country.touched)">
-                    <label *ngIf="cf.country.errors.required" class="error">Country is required.</label>
+                <div *ngIf="cf.name.invalid && (cf.name.dirty || cf.name.touched)">
+                    <label *ngIf="cf.name.errors.required" class="error">Name field is required.</label>
+                    <label *ngIf="cf.name.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="cf.name.errors.maxlength" class="error">Name field is max.</label>
                 </div>
-
+                <div class="form-group">
+                    <h6 class="control-label">Title</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="cf.title.invalid && (cf.title.dirty || cf.title.touched)">
+                        <input type="text" class="form-control" formControlName="title">
+                    </div>
+                </div>
+                <div *ngIf="cf.title.invalid && (cf.title.dirty || cf.title.touched)">
+                    <label *ngIf="cf.title.errors.required" class="error">Title is required.</label>
+                    <label *ngIf="cf.title.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="cf.title.errors.maxlength" class="error">Title field is max.</label>
+                </div>
+                <div class="form-group">
+                    <h6 class="control-label">Description</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="cf.description.invalid && (cf.description.dirty || cf.description.touched)">
+                        <input type="text" class="form-control" formControlName="description">
+                    </div>
+                </div>
+                <div *ngIf="cf.description.invalid && (cf.description.dirty || cf.description.touched)">
+                    <label *ngIf="cf.description.errors.required" class="error">Description is required.</label>
+                    <label *ngIf="cf.description.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="cf.description.errors.maxlength" class="error">Name field is max.</label>
+                </div>
+                <div class="form-group tag-group">
+                    <h6 class="control-label">Keywords</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="cf.keywords.invalid && (cf.keywords.dirty || cf.keywords.touched)">
+                        <pg-tag-control formControlName="keywords"></pg-tag-control>
+                    </div>
+                </div>
+                <div *ngIf="cf.keywords.invalid && (cf.keywords.dirty || cf.keywords.touched)">
+                    <label *ngIf="cf.keywords.errors.required" class="error">Keywords is required.</label>
+                    <label *ngIf="cf.keywords.errors.minlength" class="error">Keywords field is min.</label>
+                    <label *ngIf="cf.keywords.errors.maxlength" class="error">Keywords field is max.</label>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Upload Image</h6>
+                    <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                        Action="https://jsonplaceholder.typicode.com/posts/">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload>
+                    <div *ngIf="cf.image.invalid && (cf.image.dirty || cf.image.touched)">
+                        <label *ngIf="cf.image.errors.required" class="error">Image is required.</label>
+                    </div>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Status</h6>
+                    <div class="form-check form-check-inline switch switch-lg complete"
+                        [class.has-error]="cf.isActivated.invalid && (cf.isActivated.dirty || cf.isActivated.touched)">
+                        <input type="checkbox" id="country-isactivated-switch-lg" class="form-control"
+                            formControlName="isActivated">
+                        <label for="country-isactivated-switch-lg" *ngIf="!cf.isActivated.value">Deactivated</label>
+                        <label for="country-isactivated-switch-lg" *ngIf="cf.isActivated.value">Activated</label>
+                    </div>
+                </div>
                 <div class="mt-4">
-                    <button type="submit" class="me-4 btn btn-primary" (click)="subCountryForm()">Submit</button>
+                    <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subCountryForm()">Save
+                        Country</button>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h2>Add State</h2>
+        <div class="card-body" *ngIf="formType==='state'">
             <form [formGroup]="stateForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
-                    <div  class="form-group"
-                        [class.has-error]="sf.countryId.invalid && (sf.countryId.dirty ||sf.countryId.touched)">
-                        <pg-select formControlName="countryId" class="w-100" [PlaceHolder]="'Country'" AllowClear
-                            ShowSearch>
-                            <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.country"
+                    <div class="form-group"
+                        [class.has-error]="sf.countryId.invalid && (sf.countryId.dirty || sf.countryId.touched)">
+                        <pg-select (ngModelChange)="countryChange($event)" formControlName="countryId" class="w-100"
+                            [PlaceHolder]="'Country'" AllowClear ShowSearch>
+                            <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">
                             </pg-option>
                         </pg-select>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <h6 class="control-label">State</h6>
-                    <div  class="form-group"
-                        [class.has-error]="sf.state.invalid && (sf.state.dirty || sf.state.touched)">
-                        <input type="text" class="form-control" formControlName="state">
+                    <h6 class="control-label">Name</h6>
+                    <p class="mb-0 para">(The name is how it appears on your site.)</p>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="sf.name.invalid && (sf.name.dirty || sf.name.touched)">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
                 </div>
-                <div *ngIf="sf.state.invalid && (sf.state.dirty || sf.state.touched)">
-                    <label *ngIf="sf.state.errors.required" class="error">State is required.</label>
+                <div *ngIf="sf.name.invalid && (sf.name.dirty || sf.name.touched)">
+                    <label *ngIf="sf.name.errors.required" class="error">Name field is required.</label>
+                    <label *ngIf="sf.name.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="sf.name.errors.maxlength" class="error">Name field is max.</label>
                 </div>
-
+                <div class="form-group">
+                    <h6 class="control-label">Title</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="sf.title.invalid && (sf.title.dirty || sf.title.touched)">
+                        <input type="text" class="form-control" formControlName="title">
+                    </div>
+                </div>
+                <div *ngIf="sf.title.invalid && (sf.title.dirty || sf.title.touched)">
+                    <label *ngIf="sf.title.errors.required" class="error">Title is required.</label>
+                    <label *ngIf="sf.title.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="sf.title.errors.maxlength" class="error">Title field is max.</label>
+                </div>
+                <div class="form-group">
+                    <h6 class="control-label">Description</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="sf.description.invalid && (sf.description.dirty || sf.description.touched)">
+                        <input type="text" class="form-control" formControlName="description">
+                    </div>
+                </div>
+                <div *ngIf="sf.description.invalid && (sf.description.dirty || sf.description.touched)">
+                    <label *ngIf="sf.description.errors.required" class="error">Description is required.</label>
+                    <label *ngIf="sf.description.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="sf.description.errors.maxlength" class="error">Name field is max.</label>
+                </div>
+                <div class="form-group tag-group">
+                    <h6 class="control-label">Keywords</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="sf.keywords.invalid && (sf.keywords.dirty || sf.keywords.touched)">
+                        <pg-tag-control formControlName="keywords"></pg-tag-control>
+                    </div>
+                </div>
+                <div *ngIf="sf.keywords.invalid && (sf.keywords.dirty || sf.keywords.touched)">
+                    <label *ngIf="sf.keywords.errors.required" class="error">Keywords is required.</label>
+                    <label *ngIf="sf.keywords.errors.minlength" class="error">Keywords field is min.</label>
+                    <label *ngIf="sf.keywords.errors.maxlength" class="error">Keywords field is max.</label>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Upload Image</h6>
+                    <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                        Action="https://jsonplaceholder.typicode.com/posts/">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload>
+                    <div *ngIf="sf.image.invalid && (sf.image.dirty || sf.image.touched)">
+                        <label *ngIf="sf.image.errors.required" class="error">Image is required.</label>
+                    </div>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Status</h6>
+                    <div class="form-check form-check-inline switch switch-lg complete"
+                        [class.has-error]="sf.isActivated.invalid && (sf.isActivated.dirty || sf.isActivated.touched)">
+                        <input type="checkbox" id="state-isactivated-switch-lg" class="form-control"
+                            formControlName="isActivated">
+                        <label for="state-isactivated-switch-lg" *ngIf="!sf.isActivated.value">Deactivated</label>
+                        <label for="state-isactivated-switch-lg" *ngIf="sf.isActivated.value">Activated</label>
+                    </div>
+                </div>
                 <div class="mt-4">
-                    <button type="submit" class="me-4 btn btn-primary" (click)="subStateForm()">Submit</button>
+                    <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subStateForm()">Save
+                        State</button>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <h2>Add Location</h2>
+        <div class="card-body" *ngIf="formType==='location'">
             <form [formGroup]="locationForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
-                    <div  class="form-group"
+                    <div class="form-group"
                         [class.has-error]="lf.countryId.invalid && (lf.countryId.dirty || lf.countryId.touched)">
-                        <pg-select (ngModelChange)="lfCountryChange($event)" formControlName="countryId" class="w-100" [PlaceHolder]="'Country'" AllowClear
-                            ShowSearch>
-                            <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.country"
+                        <pg-select (ngModelChange)="countryChange($event)" formControlName="countryId" class="w-100"
+                            [PlaceHolder]="'Country'" AllowClear ShowSearch>
+                            <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">
                             </pg-option>
                         </pg-select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <h6 class="control-label">State</h6>
-                    <div  class="form-group"
+                    <div class="form-group"
                         [class.has-error]="lf.stateId.invalid && (lf.stateId.dirty || lf.stateId.touched)">
                         <pg-select formControlName="stateId" class="w-100" [PlaceHolder]="'State'" AllowClear
                             ShowSearch>
-                            <pg-option *ngFor="let masterState of masterStateList" [Label]="masterState.state"
+                            <pg-option *ngFor="let masterState of masterStateList" [Label]="masterState.name"
                                 [Value]="masterState._id">
                             </pg-option>
                         </pg-select>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <h6 class="control-label">City</h6>
-                    <div  class="form-group"
-                        [class.has-error]="lf.city.invalid && (lf.city.dirty || lf.city.touched)">
-                        <input type="text" class="form-control" formControlName="city">
+                    <h6 class="control-label">Name</h6>
+                    <p class="mb-0 para">(The name is how it appears on your site.)</p>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="lf.name.invalid && (lf.name.dirty || lf.name.touched)">
+                        <input type="text" class="form-control" formControlName="name">
                     </div>
                 </div>
-                <div *ngIf="lf.city.invalid && (lf.city.dirty || lf.city.touched)">
-                    <label *ngIf="lf.city.errors.required" class="error">City is required.</label>
+                <div *ngIf="lf.name.invalid && (lf.name.dirty || lf.name.touched)">
+                    <label *ngIf="lf.name.errors.required" class="error">Name field is required.</label>
+                    <label *ngIf="lf.name.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="lf.name.errors.maxlength" class="error">Name field is max.</label>
                 </div>
-
+                <div class="form-group">
+                    <h6 class="control-label">Title</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="lf.title.invalid && (lf.title.dirty || lf.title.touched)">
+                        <input type="text" class="form-control" formControlName="title">
+                    </div>
+                </div>
+                <div *ngIf="lf.title.invalid && (lf.title.dirty || lf.title.touched)">
+                    <label *ngIf="lf.title.errors.required" class="error">Title is required.</label>
+                    <label *ngIf="lf.title.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="lf.title.errors.maxlength" class="error">Title field is max.</label>
+                </div>
                 <div class="form-group">
                     <h6 class="control-label">Pincode (Optional)</h6>
-                    <div  class="form-group"
+                    <div pgFormGroupDefault class="form-group"
                         [class.has-error]="lf.pincode.invalid && (lf.pincode.dirty || lf.pincode.touched)">
                         <input type="text" class="form-control" formControlName="pincode">
                     </div>
                 </div>
-
+                <div *ngIf="lf.pincode.invalid && (lf.pincode.dirty || lf.pincode.touched)">
+                    <label *ngIf="lf.pincode.errors.minlength" class="error">Title field is min.</label>
+                    <label *ngIf="lf.pincode.errors.maxlength" class="error">Title field is max.</label>
+                </div>
+                <div class="form-group">
+                    <h6 class="control-label">Description</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="lf.description.invalid && (lf.description.dirty || lf.description.touched)">
+                        <input type="text" class="form-control" formControlName="description">
+                    </div>
+                </div>
+                <div *ngIf="lf.description.invalid && (lf.description.dirty || lf.description.touched)">
+                    <label *ngIf="lf.description.errors.required" class="error">Description is required.</label>
+                    <label *ngIf="lf.description.errors.minlength" class="error">Name field is min.</label>
+                    <label *ngIf="lf.description.errors.maxlength" class="error">Name field is max.</label>
+                </div>
+                <div class="form-group tag-group">
+                    <h6 class="control-label">Keywords</h6>
+                    <div pgFormGroupDefault class="form-group"
+                        [class.has-error]="lf.keywords.invalid && (lf.keywords.dirty || lf.keywords.touched)">
+                        <pg-tag-control formControlName="keywords"></pg-tag-control>
+                    </div>
+                </div>
+                <div *ngIf="lf.keywords.invalid && (lf.keywords.dirty || lf.keywords.touched)">
+                    <label *ngIf="lf.keywords.errors.required" class="error">Keywords is required.</label>
+                    <label *ngIf="lf.keywords.errors.minlength" class="error">Keywords field is min.</label>
+                    <label *ngIf="lf.keywords.errors.maxlength" class="error">Keywords field is max.</label>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Upload Image</h6>
+                    <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                        Action="https://jsonplaceholder.typicode.com/posts/">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload>
+                    <div *ngIf="lf.image.invalid && (lf.image.dirty || lf.image.touched)">
+                        <label *ngIf="lf.image.errors.required" class="error">Image is required.</label>
+                    </div>
+                </div>
+                <div pgFormGroupDefault class="form-group">
+                    <h6 class="control-label">Status</h6>
+                    <div class="form-check form-check-inline switch switch-lg complete"
+                        [class.has-error]="lf.isActivated.invalid && (lf.isActivated.dirty || lf.isActivated.touched)">
+                        <input type="checkbox" id="location-isactivated-switch-lg" class="form-control"
+                            formControlName="isActivated">
+                        <label for="location-isactivated-switch-lg" *ngIf="!lf.isActivated.value">Deactivated</label>
+                        <label for="location-isactivated-switch-lg" *ngIf="lf.isActivated.value">Activated</label>
+                    </div>
+                </div>
                 <div class="mt-4">
-                    <button type="submit" class="me-4 btn btn-primary" (click)="subLocationForm()">Submit</button>
+                    <button type="submit" class="me-4 btn btn-primary show-notification"
+                        (click)="subLocationForm()">Save
+                        Location</button>
                 </div>
             </form>
         </div>

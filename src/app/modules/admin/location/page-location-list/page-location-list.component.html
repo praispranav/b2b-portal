@@ -2,35 +2,59 @@
     <div class="card">
         <div class="card-body">
             <div class="card card-default">
-                <div class="card-header">
-                    <div class="card-title">All Location</div>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">ALL LOCATIONS</h3>
+                    <div>
+                        <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/country">
+                            Add Country <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/state">
+                            Add State <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/location">
+                            Add Location <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <!-- <div class="input-group transparent">
-                        <input type="text" placeholder="Type here to Search" class="form-control" #filterInput
-                            (keyup)="filterTreeContainer(filterInput.value)">
-                        <div class="input-group-append">
-                            <span class="input-group-text transparent"><i class="pg-icon">search</i>
-                            </span>
-                        </div>
-                    </div> -->
-                    <div class="tree-container">
+                <div class="card-body d-flex">
+                    <div class="tree-container flex-grow-1">
+                        <button class="btn btn-primary mr-2" routerLink="../location-add/country">
+                            Add Country <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                        </button>
                         <ng-template [ngTemplateOutlet]="treeUlContainer"
                             [ngTemplateOutletContext]="{list:masterCountryList}"></ng-template>
                         <ng-template #treeUlContainer let-list='list'>
                             <ul>
                                 <li *ngFor="let item of list" #nodeEl>
-                                    <div>
+                                    <div class="d-flex align-items-center">
                                         <div [class.hideToggleContainer]="!item._hasChildren">
-                                            <button *ngIf="!item._toggle" [disabled]="!item._hasChildren"
-                                                (click)="item._toggle = true; getChildren(item)">OI</button>
-                                            <button *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                                                (click)="item._toggle = false; remChildren(item)">CI</button>
+                                            <button class="btn btn-primary" *ngIf="!item._toggle"
+                                                [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                                Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
+                                            </button>
+
+                                            <button class="btn btn-primary" *ngIf="item._toggle"
+                                                [disabled]="!item._hasChildren" (click)="remChildren(item)">
+                                                Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+                                            </button>
                                         </div>
-                                        <button>FI</button>
-                                        <button (click)="editItem(item)">EI</button>
-                                        <button (click)="deleteItem(item, nodeEl)">DI</button>
-                                        <span>&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                        <button class="btn btn-warning" *ngIf="item._isEditable"
+                                            (click)="editItem(item)">
+                                            Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="btn btn-danger" *ngIf="item._isDeletable"
+                                            (click)="deleteItem(item, nodeEl)">
+                                            Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                                        </button>
+                                        <button (click)="addItem(item)" *ngIf="!(item?.countryId && item?.stateId)" class="btn btn-primary">
+                                            <i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                                            &nbsp;&nbsp;Add {{item?.countryId ? 'Location' : 'State'}} Under
+                                        </button>
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                        <span *ngIf="!item._hasChildren">&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                        <span *ngIf="item._hasChildren">
+                                            <b>&nbsp;{{item._name | uppercase}}&nbsp;&nbsp;&nbsp;</b>
+                                        </span>
                                     </div>
                                     <ng-container *ngIf="item?.children && item.children.length>0">
                                         <ng-template [ngTemplateOutlet]="treeUlContainer"
@@ -39,6 +63,45 @@
                                 </li>
                             </ul>
                         </ng-template>
+                    </div>
+                    <div class="preview-el" *ngIf="preViewItem">
+                        <h4>Preview</h4>
+                        <div>
+                            <p>Name : <b>{{preViewItem._name}}</b></p>
+                            <p>Title : <b>{{preViewItem.title}}</b></p>
+                            <p>Description : <b>{{preViewItem.description}}</b></p>
+                            <p>Status : <b>{{preViewItem.isActivated? 'Activated' : 'Deactivated'}}</b></p>
+                            <div class="d-flex">
+                                <p>Keywords : </p>
+                                <ol>
+                                    <li *ngFor="let keyword of preViewItem.keywords">
+                                        <b>{{keyword}}</b>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="d-flex">
+                                <p>{{preViewItem?.countryId ? 'Locations' : 'States'}} : </p>
+                                <ol>
+                                    <li *ngFor="let child of preViewItem.children">
+                                        <b>{{child._name}}</b>
+                                    </li>
+                                </ol>
+                            </div>
+                            <p>Image : <br /><img [src]="preViewItem.image" width="100%" /></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-warning" *ngIf="preViewItem._isEditable"
+                                (click)="editItem(preViewItem)">
+                                Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-danger" *ngIf="preViewItem._isDeletable"
+                                (click)="deleteItem(preViewItem, preViewItem._nodeEl)">
+                                Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                            </button>
+                            <button (click)="addLocation(preViewItem)" class="btn btn-primary">
+                                Add {{preViewItem?.countryId ? 'Locations' : 'States'}}<i class="fa fa-plus ml-2" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

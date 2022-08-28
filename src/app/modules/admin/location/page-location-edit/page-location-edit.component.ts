@@ -4,6 +4,7 @@ import { ProviderMaterCountryService } from '../../../../core/providers/master/p
 import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
 import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppMessageService } from '../../../../core/services/app-message.service';
 
 @Component({
   selector: 'app-page-location-edit',
@@ -11,19 +12,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./page-location-edit.component.scss'],
 })
 export class PageLocationEditComponent implements OnInit {
-  country: string;
-  state: string;
-  location: string;
-  locationForm: FormGroup;
-  stateForm: FormGroup;
+  formType: 'location' | 'state' | 'country';
+  imageList: any[] = [];
+  countryId: string;
+  stateId: string;
+  locationId: string;
   countryForm: FormGroup;
-  masterStateList: any[] = [];
+  stateForm: FormGroup;
+  locationForm: FormGroup;
   masterCountryList: any[] = [];
+  masterStateList: any[] = [];
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
+    private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
+    private appMessageService: AppMessageService,
     private providerMaterLocationService: ProviderMaterLocationService,
     private providerMaterStateService: ProviderMaterStateService,
     private providerMaterCountryService: ProviderMaterCountryService
@@ -43,57 +47,76 @@ export class PageLocationEditComponent implements OnInit {
     this.buildLocationForm();
     this.buildStateForm();
     this.buildCountryForm();
-    this.getMaterCountryListByFilter(0, 1000, {});
-    this.country = this.activatedRoute.snapshot.params['country'];
-    this.state = this.activatedRoute.snapshot.params['state'];
-    this.location = this.activatedRoute.snapshot.params['location'];
-    if (this.country) {
-      this.getMaterStateListByFilter(0, 1000, { countryId: this.country });
-      this.providerMaterCountryService.getMaterCountryById(this.country).subscribe(res => {
-        this.country = res.data[0];
-        this.cf._id.setValue(this.country['_id']);
-        this.cf.country.setValue(this.country['country']);
-        this.cf.isActivated.setValue(this.country['isActivated']);
-        this.sf.countryId.setValue(this.country['_id']);
-        this.lf.countryId.setValue(this.country['_id']);
-      }, err => {
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      });
-    }
-    if (this.state) {
-      this.providerMaterStateService.getMaterStateById(this.state).subscribe(res => {
-        this.state = res.data[0];
-        this.sf._id.setValue(this.state['_id']);
-        this.sf.state.setValue(this.state['state']);
-        this.sf.isActivated.setValue(this.state['isActivated']);
-        this.lf.stateId.setValue(this.state['_id']);
-      }, err => {
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      });
-    }
-    if (this.location) {
-      this.providerMaterLocationService.getMaterLocationById(this.location).subscribe(res => {
-        this.location = res.data[0];
-        this.lf._id.setValue(this.location['_id']);
-        this.lf.city.setValue(this.location['city']);
-        this.lf.pincode.setValue(this.location['pincode']);
-        this.lf.isActivated.setValue(this.location['isActivated']);
-      }, err => {
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      });
-    }
-    if (!this.country && !this.state && !this.location) {
-      this.router.navigateByUrl(`/admin/location/location-list`);
-    }
+    this.setConfig();
+  }
+
+  setConfig() {
+    this.activatedRoute.params.subscribe(routeParams => {
+      this.formType = routeParams['type'];
+      this.locationId = routeParams['locationId'];
+      this.stateId = routeParams['stateId'];
+      this.countryId = routeParams['countryId'];
+
+      this.getMaterCountryListByFilter(0, 1000, {});
+
+      if (this.countryId) {
+        this.sf.countryId.setValue(this.countryId);
+        this.lf.countryId.setValue(this.countryId);
+        this.getMaterStateListByFilter(0, 1000, { countryId: this.countryId });
+        this.providerMaterCountryService.getMaterCountryById(this.countryId).subscribe(res => {
+          this.countryId = res.data[0];
+          this.cf._id.setValue(this.countryId['_id']);
+          this.cf.image.setValue(this.countryId['image']);
+          this.cf.name.setValue(this.countryId['name']);
+          this.cf.title.setValue(this.countryId['title']);
+          this.cf.description.setValue(this.countryId['description']);
+          this.cf.keywords.setValue(this.countryId['keywords']);
+          this.cf.isActivated.setValue(this.countryId['isActivated']);
+        })
+      }
+      if (this.stateId) {
+        this.lf.stateId.setValue(this.stateId);
+        this.providerMaterStateService.getMaterStateById(this.stateId).subscribe(res => {
+          this.stateId = res.data[0];
+          this.sf._id.setValue(this.stateId['_id']);
+          this.sf.image.setValue(this.stateId['image']);
+          this.sf.name.setValue(this.stateId['name']);
+          this.sf.title.setValue(this.stateId['title']);
+          this.sf.description.setValue(this.stateId['description']);
+          this.sf.keywords.setValue(this.stateId['keywords']);
+          this.sf.countryId.setValue(this.stateId['countryId']);
+          this.sf.isActivated.setValue(this.stateId['isActivated']);
+        })
+      }
+      if (this.locationId) {
+        this.providerMaterLocationService.getMaterLocationById(this.locationId).subscribe(res => {
+          this.locationId = res.data[0];
+          this.lf._id.setValue(this.locationId['_id']);
+          this.lf.image.setValue(this.locationId['image']);
+          this.lf.name.setValue(this.locationId['name']);
+          this.lf.title.setValue(this.locationId['title']);
+          this.lf.pincode.setValue(this.locationId['pincode']);
+          this.lf.description.setValue(this.locationId['description']);
+          this.lf.keywords.setValue(this.locationId['keywords']);
+          this.lf.stateId.setValue(this.locationId['stateId']);
+          this.lf.countryId.setValue(this.locationId['countryId']);
+          this.lf.isActivated.setValue(this.locationId['isActivated']);
+        })
+      }
+    })
   }
 
   buildLocationForm() {
     this.locationForm = this.formBuilder.group({
       _id: ['', [Validators.required]],
-      city: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      pincode: ['', [Validators.minLength(6), Validators.maxLength(6)]],
+      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      keywords: [[]],
       stateId: ['', [Validators.required]],
       countryId: ['', [Validators.required]],
-      pincode: [''],
       isActivated: [true],
     });
   }
@@ -101,7 +124,11 @@ export class PageLocationEditComponent implements OnInit {
   buildStateForm() {
     this.stateForm = this.formBuilder.group({
       _id: ['', [Validators.required]],
-      state: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      keywords: [[]],
       countryId: ['', [Validators.required]],
       isActivated: [true],
     });
@@ -110,59 +137,72 @@ export class PageLocationEditComponent implements OnInit {
   buildCountryForm() {
     this.countryForm = this.formBuilder.group({
       _id: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      keywords: [[]],
       isActivated: [true],
     });
   }
 
   async subLocationForm() {
+    if (this.imageList.length > 0) {
+      this.lf.image.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
+    if (this.lf.stateId.value['_id'] !== undefined) {
+      this.lf.stateId.setValue(this.lf.stateId.value._id);
+    }
+    if (this.lf.countryId.value['_id'] !== undefined) {
+      this.lf.countryId.setValue(this.lf.countryId.value._id);
+    }
     if (this.locationForm.invalid) {
       this.markFormGroupTouched(this.locationForm);
       return;
     }
 
     this.providerMaterLocationService.updateMaterLocation(this.locationForm.value).subscribe(
-      (res) => {
-        window.alert('API Success');
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      },
-      (err) => {
-        window.alert('API Error');
-      }
+      (res) => { this.appMessageService.createBasicNotification('success', "Location Updateed Successfully"); this.router.navigateByUrl(`/admin/location/location-list`); },
+      (err) => { this.appMessageService.createBasicNotification('success', "Location Not Updateed") }
     );
   }
 
   async subStateForm() {
+    if (this.imageList.length > 0) {
+      this.sf.image.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
+    if (this.sf.countryId.value['_id'] !== undefined) {
+      this.sf.countryId.setValue(this.sf.countryId.value._id);
+    }
     if (this.stateForm.invalid) {
       this.markFormGroupTouched(this.stateForm);
       return;
     }
 
     this.providerMaterStateService.updateMaterState(this.stateForm.value).subscribe(
-      (res) => {
-        window.alert('API Success');
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      },
-      (err) => {
-        window.alert('API Error');
-      }
+      (res) => { this.appMessageService.createBasicNotification('success', "State Updateed Successfully"); this.router.navigateByUrl(`/admin/location/location-list`); },
+      (err) => { this.appMessageService.createBasicNotification('success', "State Not Updateed") }
     );
   }
 
   async subCountryForm() {
+    if (this.imageList.length > 0) {
+      this.cf.image.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
     if (this.countryForm.invalid) {
       this.markFormGroupTouched(this.countryForm);
       return;
     }
 
     this.providerMaterCountryService.updateMaterCountry(this.countryForm.value).subscribe(
-      (res) => {
-        window.alert('API Success');
-        this.router.navigateByUrl(`/admin/location/location-list`);
-      },
-      (err) => {
-        window.alert('API Error');
-      }
+      (res) => { this.appMessageService.createBasicNotification('success', "Country Updateed Successfully"); this.router.navigateByUrl(`/admin/location/location-list`); },
+      (err) => { this.appMessageService.createBasicNotification('success', "Country Not Updateed") }
     );
   }
 
@@ -198,12 +238,5 @@ export class PageLocationEditComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
-  }
-
-  lfCountryChange(e) {
-    this.lf.stateId.reset()
-    if (e) {
-      this.getMaterStateListByFilter(0, 1000, { countryId: e._id })
-    }
   }
 }

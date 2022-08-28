@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from '../../../../@pages/components/message/message.service';
+import { AppMessageService } from '../../../../core/services/app-message.service';
 import { ProviderMaterFilterService } from './../../../../core/providers/master/provider-mater-filter.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class PageFilterEditComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private messageService: MessageService,
+    private appMessageService: AppMessageService,
     private activatedRoute: ActivatedRoute,
     private providerMaterFilterService: ProviderMaterFilterService
   ) { }
@@ -81,8 +81,8 @@ export class PageFilterEditComponent implements OnInit {
     const formValue = this.filterForm.value;
     formValue.fields = formValue.fields.map(i => i.field);
     this.providerMaterFilterService.updateMaterFilter(formValue).subscribe(
-      (res) => { this.createBasicNotification('success', "Filter Updated Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
-      (err) => { this.createBasicNotification('success', "Filter Not Updated") }
+      (res) => { this.appMessageService.createBasicNotification('success', "Filter Updated Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
+      (err) => { this.appMessageService.createBasicNotification('success', "Filter Not Updated") }
     );
   }
 
@@ -92,44 +92,6 @@ export class PageFilterEditComponent implements OnInit {
       if ((control as any).controls) {
         this.markFormGroupTouched(control as FormGroup);
       }
-    });
-  }
-
-  createBasicNotification(res: string, msg: string) {
-    const currentTab: number = 0;
-
-
-    const notificationModel: any = {
-      type: 'flip',
-      message: 'Filter added Successfully',
-      color: 'Success',
-      position: 'top-right',
-      current: 0
-    };
-
-    const nofitcationStrings: any = [
-      {
-        heading: 'Flip Bar',
-        desc: 'Awesome Loading Circle Animation',
-        position: 'top-right',
-        type: 'flip'
-      },
-    ];
-
-    if (notificationModel.current != currentTab) {
-      notificationModel.current = currentTab;
-      this.messageService.remove();
-    }
-
-    notificationModel.position = nofitcationStrings[currentTab]['position'];
-    notificationModel.type = nofitcationStrings[currentTab]['type'];
-    notificationModel.color = res;
-    notificationModel.message = msg;
-
-    this.messageService.create(notificationModel.color, notificationModel.message, {
-      Position: nofitcationStrings[currentTab]['position'],
-      Style: notificationModel.type,
-      Duration: 0
     });
   }
 }
