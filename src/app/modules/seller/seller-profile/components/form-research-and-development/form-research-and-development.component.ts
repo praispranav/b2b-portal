@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderRAndDService } from "../../../../../core/providers/seller/provider-rAndD.service";
+import { ProviderRAndDService } from "../../../../../core/providers/user/provider-rAndD.service";
 
 @Component({
   selector: "app-form-research-and-development",

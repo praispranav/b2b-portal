@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderShippingDetailsService } from "../../../../../core/providers/seller/provider-shipping-details.service";
+import { ProviderShippingDetailsService } from "../../../../../core/providers/user/provider-shipping-details.service";
 
 @Component({
   selector: "app-form-shipping-details",

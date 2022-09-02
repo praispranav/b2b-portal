@@ -1,79 +1,131 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { ProviderSellerTypeService } from '../../../../../core/providers/seller/provider-seller-type.service';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppMessageService } from '../../../../../core/services/app-message.service';
+import { ProviderSellerTypeService } from '../../../../../core/providers/user-seller/provider-seller-type.service';
+
 @Component({
   selector: 'app-form-seller-type',
   templateUrl: './form-seller-type.component.html',
   styleUrls: ['./form-seller-type.component.scss']
 })
 export class FormSellerTypeComponent implements OnInit {
+  isLoading = true;
+  isDataExist: boolean;
+  idIfDataExist: string;
   sellerTypeForm: FormGroup;
   sellerTypeList: any[] = [
-    { name: "Distributor", value: "Distributor" },
-    { name: "Government Unit", value: "Government Unit" },
-    { name: "Manufacturer", value: "Manufacturer" },
-    { name: "Association", value: "Association" },
-    { name: "Exporter", value: "Exporter" },
-    { name: "Retailer", value: "Retailer" },
-    { name: "Trader", value: "Trader" },
-    { name: "Producer", value: "Producer" },
-    { name: "Retailer", value: "Retailer" },
-    { name: "Wholeseller", value: "Wholeseller" },
-    { name: "NGO", value: "NGO" },
-    { name: "Individual Buyer", value: "Individual Buyer" },
-    { name: "Wholeseller", value: "Wholeseller" },
-    { name: "Company Buyer", value: "Company Buyer" },
-    { name: "Buying House", value: "Buying House" },
-    { name: "Distribution", value: "Distribution" },
-    { name: "Other", value: "Other" }
+    {  checked: false, name: "Distributor", value: "Distributor" },
+    {  checked: false, name: "Government Unit", value: "Government Unit" },
+    {  checked: false, name: "Manufacturer", value: "Manufacturer" },
+    {  checked: false, name: "Association", value: "Association" },
+    {  checked: false, name: "Exporter", value: "Exporter" },
+    {  checked: false, name: "Retailer", value: "Retailer" },
+    {  checked: false, name: "Trader", value: "Trader" },
+    {  checked: false, name: "Producer", value: "Producer" },
+    {  checked: false, name: "Retailer", value: "Retailer" },
+    {  checked: false, name: "Wholeseller", value: "Wholeseller" },
+    {  checked: false, name: "NGO", value: "NGO" },
+    {  checked: false, name: "Individual Buyer", value: "Individual Buyer" },
+    {  checked: false, name: "Wholeseller", value: "Wholeseller" },
+    {  checked: false, name: "Company Buyer", value: "Company Buyer" },
+    {  checked: false, name: "Buying House", value: "Buying House" },
+    {  checked: false, name: "Distribution", value: "Distribution" },
+    {  checked: false, name: "Other", value: "Other" }
+  ];
 
-  ]
-  constructor(private formBuilder: FormBuilder, private providerSellerTypeService: ProviderSellerTypeService) {
-    this.sellerTypeForm = this.formBuilder.group({
-      checkArray: this.formBuilder.array([])
-    })
+  constructor(
+    private formBuilder: FormBuilder,
+    private appMessageService: AppMessageService,
+    private providerSellerTypeService: ProviderSellerTypeService
+  ) { }
 
-  }
   get f() {
     return this.sellerTypeForm.controls;
   }
-  ngOnInit() {
-    this.buildSellerTypeForm();
-  }
-  buildSellerTypeForm() {
-    this.sellerTypeForm = this.formBuilder.group({
-      sellerType: ["", [Validators.required]]
 
+  get types() {
+    return this.f.types as FormArray;
+  }
+
+  ngOnInit() {
+    this.buildTypeForm();
+    this.updateDataIfExist();
+  }
+
+  buildTypeForm() {
+    this.sellerTypeForm = this.formBuilder.group({
+      types: this.formBuilder.array([])
     });
   }
-  async subSellerTypeForm() {
-    this.providerSellerTypeService.addSellerType(this.sellerTypeForm.value).subscribe(
-      (res) => {
-        this.resetFormGroup(this.sellerTypeForm);
-        window.alert('API Success');
+
+  updateDataIfExist(){
+    this.isLoading = true;
+    this.providerSellerTypeService.getSellerTypeListByFilter(0, 1, {userId: 'pending'}).subscribe(
+      (res: any) => {
+        this.isDataExist = true;
+        this.idIfDataExist = res.data[0]['_id'];
+        this.createTypeFields(res.data && res.data[0] && res.data[0].types);
       },
       (err) => {
-        window.alert('API Error');
-      }
-    )
+        this.isDataExist = false;
+        this.createTypeFields([]);
+      },
+      () => { this.isLoading = false; }
+    );
+  }
 
+  createTypeFields(types: any[]){
+    this.sellerTypeList.forEach(type => {
+      const findType = types.find(t=>t.value===type.value);
+      type.checked = findType ? true : false;
+      this.addType(type);
+    });
   }
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
+
+  addType(type) {
+    const typeForm = this.formBuilder.group({
+      name: [type.name],
+      value: [type.value],
+      checked: [type.checked]
+    });
+    this.types.push(typeForm);
   }
-  onCheckboxChange(e) {
-    const checkArray: FormArray = this.sellerTypeForm.get('checkArray') as FormArray;
-    if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      checkArray.controls.forEach((item: FormControl) => {
-        if (item.value == e.target.value) {
-          checkArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
+
+  deleteType(typeIndex: number) {
+    this.types.removeAt(typeIndex);
+  }
+
+  async subSellerTypeForm() {
+    this.isLoading = true;
+    if (this.sellerTypeForm.invalid) {
+      this.markFormGroupTouched(this.sellerTypeForm);
+      return;
     }
+    const formValue = this.sellerTypeForm.value;    
+    formValue.types = formValue.types.filter(t => t.checked);
+    
+    if(this.isDataExist){
+      formValue._id = this.idIfDataExist;
+      this.providerSellerTypeService.updateSellerType(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Seller Type Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Seller Type Not Updated") },
+        () => { this.isLoading = false; }
+      );
+    } else {
+      this.providerSellerTypeService.addSellerType(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Seller Type Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Seller Type Not Added") },
+        () => { this.isLoading = false; }
+      );
+    }
+  }
+
+  private markFormGroupTouched(form: FormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      control.markAsTouched();
+      if ((control as any).controls) {
+        this.markFormGroupTouched(control as FormGroup);
+      }
+    });
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderCompanyDetailService } from "../../../../../core/providers/seller/provider-company-detail.service";
+import { ProviderCompanyDetailService } from "../../../../../core/providers/user/provider-company-detail.service";
 
 @Component({
   selector: "app-form-company-detail",
