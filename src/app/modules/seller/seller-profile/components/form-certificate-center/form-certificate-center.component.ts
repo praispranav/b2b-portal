@@ -53,9 +53,9 @@ export class FormCertificateCenterComponent implements OnInit {
 
   buildTypeForm() {
     this.certificateCenterForm = this.formBuilder.group({
-      certificateType: [],
-      certificateNumber: [],
-      certificateIssuer: [],
+      certificateType: [""],
+      certificateNumber: [""],
+      certificateIssuer: [""],
       certificates: this.formBuilder.array([])
     });
   }
