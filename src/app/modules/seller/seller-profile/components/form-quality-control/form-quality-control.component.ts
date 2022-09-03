@@ -41,7 +41,10 @@ export class FormQualityControlComponent implements OnInit {
     this.isLoading = true;
     this.providerQualityControlService.getQualityControlListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.f.isQualityProcess.setValue(res.data[0].isQualityProcess);
         this.f.processName.setValue(res.data[0].processName);

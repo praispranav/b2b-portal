@@ -12,8 +12,8 @@
             <div class="row mb-2" [formGroup]="certificateForm">
                 <div class="col-md-4">
                     <div class="form-check primary">
-                        <input type="checkbox" [id]="'checkColorOpt-'+i" formControlName="checked">
-                        <label [for]="'checkColorOpt-'+i">{{ certificateForm.get('name').value }}</label>
+                        <input type="checkbox" [id]="'certificatesOpt-'+i" formControlName="checked">
+                        <label [for]="'certificatesOpt-'+i">{{ certificateForm.get('name').value }}</label>
                     </div>
                 </div>
                 <div class="col-md-4">

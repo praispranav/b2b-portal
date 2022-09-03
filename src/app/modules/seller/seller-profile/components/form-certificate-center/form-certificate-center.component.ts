@@ -64,7 +64,11 @@ export class FormCertificateCenterComponent implements OnInit {
     this.isLoading = true;
     this.providerCertificateCenterService.getCertificateCenterListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          this.createTypeFields([]);
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.f.certificateType.setValue(res.data[0].certificateType);
         this.f.certificateNumber.setValue(res.data[0].certificateNumber);

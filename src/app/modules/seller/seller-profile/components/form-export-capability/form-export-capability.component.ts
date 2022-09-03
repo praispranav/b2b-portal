@@ -55,7 +55,10 @@ export class FormExportCapabilityComponent implements OnInit {
     this.isLoading = true;
     this.providerExportCapabilityService.getExportCapabilityListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.f.yearlyTurnover.setValue(res.data[0].yearlyTurnover);
         this.f.nearestPort.setValue(res.data[0].nearestPort);

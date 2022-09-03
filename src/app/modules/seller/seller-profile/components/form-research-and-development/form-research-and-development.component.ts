@@ -44,7 +44,10 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     this.isLoading = true;
     this.providerResearchAndDevelopmentService.getResearchAndDevelopmentListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.f.isQualityProcess.setValue(res.data[0].isQualityProcess);
         this.f.certificateName.setValue(res.data[0].certificateName);

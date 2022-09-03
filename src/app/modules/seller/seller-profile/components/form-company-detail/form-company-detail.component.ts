@@ -64,7 +64,10 @@ export class FormCompanyDetailComponent implements OnInit {
     this.isLoading = true;
     this.providerCompanyDetailService.getCompanyDetailListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.f.contactPersonFirstName.setValue(res.data[0].company);
         this.f.contactPersonLastName.setValue(res.data[0].company);

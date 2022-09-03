@@ -62,7 +62,11 @@ export class FormSellerTypeComponent implements OnInit {
     this.isLoading = true;
     this.providerSellerTypeService.getSellerTypeListByFilter(0, 1, {userId: 'pending'}).subscribe(
       (res: any) => {
-        this.isDataExist = true;
+        this.isDataExist = res.data.length>0;
+        if(!this.isDataExist){
+          this.createTypeFields([]);
+          return;
+        }
         this.idIfDataExist = res.data[0]['_id'];
         this.createTypeFields(res.data && res.data[0] && res.data[0].types);
       },
