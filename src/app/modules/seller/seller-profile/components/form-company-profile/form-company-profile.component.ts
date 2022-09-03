@@ -98,12 +98,11 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   async subCompanyProfileForm() {
-    this.isLoading = true;
     if (this.companyProfileForm.invalid) {
       this.markFormGroupTouched(this.companyProfileForm);
       return;
     }
-    
+    this.isLoading = true;
     const formValue = this.companyProfileForm.value;    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;

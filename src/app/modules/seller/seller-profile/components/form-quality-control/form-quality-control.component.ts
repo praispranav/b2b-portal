@@ -56,12 +56,11 @@ export class FormQualityControlComponent implements OnInit {
   }
 
   async subQualityControlForm() {
-    this.isLoading = true;
     if (this.qualityControlForm.invalid) {
       this.markFormGroupTouched(this.qualityControlForm);
       return;
     }
-    
+    this.isLoading = true;
     const formValue = this.qualityControlForm.value;    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;

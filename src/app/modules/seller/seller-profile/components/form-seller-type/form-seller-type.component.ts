@@ -100,14 +100,13 @@ export class FormSellerTypeComponent implements OnInit {
   }
 
   async subSellerTypeForm() {
-    this.isLoading = true;
     if (this.sellerTypeForm.invalid) {
       this.markFormGroupTouched(this.sellerTypeForm);
       return;
     }
+    this.isLoading = true;
     const formValue = this.sellerTypeForm.value;    
     formValue.types = formValue.types.filter(t => t.checked);
-    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;
       this.providerSellerTypeService.updateSellerType(formValue).subscribe(

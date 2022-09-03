@@ -69,15 +69,15 @@ export class FormCompanyDetailComponent implements OnInit {
           return;
         }
         this.idIfDataExist = res.data[0]['_id'];
-        this.f.contactPersonFirstName.setValue(res.data[0].company);
-        this.f.contactPersonLastName.setValue(res.data[0].company);
-        this.f.contactPersonDesignation.setValue(res.data[0].company);
-        this.f.contactPersonEmail.setValue(res.data[0].company);
-        this.f.contactPersonAlternateEmail.setValue(res.data[0].company);
-        this.f.companyWebsite.setValue(res.data[0].company);
-        this.f.googleBusiness.setValue(res.data[0].company);
-        this.f.facebookBusiness.setValue(res.data[0].company);
-        this.f.instagramBusiness.setValue(res.data[0].company);
+        this.f.contactPersonFirstName.setValue(res.data[0].contactPersonFirstName);
+        this.f.contactPersonLastName.setValue(res.data[0].contactPersonLastName);
+        this.f.contactPersonDesignation.setValue(res.data[0].contactPersonDesignation);
+        this.f.contactPersonEmail.setValue(res.data[0].contactPersonEmail);
+        this.f.contactPersonAlternateEmail.setValue(res.data[0].contactPersonAlternateEmail);
+        this.f.companyWebsite.setValue(res.data[0].companyWebsite);
+        this.f.googleBusiness.setValue(res.data[0].googleBusiness);
+        this.f.facebookBusiness.setValue(res.data[0].facebookBusiness);
+        this.f.instagramBusiness.setValue(res.data[0].instagramBusiness);
         this.f.accNumber.setValue(res.data[0].accNumber);
         this.f.accType.setValue(res.data[0].accType);
         this.f.accIFSCCode.setValue(res.data[0].accIFSCCode);
@@ -102,13 +102,11 @@ export class FormCompanyDetailComponent implements OnInit {
   }
 
   async subCompanyDetailForm() {
-    debugger
-    this.isLoading = true;
     if (this.companyDetailForm.invalid) {
       this.markFormGroupTouched(this.companyDetailForm);
       return;
     }
-    
+    this.isLoading = true;
     const formValue = this.companyDetailForm.value;    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;

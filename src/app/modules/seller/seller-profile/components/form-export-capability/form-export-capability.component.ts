@@ -84,12 +84,11 @@ export class FormExportCapabilityComponent implements OnInit {
   }
 
   async subExportCapabilityForm() {
-    this.isLoading = true;
     if (this.exportCapabilityForm.invalid) {
       this.markFormGroupTouched(this.exportCapabilityForm);
       return;
     }
-    
+    this.isLoading = true;
     const formValue = this.exportCapabilityForm.value;    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;

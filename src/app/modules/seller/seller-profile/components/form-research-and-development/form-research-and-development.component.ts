@@ -62,12 +62,11 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
 
   async subResearchAndDevelopmentForm() {
-    this.isLoading = true;
     if (this.researchAndDevelopmentForm.invalid) {
       this.markFormGroupTouched(this.researchAndDevelopmentForm);
       return;
     }
-    
+    this.isLoading = true;
     const formValue = this.researchAndDevelopmentForm.value;    
     if(this.isDataExist){
       formValue._id = this.idIfDataExist;

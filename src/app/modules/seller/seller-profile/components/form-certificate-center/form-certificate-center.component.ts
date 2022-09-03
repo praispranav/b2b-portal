@@ -106,11 +106,11 @@ export class FormCertificateCenterComponent implements OnInit {
   }
 
   async subCertificateCenterForm() {
-    this.isLoading = true;
     if (this.certificateCenterForm.invalid) {
       this.markFormGroupTouched(this.certificateCenterForm);
       return;
     }
+    this.isLoading = true;
     const formValue = this.certificateCenterForm.value;    
     formValue.certificates = formValue.certificates.filter(t => t.checked);
     
