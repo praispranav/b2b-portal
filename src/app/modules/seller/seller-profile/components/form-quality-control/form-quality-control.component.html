@@ -1,70 +1,51 @@
-<div class="container-fluid p-3 bg-white">
-    <h3>Quality Control</h3>
-    <form class="p-t-15" role="form" [formGroup]="qualityControlForm">
-        <h6>Whether to demonstrate Quality Control Process</h6>
-        <div class="form-check form-check-inline complete">
-            <input type="radio" name="state" id="radioInline" value="Default" checked>
-            <label for="radioInline">
-                Yes
-            </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input type="radio" name="state" id="radioDisabled" value="disabled">
-            <label for="radioDisabled">
-                No
-            </label>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-3">
-                <label style="margin-left:54px;margin-right: 12px;">Process Picture <span
-                        class="text-danger">*</span></label>
+<form [formGroup]="qualityControlForm" (keydown.enter)="$event.preventDefault()">
+    <h6>Whether to demostrate Quality Control Process</h6>
+    <div class="form-check form-check-inline complete">
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-Yes"
+            value="Yes">
+        <label for="isQualityProcess-Yes">
+            Yes
+        </label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-No"
+            value="No">
+        <label for="isQualityProcess-No">
+            No
+        </label>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div pgFormGroupDefault class="form-group form-group-default"
+                [class.has-error]="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
+                <label for="process-name">Process Name</label>
+                <input type="text" formControlName="processName" placeholder="Enter process name here"
+                    class="form-control" id="process-name" />
             </div>
-            <div class="col-md-9 mb-4" style="margin-left: -86px;">
-                <pg-upload ListType="picture-card" [Preview]="handlePreview" [(FileList)]="processPicture"
-                    [ShowButton]="processPicture.length===0" Action="https://jsonplaceholder.typicode.com/posts/">
-                    <div class="pic-placeholder">
-                        <i class="pg-icon p-b-5">upload</i>
-                        <div class="fs-12">Upload</div>
-                    </div>
-                </pg-upload>
-                <div *ngIf="f.processPicture.invalid && (f.processPicture.dirty || f.processPicture.touched)">
-                    <label *ngIf="f.processPicture.errors.required" class="error">Image is required.</label>
-                </div>
+            <div *ngIf="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
+                <label *ngIf="f.processName.errors.required" class="error">This field is required.</label>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
-                    <label for="process-name">Process Name</label>
-                    <input type="text" formControlName="processName" placeholder="Enter process name here"
-                        class="form-control" id="process-name" />
-                </div>
-                <div *ngIf="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
-                    <label *ngIf="f.processName.errors.required" class="error">This field is required.</label>
-                </div>
-            </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
-                    <label for="process-description">Description</label>
-                    <textarea type="file" formControlName="description" placeholder="Process Description here"
-                        class="form-control" id="process-description">
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div pgFormGroupDefault class="form-group form-group-default"
+                [class.has-error]="f.processDescription.invalid && (f.processDescription.dirty || f.processDescription.touched)">
+                <label for="processDescription">Description</label>
+                <textarea formControlName="processDescription" placeholder="Process Description here"
+                    class="form-control" id="processDescription">
                         </textarea>
-                </div>
-                <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
-                    <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
-                </div>
             </div>
-            <div>
-                <button type="submit" class="my-4 btn btn-primary" (click)="addForm()">Add+</button>
+            <div *ngIf="f.processDescription.invalid && (f.processDescription.dirty || f.processDescription.touched)">
+                <label *ngIf="f.processDescription.errors.required" class="error">This field is required.</label>
             </div>
         </div>
-        <div>
-            <button type="submit" class="mt-4 btn btn-primary" (click)="addForm()">Continue</button>
-        </div>
-    </form>
-</div>
+    </div>
+    <div class="mt-4">
+        <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
+            (click)="subQualityControlForm()">
+            {{isDataExist? 'Update' : 'Save'}} Company Detail
+        </button>
+    </div>
+</form>

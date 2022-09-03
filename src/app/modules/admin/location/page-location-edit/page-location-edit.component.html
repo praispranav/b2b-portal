@@ -94,9 +94,10 @@
             <form [formGroup]="stateForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
+                    <!-- (ngModelChange)="countryChange($event)" -->
                     <div class="form-group"
                         [class.has-error]="sf.countryId.invalid && (sf.countryId.dirty || sf.countryId.touched)">
-                        <pg-select (ngModelChange)="countryChange($event)" formControlName="countryId" class="w-100"
+                        <pg-select formControlName="countryId" class="w-100"
                             [PlaceHolder]="'Country'" AllowClear ShowSearch>
                             <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">
@@ -186,9 +187,10 @@
             <form [formGroup]="locationForm" (keydown.enter)="$event.preventDefault()">
                 <div class="form-group">
                     <h6 class="control-label">Country</h6>
+                    <!-- (ngModelChange)="countryChange($event)" -->
                     <div class="form-group"
                         [class.has-error]="lf.countryId.invalid && (lf.countryId.dirty || lf.countryId.touched)">
-                        <pg-select (ngModelChange)="countryChange($event)" formControlName="countryId" class="w-100"
+                        <pg-select formControlName="countryId" class="w-100"
                             [PlaceHolder]="'Country'" AllowClear ShowSearch>
                             <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">

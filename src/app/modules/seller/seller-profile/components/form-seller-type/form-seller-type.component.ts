@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../core/services/app-message.service';
-import { ProviderSellerTypeService } from '../../../../../core/providers/user-seller/provider-seller-type.service';
+import { ProviderSellerTypeService } from '../../../../../core/providers/user/provider-seller-type.service';
 
 @Component({
   selector: 'app-form-seller-type',

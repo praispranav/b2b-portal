@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderRAndDService } from "../../../../../core/providers/user/provider-rAndD.service";
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppMessageService } from '../../../../../core/services/app-message.service';
+import { ProviderResearchAndDevelopmentService } from '../../../../../core/providers/user/provider-research-and-development.service';
 
 @Component({
   selector: "app-form-research-and-development",
@@ -8,48 +9,79 @@ import { ProviderRAndDService } from "../../../../../core/providers/user/provide
   styleUrls: ["./form-research-and-development.component.scss"],
 })
 export class FormResearchAndDevelopmentComponent implements OnInit {
-  randdForm: FormGroup;
-  imageList: any[] = [];
+  isLoading = true;
+  isDataExist: boolean;
+  idIfDataExist: string;
+  researchAndDevelopmentForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private providerRAndDService: ProviderRAndDService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private appMessageService: AppMessageService,
+    private providerResearchAndDevelopmentService: ProviderResearchAndDevelopmentService
+  ) { }
+
   get f() {
-    return this.randdForm.controls;
+    return this.researchAndDevelopmentForm.controls;
   }
 
   ngOnInit() {
-    this.buildRanddForm();
+    this.buildTypeForm();
+    this.updateDataIfExist();
   }
 
-  buildRanddForm() {
-    this.randdForm = this.formBuilder.group({
+  buildTypeForm() {
+    this.researchAndDevelopmentForm = this.formBuilder.group({
+      isQualityProcess: ["Yes"],
       certificateName: [""],
       certifiedBy: [""],
       businessScope: [""],
-      selectNo: [""],
-      selectYes: [""],
-      businessDate: [""],
+      certificateIssueDate: [""],
+      certificateExpiryDate: [""],
     });
   }
-  async subRAndForm() {
-    if (this.randdForm.invalid) {
-      this.markFormGroupTouched(this.randdForm);
-      return;
-    }
-    if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
-    }
-    this.providerRAndDService.addRAndD(this.randdForm.value).subscribe(
-      (res) => {
-        this.resetFormGroup(this.randdForm);
-        window.alert('API Success');
+
+  updateDataIfExist(){
+    this.isLoading = true;
+    this.providerResearchAndDevelopmentService.getResearchAndDevelopmentListByFilter(0, 1, {userId: 'pending'}).subscribe(
+      (res: any) => {
+        this.isDataExist = true;
+        this.idIfDataExist = res.data[0]['_id'];
+        this.f.isQualityProcess.setValue(res.data[0].isQualityProcess);
+        this.f.certificateName.setValue(res.data[0].certificateName);
+        this.f.certifiedBy.setValue(res.data[0].certifiedBy);
+        this.f.businessScope.setValue(res.data[0].businessScope);
+        this.f.certificateIssueDate.setValue(res.data[0].certificateIssueDate);
+        this.f.certificateExpiryDate.setValue(res.data[0].certificateExpiryDate);
       },
-      (err) => {
-        window.alert('API Error');
-      }
+      (err) => { this.isDataExist = false; },
+      () => { this.isLoading = false; }
     );
   }
+
+  async subResearchAndDevelopmentForm() {
+    this.isLoading = true;
+    if (this.researchAndDevelopmentForm.invalid) {
+      this.markFormGroupTouched(this.researchAndDevelopmentForm);
+      return;
+    }
+    
+    const formValue = this.researchAndDevelopmentForm.value;    
+    if(this.isDataExist){
+      formValue._id = this.idIfDataExist;
+      this.providerResearchAndDevelopmentService.updateResearchAndDevelopment(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Research & Development Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Research & Development Not Updated") },
+        () => { this.isLoading = false; }
+      );
+    } else {
+      this.providerResearchAndDevelopmentService.addResearchAndDevelopment(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Research & Development Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Research & Development Not Added") },
+        () => { this.isLoading = false; }
+      );
+    }
+  }
+
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -58,18 +90,4 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       }
     });
   }
-  async toBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  }
-
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
-    this.imageList = [];
-  }
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderProductDetailsService } from "../../../../../core/providers/user/provider-product-details.service";
+import { ProviderProductDetailService } from "../../../../../core/providers/user/provider-product-detail.service";
 
 @Component({
   selector: "app-form-product-details",
@@ -10,7 +10,7 @@ import { ProviderProductDetailsService } from "../../../../../core/providers/use
 export class FormProductDetailsComponent implements OnInit {
   productDetailsForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private providerProductDetailsService: ProviderProductDetailsService) { }
+  constructor(private formBuilder: FormBuilder, private providerProductDetailService: ProviderProductDetailService) { }
 
   handleChange(event) { }
 
@@ -29,7 +29,7 @@ export class FormProductDetailsComponent implements OnInit {
     });
   }
   async subProductDetailsForm() {
-    this.providerProductDetailsService.addProductDetails(this.productDetailsForm.value).subscribe(
+    this.providerProductDetailService.addProductDetail(this.productDetailsForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.productDetailsForm);
         window.alert('API Success');

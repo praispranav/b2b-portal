@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../core/services/app-message.service';
-import { ProviderCompanyProfileService } from "../../../../../core/providers/user-seller/provider-company-profile.service";
+import { ProviderCompanyProfileService } from "../../../../../core/providers/user/provider-company-profile.service";
 
 @Component({
   selector: "app-form-company-profile",

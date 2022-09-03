@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderShippingDetailsService } from "../../../../../core/providers/user/provider-shipping-details.service";
+import { ProviderShippingDetailService } from "../../../../../core/providers/user/provider-shipping-detail.service";
 
 @Component({
   selector: "app-form-shipping-details",
@@ -16,7 +16,7 @@ export class FormShippingDetailsComponent implements OnInit {
     { mode: "Land Transportation" },
     { mode: "Ocen Shipping" },
   ];
-  constructor(private formBuilder: FormBuilder, private providerShippingDetailsService: ProviderShippingDetailsService) { }
+  constructor(private formBuilder: FormBuilder, private providerShippingDetailService: ProviderShippingDetailService) { }
 
   get f() {
     return this.shippingDetailsForm.controls;
@@ -39,7 +39,7 @@ export class FormShippingDetailsComponent implements OnInit {
     });
   }
   async subShippingDetailsForm() {
-    this.providerShippingDetailsService.addShippingDetails(this.shippingDetailsForm.value).subscribe(
+    this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
       (res) => {
         this.resetFormGroup(this.shippingDetailsForm);
         window.alert('API Success');

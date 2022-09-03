@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProviderCompanyDetailService } from "../../../../../core/providers/user/provider-company-detail.service";
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppMessageService } from '../../../../../core/services/app-message.service';
+import { ProviderCompanyDetailService } from './../../../../../core/providers/user/provider-company-detail.service';
 
 @Component({
   selector: "app-form-company-detail",
@@ -8,83 +9,119 @@ import { ProviderCompanyDetailService } from "../../../../../core/providers/user
   styleUrls: ["./form-company-detail.component.scss"],
 })
 export class FormCompanyDetailComponent implements OnInit {
-  companyDetailsForm: FormGroup;
-  designationList: any[] = [];
-  tradeShowList: any[] = [];
+  isLoading = true;
+  isDataExist: boolean;
+  idIfDataExist: string;
+  companyDetailForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private providerCompanyDetailService: ProviderCompanyDetailService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private appMessageService: AppMessageService,
+    private providerCompanyDetailService: ProviderCompanyDetailService
+  ) { }
 
   get f() {
-    return this.companyDetailsForm.controls;
+    return this.companyDetailForm.controls;
   }
 
   ngOnInit() {
-    this.buildCompanyDetailsForm();
+    this.buildTypeForm();
+    this.updateDataIfExist();
   }
-  buildCompanyDetailsForm() {
-    this.companyDetailsForm = this.formBuilder.group({
-      companyLogo: ["", [Validators.required]],
-      companyPicture: ["", [Validators.required]],
-      companyVideo: ["", [Validators.required]],
-      contactPerson: ["", [Validators.required]],
-      contactName: ["", [Validators.required]],
-      contactSurname: ["", [Validators.required]],
-      contactEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      alternativeEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      designation: ["", [Validators.required]],
+
+  buildTypeForm() {
+    this.companyDetailForm = this.formBuilder.group({
+      contactPersonFirstName: ["", [Validators.required]],
+      contactPersonLastName: ["", [Validators.required]],
+      contactPersonDesignation: ["", [Validators.required]],
+      contactPersonEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      contactPersonAlternateEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       companyWebsite: ["", [Validators.required]],
       googleBusiness: ["", [Validators.required]],
       facebookBusiness: ["", [Validators.required]],
       instagramBusiness: ["", [Validators.required]],
-      companyPage: ["", [Validators.required]],
-      accountNumber: ["", [Validators.required]],
-      accountType: ["", [Validators.required]],
-      ifscCode: ["", [Validators.required]],
-      swiftCode: ["", [Validators.required]],
-      branch: ["", [Validators.required]],
-      bankName: ["", [Validators.required]],
-      languageSpoken: ["", [Validators.required]],
-      companyPhilosophy: ["", [Validators.required]],
+      accNumber: ["", [Validators.required]],
+      accType: ["", [Validators.required]],
+      accIFSCCode: ["", [Validators.required]],
+      accSwiftCode: ["", [Validators.required]],
+      accBranch: ["", [Validators.required]],
+      accBankName: ["", [Validators.required]],
+      companyLanguageSpoken: ["", [Validators.required]],
       companyVision: ["", [Validators.required]],
       companyDetail: ["", [Validators.required]],
-      strength: ["", [Validators.required]],
-      selectYes: ["", [Validators.required]],
-      selectNo: ["", [Validators.required]],
-      tradeShow: [""],
-      date: [""],
-      host: [""],
-      region: [""],
+      companyPhilosophy: ["", [Validators.required]],
+      tradeName: [""],
+      tradeStartDate: [""],
+      tradeEndDate: [""],
+      tradeHost: [""],
+      tradeRegion: [""],
       tradeCity: [""],
-      aboutShow: [""],
-      uploadPicture: [""],
+      tradeInfo: [""]
     });
   }
 
-  async subCompanyDetailForm() {
-    if (this.companyDetailsForm.invalid) {
-      this.markFormGroupTouched(this.companyDetailsForm);
-      return;
-    }
-
-    this.providerCompanyDetailService.addCompanyDetail(this.companyDetailsForm.value).subscribe(
-      (res) => {
-        this.resetFormGroup(this.companyDetailsForm);
-        window.alert('API Success');
+  updateDataIfExist(){
+    this.isLoading = true;
+    this.providerCompanyDetailService.getCompanyDetailListByFilter(0, 1, {userId: 'pending'}).subscribe(
+      (res: any) => {
+        this.isDataExist = true;
+        this.idIfDataExist = res.data[0]['_id'];
+        this.f.contactPersonFirstName.setValue(res.data[0].company);
+        this.f.contactPersonLastName.setValue(res.data[0].company);
+        this.f.contactPersonDesignation.setValue(res.data[0].company);
+        this.f.contactPersonEmail.setValue(res.data[0].company);
+        this.f.contactPersonAlternateEmail.setValue(res.data[0].company);
+        this.f.companyWebsite.setValue(res.data[0].company);
+        this.f.googleBusiness.setValue(res.data[0].company);
+        this.f.facebookBusiness.setValue(res.data[0].company);
+        this.f.instagramBusiness.setValue(res.data[0].company);
+        this.f.accNumber.setValue(res.data[0].accNumber);
+        this.f.accType.setValue(res.data[0].accType);
+        this.f.accIFSCCode.setValue(res.data[0].accIFSCCode);
+        this.f.accSwiftCode.setValue(res.data[0].accSwiftCode);
+        this.f.accBranch.setValue(res.data[0].accBranch);
+        this.f.accBankName.setValue(res.data[0].accBankName);
+        this.f.companyLanguageSpoken.setValue(res.data[0].companyLanguageSpoken);
+        this.f.companyVision.setValue(res.data[0].companyVision);
+        this.f.companyDetail.setValue(res.data[0].companyDetail);
+        this.f.companyPhilosophy.setValue(res.data[0].companyPhilosophy);
+        this.f.tradeName.setValue(res.data[0].tradeName);
+        this.f.tradeStartDate.setValue(res.data[0].tradeStartDate);
+        this.f.tradeEndDate.setValue(res.data[0].tradeEndDate);
+        this.f.tradeHost.setValue(res.data[0].tradeHost);
+        this.f.tradeRegion.setValue(res.data[0].tradeRegion);
+        this.f.tradeCity.setValue(res.data[0].tradeCity);
+        this.f.tradeInfo.setValue(res.data[0].tradeInfo);
       },
-      (err) => {
-        window.alert('API Error');
-      }
+      (err) => { this.isDataExist = false; },
+      () => { this.isLoading = false; }
     );
   }
 
-  async toBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
+  async subCompanyDetailForm() {
+    this.isLoading = true;
+    if (this.companyDetailForm.invalid) {
+      this.markFormGroupTouched(this.companyDetailForm);
+      return;
+    }
+    
+    const formValue = this.companyDetailForm.value;    
+    if(this.isDataExist){
+      formValue._id = this.idIfDataExist;
+      this.providerCompanyDetailService.updateCompanyDetail(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
+        () => { this.isLoading = false; }
+      );
+    } else {
+      this.providerCompanyDetailService.addCompanyDetail(formValue).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
+        () => { this.isLoading = false; }
+      );
+    }
   }
+
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();
@@ -93,8 +130,4 @@ export class FormCompanyDetailComponent implements OnInit {
       }
     });
   }
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
-  }
-
 }
