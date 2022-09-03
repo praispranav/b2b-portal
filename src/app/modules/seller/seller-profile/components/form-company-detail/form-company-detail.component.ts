@@ -102,6 +102,7 @@ export class FormCompanyDetailComponent implements OnInit {
   }
 
   async subCompanyDetailForm() {
+    debugger
     this.isLoading = true;
     if (this.companyDetailForm.invalid) {
       this.markFormGroupTouched(this.companyDetailForm);

@@ -94,9 +94,11 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group tag-group form-group-default required">
-                <label>Main Product</label>
-                <pg-tag-control placeholder="Add Main Product"></pg-tag-control>
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
+                <label for="mainProduct">Main Product</label>
+                <input type="text" formControlName="mainProduct" placeholder="Enter Main Product Here"
+                    class="form-control" id="mainProduct" />
             </div>
             <div *ngIf="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
                 <label *ngIf="f.mainProduct.errors.required" class="error">This field is required.</label>
@@ -160,18 +162,22 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <div class="form-group tag-group form-group-default required required">
-                <label>Landline Number</label>
-                <pg-tag-control placeholder="Add Landline Number"></pg-tag-control>
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.regLandline.invalid && (f.regLandline.dirty || f.regLandline.touched)">
+                <label for="regLandline">Landline Number</label>
+                <input type="text" formControlName="regLandline" placeholder="Enter Landline Number"
+                    class="form-control" id="regLandline" />
             </div>
             <div *ngIf="f.regLandline.invalid && (f.regLandline.dirty || f.regLandline.touched)">
                 <label *ngIf="f.regLandline.errors.required" class="error">This field is required.</label>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="form-group tag-group form-group-default required required">
-                <label>Mobile Number</label>
-                <pg-tag-control placeholder="Add Mobile Number"></pg-tag-control>
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.regMobile.invalid && (f.regMobile.dirty || f.regMobile.touched)">
+                <label for="regMobile">Mobile Number</label>
+                <input type="text" formControlName="regMobile" placeholder="Enter Mobile Number"
+                    class="form-control" id="regMobile" />
             </div>
             <div *ngIf="f.regMobile.invalid && (f.regMobile.dirty || f.regMobile.touched)">
                 <label *ngIf="f.regMobile.errors.required" class="error">This field is required.</label>
@@ -186,8 +192,8 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.facDivision.invalid && (f.facDivision.dirty || f.facDivision.touched)">
                 <label for="facDivision">Division</label>
-                <input type="text" formControlName="facDivision" placeholder="Enter division here"
-                    class="form-control" id="facDivision" />
+                <input type="text" formControlName="facDivision" placeholder="Enter division here" class="form-control"
+                    id="facDivision" />
             </div>
         </div>
     </div>
@@ -196,8 +202,8 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.facArea.invalid && (f.facArea.dirty || f.facArea.touched)">
                 <label for="facArea">Area/Size</label>
-                <input type="text" formControlName="facArea" placeholder="Enter area here"
-                    class="form-control" id="facArea" />
+                <input type="text" formControlName="facArea" placeholder="Enter area here" class="form-control"
+                    id="facArea" />
             </div>
         </div>
     </div>
@@ -245,8 +251,8 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.facLandline.invalid && (f.facLandline.dirty || f.facLandline.touched)">
                 <label for="facLandline">Phone</label>
-                <input type="text" formControlName="facLandline" placeholder="Enter your Phone here" class="form-control"
-                    id="facLandline" />
+                <input type="text" formControlName="facLandline" placeholder="Enter your Phone here"
+                    class="form-control" id="facLandline" />
             </div>
         </div>
         <div class="col-md-3">

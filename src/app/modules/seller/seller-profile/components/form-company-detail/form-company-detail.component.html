@@ -3,25 +3,25 @@
     <div class="row">
         <div class="col-md-4">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.contactPersonEmail.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
-                <label for="contactPersonEmail">First Name</label>
-                <input type="text" formControlName="contactPersonEmail" placeholder="Name" class="form-control"
-                    id="contactPersonEmail" />
+                [class.has-error]="f.contactPersonFirstName.invalid && (f.contactPersonFirstName.dirty || f.contactPersonFirstName.touched)">
+                <label for="contactPersonFirstName">First Name</label>
+                <input type="text" formControlName="contactPersonFirstName" placeholder="Name" class="form-control"
+                    id="contactPersonFirstName" />
             </div>
-            <div *ngIf="f.contactPersonEmail.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
-                <label *ngIf="f.contactPersonEmail.errors.required" class="error">This field is required.</label>
+            <div *ngIf="f.contactPersonFirstName.invalid && (f.contactPersonFirstName.dirty || f.contactPersonFirstName.touched)">
+                <label *ngIf="f.contactPersonFirstName.errors.required" class="error">This field is required.</label>
             </div>
         </div>
         <div class="col-md-4">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.contactPersonDesignation.invalid && (f.contactPersonDesignation.dirty || f.contactPersonDesignation.touched)">
-                <label for="contactPersonDesignation">Last Name</label>
-                <input type="text" formControlName="contactPersonDesignation" placeholder="Surname" class="form-control"
-                    id="contactPersonDesignation" />
+                [class.has-error]="f.contactPersonLastName.invalid && (f.contactPersonLastName.dirty || f.contactPersonLastName.touched)">
+                <label for="contactPersonLastName">Last Name</label>
+                <input type="text" formControlName="contactPersonLastName" placeholder="Surname" class="form-control"
+                    id="contactPersonLastName" />
             </div>
             <div
-                *ngIf="f.contactPersonDesignation.invalid && (f.contactPersonDesignation.dirty || f.contactPersonDesignation.touched)">
-                <label *ngIf="f.contactPersonDesignation.errors.required" class="error">This field is required.</label>
+                *ngIf="f.contactPersonLastName.invalid && (f.contactPersonLastName.dirty || f.contactPersonLastName.touched)">
+                <label *ngIf="f.contactPersonLastName.errors.required" class="error">This field is required.</label>
             </div>
         </div>
         <div class="col-md-4">
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.googleBusiness.invalid && (f.googleBusiness.dirty || f.facebookBusiness.touched)">
+                [class.has-error]="f.googleBusiness.invalid && (f.googleBusiness.dirty || f.googleBusiness.touched)">
                 <label for="googleBusiness">Google Business</label>
                 <input type="text" formControlName="googleBusiness" placeholder="Compny Website" class="form-control"
                     id="googleBusiness" />
@@ -101,7 +101,7 @@
         </div>
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.instagramBusiness.invalid && (f.instagramBusiness.dirty || f.facebookBusiness.touched)">
+                [class.has-error]="f.instagramBusiness.invalid && (f.instagramBusiness.dirty || f.instagramBusiness.touched)">
                 <label for="instagramBusiness">Instagram Business</label>
                 <input type="text" formControlName="instagramBusiness" placeholder="Compny Website" class="form-control"
                     id="instagramBusiness" />
@@ -116,13 +116,13 @@
     <div class="row">
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
-                <label for="accIFSCCode">Account Number</label>
-                <input type="text" formControlName="accIFSCCode" placeholder="Account Number" class="form-control"
-                    id="accIFSCCode" />
+                [class.has-error]="f.accNumber.invalid && (f.accNumber.dirty || f.accNumber.touched)">
+                <label for="accNumber">Account Number</label>
+                <input type="text" formControlName="accNumber" placeholder="Account Number" class="form-control"
+                    id="accNumber" />
             </div>
-            <div *ngIf="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
-                <label *ngIf="f.accIFSCCode.errors.required" class="error">This field is required.</label>
+            <div *ngIf="f.accNumber.invalid && (f.accNumber.dirty || f.accNumber.touched)">
+                <label *ngIf="f.accNumber.errors.required" class="error">This field is required.</label>
             </div>
         </div>
         <div class="col-md-6">
@@ -153,7 +153,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accBranch.invalid && (f.accBranch.dirty || f.accBranch.touched)">
                 <label for="accBranch">Bank Branch</label>
-                <input type="text" formControlName="accBranch" placeholder="accBranch" class="form-control"
+                <input type="text" formControlName="accBranch" placeholder="Bank Branch" class="form-control"
                     id="accBranch" />
             </div>
             <div *ngIf="f.accBranch.invalid && (f.accBranch.dirty || f.accBranch.touched)">
@@ -166,7 +166,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
                 <label for="accIFSCCode">IFSC Code</label>
-                <input type="text" formControlName="accIFSCCode" placeholder="accIFSCCode" class="form-control"
+                <input type="text" formControlName="accIFSCCode" placeholder="IFSC Code" class="form-control"
                     id="accIFSCCode" />
             </div>
             <div *ngIf="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
@@ -177,7 +177,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accSwiftCode.invalid && (f.accSwiftCode.dirty || f.accSwiftCode.touched)">
                 <label for="accSwiftCode">SWIFT Code</label>
-                <input type="text" formControlName="accSwiftCode" placeholder="accSwiftCode" class="form-control"
+                <input type="text" formControlName="accSwiftCode" placeholder="SWIFT Code" class="form-control"
                     id="accSwiftCode" />
             </div>
             <div *ngIf="f.accSwiftCode.invalid && (f.accSwiftCode.dirty || f.accSwiftCode.touched)">
@@ -190,7 +190,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyLanguageSpoken.invalid && (f.companyLanguageSpoken.dirty || f.companyLanguageSpoken.touched)">
                 <label for="companyLanguageSpoken">Language Spoken</label>
-                <input type="text" formControlName="companyLanguageSpoken" placeholder="companyLanguageSpoken"
+                <input type="text" formControlName="companyLanguageSpoken" placeholder="Language Spoken"
                     class="form-control" id="companyLanguageSpoken" />
             </div>
             <div
@@ -273,7 +273,7 @@
             <div class="form-group form-group-default input-group col-md-12"
                 [class.has-error]="f.tradeStartDate.invalid && (f.tradeStartDate.dirty || f.tradeStartDate.touched)">
                 <div class="form-input-group">
-                    <label>Start Date</label>
+                    <label for="tradeStartDate">Start Date</label>
                     <pg-datepicker formControlName="tradeStartDate" placeholder="Enter date here" class="form-control" id="tradeStartDate">
                     </pg-datepicker>
                 </div>
@@ -288,7 +288,7 @@
             <div class="form-group form-group-default input-group col-md-12"
                 [class.has-error]="f.tradeEndDate.invalid && (f.tradeEndDate.dirty || f.tradeEndDate.touched)">
                 <div class="form-input-group">
-                    <label>End Date</label>
+                    <label for="tradeEndDate">End Date</label>
                     <pg-datepicker formControlName="tradeEndDate" placeholder="Enter date here" class="form-control" id="tradeEndDate">
                     </pg-datepicker>
                 </div>
@@ -305,7 +305,7 @@
             <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.tradeRegion.invalid && (f.tradeRegion.dirty || f.tradeRegion.touched)">
                 <label for="tradeRegion">Region</label>
-                <input type="text" formControlName="tradeRegion" placeholder="tradeRegion" class="form-control"
+                <input type="text" formControlName="tradeRegion" placeholder="Region" class="form-control"
                     id="tradeRegion" />
             </div>
         </div>
