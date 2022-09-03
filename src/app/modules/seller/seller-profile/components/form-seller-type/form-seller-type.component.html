@@ -1,13 +1,16 @@
 <form [formGroup]="sellerTypeForm" (keydown.enter)="$event.preventDefault()">
+
     <ng-container formArrayName="types">
-        <ng-container *ngFor="let typeForm of types.controls; let i = index;">
-            <div [formGroup]="typeForm">
-                <div class="form-check">
-                    <input type="checkbox" [id]="'typesOpt-'+i" formControlName="checked">
-                    <label [for]="'typesOpt-'+i">{{ typeForm.get('name').value }}</label>
+        <div class="row">
+            <ng-container *ngFor="let typeForm of types.controls; let i = index;">
+                <div class="col-md-4" [formGroup]="typeForm">
+                    <div class="form-check">
+                        <input type="checkbox" [id]="'typesOpt-'+i" formControlName="checked">
+                        <label [for]="'typesOpt-'+i">{{ typeForm.get('name').value }}</label>
+                    </div>
                 </div>
-            </div>
-        </ng-container>
+            </ng-container>
+        </div>
     </ng-container>
     <div class="mt-4">
         <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
