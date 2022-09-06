@@ -1,53 +1,41 @@
 <form [formGroup]="researchAndDevelopmentForm" (keydown.enter)="$event.preventDefault()">
     <h6>Whether to demostrate Quality Control Process</h6>
     <div class="form-check form-check-inline complete">
-        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-Yes"
-            value="Yes">
-        <label for="isQualityProcess-Yes">
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess"
+            id="frand-frad-isQualityProcess-Yes" value="Yes">
+        <label for="frand-isQualityProcess-Yes">
             Yes
         </label>
     </div>
     <div class="form-check form-check-inline">
-        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-No"
-            value="No">
-        <label for="isQualityProcess-No">
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess"
+            id="frand-frad-isQualityProcess-No" value="No">
+        <label for="frand-isQualityProcess-No">
             No
         </label>
     </div>
     <div class="row">
         <div class="col-md-8">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
-                <label for="certificateName">Certificate Name</label>
-                <input type="text" formControlName="certificateName" placeholder="Enter Certificate name here"
-                    class="form-control" id="certificateName" />
-            </div>
-            <div *ngIf="f.certificateName.invalid && (f.certificateName.dirty || f.certificateName.touched)">
-                <label *ngIf="f.certificateName.errors.required" class="error">This field is required.</label>
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="frand-certificateName">Certificate Name</label>
+                <input type="text" formControlName="certificateName" placeholder="Enter Certificate Name here"
+                    class="form-control" id="frand-frad-certificateName" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
-                <label for="certifiedBy">Certified By</label>
-                <input type="text" formControlName="certifiedBy" placeholder="Certified By" class="form-control"
-                    id="certifiedBy" />
-            </div>
-            <div *ngIf="f.certifiedBy.invalid && (f.certifiedBy.dirty || f.certifiedBy.touched)">
-                <label *ngIf="f.certifiedBy.errors.required" class="error">This field is required.</label>
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="frand-certifiedBy">Certified By</label>
+                <input type="text" formControlName="certifiedBy" placeholder=" Enter Certified By" class="form-control"
+                    id="frand-frad-certifiedBy" />
             </div>
         </div>
         <div class="col-md-4">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
-                <label for="businessScope">Business Scope</label>
-                <input type="text" formControlName="businessScope" placeholder="Business Scope here"
-                    class="form-control" id="businessScope">
-            </div>
-            <div *ngIf="f.businessScope.invalid && (f.businessScope.dirty || f.businessScope.touched)">
-                <label *ngIf="f.businessScope.errors.required" class="error">This field is required.</label>
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="frand-businessScope">Business Scope</label>
+                <input type="text" formControlName="businessScope" placeholder="Enter Business Scope here"
+                    class="form-control" id="frand-frad-businessScope">
             </div>
         </div>
     </div>
@@ -55,9 +43,9 @@
         <div class="col-md-4">
             <div class="form-group form-group-default input-group col-md-12">
                 <div class="form-input-group">
-                    <label for="certificateIssueDate">Start Date</label>
-                    <pg-datepicker formControlName="certificateIssueDate" placeholder="Enter date here"
-                        class="form-control" id="certificateIssueDate">
+                    <label for="frand-certificateIssueDate">Start Date</label>
+                    <pg-datepicker formControlName="certificateIssueDate" placeholder="Enter Start date here"
+                        class="form-control" id="frand-frad-certificateIssueDate">
                     </pg-datepicker>
                 </div>
                 <div class="input-group-append">
@@ -70,9 +58,9 @@
         <div class="col-md-4">
             <div class="form-group form-group-default input-group col-md-12">
                 <div class="form-input-group">
-                    <label for="certificateExpiryDate">End Date</label>
-                    <pg-datepicker formControlName="certificateExpiryDate" placeholder="Enter date here"
-                        class="form-control" id="certificateExpiryDate">
+                    <label for="frand-certificateExpiryDate">End Date</label>
+                    <pg-datepicker formControlName="certificateExpiryDate" placeholder="Enter end date here"
+                        class="form-control" id="frand-frad-certificateExpiryDate">
                     </pg-datepicker>
                 </div>
                 <div class="input-group-append">
@@ -86,7 +74,7 @@
     <div class="mt-4">
         <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
             (click)="subResearchAndDevelopmentForm()">
-            {{isDataExist? 'Update' : 'Save'}} Company Detail
+            {{isDataExist? 'Update' : 'Save'}} Research And Development
         </button>
     </div>
 </form>

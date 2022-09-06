@@ -3,12 +3,14 @@
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.company.invalid && (f.company.dirty || f.company.touched)">
-                <label for="company">Company Name</label>
-                <input type="text" formControlName="company" placeholder="Enter your company name here"
-                    class="form-control" id="company" />
+                <label for="fcp-company">Company Name</label>
+                <input type="text" formControlName="company" placeholder="Enter your Company Name here"
+                    class="form-control" id="fcp-company" />
             </div>
             <div *ngIf="f.company.invalid && (f.company.dirty || f.company.touched)">
                 <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.company.errors.minlength.requiredLength" class="error">Minimum length of 20 is
+                    required.</label>
             </div>
         </div>
     </div>
@@ -16,34 +18,40 @@
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.tanNo.invalid && (f.tanNo.dirty || f.tanNo.touched)">
-                <label for="tanNo">TAN</label>
-                <input type="text" formControlName="tanNo" placeholder="Enter your TAN number here" class="form-control"
-                    id="tanNo" />
+                <label for="fcp-tanNo">TAN</label>
+                <input type="text" formControlName="tanNo" placeholder="Enter TAN number" class="form-control"
+                    id="fcp-tanNo" />
             </div>
             <div *ngIf="f.tanNo.invalid && (f.tanNo.dirty || f.tanNo.touched)">
                 <label *ngIf="f.tanNo.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.tanNo.errors.maxlength.requiredLength" class="error">Maximum length should be
+                    20.</label>
             </div>
         </div>
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.panNo.invalid && (f.panNo.dirty || f.panNo.touched)">
-                <label for="panNo">PAN</label>
-                <input type="text" formControlName="panNo" placeholder="Enter your PAN number here" class="form-control"
-                    id="panNo" />
+                <label for="fcp-panNo">PAN</label>
+                <input type="text" formControlName="panNo" placeholder="Enter PAN number " class="form-control"
+                    id="fcp-panNo" />
             </div>
             <div *ngIf="f.panNo.invalid && (f.panNo.dirty || f.panNo.touched)">
                 <label *ngIf="f.panNo.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.panNo.errors.maxlength.requiredLength" class="error">Maximum length should be
+                    20.</label>
             </div>
         </div>
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.gstNo.invalid && (f.gstNo.dirty || f.gstNo.touched)">
-                <label for="gstNo">GST No</label>
-                <input type="text" formControlName="gstNo" placeholder="Enter your GST number here" class="form-control"
-                    id="gstNo" />
+                <label for="fcp-gstNo">GST No</label>
+                <input type="text" formControlName="gstNo" placeholder="Enter GST number" class="form-control"
+                    id="fcp-gstNo" />
             </div>
             <div *ngIf="f.gstNo.invalid && (f.gstNo.dirty || f.gstNo.touched)">
                 <label *ngIf="f.gstNo.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.gstNo.errors.maxlength.requiredLength" class="error">Maximum length should be
+                    20.</label>
             </div>
         </div>
     </div>
@@ -51,10 +59,10 @@
         <div class="col-md-3">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.codeOfIE.invalid && (f.codeOfIE.dirty || f.codeOfIE.touched)">
-                <label for="codeOfIE">Import Export Code
+                <label for="fcp-codeOfIE">Import Export Code
                     (IEC)</label>
-                <input type="text" formControlName="codeOfIE" placeholder="Enter your IEC code here"
-                    class="form-control" id="codeOfIE" />
+                <input type="text" formControlName="codeOfIE" placeholder="Enter Export Code here" class="form-control"
+                    id="fcp-codeOfIE" />
             </div>
             <div *ngIf="f.codeOfIE.invalid && (f.codeOfIE.dirty || f.codeOfIE.touched)">
                 <label *ngIf="f.codeOfIE.errors.required" class="error">This field is required.</label>
@@ -64,9 +72,10 @@
             <div class="form-group form-group-default input-group col-md-12 required"
                 [class.has-error]="f.estYear.invalid && (f.estYear.dirty || f.estYear.touched)">
                 <div class="form-input-group">
-                    <label for="estYear">Year Of Establishment</label>
+                    <label for="fcp-estYear">Year Of Establishment</label>
                     <pg-datepicker formControlName="estYear" placeholder="Enter your Year Of Establishment here"
-                        class="form-control" id="estYear"></pg-datepicker>
+                        class="form-control" id="fcp-estYear">
+                    </pg-datepicker>
                 </div>
                 <div class="input-group-append">
                     <span class="input-group-text">
@@ -83,9 +92,9 @@
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.mainCategory.invalid && (f.mainCategory.dirty || f.mainCategory.touched)">
-                <label for="mainCategory">Main Category</label>
-                <input type="text" formControlName="mainCategory" placeholder="Add Main Category" class="form-control"
-                    id="mainCategory" />
+                <label for="fcp-mainCategory">Main Category</label>
+                <input type="text" formControlName="mainCategory" placeholder="Enter Main Category" class="form-control"
+                    id="fcp-mainCategory" />
             </div>
             <div *ngIf="f.mainCategory.invalid && (f.mainCategory.dirty || f.mainCategory.touched)">
                 <label *ngIf="f.mainCategory.errors.required" class="error">This field is required.</label>
@@ -96,9 +105,9 @@
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
-                <label for="mainProduct">Main Product</label>
-                <input type="text" formControlName="mainProduct" placeholder="Enter Main Product Here"
-                    class="form-control" id="mainProduct" />
+                <label for="fcp-mainProduct">Main Product</label>
+                <input type="text" formControlName="mainProduct" placeholder="Enter Main Product" class="form-control"
+                    id="fcp-mainProduct" />
             </div>
             <div *ngIf="f.mainProduct.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
                 <label *ngIf="f.mainProduct.errors.required" class="error">This field is required.</label>
@@ -116,9 +125,9 @@
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regAddress.invalid && (f.regAddress.dirty || f.regAddress.touched)">
-                <label for="company-add">Company Address</label>
+                <label for="fcp-company-add">Company Address</label>
                 <input type="text" formControlName="regAddress" placeholder="Enter your Company Address here"
-                    class="form-control" id="company-add" />
+                    class="form-control" id="fcp-company-add" />
             </div>
             <div *ngIf="f.regAddress.invalid && (f.regAddress.dirty || f.regAddress.touched)">
                 <label *ngIf="f.regAddress.errors.required" class="error">This field is required.</label>
@@ -129,9 +138,9 @@
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regCountry.invalid && (f.regCountry.dirty || f.regCountry.touched)">
-                <label for="company">Country</label>
-                <input type="text" formControlName="regCountry" placeholder="Enter your regCountry name here"
-                    class="form-control" id="company" />
+                <label for="fcp-company">Country</label>
+                <input type="text" formControlName="regCountry" placeholder="Enter registered Country"
+                    class="form-control" id="fcp-company" />
             </div>
             <div *ngIf="f.regCountry.invalid && (f.regCountry.dirty || f.regCountry.touched)">
                 <label *ngIf="f.regCountry.errors.required" class="error">This field is required.</label>
@@ -140,9 +149,9 @@
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regState.invalid && (f.regState.dirty || f.regState.touched)">
-                <label for="regState-name">State</label>
-                <input type="text" formControlName="regState" placeholder="Enter your regState number here"
-                    class="form-control" id="regState-name" />
+                <label for="fcp-regState-name">State</label>
+                <input type="text" formControlName="regState" placeholder="Enter registered State" class="form-control"
+                    id="fcp-regState-name" />
             </div>
             <div *ngIf="f.regState.invalid && (f.regState.dirty || f.regState.touched)">
                 <label *ngIf="f.regState.errors.required" class="error">This field is required.</label>
@@ -151,9 +160,9 @@
         <div class="col-md-2">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regCity.invalid && (f.regCity.dirty || f.regCity.touched)">
-                <label for="regCity-name">City</label>
-                <input type="text" formControlName="regCity" placeholder="Enter your regCity number here"
-                    class="form-control" id="regCity-name" />
+                <label for="fcp-regCity-name">City</label>
+                <input type="text" formControlName="regCity" placeholder="Enter registered City" class="form-control"
+                    id="fcp-regCity-name" />
             </div>
             <div *ngIf="f.regCity.invalid && (f.regCity.dirty || f.regCity.touched)">
                 <label *ngIf="f.regCity.errors.required" class="error">This field is required.</label>
@@ -164,9 +173,9 @@
         <div class="col-md-3">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regLandline.invalid && (f.regLandline.dirty || f.regLandline.touched)">
-                <label for="regLandline">Landline Number</label>
+                <label for="fcp-regLandline">Landline Number</label>
                 <input type="text" formControlName="regLandline" placeholder="Enter Landline Number"
-                    class="form-control" id="regLandline" />
+                    class="form-control" id="fcp-regLandline" />
             </div>
             <div *ngIf="f.regLandline.invalid && (f.regLandline.dirty || f.regLandline.touched)">
                 <label *ngIf="f.regLandline.errors.required" class="error">This field is required.</label>
@@ -175,9 +184,9 @@
         <div class="col-md-3">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regMobile.invalid && (f.regMobile.dirty || f.regMobile.touched)">
-                <label for="regMobile">Mobile Number</label>
-                <input type="text" formControlName="regMobile" placeholder="Enter Mobile Number"
-                    class="form-control" id="regMobile" />
+                <label for="fcp-regMobile">Mobile Number</label>
+                <input type="text" formControlName="regMobile" placeholder="Enter Mobile Number" class="form-control"
+                    id="fcp-regMobile" />
             </div>
             <div *ngIf="f.regMobile.invalid && (f.regMobile.dirty || f.regMobile.touched)">
                 <label *ngIf="f.regMobile.errors.required" class="error">This field is required.</label>
@@ -189,88 +198,79 @@
     <p>This information is required if you have another offer into different location also.</p>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facDivision.invalid && (f.facDivision.dirty || f.facDivision.touched)">
-                <label for="facDivision">Division</label>
-                <input type="text" formControlName="facDivision" placeholder="Enter division here" class="form-control"
-                    id="facDivision" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facDivision">Division</label>
+                <input type="text" formControlName="facDivision" placeholder="Enter Division here" class="form-control"
+                    id="fcp-facDivision" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facArea.invalid && (f.facArea.dirty || f.facArea.touched)">
-                <label for="facArea">Area/Size</label>
-                <input type="text" formControlName="facArea" placeholder="Enter area here" class="form-control"
-                    id="facArea" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facArea">Area/Size</label>
+                <input type="text" formControlName="facArea" placeholder="Enter Area here" class="form-control"
+                    id="fcp-facArea" />
             </div>
         </div>
     </div>
     <h4>Factory Country/Region</h4>
     <div class="row">
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facCountry.invalid && (f.facCountry.dirty || f.facCountry.touched)">
-                <label for="facCountry">Country</label>
-                <input type="text" formControlName="facCountry" placeholder="Enter your Country name here"
-                    class="form-control" id="facCountry" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facCountry">Country</label>
+                <input type="text" formControlName="facCountry" placeholder="Enter your Country Name here"
+                    class="form-control" id="fcp-facCountry" />
             </div>
         </div>
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facState.invalid && (f.facState.dirty || f.facState.touched)">
-                <label for="facState">State</label>
-                <input type="text" formControlName="facState" placeholder="Enter your regState here"
-                    class="form-control" id="facState" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facState">State</label>
+                <input type="text" formControlName="facState" placeholder="Enter your State Name here"
+                    class="form-control" id="fcp-facState" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facAnnualTurnover.invalid && (f.facAnnualTurnover.dirty || f.anuualTurnover.touched)">
-                <label for="facAnnualTurnover">Annual Turnover</label>
-                <input type="text" formControlName="facAnnualTurnover" placeholder="Enter your Annual Turnover here"
-                    class="form-control" id="anuualTurnover-name" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facAnnualTurnover">Annual Turnover</label>
+                <input type="text" formControlName="facAnnualTurnover" placeholder="Enter your Annual Turn Over"
+                    class="form-control" id="fcp-anuualTurnover-name" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facContactPerson.invalid && (f.facContactPerson.dirty || f.facContactPerson.touched)">
-                <label for="facContactPerson">Contact Person</label>
-                <input type="text" formControlName="facContactPerson" placeholder="Enter your Contact Person here"
-                    class="form-control" id="facContactPerson" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facContactPerson">Contact Person</label>
+                <input type="text" formControlName="facContactPerson" placeholder="Enter Contact Person here"
+                    class="form-control" id="fcp-facContactPerson" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facLandline.invalid && (f.facLandline.dirty || f.facLandline.touched)">
-                <label for="facLandline">Phone</label>
-                <input type="text" formControlName="facLandline" placeholder="Enter your Phone here"
-                    class="form-control" id="facLandline" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facLandline">Phone</label>
+                <input type="text" formControlName="facLandline" placeholder="Enter your Landline Number here"
+                    class="form-control" id="fcp-facLandline" />
             </div>
         </div>
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facMobile.invalid && (f.facMobile.dirty || f.facMobile.touched)">
-                <label for="facMobile">Mobile</label>
-                <input type="text" formControlName="facMobile" placeholder="Enter your Contact Person here"
-                    class="form-control" id="facMobile" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facMobile">Mobile</label>
+                <input type="text" formControlName="facMobile" placeholder="Enter your Mobile Name here"
+                    class="form-control" id="fcp-facMobile" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.facEmail.invalid && (f.facEmail.dirty || f.facEmail.touched)">
-                <label for="facEmail">Email</label>
-                <input type="text" formControlName="facEmail" placeholder="Enter your Email here" class="form-control"
-                    id="facEmail" />
+            <div pgFormGroupDefault class="form-group form-group-default">
+                <label for="fcp-facEmail">Email</label>
+                <input type="text" formControlName="facEmail" placeholder="Enter your Email Id" class="form-control"
+                    id="fcp-facEmail" />
             </div>
         </div>
     </div>
@@ -302,14 +302,14 @@
 <!--
 <h6>Do you have another office ?<span class="text-danger">*</span></h6>
 <div class="form-check form-check-inline complete">
-    <input type="radio" name="regState" id="radioInline" value="Yes" checked>
-    <label for="radioInline">
+    <input type="radio" name="regState" id="fcp-radioInline" value="Yes" checked>
+    <label for="fcp-radioInline">
         Yes
     </label>
 </div>
 <div class="form-check form-check-inline">
-    <input type="radio" name="regState" id="radioDisabled" value="No">
-    <label for="radioDisabled">
+    <input type="radio" name="regState" id="fcp-radioDisabled" value="No">
+    <label for="fcp-radioDisabled">
         No
     </label>
 </div>

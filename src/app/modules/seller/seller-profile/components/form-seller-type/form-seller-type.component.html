@@ -1,5 +1,4 @@
 <form [formGroup]="sellerTypeForm" (keydown.enter)="$event.preventDefault()">
-
     <ng-container formArrayName="types">
         <div class="row">
             <ng-container *ngFor="let typeForm of types.controls; let i = index;">

@@ -58,12 +58,12 @@ export class FormCompanyProfileComponent implements OnInit {
     });
   }
 
-  updateDataIfExist(){
+  updateDataIfExist() {
     this.isLoading = true;
-    this.providerCompanyProfileService.getCompanyProfileListByFilter(0, 1, {userId: 'pending'}).subscribe(
+    this.providerCompanyProfileService.getCompanyProfileListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
-        this.isDataExist = res.data.length>0;
-        if(!this.isDataExist){
+        this.isDataExist = res.data.length > 0;
+        if (!this.isDataExist) {
           return;
         }
         this.idIfDataExist = res.data[0]['_id'];
@@ -103,8 +103,8 @@ export class FormCompanyProfileComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    const formValue = this.companyProfileForm.value;    
-    if(this.isDataExist){
+    const formValue = this.companyProfileForm.value;
+    if (this.isDataExist) {
       formValue._id = this.idIfDataExist;
       this.providerCompanyProfileService.updateCompanyProfile(formValue).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Profile Updated Successfully") },

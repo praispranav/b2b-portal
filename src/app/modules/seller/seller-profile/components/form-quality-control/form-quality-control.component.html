@@ -1,40 +1,39 @@
 <form [formGroup]="qualityControlForm" (keydown.enter)="$event.preventDefault()">
     <h6>Whether to demostrate Quality Control Process</h6>
     <div class="form-check form-check-inline complete">
-        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-Yes"
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="fqc-isQualityProcess-Yes"
             value="Yes">
-        <label for="isQualityProcess-Yes">
+        <label for="fqc-isQualityProcess-Yes">
             Yes
         </label>
     </div>
     <div class="form-check form-check-inline">
-        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="isQualityProcess-No"
+        <input type="radio" formControlName="isQualityProcess" name="isQualityProcess" id="fqc-isQualityProcess-No"
             value="No">
-        <label for="isQualityProcess-No">
+        <label for="fqc-isQualityProcess-No">
             No
         </label>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
-                <label for="process-name">Process Name</label>
-                <input type="text" formControlName="processName" placeholder="Enter process name here"
-                    class="form-control" id="process-name" />
+                <label for="fqc-process-name">Process Name</label>
+                <input type="text" formControlName="processName" placeholder="Enter Process Name here"
+                    class="form-control" id="fqc-process-name" />
             </div>
             <div *ngIf="f.processName.invalid && (f.processName.dirty || f.processName.touched)">
                 <label *ngIf="f.processName.errors.required" class="error">This field is required.</label>
             </div>
         </div>
-
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default"
+            <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.processDescription.invalid && (f.processDescription.dirty || f.processDescription.touched)">
-                <label for="processDescription">Description</label>
-                <textarea formControlName="processDescription" placeholder="Process Description here"
-                    class="form-control" id="processDescription">
+                <label for="fqc-processDescription">Description</label>
+                <textarea formControlName="processDescription" placeholder="Enter Description here" class="form-control"
+                    id="fqc-processDescription">
                         </textarea>
             </div>
             <div *ngIf="f.processDescription.invalid && (f.processDescription.dirty || f.processDescription.touched)">
@@ -45,7 +44,7 @@
     <div class="mt-4">
         <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
             (click)="subQualityControlForm()">
-            {{isDataExist? 'Update' : 'Save'}} Company Detail
+            {{isDataExist? 'Update' : 'Save'}} Quality Control
         </button>
     </div>
 </form>
