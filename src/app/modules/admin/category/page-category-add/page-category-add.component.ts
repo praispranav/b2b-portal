@@ -54,11 +54,11 @@ export class PageCategoryAddComponent implements OnInit {
 
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
       icon: [''],
       image: ['', [Validators.required]],
-      title: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
-      description: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(165)]],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
+      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
       keywords: [[]],
       filters: [[]],
       level: [0],
