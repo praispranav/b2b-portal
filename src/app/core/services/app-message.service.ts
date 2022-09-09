@@ -16,7 +16,7 @@ export class AppMessageService {
     const currentTab: number = 0;
     const notificationModel: any = {
       type: 'flip',
-      message: 'Filter added Successfully',
+      message:'',
       color: 'Success',
       position: 'top-right',
       current: 0

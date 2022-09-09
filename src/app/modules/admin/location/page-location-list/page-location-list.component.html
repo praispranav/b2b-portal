@@ -21,29 +21,24 @@
                         <button class="btn btn-primary mr-2" routerLink="../location-add/country">
                             Add Country <i class="fa fa-plus ml-2" aria-hidden="true"></i>
                         </button>
-                        <ng-template [ngTemplateOutlet]="treeUlContainer"
-                            [ngTemplateOutletContext]="{list:masterCountryList}"></ng-template>
+                        <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:masterCountryList}"></ng-template>
                         <ng-template #treeUlContainer let-list='list'>
                             <ul>
                                 <li *ngFor="let item of list" #nodeEl>
                                     <div class="d-flex align-items-center">
                                         <div [class.hideToggleContainer]="!item._hasChildren">
-                                            <button class="btn btn-primary" *ngIf="!item._toggle"
-                                                [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                            <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren" (click)="getChildren(item)">
                                                 Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
                                             </button>
 
-                                            <button class="btn btn-primary" *ngIf="item._toggle"
-                                                [disabled]="!item._hasChildren" (click)="remChildren(item)">
+                                            <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren" (click)="remChildren(item)">
                                                 Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                        <button class="btn btn-warning" *ngIf="item._isEditable"
-                                            (click)="editItem(item)">
+                                        <button class="btn btn-warning" *ngIf="item._isEditable" (click)="editItem(item)">
                                             Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
                                         </button>
-                                        <button class="btn btn-danger" *ngIf="item._isDeletable"
-                                            (click)="deleteItem(item, nodeEl)">
+                                        <button class="btn btn-danger" *ngIf="item._isDeletable" (click)="confirmationPopup(item, nodeEl)">
                                             Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
                                         </button>
                                         <button (click)="addItem(item)" *ngIf="!(item?.countryId && item?.stateId)" class="btn btn-primary">
@@ -57,8 +52,7 @@
                                         </span>
                                     </div>
                                     <ng-container *ngIf="item?.children && item.children.length>0">
-                                        <ng-template [ngTemplateOutlet]="treeUlContainer"
-                                            [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                        <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:item.children}"></ng-template>
                                     </ng-container>
                                 </li>
                             </ul>
@@ -90,12 +84,10 @@
                             <p>Image : <br /><img [src]="preViewItem.image" width="100%" /></p>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-warning" *ngIf="preViewItem._isEditable"
-                                (click)="editItem(preViewItem)">
+                            <button class="btn btn-warning" *ngIf="preViewItem._isEditable" (click)="editItem(preViewItem)">
                                 Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
                             </button>
-                            <button class="btn btn-danger" *ngIf="preViewItem._isDeletable"
-                                (click)="deleteItem(preViewItem, preViewItem._nodeEl)">
+                            <button class="btn btn-danger" *ngIf="preViewItem._isDeletable" (click)="confirmationPopup(preViewItem, preViewItem._nodeEl)">
                                 Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
                             </button>
                             <button (click)="addLocation(preViewItem)" class="btn btn-primary">

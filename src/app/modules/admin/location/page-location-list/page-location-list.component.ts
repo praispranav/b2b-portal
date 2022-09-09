@@ -4,6 +4,7 @@ import { AppMessageService } from '../../../../core/services/app-message.service
 import { ProviderMaterCountryService } from '../../../../core/providers/master/provider-mater-country.service';
 import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
 import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-page-location-list',
@@ -149,4 +150,21 @@ export class PageLocationListComponent implements OnInit {
       });
     }
   }
+  confirmationPopup(item: any, nodeEl: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteItem(item, nodeEl);       
+      }
+    })
+  }
+  
+
 }
