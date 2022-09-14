@@ -11,7 +11,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Admin Dashboard",
-      routerLink: "#",
+      routerLink: "/admin/dashboard",
     },
     {
       label: "Add Banner",

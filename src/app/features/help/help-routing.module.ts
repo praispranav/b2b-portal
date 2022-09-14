@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "complain-add",
+    redirectTo: "complain-list",
   },
   {
     path: "complain-add",
