@@ -62,8 +62,8 @@ export class PageFilterAddComponent implements OnInit {
     const formValue = this.filterForm.value;
     formValue.fields = formValue.fields.map(i => i.field);
     this.providerMaterFilterService.addMaterFilter(formValue).subscribe(
-      (res) => { this.appMessageService.createBasicNotification('success', "Filter Added Successfully"); this.router.navigateByUrl(`/admin/filter/filter-list`); },
-      (err) => { this.appMessageService.createBasicNotification('success', "Filter Not Added") }
+      (res) => { this.appMessageService.createBasicNotification(res.header.status, res.header.message); this.router.navigateByUrl(`/admin/filter/filter-list`); },
+      (err) => { this.appMessageService.createBasicNotification(err.header.status, err.header.message) }
     );
   }
 

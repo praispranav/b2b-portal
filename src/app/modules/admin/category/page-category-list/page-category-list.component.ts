@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProviderMaterCategoryService } from '../../../../core/providers/master/provider-mater-category.service';
 import { AppMessageService } from '../../../../core/services/app-message.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-page-category-list',
   templateUrl: './page-category-list.component.html',
@@ -90,11 +91,30 @@ export class PageCategoryListComponent implements OnInit {
       this.router.navigateByUrl(`/admin/category/category-edit/${item['_id']}`);
     }
   }
-
   deleteItem(item: any, nodeEl: any) {
     this.providerMaterCategoryService.deleteMaterCategoryById(item['_id']).subscribe(
       (res) => { this.appMessageService.createBasicNotification('success', "Category Deleted Successfully"); nodeEl.remove(); },
       (err) => { this.appMessageService.createBasicNotification('success', "Category Not Deleted") }
     );
   }
+ 
+  confirmationPopup(item: any, nodeEl: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteItem(item, nodeEl);       
+      }
+    })
+  }
+  
+
+  
+
 }

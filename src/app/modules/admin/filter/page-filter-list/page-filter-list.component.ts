@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ProviderMaterFilterService } from '../../../../core/providers/master/provider-mater-filter.service';
 import { AppMessageService } from '../../../../core/services/app-message.service';
 @Component({
@@ -69,5 +70,20 @@ export class PageFilterListComponent implements OnInit {
       (res) => { this.appMessageService.createBasicNotification('success', "Filter Deleted Successfully"); nodeEl.remove(); },
       (err) => { this.appMessageService.createBasicNotification('success', "Filter Not Deleted") }
     );
+  }
+  confirmationPopup(item: any, nodeEl: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteItem(item, nodeEl);       
+      }
+    })
   }
 }
