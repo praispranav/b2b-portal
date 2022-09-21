@@ -9,7 +9,10 @@ import { ProviderHelpSuggestionService } from '../../../core/providers/user/prov
 })
 export class PageSuggestionAddComponent implements OnInit {
   suggestionForm: FormGroup;
-
+  file: File;
+  fileType: any | string;
+  imageBase64: string | any = "";
+  fileName: string = '';
   constructor(
     private formBuilder: FormBuilder,
     private providerHelpSuggestionService: ProviderHelpSuggestionService
@@ -62,11 +65,22 @@ export class PageSuggestionAddComponent implements OnInit {
   private resetFormGroup(form: FormGroup) {
     form.reset();
   }
-
-  fileUpload(event) {
-    console.log(event.target.files)
+  changeListener($event): void {
+    this.file = $event.target.files[0];
   }
-
+  fileUpload(event: any) {
+    const file = event.target.files[0];
+    console.log(file.name);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log("file name", file.name)
+      this.imageBase64 = reader.result;
+      this.suggestionForm.patchValue({ imageUrl: reader.result as string })
+      this.fileType = file.type;
+      this.fileName = file.name
+    }
+  }
   clickOnInputFile(el) {
     el.click();
   }
