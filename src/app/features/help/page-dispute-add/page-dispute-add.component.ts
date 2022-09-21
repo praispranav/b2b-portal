@@ -9,7 +9,10 @@ import { ProviderHelpDisputeService } from '../../../core/providers/user/provide
 })
 export class PageDisputeAddComponent implements OnInit {
   disputeForm: FormGroup;
-
+  file: File;
+  fileType: any | string;
+  imageBase64: string | any = "";
+  fileName: string = '';
   constructor(
     private formBuilder: FormBuilder,
     private providerHelpDisputeService: ProviderHelpDisputeService
@@ -62,10 +65,23 @@ export class PageDisputeAddComponent implements OnInit {
   private resetFormGroup(form: FormGroup) {
     form.reset();
   }
-
-  fileUpload(files) {
-    console.log(files.target.files)
+  changeListener($event): void {
+    this.file = $event.target.files[0];
   }
+  fileUpload(event: any) {
+    const file = event.target.files[0];
+    console.log(file.name);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      console.log("file name", file.name)
+      this.imageBase64 = reader.result;
+      this.disputeForm.patchValue({ imageUrl: reader.result as string })
+      this.fileType = file.type;
+      this.fileName = file.name
+    }
+  }
+
 
   clickOnInputFile(el) {
     el.click();
