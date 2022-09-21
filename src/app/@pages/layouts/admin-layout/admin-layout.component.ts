@@ -8,10 +8,11 @@ import { RootLayout } from '../root/root.component';
   encapsulation: ViewEncapsulation.None
 })
 export class AdminLayoutComponent extends RootLayout implements OnInit {
+ 
   menuLinks = [
     {
       label: "Admin Dashboard",
-      routerLink: "#",
+      routerLink: "/admin/dashboard",
     },
     {
       label: "Add Banner",
@@ -131,15 +132,15 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Complaints",
-          routerLink: "#",
+          routerLink: "/admin/help/complain-list",
         },
         {
           label: "Dispute",
-          routerLink: "#",
+          routerLink: "/admin/help/dispute-list",
         },
         {
           label: "Suggestions",
-          routerLink: "#",
+          routerLink: "/admin/help/suggestion-list",
         },
       ],
     },
@@ -149,11 +150,11 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Find Country",
-          routerLink: "#",
+          routerLink: "/admin/location/location-list",
         },
         {
           label: "Add New Location",
-          routerLink: "#",
+          routerLink: "/admin/location/location-add",
         },
         {
           label: "Add Pricing for Country",
@@ -171,15 +172,19 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Find Categories",
-          routerLink: "#",
+          routerLink: "/admin/category/category-list",
         },
         {
           label: "Add Categories",
-          routerLink: "#",
+          routerLink: "/admin/category/category-add",
         },
         {
           label: "Add Filter",
-          routerLink: "#",
+          routerLink: "/admin/filter/filter-add",
+        },
+        {
+          label: "Find Filter",
+          routerLink: "/admin/filter/filter-list",
         },
       ],
     },
@@ -262,10 +267,12 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       ]
     },
   ];
+ 
   ngOnInit() {
     this.changeLayout('menu-pin');
     this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
   }
+  
 }

@@ -159,8 +159,8 @@ export class PageLocationAddComponent implements OnInit {
     }
 
     this.providerMaterCountryService.addMaterCountry(this.countryForm.value).subscribe(
-      (res) => { this.appMessageService.createBasicNotification('success', "Country Added Successfully"); this.router.navigateByUrl(`/admin/location/location-list`); },
-      (err) => { this.appMessageService.createBasicNotification('success', "Country Not Added") }
+      (res) => { this.appMessageService.createBasicNotification(res.header.status, res.header.message); this.router.navigateByUrl(`/admin/location/location-list`); },
+      (err) => { this.appMessageService.createBasicNotification(err.header.status, err.header.message) }
     );
   }
 

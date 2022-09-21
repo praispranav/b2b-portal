@@ -60,12 +60,12 @@ export class FormCompanyDetailComponent implements OnInit {
     });
   }
 
-  updateDataIfExist(){
+  updateDataIfExist() {
     this.isLoading = true;
-    this.providerCompanyDetailService.getCompanyDetailListByFilter(0, 1, {userId: 'pending'}).subscribe(
+    this.providerCompanyDetailService.getCompanyDetailListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
-        this.isDataExist = res.data.length>0;
-        if(!this.isDataExist){
+        this.isDataExist = res.data.length > 0;
+        if (!this.isDataExist) {
           return;
         }
         this.idIfDataExist = res.data[0]['_id'];
@@ -107,8 +107,8 @@ export class FormCompanyDetailComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    const formValue = this.companyDetailForm.value;    
-    if(this.isDataExist){
+    const formValue = this.companyDetailForm.value;
+    if (this.isDataExist) {
       formValue._id = this.idIfDataExist;
       this.providerCompanyDetailService.updateCompanyDetail(formValue).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },

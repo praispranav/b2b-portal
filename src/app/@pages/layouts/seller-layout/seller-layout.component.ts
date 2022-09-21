@@ -89,15 +89,15 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Complaints",
-          routerLink: "#",
+          routerLink: "/seller/help/complain-list",
         },
         {
           label: "Dispute",
-          routerLink: "#",
+          routerLink: "/seller/help/dispute-list",
         },
         {
           label: "Suggestions",
-          routerLink: "#",
+          routerLink: "seller/help/suggestion-list",
         },
       ],
     },
