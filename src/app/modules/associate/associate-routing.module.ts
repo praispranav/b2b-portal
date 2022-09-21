@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: './associate-profile/profile.module#ProfileModule'
   },
+  {
+    path: 'help',
+    loadChildren: '../../features/help/help.module#HelpModule'
+  },
 
 ];
 

@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'location',
     loadChildren: './location/location.module#LocationModule',
   },
+  {
+    path: 'help',
+    loadChildren: '../../features/help/help.module#HelpModule',
+  },
 ];
 
 @NgModule({
