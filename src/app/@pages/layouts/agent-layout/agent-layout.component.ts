@@ -11,7 +11,7 @@ export class AgentLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Home",
-      routerLink: "#",
+      routerLink: "/agent/dashboard",
     },
     {
       label: "Profile",
@@ -35,15 +35,15 @@ export class AgentLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Complaints",
-          routerLink: "#",
+          routerLink: "/agent/help/complain-list",
         },
         {
           label: "Dispute",
-          routerLink: "#",
+          routerLink: "/agent/help/dispute-list",
         },
         {
           label: "Suggestions",
-          routerLink: "#",
+          routerLink: "/agent/help/suggestion-list",
         },
       ],
     },

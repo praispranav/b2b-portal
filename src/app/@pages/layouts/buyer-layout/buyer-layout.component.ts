@@ -75,15 +75,15 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Complaints",
-          routerLink: "#",
+          routerLink: "/buyer/help/complain-list",
         },
         {
           label: "Dispute",
-          routerLink: "#",
+          routerLink: "/buyer/help/dispute-list",
         },
         {
           label: "Suggestions",
-          routerLink: "#",
+          routerLink: "/buyer/help/suggestion-list",
         },
       ],
     },

@@ -11,7 +11,7 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Home",
-      routerLink: "#",
+      routerLink: "/associate/dashboard",
     },
     {
       label: "Profile",
@@ -43,15 +43,15 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Complaints",
-          routerLink: "#",
+          routerLink: "/associate/help/complain-list",
         },
         {
           label: "Dispute",
-          routerLink: "#",
+          routerLink: "/associate/help/dispute-list",
         },
         {
           label: "Suggestions",
-          routerLink: "#",
+          routerLink: "/associate/help/suggestion-list",
         },
       ],
     },
