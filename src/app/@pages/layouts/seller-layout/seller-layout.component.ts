@@ -11,11 +11,11 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Dashboard",
-      routerLink: "seller-dashboard",
+      routerLink: "/seller/dashboard",
     },
     {
       label: "Profile",
-      routerLink: "seller-profile",
+      routerLink: "/seller/profile",
     },
     {
       label: "Products",
@@ -23,15 +23,15 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add Products",
-          routerLink: "product/product-add",
+          routerLink: "/seller/brand-approval/brand-approval-list",
         },
         {
           label: "Make Your Own Categories",
-          routerLink: "category/category-add",
+          routerLink: "/seller/dashboard",
         },
         {
           label: "Ask For Brand Approval",
-          routerLink: "brand-approval/product-add",
+          routerLink: "/seller/brand-approval/brand-approval-list",
         },
       ],
     },
@@ -41,29 +41,29 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Inbox [2]",
-          routerLink: "seller-dashboard",
+          routerLink: "/seller/dashboard",
         },
         {
           label: "Sent",
-          routerLink: "seller-dashboard",
+          routerLink: "/seller/dashboard",
         },
         {
           label: "Spam",
-          routerLink: "seller-dashboard",
+          routerLink: "/seller/dashboard",
         },
         {
           label: "Flagged",
-          routerLink: "seller-dashboard",
+          routerLink: "/seller/dashboard",
         },
       ],
     },
     {
       label: "Leads",
-      routerLink: "",
+      routerLink: "/seller/dashboard",
     },
     {
       label: "Multiple Quotes Request",
-      routerLink: "seller-dashboard",
+      routerLink: "/seller/dashboard",
     },
     {
       label: "Trade Services",
@@ -81,7 +81,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Participating in Trade Show",
-      routerLink: "seller-dashboard",
+      routerLink: "/seller/dashboard",
     },
     {
       label: "Help",
@@ -97,13 +97,13 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Suggestions",
-          routerLink: "seller/help/suggestion-list",
+          routerLink: "/seller/help/suggestion-list",
         },
       ],
     },
     {
       label: "My Buying Interests",
-      routerLink: "#",
+      routerLink: "/seller/dashboard",
     },
   ];
 

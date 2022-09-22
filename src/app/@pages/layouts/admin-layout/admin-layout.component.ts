@@ -16,7 +16,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Add Banner",
-      routerLink: "#",
+      routerLink: "/admin/dashboard",
     },
     {
       label: "Seller/Buyer",
@@ -24,23 +24,23 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Seller",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Buyer",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Buyer Live Status",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Seller Live Status",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "MOQ",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         }
       ],
     },
@@ -50,27 +50,27 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Products For Approval",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Approval Status",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Brand Approval Requests",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Brands",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Limits For Free Seller",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Increase/Decrise Limit",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         }
       ],
     },
@@ -80,19 +80,19 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "RFQ Leads",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Associate CRM",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Verification Request",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Account Creation Requests",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -102,27 +102,27 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "TP Agents",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Create new TP Agent",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Agents Portfolio",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Associates",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Create new Associates",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Associate Portfolio",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -154,15 +154,15 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Add New Location",
-          routerLink: "/admin/location/location-add",
+          routerLink: "/admin/location/location-add/location",
         },
         {
           label: "Add Pricing for Country",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Assign Trade Products",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -179,12 +179,12 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/admin/category/category-add",
         },
         {
-          label: "Add Filter",
-          routerLink: "/admin/filter/filter-add",
-        },
-        {
           label: "Find Filter",
           routerLink: "/admin/filter/filter-list",
+        },
+        {
+          label: "Add Filter",
+          routerLink: "/admin/filter/filter-add",
         },
       ],
     },
@@ -194,15 +194,15 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add News",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Create Categories",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Create Tags",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -212,7 +212,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Create Tags",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -222,15 +222,15 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Search Trade Shows",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Add Trade Shows",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Add Type",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
@@ -240,21 +240,21 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Search Brand",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Approve Brands",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
         {
           label: "Add Brands",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ],
     },
     {
       label: "Notice Bar",
-      routerLink: "#",
+      routerLink: "/admin/dashboard",
     },
     {
       label: "Popular Q&A",
@@ -262,7 +262,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add Category",
-          routerLink: "#",
+          routerLink: "/admin/dashboard",
         },
       ]
     },
