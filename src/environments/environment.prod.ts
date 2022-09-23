@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:4001',  // www
+  apiUrl: 'https://b2bwww.azurewebsites.net',
 };
