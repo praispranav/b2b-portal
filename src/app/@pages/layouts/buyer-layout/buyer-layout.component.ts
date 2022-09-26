@@ -23,19 +23,19 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Inbox [2]",
-          routerLink: "/buyer/dashboard",
+          routerLink: "/buyer/email/inbox",
         },
         {
           label: "Sent",
-          routerLink: "/buyer/dashboard",
+          routerLink: "/buyer/email/sent",
         },
         {
           label: "Spam",
-          routerLink: "/buyer/dashboard",
+          routerLink: "/buyer/email/spam",
         },
         {
           label: "Flagged",
-          routerLink: "/buyer/dashboard",
+          routerLink: "/buyer/email/flagged",
         },
       ],
     },

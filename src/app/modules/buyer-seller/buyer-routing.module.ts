@@ -18,7 +18,12 @@ const routes: Routes = [
   {
     path: "help",
     loadChildren: "../../features/help/help.module#HelpModule",
+  },
+  {
+    path: "email",
+    loadChildren:"../../features/help/email/email.module#EmailModule"
   }
+
 ];
 
 @NgModule({

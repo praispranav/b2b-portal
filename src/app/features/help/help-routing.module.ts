@@ -37,6 +37,12 @@ const routes: Routes = [
   {
     path: "suggestion-list",
     component: PageSuggestionListComponent
+  },
+  {
+    path: "email",
+   
+    // loadChildren: '../../features/help/help.module#HelpModule'
+  
   }
 ];
 
