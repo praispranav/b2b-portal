@@ -8,6 +8,7 @@ import { PageActiveAccountComponent } from './page-active-account/page-active-ac
 import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
 import { PageBlogComponent } from "./page-blog/page-blog.component";
 import { PageBuyComponent } from "./page-buy/page-buy.component";
+import { PageBuyingHelpComponent } from "./page-buying-help/page-buying-help.component";
 import { PageContactUsComponent } from "./page-contact-us/page-contact-us.component";
 import { PageCreateAccountSupportComponent } from "./page-create-account-support/page-create-account-support.component";
 import { PageError404Component } from "./page-error404/page-error404.component";
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: "buy",
     component: PageBuyComponent,
+  },
+  {
+    path: "buy-help",
+    component: PageBuyingHelpComponent,
   },
   {
     path: "contact-us",
