@@ -21,9 +21,8 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren:"../../features/help/email/email.module#EmailModule"
+    loadChildren:"../../features/email/email.module#EmailModule"
   }
-
 ];
 
 @NgModule({

@@ -5,9 +5,12 @@ import { PageInboxComponent } from './page-inbox/page-inbox.component';
 import { PageSentComponent } from './page-sent/page-sent.component';
 import { PageSpamComponent } from './page-spam/page-spam.component';
 
-
-
 const routes: Routes = [
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "inbox",
+  },
   {
     path: 'flagged',
     component: PageFlaggedComponent,
@@ -24,7 +27,6 @@ const routes: Routes = [
     path: 'spam',
     component: PageSpamComponent,
   },
-
 ];
 
 @NgModule({
