@@ -399,7 +399,14 @@
                 <div class="col-lg-6 col-sm-12 col-md-6 mt-2">
                     <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.State.invalid && (f.State.dirty || f.State.touched)">
                         <label for="State-name">State/Province</label>
-                        <input type="text" formControlName="State" placeholder="Enter your state name here" class="form-control" id="State-name" />
+                        <select type="text" formControlName="State" placeholder="Enter your state name here" class="form-control" id="state-name">
+                                
+                            <option Value="" Label="" selected>Select</option>
+                            <option Value="AF" Label="Afghanistan">Uttar-Pradesh</option>
+                            <option Value="AX" Label="Åland Islands">Delhi
+                            </option>
+                            
+                        </select>
                     </div>
                     <div *ngIf="f.State.invalid && (f.State.dirty || f.State.touched)">
                         <label *ngIf="f.State.errors.required" class="error">This field is required.</label>
@@ -417,7 +424,7 @@
 
 
                 <div class="col-lg-12 mt-2">
-                    <div pgFormGroupDefault class="form-group form-group-default " [class.has-error]="f.Address1.invalid && (f.Address1.dirty || f.Address1.touched)">
+                    <div pgFormGroupDefault class="form-group form-group-default required " [class.has-error]="f.Address1.invalid && (f.Address1.dirty || f.Address1.touched)">
                         <label for="Address1-detail" class="mb-0">Address 1 </label>
                         <textarea name="" id="Address1-detail" cols="25" rows="10" class="form-control mt-2" formControlName="Address1"></textarea>
                     </div>
@@ -426,18 +433,16 @@
                     </div>
                 </div>
                 <div class="col-lg-12 mt-2">
-                    <div pgFormGroupDefault class="form-group form-group-default " [class.has-error]="f.Address2    .invalid && (f.Address2.dirty || f.Address2.touched)">
+                    <div pgFormGroupDefault class="form-group form-group-default ">
                         <label for="Address2-detail" class="mb-0">Address 2 </label>
                         <textarea name="" id="Address2-detail" cols="25" rows="10" class="form-control mt-2" formControlName="Address2"></textarea>
                     </div>
-                    <div *ngIf="f.Address2.invalid && (f.Address2.dirty || f.Address2.touched)">
-                        <label *ngIf="f.Address2.errors.required" class="error">This field is required.</label>
-                    </div>
+
                 </div>
                 <div class="col-lg-12 mt-2">
                     <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.phoneCountryCode.invalid && (f.phoneCountryCode.dirty || f.phoneCountryCode.touched)">
                         <div class="input-group-prepend ">
-                            <select name="countryCode" id="" formControlName="phoneCountryCode" class="form-control form-select">
+                            <select name="CountryCode" id="phoneCountryCode" placeholder="Country Code" formControlName="phoneCountryCode" class="form-control form-select">
                                 <option value=" " selected>Select Country Code </option>
                                 <option data-countryCode="GB" value="44">UK (+44)</option>
                                 <option data-countryCode="US" value="1">USA (+1)</option>
@@ -939,7 +944,7 @@
 
     </div>
 </div>
-<div class=" full-width">
+<!-- <div class=" full-width">
     <div class="register-container m-b-10 clearfix">
         <div class="m-b-30 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix d-flex-md-up">
             <div class="col-md-2 no-padding d-flex align-items-center">
@@ -950,4 +955,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
