@@ -1,5 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { CompFooter1Component } from "./components/comp-footer1/comp-footer1.component";
+import { CompHeader2Component } from "./components/comp-header2/comp-header2.component";
+import { PageHomeRequestForQuotationComponent } from "./components/page-home-request-for-quotation/page-home-request-for-quotation.component";
 import { PageAboutUsComponent } from "./page-about-us/page-about-us.component";
 import { PageActiveAccountComponent } from './page-active-account/page-active-account.component';
 import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
@@ -33,8 +36,22 @@ import { PageTermsComponent } from "./page-terms/page-terms.component";
 import { PageTermsAndConditionComponent } from "./page-terms-and-condition/page-terms-and-condition.component";
 import { PageTermsOfUseComponent } from "./page-terms-of-use/page-terms-of-use.component";
 import { PageTradeShowComponent } from "./page-trade-show/page-trade-show.component";
+import { PageHomeTradeFairComponent } from "./components/page-home-trade-fair/page-home-trade-fair.component";
+
 
 const routes: Routes = [
+  {
+    path: "footer-1",
+    component: CompFooter1Component,
+  },
+  {
+    path: "header-2",
+    component: CompHeader2Component,
+  },
+  {
+    path: "request-quotation",
+    component: PageHomeRequestForQuotationComponent,
+  },
   {
     path: "about-us",
     component: PageAboutUsComponent,
@@ -168,9 +185,14 @@ const routes: Routes = [
     component: PageTradeShowComponent,
   },
   {
+    path: "trade-fair",
+    component: PageHomeTradeFairComponent,
+  },
+  {
     path: "**",
     redirectTo: "error-404",
   },
+
 ];
 
 @NgModule({

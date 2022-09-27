@@ -8,6 +8,7 @@ import { SharedModule } from "./../../@pages/components/shared.module";
 import { pgCardModule } from "../../@pages/components/card/card.module";
 import { pgSelectfx } from "./../../@pages/components/cs-select/select.module";
 import { pgSelectModule } from "../../@pages/components/select/select.module";
+import { pgUploadModule } from "../../@pages/components/upload/upload.module";
 import { pgSliderModule } from "../../@pages/components/slider/slider.module";
 import { pgCollapseModule } from "../../@pages/components/collapse";
 import { ViewRoutingModule } from "./view-routing.module";
@@ -156,6 +157,7 @@ import { PageHomeCategoriesComponent } from './components/page-home-categories/p
     pgSelectfx,
     pgSelectModule,
     pgSliderModule,
+    pgUploadModule,
     ViewRoutingModule,
     pgCollapseModule.forRoot(),
   ],

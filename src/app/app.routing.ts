@@ -52,6 +52,6 @@ export const AppRoutes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "view",
+    redirectTo: "b2b",
   },
 ];
