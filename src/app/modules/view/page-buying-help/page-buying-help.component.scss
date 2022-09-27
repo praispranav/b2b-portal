@@ -41,17 +41,18 @@ line-height: 40px;
     margin: 0;
     h2{
         margin-top: 22rem;
-                text-align: center;
+    text-align:center;
     }
     .row{
         margin: 0;
     .card{
         margin-top:4rem;
         margin-bottom: rem;
-        background-color: blue;
+        background-color: rgb(140, 0, 255);
         color: #fff;
         height: 141px;
-        @media(max-width:992px){
+        text-align: center;
+                @media(max-width:992px){
             height: 155px;
         }
         @media(max-width:768px){
@@ -67,5 +68,10 @@ line-height: 40px;
          overflow-x: hidden;
                  }
     }
+   
+    h5{       
+        line-height: 88px;
+    }
+    
 }
 }
