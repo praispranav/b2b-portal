@@ -76,7 +76,11 @@ import { PageHomeFlashDealsComponent } from './components/page-home-flash-deals/
 import { PageHomeTradeFairComponent } from './components/page-home-trade-fair/page-home-trade-fair.component';
 import { PageHomeRequestForQuotationComponent } from './components/page-home-request-for-quotation/page-home-request-for-quotation.component';
 import { PageHomeCategoriesComponent } from './components/page-home-categories/page-home-categories.component';
-
+// import { PageOverStockComponent } from './page-over-stock/page-over-stock.component';
+// import { PageBeABartnersComponent } from './page-be-a-bartners/page-be-a-bartners.component';
+// import { PageSitemapComponent } from './page-sitemap/page-sitemap.component';
+// import { PagePoliciesNRulesComponent } from './page-policies-n-rules/page-policies-n-rules.component';
+// import { PageContactSalesComponent } from './page-contact-sales/page-contact-sales.component';
 
 @NgModule({
   declarations: [

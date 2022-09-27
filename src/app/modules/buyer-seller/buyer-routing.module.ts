@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: "help",
     loadChildren: "../../features/help/help.module#HelpModule",
+  },
+  {
+    path: "email",
+    loadChildren:"../../features/email/email.module#EmailModule"
   }
 ];
 

@@ -41,19 +41,19 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Inbox [2]",
-          routerLink: "/seller/dashboard",
+          routerLink: "/seller/email/inbox",
         },
         {
           label: "Sent",
-          routerLink: "/seller/dashboard",
+          routerLink: "/seller/email/sent",
         },
         {
           label: "Spam",
-          routerLink: "/seller/dashboard",
+          routerLink: "/seller/email/spam",
         },
         {
           label: "Flagged",
-          routerLink: "/seller/dashboard",
+          routerLink: "/seller/email/flagged",
         },
       ],
     },

@@ -5,7 +5,7 @@
             <!-- START BREADCRUMB -->
             <ol class="breadcrumb sm-p-b-5">
                 <li class="breadcrumb-item">
-                    <a href="javascript:void(0)">Home</a>
+                    <a href="javascript:void(0)">Seller</a>
                 </li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
@@ -13,36 +13,27 @@
     </div>
 </div>
 <!-- END JUMBOTRON -->
-  <div class="m-3">
-      <div class="container bg-white">
-          <div class="row pt-2 pb-2">
-              <div class="col-md-2 ">
-                  <p>Select Industry</p>
-              </div>
-              <div class="col-md-3">
-                  <select name="" id="" class="form-control">
-                      <option value="">Selct Main Categories</option>
-                  </select> </div>
-          </div>
-      </div>
-      <div class="container bg-primary pt-2 mb-3 mt-3">
-          <div class="row">
-              <div class="col-md-6">
-                  <p><span class="pr-2">Account Type</span> <span class=""><b>Unverified</b></span></p>
-              </div>
-              <div class="col-md-6">
-                  <p><span class="pr-2">Ask for your Seller acccount Verification</span> <button
-                          class="btn btn-warning">Contact
-                          Us</button>
-                  </p>
 
-              </div>
-          </div>
-      </div>
-      <app-info></app-info>
-      <app-recommended-quotations></app-recommended-quotations>
-      <app-previous-inquiries></app-previous-inquiries>
-            <app-table></app-table>
-  </div>
-
+<div class="container-fluid p-l-25 p-r-25 sm-p-l-0 sm-p-r-0">
+    <div class="p-2 my-2 bg-white d-flex justify-content-start align-items-center">
+        <label class="pr-3">Select&nbsp;Industry</label>
+        <select class="form-control">
+            <option value="">Selcte Main Categories</option>
+        </select>
+    </div>
+    <div class="p-2 my-2 bg-primary d-flex justify-content-between align-items-center">
+        <div>
+            <span class="pr-2">Account Type</span>
+            <span class="fw-bold">Unverified</span>
+        </div>
+        <div>
+            <span class="pr-2">Ask for your Seller acccount Verification</span>
+            <button class="btn btn-warning">Contact Us</button>
+        </div>
+    </div>
+    <app-info></app-info>
+    <app-recommended-quotations></app-recommended-quotations>
+    <app-previous-inquiries></app-previous-inquiries>
+    <app-table></app-table>
+</div>
 <!-- END CONTAINER FLUID -->
