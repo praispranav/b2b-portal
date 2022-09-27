@@ -11,11 +11,11 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
   menuLinks = [
     {
       label: "Dashboard",
-      routerLink: "buyer-dashboard",
+      routerLink: "/buyer/dashboard",
     },
     {
       label: "Profile",
-      routerLink: "buyer-profile",
+      routerLink: "/buyer/profile",
     },
     {
       label: "Messages",
@@ -23,29 +23,29 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Inbox [2]",
-          routerLink: "buyer-dashboard",
+          routerLink: "/buyer/email/inbox",
         },
         {
           label: "Sent",
-          routerLink: "buyer-dashboard",
+          routerLink: "/buyer/email/sent",
         },
         {
           label: "Spam",
-          routerLink: "buyer-dashboard",
+          routerLink: "/buyer/email/spam",
         },
         {
           label: "Flagged",
-          routerLink: "buyer-dashboard",
+          routerLink: "/buyer/email/flagged",
         },
       ],
     },
     {
       label: "Buying Offers",
-      routerLink: "buyer-dashboard",
+      routerLink: "/buyer/dashboard",
     },
     {
       label: "Multiple Quotes Request",
-      routerLink: "buyer-dashboard",
+      routerLink: "/buyer/dashboard",
     },
     {
       label: "Trade Services",

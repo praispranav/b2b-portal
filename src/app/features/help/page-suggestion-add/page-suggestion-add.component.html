@@ -1,115 +1,127 @@
-<div class="p-3">
-  <div class="container-fluid p-3 bg-white">
-    <h1>Register your suggestions</h1>
-    <p class="text-muted">
-      Register your suggestions with here with detailed discription.
-    </p>
-
-    <form role="form" [formGroup]="suggestionForm">
-      <h3>Please tell the type of suggestion you want to report</h3>
-      <div class="row mb-3">
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="suggestion-type-1" value="Improvement"
-              formControlName="type">
-            <label class="form-check-label" for="suggestion-type-1">Improvement</label>
+<div class="conatiner-fluid p-3 h-100">
+  <div class="card">
+    <div class="card-body">
+      <div class="card card-default">
+        <div class="card-header p-0 d-flex justify-content-between align-items-center">
+          <div>
+            <h3 class="card-title">Register your suggestions</h3>
+            <p class="text-muted">
+              Register your suggestions with here with detailed discription.
+            </p>
+          </div>
+          <div>
+            <button class="btn btn-primary" routerLink="../suggestion-list">
+              Show Suggestions<i class="fa fa-plus ml-2" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="suggestion-type-2" value="Marketing & Strategy"
-              formControlName="type">
-            <label class="form-check-label" for="suggestion-type-2">Marketing & Strategy</label>
-          </div>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="suggestion-type-3" value="Design & Architecture"
-              formControlName="type">
-            <label class="form-check-label" for="suggestion-type-3">Design & Architecture</label>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="suggestion-type-4" value="Other Issue"
-              formControlName="type">
-            <label class="form-check-label" for="suggestion-type-4">Other Issue</label>
-          </div>
-        </div>
-        <div class="col-md-3"></div>
-        <div class="col-md-4">
-          <div *ngIf="f.type.invalid && (f.type.dirty || f.type.touched)">
-            <label *ngIf="f.type.errors.required" class="error">Select Suggestion Type</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-3">
-          <label for="subject">Subject</label>
-        </div>
-        <div class="col-md-8">
-          <input type="text" id="subject" formControlName="subject" class="form-control"
-            [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
-            placeholder="Enter Subject here">
-          <span class="help">e.g. "Mona Lisa Portrait"</span>
-          <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
-            <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
-            <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-3">
-          <label for="description">Description</label>
-        </div>
-        <div class="col-md-8">
-          <textarea type="text" id="description" formControlName="description" class="form-control"
-            [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
-            placeholder="Enter Description here" rows="10"></textarea>
-          <span class="help">e.g. "Mona Lisa Portrait"</span>
-          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
-            <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-3">
-          <label for="link">Seller Link</label>
-        </div>
-        <div class="col-md-8">
-          <input type="url" id="link" formControlName="link" class="form-control"
-            [class.is-invalid]="f.link.invalid && (f.link.dirty || f.link.touched)" placeholder="Enter Link here">
-          <span class="help">e.g. "http://www.domain.com"</span>
-          <div *ngIf="f.link.invalid && (f.link.dirty || f.link.touched)">
-            <label *ngIf="f.link.errors.required" class="error">This field is required.</label>
-            <label *ngIf="f.link.errors.maxlength" class="error">Invalid maxLength.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-3">
-          <label for="upload file">Upload File</label>
-        </div>
-        <div class="col-md-8">
-          <div class="input-group">
-            <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
-              id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
-              aria-describedby="basic-addon2" formControlName="file">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button"
-                (click)="clickOnInputFile(fileInputDoc)">upload</button>
+        <form role="form" [formGroup]="suggestionForm">
+          <h3>Please tell the type of suggestion you want to report</h3>
+          <div class="row mb-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="suggestion-type-1" value="Improvement"
+                  formControlName="type">
+                <label class="form-check-label" for="suggestion-type-1">Improvement</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="suggestion-type-2"
+                  value="Marketing & Strategy" formControlName="type">
+                <label class="form-check-label" for="suggestion-type-2">Marketing & Strategy</label>
+              </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="suggestion-type-3"
+                  value="Design & Architecture" formControlName="type">
+                <label class="form-check-label" for="suggestion-type-3">Design & Architecture</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="suggestion-type-4" value="Other Issue"
+                  formControlName="type">
+                <label class="form-check-label" for="suggestion-type-4">Other Issue</label>
+              </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-4">
+              <div *ngIf="f.type.invalid && (f.type.dirty || f.type.touched)">
+                <label *ngIf="f.type.errors.required" class="error">Select Suggestion Type</label>
+              </div>
             </div>
           </div>
-        </div>
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="subject">Subject</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" id="subject" formControlName="subject" class="form-control"
+                [class.is-invalid]="f.subject.invalid && (f.subject.dirty || f.subject.touched)"
+                placeholder="Enter Subject here">
+              <span class="help">e.g. "Mona Lisa Portrait"</span>
+              <div *ngIf="f.subject.invalid && (f.subject.dirty || f.subject.touched)">
+                <label *ngIf="f.subject.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.subject.errors.maxlength" class="error">Invalid maxLength.</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="description">Description</label>
+            </div>
+            <div class="col-md-8">
+              <textarea type="text" id="description" formControlName="description" class="form-control"
+                [class.is-invalid]="f.description.invalid && (f.description.dirty || f.description.touched)"
+                placeholder="Enter Description here" rows="10"></textarea>
+              <span class="help">e.g. "Mona Lisa Portrait"</span>
+              <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="link">Seller Link</label>
+            </div>
+            <div class="col-md-8">
+              <input type="url" id="link" formControlName="link" class="form-control"
+                [class.is-invalid]="f.link.invalid && (f.link.dirty || f.link.touched)" placeholder="Enter Link here">
+              <span class="help">e.g. "http://www.domain.com"</span>
+              <div *ngIf="f.link.invalid && (f.link.dirty || f.link.touched)">
+                <label *ngIf="f.link.errors.required" class="error">This field is required.</label>
+                <label *ngIf="f.link.errors.maxlength" class="error">Invalid maxLength.</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-3">
+              <label for="upload file">Upload File</label>
+            </div>
+            <div class="col-md-8">
+              <div class="input-group">
+                <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+                  id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                  aria-describedby="basic-addon2" formControlName="file">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button"
+                    (click)="clickOnInputFile(fileInputDoc)">upload</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3"></div>
+            <div class="col-8 pl-1">
+              <button class="btn btn-primary" type="button" (click)="subCategoryForm()">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="row mb-3">
-        <div class="col-3"></div>
-        <div class="col-8 pl-1">
-          <button class="btn btn-primary" type="button" (click)="subCategoryForm()">Submit</button>
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
 </div>

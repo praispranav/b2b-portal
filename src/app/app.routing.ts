@@ -33,12 +33,12 @@ export const AppRoutes: Routes = [
   {
     path: "buyer",
     component: BuyerLayoutComponent,
-    loadChildren: "./modules/seller/seller.module#SellerModule",
+    loadChildren: "./modules/buyer-seller/buyer.module#BuyerModule",
   },
   {
     path: "seller",
     component: SellerLayoutComponent,
-    loadChildren: "./modules/seller/seller.module#SellerModule",
+    loadChildren: "./modules/buyer-seller/seller.module#SellerModule",
   },
   {
     path: "user-auth",

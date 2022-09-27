@@ -7,7 +7,6 @@ import { PageDisputeListComponent } from "./page-dispute-list/page-dispute-list.
 import { PageSuggestionAddComponent } from "./page-suggestion-add/page-suggestion-add.component";
 import { PageSuggestionListComponent } from "./page-suggestion-list/page-suggestion-list.component";
 
-
 const routes: Routes = [
   {
     path: "",

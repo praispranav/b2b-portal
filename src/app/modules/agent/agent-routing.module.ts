@@ -11,10 +11,10 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: './agent-dashboard/dashboard.module#DashboardModule'
   },
-  {
-    path: 'profile',
-    loadChildren: './agent-profile/profile.module#ProfileModule'
-  },
+  // {
+  //   path: 'profile',
+  //   loadChildren: './agent-profile/profile.module#ProfileModule'
+  // },
   {
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule'

@@ -15,19 +15,19 @@ export class AgentLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Profile",
-      routerLink: "#",
+      routerLink: "/agent/dashboard",
     },
     {
       label: "Assigned Account",
-      routerLink: "#",
+      routerLink: "/agent/dashboard",
     },
     {
       label: "Verify Accounts",
-      routerLink: "#",
+      routerLink: "/agent/dashboard",
     },
     {
       label: "Accounts Status",
-      routerLink: "#",
+      routerLink: "/agent/dashboard",
     },
     {
       label: "Help",
