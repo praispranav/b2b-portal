@@ -1,10 +1,10 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-md-2 bg-white mt-1">
-            <app-page-product-search-supplier-categories></app-page-product-search-supplier-categories>
+            <app-product-search-supplier-categories></app-product-search-supplier-categories>
         </div>
         <div class="col-md-10">
-            <app-page-product-search-supplier-list></app-page-product-search-supplier-list>
+            <app-product-search-supplier-list></app-product-search-supplier-list>
           <!-- pagenation  start-->
           <div class="d-flex justify-content-end pr-5">
               <div *ngFor="let i of [1,2,3,4,5]" [ngClass]="{'text-primary':page == i,'font-weight-bold':page == i}"
