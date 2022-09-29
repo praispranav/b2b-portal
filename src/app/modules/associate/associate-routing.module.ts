@@ -11,10 +11,6 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: './associate-dashboard/dashboard.module#DashboardModule'
   },
-  // {
-  //   path: 'profile',
-  //   loadChildren: './associate-profile/profile.module#ProfileModule'
-  // },
   {
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule'

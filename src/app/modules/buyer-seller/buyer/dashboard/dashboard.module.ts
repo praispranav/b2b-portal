@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 import { pgTabsModule } from '../../../../@pages/components/tabs/tabs.module';
-import { PageDashboardLastConversationComponent } from './page-dashboard/component/page-dashboard-last-conversation/page-dashboard-last-conversation.component';
-import { PageDashboardMqrsComponent } from './page-dashboard/component/page-dashboard-mqrs/page-dashboard-mqrs.component';
-
-
+import { DashboardLastConversationComponent } from './component/dashboard-last-conversation/dashboard-last-conversation.component';
+import { DashboardLastMqrsComponent } from './component/dashboard-last-mqrs/dashboard-last-mqrs.component';
+import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 
 @NgModule({
-  declarations: [PageDashboardComponent, PageDashboardLastConversationComponent, PageDashboardMqrsComponent],
+  declarations: [
+    DashboardLastConversationComponent,
+    DashboardLastMqrsComponent,
+    PageDashboardComponent,
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

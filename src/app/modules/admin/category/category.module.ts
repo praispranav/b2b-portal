@@ -9,7 +9,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { ProgressModule } from '../../../@pages/components/progress/progress.module';
 import { TreeModule } from 'angular-tree-component';
-
 import { PageCategoryAddComponent } from './page-category-add/page-category-add.component';
 import { PageCategoryEditComponent } from './page-category-edit/page-category-edit.component';
 import { PageCategoryListComponent } from './page-category-list/page-category-list.component';

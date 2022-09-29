@@ -70,7 +70,8 @@
                 <div class="form-group">
                     <h6 class="control-label">Search Filters</h6>
                     <div class="form-group">
-                        <input type="search" class="form-control" (input)="getMaterFilterListByFilter($event.target.value)">
+                        <input type="search" class="form-control"
+                            (input)="getMaterFilterListByFilter($event.target.value)">
                     </div>
                     <ul class="ul-search-filter" *ngIf="filterList.length!==0">
                         <li *ngFor="let item of filterList">
@@ -137,7 +138,7 @@
                         <label for="category-isactivated-switch-lg" *ngIf="f.isActivated.value">Activated</label>
                     </div>
                 </div>
-                
+
                 <div class="mt-4">
                     <button type="submit" class="me-4 btn btn-primary show-notification"
                         (click)="subCategoryForm()">Update Category</button>

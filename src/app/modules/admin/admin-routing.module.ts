@@ -11,10 +11,6 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: './admin-dashboard/dashboard.module#DashboardModule',
   },
-  // {
-  //   path: 'profile',
-  //   loadChildren: './admin-profile/profile.module#ProfileModule',
-  // },
   {
     path: 'category',
     loadChildren: './category/category.module#CategoryModule',
