@@ -5,13 +5,14 @@ import { MessageService } from '../../@pages/components/message/message.service'
   providedIn: 'root'
 })
 export class AppMessageService {
-
   constructor(
     private messageService: MessageService
   ) { }
+
   removeToast() {
     this.messageService.remove();
   }
+
   createBasicNotification(res: string, msg: string) {
     const currentTab: number = 0;
     const notificationModel: any = {
@@ -32,8 +33,6 @@ export class AppMessageService {
 
     if (notificationModel.current != currentTab) {
       notificationModel.current = currentTab;
-      // this.messageService.remove(); 
-     
     }
 
     notificationModel.position = nofitcationStrings[currentTab]['position'];
@@ -44,12 +43,12 @@ export class AppMessageService {
     this.messageService.create(notificationModel.color, notificationModel.message, {
       Position: nofitcationStrings[currentTab]['position'],
       Style: notificationModel.type,     
-      Duration: 0,
-      
+      Duration: 0,      
     });
+
     setTimeout(() => {
       this.removeToast();
-  }, 1000);
+    }, 1000);
   }
 }
 
