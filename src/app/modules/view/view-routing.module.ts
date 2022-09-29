@@ -1,3 +1,4 @@
+import { PageOverStockComponent } from './page-over-stock/page-over-stock.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CompFooter1Component } from "./components/comp-footer1/comp-footer1.component";
@@ -113,6 +114,10 @@ const routes: Routes = [
     component: PageNewsAndUpdateComponent,
   },
   {
+    path:'overstack',
+    component:PageOverStockComponent,
+  },
+  {
     path: "product-search",
     component: PageProductSearchComponent,
   },
@@ -128,6 +133,7 @@ const routes: Routes = [
     path: "seller-catalogue-contact",
     component: PageSellerCatalogueContactComponent,
   },
+
   {
     path: "seller-catalogue-home",
     component: PageSellerCatalogueHomeComponent,
