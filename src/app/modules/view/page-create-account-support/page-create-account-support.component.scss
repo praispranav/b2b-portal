@@ -1,9 +1,9 @@
-.supportHeadingContainer{
+.supportHeadingContainer {
     margin-top: 100px;
     float: left;
 }
 
-.supportHeading{
+.supportHeading {
     // font-family: "Google Sans",Roboto,Arial,Helvetica,sans-serif;
     font-size: 50px;
     font-size: 60px;
@@ -12,12 +12,14 @@
     line-height: 72px;
     margin: 0 0 36px;
 }
-.supportParagraph{
+
+.supportParagraph {
     color: #3c4043;
     // font-family: Roboto,Arial,Helvetica,sans-serif;
-    font: 300 16px/28px Roboto,Arial,Helvetica,sans-serif
+    font: 300 16px/28px Roboto, Arial, Helvetica, sans-serif
 }
-.supportContactContainer{
+
+.supportContactContainer {
     float: right;
     height: 245px;
     border: 1px solid #dadce0;
@@ -30,7 +32,8 @@
     margin-top: -300px;
 
 }
-.avtar{
+
+.avtar {
     border-radius: 50%;
     width: 75px;
     display: inline-block;
@@ -40,37 +43,44 @@
     align-items: center;
     margin-left: 2px;
 }
-.supportParagraphTwo{
+
+.supportParagraphTwo {
     margin-top: 65px;
 
 }
-.callIcon{
+
+.callIcon {
     float: left;
     color: skyblue;
     margin-left: 40px;
 }
-.callNumber{
+
+.callNumber {
     float: right;
     color: skyblue;
     margin-right: 46px;
 }
-.sectionTwoContainer{
 
- margin-top: 220px;
+.sectionTwoContainer {
+
+    margin-top: 220px;
 }
- .sectionTwoHeading{
-  text-align: center; 
-  color: black; 
-  font-weight: bold; 
- }
- .sectionThreeHeading{
-     text-align: center;
-     font-weight: bold;
-     margin-bottom: 10px;
- }
- .videoSection{
-     background-image: url("../../../../assets/assets/img/industry.jpg");
-     height: 500px;
-     margin-left: 10px;
 
- }
+.sectionTwoHeading {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.sectionThreeHeading {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.videoSection {
+    background-image: url("../../../../assets/assets/img/industry.jpg");
+    height: 500px;
+    margin-left: 10px;
+
+}

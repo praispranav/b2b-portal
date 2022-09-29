@@ -4,7 +4,8 @@
             <div class="col-lg-6 col-md-6 col-sm-12 mb-3 mt-3">
                 <h1 class="  f-48 m-60 ">Contact Us</h1>
                 <h2 class="mt-3 mb-3">Thanks For Contacting </h2>
-                <p class="text-muted text-start  f-24  mt-3 mb-3"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt veniam dolorum, magnam esse sequi perspiciatis ad voluptate aperiam pariatur
+                <p class="text-muted text-start  f-24  mt-3 mb-3"> Lorem ipsum, dolor sit amet consectetur adipisicing
+                    elit. Incidunt veniam dolorum, magnam esse sequi perspiciatis ad voluptate aperiam pariatur
                 </p>
                 <button class="btn bg-complete-light text-white mt-3 mb-3">
                     <h4>Contact Us</h4>
@@ -16,9 +17,11 @@
                 <div class="row">
                     <h4 class="mt-0 ">Please provide your details</h4>
                     <div class="col-lg-12">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.companyName.invalid && (f.companyName.dirty || f.companyName.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.companyName.invalid && (f.companyName.dirty || f.companyName.touched)">
                             <label for="company-name">Company Name</label>
-                            <input type="text" formControlName="companyName" placeholder="Enter your company name here" class="form-control" id="company-name" />
+                            <input type="text" formControlName="companyName" placeholder="Enter your company name here"
+                                class="form-control" id="company-name" />
                         </div>
                         <div *ngIf="f.companyName.invalid && (f.companyName.dirty || f.companyName.touched)">
                             <label *ngIf="f.companyName.errors.required" class="error">This field is required.</label>
@@ -29,9 +32,12 @@
                             <label for="contact person" class="mb-0 "> Contact Person </label>
                             <div class="row mt-2">
                                 <div class="col-lg-6 col-sm-12 col-md-6">
-                                    <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)">
+                                    <div pgFormGroupDefault class="form-group form-group-default required"
+                                        [class.has-error]="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)">
                                         <label for="person-first-name">First Name</label>
-                                        <input type="text" formControlName="firstName" placeholder="Enter your first name here" class="form-control" id="person-first-name" />
+                                        <input type="text" formControlName="firstName"
+                                            placeholder="Enter your first name here" class="form-control"
+                                            id="person-first-name" />
                                     </div>
                                     <div *ngIf="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)">
                                         <label *ngIf="f.firstName.errors.required" class="error">This field is
@@ -39,21 +45,27 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 col-md-6">
-                                    <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
+                                    <div pgFormGroupDefault class="form-group form-group-default required"
+                                        [class.has-error]="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
                                         <label for="person-last-name">Last Name</label>
-                                        <input type="text" formControlName="lastName" placeholder="Enter your last name here" class="form-control" id="person-last-name" />
+                                        <input type="text" formControlName="lastName"
+                                            placeholder="Enter your last name here" class="form-control"
+                                            id="person-last-name" />
                                     </div>
                                     <div *ngIf="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
-                                        <label *ngIf="f.lastName.errors.required" class="error">This field is required.</label>
+                                        <label *ngIf="f.lastName.errors.required" class="error">This field is
+                                            required.</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.companyName.invalid && (f.email.dirty || f.email.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.companyName.invalid && (f.email.dirty || f.email.touched)">
                             <label for="email-name">Email</label>
-                            <input type="text" formControlName="email" placeholder="Enter your email here" class="form-control" id="email-name" />
+                            <input type="text" formControlName="email" placeholder="Enter your email here"
+                                class="form-control" id="email-name" />
                         </div>
                         <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
                             <label *ngIf="f.email.errors.required" class="error">This field is required.</label>
@@ -61,10 +73,12 @@
                     </div>
                     <div class="row m-0 p-0 ">
                         <div class="col-sm-6 ">
-                            <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.Country.invalid && (f.Country.dirty || f.Country.touched)">
+                            <div pgFormGroupDefault class="form-group form-group-default required"
+                                [class.has-error]="f.Country.invalid && (f.Country.dirty || f.Country.touched)">
                                 <label for="Country-name">Country/Region</label>
-                                <select type="text" formControlName="Country" placeholder="Enter your country name here" class="form-control" id="Country-name">
-                                    
+                                <select type="text" formControlName="Country" placeholder="Enter your country name here"
+                                    class="form-control" id="Country-name">
+
                                     <option Value="" Label="" selected>Select</option>
                                     <option Value="AF" Label="Afghanistan">Afghanistan</option>
                                     <option Value="AX" Label="Åland Islands">Åland Islands
@@ -95,15 +109,18 @@
                                     <option Value="BJ" Label="Benin">Benin</option>
                                     <option Value="BM" Label="Bermuda">Bermuda</option>
                                     <option Value="BT" Label="Bhutan">Bhutan</option>
-                                    <option Value="BO" Label="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
-                                    <option Value="BQ" Label="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+                                    <option Value="BO" Label="Bolivia, Plurinational State of">Bolivia, Plurinational
+                                        State of</option>
+                                    <option Value="BQ" Label="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius
+                                        and Saba</option>
                                     <option Value="BA" Label="Bosnia and Herzegovina">Bosnia and Herzegovina
                                     </option>
                                     <option Value="BW" Label="Botswana">Botswana</option>
                                     <option Value="BV" Label="Bouvet Island">Bouvet Island
                                     </option>
                                     <option Value="BR" Label="Brazil">Brazil</option>
-                                    <option Value="IO" Label="British Indian Ocean Territory">British Indian Ocean Territory
+                                    <option Value="IO" Label="British Indian Ocean Territory">British Indian Ocean
+                                        Territory
                                     </option>
                                     <option Value="BN" Label="Brunei Darussalam">Brunei Darussalam
                                     </option>
@@ -129,7 +146,8 @@
                                     <option Value="CO" Label="Colombia">Colombia</option>
                                     <option Value="KM" Label="Comoros">Comoros</option>
                                     <option Value="CG" Label="Congo">Congo</option>
-                                    <option Value="CD" Label="Congo, the Democratic Republic of the">Congo, the Democratic Republic of the</option>
+                                    <option Value="CD" Label="Congo, the Democratic Republic of the">Congo, the
+                                        Democratic Republic of the</option>
                                     <option Value="CK" Label="Cook Islands">Cook Islands
                                     </option>
                                     <option Value="CR" Label="Costa Rica">Costa Rica</option>
@@ -185,8 +203,10 @@
                                     </option>
                                     <option Value="GY" Label="Guyana">Guyana</option>
                                     <option Value="HT" Label="Haiti">Haiti</option>
-                                    <option Value="HM" Label="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
-                                    <option Value="VA" Label="Holy See (Vatican City State)">Holy See (Vatican City State)
+                                    <option Value="HM" Label="Heard Island and McDonald Islands">Heard Island and
+                                        McDonald Islands</option>
+                                    <option Value="VA" Label="Holy See (Vatican City State)">Holy See (Vatican City
+                                        State)
                                     </option>
                                     <option Value="HN" Label="Honduras">Honduras</option>
                                     <option Value="HK" Label="Hong Kong">Hong Kong</option>
@@ -208,12 +228,14 @@
                                     <option Value="KZ" Label="Kazakhstan">Kazakhstan</option>
                                     <option Value="KE" Label="Kenya">Kenya</option>
                                     <option Value="KI" Label="Kiribati">Kiribati</option>
-                                    <option Value="KP" Label="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                    <option Value="KP" Label="Korea, Democratic People's Republic of">Korea, Democratic
+                                        People's Republic of</option>
                                     <option Value="KR" Label="Korea, Republic of">Korea, Republic of
                                     </option>
                                     <option Value="KW" Label="Kuwait">Kuwait</option>
                                     <option Value="KG" Label="Kyrgyzstan">Kyrgyzstan</option>
-                                    <option Value="LA" Label="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                    <option Value="LA" Label="Lao People's Democratic Republic">Lao People's Democratic
+                                        Republic</option>
                                     <option Value="LV" Label="Latvia">Latvia</option>
                                     <option Value="LB" Label="Lebanon">Lebanon</option>
                                     <option Value="LS" Label="Lesotho">Lesotho</option>
@@ -239,7 +261,8 @@
                                     <option Value="MU" Label="Mauritius">Mauritius</option>
                                     <option Value="YT" Label="Mayotte">Mayotte</option>
                                     <option Value="MX" Label="Mexico">Mexico</option>
-                                    <option Value="FM" Label="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                    <option Value="FM" Label="Micronesia, Federated States of">Micronesia, Federated
+                                        States of</option>
                                     <option Value="MD" Label="Moldova, Republic of">Moldova, Republic of
                                     </option>
                                     <option Value="MC" Label="Monaco">Monaco</option>
@@ -268,7 +291,8 @@
                                     <option Value="OM" Label="Oman">Oman</option>
                                     <option Value="PK" Label="Pakistan">Pakistan</option>
                                     <option Value="PW" Label="Palau">Palau</option>
-                                    <option Value="PS" Label="Palestinian Territory, Occupied">Palestinian Territory, Occupied
+                                    <option Value="PS" Label="Palestinian Territory, Occupied">Palestinian Territory,
+                                        Occupied
                                     </option>
                                     <option Value="PA" Label="Panama">Panama</option>
                                     <option Value="PG" Label="Papua New Guinea">Papua New Guinea
@@ -297,7 +321,8 @@
                                     </option>
                                     <option Value="PM" Label="Saint Pierre and Miquelon">Saint Pierre and Miquelon
                                     </option>
-                                    <option Value="VC" Label="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines
+                                    <option Value="VC" Label="Saint Vincent and the Grenadines">Saint Vincent and the
+                                        Grenadines
                                     </option>
                                     <option Value="WS" Label="Samoa">Samoa</option>
                                     <option Value="SM" Label="San Marino">San Marino</option>
@@ -361,11 +386,13 @@
                                     </option>
                                     <option Value="US" Label="United States">United States
                                     </option>
-                                    <option Value="UM" Label="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                    <option Value="UM" Label="United States Minor Outlying Islands">United States Minor
+                                        Outlying Islands</option>
                                     <option Value="UY" Label="Uruguay">Uruguay</option>
                                     <option Value="UZ" Label="Uzbekistan">Uzbekistan</option>
                                     <option Value="VU" Label="Vanuatu">Vanuatu</option>
-                                    <option Value="VE" Label="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic of</option>
+                                    <option Value="VE" Label="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian
+                                        Republic of</option>
                                     <option Value="VN" Label="Viet Nam">Viet Nam</option>
                                     <option Value="VG" Label="Virgin Islands, British">Virgin Islands, British
                                     </option>
@@ -386,27 +413,33 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-12 col-md-6">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.State.invalid && (f.State.dirty || f.State.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.State.invalid && (f.State.dirty || f.State.touched)">
                             <label for="State-name">State/Province</label>
-                            <input type="text" formControlName="State" placeholder="Enter your state name here" class="form-control" id="State-name" />
+                            <input type="text" formControlName="State" placeholder="Enter your state name here"
+                                class="form-control" id="State-name" />
                         </div>
                         <div *ngIf="f.State.invalid && (f.State.dirty || f.State.touched)">
                             <label *ngIf="f.State.errors.required" class="error">This field is required.</label>
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-12 col-md-6 ">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.City.invalid && (f.City.dirty || f.City.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.City.invalid && (f.City.dirty || f.City.touched)">
                             <label for="City-name">City</label>
-                            <input type="text" formControlName="City" placeholder="Enter your city name here" class="form-control" id="City-name" />
+                            <input type="text" formControlName="City" placeholder="Enter your city name here"
+                                class="form-control" id="City-name" />
                         </div>
                         <div *ngIf="f.City.invalid && (f.City.dirty || f.City.touched)">
                             <label *ngIf="f.City.errors.required" class="error">This field is required.</label>
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.countryCode.invalid && (f.countryCode.dirty || f.countryCode.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.countryCode.invalid && (f.countryCode.dirty || f.countryCode.touched)">
                             <div class="input-group-prepend ">
-                                <select name="countryCode" id="" formControlName="countryCode" class="form-control form-select">
+                                <select name="countryCode" id="" formControlName="countryCode"
+                                    class="form-control form-select">
                                     <option value=" " selected>Select Country Code </option>
                                     <option data-countryCode="GB" value="44">UK (+44)</option>
                                     <option data-countryCode="US" value="1">USA (+1)</option>
@@ -637,7 +670,8 @@
 
                             <div class="form-input-group">
                                 <label>Mobile</label>
-                                <input [textMask]="{mask: mask.ssn}" type="tel" id="ssn" class="form-control" placeholder="xxx-xxx-xxxx" formControlName="mobile">
+                                <input [textMask]="{mask: mask.ssn}" type="tel" id="ssn" class="form-control"
+                                    placeholder="xxx-xxx-xxxx" formControlName="mobile">
                             </div>
                             <div *ngIf="f.mobile.invalid && (f.mobile.dirty || f.mobile.touched)">
                                 <label *ngIf="f.mobile.errors.required" class="error">This field is required.</label>
@@ -645,9 +679,11 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                        <div pgFormGroupDefault class="form-group form-group-default required"
+                            [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
                             <label for="description-detail" class="mb-0">Description </label>
-                            <textarea name="" id=" description-detail" cols="25" rows="10" class="form-control mt-2" formControlName="description"></textarea>
+                            <textarea name="" id=" description-detail" cols="25" rows="10" class="form-control mt-2"
+                                formControlName="description"></textarea>
                         </div>
                         <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
                             <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
@@ -655,7 +691,7 @@
                     </div>
                     <div class="col-lg-6 mt-2">
                         <button class="btn bg-complete-light text-white form-control">
-                             Submit
+                            Submit
                         </button>
                     </div>
                 </div>
@@ -671,11 +707,21 @@
                     <span class="semi-bold">Minimal</span> Portlet
                 </h3>
                 <p>
-                    Click on the refresh icon to simulate an AJAX call and to see an animated circular progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this style? Simply change the style by setting portlet options.
-                    Click on the refresh icon to simulate an AJAX call and to see an animated circular progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this style? Simply change the style by setting
-                    portlet options. Click on the refresh icon to simulate an AJAX call and to see an animated circular progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this style? Simply change the
-                    style by setting portlet options. Click on the refresh icon to simulate an AJAX call and to see an animated circular progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this style?
-                    Simply change the style by setting portlet options. Click on the refresh icon to simulate an AJAX call and to see an animated circular progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't
+                    Click on the refresh icon to simulate an AJAX call and to see an animated circular progress
+                    indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this
+                    style? Simply change the style by setting portlet options.
+                    Click on the refresh icon to simulate an AJAX call and to see an animated circular progress
+                    indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't like this
+                    style? Simply change the style by setting
+                    portlet options. Click on the refresh icon to simulate an AJAX call and to see an animated circular
+                    progress indicatorabove the portlet. This is the Pages default progress indicator for Cards. Don't
+                    like this style? Simply change the
+                    style by setting portlet options. Click on the refresh icon to simulate an AJAX call and to see an
+                    animated circular progress indicatorabove the portlet. This is the Pages default progress indicator
+                    for Cards. Don't like this style?
+                    Simply change the style by setting portlet options. Click on the refresh icon to simulate an AJAX
+                    call and to see an animated circular progress indicatorabove the portlet. This is the Pages default
+                    progress indicator for Cards. Don't
                     like this style? Simply change the style by setting portlet options.
                 </p>
             </div>

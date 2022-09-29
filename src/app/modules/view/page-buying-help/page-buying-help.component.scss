@@ -1,77 +1,91 @@
-.main-container{
+.main-container {
     text-align: center;
     margin-top: 160px;
-    h1{
+
+    h1 {
         color: #202124;
         font-size: 50px;
         line-height: 80px;
         font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
-        @media(max-width:992px){
+
+        @media(max-width:992px) {
             font-size: 40px;
         }
-        @media(max-width:768px){
+
+        @media(max-width:768px) {
             font-size: 35px;
             line-height: 60px;
 
         }
-        @media(max-width:576px){
+
+        @media(max-width:576px) {
             font-size: 30px;
             text-align: center;
         }
-        
-        
-    }
-    P{
-        text-align: center;
-padding-top: 1rem;
-font-size: 20px;
-line-height: 40px;
-@media(max-width:768px){
-    font-size: 20px;
-    line-height: 40px;
 
-}
+
     }
-    div{
+
+    P {
+        text-align: center;
+        padding-top: 1rem;
+        font-size: 20px;
+        line-height: 40px;
+
+        @media(max-width:768px) {
+            font-size: 20px;
+            line-height: 40px;
+
+        }
+    }
+
+    div {
         padding-top: 2rem;
         font-size: 16px;
     }
 }
-.sub-container{
+
+.sub-container {
     margin: 0;
-    h2{
+
+    h2 {
         margin-top: 22rem;
-    text-align:center;
-    }
-    .row{
-        margin: 0;
-    .card{
-        margin-top:4rem;
-        margin-bottom: rem;
-        background-color: rgb(140, 0, 255);
-        color: #fff;
-        height: 141px;
         text-align: center;
-                @media(max-width:992px){
-            height: 155px;
-        }
-        @media(max-width:768px){
-            height: 168px;
-            margin: 0px;
-         padding: 0px;
-         overflow-x: hidden;
-        }
-               @media(max-width:576px){
-         height: 128px;
-         margin: 0px;
-         padding: 0px;
-         overflow-x: hidden;
-                 }
     }
-   
-    h5{       
-        line-height: 88px;
+
+    .row {
+        margin: 0;
+
+        .card {
+            margin-top: 4rem;
+            margin-bottom: rem;
+            background-color: rgb(140, 0, 255);
+            color: #fff;
+            height: 141px;
+            text-align: center;
+
+            @media(max-width:992px) {
+                height: 155px;
+            }
+
+            @media(max-width:768px) {
+                height: 168px;
+                margin: 0px;
+                padding: 0px;
+                overflow-x: hidden;
+            }
+
+            @media(max-width:576px) {
+                height: 128px;
+                margin: 0px;
+                padding: 0px;
+                overflow-x: hidden;
+            }
+        }
+
+        h5 {
+            line-height: 88px;
+        }
+
     }
-    
-}
 }

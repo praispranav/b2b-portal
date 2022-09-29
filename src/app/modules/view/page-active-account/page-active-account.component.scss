@@ -1,38 +1,45 @@
-.main-container{
+.main-container {
     text-align: center;
     margin-top: 160px;
-    h1{
+
+    h1 {
         color: #202124;
         font-size: 50px;
         line-height: 80px;
         font-family: "Google Sans Display", Arial, Helvetica, sans-serif;
-        @media(max-width:992px){
+
+        @media(max-width:992px) {
             font-size: 40px;
         }
-        @media(max-width:768px){
+
+        @media(max-width:768px) {
             font-size: 35px;
             line-height: 60px;
 
         }
-        @media(max-width:576px){
+
+        @media(max-width:576px) {
             font-size: 30px;
             text-align: center;
         }
-        
-        
-    }
-    P{
-        text-align: center;
-padding-top: 1rem;
-font-size: 20px;
-line-height: 40px;
-@media(max-width:768px){
-    font-size: 20px;
-    line-height: 40px;
 
-}
+
     }
-    div{
+
+    P {
+        text-align: center;
+        padding-top: 1rem;
+        font-size: 20px;
+        line-height: 40px;
+
+        @media(max-width:768px) {
+            font-size: 20px;
+            line-height: 40px;
+
+        }
+    }
+
+    div {
         padding-top: 2rem;
         font-size: 16px;
     }

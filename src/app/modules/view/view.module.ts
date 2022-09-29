@@ -38,6 +38,47 @@ import { ProductSearchSupplierCategoriesComponent } from './components/product-s
 import { ProductSearchSupplierListComponent } from './components/product-search-supplier-list/product-search-supplier-list.component';
 import { ProductViewDetailsComponent } from './components/product-view-details/product-view-details.component';
 import { ProductViewMessageSupplierComponent } from './components/product-view-message-supplier/product-view-message-supplier.component';
+import { PageAboutUsComponent } from './page-about-us/page-about-us.component';
+import { PageActiveAccountComponent } from './page-active-account/page-active-account.component';
+import { PageAskSupportForServicePartnerComponent } from './page-ask-support-for-service-partner/page-ask-support-for-service-partner.component';
+import { PageBeABartnersComponent } from './page-be-a-bartners/page-be-a-bartners.component';
+import { PageBlogComponent } from './page-blog/page-blog.component';
+import { PageBuyComponent } from './page-buy/page-buy.component';
+import { PageBuyingHelpComponent } from './page-buying-help/page-buying-help.component';
+import { PageContactSalesComponent } from './page-contact-sales/page-contact-sales.component';
+import { PageContactUsComponent } from './page-contact-us/page-contact-us.component';
+import { PageCreateAccountSupportComponent } from './page-create-account-support/page-create-account-support.component';
+import { PageError404Component } from './page-error404/page-error404.component';
+import { PageError500Component } from './page-error500/page-error500.component';
+import { PageFaqComponent } from './page-faq/page-faq.component';
+import { PageHomeComponent } from './page-home/page-home.component';
+import { PageHomeRequestForQuotationComponent } from './components/page-home-request-for-quotation/page-home-request-for-quotation.component';
+import { PageHomeTradeFairComponent } from './components/page-home-trade-fair/page-home-trade-fair.component';
+import { PageInspectionServiceComponent } from './page-inspection-service/page-inspection-service.component';
+import { PageJoinNowForFreeComponent } from './page-join-now-for-free/page-join-now-for-free.component';
+import { PageLogisticSolutionsComponent } from './page-logistic-solutions/page-logistic-solutions.component';
+import { PageNewsAndUpdateComponent } from './page-news-and-update/page-news-and-update.component';
+import { PageOverStockComponent } from './page-over-stock/page-over-stock.component';
+import { PagePoliciesNRulesComponent } from './page-policies-n-rules/page-policies-n-rules.component';
+import { PageProductSearchComponent } from './page-product-search/page-product-search.component';
+import { PageProductViewComponent } from './page-product-view/page-product-view.component';
+import { PageSellComponent } from './page-sell/page-sell.component';
+import { PageSellerCatalogueContactComponent } from './page-seller-catalogue-contact/page-seller-catalogue-contact.component';
+import { PageSellerCatalogueHomeComponent } from './page-seller-catalogue-home/page-seller-catalogue-home.component';
+import { PageSellerCatalogueManageGuideComponent } from './page-seller-catalogue-manage-guide/page-seller-catalogue-manage-guide.component';
+import { PageSellerCatalogueProductComponent } from './page-seller-catalogue-product/page-seller-catalogue-product.component';
+import { PageSellerCatalogueProfileComponent } from './page-seller-catalogue-profile/page-seller-catalogue-profile.component';
+import { PageSellerDocumentWeConsiderComponent } from './page-seller-document-we-consider/page-seller-document-we-consider.component';
+import { PageSellerReportCheckComponent } from './page-seller-report-check/page-seller-report-check.component';
+import { PageSitemapComponent } from './page-sitemap/page-sitemap.component';
+import { PageSupplierBackgroundSearchComponent } from './page-supplier-background-search/page-supplier-background-search.component';
+import { PageSupplierReportComponent } from './page-supplier-report/page-supplier-report.component';
+import { PageSupportComponent } from './page-support/page-support.component';
+import { PageTeamsComponent } from './page-teams/page-teams.component';
+import { PageTermsComponent } from './page-terms/page-terms.component';
+import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
+import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
+import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
 import { ViewRoutingModule } from "./view-routing.module";
 
 @NgModule({
@@ -69,9 +110,50 @@ import { ViewRoutingModule } from "./view-routing.module";
     ProductSearchSupplierListComponent,
     ProductViewDetailsComponent,
     ProductViewMessageSupplierComponent
+    PageAboutUsComponent,
+    PageActiveAccountComponent,
+    PageAskSupportForServicePartnerComponent,
+    PageBeABartnersComponent,
+    PageBlogComponent,
+    PageBuyComponent,
+    PageBuyingHelpComponent,
+    PageContactSalesComponent,
+    PageContactUsComponent,
+    PageCreateAccountSupportComponent,
+    PageError404Component,
+    PageError500Component,
+    PageFaqComponent,
+    PageHomeComponent,
+    PageHomeRequestForQuotationComponent,
+    PageHomeTradeFairComponent,
+    PageInspectionServiceComponent,
+    PageJoinNowForFreeComponent,
+    PageLogisticSolutionsComponent,
+    PageNewsAndUpdateComponent,
+    PageOverStockComponent,
+    PagePoliciesNRulesComponent,
+    PageProductSearchComponent,
+    PageProductViewComponent,
+    PageSellComponent,
+    PageSellerCatalogueContactComponent,
+    PageSellerCatalogueHomeComponent,
+    PageSellerCatalogueManageGuideComponent,
+    PageSellerCatalogueProductComponent,
+    PageSellerCatalogueProfileComponent,
+    PageSellerDocumentWeConsiderComponent,
+    PageSellerReportCheckComponent,
+    PageSitemapComponent,
+    PageSupplierBackgroundSearchComponent,
+    PageSupplierReportComponent,
+    PageSupportComponent,
+    PageTeamsComponent,
+    PageTermsComponent,
+    PageTermsAndConditionComponent,
+    PageTermsOfUseComponent,
+    PageTradeShowComponent,
   ],
-  imports: [
-    CommonModule,
+  imports: [ 
+  CommonModule,
     FormsModule,
     ReactiveFormsModule,
     AlertModule.forRoot(),
