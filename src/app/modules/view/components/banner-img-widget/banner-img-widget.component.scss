@@ -7,9 +7,11 @@ $assets-url: "/assets";
   right: 0;
   top: 0;
   bottom: 0;
+
   .pull-bottom {
     padding: 0 49px 56px 42px;
   }
+
   &:after {
     background-image: url("#{$assets-url}/assets/img/fashion.jpg");
     background-size: cover;
@@ -22,6 +24,7 @@ $assets-url: "/assets";
     z-index: 0;
     opacity: 0.69;
   }
+
   &:before {
     background-image: url("#{$assets-url}/img/dashboard/linear_gradient.png");
     background-repeat: repeat-x;
@@ -33,22 +36,27 @@ $assets-url: "/assets";
     position: absolute;
     z-index: 1;
   }
-  & > .card-body {
-    .company:nth-child(2) > div {
+
+  &>.card-body {
+    .company:nth-child(2)>div {
       display: table;
       margin: 0 auto;
       width: 127px;
     }
   }
-  & > .card-body > * {
+
+  &>.card-body>* {
     z-index: 1;
   }
-  & > .card-body > *:not(.pull-bottom) {
+
+  &>.card-body>*:not(.pull-bottom) {
     position: relative;
   }
-  & > .card-body .pull-bottom {
+
+  &>.card-body .pull-bottom {
     padding: 0 49px 56px 42px;
   }
+
   span.label {
     color: #fff;
     background: rgba(255, 255, 255, 0.3);
@@ -57,10 +65,12 @@ $assets-url: "/assets";
 
 .widget {
   position: relative;
-  & > * {
+
+  &>* {
     position: relative;
     z-index: 1;
   }
+
   &:after {
     background-size: cover;
     content: " ";

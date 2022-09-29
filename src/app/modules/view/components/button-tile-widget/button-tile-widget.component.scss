@@ -8,11 +8,13 @@ $assets-url :"/assets";
   right: 0;
   top: 0;
   bottom: 0;
-  .card-body{
-    height:auto !important;
+
+  .card-body {
+    height: auto !important;
   }
+
   &:after {
-     background-image: url("#{$assets-url}/assets/img/button2.jpg");
+    background-image: url("#{$assets-url}/assets/img/button2.jpg");
     background-size: cover;
     content: " ";
     left: 0;
@@ -23,7 +25,8 @@ $assets-url :"/assets";
     z-index: 0;
     opacity: .69;
   }
-  & > div{
+
+  &>div {
     position: relative;
     z-index: 1;
   }

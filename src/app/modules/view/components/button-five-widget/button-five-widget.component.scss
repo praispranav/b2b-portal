@@ -2,21 +2,24 @@ $assets-url :"/assets";
 
 @import 'core.scss';
 $assets-url :"/assets";
+
 .widget-9 {
   background-image: url("#{$assets-url}/assets/img/button3.webp");
   background-size: cover;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    .card-body{
-      height: auto !important;
-    }
-    .label {
-      
-      background: rgba(0, 0, 0, .3);
-      color: #fff;
-    }
+  height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  .card-body {
+    height: auto !important;
+  }
+
+  .label {
+
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+  }
 }
