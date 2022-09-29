@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
-import { PreviousInquiriesComponent } from './components/previous-inquiries/previous-inquiries.component';
-import { TableComponent } from './components/table/table.component';
-import { LastConversationComponent } from './components/last-conversation/last-conversation.component';
-import { MrqsComponent } from './components/mrqs/mrqs.component';
 import { pgTabsModule } from '../../../../@pages/components/tabs/tabs.module';
-import { RecommendedQuotationsComponent } from './components/recommended-quotations/recommended-quotations.component';
-import { InfoComponent } from './components/info/info.component';
-
+import { DashboardInfoComponent } from './components/dashboard-info/dashboard-info.component';
+import { DashboradLastConversationComponent } from './components/dashborad-last-conversation/dashborad-last-conversation.component';
+import { DashboradMrqsComponent } from './components/dashborad-mrqs/dashborad-mrqs.component';
+import { DashboradPreviousInquiriesComponent } from './components/dashborad-previous-inquiries/dashborad-previous-inquiries.component';
+import { DashboradRecommendedQuotationsComponent } from './components/dashborad-recommended-quotations/dashborad-recommended-quotations.component';
+import { DashboradTableComponent } from './components/dashborad-table/dashborad-table.component';
+import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 
 @NgModule({
-  declarations: [PageDashboardComponent, PreviousInquiriesComponent, TableComponent, LastConversationComponent, MrqsComponent, RecommendedQuotationsComponent, InfoComponent],
+  declarations: [
+    DashboardInfoComponent,
+    DashboradLastConversationComponent,
+    DashboradMrqsComponent,
+    DashboradPreviousInquiriesComponent,
+    DashboradRecommendedQuotationsComponent,
+    DashboradTableComponent,
+    PageDashboardComponent,
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

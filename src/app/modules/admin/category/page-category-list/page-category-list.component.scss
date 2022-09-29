@@ -1,9 +1,9 @@
-.card-title{
+.card-title {
     font-size: 24px !important;
     font-weight: bold !important;
 }
 
-.preview-el{
+.preview-el {
     width: 360px;
     border: 1px solid black;
     box-shadow: 0 0 8px #ccc;
@@ -18,18 +18,22 @@
         padding-left: 4px;
         padding-top: 4px;
         list-style: none;
+
         li {
             margin-bottom: 2px;
-            >div{
+
+            >div {
                 display: flex;
-                div.hideToggleContainer{
+
+                div.hideToggleContainer {
                     opacity: 0;
                 }
             }
+
             button {
                 margin-right: 4px;
             }
         }
-        
+
     }
 }

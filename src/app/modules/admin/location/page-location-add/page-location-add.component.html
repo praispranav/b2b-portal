@@ -5,13 +5,16 @@
             <h3 class="card-title" *ngIf="formType==='state'">ADD STATE</h3>
             <h3 class="card-title" *ngIf="formType==='location'">ADD LOCATION</h3>
             <div>
-                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/country" *ngIf="formType!=='country'">
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/country"
+                    *ngIf="formType!=='country'">
                     Add Country <i class="fa fa-plus ml-2" aria-hidden="true"></i>
                 </button>
-                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/state" *ngIf="formType!=='state'">
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/state"
+                    *ngIf="formType!=='state'">
                     Add State <i class="fa fa-plus ml-2" aria-hidden="true"></i>
                 </button>
-                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/location" *ngIf="formType!=='location'">
+                <button class="btn btn-primary mr-2" routerLink="/admin/location/location-add/location"
+                    *ngIf="formType!=='location'">
                     Add Location <i class="fa fa-plus ml-2" aria-hidden="true"></i>
                 </button>
                 <button class="btn btn-primary mr-2" routerLink="/admin/location/location-list">
@@ -106,8 +109,8 @@
                     <!-- (ngModelChange)="countryChange($event)" -->
                     <div class="form-group"
                         [class.has-error]="sf.countryId.invalid && (sf.countryId.dirty || sf.countryId.touched)">
-                        <pg-select formControlName="countryId" class="w-100"
-                            [PlaceHolder]="'Country'" AllowClear ShowSearch>
+                        <pg-select formControlName="countryId" class="w-100" [PlaceHolder]="'Country'" AllowClear
+                            ShowSearch>
                             <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">
                             </pg-option>
@@ -199,8 +202,8 @@
                     <!-- (ngModelChange)="countryChange($event)" -->
                     <div class="form-group"
                         [class.has-error]="lf.countryId.invalid && (lf.countryId.dirty || lf.countryId.touched)">
-                        <pg-select formControlName="countryId" class="w-100"
-                            [PlaceHolder]="'Country'" AllowClear ShowSearch>
+                        <pg-select formControlName="countryId" class="w-100" [PlaceHolder]="'Country'" AllowClear
+                            ShowSearch>
                             <pg-option *ngFor="let masterCountry of masterCountryList" [Label]="masterCountry.name"
                                 [Value]="masterCountry._id">
                             </pg-option>

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // apiUrl: 'https://b2buat.azurewebsites.net',
   apiUrl: 'https://b2buat.azurewebsites.net',
 };
 /*
