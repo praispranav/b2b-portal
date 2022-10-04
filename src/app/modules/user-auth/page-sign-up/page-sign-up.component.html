@@ -3,140 +3,144 @@
     <img src="assets/img/logo.png" alt="logo" pgRetina src1x="assets/img/logo.png" src2x="assets/img/logo_2x.png"
       width="78" height="22" />
     <h3>Create Account On Bizzexpo</h3>
-    <form class="p-t-15" role="form" #registerForm="ngForm">
+    <form class="p-t-15" role="form" [formGroup]="signUpForm">
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-                Cname.invalid && (Cname.dirty || Cname.touched)
-              ">
-            <label>Company Name </label>
-            <input type="text" placeholder="ABC Company" class="form-control" id="txtCname" name="txtCname"
-              [(ngModel)]="txtCname" #Cname="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.company.invalid && (f.company.dirty || f.company.touched)">
+            <label for="company">Company Name</label>
+            <input type="text" formControlName="company" placeholder="Enter Company Name" class="form-control"
+              id="company" />
+          </div>
+          <div *ngIf="f.company.invalid && (f.company.dirty || f.company.touched)">
+            <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
           </div>
         </div>
-        <div *ngIf="Cname.invalid && (Cname.dirty || Cname.touched)">
-          <label *ngIf="Cname.errors.required" class="error">This field is required.</label>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.role.invalid && (f.role.dirty || f.role.touched)">
+            <label for="role">User Type</label>
+            <input type="text" formControlName="role" placeholder="Enter Company Name" class="form-control"
+              id="role" />
+          </div>
+          <div *ngIf="f.role.invalid && (f.role.dirty || f.role.touched)">
+            <label *ngIf="f.role.errors.required" class="error">This field is required.</label>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="fName.invalid && (fName.dirty || fName.touched)">
-            <label>First Name</label>
-            <input type="text" placeholder="John" class="form-control" id="txtfname" name="txtfname"
-              [(ngModel)]="txtfname" #fName="ngModel" required />
+            [class.has-error]="f.fName.invalid && (f.fName.dirty || f.fName.touched)">
+            <label for="fName">First Name</label>
+            <input type="text" formControlName="fName" placeholder="Enter First Name" class="form-control" id="fName" />
           </div>
-          <div *ngIf="fName.invalid && (fName.dirty || fName.touched)">
-            <label *ngIf="fName.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.fName.invalid && (f.fName.dirty || f.fName.touched)">
+            <label *ngIf="f.fName.errors.required" class="error">This field is required.</label>
           </div>
         </div>
         <div class="col-md-6">
           <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="LName.invalid && (LName.dirty || LName.touched)">
-            <label>Last Name</label>
-            <input type="text" placeholder="Smith" class="form-control" id="txtsName" name="txtlname"
-              [(ngModel)]="txtsname" #LName="ngModel" required />
+            [class.has-error]="f.lName.invalid && (f.lName.dirty || f.lName.touched)">
+            <label for="lName">Last Name</label>
+            <input type="text" formControlName="lName" placeholder="Enter Last Name" class="form-control" id="lName" />
           </div>
-          <div *ngIf="LName.invalid && (LName.dirty || LName.touched)">
-            <label *ngIf="LName.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.lName.invalid && (f.lName.dirty || f.lName.touched)">
+            <label *ngIf="f.lName.errors.required" class="error">This field is required.</label>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="email.invalid && (email.dirty || email.touched)">
-            <label>Email Address</label>
-            <input type="email" placeholder="We will send loging details to you" class="form-control" id="txtemail"
-              name="txtemail" [(ngModel)]="txtemail" #email="ngModel" required />
+            [class.has-error]="f.email.invalid && (f.email.dirty || f.email.touched)">
+            <label for="email">Email Address</label>
+            <input type="email" formControlName="email" placeholder="Enter Email Address" class="form-control"
+              id="email" />
           </div>
-          <div *ngIf="email.invalid && (email.dirty || email.touched)">
-            <label *ngIf="email.errors.required" class="error">This field is required.</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-              password.invalid && (password.dirty || password.touched)
-            ">
-            <label>Password</label>
-            <input type="password" placeholder="Minimum of 4 Charactors" class="form-control" id="txtpassword"
-              name="txtpassword" [(ngModel)]="txtpassword" #password="ngModel" required />
-          </div>
-          <div *ngIf="password.invalid && (password.dirty || password.touched)">
-            <label *ngIf="password.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+            <label *ngIf="f.email.errors.required" class="error">This field is required.</label>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-              cpassword.invalid && (cpassword.dirty || cpassword.touched)
-            ">
-            <label>Confirm Password</label>
-            <input type="password" placeholder="Minimum of 4 Charactors" class="form-control" id="txtcpassword"
-              name="txtcpassword" [(ngModel)]="txtcpassword" #cpassword="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.password.invalid && (f.password.dirty || f.password.touched)">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" placeholder="Enter Password" class="form-control"
+              id="password" />
           </div>
-          <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)">
-            <label *ngIf="cpassword.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+            <label *ngIf="f.password.errors.required" class="error">This field is required.</label>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-              country.invalid && (country.dirty || country.touched)
-              ">
-            <label>Country / Region </label>
-            <input type="text" placeholder="ABC Country" class="form-control" id="txtCountry" name="txtCountry"
-              [(ngModel)]="txtCountry" #country="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
+            <label for="cpassword">Confirm Password</label>
+            <input type="password" formControlName="cpassword" placeholder="Retypr Password" class="form-control"
+              id="cpassword" />
           </div>
-        </div>
-        <div *ngIf="country.invalid && (country.dirty || country.touched)">
-          <label *ngIf="country.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
+            <label *ngIf="f.cpassword.errors.required" class="error">This field is required.</label>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-                address1.invalid && (address1.dirty || address1.touched)
-              ">
-            <label>Address 1 </label>
-            <input type="text" placeholder="Apt/Suit Street Address " class="form-control" id="txtaddress1"
-              name="txtaddress1" [(ngModel)]="txtaddress1" #address1="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
+            <label for="country">Country</label>
+            <input type="text" formControlName="country" placeholder="Enter Country Here" class="form-control"
+              id="country" />
           </div>
-        </div>
-        <div *ngIf="address1.invalid && (address1.dirty || address1.touched)">
-          <label *ngIf="address1.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.country.invalid && (f.country.dirty || f.country.touched)">
+            <label *ngIf="f.country.errors.required" class="error">This field is required.</label>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-                address2.invalid && (address2.dirty || address2.touched)
-              ">
-            <label>Address 2 </label>
-            <input type="text" placeholder="Street & State Address " class="form-control" id="txtaddress2"
-              name="txtaddress2" [(ngModel)]="txtaddress2" #address2="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.address1.invalid && (f.address1.dirty || f.address1.touched)">
+            <label for="address1">Address 1</label>
+            <input type="text" formControlName="address1" placeholder="Enter Address 1" class="form-control"
+              id="address1" />
           </div>
-        </div>
-        <div *ngIf="address2.invalid && (address2.dirty || address2.touched)">
-          <label *ngIf="address2.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.address1.invalid && (f.address1.dirty || f.address1.touched)">
+            <label *ngIf="f.address1.errors.required" class="error">This field is required.</label>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="
-                mNumber.invalid && (mNumber.dirty || mNumber.touched)
-              ">
-            <label>Mobile Number </label>
-            <input type="text" placeholder="Street & State Address " class="form-control" id="txtmNumber"
-              name="txtmNumber" [(ngModel)]="txtmNumber" #mNumber="ngModel" required />
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.address2.invalid && (f.address2.dirty || f.address2.touched)">
+            <label for="address2">Address 2</label>
+            <input type="text" formControlName="address2" placeholder="Enter Address 2" class="form-control"
+              id="address2" />
+          </div>
+          <div *ngIf="f.address2.invalid && (f.address2.dirty || f.address2.touched)">
+            <label *ngIf="f.address2.errors.required" class="error">This field is required.</label>
           </div>
         </div>
-        <div *ngIf="mNumber.invalid && (mNumber.dirty || mNumber.touched)">
-          <label *ngIf="mNumber.errors.required" class="error">This field is required.</label>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+            <label for="phone">Mobile Number</label>
+            <input type="text" formControlName="phone" placeholder="Enter Address 2" class="form-control"
+              id="phone" />
+          </div>
+          <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+            <label *ngIf="f.phone.errors.required" class="error">This field is required.</label>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -152,7 +156,7 @@
           <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
         </div>
       </div>
-      <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="registerForm.invalid">
+      <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="signUpForm.invalid" (click)="subSignUpForm()">
         Submit
       </button>
     </form>

@@ -7,12 +7,12 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ProviderAuthService } from '../providers/provider-auth.service';
+import { ProviderUserAuthService } from '../providers/auth/provider-user-auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(
-    private providerAuthService: ProviderAuthService
+    private providerUserAuthService: ProviderUserAuthService
   ) { }
 
   intercept(
@@ -23,8 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((err) => {
         if (err.status === 401) {
           // auto logout if 401 response returned from api
-          // this.providerAuthService.logout();
-          location.reload();
+          this.providerUserAuthService.userSignOutNoApiCall();
         }
 
         const error = err.error.message || err.statusText;

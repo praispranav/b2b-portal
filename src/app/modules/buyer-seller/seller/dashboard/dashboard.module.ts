@@ -3,21 +3,21 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { pgTabsModule } from '../../../../@pages/components/tabs/tabs.module';
 import { DashboardInfoComponent } from './components/dashboard-info/dashboard-info.component';
-import { DashboradLastConversationComponent } from './components/dashborad-last-conversation/dashborad-last-conversation.component';
-import { DashboradMrqsComponent } from './components/dashborad-mrqs/dashborad-mrqs.component';
-import { DashboradPreviousInquiriesComponent } from './components/dashborad-previous-inquiries/dashborad-previous-inquiries.component';
-import { DashboradRecommendedQuotationsComponent } from './components/dashborad-recommended-quotations/dashborad-recommended-quotations.component';
-import { DashboradTableComponent } from './components/dashborad-table/dashborad-table.component';
+import { DashboardLastConversationComponent } from './components/dashboard-last-conversation/dashboard-last-conversation.component';
+import { DashboardMrqsComponent } from './components/dashboard-mrqs/dashboard-mrqs.component';
+import { DashboardPreviousInquiriesComponent } from './components/dashboard-previous-inquiries/dashboard-previous-inquiries.component';
+import { DashboardRecommendedQuotationsComponent } from './components/dashboard-recommended-quotations/dashboard-recommended-quotations.component';
+import { DashboardTableComponent } from './components/dashboard-table/dashboard-table.component';
 import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
 
 @NgModule({
   declarations: [
     DashboardInfoComponent,
-    DashboradLastConversationComponent,
-    DashboradMrqsComponent,
-    DashboradPreviousInquiriesComponent,
-    DashboradRecommendedQuotationsComponent,
-    DashboradTableComponent,
+    DashboardLastConversationComponent,
+    DashboardMrqsComponent,
+    DashboardPreviousInquiriesComponent,
+    DashboardRecommendedQuotationsComponent,
+    DashboardTableComponent,
     PageDashboardComponent,
   ],
   imports: [

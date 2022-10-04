@@ -1,31 +1,41 @@
 import { Injectable } from '@angular/core';
 import {
-  Router,
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
 } from '@angular/router';
-import { ProviderAuthService } from '../providers/provider-auth.service';
+import { ProviderUserAuthService } from '../providers/auth/provider-user-auth.service';
+import { Router } from '@angular/router';
 
-@Injectable()
-
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
   constructor(
-    private providerAuthService: ProviderAuthService,
+    private providerUserAuthService: ProviderUserAuthService,
     private router: Router
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    // if (this.providerAuthService.currentUserValue) {
-    //   const userRole = this.providerAuthService.currentUserValue.role;
-    //   // if (route.data?.role && route.data?.role.indexOf(userRole) === -1) {
-    //   //   this.router.navigate(["/auth/signin"]);
-    //   //   return false;
-    //   // }
-    //   return true;
-    // }
-
-    // this.router.navigate(["/auth/signin"]);
+    if (this.providerUserAuthService.currentUserValue) {
+      const role = this.providerUserAuthService.currentUserValue.role;
+      if ('admin' === role) {
+        this.router.navigateByUrl('/admin');
+        return false;
+      } else if ('agent' === role) {
+        this.router.navigateByUrl('/agent');
+        return false;
+      } else if ('associate' === role) {
+        this.router.navigateByUrl('/associate');
+        return false;
+      } else if ('buyer' === role) {
+        this.router.navigateByUrl('/buyer');
+        return false;
+      } else if ('seller' === role) {
+        this.router.navigateByUrl('/seller');
+        return false;
+      }
+    }
+    this.providerUserAuthService.userSignOutNoApiCall(false);
     return true;
   }
 }
+

@@ -52,8 +52,8 @@ import { PageError404Component } from './page-error404/page-error404.component';
 import { PageError500Component } from './page-error500/page-error500.component';
 import { PageFaqComponent } from './page-faq/page-faq.component';
 import { PageHomeComponent } from './page-home/page-home.component';
-import { PageHomeRequestForQuotationComponent } from './components/page-home-request-for-quotation/page-home-request-for-quotation.component';
-import { PageHomeTradeFairComponent } from './components/page-home-trade-fair/page-home-trade-fair.component';
+import { PageHomeRequestForQuotationComponent } from './page-home-request-for-quotation/page-home-request-for-quotation.component';
+import { PageHomeTradeFairComponent } from './page-home-trade-fair/page-home-trade-fair.component';
 import { PageInspectionServiceComponent } from './page-inspection-service/page-inspection-service.component';
 import { PageJoinNowForFreeComponent } from './page-join-now-for-free/page-join-now-for-free.component';
 import { PageLogisticSolutionsComponent } from './page-logistic-solutions/page-logistic-solutions.component';
@@ -109,7 +109,7 @@ import { ViewRoutingModule } from "./view-routing.module";
     ProductSearchSupplierCategoriesComponent,
     ProductSearchSupplierListComponent,
     ProductViewDetailsComponent,
-    ProductViewMessageSupplierComponent
+    ProductViewMessageSupplierComponent,
     PageAboutUsComponent,
     PageActiveAccountComponent,
     PageAskSupportForServicePartnerComponent,
