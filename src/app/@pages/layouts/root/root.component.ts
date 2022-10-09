@@ -137,8 +137,10 @@ export class RootLayout implements OnInit, OnDestroy {
   ngOnInit() {}
 
   ngOnDestroy() {
-    for (const sub of this._subscriptions) {
-      sub.unsubscribe();
+    if(this._subscriptions && this._subscriptions.length>0){
+      for (const sub of this._subscriptions) {
+        sub.unsubscribe();
+      }
     }
   }
   ngAfterViewInit() {}

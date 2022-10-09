@@ -19,11 +19,20 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="f.role.invalid && (f.role.dirty || f.role.touched)">
-            <label for="role">User Type</label>
-            <input type="text" formControlName="role" placeholder="Enter Company Name" class="form-control"
-              id="role" />
+          <label for="company">Company Name</label>
+          <div class="d-flex align-items-center">
+            <div class="form-radio mr-5">
+              <input type="radio" formControlName="role" value="buyer" id="user-type-buyer-buyer">
+              <label class="ml-2" for="user-type-buyer-buyer">Buyer</label>
+            </div>
+            <div class="form-radio mr-5">
+              <input type="radio" formControlName="role" value="seller" id="user-type-buyer-buyer">
+              <label class="ml-2" for="user-type-buyer-buyer">Seller</label>
+            </div>
+            <div class="form-radio mr-5">
+              <input type="radio" formControlName="role" value="both" id="user-type-buyer-buyer">
+              <label class="ml-2" for="user-type-buyer-buyer">Both</label>
+            </div>
           </div>
           <div *ngIf="f.role.invalid && (f.role.dirty || f.role.touched)">
             <label *ngIf="f.role.errors.required" class="error">This field is required.</label>
@@ -135,8 +144,7 @@
           <div pgFormGroupDefault class="form-group form-group-default"
             [class.has-error]="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
             <label for="phone">Mobile Number</label>
-            <input type="text" formControlName="phone" placeholder="Enter Address 2" class="form-control"
-              id="phone" />
+            <input type="text" formControlName="phone" placeholder="Enter Address 2" class="form-control" id="phone" />
           </div>
           <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
             <label *ngIf="f.phone.errors.required" class="error">This field is required.</label>
@@ -156,7 +164,8 @@
           <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
         </div>
       </div>
-      <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="signUpForm.invalid" (click)="subSignUpForm()">
+      <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="signUpForm.invalid"
+        (click)="subSignUpForm()">
         Submit
       </button>
     </form>

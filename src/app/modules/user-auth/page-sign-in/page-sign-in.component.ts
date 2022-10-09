@@ -65,9 +65,10 @@ export class PageSignInComponent implements OnInit {
     }
 
     this.providerUserAuthService.userSignIn(reqData).subscribe(res => {
+      window.alert(res.header.message);
       this.providerUserAuthService.navToPortalIfAuthenticated();
     }, err => {
-      window.alert('Login Failed')
+      window.alert('Sothing Went Wrong');
     });
   }
 

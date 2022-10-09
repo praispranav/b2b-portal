@@ -17,7 +17,7 @@ export class UserGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.providerUserAuthService.currentUserValue) {
       const userRole = this.providerUserAuthService.currentUserValue.role;
-      if (route.data.role && route.data.userRole.indexOf(userRole) === -1) {
+      if (route.data.role && route.data.role.indexOf(userRole) === -1) {
         this.router.navigateByUrl('/user-auth');
         return false;
       }
