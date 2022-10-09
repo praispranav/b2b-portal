@@ -8,11 +8,12 @@ import { ProviderHelpComplainService } from '../../../core/providers/user/provid
   styleUrls: ['./page-complain-add.component.scss']
 })
 export class PageComplainAddComponent implements OnInit {
-  complainForm: FormGroup;
   file: File;
   fileType: any | string;
-  imageBase64: string | any = "";
   fileName: string = '';
+  imageBase64: string | any = "";
+  complainForm: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private providerHelpComplainService: ProviderHelpComplainService
@@ -34,8 +35,8 @@ export class PageComplainAddComponent implements OnInit {
       file: [''],
     });
   }
+
   async subCategoryForm() {
-    console.log('this.imageBase64', this.imageBase64)
     if (this.complainForm.invalid) {
       this.markFormGroupTouched(this.complainForm);
       return;
@@ -64,23 +65,15 @@ export class PageComplainAddComponent implements OnInit {
     form.reset();
   }
 
-  // changeListener($event): void {
-  //   this.file = $event.target.files[0];
-  // }
   fileUpload(event: any) {
     const file = event.target.files[0];
-    console.log(file.name);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log("file name", file.name)
       this.imageBase64 = reader.result;
       this.complainForm.patchValue({ imageUrl: reader.result as string })
       this.fileType = file.type;
       this.fileName = file.name
     }
-  }
-  clickOnInputFile(el) {
-    el.click();
   }
 }

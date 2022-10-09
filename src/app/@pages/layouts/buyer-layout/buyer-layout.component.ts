@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { RootLayout } from "../root/root.component";
-import { ProviderUserAuthService } from './../../../core/providers/auth/provider-user-auth.service';
 
 @Component({
   selector: "app-buyer-layout",
@@ -90,16 +89,11 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
     },
   ];
 
-  constructor(private providerUserAuthService: ProviderUserAuthService){}
-
   ngOnInit() {
     this.changeLayout('menu-pin');
     this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
   }
-
-  userSignOut(){
-    this.providerUserAuthService.userSignOutNoApiCall();
-  }
+  
 }

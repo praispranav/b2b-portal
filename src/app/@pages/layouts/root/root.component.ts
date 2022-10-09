@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy, ViewChild, Input, HostListener } from '@a
 import { Subscription } from 'rxjs';
 import { pagesToggleService } from '../../services/toggler.service';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { ProviderUserAuthService } from './../../../core/providers/auth/provider-user-auth.service';
+
 declare var pg: any;
 
 @Component({
@@ -41,7 +43,11 @@ export class RootLayout implements OnInit, OnDestroy {
   @Input()
   public footer: boolean = true;
 
-  constructor(public toggler: pagesToggleService, private router: Router) {
+  constructor(
+    public toggler: pagesToggleService, 
+    private router: Router,
+    private providerUserAuthService: ProviderUserAuthService
+  ) {
     if (this.layoutState) {
       pg.addClass(document.body, this.layoutState);
     }
@@ -247,5 +253,9 @@ export class RootLayout implements OnInit, OnDestroy {
         pg.addClass(document.body, 'menu-pin');
       }
     }
+  }
+
+  userSignOut(){
+    this.providerUserAuthService.userSignOutNoApiCall();
   }
 }

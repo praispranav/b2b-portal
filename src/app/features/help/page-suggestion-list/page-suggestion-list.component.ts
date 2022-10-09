@@ -25,4 +25,3 @@ export class PageSuggestionListComponent implements OnInit {
       });
   }
 }
-
