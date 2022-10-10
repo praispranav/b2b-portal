@@ -27,7 +27,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Make Your Own Categories",
-          routerLink: "/seller/dashboard",
+          routerLink: "/seller/category/category-list",
         },
         {
           label: "Ask For Brand Approval",
