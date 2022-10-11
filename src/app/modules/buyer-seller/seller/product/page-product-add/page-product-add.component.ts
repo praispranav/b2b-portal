@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-product-add.component.scss']
 })
 export class PageProductAddComponent implements OnInit {
-
+  isAddingProductWhichNotOnPortal:boolean = false;
   constructor() { }
-  // Fileupload HandleChange
-  ngOnInit() {
-  }
 
+  ngOnInit() {}
 }

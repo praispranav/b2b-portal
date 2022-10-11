@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 
 @Component({
@@ -7,8 +7,14 @@ import { FormGroup } from "@angular/forms";
   styleUrls: ["./form-begin-adding-products.component.scss"],
 })
 export class FormBeginAddingProductsComponent implements OnInit {
-  beginAddingProductForm: FormGroup;
+  @Output('handleNotOnPortal')
+  handleNotOnPortal: EventEmitter<Boolean> = new EventEmitter();
+
   constructor() {}
 
   ngOnInit() {}
+  
+  handleEventNotOnPortal(){
+    this.handleNotOnPortal.emit(true)
+  }
 }

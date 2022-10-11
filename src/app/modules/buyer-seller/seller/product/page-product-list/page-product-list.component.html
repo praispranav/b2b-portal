@@ -1,0 +1,42 @@
+<div class="conatiner-fluid p-3 h-100">
+    <div class="card">
+      <div class="card-body">
+        <div class="card card-default">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title">ALL Brand Approval</h3>
+            <div>
+              <button class="btn btn-primary" routerLink="../brand-approval-add">
+                Add<i class="fa fa-plus ml-2" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Image</th>
+                <th scope="col">Brand Type</th>
+                <th scope="col">Brand Name</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Products</th>
+                <th scope="col">Added On</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of brandApprovalList; let i = index">
+                <th>{{i+1}}</th>
+                <td><img [src]="item.image" width="100"/></td>
+                <td>{{item.brandType}}</td>
+                <td>{{item.brandName}}</td>
+                <td>{{item.serialNumber}}</td>
+                <td>
+                  <a *ngFor="let product of item.products" [href]="product">{{product}}</a>
+                </td>
+                <td>{{item.timestamp | date}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

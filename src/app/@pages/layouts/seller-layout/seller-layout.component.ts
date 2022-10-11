@@ -23,7 +23,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add Products",
-          routerLink: "/seller/brand-approval/brand-approval-list",
+          routerLink: "/seller/product/product-add",
         },
         {
           label: "Make Your Own Categories",

@@ -4,7 +4,6 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { ProductRoutingModule } from "./product-routing.module";
 
-// Pages Components by ace
 import { pgSelectModule } from '../../../../@pages/components/select/select.module';
 import { pgTagModule } from '../../../../@pages/components/tag/tag.module';
 import { pgTimePickerModule } from '../../../../@pages/components/time-picker/timepicker.module';
@@ -16,29 +15,24 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../../@pages/components/shared.module';
 import { QuillModule } from 'ngx-quill';
 
+import { FormBeginAddingProductsComponent } from './components/form-begin-adding-products/form-begin-adding-products.component';
 import { FormProductDetailsComponent } from './components/form-product-details/form-product-details.component';
 import { FormProductInformationComponent } from './components/form-product-information/form-product-information.component';
-import { FormTradeInformationComponent } from './components/form-trade-information/form-trade-information.component';
 import { FormShippingDetailsComponent } from './components/form-shipping-details/form-shipping-details.component';
+import { FormTradeInformationComponent } from './components/form-trade-information/form-trade-information.component';
 import { PageProductAddComponent } from "./page-product-add/page-product-add.component";
 import { PageProductListComponent } from "./page-product-list/page-product-list.component";
-import { PageProductViewComponent } from "./page-product-view/page-product-view.component";
-import { FormBeginAddingProductsComponent } from './components/form-begin-adding-products/form-begin-adding-products.component';
-import { FormFindYourProductComponent } from './components/form-find-your-product/form-find-your-product.component';
 
 
 @NgModule({
   declarations: [
+    FormBeginAddingProductsComponent,
     FormProductDetailsComponent,
     FormProductInformationComponent,
-    FormTradeInformationComponent,
     FormShippingDetailsComponent,
+    FormTradeInformationComponent,
     PageProductAddComponent,
     PageProductListComponent,
-    PageProductViewComponent,
-    FormBeginAddingProductsComponent,
-    FormFindYourProductComponent,
-
   ],
   imports: [
     CommonModule,
