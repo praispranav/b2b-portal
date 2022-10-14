@@ -1,11 +1,9 @@
-
 import { Router } from '@angular/router';
 import { productInfo } from './../components/form-product-information/form-product-information.component';
 import { Component, OnInit } from '@angular/core';
 import { subProductDetails } from '../components/form-product-details/form-product-details.component';
 import { tradeInfo } from '../components/form-trade-information/form-trade-information.component';
 import { shippingInfo } from '../components/form-shipping-details/form-shipping-details.component';
-
 import { ProviderProductInformationService } from '../../../../../core/providers/user/provider-product-information.service';
 
 @Component({
