@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderTradeInformationService } from './../../../../../../core/providers/user/provider-trade-information.service';
-
+export type tradeInfo={ 
+  sellingPrice: string;
+  unit: string;
+  moq: string;
+  fobUnit: string;
+  fobPriceUnit: string;
+  moqPerUnit: string;
+  paymentType: string;
+  timestamp?: Date;
+}
 @Component({
   selector: 'app-form-trade-information',
   templateUrl: './form-trade-information.component.html',
@@ -97,7 +106,7 @@ export class FormTradeInformationComponent implements OnInit {
 
     ]
   constructor(private formBuilder: FormBuilder, private providerTradeInformationService: ProviderTradeInformationService) { }
-
+  @Output() tradeInfo=new EventEmitter<tradeInfo>();
   get f() {
     return this.tradeInformationForm.controls;
   }
@@ -119,16 +128,16 @@ export class FormTradeInformationComponent implements OnInit {
   }
 
   async subTradeInformationForm() {
-
-    this.providerTradeInformationService.addTradeInformation(this.tradeInformationForm.value).subscribe(
-      (res) => {
-        this.resetFormGroup(this.tradeInformationForm);
-        window.alert('API Success');
-      },
-      (err) => {
-        window.alert('API Error');
-      }
-    );
+    this.tradeInfo.emit(this.tradeInformationForm.value);
+    // this.providerTradeInformationService.addTradeInformation(this.tradeInformationForm.value).subscribe(
+    //   (res) => {
+    //     this.resetFormGroup(this.tradeInformationForm);
+    //     window.alert('API Success');
+    //   },
+    //   (err) => {
+    //     window.alert('API Error');
+    //   }
+    // );
   }
   private resetFormGroup(form: FormGroup) {
     form.reset();

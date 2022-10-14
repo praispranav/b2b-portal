@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderShippingDetailService } from "../../../../../../core/providers/user/provider-shipping-detail.service";
-
+export type shippingInfo= {quantity:string,estLoadTime:string,shippingPort:string,packagingDescription:string,shippingMode:string,customisationAvailableYes:string,customisationAvailableNo:string,productPrivateLabellingYes:string,productPrivateLabellingNo:string}
 @Component({
   selector: "app-form-shipping-details",
   templateUrl: "./form-shipping-details.component.html",
@@ -17,7 +17,7 @@ export class FormShippingDetailsComponent implements OnInit {
     { mode: "Ocen Shipping" },
   ];
   constructor(private formBuilder: FormBuilder, private providerShippingDetailService: ProviderShippingDetailService) { }
-
+  @Output()shippingInfo=new EventEmitter<shippingInfo>()
   get f() {
     return this.shippingDetailsForm.controls;
   }
@@ -39,15 +39,16 @@ export class FormShippingDetailsComponent implements OnInit {
     });
   }
   async subShippingDetailsForm() {
-    this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
-      (res) => {
-        this.resetFormGroup(this.shippingDetailsForm);
-        window.alert('API Success');
-      },
-      (err) => {
-        window.alert('API Error');
-      }
-    );
+    this.shippingInfo.emit(this.shippingDetailsForm.value);
+    // this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
+    //   (res) => {
+    //     this.resetFormGroup(this.shippingDetailsForm);
+    //     window.alert('API Success');
+    //   },
+    //   (err) => {
+    //     window.alert('API Error');
+    //   }
+    // );
 
   }
   private resetFormGroup(form: FormGroup) {

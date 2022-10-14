@@ -1,17 +1,15 @@
 <div class="container-fluid p-3 bg-white">
     <h3>Shipping Details</h3>
     <form class="p-t-15" role="form" [formGroup]="shippingDetailsForm">
-        <!-- <div class="form-group form-group-default">
+        <div class="form-group form-group-default">
             <label class="mb-2" for="bulk-price">Shipping</label>
             <div class="row">
                 <div class="col-md-6">
                     <div pgFormGroupDefault [class.has-error]="f.quantity.invalid && (f.quantity.dirty ||
                     f.quantity.touched)">
                         <label class="mb-2" for="Quantity-Unit">Quantity (Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default"
-                            [class.has-error]="f.quantity.invalid && (f.quantity.dirty || f.quantity.touched)">
-                            <input type="text" formControlName="quantity" placeholder="" class="form-control"
-                                id="Quantity-Unit" />
+                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.quantity.invalid && (f.quantity.dirty || f.quantity.touched)">
+                            <input type="text" formControlName="quantity" placeholder="" class="form-control" id="Quantity-Unit" />
                         </div>
                         <div *ngIf="f.quantity.invalid && (f.quantity.dirty || f.quantity.touched)">
                             <label *ngIf="f.quantity.errors.required" class="error">This field is required.</label>
@@ -22,10 +20,8 @@
                     <div pgFormGroupDefault [class.has-error]="f.estLoadTime.invalid && (f.estLoadTime.dirty ||
                     f.estLoadTime.touched)">
                         <label class="mb-2" for="est-load-time">Est Load Time(Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default"
-                            [class.has-error]="f.estLoadTime.invalid && (f.estLoadTime.dirty || f.estLoadTime.touched)">
-                            <input type="text" formControlName="estLoadTime" placeholder="" class="form-control"
-                                id="est-load-time" />
+                        <div *ngFor="let number of [0,1,2,3,4]" pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.estLoadTime.invalid && (f.estLoadTime.dirty || f.estLoadTime.touched)">
+                            <input type="text" formControlName="estLoadTime" placeholder="" class="form-control" id="est-load-time" />
                         </div>
                         <div *ngIf="f.estLoadTime.invalid && (f.estLoadTime.dirty || f.estLoadTime.touched)">
                             <label *ngIf="f.estLoadTime.errors.required" class="error">This field is required.</label>
@@ -33,21 +29,20 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.shippingPort.invalid && (f.shippingPort.dirty ||
                     f.shippingPort.touched)">
                     <label for="shipping-port">Shipping Port</label>
-                    <input type="text" formControlName="shippingPort" placeholder="Enter Shipping Port"
-                        class="form-control" id="shipping-port" />
+                    <input type="text" formControlName="shippingPort" placeholder="Enter Shipping Port" class="form-control" id="shipping-port" />
                 </div>
                 <div *ngIf="f.shippingPort.invalid && (f.shippingPort.dirty || f.shippingPort.touched)">
                     <label *ngIf="f.shippingPort.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.shippingMode.invalid && (f.shippingMode.dirty ||
+        </div>
+        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.shippingMode.invalid && (f.shippingMode.dirty ||
                     f.shippingMode.touched)">
             <label class="mb-2" for="shipping-mode">Shipping Mode</label>
             <div>
@@ -58,17 +53,16 @@
                     </label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div *ngIf="f.shippingMode.invalid && (f.shippingMode.dirty || f.shippingMode.touched)">
+        </div>
+        <div *ngIf="f.shippingMode.invalid && (f.shippingMode.dirty || f.shippingMode.touched)">
             <label *ngIf="f.shippingMode.errors.required" class="error">This field is required.</label>
-        </div> -->
-        <!-- <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.packagingDescription.invalid && (f.packagingDescription.dirty ||
                     f.packagingDescription.touched)">
                     <label for="packaging-description">Packaging Description</label>
-                    <textarea class="form-control" formControlName="packagingDescription" id="packaging-description"
-                        placeholder="Briefly Describe your Abilities"></textarea>
+                    <textarea class="form-control" formControlName="packagingDescription" id="packaging-description" placeholder="Briefly Describe your Abilities"></textarea>
 
                 </div>
                 <div *ngIf="f.packagingDescription.invalid && (f.packagingDescription.dirty ||
@@ -76,8 +70,8 @@
                     <label *ngIf="f.packagingDescription.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="row mt-2 mb-2">
+        </div>
+        <div class="row mt-2 mb-2">
             <div class="col-md-3">
                 <label for="customization-available">Customization Available</label>
             </div>
@@ -95,8 +89,8 @@
                         No </label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="row mb-2">
+        </div>
+        <div class="row mb-2">
             <div class="col-md-3">
                 <label class="mb-2" for="product-private-labeling">Product Private Labeling</label>
             </div>
@@ -114,9 +108,9 @@
                         No </label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="mt-4">
+        </div>
+        <div class="mt-4">
             <button type="submit" class="me-4 btn btn-primary" (click)="subShippingDetailsForm()">Submit</button>
-        </div> -->
+        </div>
     </form>
 </div>

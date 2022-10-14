@@ -1,7 +1,7 @@
 <div class="container-fluid p-3 bg-white">
     <h3>Trade Information</h3>
     <form class="p-t-15" role="form" [formGroup]="tradeInformationForm">
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-6">
                 <label for="selling-price">Selling Price</label>
                 <div class="row">
@@ -24,25 +24,21 @@
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Unit</label>
-                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="unit" AllowClear
-                        ShowSearch>
-                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
-                            [Disabled]="false">
+                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="unit" AllowClear ShowSearch>
+                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit" [Disabled]="false">
                         </pg-option>
                     </pg-select>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="form-group form-group-default">
+        </div>
+        <div class="form-group form-group-default">
             <label class="mb-2" for="bulk-price">Bulk Price</label>
             <div class="row">
                 <div class="col-md-6">
                     <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
                         <label class="mb-2" for="bulk-price">MOQ (Unit)</label>
-                        <div pgFormGroupDefault *ngFor="let number of [0,1,2,3,4,5,6,7,8]"
-                            class="form-group form-group-default"
-                            [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                        <div pgFormGroupDefault *ngFor="let number of [0,1,2,3,4,5,6,7,8]" class="form-group form-group-default" [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                             <input type="text" formControlName="Other" placeholder="" class="form-control" id="Other" />
                         </div>
                         <div *ngIf="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
@@ -54,11 +50,8 @@
                     <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
                         <label class="mb-2" for="bulk-price">FOB Price (Unit)</label>
-                        <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]" pgFormGroupDefault
-                            class="form-group form-group-default"
-                            [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
-                            <input type="text" formControlName="Other" placeholder="$ UDS" class="form-control"
-                                id="Other" />
+                        <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]" pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                            <input type="text" formControlName="Other" placeholder="$ UDS" class="form-control" id="Other" />
                         </div>
                         <div *ngIf="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                             <label *ngIf="f.Other.errors.required" class="error">This field is required.</label>
@@ -66,21 +59,19 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label>FOB Price </label>
-                    <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'"
-                        [NotFoundContent]="'Not found'">
+                    <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of fobPriceUnitList" [Label]="option.unit" [Value]="option.unit">
                         </pg-option>
                     </pg-select>
                 </div>
             </div>
             <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
+                <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
                     <label for="Other">MOQ</label>
                     <input type="text" formControlName="moq" placeholder="Per Unit" class="form-control" id="moq" />
                 </div>
@@ -88,8 +79,8 @@
                     <label *ngIf="f.moq.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.paymentType.invalid && (f.paymentType.dirty ||
+        </div>
+        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.paymentType.invalid && (f.paymentType.dirty ||
                     f.paymentType.touched)">
             <label class="mb-2" for="payment-type">Payment Type</label>
             <div>
@@ -100,14 +91,13 @@
                     </label>
                 </div>
             </div>
-        </div> -->
-        <!-- <div *ngIf="f.paymentType.invalid && (f.paymentType.dirty || f.paymentType.touched)">
+        </div>
+        <div *ngIf="f.paymentType.invalid && (f.paymentType.dirty || f.paymentType.touched)">
             <label *ngIf="f.paymentType.errors.required" class="error">This field is required.</label>
-        </div> -->
-        <!-- <div class="row">
+        </div>
+        <div class="row">
             <div class="col-md-11">
-                <div pgFormGroupDefault class="form-group form-group-default"
-                    [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                     <label for="Other">Other</label>
                     <input type="text" formControlName="Other" placeholder="" class="form-control" id="Other" />
                 </div>
@@ -118,9 +108,9 @@
             <div class="col-md-1">
                 <button class="btn btn-primary m-2">Add+</button>
             </div>
-        </div> -->
-        <!-- <div class="col-md-1">
+        </div>
+        <div class="col-md-1">
             <button class="btn btn-primary m-2" (click)="subTradeInformationForm()">Submit</button>
-        </div> -->
+        </div>
     </form>
 </div>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderProductInformationService } from "./../../../../../../core/providers/user/provider-product-information.service";
-
+    
+export type productInfo = { productName: string,productType: string, brandName: string,productKeywords: string,sellerOwnCategorySelect: string,sellerOwnCategoryCreate: string,placeOfOrigin: string,modelNo: string,otherDetails: string };
 @Component({
   selector: "app-form-product-information",
   templateUrl: "./form-product-information.component.html",
@@ -18,7 +19,7 @@ export class FormProductInformationComponent implements OnInit {
     private appMessageService: AppMessageService,
     private providerProductInformationService: ProviderProductInformationService
   ) {}
-
+  @Output() productInfo = new EventEmitter<productInfo>();
   get f() {
     return this.productInformationForm.controls;
   }
@@ -43,12 +44,14 @@ export class FormProductInformationComponent implements OnInit {
 
   async subProductInformationForm() {
     if (this.productInformationForm.invalid) {
-      this.markFormGroupTouched(this.productInformationForm);
+      this.markFormGroupTouched(this.productInformationForm);      
       // return;
     }
-
+    this.productInfo.emit(this.productInformationForm.value);
     const formValue = this.productInformationForm.value;
+
     console.log(formValue);
+
     // this.providerProductInformationService.addProductInformation(formValue).subscribe(
     //   (res) => { this.appMessageService.createBasicNotification(res.header.status, res.header.message); this.router.navigateByUrl(`/seller/brand-approval/brand-approval-list`); },
     //   (err) => { this.appMessageService.createBasicNotification(err.header.status, err.header.message) }
