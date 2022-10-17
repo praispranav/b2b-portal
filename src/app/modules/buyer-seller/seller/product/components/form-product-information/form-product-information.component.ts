@@ -10,14 +10,15 @@ import { ProviderProductInformationService } from "./../../../../../../core/prov
   styleUrls: ["./form-product-information.component.scss"],
 })
 export class FormProductInformationComponent implements OnInit {
-  productInformationForm : FormGroup;
+  productInformationForm: FormGroup;
+  searchOptions: any[];
 
   constructor(
     private router: Router,
-    private formBuilder : FormBuilder,
+    private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
     private providerProductInformationService: ProviderProductInformationService
-  ) {}
+  ) { }
 
   get f() {
     return this.productInformationForm.controls;
