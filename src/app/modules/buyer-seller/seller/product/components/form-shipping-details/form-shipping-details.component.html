@@ -47,8 +47,8 @@
             <label class="mb-2" for="shipping-mode">Shipping Mode</label>
             <div>
                 <div *ngFor="let mode of shippingModeList" class="form-check complete">
-                    <input type="checkbox" formControlName="shippingMode" id="{{shippingMode.mode}}">
-                    <label for="{{mode.shippingMode}}">
+                    <input type="checkbox" formControlName="shippingMode" [id]="mode?.shippingMode">
+                    <label [for]="mode.shippingMode">
                         {{mode.shippingMode}}
                     </label>
                 </div>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="mt-4">
-            <button type="submit" class="me-4 btn btn-primary" (click)="subShippingDetailsForm()">Submit</button>
+            <button type="submit" class="me-4 btn btn-primary" [disabled]="shippingDetailsForm.invalid" (click)="subShippingDetailsForm()">Submit</button>
         </div>
     </form>
 </div>

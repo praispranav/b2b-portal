@@ -16,9 +16,7 @@
             <div class="row">
                 <div class="col-md-12 pt-2 pb-2 pl-1 pr-1 ">
                     <div class="card-body no-scroll no-padding">
-                        <pg-upload Type="drag" [Multiple]="true" [Limit]="6"
-                            Action="https://jsonplaceholder.typicode.com/posts/" (Change)="handleChange($event)"
-                            extraClass="dropzone" progressType="circle">
+                        <pg-upload Type="drag" [Multiple]="true" [Limit]="6" Action="https://jsonplaceholder.typicode.com/posts/" (Change)="handleChange($event)" extraClass="dropzone" progressType="circle">
                             <div class="d-flex flex-column align-items-center p-2">
                                 <h4 class="semi-bold no-margin text-center">Drop files to Upload</h4>
                                 <p>or click here</p>
@@ -33,8 +31,7 @@
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
                     f.productVideoLink.touched)">
                     <label for="product-video-link">Product Video Link</label>
-                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link"
-                        class="form-control" id="product-video-link" />
+                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link" class="form-control" id="product-video-link" />
                 </div>
                 <div *ngIf="f.productVideoLink.invalid && (f.productVideoLink.dirty || f.productVideoLink.touched)">
                     <label *ngIf="f.productVideoLink.errors.required" class="error">This field is required.</label>
@@ -60,7 +57,7 @@
             </div>
         </div>
         <div class="mt-4">
-            <button type="submit" class="me-4 btn btn-primary" (click)="subProductDetailsForm()">Submit</button>
+            <button type="submit" class="me-4 btn btn-primary" [disabled]="productDetailsForm.invalid" (click)="subProductDetailsForm()">Save and Next</button>
         </div>
     </form>
 </div>

@@ -13,7 +13,7 @@ export class FormProductDetailsComponent implements OnInit {
   productDetailsForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private providerProductDetailService: ProviderProductDetailService) { }
-  @Output() subProductDetails = new EventEmitter<subProductDetails>();
+  @Output() formSubmitData:EventEmitter<any>= new EventEmitter<any>();
 
   handleChange(event) { }
 
@@ -32,7 +32,14 @@ export class FormProductDetailsComponent implements OnInit {
     });
   }
   async subProductDetailsForm() {
-    this.subProductDetails.emit(this.productDetailsForm.value);
+    let formData=this.productDetailsForm.value;
+    console.log("formData",formData);    
+    let data={
+      formData: formData,
+      value:'second'
+    }
+    this.formSubmitData.emit(data);
+
     // this.providerProductDetailService.addProductDetail(this.productDetailsForm.value).subscribe(
     //   (res) => {
     //     this.resetFormGroup(this.productDetailsForm);

@@ -106,7 +106,7 @@ export class FormTradeInformationComponent implements OnInit {
 
     ]
   constructor(private formBuilder: FormBuilder, private providerTradeInformationService: ProviderTradeInformationService) { }
-  @Output() tradeInfo=new EventEmitter<tradeInfo>();
+  @Output() formSubmitData:EventEmitter<any>= new EventEmitter<any>();
   get f() {
     return this.tradeInformationForm.controls;
   }
@@ -128,7 +128,12 @@ export class FormTradeInformationComponent implements OnInit {
   }
 
   async subTradeInformationForm() {
-    this.tradeInfo.emit(this.tradeInformationForm.value);
+    let formData= this.tradeInformationForm.value
+    let data={
+      formData: formData,
+      value:'third'
+    }
+    this.formSubmitData.emit(data);
     // this.providerTradeInformationService.addTradeInformation(this.tradeInformationForm.value).subscribe(
     //   (res) => {
     //     this.resetFormGroup(this.tradeInformationForm);

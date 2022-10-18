@@ -35,25 +35,25 @@
             <label class="mb-2" for="bulk-price">Bulk Price</label>
             <div class="row">
                 <div class="col-md-6">
-                    <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
+                    <div pgFormGroupDefault [class.has-error]="f.moqUnit?.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
                         <label class="mb-2" for="bulk-price">MOQ (Unit)</label>
                         <div pgFormGroupDefault *ngFor="let number of [0,1,2,3,4,5,6,7,8]" class="form-group form-group-default" [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                             <input type="text" formControlName="Other" placeholder="" class="form-control" id="Other" />
                         </div>
-                        <div *ngIf="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                        <div *ngIf="f.Other?.invalid && (f.Other.dirty || f.Other.touched)">
                             <label *ngIf="f.Other.errors.required" class="error">This field is required.</label>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div pgFormGroupDefault [class.has-error]="f.moqUnit.invalid && (f.moqUnit.dirty ||
+                    <div pgFormGroupDefault [class.has-error]="f.moqUnit?.invalid && (f.moqUnit.dirty ||
                     f.moqUnit.touched)">
                         <label class="mb-2" for="bulk-price">FOB Price (Unit)</label>
                         <div *ngFor="let number of [0,1,2,3,4,5,6,7,8]" pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
                             <input type="text" formControlName="Other" placeholder="$ UDS" class="form-control" id="Other" />
                         </div>
-                        <div *ngIf="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                        <div *ngIf="f.Other?.invalid && (f.Other.dirty || f.Other.touched)">
                             <label *ngIf="f.Other.errors.required" class="error">This field is required.</label>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <label for="Other">MOQ</label>
                     <input type="text" formControlName="moq" placeholder="Per Unit" class="form-control" id="moq" />
                 </div>
-                <div *ngIf="f.moq.invalid && (f.moq.dirty || f.moq.touched)">
+                <div *ngIf="f.moq?.invalid && (f.moq.dirty || f.moq.touched)">
                     <label *ngIf="f.moq.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="f.paymentType.invalid && (f.paymentType.dirty || f.paymentType.touched)">
+        <div *ngIf="f.paymentType?.invalid && (f.paymentType.dirty || f.paymentType.touched)">
             <label *ngIf="f.paymentType.errors.required" class="error">This field is required.</label>
         </div>
         <div class="row">
@@ -101,7 +101,7 @@
                     <label for="Other">Other</label>
                     <input type="text" formControlName="Other" placeholder="" class="form-control" id="Other" />
                 </div>
-                <div *ngIf="f.Other.invalid && (f.Other.dirty || f.Other.touched)">
+                <div *ngIf="f.Other?.invalid && (f.Other.dirty || f.Other.touched)">
                     <label *ngIf="f.Other.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="col-md-1">
-            <button class="btn btn-primary m-2" (click)="subTradeInformationForm()">Submit</button>
+            <button class="btn btn-primary m-2" [disabled]="tradeInformationForm.invalid" (click)="subTradeInformationForm()">Save and Next</button>
         </div>
     </form>
 </div>

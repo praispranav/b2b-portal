@@ -1,7 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderShippingDetailService } from "../../../../../../core/providers/user/provider-shipping-detail.service";
-export type shippingInfo= {quantity:string,estLoadTime:string,shippingPort:string,packagingDescription:string,shippingMode:string,customisationAvailableYes:string,customisationAvailableNo:string,productPrivateLabellingYes:string,productPrivateLabellingNo:string}
+export type shippingInfo = {
+  quantity: string;
+  estLoadTime: string;
+  shippingPort: string;
+  packagingDescription: string;
+  shippingMode: string;
+  customisationAvailableYes: string;
+  customisationAvailableNo: string;
+  productPrivateLabellingYes: string;
+  productPrivateLabelingNo: string;
+};
 @Component({
   selector: "app-form-shipping-details",
   templateUrl: "./form-shipping-details.component.html",
@@ -16,8 +26,11 @@ export class FormShippingDetailsComponent implements OnInit {
     { mode: "Land Transportation" },
     { mode: "Ocen Shipping" },
   ];
-  constructor(private formBuilder: FormBuilder, private providerShippingDetailService: ProviderShippingDetailService) { }
-  @Output()shippingInfo=new EventEmitter<shippingInfo>()
+  constructor(
+    private formBuilder: FormBuilder,
+    private providerShippingDetailService: ProviderShippingDetailService
+  ) {}
+  @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
     return this.shippingDetailsForm.controls;
   }
@@ -32,14 +45,19 @@ export class FormShippingDetailsComponent implements OnInit {
       shippingPort: ["", [Validators.required]],
       packagingDescription: ["", [Validators.required]],
       shippingMode: ["", [Validators.required]],
-      customisationAvailableYes: ["", [Validators.required]],
-      customisationAvailableNo: ["", [Validators.required]],
-      productPrivateLabellingYes: ["", [Validators.required]],
-      productPrivateLabellingNo: ["", [Validators.required]],
+      customizationAvailableYes: ["", [Validators.required]],
+      customizationAvailableNo: ["", [Validators.required]],
+      productPrivateLabelingYes: ["", [Validators.required]],
+      productPrivateLabelingNo: ["", [Validators.required]],
     });
   }
   async subShippingDetailsForm() {
-    this.shippingInfo.emit(this.shippingDetailsForm.value);
+    let formData = this.shippingDetailsForm.value;
+    let data={
+      formData: formData,
+      value:'four'
+    }
+    this.formSubmitData.emit(data);
     // this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
     //   (res) => {
     //     this.resetFormGroup(this.shippingDetailsForm);
@@ -49,10 +67,8 @@ export class FormShippingDetailsComponent implements OnInit {
     //     window.alert('API Error');
     //   }
     // );
-
   }
   private resetFormGroup(form: FormGroup) {
     form.reset();
-
   }
 }
