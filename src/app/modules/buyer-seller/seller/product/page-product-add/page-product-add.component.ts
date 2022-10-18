@@ -96,7 +96,7 @@ export class PageProductAddComponent implements OnInit {
             console.log("res", res);
           },
           (err) => {
-            alert('error hai bhai thik kr le')
+           
             console.log("err", err);
           }
         );
