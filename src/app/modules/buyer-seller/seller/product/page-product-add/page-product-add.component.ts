@@ -92,12 +92,12 @@ export class PageProductAddComponent implements OnInit {
         console.log("payload", this.payload);
         this.productService.addProductDetails(this.payload).subscribe(
           (res) => {
-            alert('form data submit')
+            window.alert('API Success');
             console.log("res", res);
           },
-          (err) => {
-           
-            console.log("err", err);
+          (err) => {          
+        
+            window.alert('API Error');
           }
         );
 
