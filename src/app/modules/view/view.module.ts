@@ -11,6 +11,9 @@ import { pgSelectModule } from "../../@pages/components/select/select.module";
 import { pgUploadModule } from "../../@pages/components/upload/upload.module";
 import { pgSliderModule } from "../../@pages/components/slider/slider.module";
 import { pgCollapseModule } from "../../@pages/components/collapse";
+import { IsotopeModule } from 'ngx-isotope';
+
+
 import { BannerImgWidgetComponent } from './components/banner-img-widget/banner-img-widget.component';
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
 import { ButtonFourWidgetComponent } from './components/button-four-widget/button-four-widget.component';
@@ -80,6 +83,11 @@ import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
 import { ViewRoutingModule } from "./view-routing.module";
+import { CatalogueSellerCompanyDetailsComponent } from './components/catalogue-seller-company-details/catalogue-seller-company-details.component';
+import { pgCardSocialModule } from "../../@pages/components/card-social/card-social.module";
+import { CatalogueMenubarComponent } from './components/catalogue-menubar/catalogue-menubar.component';
+import { SellerCatalogueHomeProductComponent } from './seller-catalogue-home-product/seller-catalogue-home-product.component';
+import { SellerAboutComponent } from './seller-about/seller-about.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +159,10 @@ import { ViewRoutingModule } from "./view-routing.module";
     PageTermsAndConditionComponent,
     PageTermsOfUseComponent,
     PageTradeShowComponent,
+    CatalogueSellerCompanyDetailsComponent,
+    CatalogueMenubarComponent,
+    SellerCatalogueHomeProductComponent,
+    SellerAboutComponent,
   ],
   imports: [ 
   CommonModule,
@@ -161,6 +173,9 @@ import { ViewRoutingModule } from "./view-routing.module";
     TextMaskModule,
     SharedModule,
     pgCardModule,
+    IsotopeModule,
+    pgCardSocialModule,
+    
     pgSelectfx,
     pgSelectModule,
     pgUploadModule,

@@ -42,6 +42,7 @@ import { PageTermsComponent } from './page-terms/page-terms.component';
 import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-terms-and-condition.component';
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
+import { SellerAboutComponent } from "./seller-about/seller-about.component";
 
 const routes: Routes = [
   {
@@ -175,9 +176,14 @@ const routes: Routes = [
     component: PageSellerDocumentWeConsiderComponent,
   },
   {
+    path: "seller-about",
+    component: SellerAboutComponent,
+  },
+  {
     path: "seller-report-check",
     component: PageSellerReportCheckComponent,
   },
+
   {
     path: "sitemap",
     component: PageSitemapComponent,

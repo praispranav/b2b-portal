@@ -40,6 +40,8 @@ import { pgListViewModule } from './@pages/components/list-view/list-view.module
 import { pgCardModule } from './@pages/components/card/card.module';
 import { pgCardSocialModule } from './@pages/components/card-social/card-social.module';
 
+
+
 // Basic Bootstrap Modules
 import {
   BsDropdownModule,
