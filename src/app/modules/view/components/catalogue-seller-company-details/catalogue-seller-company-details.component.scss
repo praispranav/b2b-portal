@@ -32,19 +32,34 @@
 }
 .comapny-text{
     margin-left: 132px;
-    margin-top: -90px;
+    margin-top: -71px;
+    font-weight: bold;
 }
 .addr-text{
     margin-left: 132px;
+    color: grey;
+    font-weight: bold;
 }
 .desc-box{
     margin-left: 118px;
+    color: grey;
+    font-weight: bold;
 }
 .img-pic{
 margin-top: 27px;
 }
 .tag{
     margin-top: 10px;
+}
+.verify-year{
+  margin-left: 143px;
+    margin-top: 13px;
+}
+.supplier-type{
+  margin-left: 16px;
+}
+.mr-div{
+  margin-left: 150px;
 }
 
 /* CSS */
@@ -67,7 +82,7 @@ margin-top: 27px;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin-left: 1178px;
+    margin-left: 980px;
     margin-top: -135px;
   }
   
