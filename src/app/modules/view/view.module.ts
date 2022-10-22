@@ -88,6 +88,8 @@ import { pgCardSocialModule } from "../../@pages/components/card-social/card-soc
 import { CatalogueMenubarComponent } from './components/catalogue-menubar/catalogue-menubar.component';
 import { SellerCatalogueHomeProductComponent } from './seller-catalogue-home-product/seller-catalogue-home-product.component';
 import { SellerAboutComponent } from './seller-about/seller-about.component';
+import { CatalogueProductCardHomeComponent } from './components/catalogue-product-card-home/catalogue-product-card-home.component';
+import { CatalogueProductSearchHomeComponent } from './components/catalogue-product-search-home/catalogue-product-search-home.component';
 
 @NgModule({
   declarations: [
@@ -163,6 +165,9 @@ import { SellerAboutComponent } from './seller-about/seller-about.component';
     CatalogueMenubarComponent,
     SellerCatalogueHomeProductComponent,
     SellerAboutComponent,
+    CatalogueProductCardHomeComponent,
+    CatalogueProductSearchHomeComponent,
+    
   ],
   imports: [ 
   CommonModule,

@@ -1,16 +1,60 @@
-.m-text{
-    margin-left: -100px;
+// .m-text{
+//     margin-left: -100px;
+// }
+// .bg-list{
+//     background-color: rgb(225, 220, 220);
+// }
+// .mr-bottom{
+//     margin-bottom: 20px;
+// }
+// .txt-sty{
+//     font-weight: bolder;
+// }
+// .txt-sty-two{
+//     color: gray;
+//     font-weight: bold;
+// }
+// .bg-w{
+//     background-color: white;
+// }
+.mr-l{
+    padding-left: 80px;
+    margin-top: 23px;
 }
-.bg-list{
-    background-color: rgb(225, 220, 220);
+.mr-r{
+    // padding-left: 55px;
+    margin-left: 29px;
+    
 }
-.mr-bottom{
-    margin-bottom: 20px;
+.p-r{
+    padding-right: 100px;
 }
-.txt-sty{
-    font-weight: bolder;
+.b-table{
+    margin-bottom: 50px;
 }
-.txt-sty-two{
-    color: gray;
-    font-weight: bold;
-}
+// label{
+//     background-color:  rgb(224, 224, 224); 
+//     padding: 2px;
+// }
+
+.column {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    padding-left: 55px;
+    
+    // background-color: rgb(224, 224, 224);
+    // height: 300px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .column:after {
+    width: 70%;
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .col-c{
+    background-color: rgb(224, 224, 224);
+    
+  }

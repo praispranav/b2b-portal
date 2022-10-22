@@ -8,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class SellerAboutComponent implements OnInit {
 
   constructor() { }
+  categoriesList: any[] = [
+    { name: "Quality Control" },
+    { name: "Export Capability" },
+    { name: "Company Introduction" },
+    { name: "Manufacturing Capacity" },
+    { name: "Certificate Center" },
+    { name: "R & D" },
+  ];
 
   ngOnInit() {
   }

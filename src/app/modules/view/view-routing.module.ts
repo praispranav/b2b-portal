@@ -176,7 +176,7 @@ const routes: Routes = [
     component: PageSellerDocumentWeConsiderComponent,
   },
   {
-    path: "seller-about",
+    path: "catalogue-seller-about",
     component: SellerAboutComponent,
   },
   {
