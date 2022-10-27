@@ -12,7 +12,7 @@ import { pgUploadModule } from "../../@pages/components/upload/upload.module";
 import { pgSliderModule } from "../../@pages/components/slider/slider.module";
 import { pgCollapseModule } from "../../@pages/components/collapse";
 import { IsotopeModule } from 'ngx-isotope';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BannerImgWidgetComponent } from './components/banner-img-widget/banner-img-widget.component';
 import { ButtonFiveWidgetComponent } from './components/button-five-widget/button-five-widget.component';
@@ -180,7 +180,7 @@ import { CatalogueProductSearchHomeComponent } from './components/catalogue-prod
     pgCardModule,
     IsotopeModule,
     pgCardSocialModule,
-    
+  
     pgSelectfx,
     pgSelectModule,
     pgUploadModule,

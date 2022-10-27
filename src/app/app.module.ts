@@ -76,6 +76,8 @@ import { MessageService } from './@pages/components/message/message.service';
 import { MessageModule } from './@pages/components/message/message.module';
 // import { ProviderComponent } from './provider/provider.component';
 
+// import {SocialService} from './social/SocialService';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -140,9 +142,11 @@ export class AppHammerConfig extends HammerGestureConfig {
     CoreModule,
   ],
   providers: [
+//SocialService,
     MessageService,
     QuickviewService,
     pagesToggleService,
+    
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,

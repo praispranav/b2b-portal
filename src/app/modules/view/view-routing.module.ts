@@ -43,6 +43,7 @@ import { PageTermsAndConditionComponent } from './page-terms-and-condition/page-
 import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.component';
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
 import { SellerAboutComponent } from "./seller-about/seller-about.component";
+import { CatalogueSellerCompanyDetailsComponent } from "./components/catalogue-seller-company-details/catalogue-seller-company-details.component";
 
 const routes: Routes = [
   {
@@ -171,6 +172,10 @@ const routes: Routes = [
     path: "seller-catalogue-profile",
     component: PageSellerCatalogueProfileComponent,
   },
+  {
+  path: "seller-catalogue-profile-details",
+  component: CatalogueSellerCompanyDetailsComponent,
+},
   {
     path: "seller-document-we-consider",
     component: PageSellerDocumentWeConsiderComponent,
