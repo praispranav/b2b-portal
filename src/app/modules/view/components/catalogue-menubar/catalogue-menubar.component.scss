@@ -18,7 +18,8 @@
 .header4 {
     // padding-right: 3px;
     // margin-right: 40px;
-    background-color: rgba(128, 128, 128, 0.037);
+    // background-color: rgba(128, 128, 128, 0.037);
+    background-color:coral
 }
 .navMenu{
     margin-left: 130px;
@@ -49,7 +50,8 @@
 }
 
 .search-div {
-    border: 1px solid #4285F4;
+    // border: 1px solid #4285F4;
+    border: 1px solid black;
     overflow: hidden;
     padding-left: 15px;
 
@@ -68,13 +70,16 @@
 }
 
 .search-button {
-    background-color: #4285F4;
+    // background-color: #4285F4;
+    background-color: black;
     padding-top: 8px;
 }
 
 .Bizzexpo {
-    color: #4285F4;
-    font-weight: bold;
+    // color: #4285F4;
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
 }
 
 .bars-icon-container {
