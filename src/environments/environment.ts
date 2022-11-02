@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl: 'https://b2buat.azurewebsites.net',
-  apiUrl: 'http://localhost:4001',
+  apiUrl: 'https://b2buatprod.azurewebsites.net',
+  // apiUrl: 'http://localhost:4001',
 };
 /*
  * For easier debugging in development mode, you can import the following file

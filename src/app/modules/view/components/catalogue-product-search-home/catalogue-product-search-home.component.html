@@ -1,0 +1,125 @@
+<label for="categories">
+    <h5>CATEGORIES
+    </h5>
+    <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
+        <li>
+            <a class="text-muted" href="">{{categorie.name}}</a>
+        </li>
+    </ul>
+</label>
+<!-- <label for="supplier-types">
+    <h5>
+        Supplier Types
+    </h5>
+    <ul class="list-unstyled">
+        <li>
+            <input type="checkbox">
+            <span>
+                Trade Assurance
+            </span>
+        </li>
+        <li>
+            <input type="checkbox">
+            <span>
+                Supplier
+            </span>
+        </li>
+        <li>
+            <input type="checkbox">
+            <span>
+                ≤1h response time
+            </span>
+        </li>
+    </ul>
+</label>
+<label for="product-type">
+    <h5>
+        Product Type
+    </h5>
+    <ul class="list-unstyled">
+        <li>
+            <input type="checkbox">
+            <span>
+                Ready to Ship
+            </span>
+        </li>
+        <li>
+            <input type="checkbox">
+            <span>
+                Paid samples
+            </span>
+        </li>
+    </ul>
+</label>
+<div>
+    <h5>
+        Min. Order
+    </h5>
+    <div class="row">
+        <div class="col-8 p-1">
+            <input class="form-control" type="text" placeholder="less than">
+        </div>
+        <div class="col-4 p-1">
+            <button class="btn rounded-pill">Ok</button>
+        </div>
+    </div>
+</div>
+<div>
+    <h5>
+        Price
+    </h5>
+    <div class="row">
+        <div class="col-8 p-1 d-flex align-items-center">
+            <input class="form-control" type="text" placeholder="min">
+            <span class="fw-bold">&nbsp;-&nbsp;</span>
+            <input class="form-control" type="text" placeholder="max">
+        </div>
+        <div class="col-4 p-1">
+            <button class="btn rounded-pill">Ok</button>
+        </div>
+    </div>
+</div>
+<label for="supplier-country">
+    <h5>
+        Supplier Country
+    </h5>
+    <div class="form-group input-group ">
+        <div class="input-group-append">
+            <span class="input-group-text primary"><i class="pg-icon ">search</i>
+            </span>
+        </div>
+        <input type="text" formControlName="search" placeholder="Search" class="form-control ">
+    </div>
+    <p class="text-muted">Suggestions</p>
+    <ul class="list-unstyled">
+        <li *ngFor="let country of countryList">
+            <input type="checkbox" class="mt-2">
+            <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt="">
+            <span>
+                {{country.name}}
+            </span>
+        </li>
+    </ul>
+</label>
+<label for="past-export-country">
+    <h5>
+        Past Export Country
+    </h5>
+    <div class="form-group input-group ">
+        <div class="input-group-append">
+            <span class="input-group-text primary"><i class="pg-icon">search</i>
+            </span>
+        </div>
+        <input type="text" formControlName="search" placeholder="Search" class="form-control">
+    </div>
+    <p class="text-muted">All Countries & Regions</p>
+    <ul class="list-unstyled">
+        <li *ngFor="let country of countryList">
+            <input type="checkbox" class="mt-2">
+            <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt="">
+            <span>
+                {{country.name}}
+            </span>
+        </li>
+    </ul>
+</label> -->

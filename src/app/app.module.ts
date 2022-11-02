@@ -40,6 +40,8 @@ import { pgListViewModule } from './@pages/components/list-view/list-view.module
 import { pgCardModule } from './@pages/components/card/card.module';
 import { pgCardSocialModule } from './@pages/components/card-social/card-social.module';
 
+
+
 // Basic Bootstrap Modules
 import {
   BsDropdownModule,
@@ -73,6 +75,8 @@ import { CoreModule } from './core/core.module';
 import { MessageService } from './@pages/components/message/message.service';
 import { MessageModule } from './@pages/components/message/message.module';
 // import { ProviderComponent } from './provider/provider.component';
+
+// import {SocialService} from './social/SocialService';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -138,9 +142,11 @@ export class AppHammerConfig extends HammerGestureConfig {
     CoreModule,
   ],
   providers: [
+//SocialService,
     MessageService,
     QuickviewService,
     pagesToggleService,
+    
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,

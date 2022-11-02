@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-home-request-for-quotation.component.scss']
 })
 export class PageHomeRequestForQuotationComponent implements OnInit {
-
+  handlePreview: any;
+  
   constructor() { }
 
   ngOnInit() {
