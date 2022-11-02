@@ -76,7 +76,7 @@ export class PageCategoryListComponent implements OnInit {
     })
   }
 
-  addCategory(item: any) {
+  addCategory(item?: any) {
     if (item) {
       this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
     } else {
