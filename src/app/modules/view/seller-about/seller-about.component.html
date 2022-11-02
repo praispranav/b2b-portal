@@ -1,0 +1,373 @@
+<app-catalogue-menubar></app-catalogue-menubar>
+<app-catalogue-seller-company-details></app-catalogue-seller-company-details>
+<!-- <div class="ml-4">
+    <div class="">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3 text-center shadow">
+                    <h6 class="txt-sty">About Company</h6>
+                    <hr>
+                    <p class="txt-sty-two">Company Introduction</p>
+                    <p class="txt-sty-two">Export Capability</p>
+                    <p class="txt-sty-two">Manufacturing Capacity</p>
+                    <p class="txt-sty-two">Quality Control</p>
+                    <p class="txt-sty-two">R&D Capacity</p>
+                    <p class="txt-sty-two">Certificate Center</p>
+                </div>
+                <div class="col-md-8 shadow">
+                    <h6 class="mt-4 txt-sty">About</h6>
+                    <p class="txt-sty-two">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of
+                        Lorem Ipsum.</p>
+                    <div class="row">
+                        <h6 class="col-md-4 mt-4 txt-sty">Company Mission and Vision:</h6>
+                        <p class="col-md-4 mt-4 txt-sty-two "> Mission Vision Here</p>
+                    </div>
+                    <div class="row">
+                        <h6 class="col-md-4 mt-4 txt-sty">Company Philosophy:</h6>
+                        <p class="col-md-4 mt-4 txt-sty-two"> Company Philosophy</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row mt-4 mr-bottom">
+                <div class="col-md-3"></div>
+                <div class="col-md-8 shadow">
+                    <h6 class="mt-2 txt-sty">Factory Region</h6>
+                    <table class="table">
+                        <thead>
+                            <tr class="thead-light">
+                                <th scope="col" class="thead-light">Factory Size</th>
+                                <th scope="col">Factory Region</th>
+                                <th scope="col">No of product line</th>
+                                <th scope="col">Contract Manufacturing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                   
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-3"></div>
+                <div class="col-md-8 shadow">
+                    <h6 class="mt-2 txt-sty">Quality Control</h6>
+                    <table class="table">
+                        <thead>
+                            <tr class="thead-light">
+                                <th scope="col" class="thead-light">Factory Size</th>
+                                <th scope="col">Factory Region</th>
+                                <th scope="col">No of product line</th>
+                                <th scope="col">Contract Manufacturing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="row mt-t" >
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3 mr-l">
+                <div class="card mt-3">
+                    <label for="categories">
+                        <h4 class="ml-3">About Company
+                        </h4>
+                        <ul *ngFor="let categorie of categoriesList" class="list-unstyled ml-3">
+                            <li>
+                                <a class="text-muted" href="">{{categorie.name}}</a>
+                            </li>
+                        </ul>
+                    </label>
+                </div>
+                <!-- <label for="categories">
+                    <h4>About Company
+                    </h4>
+                    <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
+                        <li>
+                            <a class="text-muted" href="">{{categorie.name}}</a>
+                        </li>
+                    </ul>
+                </label> -->
+            </div>
+            <!--  -->
+
+            <div class="col-md-9">
+
+
+                <!-- START CONTAINER FLUID -->
+                <pg-container>
+
+                    <div class="card card-transparent">
+
+                        <div class="m-0 row card-body">
+                            <div class="card">
+                                
+                            </div>
+                            <div class="col-md-4 no-padding">
+                                <pgcard>
+                                    <div class="p-r-30">
+                                        <h4>Company Mission and Vision</h4>
+                                        <br>
+                                        <p>Cards are pluggable UI components that are managed and displayed in a web portal.
+                                            Cards in Pages are created by reusing the
+                                            <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in
+                                            Bootstrap to enable effortless customization.
+    
+                                        <h4>Company Philosophy</h4>
+                                        <br>
+                                        <p>Cards are pluggable UI components that are managed and displayed in a web portal.
+                                            Cards in Pages are created by reusing the
+                                            <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in
+                                            Bootstrap to enable effortless customization.
+    
+    
+                                        </p>
+                                    </div>
+                                </pgcard>
+                               
+                            </div>
+                            <div class="col-md-8 sm-no-padding">
+                                <pgcard>
+
+
+                                    <h3>
+                                        <span class="semi-bold ">About</span>
+                                    </h3>
+                                    <p>We have crafted Pages Cards to suit any use case. Add a maximize button
+                                        <i class="pg pg-fullscreen"></i>
+                                        into your Cards controls bar to make the Cards go full-screen. This will come
+                                        handy if you want to show lot of
+                                        content inside a Cards and want to give the content some room to breath.
+                                        Cards are pluggable UI components that are managed and displayed in a web
+                                        portal.
+                                        Cards in Pages are created by reusing the
+                                        <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in
+                                        Bootstrap to enable effortless customization.
+                                        Cards are pluggable UI components that are managed and displayed in a web
+                                        portal.
+                                        Cards in Pages are created by reusing the
+                                        <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in
+                                        Bootstrap to enable effortless customization.
+                                        Cards are pluggable UI components that are managed and displayed in a web
+                                        portal.
+                                        Cards in Pages are created by reusing the
+                                        <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in
+                                        Bootstrap to enable effortless customization.
+                                    </p>
+
+
+                                </pgcard>
+                            </div>
+                        </div>
+                    </div>
+
+                </pg-container>
+
+                <!--  -->
+                <div class="mr-r">
+                    <!-- <div class="row">
+        <div class="col-md-3">
+    <ul class="list-unstyled ">
+        <li class="border p-1 bg-light">Business Type</li>
+        <li class="border p-1 bg-light">Main Product</li>
+        <li class="border">Patents</li>
+        <li class="border">Patents</li>
+        <li class="border">Patents</li>
+        <li class="border">Certificarions</li>
+        <li class="border">Main Markets</li>
+    </ul>
+        </div>
+    
+        <div class="col-md-5">
+            <ul class="list-unstyled ">
+                <li class="border p-1 bg-light">Business Type</li>
+                <li class="border p-1 bg-light">Main Product</li>
+                <li class="border">Patents</li>
+                <li class="border">Patents</li>
+                <li class="border">Patents</li>
+                <li class="border">Certificarions</li>
+                <li class="border">Main Markets</li>
+            </ul>
+                </div>
+    </div> -->
+
+    <h4 class="mr-r">Company Introduction</h4>
+    <div>
+        <div class="shadow col-md-11 b-table">
+        
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Business Type</p>
+                </div>
+                <div class="column">
+                    <p>Wholesaler/Distributor</p>
+    
+                </div>
+            </div>
+            <!--  -->
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Main Product</p>
+                </div>
+                <div class="column">
+                    <p>Wholesaler/Distributor</p>
+    
+                </div>
+            </div>
+            <!--  -->
+    
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Total Anual Revenue</p>
+                </div>
+                <div class="column">
+                    <p>Below US$1.</p>
+    
+                </div>
+            </div>
+             <!--  -->
+    
+             <div class="row border">
+                <div class="column col-c">
+                    <p>Main Markets</p>
+                </div>
+                <div class="column">
+                    <p>Hand bag, clothes, pants, shirts</p>
+    
+                </div>
+            </div>
+             <!--  -->
+    
+             <div class="row border">
+                <div class="column col-c">
+                    <p>Patents</p>
+                </div>
+                <div class="column">
+                    <p>--</p>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   <!--  -->
+   <h4 class="mr-r">Quality controls</h4>
+    <div>
+        <div class="shadow col-md-11 b-table">
+        
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Business Type</p>
+                </div>
+                <div class="column">
+                    <p>Wholesaler/Distributor</p>
+    
+                </div>
+            </div>
+            <!--  -->
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Main Product</p>
+                </div>
+                <div class="column">
+                    <p>Wholesaler/Distributor</p>
+    
+                </div>
+            </div>
+            <!--  -->
+    
+            <div class="row border">
+                <div class="column col-c">
+                    <p>Total Anual Revenue</p>
+                </div>
+                <div class="column">
+                    <p>Below US$1.</p>
+    
+                </div>
+            </div>
+             <!--  -->
+    
+             <div class="row border">
+                <div class="column col-c">
+                    <p>Main Markets</p>
+                </div>
+                <div class="column">
+                    <p>Hand bag, clothes, pants, shirts</p>
+    
+                </div>
+            </div>
+             <!--  -->
+    
+             <div class="row border">
+                <div class="column col-c">
+                    <p>Patents</p>
+                </div>
+                <div class="column">
+                    <p>--</p>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+                   
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

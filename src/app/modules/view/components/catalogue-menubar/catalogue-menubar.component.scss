@@ -1,0 +1,119 @@
+.image {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    margin: 0px;
+}
+
+.profile-notification {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #4285F4;
+    border: 2px solid white;
+    margin-top: 15px;
+    margin-left: -12px;
+}
+
+.header4 {
+    // padding-right: 3px;
+    // margin-right: 40px;
+    // background-color: rgba(128, 128, 128, 0.037);
+    background-color:coral
+}
+.navMenu{
+    margin-left: 130px;
+}
+.menu{
+    background-color: rgba(128, 128, 128, 0.037);
+    // color: black; 
+    color:  #4285F4;
+    font-weight: bolder;
+    font-size: 15px;
+}
+.menu:hover{
+    background-color:white;
+    color:  #4285F4;
+    font-weight: bold;
+}
+.dropdown {
+    outline: none;
+    border: none;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 35vw;
+    height: 20px;
+}
+
+.search-div {
+    // border: 1px solid #4285F4;
+    border: 1px solid black;
+    overflow: hidden;
+    padding-left: 15px;
+
+}
+.nave-search{
+    margin-left: 150px;
+}
+
+.notification {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background-color: red;
+    border: 1px solid white;
+    margin-left: -5px;
+}
+
+.search-button {
+    // background-color: #4285F4;
+    background-color: black;
+    padding-top: 8px;
+}
+
+.Bizzexpo {
+    // color: #4285F4;
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.bars-icon-container {
+    background-color: rgba(128, 128, 128, 0.13);
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+    border-radius: 100px;
+}
+
+.sm-search-container {
+    background-color: rgba(128, 128, 128, 0.037);
+    border-radius: 20px;
+}
+
+.sm-input {
+    background: none;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+.sm-search-icon-container {
+    background-color: black;
+    color: white;
+    height: 25px;
+    width: 25px;
+    padding: 5px;
+    border-radius: 100px;
+}
+
+.bold-700 {
+    font-weight: 700;
+}
+.align{
+    margin-left: 199px;
+}

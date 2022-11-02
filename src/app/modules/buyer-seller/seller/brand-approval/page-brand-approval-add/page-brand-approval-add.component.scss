@@ -2,3 +2,235 @@
     font-size: 24px !important;
     font-weight: bold !important;
 }
+.select{
+    height: 38px;
+    width: 414px;
+}
+.btn{
+    width: 136px;
+}
+    // <div class="card">
+    //     <div class="card-header mb-2 d-flex justify-content-between align-items-center">
+    //         <h3 class="card-title">ADD BRAND APPROVAL</h3>
+    //         <div>
+    //             <button class="btn btn-primary" routerLink="../brand-approval-list">Show All</button>
+    //         </div>
+    //     </div>
+    //     <div class="card-body">
+    //         <form [formGroup]="brandForm">
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-3">
+    //                                     <label class="font-size">Brand type</label>
+    //                                 </div>
+    //                                 <div class="col-md-9">
+    //                                     <input type="text" id="brandType" formControlName="brandType"
+    //                                         class="form-control" placeholder="Please Brand Type">
+    //                                     <p class="error"
+    //                                         *ngIf="f['brandType'].invalid && (f['brandType'].touched || f['brandType'].dirty)">
+    //                                         Brand type Required
+    //                                     </p>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-5">
+    //                                     <label for="brandName" class="font-size">Brand name</label>
+    //                                 </div>
+    //                                 <div class="col-md-6">
+    //                                     <select id="brandName" formControlName="brandName" class="select">
+    //                                         <option value="">Select Brand Name</option>
+    //                                         <option value="1">Australia - Intellectual Property Australia - IPA</option>
+    //                                         <option value="2">Brazil - Instituto Nacional da Propriedade Industrial -
+    //                                             INPIBR
+    //                                         </option>
+    //                                         <option value="3">Canada - Canadian Intellectual Property Office - CIPO
+    //                                         </option>
+    //                                         <option value="4">Egypt - Egyptian Patent Office - EGYPO</option>
+    //                                         <option value="5">Europe - European Union Intellectual Property Office -
+    //                                             EUIPO
+    //                                         </option>
+    //                                         <option value="6">France - Institut national de la propriété industrielle -
+    //                                             NPI
+    //                                         </option>
+    //                                         <option value="7">Germany - Deutsches Patent- und Markenamt - DPMA</option>
+    //                                         <option value="8">India - Trademark Registry - TMR</option>
+    //                                         <option value="9">Italy - Ufficio Italiano Brevetti e Marchi - UIBM</option>
+    //                                         <option value="10">Japan - Japanese Patent/Trademark Office - JPO</option>
+    //                                         <option value="11">Mexico - Marcas IMPI - IMPI</option>
+    //                                         <option value="12">Netherlands - Benelux Office for Intellectual Property -
+    //                                             BOIP
+    //                                         </option>
+    //                                         <option value="13">Poland - Patent Office of the Republic of Poland - PPO
+    //                                         </option>
+    //                                         <option value="14">Saudi Arabia - Saudi Authority for Intellectual Property
+    //                                             -
+    //                                             KSA</option>
+    //                                         <option value="15">Singapore - Intellectual Property Office of Singapore -
+    //                                             IPOS
+    //                                         </option>
+    //                                         <option value="16">Spain - Oficina Española de Patentes y Marcas - OEPM
+    //                                         </option>
+    //                                         <option value="17">Sweden - Swedish Patent and Registration Office - PRV
+    //                                         </option>
+    //                                         <option value="18">Turkey - Turkish Patent and Trademark Office - TPTO
+    //                                         </option>
+    //                                         <option value="19">United Arab Emirates - Ministry of Economy - UAEME
+    //                                         </option>
+    //                                         <option value="20">United Kingdom - Intellectual Property Office UK - IPOUK
+    //                                         </option>
+    //                                         <option value="21">United States - United States Patent and Trademark Office
+    //                                             -
+    //                                             USPTO</option>
+    //                                     </select>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-3">
+    //                                     <label class="font-size">Registration or serial number</label>
+    //                                 </div>
+    //                                 <div class="col-md-9">
+    //                                     <input type="number" id="serialNumber" formControlName="serialNumber"
+    //                                         class="form-control" placeholder="Registration or serial number">
+    //                                     <p
+    //                                         *ngIf="f['serialNumber'].invalid && (f['serialNumber'].touched || f['serialNumber'].dirty)">
+    //                                         <span class="error" *ngIf="f['serialNumber'].invalid">
+    //                                             Serial Number Required
+    //                                         </span>
+    //                                         <span *ngIf="f['serialNumber'].invalid.minlength">
+    //                                             please enter minimum 9876543
+    //                                         </span>
+    //                                         <span *ngIf="f['serialNumber'].invalid.maxlength">
+    //                                             please enter maximum characters 12345678
+    //                                         </span>
+    //                                     </p>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-3">
+    //                                     <span class="font-size">If you sell your products on other websites,
+    //                                         provide the URL to your storefront on those sites (optional)
+    //                                     </span>
+    //                                 </div>
+    //                                 <div class="col-md-5">
+    //                                     <ng-container formArrayName="products">
+    //                                         <ng-container
+    //                                             *ngFor="let productForm of products.controls; let i = index; let last = last; let first = first;">
+    //                                             <div [formGroup]="productForm">
+    //                                                 <div class="form-group" style="display: flex;">
+    //                                                     <input type="text" class="form-control"
+    //                                                         formControlName="product"
+    //                                                         [placeholder]="'Product Link '+(i+1)+' Name Here...'">
+    //                                                     <button class="btn btn-danger" (click)="deleteProduct(i)"
+    //                                                         *ngIf="!(last && first)"><i class="fa fa-trash"
+    //                                                             aria-hidden="true"></i></button>
+    //                                                 </div>
+    //                                                 <div
+    //                                                     *ngIf="productForm.get('product').invalid && (productForm.get('product').dirty || productForm.get('product').touched)">
+    //                                                     <label *ngIf="productForm.get('product').errors.required"
+    //                                                         class="error">Product
+    //                                                         {{i+1}} is
+    //                                                         required.</label>
+    //                                                 </div>
+    //                                             </div>
+    //                                         </ng-container>
+    //                                     </ng-container>
+    //                                 </div>
+    //                                 <div class="col-md-4 d-flex align-items-end" style="padding-bottom: 10px;">
+    //                                     <button _ngcontent-kwx-c27 aria-label (click)="addProduct()"
+    //                                         class="btn btn-success">
+    //                                         +Add
+    //                                     </button>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-3">
+    //                                     <p class="font-size">Product image</p>
+    //                                 </div>
+    //                                 <div class="col-md-5">
+    //                                     <span>
+    //                                         Provide at least one image of your product or packaging that clearly shows
+    //                                         your
+    //                                         brand's name,
+    //                                         logo or other distinguishing mark permanently affixed to the product.
+    //                                         The images should show the product you sell or intend to sell on Amazon and
+    //                                         shouldn't be computer generated.
+    //                                     </span>
+    //                                 </div>
+    //                                 <div class="col-md-4">
+    //                                     <div pgFormGroupDefault class="form-group">
+    //                                         <pg-upload ListType="picture-card" [(FileList)]="imageList"
+    //                                             [ShowButton]="imageList.length===0"
+    //                                             Action="https://jsonplaceholder.typicode.com/posts/">
+    //                                             <div class="pic-placeholder">
+    //                                                 <i class="pg-icon p-b-5">upload</i>
+    //                                                 <div class="fs-12">Upload</div>
+    //                                             </div>
+    //                                         </pg-upload>
+    //                                         <div *ngIf="f.image.invalid && (f.image.dirty || f.image.touched)">
+    //                                             <label *ngIf="f.image.errors.required" class="error">Image is
+    //                                                 required.</label>
+    //                                         </div>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //             <div class="row">
+    //                 <div class="col-md-12">
+    //                     <div class="container">
+    //                         <div class="form-group">
+    //                             <div class="row">
+    //                                 <div class="col-md-3"></div>
+    //                                 <div class="col-md-9">
+    //                                     <button _ngcontent-jns-c10 arial-label (click)="subBrandForm()"
+    //                                         class="btn btn-primary btn-icon-left m-b-10 m-r-5" type="button">
+    //                                         <i _ngcontent-jns-c10 class="pg-icon">tick</i>
+    //                                         <span _ngcontent-jns-c10 class>Submit</span>
+    //                                     </button>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </form>
+    //     </div>
+    // </div>
+// </div>

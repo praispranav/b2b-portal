@@ -10,15 +10,15 @@ import { ProviderBrandApprovalService } from './../../../../../core/providers/us
   styleUrls: ['./page-brand-approval-add.component.scss']
 })
 export class PageBrandApprovalAddComponent implements OnInit {
-  brandForm : FormGroup;
+  brandForm: FormGroup;
   imageList: any[] = [];
 
   constructor(
     private router: Router,
-    private formBuilder : FormBuilder,
+    private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
     private providerBrandApprovalService: ProviderBrandApprovalService
-  ) {}
+  ) { }
 
   get f() {
     return this.brandForm.controls;
@@ -35,11 +35,12 @@ export class PageBrandApprovalAddComponent implements OnInit {
 
   buildBrandForm() {
     this.brandForm = this.formBuilder.group({
-      brandType : ['', Validators.required],
-      brandName : ['', Validators.required],
-      serialNumber : ['', [Validators.required, Validators.minLength(9876543), Validators.maxLength(12345678)]],
+      brandType: ['', Validators.required],
+      brandName: ['', Validators.required],
+      trademarkOffice: ['', Validators.required],
+      serialNumber: ['', [Validators.required, Validators.minLength(9876543), Validators.maxLength(12345678)]],
       products: this.formBuilder.array([]),
-      image: ['', [Validators.required]],
+      image: [''],
     });
   }
 
@@ -76,7 +77,6 @@ export class PageBrandApprovalAddComponent implements OnInit {
       (err) => { this.appMessageService.createBasicNotification(err.header.status, err.header.message) }
     );
   }
-
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -85,7 +85,6 @@ export class PageBrandApprovalAddComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
-
   private markFormGroupTouched(form: FormGroup) {
     Object.values(form.controls).forEach((control) => {
       control.markAsTouched();

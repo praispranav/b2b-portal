@@ -8,9 +8,9 @@ describe('PageBrandApprovalAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageBrandApprovalAddComponent ]
+      declarations: [PageBrandApprovalAddComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,3 +23,11 @@ describe('PageBrandApprovalAddComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+
+
+
+
+
+
