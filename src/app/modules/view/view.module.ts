@@ -90,6 +90,7 @@ import { SellerCatalogueHomeProductComponent } from './seller-catalogue-home-pro
 import { SellerAboutComponent } from './seller-about/seller-about.component';
 import { CatalogueProductCardHomeComponent } from './components/catalogue-product-card-home/catalogue-product-card-home.component';
 import { CatalogueProductSearchHomeComponent } from './components/catalogue-product-search-home/catalogue-product-search-home.component';
+import { CatalogueProductComponent } from './components/catalogue-product/catalogue-product.component';
 
 @NgModule({
   declarations: [
@@ -167,6 +168,7 @@ import { CatalogueProductSearchHomeComponent } from './components/catalogue-prod
     SellerAboutComponent,
     CatalogueProductCardHomeComponent,
     CatalogueProductSearchHomeComponent,
+    CatalogueProductComponent,
     
   ],
   imports: [ 
