@@ -16,10 +16,14 @@ export class PageSignUpComponent implements OnInit {
   selectedOption;
   options = [
     { value: 'India', label: 'India' },
-    { value: 'China', label: 'China' },
+    { value: 'Malaysia', label: 'Malaysia' },
     { value: 'Pakistan', label: 'Pakistan' }
   ];
-
+  codes = [
+    { value: '+91', label: '+91' },
+    { value: '+65', label: '+65' },
+    { value: '+11', label: '+11' }
+  ];
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -43,6 +47,7 @@ export class PageSignUpComponent implements OnInit {
       lName: ["", [Validators.required]],
       email: ["", [Validators.required]],
       phone: ["", [Validators.required]],
+      code: [""],
       password: ["", [Validators.required]],
       cpassword: ["", [Validators.required]],
       country: ["", [Validators.required],],
@@ -59,6 +64,7 @@ export class PageSignUpComponent implements OnInit {
       // window.alert(res.header.message);
       this.providerUserAuthService.navToPortalIfAuthenticated();
       this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
+      this.providerUserAuthService.navToPortalIfAuthenticated();
     }, err => {
       console.log(err , 'error Msg')
       this.appMessageService.createBasicNotification(err.header.message, 'Something Went Wrong');
