@@ -67,12 +67,16 @@ export class PageSignInComponent implements OnInit {
         rememberMe: false
       };
     }
-
     this.providerUserAuthService.userSignIn(reqData).subscribe(res => {
-      this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
+      console.log(res.header.message)
+      // this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
       this.providerUserAuthService.navToPortalIfAuthenticated();
+      this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
+      
     }, err => {
-      this.appMessageService.createBasicNotification(err.header.message, 'Sothing Went Wrong');
+      console.log(err.header.message)
+      this.appMessageService.createBasicNotification(err.header.message, 'Invalid Credential');
+      // window.alert(err.header.message)
     });
   }
 
