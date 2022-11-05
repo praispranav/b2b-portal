@@ -47,7 +47,7 @@ export class PageSignUpComponent implements OnInit {
       cpassword: ["", [Validators.required]],
       country: ["", [Validators.required],],
       address1: ["", [Validators.required]],
-      address2: [""],
+      city: [""],
       role: ["", [Validators.required]]
     });
   }

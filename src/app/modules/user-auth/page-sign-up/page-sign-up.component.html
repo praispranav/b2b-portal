@@ -148,13 +148,13 @@
       <div class="row">
         <div class="col-md-12">
           <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="f.address2.invalid && (f.address2.dirty || f.address2.touched)">
-            <label for="address2">Address 2</label>
-            <input type="text" formControlName="address2" placeholder="Enter Address 2" class="form-control"
-              id="address2" />
+            [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
+            <label for="city">city</label>
+            <input type="text" formControlName="city" placeholder="Enter city" class="form-control"
+              id="city" />
           </div>
-          <div *ngIf="f.address2.invalid && (f.address2.dirty || f.address2.touched)">
-            <label *ngIf="f.address2.errors.required" class="error">This field is required.</label>
+          <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)">
+            <label *ngIf="f.city.errors.required" class="error">This field is required.</label>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@
           <div pgFormGroupDefault class="form-group form-group-default"
             [class.has-error]="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
             <label for="phone">Mobile Number</label>
-            <input type="text" formControlName="phone" placeholder="Enter Address 2" class="form-control" id="phone" />
+            <input type="text" formControlName="phone" placeholder="Enter city" class="form-control" id="phone" />
           </div>
           <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
             <label *ngIf="f.phone.errors.required" class="error">This field is required.</label>
