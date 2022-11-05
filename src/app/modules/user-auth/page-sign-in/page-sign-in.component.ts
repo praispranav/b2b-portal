@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProviderUserAuthService } from '../../../core/providers/auth/provider-user-auth.service';
 import { Router } from '@angular/router';
+import { MessageService } from '../../../@pages/components/message/message.service';
+import { AppMessageService } from '../../../core/services/app-message.service';
 
 interface LooseObject {
   [key: string]: any
@@ -20,6 +22,8 @@ export class PageSignInComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private providerUserAuthService: ProviderUserAuthService,
+    private messageService: MessageService,
+    private appMessageService: AppMessageService,
   ) { }
 
   get f() { return this.authSignInForm.controls; }
@@ -31,7 +35,7 @@ export class PageSignInComponent implements OnInit {
       this.f.email.setValue(rememberMeCredentials.email);
       this.f.password.setValue(rememberMeCredentials.password);
       this.f.rememberMe.setValue(rememberMeCredentials.rememberMe);
-    }  
+    }
   }
 
   buildForm() {
@@ -65,10 +69,10 @@ export class PageSignInComponent implements OnInit {
     }
 
     this.providerUserAuthService.userSignIn(reqData).subscribe(res => {
-      window.alert(res.header.message);
+      this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
       this.providerUserAuthService.navToPortalIfAuthenticated();
     }, err => {
-      window.alert('Sothing Went Wrong');
+      this.appMessageService.createBasicNotification(err.header.message, 'Sothing Went Wrong');
     });
   }
 

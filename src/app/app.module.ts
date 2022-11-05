@@ -54,6 +54,7 @@ import {
   TabsModule,
   TooltipModule,
   TypeaheadModule,
+  
 } from 'ngx-bootstrap';
 
 // Pages Globaly required Components - Optional
