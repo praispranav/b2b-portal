@@ -24,6 +24,10 @@ const routes: Routes = [
     component: PageSignInComponent,
   },
   {
+    path: "sign-up-verify",
+    component: PageSignInComponent,
+  },
+  {
     path: "sign-up",
     component: PageSignUpComponent,
   },
@@ -32,4 +36,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserAuthRoutingModule {}
+export class UserAuthRoutingModule { }

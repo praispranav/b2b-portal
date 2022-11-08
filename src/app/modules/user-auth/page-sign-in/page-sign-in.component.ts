@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProviderUserAuthService } from '../../../core/providers/auth/provider-user-auth.service';
-import { Router } from '@angular/router';
-import { MessageService } from '../../../@pages/components/message/message.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppMessageService } from '../../../core/services/app-message.service';
 
 interface LooseObject {
@@ -17,12 +16,14 @@ interface LooseObject {
 export class PageSignInComponent implements OnInit {
   authSignInForm: FormGroup;
   showPassword = false;
+  id: string;
+  token: string;
 
   constructor(
+    private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private providerUserAuthService: ProviderUserAuthService,
-    private messageService: MessageService,
     private appMessageService: AppMessageService,
   ) { }
 
@@ -36,6 +37,35 @@ export class PageSignInComponent implements OnInit {
       this.f.password.setValue(rememberMeCredentials.password);
       this.f.rememberMe.setValue(rememberMeCredentials.rememberMe);
     }
+
+
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+      this.token = params['token'];
+
+      if (this.id && this.token && this.router.url.includes('/user-auth/sign-up-verify')) {
+        const reqData = {
+          _id: this.id,
+          secretToken: this.token,
+        }
+
+        this.providerUserAuthService.userSignUpVerify(reqData).subscribe(res => {
+          if (res.header.code === 200) {
+            this.providerUserAuthService.navToPortalIfAuthenticated();
+            this.appMessageService.createBasicNotification('green', res.header.message);
+          } else {
+            this.router.navigateByUrl('/user-auth/sign-in');
+            this.appMessageService.createBasicNotification('blue', res.header.message);
+          }
+        }, err => {
+          this.router.navigateByUrl('/user-auth/sign-in');
+          this.appMessageService.createBasicNotification('red', 'Something went wrong');
+        });
+      } else if (this.router.url.includes('/user-auth/sign-up-verify')) {
+        this.router.navigateByUrl('/user-auth/sign-in');
+        this.appMessageService.createBasicNotification('red', 'Invalid Request');
+      }
+    });
   }
 
   buildForm() {
@@ -67,16 +97,16 @@ export class PageSignInComponent implements OnInit {
         rememberMe: false
       };
     }
+
     this.providerUserAuthService.userSignIn(reqData).subscribe(res => {
-      console.log(res.header.message)
-      // this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
-      this.providerUserAuthService.navToPortalIfAuthenticated();
-      this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
-      
+      if (res.header.code === 200) {
+        this.providerUserAuthService.navToPortalIfAuthenticated();
+        this.appMessageService.createBasicNotification('green', res.header.message);
+      } else {
+        this.appMessageService.createBasicNotification('blue', res.header.message);
+      }
     }, err => {
-      console.log(err.header.message)
-      this.appMessageService.createBasicNotification(err.header.message, 'Invalid Credential');
-      // window.alert(err.header.message)
+      this.appMessageService.createBasicNotification('red', 'Something went wrong');
     });
   }
 

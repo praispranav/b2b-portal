@@ -57,6 +57,8 @@ export class ProviderUserAuthService {
         this.router.navigateByUrl('/buyer');
       } else if ('seller' === role) {
         this.router.navigateByUrl('/seller');
+      } else if ('buyer-seller' === role) {
+        this.router.navigateByUrl('/buyer-seller');
       } else {
         this.router.navigateByUrl('/user-auth');
       }
@@ -70,22 +72,38 @@ export class ProviderUserAuthService {
     }
   }
 
+  userSignUpVerify(params: any = {}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/sign-up-verify`, params)
+      .pipe(map(res => {
+        if (res.header.code === 200) {
+          localStorage.setItem(this.currentUserKey, JSON.stringify(res));
+          this.currentUserSubject.next(res);
+        }
+        return res;
+      }));
+  }
+
   userSignIn(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/sign-in`, params)
       .pipe(map(res => {
-        localStorage.setItem(this.currentUserKey, JSON.stringify(res));
-        this.currentUserSubject.next(res);
+        if (res.header.code === 200) {
+          localStorage.setItem(this.currentUserKey, JSON.stringify(res));
+          this.currentUserSubject.next(res);
+        }
         return res;
       }));
   }
 
   userSignUp(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/sign-up`, params)
-      .pipe(map(res => {
-        localStorage.setItem(this.currentUserKey, JSON.stringify(res));
-        this.currentUserSubject.next(res);
-        return res;
-      }));
+  }
+
+  userForgotPassword(params: any = {}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/forgot-password`, params)
+  }
+
+  userResetPassword(params: any = {}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/reset-password`, params)
   }
 
   userSignOutNoApiCall(nav = true) {

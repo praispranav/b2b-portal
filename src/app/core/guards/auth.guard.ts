@@ -32,6 +32,8 @@ export class AuthGuard implements CanActivate {
       } else if ('seller' === role) {
         this.router.navigateByUrl('/seller');
         return false;
+      } else if ('buyer-seller' === role) {
+        this.router.navigateByUrl('/buyer-seller');
       }
     }
     this.providerUserAuthService.userSignOutNoApiCall(false);

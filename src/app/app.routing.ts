@@ -62,6 +62,15 @@ export const AppRoutes: Routes = [
     loadChildren: "./modules/buyer-seller/seller.module#SellerModule",
   },
   {
+    path: "buyer-seller",
+    canActivate: [UserGuard],
+    data: {
+      role: 'buyer-seller'
+    },
+    component: SellerLayoutComponent,
+    loadChildren: "./modules/buyer-seller/seller.module#SellerModule",
+  },
+  {
     path: "user-auth",
     canActivate: [AuthGuard],
     component: BlankLayoutComponent,

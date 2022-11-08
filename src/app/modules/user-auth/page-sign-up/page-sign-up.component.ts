@@ -59,17 +59,16 @@ export class PageSignUpComponent implements OnInit {
 
   subSignUpForm() {
     const params = this.signUpForm.value;
-    params.role = params.role === 'buyer' ? 'buyer' : 'seller';
+    params.role = params.role === 'buyer' ? 'buyer' : params.role === 'seller' ? 'seller' : 'buyer-seller';
     this.providerUserAuthService.userSignUp(params).subscribe(res => {
-      // window.alert(res.header.message);
-      this.providerUserAuthService.navToPortalIfAuthenticated();
-      this.appMessageService.createBasicNotification(res.header.message, 'Sign In Succesfully');
-      this.providerUserAuthService.navToPortalIfAuthenticated();
+      if (res.header.code === 200) {
+        this.router.navigateByUrl('/user-auth/sign-in');
+        this.appMessageService.createBasicNotification('green', res.header.message);
+      } else {
+        this.appMessageService.createBasicNotification('blue', res.header.message);
+      }
     }, err => {
-      console.log(err , 'error Msg')
-      this.appMessageService.createBasicNotification(err.header.message, 'Something Went Wrong');
-      // window.alert('Sothing Went Wrong');
-
+      this.appMessageService.createBasicNotification('red', 'Something went wrong');
     });
   }
 }
