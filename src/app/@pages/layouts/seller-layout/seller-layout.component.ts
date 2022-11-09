@@ -107,7 +107,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Supplier MyListing",
-      routerLink: "/seller/supplier-my-listing",
+      routerLink: "/seller/supplier-list",
     },
   ];
 

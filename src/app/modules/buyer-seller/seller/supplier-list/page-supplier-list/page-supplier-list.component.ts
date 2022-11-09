@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
-
 @Component({
-  selector: 'app-supplier-listing',
-  templateUrl: './supplier-listing.component.html',
-  styleUrls: ['./supplier-listing.component.scss']
+  selector: 'app-page-supplier-list',
+  templateUrl: './page-supplier-list.component.html',
+  styleUrls: ['./page-supplier-list.component.scss']
 })
-export class SupplierListingComponent implements OnInit {
-
+export class PageSupplierListComponent implements OnInit {
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
   appName = null;
@@ -148,3 +146,4 @@ export class SupplierListingComponent implements OnInit {
   }
 
 }
+

@@ -7,7 +7,8 @@ import { SellerRoutingModule } from './seller-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    SellerRoutingModule
+    SellerRoutingModule,
+
   ]
 })
 export class SellerModule { }
