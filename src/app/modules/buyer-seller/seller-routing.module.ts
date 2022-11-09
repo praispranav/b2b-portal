@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-
+// import {  } from "./seller/supplier-list/supplier-list.module";
 const routes: Routes = [
   {
     path: "",
@@ -23,6 +23,11 @@ const routes: Routes = [
     path: "product",
     loadChildren: "./seller/product/product.module#ProductModule",
   },
+  
+  {
+    path:"supplier-list",
+    loadChildren:"./seller/supplier-list/supplier-list.module#SupplierListModule",
+  },
   {
     path: "profile",
     loadChildren: "./seller/profile/profile.module#ProfileModule",
@@ -31,6 +36,7 @@ const routes: Routes = [
     path: "quote-request",
     loadChildren: "./seller/quote-request/quote-request.module#QuoteRequestModule",
   },
+
   {
     path: "help",
     loadChildren: "../../features/help/help.module#HelpModule",
@@ -39,6 +45,7 @@ const routes: Routes = [
     path: "email",
     loadChildren:"../../features/email/email.module#EmailModule"
   }
+
 ];
 
 @NgModule({
