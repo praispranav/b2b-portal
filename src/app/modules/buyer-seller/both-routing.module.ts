@@ -27,6 +27,12 @@ const routes: Routes = [
     path: "profile",
     loadChildren: "./both/profile/profile.module#ProfileModule",
   },
+
+  {
+    path: "supplier-my-listing",
+    loadChildren: "./both/supplier-my-list/supplier-my-list.module#SupplierMyListModule",
+  },
+
   {
     path: "quote-request",
     loadChildren: "./both/quote-request/quote-request.module#QuoteRequestModule",
@@ -37,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren:"../../features/email/email.module#EmailModule"
+    loadChildren: "../../features/email/email.module#EmailModule"
   }
 ];
 
@@ -45,4 +51,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BothRoutingModule {}
+export class BothRoutingModule { }

@@ -23,6 +23,11 @@ const routes: Routes = [
     path: "product",
     loadChildren: "./seller/product/product.module#ProductModule",
   },
+
+  {
+    path: "supplier-my-listing",
+    loadChildren: "./seller/supplier-my-list/supplier-my-list.module#SupplierMyListModule",
+  },
   {
     path: "profile",
     loadChildren: "./seller/profile/profile.module#ProfileModule",
@@ -37,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren:"../../features/email/email.module#EmailModule"
+    loadChildren: "../../features/email/email.module#EmailModule"
   }
 ];
 
@@ -45,4 +50,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SellerRoutingModule {}
+export class SellerRoutingModule { }

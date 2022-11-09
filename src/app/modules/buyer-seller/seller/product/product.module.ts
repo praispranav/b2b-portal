@@ -22,6 +22,7 @@ import { FormShippingDetailsComponent } from './components/form-shipping-details
 import { FormTradeInformationComponent } from './components/form-trade-information/form-trade-information.component';
 import { PageProductAddComponent } from "./page-product-add/page-product-add.component";
 import { PageProductListComponent } from "./page-product-list/page-product-list.component";
+import { SupplierListingComponent } from './components/supplier-listing/supplier-listing.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { PageProductListComponent } from "./page-product-list/page-product-list.
     FormTradeInformationComponent,
     PageProductAddComponent,
     PageProductListComponent,
+    SupplierListingComponent,
   ],
   imports: [
     CommonModule,

@@ -27,10 +27,18 @@ const routes: Routes = [
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule',
   },
+  // {
+  //   path: 'notice-bar',
+  //   loadChildren: '../../features/help/help.module#HelpModule',
+  // },
+  // {
+  //   path: 'faq',
+  //   loadChildren: '../../features/help/help.module#HelpModule',
+  // },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

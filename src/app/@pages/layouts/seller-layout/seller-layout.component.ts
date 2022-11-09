@@ -105,6 +105,10 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       label: "My Buying Interests",
       routerLink: "/seller/dashboard",
     },
+    {
+      label: "Supplier MyListing",
+      routerLink: "/seller/supplier-my-listing",
+    },
   ];
 
   ngOnInit() {
