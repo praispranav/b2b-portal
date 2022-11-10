@@ -40,7 +40,7 @@ export class PageForgotPasswordComponent implements OnInit {
       email: formData.email
     }
 
-    this.providerUserAuthService.userResetPassword(reqData).subscribe(res => {
+    this.providerUserAuthService.userForgotPassword(reqData).subscribe(res => {
       if (res.header.code === 200) {
         this.router.navigateByUrl('/user-auth/sign-in');
         this.appMessageService.createBasicNotification('green', res.header.message);
@@ -51,4 +51,25 @@ export class PageForgotPasswordComponent implements OnInit {
       this.appMessageService.createBasicNotification('red', 'Something went wrong');
     });
   }
+  // subresetPasswordForm() {
+  //   const formData = this.resetPasswordForm.value;
+
+  //   const reqData = {
+  //     _id: this.id,
+  //     resetToken: this.token,
+  //     newPassword: formData.newPassword
+  //   }
+
+  //   this.providerUserAuthService.userForgotPassword(reqData).subscribe(res => {
+  //     if (res.header.code === 200) {
+  //       this.router.navigateByUrl('/user-auth/sign-in');
+  //       this.appMessageService.createBasicNotification('green', res.header.message);
+  //     } else {
+  //       this.appMessageService.createBasicNotification('blue', res.header.message);
+  //     }
+  //   }, err => {
+  //     this.appMessageService.createBasicNotification('red', 'Something went wrong');
+  //   });
+  // }
+
 }

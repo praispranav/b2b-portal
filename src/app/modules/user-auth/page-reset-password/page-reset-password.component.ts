@@ -55,7 +55,7 @@ export class PageResetPasswordComponent implements OnInit {
       newPassword: formData.newPassword
     }
 
-    this.providerUserAuthService.userForgotPassword(reqData).subscribe(res => {
+    this.providerUserAuthService.userResetPassword(reqData).subscribe(res => {
       if (res.header.code === 200) {
         this.router.navigateByUrl('/user-auth/sign-in');
         this.appMessageService.createBasicNotification('green', res.header.message);
