@@ -27,14 +27,14 @@ const routes: Routes = [
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule',
   },
-  // {
-  //   path: 'notice-bar',
-  //   loadChildren: '../../features/help/help.module#HelpModule',
-  // },
-  // {
-  //   path: 'faq',
-  //   loadChildren: '../../features/help/help.module#HelpModule',
-  // },
+  {
+    path: 'notice-bar',
+    loadChildren: './notice-bar/notice-bar.module#NoticeBarModule',
+  },
+  {
+    path: 'faq',
+    loadChildren: './faq/faq.module#FaqModule',
+  },
 ];
 
 @NgModule({

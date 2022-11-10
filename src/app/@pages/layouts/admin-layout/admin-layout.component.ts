@@ -8,7 +8,7 @@ import { RootLayout } from '../root/root.component';
   encapsulation: ViewEncapsulation.None
 })
 export class AdminLayoutComponent extends RootLayout implements OnInit {
- 
+
   menuLinks = [
     {
       label: "Admin Dashboard",
@@ -254,7 +254,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Notice Bar",
-      routerLink: "/admin/dashboard",
+      routerLink: "/admin/notice-bar",
     },
     {
       label: "Popular Q&A",
@@ -262,7 +262,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add Category",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/faq",
         },
       ]
     },
@@ -274,5 +274,5 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
   }
-  
+
 }
