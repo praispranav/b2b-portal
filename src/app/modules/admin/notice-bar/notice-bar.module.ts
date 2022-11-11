@@ -4,6 +4,7 @@ import { PageNoticeBarAddComponent } from './page-notice-bar-add/page-notice-bar
 import { NoticeBarRoutingModule } from './notice-bar-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { pgSelectModule } from '../../../@pages/components/select/select.module';
 
 
 
@@ -14,7 +15,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NoticeBarRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    pgSelectModule
   ]
 })
 export class NoticeBarModule { }

@@ -5,6 +5,7 @@ import { SupplierListRoutingModule } from './supplier-list-routing.module';
 import { PageSupplierListComponent } from './page-supplier-list/page-supplier-list.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../../@pages/components/shared.module';
+import { pgTabsModule } from '../../../../@pages/components/tabs/tabs.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from '../../../../@pages/components/shared.module';
     CommonModule,
     SupplierListRoutingModule,
     NgxDatatableModule,
-    SharedModule
+    SharedModule,
+    pgTabsModule
   ]
 })
 export class SupplierListModule { }

@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
 @Component({
-  selector: 'app-page-supplier-list',
-  templateUrl: './page-supplier-list.component.html',
-  styleUrls: ['./page-supplier-list.component.scss']
+  selector: 'app-page-product-verification',
+  templateUrl: './page-product-verification.component.html',
+  styleUrls: ['./page-product-verification.component.scss']
 })
-export class PageSupplierListComponent implements OnInit {
+export class PageProductVerificationComponent implements OnInit {
+
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
   appName = null;
@@ -141,4 +142,3 @@ export class PageSupplierListComponent implements OnInit {
   }
 
 }
-

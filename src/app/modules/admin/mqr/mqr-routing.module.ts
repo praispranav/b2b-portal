@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageFaqAddComponent } from './page-faq-add/page-faq-add.component';
+import { PageAdminMqrComponent } from './page-admin-mqr/page-admin-mqr.component';
 
 
 const routes: Routes = [
     {
         path: "",
         pathMatch: "full",
-        redirectTo: "faq-add"
+        redirectTo: "mqr-list"
     },
     {
-        path: "faq-add",
-        component: PageFaqAddComponent
+        path: "mqr-list",
+        component: PageAdminMqrComponent
     }
 ];
 
@@ -19,4 +19,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class FaqRoutingModule { }
+export class MqrRoutingModule { }

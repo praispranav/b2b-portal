@@ -35,6 +35,18 @@ const routes: Routes = [
     path: 'faq',
     loadChildren: './faq/faq.module#FaqModule',
   },
+  {
+    path: 'product-verification',
+    loadChildren: './product-verification/product-verification.module#ProductVerificationModule',
+  },
+  {
+    path: 'mqr',
+    loadChildren: './mqr/mqr.module#MqrModule',
+  },
+  {
+    path: 'buyer-sellers-admin',
+    loadChildren: './buyer-sellers-admin/buyer-sellers-admin.module#BuyerSellersAdminModule',
+  },
 ];
 
 @NgModule({

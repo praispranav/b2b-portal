@@ -41,6 +41,10 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         {
           label: "MOQ",
           routerLink: "/admin/dashboard",
+        },
+        {
+          label: "Product Verification",
+          routerLink: "/admin/product-verification",
         }
       ],
     },

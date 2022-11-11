@@ -5,105 +5,60 @@
             <div class="card card-default">
                 <div class="card-header ">
                     <div class="card-title">
-                        Option #one
+                        Popular Frequently Asked questions
                     </div>
                 </div>
-                <div class="card-body">
-                    <h5>
-                        Pages default style
-                    </h5>
-                    <form class="" role="form">
-                        <div class="form-group form-group-default required " pgFormGroupDefault>
-                            <label>Project</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <pg-select style="width: 100%;" [(ngModel)]="selectedOption"
-                                    [PlaceHolder]="'Select Option'" AllowClear ShowSearch>
-                                    <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
-                                        [Disabled]="option.disabled">
-                                    </pg-option>
-                                </pg-select>
-                            </div>
-                        </div>
-                        <pg-container>
-                            <!-- START card -->
-                            <div class="card card-default">
-                                <div class="card-header ">
-                                    <div class="card-title">WYSIWYG editor
-                                    </div>
-                                    <div class="tools">
-                                        <a class="collapse" href="javascript:;"></a>
-                                        <a class="config" data-toggle="modal" href="#grid-config"></a>
-                                        <a class="reload" href="javascript:;"></a>
-                                        <a class="remove" href="javascript:;"></a>
-                                    </div>
-                                </div>
-                                <div class="card-body no-scroll card-toolbar">
-                                    <h5>Quill Editor</h5>
-                                    <div class="">
-                                        <quill-editor [styles]="{height: '350px'}" placeholder=""></quill-editor>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END card -->
-                        </pg-container>
-                    </form>
-                </div>
-            </div>
-            <!-- END card -->
-        </div>
-        <div class="col-lg-6">
-            <!-- START card -->
-            <div class="card card-default">
-                <div class="card-header ">
-                    <div class="card-title">
-                        Option #two
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5>
-                        Traditional Standard Style
-                    </h5>
-                    <form role="form">
-                        <div class="form-group">
-                            <pg-select style="width: 100%;" [(ngModel)]="selectedOption" [PlaceHolder]="'Select Option'"
-                                AllowClear ShowSearch>
+                <div class="card-body mt-2">
+
+                    <form [formGroup]="faqForm" class="form-horizontal" autocomplete="off">
+
+                        <div class="form-group form-group-default form-group-default-select2">
+                            <label class="">Select Category</label>
+                            <pg-select style="width: 100%;" formControlName="selectedOption"
+                                [PlaceHolder]="'Select Category'" AllowClear ShowSearch>
                                 <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
                                     [Disabled]="option.disabled">
                                 </pg-option>
                             </pg-select>
                         </div>
-                        <div class="form-group">
-                            <label>Your name</label>
-                            <input type="email" class="form-control" required>
-                            <span class="help">e.g. "Mona Lisa Portrait"</span>
+                        <div class="form-group form-group-default required mt-2" pgFormGroupDefault>
+                            <label id="askQ">Ask Questions</label>
+                            <div class="col-md-12">
+                                <!-- <input type="text" class="form-control" id="askQ" placeholder="Enter the notice"
+                                    name="askQ" formControlName="askQ" required>
+                                <div *ngIf="f.askQ.invalid && (f.askQ.dirty || f.askQ.touched)">
+                                    <label *ngIf="f.askQ.errors.required" class="error">This field is
+                                        required.</label>
+                                </div> -->
+                                <input type="text" class="form-control">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" required>
-                            <span class="help">e.g. "Mona Lisa Portrait"</span>
+                        <div class="card card-default p">
+                            <div class="card-header ">
+                                <label>Answer
+                                </label>
+                                <div class="tools">
+                                    <a class="collapse" href="javascript:;"></a>
+                                    <a class="config" data-toggle="modal" href="#grid-config"></a>
+                                    <a class="reload" href="javascript:;"></a>
+                                    <a class="remove" href="javascript:;"></a>
+                                </div>
+                            </div>
+                            <div class="card-body no-scroll card-toolbar">
+                                <div class="">
+                                    <quill-editor [styles]="{height: '200px'}" placeholder=""
+                                        formControlName="description">
+                                    </quill-editor>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="ex: some@example.com" required>
-                            <span class="help">e.g. "some@example.com"</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Placeholder</label>
-                            <input type="email" class="form-control" placeholder="ex: some@example.com" required>
-                            <span class="help">e.g. "some@example.com"</span>
-                        </div>
-                        <div class="form-group">
-                            <label>Disabled</label>
-                            <input type="email" class="form-control" value="You can put anything here" disabled>
-                            <span class="help">e.g. "some@example.com"</span>
-                        </div>
+                        <button class="btn btn-success" type="submit">Submit
+                        </button>
                     </form>
                 </div>
             </div>
             <!-- END card -->
         </div>
+
     </div>
 </pg-container>

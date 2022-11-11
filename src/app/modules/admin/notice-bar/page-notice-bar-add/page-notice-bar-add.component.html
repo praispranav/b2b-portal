@@ -1,58 +1,79 @@
-<!-- <div class="col-lg-6 ">
-    <div class="card card-default">
+<div class="card card-bg-white banner">
+    <div class="col-lg-6">
         <div class="card-header ">
-            <div class="card-title">Popular Frequently Asked Questions
+            <div class="card-title">Notice Bar
             </div>
         </div>
         <div class="card-body">
-            <form id="horizontalForm" class="form-horizontal" role="form" autocomplete="off" #horizontalForm="ngForm">
-                <div class="form-group row" [class.has-error]="title.invalid && (title.dirty || title.touched)">
-                    <label for="fname" class="col-md-3 control-label">Notice Title</label>
+            <form [formGroup]="noticeForm" class="form-horizontal" autocomplete="off">
+                <div class="form-group row" [class.has-error]="f.title.invalid && (f.title.dirty || f.title.touched)">
+                    <label for="title" class="col-md-3 control-label">Notice Title</label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" id="fname2" placeholder="Full name" name="fname2"
+                        <input type="text" class="form-control" id="title" placeholder="Enter the notice" name="title"
                             formControlName="title" required>
-                        <div *ngIf="title.invalid && (title.dirty || title.touched)">
-                            <label *ngIf="title.errors.required" class="error">This field is
+                        <div *ngIf="f.title.invalid && (f.title.dirty || f.title.touched)">
+                            <label *ngIf="f.title.errors.required" class="error">This field is
                                 required.</label>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <button class="btn btn-success" type="submit">Save
-                            Changes</button>
-                    </div>
-                </div>
+                <button class="btn btn-success" type="submit">Submit
+                </button>
             </form>
         </div>
+
     </div>
 </div>
 <div class="mt-4">
-    <div class="card card-transparent">
-        <div class="card-header ">
-            <div class="card-title">Pages condensed Table
+    <div class="col-lg-12">
+        <div class="card card-bg-white">
+            <div class="card-header ">
+                <div class="card-title">Notice Bar List
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <ngx-datatable class='table table-condensed' [rows]="condensedTableData"
-                    [columnMode]="columnModeSettingSmall" [scrollbarH]="scrollBarHorizontal" [headerHeight]="43"
-                    [footerHeight]="0" [rowHeight]="44" [limit]="5" [sorts]="[{prop: 'title', dir: 'asc'}]">
-                    <ngx-datatable-column name="Title" cellClass="d-flex align-items-center"></ngx-datatable-column>
-                    <ngx-datatable-column name="Places" cellClass="d-flex align-items-center">
-                    </ngx-datatable-column>
-                    <ngx-datatable-column name="Condensed" cellClass="d-flex align-items-center">
-                        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                            <div class="text-truncate">
-                                {{value}}
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr No</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>description</td>
+                        <td>
+                            <div class="radio">
+                                <label><input type="radio" id='regular' name="optradio"></label>
                             </div>
-                        </ng-template>
-                    </ngx-datatable-column>
+                        </td>
+                        <td>edit/delete</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>description</td>
+                        <td>
+                            <div class="radio">
+                                <label><input type="radio" id='regular' name="optradio"></label>
+                            </div>
+                        </td>
+                        <td>edit/delete</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>description</td>
+                        <td>
+                            <div class="radio">
+                                <label><input type="radio" id='regular' name="optradio"></label>
+                            </div>
+                        </td>
+                        <td>edit/delete</td>
+                    </tr>
 
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
-
-</div> -->
+</div>

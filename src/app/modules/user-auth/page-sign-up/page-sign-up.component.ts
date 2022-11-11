@@ -62,7 +62,7 @@ export class PageSignUpComponent implements OnInit {
     params.role = params.role === 'buyer' ? 'buyer' : params.role === 'seller' ? 'seller' : 'buyer-seller';
     this.providerUserAuthService.userSignUp(params).subscribe(res => {
       if (res.header.code === 200) {
-        this.router.navigateByUrl('/user-auth/sign-in');
+        this.router.navigateByUrl('/b2b/active-account');
         this.appMessageService.createBasicNotification('green', res.header.message);
       } else {
         this.appMessageService.createBasicNotification('blue', res.header.message);

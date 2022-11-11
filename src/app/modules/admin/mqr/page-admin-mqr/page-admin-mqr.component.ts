@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
 @Component({
-  selector: 'app-page-supplier-list',
-  templateUrl: './page-supplier-list.component.html',
-  styleUrls: ['./page-supplier-list.component.scss']
+  selector: 'app-page-admin-mqr',
+  templateUrl: './page-admin-mqr.component.html',
+  styleUrls: ['./page-admin-mqr.component.scss']
 })
-export class PageSupplierListComponent implements OnInit {
+export class PageAdminMqrComponent implements OnInit {
+
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
   appName = null;
@@ -23,16 +24,11 @@ export class PageSupplierListComponent implements OnInit {
     { name: 'Image' },
     { name: 'Product Name' },
     { name: 'Category' },
-    { name: 'Brand' },
     { name: 'Posted By' },
     { name: 'Date Time' },
     { name: 'MOQ' },
     { name: 'Price $' },
-    // { name: 'Rendering engine' },
-    // { name: 'Browser' },
-    // { name: 'Platform' },
-    // { name: 'Engine version' },
-    // { name: 'CSS grade' }
+
   ];
 
   advanceRows = [];
@@ -140,5 +136,5 @@ export class PageSupplierListComponent implements OnInit {
     this.addNewAppModal.hide();
   }
 
-}
 
+}
