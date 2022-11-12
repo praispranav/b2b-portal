@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: "./seller/supplier-list/supplier-list.module#SupplierListModule",
   },
   {
+    path: "buying-interest",
+    loadChildren: "./seller/buying-interest/buying-interest.module#BuyingInterestModule",
+  },
+  {
     path: "profile",
     loadChildren: "./seller/profile/profile.module#ProfileModule",
   },

@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
+
 @Component({
-  selector: 'app-page-supplier-list',
-  templateUrl: './page-supplier-list.component.html',
-  styleUrls: ['./page-supplier-list.component.scss']
+  selector: 'app-page-buyer-sellers-admin',
+  templateUrl: './page-buyer-sellers-admin.component.html',
+  styleUrls: ['./page-buyer-sellers-admin.component.scss']
 })
-export class PageSupplierListComponent implements OnInit {
+export class PageBuyerSellersAdminComponent implements OnInit {
+
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
   appName = null;
@@ -20,14 +22,16 @@ export class PageSupplierListComponent implements OnInit {
 
   advanceColumns = [
     { name: 'Select' },
-    { name: 'Image' },
-    { name: 'Product Name' },
-    { name: 'Category' },
-    { name: 'Brand' },
+    { name: 'Company Logo' },
+    { name: 'Seller/Buyer Name' },
+    { name: 'Type' },
+    { name: 'Country' },
+    { name: 'State' },
+    { name: 'City' },
     { name: 'Posted By' },
-    { name: 'Date Time' },
-    { name: 'MOQ' },
-    { name: 'Price $' },
+    { name: 'Listing Date' },
+    { name: 'Last Active Products' }
+
 
   ];
 
@@ -136,5 +140,5 @@ export class PageSupplierListComponent implements OnInit {
     this.addNewAppModal.hide();
   }
 
-}
 
+}

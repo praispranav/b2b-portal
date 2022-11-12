@@ -103,7 +103,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "My Buying Interests",
-      routerLink: "/seller/dashboard",
+      routerLink: "/seller/buying-interest",
     },
     {
       label: "Supplier MyListing",
