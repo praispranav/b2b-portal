@@ -35,18 +35,25 @@ export class FormCompanyProfileComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit')
     this.buildTypeForm();
+    // this.onCountrySelected('countrt');
     this.updateDataIfExist();
-    this.providerMaterCountryService.getMaterCountryList().subscribe(
-      (res: any) => {
-
-        this.countries = res.data;
-        console.log('country', this.countries)
-      },
-      (err) => {
-        console.log(err)
-      }
-    );
+    this.getCountryList();
+    
+   
   }
+
+getCountryList(){
+  this.providerMaterCountryService.getMaterCountryList().subscribe(
+    (res: any) => {
+
+      this.countries = res.data;
+      console.log('country', this.countries)
+    },
+    (err) => {
+      console.log(err)
+    }
+  );
+}
   onCountrySelected(e) {
     console.log("" + e.target.value);
     this.f.regCountry.setValue(e.target.value);
