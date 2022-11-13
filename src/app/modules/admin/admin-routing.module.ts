@@ -27,6 +27,16 @@ const routes: Routes = [
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule',
   },
+  {
+    path:'admin-blog',
+    loadChildren:'../admin/admin-blog/admin-blog.module#AdminBlogModule'
+  },
+  {
+    path:'admin-tradeShow',
+    loadChildren:'../admin/admin-tradeshow/admin-tradeshow.module#AdminTradeshowModule'
+  }
+  
+  
 ];
 
 @NgModule({
