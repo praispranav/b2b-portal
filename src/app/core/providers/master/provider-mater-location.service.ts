@@ -36,4 +36,8 @@ export class ProviderMaterLocationService {
   deleteMaterLocationByCountryId(countryId: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/master-location/delete-by-country-id/${countryId}`);
   }
+
+  getMaterLocationListAll( state: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/master-location/get-list/${state}`);
+  }
 }

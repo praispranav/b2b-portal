@@ -32,4 +32,8 @@ export class ProviderMaterStateService {
   deleteMaterStateByCountryId(countryId: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/master-state/delete-by-country-id/${countryId}`);
   }
+
+  getMaterStateListAll( country: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/master-state/get-list/${country}`);
+  }
 }

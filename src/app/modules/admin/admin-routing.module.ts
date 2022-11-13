@@ -47,6 +47,16 @@ const routes: Routes = [
     path: 'buyer-sellers-admin',
     loadChildren: './buyer-sellers-admin/buyer-sellers-admin.module#BuyerSellersAdminModule',
   },
+  {
+    path:'admin-blog',
+    loadChildren:'../admin/admin-blog/admin-blog.module#AdminBlogModule'
+  },
+  {
+    path:'admin-tradeShow',
+    loadChildren:'../admin/admin-tradeshow/admin-tradeshow.module#AdminTradeshowModule'
+  }
+  
+  
 ];
 
 @NgModule({
