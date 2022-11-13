@@ -14,7 +14,7 @@
 
                         <div class="col-lg-6 form-group form-group-default form-group-default-select2">
                             <label class="">Select Category</label>
-                            <pg-select style="width: 100%;" formControlName="selectedOption"
+                            <pg-select style="width: 100%;" [(ngModel)]="selectedOption"
                                 [PlaceHolder]="'Select Category'" AllowClear ShowSearch>
                                 <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
                                     [Disabled]="option.disabled">

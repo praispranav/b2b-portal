@@ -63,7 +63,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Multiple Quotes Request",
-      routerLink: "/seller/dashboard",
+      routerLink: "/seller/quote-request",
     },
     {
       label: "Trade Services",
