@@ -67,8 +67,8 @@ export class PageAddTradeShowComponent implements OnInit {
     {label:"Delhi",value:"Delhi",}
   ]
   cityList=[
-    {"Uttarakhand":[ { label:"bageshwar", value: "Bageshwar"},]},
-    { "Delhi":[{label:"Delhi",value:"Delhi"}]}
+     { label:"bageshwar", value: "Bageshwar"},
+    {label:"Delhi",value:"Delhi"}
 ]
   constructor(private router: Router,
     private formBuilder: FormBuilder, ) { }
