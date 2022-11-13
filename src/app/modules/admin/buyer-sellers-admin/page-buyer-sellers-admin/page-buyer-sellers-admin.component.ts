@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
 
@@ -18,8 +19,31 @@ export class PageBuyerSellersAdminComponent implements OnInit {
 
   basicRows = [];
   basicSort = [];
-
-
+  selectedOption;
+  selectedOption1;
+  selectedOption2;
+  selectedOption3;
+  buyerSellersAdmin: FormGroup;
+  options = [
+    { value: 'India', label: 'India' },
+    { value: 'Malaysia', label: 'Malaysia' },
+    { value: 'Pakistan', label: 'Pakistan' }
+  ];
+  options1 = [
+    { value: 'Jharkhand', label: 'Jharkhand' },
+    { value: 'Bihar', label: 'Bihar' },
+    { value: 'Gujarat', label: 'Gujarat' }
+  ];
+  options2 = [
+    { value: 'Ranchi', label: 'Ranchi' },
+    { value: 'Siwan', label: 'Siwan' },
+    { value: 'Ahmedabad', label: 'Ahmedabad' }
+  ];
+  options3 = [
+    { value: 'Apparel', label: 'Apparel' },
+    { value: 'Shoes', label: 'Shoes' },
+    { value: 'Cloth', label: 'Cloth' }
+  ];
   advanceColumns = [
     { name: 'Select' },
     { name: 'Company Logo' },
@@ -31,8 +55,6 @@ export class PageBuyerSellersAdminComponent implements OnInit {
     { name: 'Posted By' },
     { name: 'Listing Date' },
     { name: 'Last Active Products' }
-
-
   ];
 
   advanceRows = [];
@@ -43,7 +65,9 @@ export class PageBuyerSellersAdminComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder,
+  ) {
+
     console.log(this.columnModeSetting);
     this.fetch(data => {
       // cache our list
@@ -52,6 +76,8 @@ export class PageBuyerSellersAdminComponent implements OnInit {
       // push our inital complete list
       this.basicRows = data;
     });
+
+
 
     // this.fetchSampleDynamic(data => {
     //   // push our inital complete list
@@ -72,7 +98,22 @@ export class PageBuyerSellersAdminComponent implements OnInit {
   //   this.selected.splice(0, this.selected.length);
   //   this.selected.push(...selected);
   // }
+  get f() {
+    return this.buyerSellersAdmin.controls;
+  }
+  ngOnInit() {
+    this.buildBuyerSellersAdminForm();
+  }
+  buildBuyerSellersAdminForm() {
+    this.buyerSellersAdmin = this.formBuilder.group({
+      category: ["", [Validators.required]],
+      state: ["", [Validators.required]],
+      country: ["", [Validators.required]],
 
+      city: ["", [Validators.required]]
+
+    });
+  }
   onActivate(event) { }
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -85,16 +126,6 @@ export class PageBuyerSellersAdminComponent implements OnInit {
     req.send();
   }
 
-  fetchSampleDynamic(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_sample.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
@@ -107,7 +138,6 @@ export class PageBuyerSellersAdminComponent implements OnInit {
     req.send();
   }
 
-  ngOnInit() { }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();

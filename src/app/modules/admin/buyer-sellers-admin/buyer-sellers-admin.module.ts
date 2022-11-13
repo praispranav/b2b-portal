@@ -5,6 +5,7 @@ import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BuyerSellersAdminRoutingModule } from './buyer-sellers-admin-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { BuyerSellersAdminRoutingModule } from './buyer-sellers-admin-routing.mo
     BuyerSellersAdminRoutingModule,
     NgxDatatableModule,
     SharedModule,
-    pgTabsModule
+    pgTabsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BuyerSellersAdminModule { }

@@ -1,3 +1,70 @@
+<form role="form" [formGroup]="buyerSellersAdmin">
+    <div class="row alignment">
+        <div class="col-md-3">
+            <div pgFormGroupDefault class="form-group form-group-default"
+                [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
+                <label for="country">Country</label>
+
+                <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption"
+                    formControlName="country">
+                    <option *ngFor="let option of options" [value]="option.label">{{option.label}}</option>
+                </select>
+            </div>
+            <div *ngIf="f.country.invalid && (f.country.dirty || f.country.touched)">
+                <label *ngIf="f.country.errors.required" class="error">This field is required.</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div pgFormGroupDefault class="form-group form-group-default"
+                [class.has-error]="f.state.invalid && (f.state.dirty || f.state.touched)">
+                <label for="country">State</label>
+
+                <select name="state" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption1"
+                    formControlName="state">
+                    <option *ngFor="let option of options1" [value]="option.label">{{option.label}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div pgFormGroupDefault class="form-group form-group-default"
+                [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
+                <label for="country">City</label>
+
+                <select name="city" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption2"
+                    formControlName="city">
+                    <option *ngFor="let option of options2" [value]="option.label">{{option.label}}</option>
+                </select>
+            </div>
+            <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)">
+                <label *ngIf="f.city.errors.required" class="error">This field is required.</label>
+            </div>
+        </div>
+        <div class="col-md-3 w-25 pt-3">
+            <button class="btn btn-success">Go</button>
+        </div>
+    </div>
+    <div class="col-md-6 banner">
+        <div pgFormGroupDefault class="form-group form-group-default"
+            [class.has-error]="f.category.invalid && (f.category.dirty || f.category.touched)">
+            <label for="category">Category</label>
+
+            <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption3"
+                formControlName="category">
+                <option *ngFor="let option of options3" [value]="option.label">{{option.label}}</option>
+            </select>
+        </div>
+        <div *ngIf="f.category.invalid && (f.category.dirty || f.category.touched)">
+            <label *ngIf="f.category.errors.required" class="error">This field is required.</label>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
 <div class="p-2 mt-4">
     <div class="card card-transparent ">
         <pg-tabset tabAnimation="slide-left" Type="fillup">
