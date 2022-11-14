@@ -43,33 +43,27 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive" style="height: 600px; overflow-y: hidden">
-                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns" 
-                        [columnMode]="columnModeSetting" 
-                        [scrollbarH]="scrollBarHorizontal" 
-                        [headerHeight]="50" 
-                        [footerHeight]="50" 
-                        [rowHeight]="60" 
-                        [limit]="5" 
-                        [scrollbarV]="true"
+                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns" [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true"
                         [rows]='advanceRows' [selectionType]="type" (select)="select($event)">
-                        <ngx-datatable-column prop="Name" name="Action">
-                            <ng-template ngx-datatable-cell-template let-value="value">
-                                <button class="btn btn-primary btn-sm" placement="bottom" ngbTooltip="My Tooltip">Edit</button>
-                            </ng-template>
-                        </ngx-datatable-column>
+
 
 
                     </ngx-datatable> -->
 
-                    <ngx-datatable class="material" [rows]="advanceRows" [loadingIndicator]="loadingIndicator" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable" [columnMode]="columnModeSetting"
-                        [scrollbarH]="scrollBarHorizontal" (page)="onPage($event)">
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [loadingIndicator]="loadingIndicator" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting"
+                        [limit]="5" [scrollbarH]="scrollBarHorizontal" [scrollbarV]="true" (page)="onPage($event)">
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
                                 <input type="checkbox" (click)="handler(row)" />
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name">
+                        <ngx-datatable-column name="Img">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <img src="{{row.image}}" alt="">
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Actions" sortable="false" prop="name">
                             <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>

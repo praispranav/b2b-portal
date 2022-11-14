@@ -21,7 +21,7 @@ export class PageSupplierListComponent implements OnInit {
 
   advanceColumns = [
    
-    { name: 'Image' },
+    // { name: 'Image' ,sortable:false},
     { name: 'Product Name' },
     { name: 'Category' },
     { name: 'Brand' },
@@ -58,7 +58,8 @@ export class PageSupplierListComponent implements OnInit {
 
     this.fetchSampleAdvance(data => {
       // push our inital complete list
-      this.advanceRows = data;      
+      this.advanceRows = data; 
+      console.log('      this.advanceRows',      this.advanceRows)    
     });
 
     window.onresize = () => {
