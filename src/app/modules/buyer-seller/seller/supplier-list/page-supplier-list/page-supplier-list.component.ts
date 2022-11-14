@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
+import {SelectionType} from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-page-supplier-list',
   templateUrl: './page-supplier-list.component.html',
@@ -16,10 +17,10 @@ export class PageSupplierListComponent implements OnInit {
 
   basicRows = [];
   basicSort = [];
-
+  type = SelectionType.checkbox
 
   advanceColumns = [
-    { name: 'Select' },
+   
     { name: 'Image' },
     { name: 'Product Name' },
     { name: 'Category' },
@@ -28,6 +29,7 @@ export class PageSupplierListComponent implements OnInit {
     { name: 'Date Time' },
     { name: 'MOQ' },
     { name: 'Price $' },
+   
 
   ];
 
@@ -56,7 +58,7 @@ export class PageSupplierListComponent implements OnInit {
 
     this.fetchSampleAdvance(data => {
       // push our inital complete list
-      this.advanceRows = data;
+      this.advanceRows = data;      
     });
 
     window.onresize = () => {
@@ -136,5 +138,8 @@ export class PageSupplierListComponent implements OnInit {
     this.addNewAppModal.hide();
   }
 
+  select(event) {
+    console.log(event);
+  }
 }
 
