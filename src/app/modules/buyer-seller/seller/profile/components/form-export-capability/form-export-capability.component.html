@@ -1,14 +1,16 @@
 <form [formGroup]="exportCapabilityForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group form-group-default input-group required" pgFormGroupDefault
-                [class.has-error]="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
-                <div class="form-input-group">
-                    <label for="fec-yearlyTurnover">Export Contribution Percentage</label>
-                    <input type="text" formControlName="yearlyTurnover"
-                        placeholder="Enter Export Contribution Percentage" class="form-control" id="fec-yearlyTurnover">
-                </div>
+            <div class="form-group form-group-default form-group-default-select2 required">
+                <label>Yearly Turn Over</label>
+                <pg-select style="width: 100%;" [PlaceHolder]="'Enter the yearly turn over'"
+                    formControlName="yearlyTurnover" [NotFoundContent]="'Not found'">
+                    <pg-option *ngFor="let option of turnOverOptions" [Label]="option.label" [Value]="option.value"
+                        [Disabled]="option.disabled">
+                    </pg-option>
+                </pg-select>
             </div>
+
             <div *ngIf="f.yearlyTurnover.invalid && (f.yearlyTurnover.dirty || f.yearlyTurnover.touched)">
                 <label *ngIf="f.yearlyTurnover.errors.required" class="error">This field is required.</label>
             </div>
@@ -32,7 +34,7 @@
             <div class="form-group form-group-default input-group" pgFormGroupDefault>
                 <div class="form-input-group">
                     <label for="fec-exporting-science">Exporting Science</label>
-                    <input type="text" formControlName="exportingScience" placeholder="Enter Exporting Science here"
+                    <input type="number" formControlName="exportingScience" placeholder="Enter Exporting Science here"
                         class="form-control" id="fec-exporting-science">
                 </div>
             </div>

@@ -26,11 +26,21 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div pgFormGroupDefault class="form-group form-group-default required"
+            <!-- <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonDesignation.invalid && (f.contactPersonDesignation.dirty || f.contactPersonDesignation.touched)">
                 <label for="fcd-contactPersonDesignation">Designation</label>
                 <input type="text" formControlName="contactPersonDesignation" placeholder="Enter Your Designation"
                     class="form-control" id="fcd-contactPersonDesignation" />
+            </div> -->
+
+            <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required">
+                <label for="fcd-contactPersonDesignation" class="">Designation</label>
+                <pg-select style="width: 100%;" formControlName="contactPersonDesignation"
+                    [PlaceHolder]="'Select Designation'" AllowClear ShowSearch>
+                    <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option"
+                        [Disabled]="option.disabled">
+                    </pg-option>
+                </pg-select>
             </div>
             <div
                 *ngIf="f.contactPersonDesignation.invalid && (f.contactPersonDesignation.dirty || f.contactPersonDesignation.touched)">
@@ -75,8 +85,8 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyWebsite.invalid && (f.companyWebsite.dirty || f.companyWebsite.touched)">
                 <label for="fcd-companyWebsite">Company Website</label>
-                <input type="text" formControlName="companyWebsite" placeholder="Enter Company Website"
-                    class="form-control" id="fcd-companyWebsite" />
+                <input type="text" formControlName="companyWebsite" placeholder="ex:http://b2b.com" class="form-control"
+                    id="fcd-companyWebsite" />
             </div>
             <div *ngIf="f.companyWebsite.invalid && (f.companyWebsite.dirty || f.companyWebsite.touched)">
                 <label *ngIf="f.companyWebsite.errors.required" class="error">This field is required.</label>
@@ -86,7 +96,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.googleBusiness.invalid && (f.googleBusiness.dirty || f.googleBusiness.touched)">
                 <label for="fcd-googleBusiness">Google Business</label>
-                <input type="text" formControlName="googleBusiness" placeholder="Enter Google Business"
+                <input type="text" formControlName="googleBusiness" placeholder="ex:http://google.com"
                     class="form-control" id="fcd-googleBusiness" />
             </div>
             <div *ngIf="f.googleBusiness.invalid && (f.googleBusiness.dirty || f.googleBusiness.touched)">
@@ -99,7 +109,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.facebookBusiness.invalid && (f.facebookBusiness.dirty || f.facebookBusiness.touched)">
                 <label for="fcd-facebookBusiness">Facebook Business</label>
-                <input type="text" formControlName="facebookBusiness" placeholder=" Enter Facebook Business"
+                <input type="text" formControlName="facebookBusiness" placeholder="ex:http://facebook.com"
                     class="form-control" id="fcd-facebookBusiness" />
             </div>
             <div *ngIf="f.facebookBusiness.invalid && (f.facebookBusiness.dirty || f.facebookBusiness.touched)">
@@ -110,7 +120,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.instagramBusiness.invalid && (f.instagramBusiness.dirty || f.instagramBusiness.touched)">
                 <label for="fcd-instagramBusiness">Instagram Business</label>
-                <input type="text" formControlName="instagramBusiness" placeholder="Enter Instagram Business"
+                <input type="text" formControlName="instagramBusiness" placeholder="ex:http://instagram.com"
                     class="form-control" id="fcd-instagramBusiness" />
             </div>
             <div *ngIf="f.instagramBusiness.invalid && (f.instagramBusiness.dirty || f.instagramBusiness.touched)">
@@ -125,7 +135,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accNumber.invalid && (f.accNumber.dirty || f.accNumber.touched)">
                 <label for="fcd-accNumber">Account Number</label>
-                <input type="text" formControlName="accNumber" placeholder="Enter Your Account Number Here"
+                <input type="number" formControlName="accNumber" placeholder="Enter Your Account Number Here"
                     class="form-control" id="fcd-accNumber" />
             </div>
             <div *ngIf="f.accNumber.invalid && (f.accNumber.dirty || f.accNumber.touched)">
@@ -133,11 +143,14 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.accType.invalid && (f.accType.dirty || f.accType.touched)">
-                <label for="fcd-accType">Account Type</label>
-                <input type="text" formControlName="accType" placeholder=" Enter Your Account Type" class="form-control"
-                    id="fcd-accType" />
+            <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required">
+                <label for="fcd-accType" class="">Account Type</label>
+                <pg-select style="width: 100%;" formControlName="accType" [PlaceHolder]="'Select Account Type'"
+                    AllowClear ShowSearch>
+                    <pg-option *ngFor="let option of options1" [Label]="option.label" [Value]="option"
+                        [Disabled]="option.disabled">
+                    </pg-option>
+                </pg-select>
             </div>
             <div *ngIf="f.accType.invalid && (f.accType.dirty || f.accType.touched)">
                 <label *ngIf="f.accType.errors.required" class="error">This field is required.</label>
@@ -179,6 +192,10 @@
             <div *ngIf="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
                 <label *ngIf="f.accIFSCCode.errors.required" class="error">This field is required.</label>
             </div>
+            <div *ngIf="f.accIFSCCode.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
+                <label *ngIf="f.accIFSCCode.errors.maxlength.requiredLength" class="error">Max limit should be
+                    11.</label>
+            </div>
         </div>
         <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
@@ -194,12 +211,17 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.companyLanguageSpoken.invalid && (f.companyLanguageSpoken.dirty || f.companyLanguageSpoken.touched)">
-                <label for="fcd-companyLanguageSpoken">Language Spoken</label>
-                <input type="text" formControlName="companyLanguageSpoken" placeholder="Enter Language Spoken"
-                    class="form-control" id="fcd-companyLanguageSpoken" />
+
+            <div class="form-group form-group-default form-group-default-select2 required">
+                <label>Language Spoken</label>
+                <pg-select style="width: 100%;" [Mode]="'multiple'" [PlaceHolder]="'Enter the language'"
+                    formControlName="companyLanguageSpoken" [NotFoundContent]="'Not found'">
+                    <pg-option *ngFor="let option of languageOptions" [Label]="option.label" [Value]="option.value"
+                        [Disabled]="option.disabled">
+                    </pg-option>
+                </pg-select>
             </div>
+
             <div
                 *ngIf="f.companyLanguageSpoken.invalid && (f.companyLanguageSpoken.dirty || f.companyLanguageSpoken.touched)">
                 <label *ngIf="f.companyLanguageSpoken.errors.required" class="error">This field is required.</label>
@@ -233,7 +255,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyDetail.invalid && (f.companyDetail.dirty || f.companyDetail.touched)">
                 <label for="fcd-companyDetail">Company Detailed Introduction</label>
@@ -243,6 +265,17 @@
             </div>
             <div *ngIf="f.companyDetail.invalid && (f.companyDetail.dirty || f.companyDetail.touched)">
                 <label *ngIf="f.companyDetail.errors.required" class="error">This field is required.</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group form-group-default form-group-default-select2 required">
+                <label>Yearly Turn Over</label>
+                <pg-select style="width: 100%;" [PlaceHolder]="'Enter the yearly turn over'"
+                    formControlName="yearlyTurnover" [NotFoundContent]="'Not found'">
+                    <pg-option *ngFor="let option of turnOverOptions" [Label]="option.label" [Value]="option.value"
+                        [Disabled]="option.disabled">
+                    </pg-option>
+                </pg-select>
             </div>
         </div>
     </div>
@@ -310,18 +343,50 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div pgFormGroupDefault class="form-group form-group-default">
-                <label for="fcd-tradeRegion">Region</label>
-                <input type="text" formControlName="tradeRegion" placeholder="Enter The Region" class="form-control"
-                    id="fcd-tradeRegion" />
+        <div class="col-md-3">
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.tradeCountry.invalid && (f.tradeCountry.dirty || f.tradeCountry.touched)">
+                <label for="fcp-company">Country</label>
+
+                <select id="fcp-company" formControlName="tradeCountry" class="form-control" #myCountry
+                    (change)='onCountrySelected($event)'>
+                    <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
+                </select>
+
+                <!-- <input type="text" formControlName="regCountry" placeholder="Enter registered Country"
+                    class="form-control" id="fcp-company" /> -->
+            </div>
+            <div *ngIf="f.tradeCountry.invalid && (f.tradeCountry.dirty || f.tradeCountry.touched)">
+                <label *ngIf="f.tradeCountry.errors.required" class="error">This field is required.</label>
             </div>
         </div>
-        <div class="col-md-4">
-            <div pgFormGroupDefault class="form-group form-group-default">
-                <label for="fcd-tradeCity">City</label>
-                <input type="text" formControlName="tradeCity" placeholder=" Enter City" class="form-control"
-                    id="fcd-tradeCity" />
+        <div class="col-md-3">
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.tradeState.invalid && (f.tradeState.dirty || f.tradeState.touched)">
+                <label for="fcp-tradeState-name">State</label>
+                <select id="fcp-tradeState-name" formControlName="tradeState" class="form-control"
+                    (change)='onStateSelected($event)'>
+                    <option *ngFor="let c of states" [value]="c.name">{{ c.name }}</option>
+                </select>
+
+                <!-- <input type="text" formControlName="regState" placeholder="Enter registered State" class="form-control" id="fcp-regState-name" /> -->
+            </div>
+            <div *ngIf="f.tradeState.invalid && (f.tradeState.dirty || f.tradeState.touched)">
+                <label *ngIf="f.tradeState.errors.required" class="error">This field is required.</label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.tradeCity.invalid && (f.tradeCity.dirty || f.tradeCity.touched)">
+                <label for="fcp-tradeCity-name">City</label>
+                <select id="fcp-tradeCity-name" formControlName="tradeCity" class="form-control"
+                    (change)='onCitySelected($event)'>
+                    <option *ngFor="let c of cities" [value]="c.name">{{ c.name }}</option>
+                </select>
+                <!-- <input type="text" formControlName="regCity" placeholder="Enter registered City" class="form-control" id="fcp-regCity-name" /> -->
+            </div>
+            <div *ngIf="f.tradeCity.invalid && (f.tradeCity.dirty || f.tradeCity.touched)">
+                <label *ngIf="f.tradeCity.errors.required" class="error">This field is required.</label>
             </div>
         </div>
     </div>

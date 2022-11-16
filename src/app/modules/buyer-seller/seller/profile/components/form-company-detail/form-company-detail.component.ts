@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProviderMaterCountryService } from '../../../../../../core/providers/master/provider-mater-country.service';
+import { ProviderMaterLocationService } from '../../../../../../core/providers/master/provider-mater-location.service';
+import { ProviderMaterStateService } from '../../../../../../core/providers/master/provider-mater-state.service';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderCompanyDetailService } from './../../../../../../core/providers/user/provider-company-detail.service';
-
 @Component({
   selector: "app-form-company-detail",
   templateUrl: "./form-company-detail.component.html",
@@ -13,11 +15,45 @@ export class FormCompanyDetailComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   companyDetailForm: FormGroup;
+  countries: any[] = [];
+  states: any[] = [];
+  cities: any[] = [];
+  options = [
+    { value: 'Owner', label: 'Owner' },
+    { value: 'CEO', label: 'CEO' },
+    { value: 'Founder', label: 'Founder' },
+    { value: 'Managing director', label: 'Managing director' },
+    { value: 'Director', label: 'Director' },
+    { value: 'Managing partner', label: 'Managing partner' },
+    { value: 'Proprietor', label: 'Proprietor' },
+    { value: 'General manager', label: 'General manager' },
+    { value: 'Administrator ', label: 'Administrator' },
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ];
+  options1 = [
+    { value: 'Saving', label: 'Saving' },
+    { value: 'Current', label: 'Current' },
+    { value: 'Business', label: 'Business' },
 
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ];
+  contactPersonDesignation;
+  accType;
+  languageOptions = [
+    { value: 'Hindi', label: 'Hindi' },
+    { value: 'English', label: 'English' },
+    { value: 'Marathi', label: 'Marathi' },
+    { value: 'Tamil', label: 'Tamil' }
+
+  ];
+  companyLanguageSpoken = ['Hindi', 'English'];
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
-    private providerCompanyDetailService: ProviderCompanyDetailService
+    private providerCompanyDetailService: ProviderCompanyDetailService,
+    private providerMaterCountryService: ProviderMaterCountryService,
+    private providerMaterStateService: ProviderMaterStateService,
+    private providerMaterLocationService: ProviderMaterLocationService
   ) { }
 
   get f() {
@@ -27,8 +63,55 @@ export class FormCompanyDetailComponent implements OnInit {
   ngOnInit() {
     this.buildTypeForm();
     this.updateDataIfExist();
-  }
+    this.getCountryList();
 
+  }
+  getCountryList() {
+    this.providerMaterCountryService.getMaterCountryList().subscribe(
+      (res: any) => {
+
+        this.countries = res.data;
+        console.log('country', this.countries)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+  onCountrySelected(e) {
+    console.log("" + e.target.value);
+    this.f.regCountry.setValue(e.target.value);
+    this.f.facCountry.setValue(e.target.value);
+
+    this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
+      (res: any) => {
+        this.states = res.data[0].states;
+        console.log('state', this.states)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+  onStateSelected(e) {
+    console.log("" + e.target.value);
+    this.f.regState.setValue(e.target.value);
+
+    this.f.facState.setValue(e.target.value);
+    this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
+      (res: any) => {
+        this.cities = res.data[0].cities;
+        console.log('cities', this.cities)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+  onCitySelected(e) {
+    console.log("" + e.target.value);
+    this.f.regCity.setValue(e.target.value);
+  }
   buildTypeForm() {
     this.companyDetailForm = this.formBuilder.group({
       contactPersonFirstName: ["", [Validators.required]],
@@ -42,7 +125,7 @@ export class FormCompanyDetailComponent implements OnInit {
       instagramBusiness: ["", [Validators.required]],
       accNumber: ["", [Validators.required]],
       accType: ["", [Validators.required]],
-      accIFSCCode: ["", [Validators.required]],
+      accIFSCCode: ["", [Validators.required, Validators.maxLength(11)]],
       accSwiftCode: ["", [Validators.required]],
       accBranch: ["", [Validators.required]],
       accBankName: ["", [Validators.required]],
@@ -54,7 +137,8 @@ export class FormCompanyDetailComponent implements OnInit {
       tradeStartDate: [""],
       tradeEndDate: [""],
       tradeHost: [""],
-      tradeRegion: [""],
+      tradeCountry: [""],
+      tradeState: [""],
       tradeCity: [""],
       tradeInfo: [""]
     });

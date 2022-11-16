@@ -18,6 +18,22 @@ export class FormCompanyProfileComponent implements OnInit {
   countries: any[] = [];
   states: any[] = [];
   cities: any[] = [];
+  categoryOptions = [
+    { value: 'apparel', label: 'Apparel' },
+    { value: 'cloth', label: 'Cloth' },
+    { value: 'shoes', label: 'Shoes' },
+
+  ];
+  mainCategory = ['Apparel', 'Cloth'];
+  productOptions = [
+    { value: 'product1', label: 'product1' },
+    { value: 'product2', label: 'product2' },
+    { value: 'product3', label: 'product3' },
+    { value: 'product3', label: 'product3' },
+    { value: 'product3', label: 'product3' },
+    { value: 'product3', label: 'product3' }
+  ];
+  mainProduct = ['Product1', 'Product2'];
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
@@ -38,27 +54,27 @@ export class FormCompanyProfileComponent implements OnInit {
     // this.onCountrySelected('countrt');
     this.updateDataIfExist();
     this.getCountryList();
-    
-   
+
+
   }
 
-getCountryList(){
-  this.providerMaterCountryService.getMaterCountryList().subscribe(
-    (res: any) => {
+  getCountryList() {
+    this.providerMaterCountryService.getMaterCountryList().subscribe(
+      (res: any) => {
 
-      this.countries = res.data;
-      console.log('country', this.countries)
-    },
-    (err) => {
-      console.log(err)
-    }
-  );
-}
+        this.countries = res.data;
+        console.log('country', this.countries)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
   onCountrySelected(e) {
     console.log("" + e.target.value);
     this.f.regCountry.setValue(e.target.value);
     this.f.facCountry.setValue(e.target.value);
-  
+
     this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
       (res: any) => {
         this.states = res.data[0].states;
@@ -99,7 +115,7 @@ getCountryList(){
       gstNo: ["", [Validators.required, Validators.maxLength(20)]],
       codeOfIE: ["", [Validators.required]],
       estYear: ["", [Validators.required]],
-      mainCategory: ["", [Validators.required]],
+      mainCategory: ["", [Validators.required], Validators.maxLength(5)],
       mainProduct: ["", [Validators.required]],
       regAddress: ['', [Validators.required]],
       regCountry: ['', [Validators.required]],
