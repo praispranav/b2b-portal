@@ -169,10 +169,14 @@
                 [class.has-error]="f.code.invalid && (f.code.dirty || f.code.touched)">
                 <label for="code">Code</label>
 
-                <select name="code" id="" class="form-control mr-sm-2" [(ngModel)]="selectedOption"
+                <!-- <select name="code" id="" class="form-control mr-sm-2" [(ngModel)]="selectedOption"
                   formControlName="code">
                   <option class="ms-1" *ngFor="let code of codes" [value]="code.label">{{code.label}}</option>
-                </select>
+                </select> -->
+                <select id="fcp-company" formControlName="code" class="form-control" #myCountry
+                >
+                <option *ngFor="let c of countries" [value]="c.name">{{c.code}}</option>
+              </select>
               </div>
               <div *ngIf="f.code.invalid && (f.code.dirty || f.code.touched)">
                 <label *ngIf="f.code.errors.required" class="error">This field is required.</label>

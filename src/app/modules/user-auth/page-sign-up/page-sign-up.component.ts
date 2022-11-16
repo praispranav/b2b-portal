@@ -32,6 +32,7 @@ export class PageSignUpComponent implements OnInit {
   countries: any[] = [];
   states: any[] = [];
   cities: any[] = [];
+  code:any[]=[];
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -58,7 +59,8 @@ getCountryList(){
     (res: any) => {
 
       this.countries = res.data;
-      console.log('country', this.countries)
+      console.log('country', this.countries);
+    
     },
     (err) => {
       console.log(err)
@@ -81,7 +83,8 @@ getCountryList(){
     );
   }
 
-  onStateSelected(e) {
+ 
+ onStateSelected(e) {
     console.log("" + e.target.value);
     this.f.regState.setValue(e.target.value);
 
