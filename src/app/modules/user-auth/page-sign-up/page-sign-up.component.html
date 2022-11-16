@@ -122,9 +122,13 @@
             [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
             <label for="country">Country</label>
 
-            <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption"
+            <!-- <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption"
               formControlName="country">
               <option *ngFor="let option of options" [value]="option.label">{{option.label}}</option>
+            </select> -->
+            <select id="fcp-company" formControlName="country" class="form-control" #myCountry
+              (change)='onCountrySelected($event)'>
+              <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
             </select>
           </div>
           <div *ngIf="f.country.invalid && (f.country.dirty || f.country.touched)">
@@ -149,7 +153,7 @@
         <div class="col-md-12">
           <div pgFormGroupDefault class="form-group form-group-default"
             [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
-            <label for="city">city</label>
+            <label for="city">City</label>
             <input type="text" formControlName="city" placeholder="Enter city" class="form-control" id="city" />
           </div>
           <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)">
@@ -178,7 +182,8 @@
               <div pgFormGroupDefault class="form-group form-group-default"
                 [class.has-error]="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
                 <label for="phone">Mobile Number</label>
-                <input type="text" formControlName="phone" placeholder="Enter city" class="form-control" id="phone" />
+                <input type="text" formControlName="phone" placeholder="Enter Mobile Number" class="form-control"
+                  id="phone" />
               </div>
               <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
                 <label *ngIf="f.phone.errors.required" class="error">This field is required.</label>
@@ -193,9 +198,10 @@
         <div class="col-lg-6">
           <div class="form-check pl-0">
             <input type="checkbox" formControlName="checkAggriment" id="checkbox1">
-            <label for="checkbox1" class="ml-2"> I agree to abide by the  <a href="javascript:void(0)" class="text-info">Agreement</a></label>
-           
-        </div>
+            <label for="checkbox1" class="ml-2"> I agree to abide by the <a href="javascript:void(0)"
+                class="text-info">Agreement</a></label>
+
+          </div>
           <!-- <p>
          
             <small>
@@ -206,7 +212,8 @@
           </p> -->
         </div>
         <div class="col-lg-6 text-right">
-          <a href="javascript:void(0)" class="text-info small">Help? Contact Support</a>
+          <a href="../../view/page-support/page-support.component.html" class="text-info small">Help? Contact
+            Support</a>
         </div>
       </div>
       <button class="btn btn-primary btn-cons" type="submit" [class.disabled]="signUpForm.invalid"
