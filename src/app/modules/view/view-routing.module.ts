@@ -44,6 +44,8 @@ import { PageTermsOfUseComponent } from './page-terms-of-use/page-terms-of-use.c
 import { PageTradeShowComponent } from './page-trade-show/page-trade-show.component';
 import { SellerAboutComponent } from "./seller-about/seller-about.component";
 import { CatalogueSellerCompanyDetailsComponent } from "./components/catalogue-seller-company-details/catalogue-seller-company-details.component";
+import { Footer1Component } from "./components/footer1/footer1.component";
+import { Footer2Component } from "./components/footer2/footer2.component";
 
 const routes: Routes = [
   {
@@ -226,6 +228,14 @@ const routes: Routes = [
   {
     path: "trade-show",
     component: PageTradeShowComponent,
+  },
+  {
+    path: "footer1",
+    component: Footer1Component,
+  },
+  {
+    path: "footer2",
+    component: Footer2Component,
   },
   {
     path: "**",

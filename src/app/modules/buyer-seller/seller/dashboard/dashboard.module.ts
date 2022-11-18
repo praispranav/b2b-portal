@@ -9,6 +9,8 @@ import { DashboardPreviousInquiriesComponent } from './components/dashboard-prev
 import { DashboardRecommendedQuotationsComponent } from './components/dashboard-recommended-quotations/dashboard-recommended-quotations.component';
 import { DashboardTableComponent } from './components/dashboard-table/dashboard-table.component';
 import { PageDashboardComponent } from './page-dashboard/page-dashboard.component';
+import { Footer1Component } from '../../../view/components/footer1/footer1.component';
+import { Footer2Component } from '../../../view/components/footer2/footer2.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { PageDashboardComponent } from './page-dashboard/page-dashboard.componen
     DashboardRecommendedQuotationsComponent,
     DashboardTableComponent,
     PageDashboardComponent,
+    Footer1Component,
+    Footer2Component
   ],
   imports: [
     CommonModule,
