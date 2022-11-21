@@ -13,6 +13,7 @@ export class FormQualityControlComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   qualityControlForm: FormGroup;
+  ifNo:boolean=true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +37,12 @@ export class FormQualityControlComponent implements OnInit {
       processDescription: ["", [Validators.required]],
     });
   }
-
+  clickNo(){
+    this.ifNo = false;
+  }
+  clickYes(){
+    this.ifNo = true;
+  }
   updateDataIfExist(){
     this.isLoading = true;
     this.providerQualityControlService.getQualityControlListByFilter(0, 1, {userId: 'pending'}).subscribe(

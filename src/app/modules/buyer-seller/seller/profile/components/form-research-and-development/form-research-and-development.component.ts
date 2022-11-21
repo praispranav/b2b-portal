@@ -13,7 +13,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   researchAndDevelopmentForm: FormGroup;
-
+  ifNo:boolean=true;
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
@@ -28,10 +28,16 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     this.buildTypeForm();
     this.updateDataIfExist();
   }
+  clickNo(){
+    this.ifNo = false;
+  }
+  clickYes(){
+    this.ifNo = true;
+  }
 
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
-      isQualityProcess: ["Yes"],
+      isQualityProcess: [""],
       certificateName: [""],
       certifiedBy: [""],
       businessScope: [""],
