@@ -29,7 +29,11 @@
             </div>
         </ng-container>
     </ng-container>
-    <div class="row">
+    <div class="row border p-4" *ngFor="let form of certificateArray.controls; let i=index" [formGroup]="form">
+        <button *ngIf="certificateArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
+            class="btn btn-primary w-25">
+            Remove
+        </button>
         <div class="col-12">
             <h6>Other Certifications</h6>
         </div>
@@ -54,7 +58,23 @@
                     id="fcc-certificateIssuer" formControlName="certificateIssuer" />
             </div>
         </div>
+        <div class="col-md-4">
+            <h4>Upload Image</h4>
+            <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                Action="https://jsonplaceholder.typicode.com/posts/">
+                <div class="pic-placeholder">
+                    <i class="pg-icon p-b-5">upload</i>
+                    <div class="fs-12">Upload</div>
+                </div>
+            </pg-upload>
+            <div *ngIf="f.image?.invalid && (f.image.dirty || f.image.touched)">
+                <label *ngIf="f.image.errors.required" class="error">image is required
+                </label>
+            </div>
+        </div>
     </div>
+    <button type="button" (click)="addNewCertificate()" class="btn btn-primary w-25 my-3">Add more other certificates
+    </button>
     <div class="mt-4">
         <button [disabled]="isLoading" certificate="submit" class="me-4 btn btn-primary show-notification"
             (click)="subCertificateCenterForm()">

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderCompanyProfileService } from "../../../../../../core/providers/user/provider-company-profile.service";
 import { ProviderMaterCountryService } from "../../../../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../../../../core/providers/master/provider-mater-location.service";
+import { element } from 'protractor';
 @Component({
   selector: "app-form-company-profile",
   templateUrl: "./form-company-profile.component.html",
@@ -18,6 +21,15 @@ export class FormCompanyProfileComponent implements OnInit {
   countries: any[] = [];
   states: any[] = [];
   cities: any[] = [];
+  additionalArray: FormArray = new FormArray([]);
+  additionalProfiles: any[] = [];
+  formGroup: FormGroup;
+  mobileArray: FormArray = new FormArray([]);
+  landlineArray: FormArray = new FormArray([]);
+  mobileProfiles: any[] = [];
+  landlineProfiles: any[] = [];
+  serviceSubscription: Subscription[] = [];
+
   categoryOptions = [
     { value: 'apparel', label: 'Apparel' },
     { value: 'cloth', label: 'Cloth' },
@@ -29,11 +41,23 @@ export class FormCompanyProfileComponent implements OnInit {
     { value: 'product1', label: 'product1' },
     { value: 'product2', label: 'product2' },
     { value: 'product3', label: 'product3' },
-    { value: 'product3', label: 'product3' },
-    { value: 'product3', label: 'product3' },
-    { value: 'product3', label: 'product3' }
+    { value: 'product4', label: 'product4' },
+    { value: 'product5', label: 'product5' },
+    { value: 'product6', label: 'product6' }
   ];
   mainProduct = ['Product1', 'Product2'];
+  divisions = [
+    { value: 'Branch', label: 'Branch' },
+    { value: 'Network', label: 'Network' },
+    { value: 'Factory', label: 'Factory' },
+    { value: 'International Office', label: 'International Office' },
+    { value: 'Manufacturing', label: 'Manufacturing' },
+    { value: 'Showroom', label: 'Showroom ' },
+    { value: 'Sister Concern', label: 'Sister Concern' },
+    { value: 'Trading Division', label: 'Trading Division' },
+    { value: 'Warehouse ', label: 'Warehouse' },
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
@@ -49,12 +73,40 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit')
     this.buildTypeForm();
     // this.onCountrySelected('countrt');
+    this.addNewAdditional("");
+    this.addNewMobile("");
+    this.addNewLandline("");
     this.updateDataIfExist();
     this.getCountryList();
-
+    this.serviceSubscription.push(
+      this.additionalArray.valueChanges.pipe().subscribe(() => {
+        this.additionalProfiles = this.additionalArray.controls
+          .filter((control) => {
+            return control.valid;
+          })
+          .map((control) => control.value);
+      })
+    );
+    this.serviceSubscription.push(
+      this.mobileArray.valueChanges.pipe().subscribe(() => {
+        this.mobileProfiles = this.mobileArray.controls
+          .filter((control) => {
+            return control.valid;
+          })
+          .map((control) => control.value);
+      })
+    );
+    this.serviceSubscription.push(
+      this.landlineArray.valueChanges.pipe().subscribe(() => {
+        this.landlineProfiles = this.landlineArray.controls
+          .filter((control) => {
+            return control.valid;
+          })
+          .map((control) => control.value);
+      })
+    );
 
   }
 
@@ -121,76 +173,129 @@ export class FormCompanyProfileComponent implements OnInit {
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
       regCity: ['', [Validators.required]],
-      regLandline: ['', [Validators.required]],
-      regMobile: ['', [Validators.required]],
+      businessCertificate: ['', [Validators.required]],
       isOfficeAddressSame: [''],
-      facDivision: [''],
-      facArea: [''],
-      facCountry: [''],
-      facState: [''],
-      facAnnualTurnover: [''],
-      facContactPerson: [''],
-      facLandline: [''],
-      facMobile: [''],
-      facEmail: [''],
+
     });
   }
+  addNewMobile(data: any = {}): void {
+    this.formGroup = this.formBuilder.group({
+      regMobile: [data.regMobile ? data.regMobile : ""],
 
+    });
+    this.mobileArray.push(this.formGroup);
+  }
+
+  deleteMobile(index: number): void {
+    this.mobileArray.removeAt(index);
+  }
+  addNewLandline(data: any = {}): void {
+    this.formGroup = this.formBuilder.group({
+      regLandline: [data.regLandline ? data.regLandline : ""],
+
+    });
+    this.landlineArray.push(this.formGroup);
+  }
+
+  deleteLandline(index: number): void {
+    this.landlineArray.removeAt(index);
+  }
+  addNewAdditional(data: any = {}): void {
+    this.formGroup = this.formBuilder.group({
+      facDivision: [data.facDivision ? data.facDivision : ""],
+      facArea: [data.facArea ? data.facArea : ""],
+      facCountry: [data.facCountry ? data.facCountry : ""],
+      facState: [data.facState ? data.facState : ""],
+      facAnnualTurnover: [data.facAnnualTurnover ? data.facAnnualTurnover : ""],
+      facContactPerson: [data.facContactPerson ? data.facContactPerson : ""],
+      facLandline: [data.facLandline ? data.facLandline : ""],
+      facMobile: [data.facMobile ? data.facMobile : ""],
+      facEmail: [data.facEmail ? data.facEmail : ""],
+    });
+    this.additionalArray.push(this.formGroup);
+  }
+  removeAdditional(index: number): void {
+    this.additionalArray.removeAt(index);
+  }
   updateDataIfExist() {
     this.isLoading = true;
     this.providerCompanyProfileService.getCompanyProfileListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
+        let patchFormvalue: any = res.data[0];
+
         this.isDataExist = res.data.length > 0;
         if (!this.isDataExist) {
           return;
         }
-        this.idIfDataExist = res.data[0]['_id'];
-        this.f.company.setValue(res.data[0].company);
-        this.f.tanNo.setValue(res.data[0].tanNo);
-        this.f.panNo.setValue(res.data[0].panNo);
-        this.f.gstNo.setValue(res.data[0].gstNo);
-        this.f.codeOfIE.setValue(res.data[0].codeOfIE);
-        this.f.estYear.setValue(res.data[0].estYear);
-        this.f.mainCategory.setValue(res.data[0].mainCategory);
-        this.f.mainProduct.setValue(res.data[0].mainProduct);
-        this.f.regAddress.setValue(res.data[0].regAddress);
-        this.f.regCountry.setValue(res.data[0].regCountry);
-        this.f.regState.setValue(res.data[0].regState);
-        this.f.regCity.setValue(res.data[0].regCity);
-        this.f.regLandline.setValue(res.data[0].regLandline);
-        this.f.regMobile.setValue(res.data[0].regMobile);
-        this.f.isOfficeAddressSame.setValue(res.data[0].isOfficeAddressSame);
-        this.f.facDivision.setValue(res.data[0].facDivision);
-        this.f.facArea.setValue(res.data[0].facArea);
-        this.f.facCountry.setValue(res.data[0].facCountry);
-        this.f.facState.setValue(res.data[0].facState);
-        this.f.facAnnualTurnover.setValue(res.data[0].facAnnualTurnover);
-        this.f.facContactPerson.setValue(res.data[0].facContactPerson);
-        this.f.facLandline.setValue(res.data[0].facLandline);
-        this.f.facMobile.setValue(res.data[0].facMobile);
-        this.f.facEmail.setValue(res.data[0].facEmail);
+        this.idIfDataExist = patchFormvalue['_id'];
+        this.companyProfileForm.patchValue({
+
+          gstNo: patchFormvalue.gstNo ? patchFormvalue.gstNo : '',
+          codeOfIE: patchFormvalue.codeOfIE ? patchFormvalue.codeOfIE : '',
+          panNo: patchFormvalue.panNo ? patchFormvalue.panNo : '',
+          estYear: patchFormvalue.estYear ? patchFormvalue.accNumber : '',
+          mainCategory: patchFormvalue.mainCategory ? patchFormvalue.mainCategory : '',
+          mainProduct: patchFormvalue.mainProduct ? patchFormvalue.mainProduct : '',
+          tanNo: patchFormvalue.tanNo ? patchFormvalue.tanNo : '',
+          regAddress: patchFormvalue.regAddress ? patchFormvalue.regAddress : '',
+          regCountry: patchFormvalue.regCountry ? patchFormvalue.regCountry : '',
+          regState: patchFormvalue.regState ? patchFormvalue.regState : '',
+          regCity: patchFormvalue.regCity ? patchFormvalue.regCity : '',
+          businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
+          isOfficeAddressSame: patchFormvalue.isOfficeAddressSame ? patchFormvalue.isOfficeAddressSame : '',
+
+        })
+        patchFormvalue.additionalDetail.forEach(element => {
+          this.addNewAdditional(element);
+        })
+        patchFormvalue.additionalMobile.forEach(element => {
+          this.addNewMobile(element);
+        })
+        patchFormvalue.additionalLandline.forEach(element => {
+          this.addNewLandline(element);
+        })
       },
       (err) => { this.isDataExist = false; },
       () => { this.isLoading = false; }
-    );
+    )
   }
 
   async subCompanyProfileForm() {
-    if (this.companyProfileForm.invalid) {
+    if (!this.companyProfileForm.invalid) {
       this.markFormGroupTouched(this.companyProfileForm);
       return;
     }
     this.isLoading = true;
-    const formValue = this.companyProfileForm.value;
+    const formData = this.companyProfileForm.value;
+    let reqObj = {
+      gstNo: formData.gstNo ? formData.gstNo : '',
+      codeOfIE: formData.codeOfIE ? formData.codeOfIE : '',
+      panNo: formData.panNo ? formData.panNo : '',
+      estYear: formData.estYear ? formData.estYear : '',
+      mainCategory: formData.mainCategory ? formData.mainCategory : '',
+      mainProduct: formData.mainProduct ? formData.mainProduct : '',
+      tanNo: formData.tanNo ? formData.tanNo : '',
+      regAddress: formData.regAddress ? formData.regAddress : '',
+      regCountry: formData.regCountry ? formData.regCountry : '',
+      regState: formData.regState ? formData.regState : '',
+      regCity: formData.regCity ? formData.regCity : '',
+      isOfficeAddressSame: formData.isOfficeAddressSame ? formData.isOfficeAddressSame : '',
+      businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
+      additionalDetail: [...this.additionalProfiles],
+      additionalMobile: [...this.mobileProfiles],
+      additionalLandline: [...this.landlineProfiles],
+    }
+    console.log('reqData', reqObj);
+
     if (this.isDataExist) {
-      formValue._id = this.idIfDataExist;
-      this.providerCompanyProfileService.updateCompanyProfile(formValue).subscribe(
+      formData._id = this.idIfDataExist;
+      this.providerCompanyProfileService.updateCompanyProfile(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Profile Updated Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Profile Not Updated") },
         () => { this.isLoading = false; }
       );
     } else {
-      this.providerCompanyProfileService.addCompanyProfile(formValue).subscribe(
+      this.providerCompanyProfileService.addCompanyProfile(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Profile Added Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Profile Not Added") },
         () => { this.isLoading = false; }

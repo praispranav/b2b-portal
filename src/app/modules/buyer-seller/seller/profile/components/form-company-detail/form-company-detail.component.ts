@@ -1,5 +1,6 @@
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ProviderMaterCountryService } from '../../../../../../core/providers/master/provider-mater-country.service';
 import { ProviderMaterLocationService } from '../../../../../../core/providers/master/provider-mater-location.service';
 import { ProviderMaterStateService } from '../../../../../../core/providers/master/provider-mater-state.service';
@@ -15,9 +16,18 @@ export class FormCompanyDetailComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   companyDetailForm: FormGroup;
+  formGroup: FormGroup;
+  formArray: FormArray = new FormArray([]);
+  contactArray: FormArray = new FormArray([]);
   countries: any[] = [];
   states: any[] = [];
   cities: any[] = [];
+  logoList: any[] = [];
+  pictureList: any[] = [];
+  tradePicList: any[] = [];
+  memberProfiles: any[] = [];
+  contactProfiles: any[] = [];
+  serviceSubscription: Subscription[] = [];
   options = [
     { value: 'Owner', label: 'Owner' },
     { value: 'CEO', label: 'CEO' },
@@ -34,6 +44,17 @@ export class FormCompanyDetailComponent implements OnInit {
     { value: 'Saving', label: 'Saving' },
     { value: 'Current', label: 'Current' },
     { value: 'Business', label: 'Business' },
+
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ];
+  strengthOptions = [
+    { value: '10-20', label: '10-20' },
+    { value: '20-50', label: '20-50' },
+    { value: '50-100', label: '50-100' },
+    { value: '100-200', label: '100-200' },
+    { value: '200-500', label: '200-500' },
+    { value: '500-1000', label: '500-1000' },
+    { value: 'More than 1000', label: 'More than 1000' },
 
     { value: 'disabled', label: 'Disabled', disabled: true }
   ];
@@ -62,8 +83,28 @@ export class FormCompanyDetailComponent implements OnInit {
 
   ngOnInit() {
     this.buildTypeForm();
+    this.addNew("");
+    this.addNewContact("");
     this.updateDataIfExist();
     this.getCountryList();
+    this.serviceSubscription.push(
+      this.formArray.valueChanges.pipe().subscribe(() => {
+        this.memberProfiles = this.formArray.controls
+          .filter((control) => {
+            return control.valid;
+          })
+          .map((control) => control.value);
+      })
+    );
+    this.serviceSubscription.push(
+      this.contactArray.valueChanges.pipe().subscribe(() => {
+        this.contactProfiles = this.contactArray.controls
+          .filter((control) => {
+            return control.valid;
+          })
+          .map((control) => control.value);
+      })
+    );
 
   }
   getCountryList() {
@@ -80,8 +121,8 @@ export class FormCompanyDetailComponent implements OnInit {
   }
   onCountrySelected(e) {
     console.log("" + e.target.value);
-    this.f.regCountry.setValue(e.target.value);
-    this.f.facCountry.setValue(e.target.value);
+    // this.f.regCountry?.setValue(e.target.value);
+    // this.f.facCountry?.setValue(e.target.value);
 
     this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
       (res: any) => {
@@ -95,13 +136,13 @@ export class FormCompanyDetailComponent implements OnInit {
   }
   onStateSelected(e) {
     console.log("" + e.target.value);
-    this.f.regState.setValue(e.target.value);
+    // this.f.regState.setValue(e.target.value);
 
-    this.f.facState.setValue(e.target.value);
+    // this.f.facState.setValue(e.target.value);
     this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
       (res: any) => {
-        this.cities = res.data[0].cities;
-        console.log('cities', this.cities)
+        console.log('cities', res)
+        this.cities = res.data[0].cities ? res.data[0].cities : [];
       },
       (err) => {
         console.log(err)
@@ -110,14 +151,13 @@ export class FormCompanyDetailComponent implements OnInit {
   }
   onCitySelected(e) {
     console.log("" + e.target.value);
-    this.f.regCity.setValue(e.target.value);
+    // this.f.regCity.setValue(e.target.value);
   }
   buildTypeForm() {
     this.companyDetailForm = this.formBuilder.group({
-      contactPersonFirstName: ["", [Validators.required]],
-      contactPersonLastName: ["", [Validators.required]],
-      contactPersonDesignation: ["", [Validators.required]],
-      contactPersonEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
+      companyLogo: [""],
+      companyPicture: [""],
+      companyVideo: [""],
       contactPersonAlternateEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       companyWebsite: ["", [Validators.required]],
       googleBusiness: ["", [Validators.required]],
@@ -133,52 +173,79 @@ export class FormCompanyDetailComponent implements OnInit {
       companyVision: ["", [Validators.required]],
       companyDetail: ["", [Validators.required]],
       companyPhilosophy: ["", [Validators.required]],
-      tradeName: [""],
-      tradeStartDate: [""],
-      tradeEndDate: [""],
-      tradeHost: [""],
-      tradeCountry: [""],
-      tradeState: [""],
-      tradeCity: [""],
-      tradeInfo: [""]
+      employeeStrength: ["", [Validators.required]],
+      companyPage: ["", [Validators.required]],
     });
   }
+  addNewContact(data: any = {}): void {
+    this.formGroup = this.formBuilder.group({
+      contactPersonFirstName: [data.contactPersonFirstName ? data.contactPersonFirstName : "", [Validators.required]],
+      contactPersonLastName: [data.contactPersonLastName ? data.contactPersonLastName : "", [Validators.required]],
+      contactPersonDesignation: [data.contactPersonDesignation ? data.contactPersonDesignation : "", [Validators.required]],
+      contactPersonEmail: [data.contactPersonEmail ? data.contactPersonEmail : "", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
 
+    });
+    this.contactArray.push(this.formGroup);
+
+  }
+  addNew(data: any = {}): void {
+    this.formGroup = this.formBuilder.group({
+      tradeName: [data.tradeName ? data.tradeName : ""],
+      tradeStartDate: [data.tradeStartDate ? data.tradeStartDate : ""],
+      tradeEndDate: [data.tradeEndDate ? data.tradeEndDate : ""],
+      tradeHost: [data.tradeHost ? data.tradeHost : ""],
+      tradeCountry: [data.tradeCountry ? data.tradeCountry : ""],
+      tradeState: [data.tradeState ? data.tradeState : ""],
+      tradeCity: [data.tradeCity ? data.tradeCity : ""],
+      tradeInfo: [data.tradeInfo ? data.tradeInfo : ""],
+      tradePicture: [data.tradePicture ? data.tradePicture : ""],
+    });
+    this.formArray.push(this.formGroup);
+  }
+
+  // get formArr() {
+  //   return this.companyDetailForm.get('itemRows') as FormArray;
+  // }
+
+  removeAt(index: number): void {
+    this.formArray.removeAt(index);
+  }
+  removeContact(index: number): void {
+    this.contactArray.removeAt(index);
+  }
   updateDataIfExist() {
     this.isLoading = true;
     this.providerCompanyDetailService.getCompanyDetailListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
+        let patchFormvalue: any = res.data[0];
         this.isDataExist = res.data.length > 0;
         if (!this.isDataExist) {
           return;
         }
-        this.idIfDataExist = res.data[0]['_id'];
-        this.f.contactPersonFirstName.setValue(res.data[0].contactPersonFirstName);
-        this.f.contactPersonLastName.setValue(res.data[0].contactPersonLastName);
-        this.f.contactPersonDesignation.setValue(res.data[0].contactPersonDesignation);
-        this.f.contactPersonEmail.setValue(res.data[0].contactPersonEmail);
-        this.f.contactPersonAlternateEmail.setValue(res.data[0].contactPersonAlternateEmail);
-        this.f.companyWebsite.setValue(res.data[0].companyWebsite);
-        this.f.googleBusiness.setValue(res.data[0].googleBusiness);
-        this.f.facebookBusiness.setValue(res.data[0].facebookBusiness);
-        this.f.instagramBusiness.setValue(res.data[0].instagramBusiness);
-        this.f.accNumber.setValue(res.data[0].accNumber);
-        this.f.accType.setValue(res.data[0].accType);
-        this.f.accIFSCCode.setValue(res.data[0].accIFSCCode);
-        this.f.accSwiftCode.setValue(res.data[0].accSwiftCode);
-        this.f.accBranch.setValue(res.data[0].accBranch);
-        this.f.accBankName.setValue(res.data[0].accBankName);
-        this.f.companyLanguageSpoken.setValue(res.data[0].companyLanguageSpoken);
-        this.f.companyVision.setValue(res.data[0].companyVision);
-        this.f.companyDetail.setValue(res.data[0].companyDetail);
-        this.f.companyPhilosophy.setValue(res.data[0].companyPhilosophy);
-        this.f.tradeName.setValue(res.data[0].tradeName);
-        this.f.tradeStartDate.setValue(res.data[0].tradeStartDate);
-        this.f.tradeEndDate.setValue(res.data[0].tradeEndDate);
-        this.f.tradeHost.setValue(res.data[0].tradeHost);
-        this.f.tradeRegion.setValue(res.data[0].tradeRegion);
-        this.f.tradeCity.setValue(res.data[0].tradeCity);
-        this.f.tradeInfo.setValue(res.data[0].tradeInfo);
+        this.idIfDataExist = patchFormvalue['_id'];
+        this.companyDetailForm.patchValue({
+          contactPersonAlternateEmail: patchFormvalue.contactPersonAlternateEmail ? patchFormvalue.contactPersonAlternateEmail : '',
+          companyWebsite: patchFormvalue.companyWebsite ? patchFormvalue.companyWebsite : '',
+          googleBusiness: patchFormvalue.googleBusiness ? patchFormvalue.googleBusiness : '',
+          facebookBusiness: patchFormvalue.facebookBusiness ? patchFormvalue.facebookBusiness : '',
+          instagramBusiness: patchFormvalue.instagramBusiness ? patchFormvalue.instagramBusiness : '',
+          accNumber: patchFormvalue.accNumber ? patchFormvalue.accNumber : '',
+          accType: patchFormvalue.accType ? patchFormvalue.accType : '',
+          accIFSCCode: patchFormvalue.accIFSCCode ? patchFormvalue.accIFSCCode : '',
+          accSwiftCode: patchFormvalue.accSwiftCode ? patchFormvalue.accSwiftCode : '',
+          accBranch: patchFormvalue.accBranch ? patchFormvalue.accBranch : '',
+          accBankName: patchFormvalue.accBankName ? patchFormvalue.accBankName : '',
+          companyLanguageSpoken: patchFormvalue.companyLanguageSpoken ? patchFormvalue.companyLanguageSpoken : '',
+          companyVision: patchFormvalue.companyVision ? patchFormvalue.companyVision : '',
+          companyDetail: patchFormvalue.companyDetail ? patchFormvalue.companyDetail : '',
+          companyPhilosophy: patchFormvalue.companyPhilosophy ? patchFormvalue.companyPhilosophy : '',
+        })
+        patchFormvalue.tradeShow.forEach(element => {
+          this.addNew(element);
+        })
+        patchFormvalue.contactPerson.forEach(element => {
+          this.addNewContact(element);
+        })
       },
       (err) => { this.isDataExist = false; },
       () => { this.isLoading = false; }
@@ -186,21 +253,60 @@ export class FormCompanyDetailComponent implements OnInit {
   }
 
   async subCompanyDetailForm() {
-    if (this.companyDetailForm.invalid) {
+    if (!this.companyDetailForm.valid) {
       this.markFormGroupTouched(this.companyDetailForm);
       return;
     }
+    if (this.logoList.length > 0) {
+      this.f.companyLogo.setValue(
+        await this.toBase64(this.logoList[0].originFileObj)
+      );
+    }
+    if (this.pictureList.length > 0) {
+      this.f.companyPicture.setValue(
+        await this.toBase64(this.pictureList[0].originFileObj)
+      );
+    }
+    if (this.tradePicList.length > 0) {
+      this.f.tradePicture.setValue(
+        await this.toBase64(this.pictureList[0].originFileObj)
+      );
+    }
     this.isLoading = true;
-    const formValue = this.companyDetailForm.value;
+
+
+    const formData = this.companyDetailForm.value;
+    let reqObj = {
+      contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
+      companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
+      googleBusiness: formData.googleBusiness ? formData.googleBusiness : '',
+      facebookBusiness: formData.facebookBusiness ? formData.facebookBusiness : '',
+      instagramBusiness: formData.instagramBusiness ? formData.instagramBusiness : '',
+      accNumber: formData.accNumber ? formData.accNumber : '',
+      accType: formData.accType ? formData.accType : '',
+      accIFSCCode: formData.accIFSCCode ? formData.accIFSCCode : '',
+      accSwiftCode: formData.accSwiftCode ? formData.accSwiftCode : '',
+      accBranch: formData.accBranch ? formData.accBranch : '',
+      accBankName: formData.accBankName ? formData.accBankName : '',
+      companyLanguageSpoken: formData.companyLanguageSpoken ? formData.companyLanguageSpoken : '',
+      companyVision: formData.companyVision ? formData.companyVision : '',
+      companyDetail: formData.companyDetail ? formData.companyDetail : '',
+      companyPhilosophy: formData.companyPhilosophy ? formData.companyPhilosophy : '',
+      companyPage: formData.companyPage ? formData.companyPage : '',
+      tradeShow: [...this.memberProfiles],
+      contactPerson: [...this.contactProfiles],
+    }
+    console.log('reqData', reqObj);
+
     if (this.isDataExist) {
-      formValue._id = this.idIfDataExist;
-      this.providerCompanyDetailService.updateCompanyDetail(formValue).subscribe(
+      formData._id = this.idIfDataExist;
+      this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
         () => { this.isLoading = false; }
       );
     } else {
-      this.providerCompanyDetailService.addCompanyDetail(formValue).subscribe(
+      this.providerCompanyDetailService.addCompanyDetail(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
         () => { this.isLoading = false; }
@@ -214,6 +320,14 @@ export class FormCompanyDetailComponent implements OnInit {
       if ((control as any).controls) {
         this.markFormGroupTouched(control as FormGroup);
       }
+    });
+  }
+  async toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
     });
   }
 }
