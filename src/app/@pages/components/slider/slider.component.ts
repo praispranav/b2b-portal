@@ -2,7 +2,7 @@
  * Author : NG-ZORRO - ANT UI
  * Github : https://github.com/NG-ZORRO/ng-zorro-antd
  * Copyright Reserved : MIT LICENSE
- * Modified : Ace Revox
+ * Modified : Ace Bizzexpo
  */
 import {
   forwardRef,
