@@ -1,12 +1,10 @@
 <form role="form" [formGroup]="buyerSellersAdmin">
     <div class="row alignment">
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
+            <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
                 <label for="country">Country</label>
 
-                <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption"
-                    formControlName="country">
+                <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption" formControlName="country">
                     <option *ngFor="let option of options" [value]="option.label">{{option.label}}</option>
                 </select>
             </div>
@@ -15,24 +13,20 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.state.invalid && (f.state.dirty || f.state.touched)">
+            <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.state.invalid && (f.state.dirty || f.state.touched)">
                 <label for="country">State</label>
 
-                <select name="state" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption1"
-                    formControlName="state">
+                <select name="state" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption1" formControlName="state">
                     <option *ngFor="let option of options1" [value]="option.label">{{option.label}}</option>
                 </select>
             </div>
 
         </div>
         <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group form-group-default"
-                [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
+            <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
                 <label for="country">City</label>
 
-                <select name="city" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption2"
-                    formControlName="city">
+                <select name="city" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption2" formControlName="city">
                     <option *ngFor="let option of options2" [value]="option.label">{{option.label}}</option>
                 </select>
             </div>
@@ -45,12 +39,10 @@
         </div>
     </div>
     <div class="col-md-6 banner">
-        <div pgFormGroupDefault class="form-group form-group-default"
-            [class.has-error]="f.category.invalid && (f.category.dirty || f.category.touched)">
+        <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.category.invalid && (f.category.dirty || f.category.touched)">
             <label for="category">Category</label>
 
-            <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption3"
-                formControlName="category">
+            <select name="category" id="" class="form-control mb-2 mr-sm-2" [(ngModel)]="selectedOption3" formControlName="category">
                 <option *ngFor="let option of options3" [value]="option.label">{{option.label}}</option>
             </select>
         </div>
@@ -106,9 +98,32 @@
             <div class="card-body">
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
-                    <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
+                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
                         [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
                         [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
+                    </ngx-datatable> -->
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                        [scrollbarV]="true" (page)="onPage($event)">
+                        >
+                        <ngx-datatable-column name="">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <input type="checkbox" (click)="handler(row)" />
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Img">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <img src="{{row.image}}" alt="">
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
+                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(value)">
+                              Update
+                            </button>
+                            </ng-template>
+                        </ngx-datatable-column>
                     </ngx-datatable>
                 </div>
             </div>

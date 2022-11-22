@@ -142,5 +142,9 @@ export class PageSupplierListComponent implements OnInit {
   select(event) {
     console.log(event);
   }
+
+  onPage(event){
+    console.log(event);
+  }
 }
 
