@@ -16,7 +16,7 @@ export class FormCertificateCenterComponent implements OnInit {
   certificateCenterForm: FormGroup;
   formGroup: FormGroup;
   certificateArray: FormArray = new FormArray([]);
-  // imageList: any[] = [];
+  imageList: any[] = [];
   certificateProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
 
@@ -79,7 +79,7 @@ export class FormCertificateCenterComponent implements OnInit {
       certificateType: [data.certificateType ? data.certificateType : "", [Validators.required]],
       certificateNumber: [data.certificateNumber ? data.certificateNumber : "", [Validators.required]],
       certificateIssuer: [data.certificateIssuer ? data.certificateIssuer : "", [Validators.required]],
-      // image: [data.image ? data.image : ""],
+      image: [data.image ? data.image : ""],
 
     });
     this.certificateArray.push(this.formGroup);
@@ -140,11 +140,11 @@ export class FormCertificateCenterComponent implements OnInit {
   }
 
   async subCertificateCenterForm() {
-    // if (this.imageList.length > 0) {
-    //   this.f.image.setValue(
-    //     await this.toBase64(this.imageList[0].originFileObj)
-    //   );
-    // }
+    if (this.imageList.length > 0) {
+      this.f.image.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
     if (this.certificateCenterForm.invalid) {
       this.markFormGroupTouched(this.certificateCenterForm);
       return;
