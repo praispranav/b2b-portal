@@ -262,14 +262,18 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Popular Q&A",
-      toggle: "close",
-      submenu: [
-        {
-          label: "Add Category",
-          routerLink: "/admin/faq",
-        },
-      ]
+      routerLink: "/admin/faq",
     },
+    // {
+    //   label: "Popular Q&A",
+    //   toggle: "close",
+    //   submenu: [
+    //     {
+    //       label: "Add Category",
+    //       routerLink: "/admin/faq",
+    //     },
+    //   ]
+    // },
   ];
 
   ngOnInit() {
