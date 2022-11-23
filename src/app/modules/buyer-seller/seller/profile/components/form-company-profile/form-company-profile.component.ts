@@ -124,8 +124,8 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   onCountrySelected(e) {
     console.log("" + e.target.value);
-    this.f.regCountry.setValue(e.target.value);
-    this.f.facCountry.setValue(e.target.value);
+    // this.f.regCountry.setValue(e.target.value);
+    // this.f.facCountry.setValue(e.target.value);
 
     this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
       (res: any) => {
@@ -140,9 +140,9 @@ export class FormCompanyProfileComponent implements OnInit {
 
   onStateSelected(e) {
     console.log("" + e.target.value);
-    this.f.regState.setValue(e.target.value);
+    // this.f.regState.setValue(e.target.value);
 
-    this.f.facState.setValue(e.target.value);
+    // this.f.facState.setValue(e.target.value);
     this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
       (res: any) => {
         this.cities = res.data[0].cities;
@@ -173,7 +173,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
       regCity: ['', [Validators.required]],
-      businessCertificate: ['', [Validators.required]],
+      // businessCertificate: [''],
       isOfficeAddressSame: [''],
 
     });
@@ -241,7 +241,7 @@ export class FormCompanyProfileComponent implements OnInit {
           regCountry: patchFormvalue.regCountry ? patchFormvalue.regCountry : '',
           regState: patchFormvalue.regState ? patchFormvalue.regState : '',
           regCity: patchFormvalue.regCity ? patchFormvalue.regCity : '',
-          businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
+          // businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
           isOfficeAddressSame: patchFormvalue.isOfficeAddressSame ? patchFormvalue.isOfficeAddressSame : '',
 
         })
@@ -280,7 +280,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regState: formData.regState ? formData.regState : '',
       regCity: formData.regCity ? formData.regCity : '',
       isOfficeAddressSame: formData.isOfficeAddressSame ? formData.isOfficeAddressSame : '',
-      businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
+      // businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
       additionalLandline: [...this.landlineProfiles],

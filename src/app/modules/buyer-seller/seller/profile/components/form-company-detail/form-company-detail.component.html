@@ -459,10 +459,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-4">
                 <h4>Upload Picture</h4>
-                <pg-upload ListType="picture-card" [(FileList)]="tradePicList" [ShowButton]="tradePicList.length < 3"
+                <pg-upload ListType="picture-card" [(FileList)]="tradePicList[i]" [ShowButton]="!tradePicList[i] < 3"
                     Action="https://jsonplaceholder.typicode.com/posts/">
                     <div class="pic-placeholder">
                         <i class="pg-icon p-b-5">upload</i>
@@ -475,7 +475,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
     </div>
     <button type="button" (click)="addNew()" class="btn btn-primary w-25 my-2">Add more trade show
     </button>

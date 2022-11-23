@@ -58,9 +58,9 @@
                     id="fcc-certificateIssuer" formControlName="certificateIssuer" />
             </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
             <h4>Upload Image</h4>
-            <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+            <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
                 Action="https://jsonplaceholder.typicode.com/posts/">
                 <div class="pic-placeholder">
                     <i class="pg-icon p-b-5">upload</i>
@@ -71,7 +71,7 @@
                 <label *ngIf="f.image.errors.required" class="error">image is required
                 </label>
             </div>
-        </div>
+        </div> -->
     </div>
     <button type="button" (click)="addNewCertificate()" class="btn btn-primary w-25 my-3">Add more other certificates
     </button>

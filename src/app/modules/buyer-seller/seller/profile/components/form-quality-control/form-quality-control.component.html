@@ -18,6 +18,7 @@
         <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary">
             Remove
         </button>
+
         <div class="row">
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default required"
@@ -44,18 +45,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div pgFormGroupDefault class="form-group">
-                <pg-upload ListType="picture-card" [(FileList)]="imageList" [ShowButton]="imageList.length===0"
+                <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
                     Action="https://jsonplaceholder.typicode.com/posts/">
                     <div class="pic-placeholder">
                         <i class="pg-icon p-b-5">upload</i>
                         <div class="fs-12">Upload</div>
                     </div>
                 </pg-upload>
-
             </div>
-        </div>
+        </div> -->
     </div>
     <button type="button" (click)="addNew()" class=" mt-4
     btn btn-primary">
