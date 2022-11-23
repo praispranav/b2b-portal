@@ -14,7 +14,7 @@ export class FormQualityControlComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   qualityControlForm: FormGroup;
-  // imageList: any[] = [];
+  imageList: any[] = [];
   formGroup: FormGroup;
   formArray: FormArray = new FormArray([]);
   qualityControl: any[] = [];
@@ -55,7 +55,7 @@ export class FormQualityControlComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       processName: [data.processName ? data.processName : ""],
       processDescription: [data.processDescription ? data.processDescription : ""],
-      // image: [data.image ? data.image : ""],
+      image: [data.image ? data.image : ""],
     }
     );
     this.formArray.push(this.formGroup);
@@ -80,7 +80,7 @@ export class FormQualityControlComponent implements OnInit {
         this.qualityControlForm.patchValue({
           processName: patchFormvalue.processName ? patchFormvalue.processName : '',
           processDescription: patchFormvalue.processDescription ? patchFormvalue.processDescription : '',
-          // image: patchFormvalue.image ? patchFormvalue.image : '',
+          image: patchFormvalue.image ? patchFormvalue.image : '',
         })
         patchFormvalue.tradeShow.forEach(element => {
           this.addNew(element);
@@ -92,23 +92,22 @@ export class FormQualityControlComponent implements OnInit {
   }
 
   async subQualityControlForm() {
-    // console.log("image value", this.f, this.f.image)
-    // if (this.imageList.length > 0) {
-    //   this.f.isQualityProcess.setValue(
-    //     await this.toBase64(this.imageList[0].originFileObj)
-    //   );
-    // }
-    // if (this.qualityControlForm.invalid) {
-    //   this.markFormGroupTouched(this.qualityControlForm);
-    //   return;
-    // }
-    // this.isLoading = true;
+    console.log("image value", this.f, this.f.image)
+    if (this.imageList.length > 0) {
+      this.f.isQualityProcess.setValue(
+        await this.toBase64(this.imageList[0].originFileObj)
+      );
+    }
+    if (this.qualityControlForm.invalid) {
+      this.markFormGroupTouched(this.qualityControlForm);
+      return;
+    }
+    this.isLoading = true;
     // const formArray = this.formArray.value;
     // console.log(this.imageList)
     // for (let x = 0; x < this.imageList.length; x++) {
     //   formArray[x].image = await this.toBase64(this.imageList[x][0])
     // }
-    // console.log("FormArray", formArray)
     const formData = this.qualityControlForm.value;
     let reqObj = {
       qualityArray: [...this.qualityControl],

@@ -173,7 +173,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
       regCity: ['', [Validators.required]],
-      // businessCertificate: [''],
+      businessCertificate: [''],
       isOfficeAddressSame: [''],
 
     });
@@ -241,7 +241,7 @@ export class FormCompanyProfileComponent implements OnInit {
           regCountry: patchFormvalue.regCountry ? patchFormvalue.regCountry : '',
           regState: patchFormvalue.regState ? patchFormvalue.regState : '',
           regCity: patchFormvalue.regCity ? patchFormvalue.regCity : '',
-          // businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
+          businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
           isOfficeAddressSame: patchFormvalue.isOfficeAddressSame ? patchFormvalue.isOfficeAddressSame : '',
 
         })
@@ -280,7 +280,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regState: formData.regState ? formData.regState : '',
       regCity: formData.regCity ? formData.regCity : '',
       isOfficeAddressSame: formData.isOfficeAddressSame ? formData.isOfficeAddressSame : '',
-      // businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
+      businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
       additionalLandline: [...this.landlineProfiles],

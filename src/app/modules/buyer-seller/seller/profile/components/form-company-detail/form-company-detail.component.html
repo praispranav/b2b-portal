@@ -265,7 +265,6 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-
             <div class="form-group form-group-default form-group-default-select2 required">
                 <label>Language Spoken</label>
                 <pg-select style="width: 100%;" [Mode]="'multiple'" [PlaceHolder]="'Enter the language'"
@@ -275,7 +274,6 @@
                     </pg-option>
                 </pg-select>
             </div>
-
             <div
                 *ngIf="f.companyLanguageSpoken?.invalid && (f.companyLanguageSpoken.dirty || f.companyLanguageSpoken.touched)">
                 <label *ngIf="f.companyLanguageSpoken.errors.required" class="error">This field is required.</label>
@@ -459,7 +457,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-4">
                 <h4>Upload Picture</h4>
                 <pg-upload ListType="picture-card" [(FileList)]="tradePicList[i]" [ShowButton]="!tradePicList[i] < 3"
@@ -475,7 +473,7 @@
                 </div>
 
             </div>
-        </div> -->
+        </div>
     </div>
     <button type="button" (click)="addNew()" class="btn btn-primary w-25 my-2">Add more trade show
     </button>

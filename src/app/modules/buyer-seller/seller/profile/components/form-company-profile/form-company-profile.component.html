@@ -209,14 +209,14 @@
             </button>
         </div>
     </div>
-    <!-- <div class="row">
+    <div class="row">
         <div class="col-md-3">
             <label for="">Business Registration Certificate</label>
         </div>
         <div class="col-md-3">
             <input type="file" name="" id="">
         </div>
-    </div> -->
+    </div>
     <div class="row">
         <div class="col-md-3" *ngFor="let form of mobileArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="mobileArray?.controls?.length > 1" type="button" (click)="deleteMobile(i)"

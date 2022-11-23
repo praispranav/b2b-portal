@@ -24,7 +24,7 @@ export class FormCompanyDetailComponent implements OnInit {
   cities: any[] = [];
   logoList: any[] = [];
   pictureList: any[] = [];
-  // tradePicList: any[] = [];
+  tradePicList: any[] = [];
   memberProfiles: any[] = [];
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
@@ -198,7 +198,7 @@ export class FormCompanyDetailComponent implements OnInit {
       tradeState: [data.tradeState ? data.tradeState : ""],
       tradeCity: [data.tradeCity ? data.tradeCity : ""],
       tradeInfo: [data.tradeInfo ? data.tradeInfo : ""],
-      // tradePicture: [data.tradePicture ? data.tradePicture : ""],
+      tradePicture: [data.tradePicture ? data.tradePicture : ""],
     });
     this.formArray.push(this.formGroup);
   }
@@ -267,11 +267,11 @@ export class FormCompanyDetailComponent implements OnInit {
         await this.toBase64(this.pictureList[0].originFileObj)
       );
     }
-    // if (this.tradePicList.length > 0) {
-    //   this.f.tradePicture.setValue(
-    //     await this.toBase64(this.pictureList[0].originFileObj)
-    //   );
-    // }
+    if (this.tradePicList.length > 0) {
+      this.f.tradePicture.setValue(
+        await this.toBase64(this.pictureList[0].originFileObj)
+      );
+    }
     this.isLoading = true;
 
 
