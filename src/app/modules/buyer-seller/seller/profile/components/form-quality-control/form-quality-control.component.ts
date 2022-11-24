@@ -84,9 +84,7 @@ export class FormQualityControlComponent implements OnInit {
           processDescription: patchFormvalue.processDescription ? patchFormvalue.processDescription : '',
           image: patchFormvalue.image ? patchFormvalue.image : '',
         })
-        patchFormvalue.tradeShow.forEach(element => {
-          this.addNew(element);
-        })
+
       },
       (err) => { this.isDataExist = false; },
       () => { this.isLoading = false; }
@@ -98,61 +96,54 @@ export class FormQualityControlComponent implements OnInit {
     console.log("ImageList", this.imageList);
     const pictureList = []
     let i = 0;
-      for await(const item of this.imageList){
-        const qualityControlImage: any = await this.uploadImageToServer(item[0].originFileObj);
-        pictureList[i] = (qualityControlImage.fileName)
-        i++
-        console.log("COmpany Picture", qualityControlImage);
-      }
+    for await (const item of this.imageList) {
+      const qualityControlImage: any = await this.uploadImageToServer(item[0].originFileObj);
+      pictureList[i] = (qualityControlImage.fileName)
+      i++
+      console.log("quality control", qualityControlImage);
+    }
 
-      console.log(pictureList)
+    console.log(pictureList)
 
-      console.log("Form Values", this.formArray.value)
-      const formValues = this.formArray.value;
-      pictureList.forEach((i, index)=>{
-        formValues[index].image = i
-      })
+    console.log("Form Values", this.formArray.value)
+    const formValues = this.formArray.value;
+    pictureList.forEach((i, index) => {
+      formValues[index].image = i
+    })
 
-      console.log(formValues)
+    console.log(formValues)
 
     // if (this.imageList.length > 0) {
     //   this.f.isQualityProcess.setValue(
     //     await this.toBase64(this.imageList[0].originFileObj)
     //   );
     // }
-    // if (this.qualityControlForm.invalid) {
-    //   this.markFormGroupTouched(this.qualityControlForm);
-    //   return;
-    // }
-    // this.isLoading = true;
-    // // const formArray = this.formArray.value;
-    // // console.log(this.imageList)
-    // // for (let x = 0; x < this.imageList.length; x++) {
-    // //   formArray[x].image = await this.toBase64(this.imageList[x][0])
-    // // }
+    if (this.qualityControlForm.invalid) {
+      this.markFormGroupTouched(this.qualityControlForm);
+      return;
+    }
+    this.isLoading = true;
 
-    // console.log("Image---", this.imageList)
-    // const formData = this.qualityControlForm.value;
-    // let reqObj = {
-    //   qualityArray: [...this.qualityControl],
+    let reqObj = {
+      qualityArray: [...this.qualityControl],
 
-    // }
-    // console.log('reqData', reqObj);
+    }
+    console.log('reqData', reqObj);
 
-    // if (this.isDataExist) {
-    //   formData._id = this.idIfDataExist;
-    //   this.providerQualityControlService.updateQualityControl(reqObj).subscribe(
-    //     (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
-    //     (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
-    //     () => { this.isLoading = false; }
-    //   );
-    // } else {
-    //   this.providerQualityControlService.addQualityControl(reqObj).subscribe(
-    //     (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
-    //     (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
-    //     () => { this.isLoading = false; }
-    //   );
-    // }
+    if (this.isDataExist) {
+      formValues._id = this.idIfDataExist;
+      this.providerQualityControlService.updateQualityControl(reqObj).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
+        () => { this.isLoading = false; }
+      );
+    } else {
+      this.providerQualityControlService.addQualityControl(reqObj).subscribe(
+        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
+        () => { this.isLoading = false; }
+      );
+    }
   }
   async toBase64(file) {
     return new Promise((resolve, reject) => {

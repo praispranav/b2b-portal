@@ -17,6 +17,10 @@ export class FormCompanyProfileComponent implements OnInit {
   isLoading = true;
   isDataExist: boolean;
   idIfDataExist: string;
+  file: File;
+  fileType: any | string;
+  fileName: string = '';
+  imageBase64: string | any = "";
   companyProfileForm: FormGroup;
   countries: any[] = [];
   states: any[] = [];
@@ -31,12 +35,13 @@ export class FormCompanyProfileComponent implements OnInit {
   serviceSubscription: Subscription[] = [];
 
   categoryOptions = [
-    { value: 'apparel', label: 'Apparel' },
-    { value: 'cloth', label: 'Cloth' },
-    { value: 'shoes', label: 'Shoes' },
+    { value: 'Apparel', label: 'Apparel' },
+    { value: 'Cloth', label: 'Cloth' },
+    { value: 'Shoes', label: 'Shoes' },
+    { value: 'disabled', label: 'Disabled', disabled: true }
+
 
   ];
-  mainCategory = ['Apparel', 'Cloth'];
   productOptions = [
     { value: 'product1', label: 'product1' },
     { value: 'product2', label: 'product2' },
@@ -124,8 +129,8 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   onCountrySelected(e) {
     console.log("" + e.target.value);
-    // this.f.regCountry.setValue(e.target.value);
-    // this.f.facCountry.setValue(e.target.value);
+    // this.f.regCountry?.setValue(e.target.value);
+    // this.f.facCountry?.setValue(e.target.value);
 
     this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
       (res: any) => {
@@ -137,7 +142,6 @@ export class FormCompanyProfileComponent implements OnInit {
       }
     );
   }
-
   onStateSelected(e) {
     console.log("" + e.target.value);
     // this.f.regState.setValue(e.target.value);
@@ -145,20 +149,18 @@ export class FormCompanyProfileComponent implements OnInit {
     // this.f.facState.setValue(e.target.value);
     this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
       (res: any) => {
-        this.cities = res.data[0].cities;
-        console.log('cities', this.cities)
+        console.log('cities', res)
+        this.cities = res.data[0].cities ? res.data[0].cities : [];
       },
       (err) => {
         console.log(err)
       }
     );
   }
-
   onCitySelected(e) {
     console.log("" + e.target.value);
-    this.f.regCity.setValue(e.target.value);
+    // this.f.regCity.setValue(e.target.value);
   }
-
   buildTypeForm() {
     this.companyProfileForm = this.formBuilder.group({
       company: ["", [Validators.required, Validators.minLength(20)]],
@@ -167,14 +169,13 @@ export class FormCompanyProfileComponent implements OnInit {
       gstNo: ["", [Validators.required, Validators.maxLength(20)]],
       codeOfIE: ["", [Validators.required]],
       estYear: ["", [Validators.required]],
-      mainCategory: ["", [Validators.required], Validators.maxLength(5)],
+      mainCategory: ["", [Validators.required]],
       mainProduct: ["", [Validators.required]],
       regAddress: ['', [Validators.required]],
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
       regCity: ['', [Validators.required]],
       businessCertificate: [''],
-      isOfficeAddressSame: [''],
 
     });
   }
@@ -231,6 +232,7 @@ export class FormCompanyProfileComponent implements OnInit {
         this.companyProfileForm.patchValue({
 
           gstNo: patchFormvalue.gstNo ? patchFormvalue.gstNo : '',
+          company: patchFormvalue.company ? patchFormvalue.company : '',
           codeOfIE: patchFormvalue.codeOfIE ? patchFormvalue.codeOfIE : '',
           panNo: patchFormvalue.panNo ? patchFormvalue.panNo : '',
           estYear: patchFormvalue.estYear ? patchFormvalue.accNumber : '',
@@ -242,7 +244,6 @@ export class FormCompanyProfileComponent implements OnInit {
           regState: patchFormvalue.regState ? patchFormvalue.regState : '',
           regCity: patchFormvalue.regCity ? patchFormvalue.regCity : '',
           businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
-          isOfficeAddressSame: patchFormvalue.isOfficeAddressSame ? patchFormvalue.isOfficeAddressSame : '',
 
         })
         patchFormvalue.additionalDetail.forEach(element => {
@@ -268,7 +269,9 @@ export class FormCompanyProfileComponent implements OnInit {
     this.isLoading = true;
     const formData = this.companyProfileForm.value;
     let reqObj = {
+
       gstNo: formData.gstNo ? formData.gstNo : '',
+      company: formData.company ? formData.company : '',
       codeOfIE: formData.codeOfIE ? formData.codeOfIE : '',
       panNo: formData.panNo ? formData.panNo : '',
       estYear: formData.estYear ? formData.estYear : '',
@@ -279,7 +282,6 @@ export class FormCompanyProfileComponent implements OnInit {
       regCountry: formData.regCountry ? formData.regCountry : '',
       regState: formData.regState ? formData.regState : '',
       regCity: formData.regCity ? formData.regCity : '',
-      isOfficeAddressSame: formData.isOfficeAddressSame ? formData.isOfficeAddressSame : '',
       businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
@@ -310,5 +312,20 @@ export class FormCompanyProfileComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
+  }
+  changeListener($event): void {
+    this.file = $event.target.files[0];
+  }
+
+  fileUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imageBase64 = reader.result;
+      this.companyProfileForm.patchValue({ imageUrl: reader.result as string })
+      this.fileType = file.type;
+      this.fileName = file.name
+    }
   }
 }

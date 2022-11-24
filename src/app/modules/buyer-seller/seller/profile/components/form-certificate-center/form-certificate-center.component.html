@@ -29,8 +29,8 @@
             </div>
         </ng-container>
     </ng-container>
-    <div class="row border p-4" *ngFor="let form of certificateArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="certificateArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
+    <div class="row border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
+        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
             class="btn btn-primary w-25">
             Remove
         </button>
@@ -76,7 +76,7 @@
     <button type="button" (click)="addNewCertificate()" class="btn btn-primary w-25 my-3">Add more other certificates
     </button>
     <div class="mt-4">
-        <button [disabled]="isLoading" certificate="submit" class="me-4 btn btn-primary show-notification"
+        <button certificate="submit" class="me-4 btn btn-primary show-notification"
             (click)="subCertificateCenterForm()">
             {{isDataExist? 'Update' : 'Save'}} Certificate Center
         </button>

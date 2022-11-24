@@ -27,6 +27,7 @@ export class FormCompanyDetailComponent implements OnInit {
   logoList: any[] = [];
   pictureList: any[] = [];
   tradePicList: any[] = [];
+  tradePicLists: any[] = [];
   memberProfiles: any[] = [];
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
@@ -218,7 +219,7 @@ export class FormCompanyDetailComponent implements OnInit {
       tradeState: [data.tradeState ? data.tradeState : ""],
       tradeCity: [data.tradeCity ? data.tradeCity : ""],
       tradeInfo: [data.tradeInfo ? data.tradeInfo : ""],
-      tradePicture: [data.tradePicture ? data.tradePicture : ""],
+      tradePicture: [this.tradePicLists ? this.tradePicLists : ''],
     });
     this.formArray.push(this.formGroup);
   }
@@ -271,25 +272,43 @@ export class FormCompanyDetailComponent implements OnInit {
       () => { this.isLoading = false; }
     );
   }
-
   async subCompanyDetailForm() {
     try {
-
       // console.log("Tradethis.tradePicList);
       this.isLoading = true
       const pictureList = []
-      for await(const item of this.pictureList){
+      for await (const item of this.pictureList) {
         const companyPicture: any = await this.uploadImageToServer(item.originFileObj);
         pictureList.push(companyPicture.fileName)
-        console.log("COmpany Picture", companyPicture);
+      }
+      // console.log("trade pic list", this.formArray.value)
+      // console.log("trade pic list item", this.tradePicList)
+      const tradePicLists = []
+      for await (const item of this.tradePicList) {
+        const tempFileNames = []
+        for await (const element of item) {
+          console.log("elemetn", element);
+          const tradePicture: any = await this.uploadImageToServer(element.originFileObj);
+          tempFileNames.push(tradePicture.fileName);
+        }
+        tradePicLists.push(tempFileNames)
+      }
+      const formArrayValues = this.formArray.value
+      tradePicLists.forEach((fileNames, index) => {
+        formArrayValues[index].tradePicture = fileNames
+      })
+      console.log("trade", formArrayValues)
+      const companyLogoPic = [];
+      for await (const item of this.logoList) {
+        const companyLogo: any = await this.uploadImageToServer(item.originFileObj);
+        companyLogoPic.push(companyLogo.fileName)
       }
 
-      const comapanyLogo: any = await this.uploadImageToServer(this.logoList[0].originFileObj);
-      console.log("Company Logo", comapanyLogo)
+
 
       const formData = this.companyDetailForm.value;
       let reqObj = {
-        companyLogo: comapanyLogo.fileName,
+        companyLogo: companyLogoPic[0] ? companyLogoPic[0] : '',
         contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
         companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
         googleBusiness: formData.googleBusiness ? formData.googleBusiness : '',
@@ -308,10 +327,9 @@ export class FormCompanyDetailComponent implements OnInit {
         companyPage: formData.companyPage ? formData.companyPage : '',
         tradeShow: [...this.memberProfiles],
         contactPerson: [...this.contactProfiles],
-        companyPicture: pictureList
+        companyPicture: pictureList,
       }
       console.log('reqData', reqObj);
-
       if (this.isDataExist) {
         formData._id = this.idIfDataExist;
         this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(

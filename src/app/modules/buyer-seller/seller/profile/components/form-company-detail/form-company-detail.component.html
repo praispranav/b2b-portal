@@ -201,7 +201,7 @@
                 <label for="fcd-accType" class="">Account Type</label>
                 <pg-select style="width: 100%;" formControlName="accType" [PlaceHolder]="'Select Account Type'"
                     AllowClear ShowSearch>
-                    <pg-option *ngFor="let option of options1" [Label]="option.label" [Value]="option"
+                    <pg-option *ngFor="let option of options1" [Label]="option.label" [Value]="option.value"
                         [Disabled]="option.disabled">
                     </pg-option>
                 </pg-select>

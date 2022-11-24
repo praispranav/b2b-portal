@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderCertificateCenterService } from '../../../../../../core/providers/user/provider-certificate-center.service';
 import { Subscription } from 'rxjs';
+import { ImageService } from '../../../../../../core/providers/user/image.service';
 
 @Component({
   selector: 'app-form-certificate-center',
@@ -15,7 +16,7 @@ export class FormCertificateCenterComponent implements OnInit {
   idIfDataExist: string;
   certificateCenterForm: FormGroup;
   formGroup: FormGroup;
-  certificateArray: FormArray = new FormArray([]);
+  formArray: FormArray = new FormArray([]);
   imageList: any[] = [];
   certificateProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
@@ -41,6 +42,8 @@ export class FormCertificateCenterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
+
     private appMessageService: AppMessageService,
     private providerCertificateCenterService: ProviderCertificateCenterService
   ) { }
@@ -58,8 +61,8 @@ export class FormCertificateCenterComponent implements OnInit {
     this.updateDataIfExist();
     this.addNewCertificate("");
     this.serviceSubscription.push(
-      this.certificateArray.valueChanges.pipe().subscribe(() => {
-        this.certificateProfiles = this.certificateArray.controls
+      this.formArray.valueChanges.pipe().subscribe(() => {
+        this.certificateProfiles = this.formArray.controls
           .filter((control) => {
             return control.valid;
           })
@@ -82,11 +85,11 @@ export class FormCertificateCenterComponent implements OnInit {
       image: [data.image ? data.image : ""],
 
     });
-    this.certificateArray.push(this.formGroup);
+    this.formArray.push(this.formGroup);
 
   }
   removeCertificate(index: number): void {
-    this.certificateArray.removeAt(index);
+    this.formArray.removeAt(index);
   }
   updateDataIfExist() {
     this.isLoading = true;
@@ -140,15 +143,30 @@ export class FormCertificateCenterComponent implements OnInit {
   }
 
   async subCertificateCenterForm() {
-    if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
+
+    // if (this.certificateCenterForm.invalid) {
+    //   this.markFormGroupTouched(this.certificateCenterForm);
+    //   return;
+    // }
+    console.log("ImageList", this.imageList);
+    const pictureList = []
+    let i = 0;
+    for await (const item of this.imageList) {
+      const certificateImage: any = await this.uploadImageToServer(item[0].originFileObj);
+      pictureList[i] = (certificateImage.fileName)
+      i++
+      console.log("certificate center", certificateImage);
     }
-    if (this.certificateCenterForm.invalid) {
-      this.markFormGroupTouched(this.certificateCenterForm);
-      return;
-    }
+    console.log(pictureList)
+
+    console.log("Form Values", this.formArray.value)
+    const formValues = this.formArray.value;
+    pictureList.forEach((i, index) => {
+      formValues[index].image = i
+    })
+
+    console.log(formValues)
+    console.log(pictureList)
     this.isLoading = true;
     const formData = this.certificateCenterForm.value;
     let reqObj = {
@@ -176,14 +194,14 @@ export class FormCertificateCenterComponent implements OnInit {
     }
   }
 
-  private markFormGroupTouched(form: FormGroup) {
-    Object.values(form.controls).forEach((control) => {
-      control.markAsTouched();
-      if ((control as any).controls) {
-        this.markFormGroupTouched(control as FormGroup);
-      }
-    });
-  }
+  // private markFormGroupTouched(form: FormGroup) {
+  //   Object.values(form.controls).forEach((control) => {
+  //     control.markAsTouched();
+  //     if ((control as any).controls) {
+  //       this.markFormGroupTouched(control as FormGroup);
+  //     }
+  //   });
+  // }
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -191,5 +209,20 @@ export class FormCertificateCenterComponent implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+  }
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+
+      this.isLoading = true
+      this.imageService.uploadImage(image).subscribe((res) => {
+        this.isLoading = false;
+        resolve(res)
+      }, (error) => {
+        console.log(error);
+        reject(error)
+        this.isLoading = false;
+      })
+
+    })
   }
 }
