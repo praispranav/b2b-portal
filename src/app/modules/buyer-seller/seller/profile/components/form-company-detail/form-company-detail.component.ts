@@ -113,6 +113,7 @@ export class FormCompanyDetailComponent implements OnInit {
 
   uploadImageToServer(image) {
     return new Promise((resolve, reject) => {
+
       this.companyLogoUploading = true
       this.imageService.uploadImage(image).subscribe((res) => {
         this.isLoading = false;
@@ -122,6 +123,7 @@ export class FormCompanyDetailComponent implements OnInit {
         reject(error)
         this.isLoading = false;
       })
+
     })
   }
 
@@ -273,6 +275,7 @@ export class FormCompanyDetailComponent implements OnInit {
   async subCompanyDetailForm() {
     try {
 
+      // console.log("Tradethis.tradePicList);
       this.isLoading = true
       const pictureList = []
       for await(const item of this.pictureList){
@@ -281,9 +284,12 @@ export class FormCompanyDetailComponent implements OnInit {
         console.log("COmpany Picture", companyPicture);
       }
 
+      const comapanyLogo: any = await this.uploadImageToServer(this.logoList[0].originFileObj);
+      console.log("Company Logo", comapanyLogo)
 
       const formData = this.companyDetailForm.value;
       let reqObj = {
+        companyLogo: comapanyLogo.fileName,
         contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
         companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
         googleBusiness: formData.googleBusiness ? formData.googleBusiness : '',
