@@ -108,6 +108,8 @@ export class FormQualityControlComponent implements OnInit {
     // for (let x = 0; x < this.imageList.length; x++) {
     //   formArray[x].image = await this.toBase64(this.imageList[x][0])
     // }
+
+    console.log("Image---", this.imageList)
     const formData = this.qualityControlForm.value;
     let reqObj = {
       qualityArray: [...this.qualityControl],

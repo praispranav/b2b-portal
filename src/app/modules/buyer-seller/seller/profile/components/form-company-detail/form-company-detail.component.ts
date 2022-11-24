@@ -6,6 +6,7 @@ import { ProviderMaterLocationService } from '../../../../../../core/providers/m
 import { ProviderMaterStateService } from '../../../../../../core/providers/master/provider-mater-state.service';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderCompanyDetailService } from './../../../../../../core/providers/user/provider-company-detail.service';
+import { ImageService } from '../../../../../../core/providers/user/image.service';
 @Component({
   selector: "app-form-company-detail",
   templateUrl: "./form-company-detail.component.html",
@@ -13,6 +14,7 @@ import { ProviderCompanyDetailService } from './../../../../../../core/providers
 })
 export class FormCompanyDetailComponent implements OnInit {
   isLoading = true;
+  companyLogoUploading: boolean = false;
   isDataExist: boolean;
   idIfDataExist: string;
   companyDetailForm: FormGroup;
@@ -70,6 +72,7 @@ export class FormCompanyDetailComponent implements OnInit {
   companyLanguageSpoken = ['Hindi', 'English'];
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
     private appMessageService: AppMessageService,
     private providerCompanyDetailService: ProviderCompanyDetailService,
     private providerMaterCountryService: ProviderMaterCountryService,
@@ -107,6 +110,21 @@ export class FormCompanyDetailComponent implements OnInit {
     );
 
   }
+
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.companyLogoUploading = true
+      this.imageService.uploadImage(image).subscribe((res) => {
+        this.isLoading = false;
+        resolve(res)
+      }, (error) => {
+        console.log(error);
+        reject(error)
+        this.isLoading = false;
+      })
+    })
+  }
+
   getCountryList() {
     this.providerMaterCountryService.getMaterCountryList().subscribe(
       (res: any) => {
@@ -253,65 +271,78 @@ export class FormCompanyDetailComponent implements OnInit {
   }
 
   async subCompanyDetailForm() {
-    if (!this.companyDetailForm.valid) {
-      this.markFormGroupTouched(this.companyDetailForm);
-      return;
-    }
-    if (this.logoList.length > 0) {
-      this.f.companyLogo.setValue(
-        await this.toBase64(this.logoList[0].originFileObj)
-      );
-    }
-    if (this.pictureList.length > 0) {
-      this.f.companyPicture.setValue(
-        await this.toBase64(this.pictureList[0].originFileObj)
-      );
-    }
-    if (this.tradePicList.length > 0) {
-      this.f.tradePicture.setValue(
-        await this.toBase64(this.pictureList[0].originFileObj)
-      );
-    }
-    this.isLoading = true;
+    try {
+
+      this.isLoading = true
+      const pictureList = []
+      for await(const item of this.pictureList){
+        const companyPicture: any = await this.uploadImageToServer(item.originFileObj);
+        pictureList.push(companyPicture.fileName)
+        console.log("COmpany Picture", companyPicture);
+      }
 
 
-    const formData = this.companyDetailForm.value;
-    let reqObj = {
-      contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
-      companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
-      googleBusiness: formData.googleBusiness ? formData.googleBusiness : '',
-      facebookBusiness: formData.facebookBusiness ? formData.facebookBusiness : '',
-      instagramBusiness: formData.instagramBusiness ? formData.instagramBusiness : '',
-      accNumber: formData.accNumber ? formData.accNumber : '',
-      accType: formData.accType ? formData.accType : '',
-      accIFSCCode: formData.accIFSCCode ? formData.accIFSCCode : '',
-      accSwiftCode: formData.accSwiftCode ? formData.accSwiftCode : '',
-      accBranch: formData.accBranch ? formData.accBranch : '',
-      accBankName: formData.accBankName ? formData.accBankName : '',
-      companyLanguageSpoken: formData.companyLanguageSpoken ? formData.companyLanguageSpoken : '',
-      companyVision: formData.companyVision ? formData.companyVision : '',
-      companyDetail: formData.companyDetail ? formData.companyDetail : '',
-      companyPhilosophy: formData.companyPhilosophy ? formData.companyPhilosophy : '',
-      companyPage: formData.companyPage ? formData.companyPage : '',
-      tradeShow: [...this.memberProfiles],
-      contactPerson: [...this.contactProfiles],
-    }
-    console.log('reqData', reqObj);
+      const formData = this.companyDetailForm.value;
+      let reqObj = {
+        contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
+        companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
+        googleBusiness: formData.googleBusiness ? formData.googleBusiness : '',
+        facebookBusiness: formData.facebookBusiness ? formData.facebookBusiness : '',
+        instagramBusiness: formData.instagramBusiness ? formData.instagramBusiness : '',
+        accNumber: formData.accNumber ? formData.accNumber : '',
+        accType: formData.accType ? formData.accType : '',
+        accIFSCCode: formData.accIFSCCode ? formData.accIFSCCode : '',
+        accSwiftCode: formData.accSwiftCode ? formData.accSwiftCode : '',
+        accBranch: formData.accBranch ? formData.accBranch : '',
+        accBankName: formData.accBankName ? formData.accBankName : '',
+        companyLanguageSpoken: formData.companyLanguageSpoken ? formData.companyLanguageSpoken : '',
+        companyVision: formData.companyVision ? formData.companyVision : '',
+        companyDetail: formData.companyDetail ? formData.companyDetail : '',
+        companyPhilosophy: formData.companyPhilosophy ? formData.companyPhilosophy : '',
+        companyPage: formData.companyPage ? formData.companyPage : '',
+        tradeShow: [...this.memberProfiles],
+        contactPerson: [...this.contactProfiles],
+        companyPicture: pictureList
+      }
+      console.log('reqData', reqObj);
 
-    if (this.isDataExist) {
-      formData._id = this.idIfDataExist;
-      this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
-        () => { this.isLoading = false; }
-      );
-    } else {
-      this.providerCompanyDetailService.addCompanyDetail(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
-        () => { this.isLoading = false; }
-      );
+      if (this.isDataExist) {
+        formData._id = this.idIfDataExist;
+        this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(
+          (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
+          (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
+          () => { this.isLoading = false; }
+        );
+      } else {
+        this.providerCompanyDetailService.addCompanyDetail(reqObj).subscribe(
+          (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
+          (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
+          () => { this.isLoading = false; }
+        );
+      }
+    } catch (error) {
+      console.log(error)
     }
+    // if (!this.companyDetailForm.valid) {
+    //   this.markFormGroupTouched(this.companyDetailForm);
+    //   return;
+    // }
+    // if (this.logoList.length > 0) {
+    //   this.f.companyLogo.setValue(
+    //     await this.toBase64(this.logoList[0].originFileObj)
+    //   );
+    // }
+    // if (this.pictureList.length > 0) {
+    //   this.f.companyPicture.setValue(
+    //     await this.toBase64(this.pictureList[0].originFileObj)
+    //   );
+    // }
+    // if (this.tradePicList.length > 0) {
+    //   this.f.tradePicture.setValue(
+    //     await this.toBase64(this.pictureList[0].originFileObj)
+    //   );
+    // }
+
   }
 
   private markFormGroupTouched(form: FormGroup) {
