@@ -50,7 +50,7 @@ export class FormCompanyProfileComponent implements OnInit {
     { value: 'product5', label: 'product5' },
     { value: 'product6', label: 'product6' }
   ];
-  mainProduct = ['Product1', 'Product2'];
+  // mainProduct = ['Product1', 'Product2'];
   divisions = [
     { value: 'Branch', label: 'Branch' },
     { value: 'Network', label: 'Network' },
@@ -163,14 +163,16 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   buildTypeForm() {
     this.companyProfileForm = this.formBuilder.group({
-      company: ["", [Validators.required, Validators.minLength(20)]],
-      tanNo: ["", [Validators.required, Validators.maxLength(20)]],
-      panNo: ["", [Validators.required, Validators.maxLength(20)]],
-      gstNo: ["", [Validators.required, Validators.maxLength(20)]],
+      company: ["", [Validators.required]],
+      tanNo: ["", [Validators.required]],
+      panNo: ["", [Validators.required]],
+      gstNo: ["", [Validators.required]],
       codeOfIE: ["", [Validators.required]],
       estYear: ["", [Validators.required]],
-      mainCategory: ["", [Validators.required]],
-      mainProduct: ["", [Validators.required]],
+      // mainCategory: ["", [Validators.required]],
+      // mainProduct: ["", [Validators.required]],
+      mainCategory:[[]],
+      mainProduct: [[]],
       regAddress: ['', [Validators.required]],
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
@@ -219,7 +221,7 @@ export class FormCompanyProfileComponent implements OnInit {
     this.additionalArray.removeAt(index);
   }
   updateDataIfExist() {
-    this.isLoading = true;
+    // this.isLoading = true;
     this.providerCompanyProfileService.getCompanyProfileListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
         let patchFormvalue: any = res.data[0];
@@ -242,6 +244,8 @@ export class FormCompanyProfileComponent implements OnInit {
           regAddress: patchFormvalue.regAddress ? patchFormvalue.regAddress : '',
           regCountry: patchFormvalue.regCountry ? patchFormvalue.regCountry : '',
           regState: patchFormvalue.regState ? patchFormvalue.regState : '',
+          // facLandline: [data.facLandline ? data.facLandline : ""],
+          // facMobile: [data.facMobile ? data.facMobile : ""],
           regCity: patchFormvalue.regCity ? patchFormvalue.regCity : '',
           businessCertificate: patchFormvalue.businessCertificate ? patchFormvalue.businessCertificate : '',
 
@@ -266,7 +270,7 @@ export class FormCompanyProfileComponent implements OnInit {
       this.markFormGroupTouched(this.companyProfileForm);
       return;
     }
-    this.isLoading = true;
+    // this.isLoading = true;
     const formData = this.companyProfileForm.value;
     let reqObj = {
 
@@ -282,25 +286,32 @@ export class FormCompanyProfileComponent implements OnInit {
       regCountry: formData.regCountry ? formData.regCountry : '',
       regState: formData.regState ? formData.regState : '',
       regCity: formData.regCity ? formData.regCity : '',
+
       businessCertificate: formData.businessCertificate ? formData.businessCertificate : '',
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
       additionalLandline: [...this.landlineProfiles],
     }
-    console.log('reqData', reqObj);
+    console.log('reqData', formData);
+    console.log('reqObj',reqObj)
 
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCompanyProfileService.updateCompanyProfile(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Profile Updated Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Profile Not Updated") },
-        () => { this.isLoading = false; }
+        // () => 
+        // { 
+        //   this.isLoading = false;
+        //  }
       );
     } else {
       this.providerCompanyProfileService.addCompanyProfile(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Profile Added Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Profile Not Added") },
-        () => { this.isLoading = false; }
+        // () => { 
+        //   this.isLoading = false;
+        //  }
       );
     }
   }
