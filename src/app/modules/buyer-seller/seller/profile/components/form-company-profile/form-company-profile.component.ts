@@ -7,7 +7,7 @@ import { ProviderCompanyProfileService } from "../../../../../../core/providers/
 import { ProviderMaterCountryService } from "../../../../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../../../../core/providers/master/provider-mater-location.service";
-import { element } from 'protractor';
+
 @Component({
   selector: "app-form-company-profile",
   templateUrl: "./form-company-profile.component.html",
@@ -266,7 +266,7 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   async subCompanyProfileForm() {
-    if (!this.companyProfileForm.invalid) {
+    if (this.companyProfileForm.invalid) {
       this.markFormGroupTouched(this.companyProfileForm);
       return;
     }
@@ -294,6 +294,8 @@ export class FormCompanyProfileComponent implements OnInit {
     }
     console.log('reqData', formData);
     console.log('reqObj',reqObj)
+
+    debugger;
 
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
