@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ImageService } from '../../../../../../core/providers/user/image.service';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderQualityControlService } from './../../../../../../core/providers/user/provider-quality-control.service';
 
@@ -22,6 +23,7 @@ export class FormQualityControlComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
     private appMessageService: AppMessageService,
     private providerQualityControlService: ProviderQualityControlService
   ) { }
@@ -82,9 +84,7 @@ export class FormQualityControlComponent implements OnInit {
           processDescription: patchFormvalue.processDescription ? patchFormvalue.processDescription : '',
           image: patchFormvalue.image ? patchFormvalue.image : '',
         })
-        patchFormvalue.tradeShow.forEach(element => {
-          this.addNew(element);
-        })
+
       },
       (err) => { this.isDataExist = false; },
       () => { this.isLoading = false; }
@@ -93,22 +93,37 @@ export class FormQualityControlComponent implements OnInit {
 
   async subQualityControlForm() {
     console.log("image value", this.f, this.f.image)
-    if (this.imageList.length > 0) {
-      this.f.isQualityProcess.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
+    console.log("ImageList", this.imageList);
+    const pictureList = []
+    let i = 0;
+    for await (const item of this.imageList) {
+      const qualityControlImage: any = await this.uploadImageToServer(item[0].originFileObj);
+      pictureList[i] = (qualityControlImage.fileName)
+      i++
+      console.log("quality control", qualityControlImage);
     }
+
+    console.log(pictureList)
+
+    console.log("Form Values", this.formArray.value)
+    const formValues = this.formArray.value;
+    pictureList.forEach((i, index) => {
+      formValues[index].image = i
+    })
+
+    console.log(formValues)
+
+    // if (this.imageList.length > 0) {
+    //   this.f.isQualityProcess.setValue(
+    //     await this.toBase64(this.imageList[0].originFileObj)
+    //   );
+    // }
     if (this.qualityControlForm.invalid) {
       this.markFormGroupTouched(this.qualityControlForm);
       return;
     }
     this.isLoading = true;
-    // const formArray = this.formArray.value;
-    // console.log(this.imageList)
-    // for (let x = 0; x < this.imageList.length; x++) {
-    //   formArray[x].image = await this.toBase64(this.imageList[x][0])
-    // }
-    const formData = this.qualityControlForm.value;
+
     let reqObj = {
       qualityArray: [...this.qualityControl],
 
@@ -116,7 +131,7 @@ export class FormQualityControlComponent implements OnInit {
     console.log('reqData', reqObj);
 
     if (this.isDataExist) {
-      formData._id = this.idIfDataExist;
+      formValues._id = this.idIfDataExist;
       this.providerQualityControlService.updateQualityControl(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
@@ -145,5 +160,21 @@ export class FormQualityControlComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
+  }
+
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+
+      this.isLoading = true
+      this.imageService.uploadImage(image).subscribe((res) => {
+        this.isLoading = false;
+        resolve(res)
+      }, (error) => {
+        console.log(error);
+        reject(error)
+        this.isLoading = false;
+      })
+
+    })
   }
 }

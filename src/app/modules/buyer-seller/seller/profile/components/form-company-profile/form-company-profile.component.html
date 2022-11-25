@@ -9,8 +9,8 @@
             </div>
             <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
                 <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
-                <label *ngIf="f.company.errors.minlength.requiredLength" class="error">Minimum length of 20 is
-                    required.</label>
+                <!-- <label *ngIf="f.company.errors.minlength" class="error">Minimum length of 20 is
+                    required.</label> -->
             </div>
         </div>
     </div>
@@ -90,11 +90,11 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group form-group-default form-group-default-select2 required">
-                <label>Main Category</label>
-                <pg-select style="width: 100%;" [Mode]="'multiple'" [PlaceHolder]="'Enter the category'"
-                    formControlName="mainCategory" [NotFoundContent]="'Not found'">
-                    <pg-option *ngFor="let option of categoryOptions" [Label]="option.label" [Value]="option.value"
+            <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required">
+                <label for="fcp-mainCategory">Main Category</label>
+                <pg-select style="width: 100%;" [PlaceHolder]="'Enter the category'" formControlName="mainCategory"
+                    AllowClear ShowSearch>
+                    <pg-option *ngFor="let option of categoryOptions" [Label]="option.label" [Value]="option"
                         [Disabled]="option.disabled">
                     </pg-option>
                 </pg-select>
@@ -122,9 +122,8 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>Registered Address</h4>
-            <h6>Business Registration Certificate<span class="text-danger">*</span></h6>
         </div>
     </div>
     <div class="row">
@@ -213,8 +212,16 @@
         <div class="col-md-3">
             <label for="">Business Registration Certificate</label>
         </div>
-        <div class="col-md-3">
-            <input type="file" name="" id="">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+                    id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" formControlName="businessCertificate">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button"
+                        (click)="fileInputDoc.click()">upload</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -1026,8 +1033,7 @@
     <button type="button" (click)="addNewAdditional()" class="btn btn-primary w-25 my-3">Add more additional details
     </button>
     <div class="mt-4">
-        <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
-            (click)="subCompanyProfileForm()">
+        <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subCompanyProfileForm()">
             {{isDataExist? 'Update' : 'Save'}} Company Profile
         </button>
     </div>

@@ -63,8 +63,8 @@
 
     </button>
     <div class="mt-4">
-        <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
-            (click)="subQualityControlForm()">
+        <!-- [disabled]="isLoading" -->
+        <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subQualityControlForm()">
             {{isDataExist? 'Update' : 'Save'}} Quality Control
         </button>
     </div>

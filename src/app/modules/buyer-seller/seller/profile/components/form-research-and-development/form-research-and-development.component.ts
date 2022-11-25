@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppMessageService } from '../../../../../../core/services/app-message.service';
 import { ProviderResearchAndDevelopmentService } from '../../../../../../core/providers/user/provider-research-and-development.service';
 import { Subscription } from 'rxjs';
+import { ImageService } from '../../../../../../core/providers/user/image.service';
 
 @Component({
   selector: "app-form-research-and-development",
@@ -19,9 +20,12 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   imageList: any[] = [];
   formArray: FormArray = new FormArray([]);
   serviceSubscription: Subscription[] = [];
+  rndImageUploading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
+
     private appMessageService: AppMessageService,
     private providerResearchAndDevelopmentService: ProviderResearchAndDevelopmentService
   ) { }
@@ -45,7 +49,20 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       })
     );
   }
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.rndImageUploading = true
+      this.imageService.uploadImage(image).subscribe((res) => {
+        this.isLoading = false;
+        resolve(res)
+      }, (error) => {
+        console.log(error);
+        reject(error)
+        this.isLoading = false;
+      })
 
+    })
+  }
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
       isQualityProcess: ["Yes"],
@@ -85,10 +102,10 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
           businessScope: patchFormvalue.businessScope ? patchFormvalue.businessScope : '',
           certificateIssueDate: patchFormvalue.certificateIssueDate ? patchFormvalue.certificateIssueDate : '',
           certificateExpiryDate: patchFormvalue.certificateExpiryDate ? patchFormvalue.certificateExpiryDate : '',
+          image: patchFormvalue.image ? patchFormvalue.image : '',
+
         })
-        patchFormvalue.tradeShow.forEach(element => {
-          this.addNew(element);
-        })
+
       },
       (err) => { this.isDataExist = false; },
       () => { this.isLoading = false; }
@@ -96,26 +113,40 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
 
   async subResearchAndDevelopmentForm() {
-    if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
-      );
+    console.log("image value", this.f, this.f.image)
+    console.log("ImageList", this.imageList);
+    const pictureList = []
+    let i = 0;
+    for await (const item of this.imageList) {
+      const researchImage: any = await this.uploadImageToServer(item[0].originFileObj);
+      pictureList[i] = (researchImage.fileName)
+      i++
+      console.log("research and development Picture", researchImage);
     }
+
+    console.log(pictureList)
+
+    console.log("Form Values", this.formArray.value)
+    const formValues = this.formArray.value;
+    pictureList.forEach((i, index) => {
+      formValues[index].image = i
+    })
+
+    console.log(formValues)
+
     if (this.researchAndDevelopmentForm.invalid) {
       this.markFormGroupTouched(this.researchAndDevelopmentForm);
       return;
     }
     this.isLoading = true;
-    const formData = this.researchAndDevelopmentForm.value;
     let reqObj = {
 
       tradeShow: [...this.rndDArray]
 
     }
     console.log('reqData', reqObj);
-
     if (this.isDataExist) {
-      formData._id = this.idIfDataExist;
+      formValues._id = this.idIfDataExist;
       this.providerResearchAndDevelopmentService.updateResearchAndDevelopment(reqObj).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Research & Development Updated Successfully") },
         (err) => { this.appMessageService.createBasicNotification('success', "Research & Development Not Updated") },

@@ -29,8 +29,8 @@
             </div>
         </ng-container>
     </ng-container>
-    <div class="row border p-4" *ngFor="let form of certificateArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="certificateArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
+    <div class="row border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
+        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
             class="btn btn-primary w-25">
             Remove
         </button>
@@ -58,7 +58,7 @@
                     id="fcc-certificateIssuer" formControlName="certificateIssuer" />
             </div>
         </div>
-        <!-- <div class="col-md-4">
+        <div class="col-md-4">
             <h4>Upload Image</h4>
             <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
                 Action="https://jsonplaceholder.typicode.com/posts/">
@@ -71,12 +71,12 @@
                 <label *ngIf="f.image.errors.required" class="error">image is required
                 </label>
             </div>
-        </div> -->
+        </div>
     </div>
     <button type="button" (click)="addNewCertificate()" class="btn btn-primary w-25 my-3">Add more other certificates
     </button>
     <div class="mt-4">
-        <button [disabled]="isLoading" certificate="submit" class="me-4 btn btn-primary show-notification"
+        <button certificate="submit" class="me-4 btn btn-primary show-notification"
             (click)="subCertificateCenterForm()">
             {{isDataExist? 'Update' : 'Save'}} Certificate Center
         </button>
