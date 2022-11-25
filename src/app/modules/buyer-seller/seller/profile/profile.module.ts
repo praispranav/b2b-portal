@@ -16,6 +16,8 @@ import { FormQualityControlComponent } from "./components/form-quality-control/f
 import { FormResearchAndDevelopmentComponent } from "./components/form-research-and-development/form-research-and-development.component";
 import { FormSellerTypeComponent } from './components/form-seller-type/form-seller-type.component';
 import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.component";
+import { pgSelectFXComponent } from "../../../../@pages/components/cs-select/select.component";
+import { pgSelectfx } from "../../../../@pages/components/cs-select/select.module";
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { PageProfileAddComponent } from "./page-profile-add/page-profile-add.com
     ProfileRoutingModule,
     pgTabsModule,
     pgSelectModule,
+    pgSelectfx,
     pgTagModule,
     pgDatePickerModule,
     pgUploadModule

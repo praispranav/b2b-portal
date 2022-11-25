@@ -13,7 +13,20 @@ export class FormExportCapabilityComponent implements OnInit {
   isDataExist: boolean;
   idIfDataExist: string;
   exportCapabilityForm: FormGroup;
+  turnOverOptions = [
+    { value: 'Below $1 Million', label: 'Below $1 Million' },
+    { value: '$1 Million - $2.5 Million', label: '$1 Million - $2.5 Million' },
+    { value: '$2.5 Million - $5 Million', label: '$2.5 Million - $5 Million' },
+    { value: '$5 Million - $10 Million', label: '$5 Million - $10 Million' },
+    { value: '$10 Million - $50 Million', label: '$10 Million - $50 Million' },
+    { value: 'US$50 Million - $100 Million', label: 'US$50 Million - $100 Million' },
+    { value: 'Above $100 Million', label: 'Above $100 Million' },
 
+
+
+    { value: 'disabled', label: 'Disabled', disabled: true }
+  ];
+  yearlyTurnOver;
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
@@ -51,12 +64,12 @@ export class FormExportCapabilityComponent implements OnInit {
     });
   }
 
-  updateDataIfExist(){
+  updateDataIfExist() {
     this.isLoading = true;
-    this.providerExportCapabilityService.getExportCapabilityListByFilter(0, 1, {userId: 'pending'}).subscribe(
+    this.providerExportCapabilityService.getExportCapabilityListByFilter(0, 1, { userId: 'pending' }).subscribe(
       (res: any) => {
-        this.isDataExist = res.data.length>0;
-        if(!this.isDataExist){
+        this.isDataExist = res.data.length > 0;
+        if (!this.isDataExist) {
           return;
         }
         this.idIfDataExist = res.data[0]['_id'];
@@ -89,8 +102,8 @@ export class FormExportCapabilityComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    const formValue = this.exportCapabilityForm.value;    
-    if(this.isDataExist){
+    const formValue = this.exportCapabilityForm.value;
+    if (this.isDataExist) {
       formValue._id = this.idIfDataExist;
       this.providerExportCapabilityService.updateExportCapability(formValue).subscribe(
         (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
