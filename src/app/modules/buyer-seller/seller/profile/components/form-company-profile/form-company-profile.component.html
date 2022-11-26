@@ -200,7 +200,17 @@
                 class="btn btn-primary mb-4">
                 Remove
             </button>
-            <div pgFormGroupDefault class="form-group form-group-default required"
+            <!-- <div class="col-md-3 ">
+                <div pgFormGroupDefault class="form-group form-group-default ms-1">
+                    <label for="code">Code</label>
+
+                    <select name="code" id="" class="form-control mr-sm-2"  [(ngModel)]="selectedOption" formControlName="code" >
+      <option class="ms-1" *ngFor="let code of codes" [value]="code.code">{{code.code}}</option>
+    </select>
+                </div>
+             
+            </div> -->
+            <div pgFormGroupDefault class="form-group form-group-default required" 
                 [class.has-error]="f.regLandline?.invalid && (f.regLandline.dirty || f.regLandline.touched)">
                 <label for="fcp-regLandline">Landline Number</label>
                 <input type="number" formControlName="regLandline" placeholder="Enter Landline Number"
