@@ -16,7 +16,7 @@
     </div>
     <div class="row border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)"
-            class="btn btn-primary w-25">
+            class="btn btn-primary w-25 mb-4">
             Remove
         </button>
         <div class="row">

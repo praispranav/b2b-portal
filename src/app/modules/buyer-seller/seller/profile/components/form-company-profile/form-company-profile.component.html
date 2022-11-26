@@ -197,7 +197,7 @@
     <div class="row">
         <div class="col-md-3" *ngFor="let form of landlineArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="landlineArray?.controls?.length > 1" type="button" (click)="deleteLandline(i)"
-                class="btn btn-primary">
+                class="btn btn-primary mb-4">
                 Remove
             </button>
             <div pgFormGroupDefault class="form-group form-group-default required"
@@ -219,7 +219,10 @@
         <div class="col-md-3">
             <label for="">Business Registration Certificate</label>
         </div>
-        <div class="col-md-8">
+      
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-4">
             <div class="input-group">
                 <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
                     id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
@@ -234,7 +237,7 @@
     <div class="row">
         <div class="col-md-3" *ngFor="let form of mobileArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="mobileArray?.controls?.length > 1" type="button" (click)="deleteMobile(i)"
-                class="btn btn-primary">
+                class="btn btn-primary mb-4">
                 Remove
             </button>
             <div pgFormGroupDefault class="form-group form-group-default required"
@@ -271,7 +274,7 @@
     <p>This information is required if you have another offer into different location also.</p>
     <div class="border p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="additionalArray?.controls?.length > 1" type="button" (click)="removeAdditional(i)"
-            class="btn btn-primary">
+            class="btn btn-primary mb-4">
             Remove
         </button>
         <div class="row">
