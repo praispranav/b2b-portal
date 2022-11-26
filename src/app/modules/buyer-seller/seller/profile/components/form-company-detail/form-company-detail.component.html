@@ -98,7 +98,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonEmail?.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
                 <label for="fcd-contactPersonEmail">Email</label>
-                <input type="text" formControlName="contactPersonEmail" placeholder="Enter Your Email Id"
+                <input type="text" formControlName="contactPersonEmail" placeholder="some@example.com"
                     class="form-control" id="fcd-contactPersonEmail" />
             </div>
             <div *ngIf="f.contactPersonEmail?.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
@@ -119,7 +119,7 @@
                 [class.has-error]="f.contactPersonAlternateEmail?.invalid && (f.contactPersonAlternateEmail.dirty || f.contactPersonAlternateEmail.touched)">
                 <label for="fcd-contactPersonAlternateEmail">Alternative Email</label>
                 <input type="text" formControlName="contactPersonAlternateEmail"
-                    placeholder="Enter Your Alternative Email Id" class="form-control"
+                    placeholder="some@example.com" class="form-control"
                     id="fcd-contactPersonAlternateEmail" />
             </div>
             <div
