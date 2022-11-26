@@ -164,10 +164,10 @@ export class FormCompanyProfileComponent implements OnInit {
   buildTypeForm() {
     this.companyProfileForm = this.formBuilder.group({
       company: ["", [Validators.required]],
-      tanNo: ["", [Validators.required]],
-      panNo: ["", [Validators.required]],
-      gstNo: ["", [Validators.required]],
-      codeOfIE: ["", [Validators.required]],
+      tanNo: ["", [Validators.required, Validators.maxLength(10)]],
+      panNo: ["", [Validators.required, Validators.maxLength(10)]],
+      gstNo: ["", [Validators.required, Validators.maxLength(15)]],
+      codeOfIE: ["", [Validators.required, Validators.maxLength(10)]],
       estYear: ["", [Validators.required]],
       // mainCategory: ["", [Validators.required]],
       // mainProduct: ["", [Validators.required]],
@@ -176,7 +176,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regAddress: ['', [Validators.required]],
       regCountry: ['', [Validators.required]],
       regState: ['', [Validators.required]],
-      regCity: ['', [Validators.required]],
+      regCity: [''],
       businessCertificate: [''],
 
     });
