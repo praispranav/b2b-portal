@@ -186,6 +186,7 @@ export class FormCompanyProfileComponent implements OnInit {
       regState: ['', [Validators.required]],
       regCity: [''],
       businessCertificate: [''],
+      additionalFactoryDetails: ['']
 
     });
   }
@@ -300,6 +301,7 @@ export class FormCompanyProfileComponent implements OnInit {
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
       additionalLandline: [...this.landlineProfiles],
+      additionalFactoryDetails: formData.additionalFactoryDetails? formData.additionalFactoryDetails: '',
     }
     console.log('reqData', formData);
     console.log('reqObj',reqObj)

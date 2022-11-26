@@ -259,13 +259,13 @@
     <hr>
     <h6>Do you have any other office?<span class="text-danger">*</span></h6>
     <div class="form-check form-check-inline complete" (click)="additionlDetailValueYes()">
-        <input type="radio" name="office" id="fcd-radioInline" value="Default">
+        <input type="radio" name="additionalFactoryDetails" id="fcd-radioInline" value="Yes" formControlName="additionalFactoryDetails">
         <label for="fcd-radioInline">
             Yes
         </label>
     </div>
     <div class="form-check form-check-inline" (click)="additionlDetailValueNo()">
-        <input type="radio" name="office" id="fcd-radioDisabled" value="disabled">
+        <input type="radio" name="additionalFactoryDetails" id="fcd-radioDisabled" value="No" formControlName="additionalFactoryDetails">
         <label for="fcd-radioDisabled">
             No
         </label>
