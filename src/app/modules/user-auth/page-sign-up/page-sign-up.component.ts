@@ -17,6 +17,10 @@ import { ProviderMaterLocationService } from "../../../core/providers/master/pro
 export class PageSignUpComponent implements OnInit {
   signUpForm: FormGroup;
   selectedOption;
+  states=[];
+  cities=[];
+  countries=[]
+
   options = [
     { value: 'India', label: 'India' },
     { value: 'Malaysia', label: 'Malaysia' },
@@ -279,6 +283,7 @@ export class PageSignUpComponent implements OnInit {
 
   ngOnInit() {
     this.buildSignUpForm();
+    this.getCountryList()
   }
 
   buildSignUpForm() {
@@ -296,6 +301,57 @@ export class PageSignUpComponent implements OnInit {
       city: [""],
       role: ["", [Validators.required]]
     });
+  }
+    
+getCountryList(){
+  this.providerMaterCountryService.getMaterCountryList().subscribe(
+    (res: any) => {
+
+      this.countries = res.data;
+      console.log('country', this.countries);
+    
+    },
+    (err) => {
+      console.log(err)
+    }
+  );
+}
+  onCountrySelected(e) {
+    console.log("" + e.target.value);
+    this.f.regCountry.setValue(e.target.value);
+    this.f.facCountry.setValue(e.target.value);
+  
+    this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
+      (res: any) => {
+        this.states = res.data[0].states;
+        console.log('state', this.states)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+
+ 
+ onStateSelected(e) {
+    console.log("" + e.target.value);
+    this.f.regState.setValue(e.target.value);
+
+    this.f.facState.setValue(e.target.value);
+    this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
+      (res: any) => {
+        this.cities = res.data[0].cities;
+        console.log('cities', this.cities)
+      },
+      (err) => {
+        console.log(err)
+      }
+    );
+  }
+
+  onCitySelected(e) {
+    console.log("" + e.target.value);
+    this.f.regCity.setValue(e.target.value);
   }
 
   subSignUpForm() {
