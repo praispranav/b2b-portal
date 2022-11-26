@@ -1,6 +1,6 @@
 <form [formGroup]="researchAndDevelopmentForm" (keydown.enter)="$event.preventDefault()">
     <h6>Whether to demostrate Quality Control Process</h6>
-    <div class="form-check form-check-inline complete">
+    <!-- <div class="form-check form-check-inline complete">
         <input type="radio" formControlName="isQualityProcess" name="isQualityProcess"
             id="frand-frad-isQualityProcess-Yes" value="Yes">
         <label for="frand-isQualityProcess-Yes">
@@ -13,83 +13,96 @@
         <label for="frand-isQualityProcess-No">
             No
         </label>
-    </div>
-    <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)"
-            class="btn btn-primary w-25 mb-4">
-            Remove
+    </div> -->
+    <div class="form-check form-check-inline" (click)="yesRandDValue()">
+        <input class="form-check-input" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio1" value="yes">
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline" (click)="noRandDValue()">
+        <input class="form-check-input" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio2" value="No">
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    
+      <div *ngIf="noRandD">
+        <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
+            <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)"
+                class="btn btn-primary w-25 mb-4">
+                Remove
+            </button>
+            <div class="row">
+                <div class="col-md-8">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="frand-certificateName">Certificate Name</label>
+                        <input type="text" formControlName="certificateName" placeholder="Enter Certificate Name here"
+                            class="form-control" id="frand-frad-certificateName" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="frand-certifiedBy">Certified By</label>
+                        <input type="text" formControlName="certifiedBy" placeholder=" Enter Certified By"
+                            class="form-control" id="frand-frad-certifiedBy" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="frand-businessScope">Business Scope</label>
+                        <input type="text" formControlName="businessScope" placeholder="Enter Business Scope here"
+                            class="form-control" id="frand-frad-businessScope">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group form-group-default input-group col-md-12">
+                        <div class="form-input-group">
+                            <label for="frand-certificateIssueDate">Start Date</label>
+                            <pg-datepicker formControlName="certificateIssueDate" placeholder="Enter Start date here"
+                                class="form-control" id="frand-frad-certificateIssueDate">
+                            </pg-datepicker>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="pg-icon">text_align_justify</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-group-default input-group col-md-12">
+                        <div class="form-input-group">
+                            <label for="frand-certificateExpiryDate">End Date</label>
+                            <pg-datepicker formControlName="certificateExpiryDate" placeholder="Enter end date here"
+                                class="form-control" id="frand-frad-certificateExpiryDate">
+                            </pg-datepicker>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="pg-icon">text_align_justify</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div pgFormGroupDefault class="form-group">
+                    <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
+                        Action="https://jsonplaceholder.typicode.com/posts/">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload>
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="addNew()" class="mt-3 btn btn-primary">Add more details
         </button>
-        <div class="row">
-            <div class="col-md-8">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="frand-certificateName">Certificate Name</label>
-                    <input type="text" formControlName="certificateName" placeholder="Enter Certificate Name here"
-                        class="form-control" id="frand-frad-certificateName" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="frand-certifiedBy">Certified By</label>
-                    <input type="text" formControlName="certifiedBy" placeholder=" Enter Certified By"
-                        class="form-control" id="frand-frad-certifiedBy" />
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="frand-businessScope">Business Scope</label>
-                    <input type="text" formControlName="businessScope" placeholder="Enter Business Scope here"
-                        class="form-control" id="frand-frad-businessScope">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group form-group-default input-group col-md-12">
-                    <div class="form-input-group">
-                        <label for="frand-certificateIssueDate">Start Date</label>
-                        <pg-datepicker formControlName="certificateIssueDate" placeholder="Enter Start date here"
-                            class="form-control" id="frand-frad-certificateIssueDate">
-                        </pg-datepicker>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="pg-icon">text_align_justify</i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-group-default input-group col-md-12">
-                    <div class="form-input-group">
-                        <label for="frand-certificateExpiryDate">End Date</label>
-                        <pg-datepicker formControlName="certificateExpiryDate" placeholder="Enter end date here"
-                            class="form-control" id="frand-frad-certificateExpiryDate">
-                        </pg-datepicker>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="pg-icon">text_align_justify</i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div pgFormGroupDefault class="form-group">
-                <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
-                    Action="https://jsonplaceholder.typicode.com/posts/">
-                    <div class="pic-placeholder">
-                        <i class="pg-icon p-b-5">upload</i>
-                        <div class="fs-12">Upload</div>
-                    </div>
-                </pg-upload>
-            </div>
-        </div>
-    </div>
-    <button type="button" (click)="addNew()" class="mt-3 btn btn-primary">Add more details
-    </button>
+      </div>
+   
+  
     <div class="mt-4">
         <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
             (click)="subResearchAndDevelopmentForm()">
