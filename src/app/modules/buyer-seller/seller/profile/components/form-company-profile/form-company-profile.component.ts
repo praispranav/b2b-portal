@@ -33,7 +33,7 @@ export class FormCompanyProfileComponent implements OnInit {
   mobileProfiles: any[] = [];
   landlineProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
-
+  addtionalDetails:boolean=true;
   categoryOptions = [
     { value: 'Apparel', label: 'Apparel' },
     { value: 'Cloth', label: 'Cloth' },
@@ -349,5 +349,11 @@ export class FormCompanyProfileComponent implements OnInit {
       this.fileType = file.type;
       this.fileName = file.name
     }
+  }
+  additionlDetailValueYes(){
+    this.addtionalDetails = true;
+  }
+  additionlDetailValueNo(){
+    this.addtionalDetails = false;
   }
 }

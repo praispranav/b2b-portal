@@ -31,6 +31,7 @@ export class FormCompanyDetailComponent implements OnInit {
   memberProfiles: any[] = [];
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
+  tradeExpo:boolean=true;
   options = [
     { value: 'Owner', label: 'Owner' },
     { value: 'CEO', label: 'CEO' },
@@ -384,5 +385,11 @@ export class FormCompanyDetailComponent implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+  }
+  noTradeExpoDetails(){
+    this.tradeExpo = false;
+  }
+  TradeExpoDetailsAdd(){
+    this.tradeExpo = true;
   }
 }

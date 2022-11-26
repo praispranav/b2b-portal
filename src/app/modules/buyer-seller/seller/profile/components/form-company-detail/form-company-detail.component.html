@@ -345,19 +345,28 @@
     </div>
     <hr>
     <h6>Have you attended or Planed to attand any trade expo?<span class="text-danger">*</span></h6>
-    <div class="form-check form-check-inline complete">
+    <!-- <div class="form-check form-check-inline complete" (click)="TradeExpoDetailsAdd()">
         <input type="radio" name="state" id="fcd-radioInline" value="Default" checked>
         <label for="fcd-radioInline">
             Yes
         </label>
     </div>
-    <div class="form-check form-check-inline">
+    <div class="form-check form-check-inline" (click)="noTradeExpoDetails()">
         <input type="radio" name="state" id="fcd-radioDisabled" value="disabled">
         <label for="fcd-radioDisabled">
             No
         </label>
-    </div>
-
+    </div> -->
+    <div class="form-check form-check-inline" (click)="TradeExpoDetailsAdd()">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline" (click)="noTradeExpoDetails()">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+     
+<div *ngIf="tradeExpo">
     <div class="border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary mb-4">
             Remove
@@ -487,6 +496,8 @@
     </div>
     <button type="button" (click)="addNew()" class="btn btn-primary w-25 my-2">Add more trade show
     </button>
+</div>
+   
 
 
     <div class="mt-4">

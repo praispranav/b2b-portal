@@ -258,152 +258,157 @@
     </div>
     <hr>
     <h6>Do you have any other office?<span class="text-danger">*</span></h6>
-    <div class="form-check form-check-inline complete">
-        <input type="radio" name="office" id="fcd-radioInline" value="Default" checked>
+    <div class="form-check form-check-inline complete" (click)="additionlDetailValueYes()">
+        <input type="radio" name="office" id="fcd-radioInline" value="Default">
         <label for="fcd-radioInline">
             Yes
         </label>
     </div>
-    <div class="form-check form-check-inline">
+    <div class="form-check form-check-inline" (click)="additionlDetailValueNo()">
         <input type="radio" name="office" id="fcd-radioDisabled" value="disabled">
         <label for="fcd-radioDisabled">
             No
         </label>
     </div>
-    <h4>Additional Contact Details</h4>
-    <p>This information is required if you have another offer into different location also.</p>
-    <div class="border mb-4 p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="additionalArray?.controls?.length > 1" type="button" (click)="removeAdditional(i)"
-            class="btn btn-primary mb-4">
-            Remove
+
+    <div *ngIf="addtionalDetails">
+        <h4>Additional Contact Details</h4>
+        <p>This information is required if you have another offer into different location also.</p>
+        <div class="border mb-4 p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
+            <button *ngIf="additionalArray?.controls?.length > 1" type="button" (click)="removeAdditional(i)"
+                class="btn btn-primary mb-4">
+                Remove
+            </button>
+            <div class="row">
+                <div class="col-md-6">
+                    <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required"
+                        [class.has-error]="f.facDivision?.invalid && (f.facDivision.dirty || f.facDivision.touched)">
+                        <label for="fcd-facDivision" class="">Division</label>
+                        <pg-select style="width: 100%;" formControlName="facDivision" [PlaceHolder]="'Select Division'"
+                            AllowClear ShowSearch>
+                            <pg-option *ngFor="let option of divisions" [Label]="option.label" [Value]="option"
+                                [Disabled]="option.disabled">
+                            </pg-option>
+                        </pg-select>
+                    </div>
+    
+                    <div *ngIf="f.facDivision?.invalid && (f.facDivision.dirty || f.facDivision.touched)">
+                        <label *ngIf="f.facDivision.errors.required" class="error">This field is required.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div pgFormGroupDefault class="form-group form-group-default input-group">
+                        <div class="form-input-group" style="height: 55px;">
+                            <label for="fcp-facArea">Area/Size</label>
+    
+                            <input type="number" formControlName="facArea" placeholder="Enter Area here" class="form-control"
+                                id="fcp-facArea" />
+                        </div>
+                        <!-- <div class="input-group-append ">
+                            <span class="input-group-text">Sq.meter
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-md-3 Size">
+                    <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required" 
+                    style="width: 196px;">
+                        <label for="fcp-facUnit">Unit</label>
+                        <pg-select style="width: 100%;" [PlaceHolder]="'select Unit'" formControlName="facUnit"
+                            AllowClear ShowSearch>
+                            <pg-option *ngFor="let option of unit" [Label]="option.label" [Value]="option.value"
+                                [Disabled]="option.disabled">
+                            </pg-option>
+                        </pg-select>
+                    </div>
+                </div>
+                
+            </div>
+            <h4>Factory Country/Region</h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facCountry">Country</label>
+                        <select id="fcp-facCountry" formControlName="facCountry" class="form-control" #myCountry
+                            (change)='onCountrySelected($event)'>
+                            <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
+                        </select>
+                        <!-- <input type="text" formControlName="facCountry" placeholder="Enter your Country Name here" class="form-control" id="fcp-facCountry" /> -->
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facState">State</label>
+                        <select id="fcp-facState" formControlName="facState" class="form-control"
+                            (change)='onStateSelected($event)'>
+                            <option *ngFor="let c of states" [value]="c.name">{{ c.name }}</option>
+                        </select>
+                        <!-- <input type="text" formControlName="facState" placeholder="Enter your State Name here" class="form-control" id="fcp-facState" /> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div pgFormGroupDefault class="form-group form-group-default input-group">
+                        <div class="form-input-group">
+    
+                            <label for="fcp-facAnnualTurnover">Annual Turnover</label>
+                            <input type="number" formControlName="facAnnualTurnover"
+                                placeholder="Enter your Annual Turn Over" class="form-control"
+                                id="fcp-anuualTurnover-name" />
+                        </div>
+                        <div class="input-group-append ">
+                            <span class="input-group-text">$
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facContactPerson">Contact Person</label>
+                        <input type="text" formControlName="facContactPerson" placeholder="Enter Contact Person here"
+                            class="form-control" id="fcp-facContactPerson" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              
+                <div class="col-md-3 input-group-append">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facLandline">Landline</label>
+                        <input type="number" formControlName="facLandline" placeholder="Enter your Mobile Number"
+                            class="form-control" id="fcp-facLandline" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facMobile">Mobile</label>
+                        <input type="number" formControlName="facMobile" placeholder="Enter your Mobile Number"
+                            class="form-control" id="fcp-facMobile" />
+                    </div>
+                </div>
+            </div>
+    
+           
+            <div class="row">
+                <div class="col-md-6">
+                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label for="fcp-facEmail">Email</label>
+                        <input type="email" formControlName="facEmail" placeholder="Enter your Email Id" class="form-control"
+                            id="fcp-facEmail" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="addNewAdditional()" class="btn btn-primary w-25 my-3">Add more additional details
         </button>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required"
-                    [class.has-error]="f.facDivision?.invalid && (f.facDivision.dirty || f.facDivision.touched)">
-                    <label for="fcd-facDivision" class="">Division</label>
-                    <pg-select style="width: 100%;" formControlName="facDivision" [PlaceHolder]="'Select Division'"
-                        AllowClear ShowSearch>
-                        <pg-option *ngFor="let option of divisions" [Label]="option.label" [Value]="option"
-                            [Disabled]="option.disabled">
-                        </pg-option>
-                    </pg-select>
-                </div>
-
-                <div *ngIf="f.facDivision?.invalid && (f.facDivision.dirty || f.facDivision.touched)">
-                    <label *ngIf="f.facDivision.errors.required" class="error">This field is required.</label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div pgFormGroupDefault class="form-group form-group-default input-group">
-                    <div class="form-input-group" style="height: 55px;">
-                        <label for="fcp-facArea">Area/Size</label>
-
-                        <input type="number" formControlName="facArea" placeholder="Enter Area here" class="form-control"
-                            id="fcp-facArea" />
-                    </div>
-                    <!-- <div class="input-group-append ">
-                        <span class="input-group-text">Sq.meter
-                        </span>
-                    </div> -->
-                </div>
-            </div>
-            <div class="col-md-3 Size">
-                <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required" 
-                style="width: 196px;">
-                    <label for="fcp-facUnit">Unit</label>
-                    <pg-select style="width: 100%;" [PlaceHolder]="'select Unit'" formControlName="facUnit"
-                        AllowClear ShowSearch>
-                        <pg-option *ngFor="let option of unit" [Label]="option.label" [Value]="option.value"
-                            [Disabled]="option.disabled">
-                        </pg-option>
-                    </pg-select>
-                </div>
-            </div>
-            
-        </div>
-        <h4>Factory Country/Region</h4>
-        <div class="row">
-            <div class="col-md-3">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facCountry">Country</label>
-                    <select id="fcp-facCountry" formControlName="facCountry" class="form-control" #myCountry
-                        (change)='onCountrySelected($event)'>
-                        <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
-                    </select>
-                    <!-- <input type="text" formControlName="facCountry" placeholder="Enter your Country Name here" class="form-control" id="fcp-facCountry" /> -->
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facState">State</label>
-                    <select id="fcp-facState" formControlName="facState" class="form-control"
-                        (change)='onStateSelected($event)'>
-                        <option *ngFor="let c of states" [value]="c.name">{{ c.name }}</option>
-                    </select>
-                    <!-- <input type="text" formControlName="facState" placeholder="Enter your State Name here" class="form-control" id="fcp-facState" /> -->
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default input-group">
-                    <div class="form-input-group">
-
-                        <label for="fcp-facAnnualTurnover">Annual Turnover</label>
-                        <input type="number" formControlName="facAnnualTurnover"
-                            placeholder="Enter your Annual Turn Over" class="form-control"
-                            id="fcp-anuualTurnover-name" />
-                    </div>
-                    <div class="input-group-append ">
-                        <span class="input-group-text">$
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facContactPerson">Contact Person</label>
-                    <input type="text" formControlName="facContactPerson" placeholder="Enter Contact Person here"
-                        class="form-control" id="fcp-facContactPerson" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-          
-            <div class="col-md-3 input-group-append">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facLandline">Landline</label>
-                    <input type="number" formControlName="facLandline" placeholder="Enter your Mobile Number"
-                        class="form-control" id="fcp-facLandline" />
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facMobile">Mobile</label>
-                    <input type="number" formControlName="facMobile" placeholder="Enter your Mobile Number"
-                        class="form-control" id="fcp-facMobile" />
-                </div>
-            </div>
-        </div>
-
-       
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default">
-                    <label for="fcp-facEmail">Email</label>
-                    <input type="email" formControlName="facEmail" placeholder="Enter your Email Id" class="form-control"
-                        id="fcp-facEmail" />
-                </div>
-            </div>
-        </div>
     </div>
-    <button type="button" (click)="addNewAdditional()" class="btn btn-primary w-25 my-3">Add more additional details
-    </button>
+   
+
     <div class="mt-4">
         <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subCompanyProfileForm()">
             {{isDataExist? 'Update' : 'Save'}} Company Profile
