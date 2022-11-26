@@ -4,6 +4,9 @@ import { ProviderUserAuthService } from "./../../../core/providers/auth/provider
 import { Router } from '@angular/router';
 import { MessageService } from "../../../@pages/components/message/message.service";
 import { AppMessageService } from "../../../core/services/app-message.service";
+import { ProviderMaterCountryService } from "../../../core/providers/master/provider-mater-country.service";
+import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
+import { ProviderMaterLocationService } from "../../../core/providers/master/provider-mater-location.service";
 
 
 @Component({
@@ -265,6 +268,9 @@ export class PageSignUpComponent implements OnInit {
     private providerUserAuthService: ProviderUserAuthService,
     private messageService: MessageService,
     private appMessageService: AppMessageService,
+    private providerMaterCountryService: ProviderMaterCountryService,
+    private providerMaterStateService: ProviderMaterStateService,
+    private providerMaterLocationService: ProviderMaterLocationService
   ) { }
 
   get f() {
