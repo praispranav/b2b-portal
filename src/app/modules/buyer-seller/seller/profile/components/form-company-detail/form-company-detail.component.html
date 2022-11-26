@@ -47,7 +47,7 @@
     </div>
     <h4>Contact Person</h4>
 
-    <div class="row border p-4" *ngFor="let form of contactArray.controls; let i=index" [formGroup]="form">
+    <div class="row border mb-4 p-4" *ngFor="let form of contactArray.controls; let i=index" [formGroup]="form">
         <div class="row">
             <button *ngIf="contactArray?.controls?.length > 1" type="button" (click)="removeContact(i)"
                 class="btn btn-primary w-25 mb-4">

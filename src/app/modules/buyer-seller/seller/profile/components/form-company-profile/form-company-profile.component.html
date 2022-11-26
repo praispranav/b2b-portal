@@ -272,7 +272,7 @@
     </div>
     <h4>Additional Contact Details</h4>
     <p>This information is required if you have another offer into different location also.</p>
-    <div class="border p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
+    <div class="border mb-4 p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="additionalArray?.controls?.length > 1" type="button" (click)="removeAdditional(i)"
             class="btn btn-primary mb-4">
             Remove

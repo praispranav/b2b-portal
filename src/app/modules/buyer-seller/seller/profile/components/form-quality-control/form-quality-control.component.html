@@ -14,7 +14,7 @@
             No
         </label>
     </div>
-    <div class="border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
+    <div class="border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary mb-4">
             Remove
         </button>
