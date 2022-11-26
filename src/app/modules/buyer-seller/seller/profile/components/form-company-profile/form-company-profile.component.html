@@ -106,7 +106,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group form-group-default form-group-default-select2 required">
+            <!-- <div class="form-group form-group-default form-group-default-select2 required">
                 <label>Main Product</label>
                 <pg-select style="width: 100%;" [Mode]="'multiple'" [PlaceHolder]="'Enter the product'"
                     formControlName="mainProduct" [NotFoundContent]="'Not found'">
@@ -114,7 +114,12 @@
                         [Disabled]="option.disabled">
                     </pg-option>
                 </pg-select>
-            </div>
+                
+            </div> -->
+            <div class="form-group tag-group form-group-default required ">
+                <label>Main Product</label>
+                <pg-tag-control formControlName="mainProduct"></pg-tag-control>
+              </div>
             <div *ngIf="f.mainProduct?.invalid && (f.mainProduct.dirty || f.mainProduct.touched)">
                 <label *ngIf="f.mainProduct.errors.required" class="error">This field is required.</label>
             </div>
