@@ -154,7 +154,7 @@
 
                 <select id="fcp-company" formControlName="regCountry" class="form-control" #myCountry
                     (change)='onCountrySelected($event)'>
-                    <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
+                    <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
                 </select>
 
                 <!-- <input type="text" formControlName="regCountry" placeholder="Enter registered Country"
@@ -343,7 +343,7 @@
                         <label for="fcp-facCountry">Country</label>
                         <select id="fcp-facCountry" formControlName="facCountry" class="form-control" #myCountry
                             (change)='onCountrySelected($event)'>
-                            <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
+                            <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
                         </select>
                         <!-- <input type="text" formControlName="facCountry" placeholder="Enter your Country Name here" class="form-control" id="fcp-facCountry" /> -->
                     </div>
