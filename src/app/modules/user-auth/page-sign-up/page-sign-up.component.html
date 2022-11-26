@@ -148,7 +148,7 @@
                             <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.code.invalid && (f.code.dirty || f.code.touched)">
                                 <label for="code">Code</label>
 
-                                <select name="code" id="" class="form-control mr-sm-2" [(ngModel)]="selectedOption" formControlName="code">
+                                <select name="code" id="" class="form-control mr-sm-2"  [(ngModel)]="selectedOption" formControlName="code">
                   <option class="ms-1" *ngFor="let code of codes" [value]="code.code">{{code.code}}</option>
                 </select>
                             </div>
@@ -202,7 +202,7 @@
                   </p>
                 </div>
                 <div class="col-lg-6 text-right">
-                  <a href="../../view/page-support/page-support.component.html" class="text-info small">Help? Contact
+                  <a  class="text-info small">Help? Contact
                     Support</a>
                 </div>
               </div>
