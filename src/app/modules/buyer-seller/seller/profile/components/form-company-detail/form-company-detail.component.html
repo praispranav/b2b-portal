@@ -358,11 +358,14 @@
         </label>
     </div> -->
     <div class="form-check form-check-inline" (click)="TradeExpoDetailsAdd()">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <input class="form-check-input" type="radio" name="attendTradeExpo"
+        formControlName="attendTradeExpo"
+         id="inlineRadio1" value="yes" >
         <label class="form-check-label" for="inlineRadio1">Yes</label>
       </div>
       <div class="form-check form-check-inline" (click)="noTradeExpoDetails()">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="attendTradeExpo" id="inlineRadio2" value="No"
+        formControlName="attendTradeExpo" >
         <label class="form-check-label" for="inlineRadio2">No</label>
       </div>
      

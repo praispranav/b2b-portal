@@ -197,6 +197,7 @@ export class FormCompanyDetailComponent implements OnInit {
       companyPhilosophy: ["", [Validators.required]],
       employeeStrength: ["", [Validators.required]],
       companyPage: ["", [Validators.required]],
+      attendTradeExpo:[""]
     });
   }
   addNewContact(data: any = {}): void {
@@ -329,6 +330,7 @@ export class FormCompanyDetailComponent implements OnInit {
         tradeShow: [...this.memberProfiles],
         contactPerson: [...this.contactProfiles],
         companyPicture: pictureList,
+        attendTradeExpo:formData.attendTradeExpo ? formData.attendTradeExpo:''
       }
       console.log('reqData', reqObj);
       if (this.isDataExist) {
