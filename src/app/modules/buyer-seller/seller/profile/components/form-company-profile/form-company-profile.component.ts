@@ -63,6 +63,14 @@ export class FormCompanyProfileComponent implements OnInit {
     { value: 'Warehouse ', label: 'Warehouse' },
     { value: 'disabled', label: 'Disabled', disabled: true }
   ];
+  unit = [
+    { value: 'Square Meter', label: 'Square Meter' },
+    { value: 'Square Feet', label: 'Square Feet' },
+    { value: 'Square yard', label: 'Square yard' },
+    { value: ' Acre', label: 'Acre' },
+    { value: 'Hectre', label: 'Hectre' },
+   
+  ];
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
@@ -207,6 +215,7 @@ export class FormCompanyProfileComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       facDivision: [data.facDivision ? data.facDivision : ""],
       facArea: [data.facArea ? data.facArea : ""],
+      facUnit: [data.facUnit? data.facUnit : ""],
       facCountry: [data.facCountry ? data.facCountry : ""],
       facState: [data.facState ? data.facState : ""],
       facAnnualTurnover: [data.facAnnualTurnover ? data.facAnnualTurnover : ""],
