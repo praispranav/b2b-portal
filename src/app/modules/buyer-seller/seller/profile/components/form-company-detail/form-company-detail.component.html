@@ -15,6 +15,10 @@
                 </label>
             </div>
         </div>
+     
+    
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <h4>Company Logo</h4>
             <pg-upload ListType="picture-card" [(FileList)]="logoList" [ShowButton]="logoList.length===0"
@@ -29,6 +33,8 @@
                 </label>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-4 subdiv">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyVideo?.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
@@ -40,11 +46,15 @@
         </div>
     </div>
     <h4>Contact Person</h4>
-    <div class="row border p-4" *ngFor="let form of contactArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="contactArray?.controls?.length > 1" type="button" (click)="removeContact(i)"
-            class="btn btn-primary w-25">
-            Remove
-        </button>
+
+    <div class="row border mb-4 p-4" *ngFor="let form of contactArray.controls; let i=index" [formGroup]="form">
+        <div class="row">
+            <button *ngIf="contactArray?.controls?.length > 1" type="button" (click)="removeContact(i)"
+                class="btn btn-primary w-25 mb-4">
+                Remove
+            </button>
+        </div>
+      
         <div class="col-md-3">
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonFirstName?.invalid && (f.contactPersonFirstName.dirty || f.contactPersonFirstName.touched)">
@@ -88,7 +98,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonEmail?.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
                 <label for="fcd-contactPersonEmail">Email</label>
-                <input type="text" formControlName="contactPersonEmail" placeholder="Enter Your Email Id"
+                <input type="text" formControlName="contactPersonEmail" placeholder="some@example.com"
                     class="form-control" id="fcd-contactPersonEmail" />
             </div>
             <div *ngIf="f.contactPersonEmail?.invalid && (f.contactPersonEmail.dirty || f.contactPersonEmail.touched)">
@@ -109,7 +119,7 @@
                 [class.has-error]="f.contactPersonAlternateEmail?.invalid && (f.contactPersonAlternateEmail.dirty || f.contactPersonAlternateEmail.touched)">
                 <label for="fcd-contactPersonAlternateEmail">Alternative Email</label>
                 <input type="text" formControlName="contactPersonAlternateEmail"
-                    placeholder="Enter Your Alternative Email Id" class="form-control"
+                    placeholder="some@example.com" class="form-control"
                     id="fcd-contactPersonAlternateEmail" />
             </div>
             <div
@@ -335,21 +345,33 @@
     </div>
     <hr>
     <h6>Have you attended or Planed to attand any trade expo?<span class="text-danger">*</span></h6>
-    <div class="form-check form-check-inline complete">
+    <!-- <div class="form-check form-check-inline complete" (click)="TradeExpoDetailsAdd()">
         <input type="radio" name="state" id="fcd-radioInline" value="Default" checked>
         <label for="fcd-radioInline">
             Yes
         </label>
     </div>
-    <div class="form-check form-check-inline">
+    <div class="form-check form-check-inline" (click)="noTradeExpoDetails()">
         <input type="radio" name="state" id="fcd-radioDisabled" value="disabled">
         <label for="fcd-radioDisabled">
             No
         </label>
-    </div>
-
+    </div> -->
+    <div class="form-check form-check-inline" (click)="TradeExpoDetailsAdd()">
+        <input class="form-check-input" type="radio" name="attendTradeExpo"
+        formControlName="attendTradeExpo"
+         id="inlineRadio1" value="yes" >
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline" (click)="noTradeExpoDetails()">
+        <input class="form-check-input" type="radio" name="attendTradeExpo" id="inlineRadio2" value="No"
+        formControlName="attendTradeExpo" >
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+     
+<div *ngIf="tradeExpo">
     <div class="border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary">
+        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary mb-4">
             Remove
         </button>
         <div class="row">
@@ -477,6 +499,8 @@
     </div>
     <button type="button" (click)="addNew()" class="btn btn-primary w-25 my-2">Add more trade show
     </button>
+</div>
+   
 
 
     <div class="mt-4">

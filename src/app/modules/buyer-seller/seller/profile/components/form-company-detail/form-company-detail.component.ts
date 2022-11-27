@@ -31,6 +31,7 @@ export class FormCompanyDetailComponent implements OnInit {
   memberProfiles: any[] = [];
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
+  tradeExpo:boolean=true;
   options = [
     { value: 'Owner', label: 'Owner' },
     { value: 'CEO', label: 'CEO' },
@@ -196,6 +197,7 @@ export class FormCompanyDetailComponent implements OnInit {
       companyPhilosophy: ["", [Validators.required]],
       employeeStrength: ["", [Validators.required]],
       companyPage: ["", [Validators.required]],
+      attendTradeExpo:[""]
     });
   }
   addNewContact(data: any = {}): void {
@@ -328,6 +330,7 @@ export class FormCompanyDetailComponent implements OnInit {
         tradeShow: [...this.memberProfiles],
         contactPerson: [...this.contactProfiles],
         companyPicture: pictureList,
+        attendTradeExpo:formData.attendTradeExpo ? formData.attendTradeExpo:''
       }
       console.log('reqData', reqObj);
       if (this.isDataExist) {
@@ -384,5 +387,11 @@ export class FormCompanyDetailComponent implements OnInit {
       reader.onload = () => resolve(reader.result);
       reader.onerror = (error) => reject(error);
     });
+  }
+  noTradeExpoDetails(){
+    this.tradeExpo = false;
+  }
+  TradeExpoDetailsAdd(){
+    this.tradeExpo = true;
   }
 }

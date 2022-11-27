@@ -20,6 +20,7 @@ export class FormQualityControlComponent implements OnInit {
   formArray: FormArray = new FormArray([]);
   qualityControl: any[] = [];
   serviceSubscription: Subscription[] = [];
+  noQualityControl:boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +48,13 @@ export class FormQualityControlComponent implements OnInit {
       })
     );
   }
+
+noQualityControlValue(){
+this.noQualityControl = false;
+}
+yesQualityControlValue(){
+  this.noQualityControl = true;
+}
 
   buildTypeForm() {
     this.qualityControlForm = this.formBuilder.group({

@@ -21,6 +21,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   formArray: FormArray = new FormArray([]);
   serviceSubscription: Subscription[] = [];
   rndImageUploading: boolean = false;
+  noRandD:boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,6 +50,12 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       })
     );
   }
+  noRandDValue(){
+    this.noRandD = false;
+    }
+    yesRandDValue(){
+      this.noRandD = true;
+    }
   uploadImageToServer(image) {
     return new Promise((resolve, reject) => {
       this.rndImageUploading = true
@@ -65,7 +72,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
-      isQualityProcess: ["Yes"],
+      isQualityProcess: [""],
 
     });
   }
