@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHomeRequestForQuotationComponent implements OnInit {
   handlePreview: any;
-  
+  ShowSecondSection:boolean=false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showDetailsForm(){
+    this.ShowSecondSection = true;
   }
 
 }

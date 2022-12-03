@@ -19,13 +19,13 @@
                     <input class="form-control" type="text" placeholder="Piece/Pieces" name="" id="">
                 </div>
                 <div>
-                    <button class="rounded-pill btn btn-orange">Request For Quotation</button>
+                    <button class="rounded-pill btn btn-orange" (click)="showDetailsForm()">Request For Quotation</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="p-4 d-flex justify-content-center sub-div">
+<div class="p-4 d-flex justify-content-center sub-div"  *ngIf="ShowSecondSection">
     <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
         <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
         <p>Get quotes for all your enquiries hassle free and without any cost</p>
