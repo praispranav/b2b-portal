@@ -7,7 +7,15 @@
   text-align: center;
   margin-top: 250px;
 }
-
+.headingg {
+  color: #202124;
+  font-size: calc(40px + 20 * (100vw - 1024px) / 416);
+  line-height: 1.2;
+  // font-family: "Google Sans Display","Google Sans","Google Sans Text",Arial,sans-serif;
+  margin-left: 20px;
+  // text-align: center;
+  margin-top: 250px;
+}
 // .headingTwo{
 //     text-align: center;
 //     margin-top: 200px;
