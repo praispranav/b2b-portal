@@ -42,7 +42,10 @@
                 <input type="text" formControlName="companyVideo" placeholder="Enter video link" class="form-control"
                     id="fcd-companyVideo" />
             </div>
-
+            <div *ngIf="f.companyVideo?.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
+                <label *ngIf="f.companyVideo.errors.required" class="error">Company Video is required
+                </label>
+            </div>
         </div>
     </div>
     <h4>Contact Person</h4>
@@ -59,7 +62,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonFirstName?.invalid && (f.contactPersonFirstName.dirty || f.contactPersonFirstName.touched)">
                 <label for="fcd-contactPersonFirstName">First Name</label>
-                <input type="text" formControlName="contactPersonFirstName" placeholder="Enter Your First Name"
+                <input type="text" formControlName="contactPersonFirstName" placeholder="Enter Your First Name" maxlength="20"
                     class="form-control" id="fcd-contactPersonFirstName" />
             </div>
             <div
@@ -71,7 +74,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.contactPersonLastName?.invalid && (f.contactPersonLastName.dirty || f.contactPersonLastName.touched)">
                 <label for="fcd-contactPersonLastName">Last Name</label>
-                <input type="text" formControlName="contactPersonLastName" placeholder="Enter Your Last Name"
+                <input type="text" formControlName="contactPersonLastName" placeholder="Enter Your Last Name" maxlength="20"
                     class="form-control" id="fcd-contactPersonLastName" />
             </div>
             <div
@@ -180,13 +183,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div pgFormGroupDefault class="form-group form-group-default required"
+        <div class="col-md-6">
+
+            <div pgFormGroupDefault class="form-group form-group-default input-group page-width" [class.has-error]="f.companyPage?.invalid && (f.companyPage.dirty || f.companyPage.touched)">
+                <div class="form-input-group">
+
+                    <label for="fcd-companyPage">Company Page</label>
+                    <input type="number" formControlName="companyPage"
+                        placeholder="Enter your Company Page" class="form-control"
+                        id="fcd-companyPage" />
+                </div>
+                <div class="input-group-append ">
+                    <span class="input-group-text">Page.io
+                    </span>
+                </div>
+            </div>
+            <!-- <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyPage?.invalid && (f.companyPage.dirty || f.companyPage.touched)">
                 <label for="fcd-companyPage">Company Page</label>
                 <textarea rows="20" type="text" formControlName="companyPage" placeholder="Enter The Company Page"
                     class="form-control" id="fcd-companyPage"></textarea>
-            </div>
+            </div> -->
             <div *ngIf="f.companyPage?.invalid && (f.companyPage.dirty || f.companyPage.touched)">
                 <label *ngIf="f.companyPage.errors.required" class="error">This field is required.</label>
             </div>
@@ -250,7 +267,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.accIFSCCode?.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
                 <label for="fcd-accIFSCCode">IFSC Code</label>
-                <input type="text" formControlName="accIFSCCode" placeholder="Enter IFSC Code" class="form-control"
+                <input type="text" formControlName="accIFSCCode" placeholder="Enter IFSC Code" maxlength="11" class="form-control"
                     id="fcd-accIFSCCode" />
             </div>
             <div *ngIf="f.accIFSCCode?.invalid && (f.accIFSCCode.dirty || f.accIFSCCode.touched)">
@@ -334,8 +351,12 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.companyDetail?.invalid && (f.companyDetail.dirty || f.companyDetail.touched)">
                 <label for="fcd-companyDetail">Company Detailed Introduction</label>
-                <input type="text" formControlName="companyDetail" placeholder="Enter company detailed introduction"
-                    class="form-control" id="fcd-companyDetail" />
+                <!-- <input type="text" formControlName="companyDetail" placeholder="Enter company detailed introduction"
+                    class="form-control" id="fcd-companyDetail" /> -->
+
+                    <textarea rows="20" type="text" formControlName="companyDetail" maxlength="200"
+                    placeholder="Enter company detailed introduction" class="form-control"
+                    id="fcd-companyDetail"></textarea>
             </div>
             <div *ngIf="f.companyDetail?.invalid && (f.companyDetail.dirty || f.companyDetail.touched)">
                 <label *ngIf="f.companyDetail.errors.required" class="error">This field is
@@ -378,14 +399,13 @@
             <div class="col-md-4">
                 <div pgFormGroupDefault class="form-group form-group-default">
                     <label for="fcd-tradeName">Trade Show Name</label>
-                    <input type="text" formControlName="tradeName" placeholder=" Enter Trade 
-                    Show Name" class="form-control" id="fcd-tradeName" />
+                    <input type="text" formControlName="tradeName" maxlength="20" placeholder=" Enter Trade Show Name" class="form-control" id="fcd-tradeName" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div pgFormGroupDefault class="form-group form-group-default">
                     <label for="fcd-tradeHost">Host</label>
-                    <input type="text" formControlName="tradeHost" placeholder="Enter the name of organizer"
+                    <input type="text" formControlName="tradeHost" maxlength="20" placeholder="Enter the name of organizer"
                         class="form-control" id="fcd-tradeHost" />
                 </div>
             </div>
@@ -430,7 +450,7 @@
 
                     <select id="fcp-company" formControlName="tradeCountry" class="form-control"
                         (change)='onCountrySelected($event)'>
-                        <option *ngFor="let c of countries" [value]="c.name">{{c.name}}</option>
+                        <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
                     </select>
 
                     <!-- <input type="text" formControlName="regCountry" placeholder="Enter registered Country"
@@ -474,7 +494,7 @@
             <div class="col-md-8">
                 <div pgFormGroupDefault class="form-group form-group-default">
                     <label for="fcd-tradeInfo">About The Trade show</label>
-                    <textarea type="text" formControlName="tradeInfo" placeholder="Enter About The Trade show"
+                    <textarea type="text" formControlName="tradeInfo" placeholder="Enter Trade show" maxlength="200"
                         class="form-control" id="fcd-tradeInfo"></textarea>
                 </div>
             </div>

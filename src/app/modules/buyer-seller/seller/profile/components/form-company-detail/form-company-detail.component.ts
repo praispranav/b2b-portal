@@ -179,7 +179,7 @@ export class FormCompanyDetailComponent implements OnInit {
     this.companyDetailForm = this.formBuilder.group({
       companyLogo: [""],
       companyPicture: [""],
-      companyVideo: [""],
+      companyVideo: ["", [Validators.required]],
       contactPersonAlternateEmail: ["", [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
       companyWebsite: ["", [Validators.required]],
       googleBusiness: ["", [Validators.required]],

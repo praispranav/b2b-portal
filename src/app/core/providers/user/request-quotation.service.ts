@@ -15,10 +15,8 @@ export class RequestQuotationService {
 
     getRequestForQuotationById(id: string): Observable<any> {
         return this.http.get<any>(`${environment.apiUrl}/request-quotation/get/${id}`);
+
     }
-
-
-
     updateRequestForQuotation(params: any = {}): Observable<any> {
         return this.http.put<any>(`${environment.apiUrl}/request-quotation/update`, params);
     }
