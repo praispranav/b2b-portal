@@ -1,7 +1,17 @@
 <div class="container-fluid p-3 bg-white">
     <h3>Product Details</h3>
     <form class="p-t-15" role="form" [formGroup]="productDetailsForm">
-        <div class="card card-default">
+        <div class="row">
+            <label> Product Images</label>
+            <pg-upload ListType="picture-card" [(FileList)]="fileList" [ShowButton]="fileList.length < 3"
+            [Preview]="handlePreview">
+            <div class="pic-placeholder">
+              <i class="pg-icon p-b-5">upload</i>
+              <div class="fs-12">Upload</div>
+            </div>
+          </pg-upload>
+        </div>
+        <!-- <div class="card card-default">
             <div class="card-header ">
                 <div class="card-title">
                     Product Images
@@ -25,9 +35,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+        </div> -->
+
+        <div class="row ml-3 mt-4">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
                     f.productVideoLink.touched)">
                     <label for="product-video-link">Product Video Link</label>
