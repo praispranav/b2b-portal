@@ -1,5 +1,5 @@
 <div class="container-fluid p-3 bg-white ">
-    <h3> Add Blog</h3>
+    <h3> Add Tradeshow</h3>
     <form class="p-t-15" role="form" [formGroup]="addTradeShowForm">
         <div class="row">
             <div class="col-md-12">
@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label for="EventType"> EventType</label>
-                    <pg-select style="width: 100%;" id="blog-category" [Mode]="'multiple'" [PlaceHolder]="'Select'" formControlName="EventType" [NotFoundContent]="'Not found'">
+                    <pg-select style="width: 100%;" id="EventType" [PlaceHolder]="'Select'" formControlName="EventType" [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>
@@ -306,7 +306,7 @@
             <div class="col-md-12">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.venue?.invalid && (f.venue?.dirty || f.venue?.touched)">
                     <label for="venue">Venue</label>
-                    <input type="text" formControlName="venue" placeholder="Enter Event Name" class="form-control" id="venue" />
+                    <input type="text" formControlName="venue" placeholder="Enter Venue Name" class="form-control" id="venue" />
                 </div>
                 <div *ngIf="f.venue?.invalid && (f.venue?.dirty || f.venue?.touched)">
                     <label *ngIf="f.venue.errors.required" class="error">This field is required.</label>
