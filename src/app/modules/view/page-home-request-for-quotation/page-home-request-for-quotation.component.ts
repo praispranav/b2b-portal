@@ -17,7 +17,7 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   requestQuotationForm2: FormGroup;
   payload: any = {};
   ShowSecondSection: boolean = false;
-
+  ShowSecondOne:boolean = true;
   quantity: any;
 
   constructor(private formBuilder: FormBuilder,
@@ -98,6 +98,7 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   }
   showDetailsForm() {
     this.ShowSecondSection = true;
+    this.ShowSecondOne = false;
   }
 
 }
