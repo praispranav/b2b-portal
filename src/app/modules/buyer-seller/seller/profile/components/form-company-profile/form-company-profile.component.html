@@ -138,12 +138,15 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regAddress?.invalid && (f.regAddress.dirty || f.regAddress.touched)">
                 <label for="fcp-company-add">Company Address</label>
-                <input type="text" formControlName="regAddress" placeholder="Enter your Company Address here"
+                <input type="text" formControlName="regAddress" maxlength="100" placeholder="Enter your Company Address here"
                     class="form-control" id="fcp-company-add" />
             </div>
             <div *ngIf="f.regAddress?.invalid && (f.regAddress.dirty || f.regAddress.touched)">
                 <label *ngIf="f.regAddress.errors.required" class="error">This field is required.</label>
+                <!-- <label *ngIf="f.regAddress.errors.maxlength.required" class="error">Maximum length should be
+                    10.</label> -->
             </div>
+          
         </div>
     </div>
     <div class="row">
@@ -253,7 +256,7 @@
             <div pgFormGroupDefault class="form-group form-group-default required"
                 [class.has-error]="f.regMobile?.invalid && (f.regMobile.dirty || f.regMobile.touched)">
                 <label for="fcp-regMobile">Mobile Number</label>
-                <input type="number" formControlName="regMobile" placeholder="Enter Mobile Number" class="form-control"
+                <input type="number" formControlName="regMobile" maxlength="10" placeholder="Enter Mobile Number" class="form-control"
                     id="fcp-regMobile" />
             </div>
             <div *ngIf="f.regMobile?.invalid && (f.regMobile.dirty || f.regMobile.touched)">
@@ -313,13 +316,13 @@
                         <div class="form-input-group" style="height: 55px;">
                             <label for="fcp-facArea">Area/Size</label>
     
-                            <input type="number" formControlName="facArea" placeholder="Enter Area here" class="form-control"
+                            <input type="number" formControlName="facArea"  placeholder="Enter Area here" class="form-control"
                                 id="fcp-facArea" />
                         </div>
-                        <!-- <div class="input-group-append ">
-                            <span class="input-group-text">Sq.meter
-                            </span>
-                        </div> -->
+                        <div *ngIf="f.facArea?.invalid && (f.facArea.dirty || f.facArea.touched)">
+                            <label *ngIf="f.facArea.errors.required" class="error">This field is required.</label>
+                        </div>
+                     
                     </div>
                 </div>
                 <div class="col-md-3 Size">
