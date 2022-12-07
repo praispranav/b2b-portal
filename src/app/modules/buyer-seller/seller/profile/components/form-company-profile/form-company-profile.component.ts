@@ -444,7 +444,8 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   addNewLandline(data: any = {}): void {
     this.formGroup = this.formBuilder.group({
-      regLandline: [data.regLandline ? data.regLandline : "",[Validators.required]],
+      regLandline: [data.regLandline ? data.regLandline : "",[Validators.required , Validators.maxLength(2)]],
+      
 
     });
     this.landlineArray.push(this.formGroup);
