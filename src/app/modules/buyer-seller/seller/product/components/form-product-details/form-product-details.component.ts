@@ -24,6 +24,16 @@ export class FormProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.buildProductDetails();
   }
+  fileList = [
+    {
+      uid: -1,
+      name: 'xxx.png',
+      status: 'done',
+      url: 'http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg'
+    }
+  ];
+  previewImage = '';
+  previewVisible = false;
   buildProductDetails() {
     this.productDetailsForm = this.formBuilder.group({      
       productVideoLink: ["", [Validators.required]],

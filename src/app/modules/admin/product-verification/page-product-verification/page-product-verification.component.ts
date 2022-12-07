@@ -140,5 +140,11 @@ export class PageProductVerificationComponent implements OnInit {
     // this.dynamicRows = [...this.dynamicRows, temp];
     this.addNewAppModal.hide();
   }
+  select(event) {
+    console.log(event);
+  }
 
+  onPage(event){
+    console.log(event);
+  }
 }

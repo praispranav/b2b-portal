@@ -136,5 +136,11 @@ export class PageAdminMqrComponent implements OnInit {
     this.addNewAppModal.hide();
   }
 
+  select(event) {
+    console.log(event);
+  }
 
+  onPage(event){
+    console.log(event);
+  }
 }
