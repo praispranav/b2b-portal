@@ -66,7 +66,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     //   component: PageHomeRequestForQuotationComponent,
     // },
     {
-      label: "Multiple Quotes Request",
+      label: "Quotes Request",
       routerLink: "/b2b/request-for-quotation",
     },
     {
