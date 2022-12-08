@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RequestQuotationService } from '../../../core/providers/user/request-quotation.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-page-home-request-for-quotation',
   templateUrl: './page-home-request-for-quotation.component.html',
@@ -20,7 +20,7 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   ShowSecondOne:boolean = true;
   quantity: any;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, private router: Router,
     private requestQuotationService: RequestQuotationService) { }
 
   handleQuantityChange(event) {
@@ -62,21 +62,23 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
       isCheck: ["",],
     });
   }
-  async subRequestForm1() {
-    let formData1 = this.requestQuotationForm1.value;
-    console.log("formData1", formData1);
-  }
-  saveFormData() {
+  // async subRequestForm1() {
+  //   let formData1 = this.requestQuotationForm1.value;
+  //   console.log("formData1", formData1);
+  // }
+  subRequestForm1() {
     this.payload = {
       quantity: this.quantity,
       ...this.requestQuotationForm1.value,
-      ...this.requestQuotationForm2.value,
+      // ...this.requestQuotationForm2.value,
 
     };
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
         window.alert('API Success');
+        this.router.navigateByUrl(`/b2b/request-for-quotation`);
+        // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
         console.log("res", res);
       },
       (err) => {
