@@ -1,4 +1,4 @@
-<div class="bg-grey1 p-2 mt-5">
+<!-- <div class="bg-grey1 p-2 mt-5">
     <h2>REQUEST FOR QUOTATION <span class="text-muted" style="font-size: 20px;">Customization Service</span>
     </h2>
     <form [formGroup]="requestQuotationForm1">
@@ -44,10 +44,10 @@
             </div>
         </div>
     </form>
-</div>
+</div> -->
 
 
-<!-- <div class="p-4 d-flex justify-content-center sub-div">
+<div class="p-4 d-flex justify-content-center sub-div">
     <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
         <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
         <p>Get quotes for all your enquiries hassle free and without any cost</p>
@@ -273,13 +273,19 @@
                     <h6 class="star">Attach Files</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                   
+                    <!-- <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload> -->
                     <div class="input-group" style="width: 285px;">
                         <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
                             (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
                             aria-describedby="basic-addon2" formControlName="image">
                         <div class="input-group-append">
-                           
+                            <!-- <button class="btn btn-outline-secondary" type="button"
+                                (click)="fileInputDoc.click()">upload</button> -->
                         </div>
                     </div>
 
@@ -321,4 +327,4 @@
             </div>
         </form>
     </div>
-</div> -->
+</div>

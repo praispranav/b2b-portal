@@ -91,6 +91,7 @@ import { SellerAboutComponent } from './seller-about/seller-about.component';
 import { CatalogueProductCardHomeComponent } from './components/catalogue-product-card-home/catalogue-product-card-home.component';
 import { CatalogueProductSearchHomeComponent } from './components/catalogue-product-search-home/catalogue-product-search-home.component';
 import { CatalogueProductComponent } from './components/catalogue-product/catalogue-product.component';
+import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-rfq-form-two.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import { CatalogueProductComponent } from './components/catalogue-product/catalo
     CatalogueProductCardHomeComponent,
     CatalogueProductSearchHomeComponent,
     CatalogueProductComponent,
+    PageHomeRfqFormTwoComponent,
     
   ],
   imports: [ 
