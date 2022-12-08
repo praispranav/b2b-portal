@@ -3,7 +3,7 @@
     </h2>
     <form [formGroup]="requestQuotationForm1">
 
-        <div class="row p-4 " *ngIf="ShowSecondOne">
+        <div class="row p-4 ">
             <div class="col-md-5 backgroundImage ">
             </div>
             <div class="col-md-7 p-3 bg-grey pmt-2 shadow">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div>
-                        <button class="rounded-pill btn btn-orange" (click)="showDetailsForm()" [class.disabled]="requestQuotationForm1.invalid" 
+                        <button class="rounded-pill btn btn-orange" [class.disabled]="requestQuotationForm1.invalid" 
                             (click)="subRequestForm1()">Request For
                             Quotation</button>
                     </div>
@@ -47,7 +47,7 @@
 </div>
 
 
-<div class="p-4 d-flex justify-content-center sub-div" *ngIf="ShowSecondSection">
+<div class="p-4 d-flex justify-content-center sub-div">
     <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
         <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
         <p>Get quotes for all your enquiries hassle free and without any cost</p>

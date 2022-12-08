@@ -96,9 +96,9 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
       this.fileName = file.name
     }
   }
-  showDetailsForm() {
-    this.ShowSecondSection = true;
-    this.ShowSecondOne = false;
-  }
+  // showDetailsForm() {
+  //   this.ShowSecondSection = true;
+  //   this.ShowSecondOne = false;
+  // }
 
 }
