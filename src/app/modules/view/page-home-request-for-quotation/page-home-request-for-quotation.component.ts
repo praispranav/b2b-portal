@@ -43,6 +43,7 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   buildTypeForm1() {
     this.requestQuotationForm1 = this.formBuilder.group({
       lookingFor: ["", [Validators.required, Validators.maxLength(200)]],
+      
       pieces: ["", [Validators.required, Validators.maxLength(10)]],
     });
   }
@@ -102,5 +103,11 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   //   this.ShowSecondSection = true;
   //   this.ShowSecondOne = false;
   // }
+
+  getDetailById(item: any) {
+    localStorage.setItem('rfqId', JSON.stringify(item._id));   
+     
+    
+  }
 
 }

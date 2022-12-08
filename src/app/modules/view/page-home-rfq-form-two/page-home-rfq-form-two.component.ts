@@ -19,9 +19,12 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   ShowSecondSection: boolean = false;
   ShowSecondOne:boolean = true;
   quantity: any;
+  rfqId:string = '';
+  quote: any = {};
 
   constructor(private formBuilder: FormBuilder,
-    private requestQuotationService: RequestQuotationService) { }
+    private requestQuotationService: RequestQuotationService,
+    ) { }
 
   handleQuantityChange(event) {
     this.quantity = event.target.value;
@@ -37,6 +40,21 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   ngOnInit() {
     this.buildTypeForm1();
     this.buildTypeForm2();
+    this.rfqId = JSON.parse(localStorage.getItem('rfqId'));
+    this.requestQuotationService.getRequestForQuotationById(this.rfqId).subscribe(
+      (res:any)=>{
+        this.quote = res;
+        console.log('res quote', this.quote);
+       
+        // lookingFor
+        // pieces
+        // quantity
+      },
+      (err)=>{
+
+      }
+
+    )
 
 
   }
