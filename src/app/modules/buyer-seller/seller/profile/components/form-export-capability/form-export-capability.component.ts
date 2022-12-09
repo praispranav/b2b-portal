@@ -21,9 +21,6 @@ export class FormExportCapabilityComponent implements OnInit {
     { value: '$10 Million - $50 Million', label: '$10 Million - $50 Million' },
     { value: 'US$50 Million - $100 Million', label: 'US$50 Million - $100 Million' },
     { value: 'Above $100 Million', label: 'Above $100 Million' },
-
-
-
     { value: 'disabled', label: 'Disabled', disabled: true }
   ];
   yearlyTurnOver;

@@ -2,14 +2,22 @@
     <h3>Product Details</h3>
     <form class="p-t-15" role="form" [formGroup]="productDetailsForm">
         <div class="row">
-            <label> Product Images</label>
-            <pg-upload ListType="picture-card" [(FileList)]="fileList" [ShowButton]="fileList.length < 3"
-            [Preview]="handlePreview">
-            <div class="pic-placeholder">
-              <i class="pg-icon p-b-5">upload</i>
-              <div class="fs-12">Upload</div>
+            <div class="col-md-4">
+                <h4>Product Image</h4>
+                <pg-upload ListType="picture-card" [(FileList)]="pictureList" [ShowButton]="pictureList.length < 6"
+                    Action="https://jsonplaceholder.typicode.com/posts/">
+                    <div class="pic-placeholder">
+                        <i class="pg-icon p-b-5">upload</i>
+                        <div class="fs-12">Upload</div>
+                    </div>
+                </pg-upload>
+                <div *ngIf="f.productImage?.invalid && (f.productImage.dirty || f.productImage.touched)">
+                    <label *ngIf="f.productImage.errors.required" class="error">Product Image is required
+                    </label>
+                </div>
             </div>
-          </pg-upload>
+
+
         </div>
         <!-- <div class="card card-default">
             <div class="card-header ">
@@ -42,7 +50,8 @@
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
                     f.productVideoLink.touched)">
                     <label for="product-video-link">Product Video Link</label>
-                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link" class="form-control" id="product-video-link" />
+                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link"
+                        class="form-control" id="product-video-link" />
                 </div>
                 <div *ngIf="f.productVideoLink.invalid && (f.productVideoLink.dirty || f.productVideoLink.touched)">
                     <label *ngIf="f.productVideoLink.errors.required" class="error">This field is required.</label>
@@ -68,7 +77,7 @@
             </div>
         </div>
         <div class="mt-4">
-            <button type="submit" class="me-4 btn btn-primary" [disabled]="productDetailsForm.invalid" (click)="subProductDetailsForm()">Save and Next</button>
+            <button type="submit" class="me-4 btn btn-primary" (click)="subProductDetailsForm()">Save and Next</button>
         </div>
     </form>
 </div>

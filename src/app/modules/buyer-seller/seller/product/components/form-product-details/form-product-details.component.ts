@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ImageService } from "../../../../../../core/providers/user/image.service";
 import { ProviderProductDetailService } from "../../../../../../core/providers/user/provider-product-detail.service";
-export type subProductDetails = { productVideoLink: string, image: string,productDescription:string };
+export type subProductDetails = { productVideoLink: string, image: string, productDescription: string };
 
 @Component({
   selector: "app-form-product-details",
@@ -11,9 +12,12 @@ export type subProductDetails = { productVideoLink: string, image: string,produc
 
 export class FormProductDetailsComponent implements OnInit {
   productDetailsForm: FormGroup;
+  pictureList: any[] = [];
+  payload: any;
 
-  constructor(private formBuilder: FormBuilder, private providerProductDetailService: ProviderProductDetailService) { }
-  @Output() formSubmitData:EventEmitter<any>= new EventEmitter<any>();
+  constructor(private formBuilder: FormBuilder, private providerProductDetailService: ProviderProductDetailService, private imageService: ImageService,
+  ) { }
+  @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
 
   handleChange(event) { }
 
@@ -24,32 +28,52 @@ export class FormProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.buildProductDetails();
   }
-  fileList = [
-    {
-      uid: -1,
-      name: 'xxx.png',
-      status: 'done',
-      url: 'http://pages.revox.io/dashboard/3.0.0/html/condensed/assets/img/profiles/avatar_small2x.jpg'
-    }
-  ];
-  previewImage = '';
-  previewVisible = false;
+
   buildProductDetails() {
-    this.productDetailsForm = this.formBuilder.group({      
+    this.productDetailsForm = this.formBuilder.group({
       productVideoLink: ["", [Validators.required]],
-      image: ["", [Validators.required]],
+      productImage: ["", [Validators.required]],
       productDescription: ["", [Validators.required]],
     });
   }
-  async subProductDetailsForm() {
-    let formData=this.productDetailsForm.value;
-    console.log("formData",formData);    
-    let data={
-      formData: formData,
-      value:'second'
-    }
-    this.formSubmitData.emit(data);
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
 
+      // this.companyLogoUploading = true
+      this.imageService.uploadImage(image).subscribe((res) => {
+        resolve(res)
+      }, (error) => {
+        console.log(error);
+        reject(error)
+      })
+
+    })
+  }
+  async subProductDetailsForm() {
+    try {
+      const pictureList = []
+      for await (const item of this.pictureList) {
+        const productImage: any = await this.uploadImageToServer(item.originFileObj);
+        pictureList.push(productImage.fileName)
+      }
+      // let formData = this.productDetailsForm.value;
+
+      this.payload = {
+        productImage: this.pictureList,
+        ...this.productDetailsForm.value
+
+      };
+      console.log("formData", this.payload);
+      let data = {
+        formData: this.payload,
+        value: 'second'
+      }
+      this.formSubmitData.emit(this.payload);
+      console.log(this.payload)
+    }
+    catch (error) {
+      console.log(error)
+    }
     // this.providerProductDetailService.addProductDetail(this.productDetailsForm.value).subscribe(
     //   (res) => {
     //     this.resetFormGroup(this.productDetailsForm);
