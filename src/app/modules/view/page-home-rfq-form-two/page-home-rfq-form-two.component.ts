@@ -1,13 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RequestQuotationService } from '../../../core/providers/user/request-quotation.service';
-import { Router } from '@angular/router';
 @Component({
-  selector: 'app-page-home-request-for-quotation',
-  templateUrl: './page-home-request-for-quotation.component.html',
-  styleUrls: ['./page-home-request-for-quotation.component.scss']
+  selector: 'app-page-home-rfq-form-two',
+  templateUrl: './page-home-rfq-form-two.component.html',
+  styleUrls: ['./page-home-rfq-form-two.component.scss']
 })
-export class PageHomeRequestForQuotationComponent implements OnInit {
+export class PageHomeRfqFormTwoComponent implements OnInit {
+
   handlePreview: any;
   file: File;
   fileType: any | string;
@@ -19,9 +19,12 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   ShowSecondSection: boolean = false;
   ShowSecondOne:boolean = true;
   quantity: any;
+  rfqId:string = '';
+  quote: any = {};
 
-  constructor(private formBuilder: FormBuilder, private router: Router,
-    private requestQuotationService: RequestQuotationService) { }
+  constructor(private formBuilder: FormBuilder,
+    private requestQuotationService: RequestQuotationService,
+    ) { }
 
   handleQuantityChange(event) {
     this.quantity = event.target.value;
@@ -37,13 +40,27 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   ngOnInit() {
     this.buildTypeForm1();
     this.buildTypeForm2();
+    this.rfqId = JSON.parse(localStorage.getItem('rfqId'));
+    this.requestQuotationService.getRequestForQuotationById(this.rfqId).subscribe(
+      (res:any)=>{
+        this.quote = res;
+        console.log('res quote', this.quote);
+       
+        // lookingFor
+        // pieces
+        // quantity
+      },
+      (err)=>{
+
+      }
+
+    )
 
 
   }
   buildTypeForm1() {
     this.requestQuotationForm1 = this.formBuilder.group({
       lookingFor: ["", [Validators.required, Validators.maxLength(200)]],
-      
       pieces: ["", [Validators.required, Validators.maxLength(10)]],
     });
   }
@@ -63,23 +80,21 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
       isCheck: ["",],
     });
   }
-  // async subRequestForm1() {
-  //   let formData1 = this.requestQuotationForm1.value;
-  //   console.log("formData1", formData1);
-  // }
-  subRequestForm1() {
+  async subRequestForm1() {
+    let formData1 = this.requestQuotationForm1.value;
+    console.log("formData1", formData1);
+  }
+  saveFormData() {
     this.payload = {
       quantity: this.quantity,
       ...this.requestQuotationForm1.value,
-      // ...this.requestQuotationForm2.value,
+      ...this.requestQuotationForm2.value,
 
     };
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
         window.alert('API Success');
-        this.router.navigateByUrl(`/b2b/request-for-quotation`);
-        // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
         console.log("res", res);
       },
       (err) => {
@@ -103,11 +118,5 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   //   this.ShowSecondSection = true;
   //   this.ShowSecondOne = false;
   // }
-
-  getDetailById(item: any) {
-    localStorage.setItem('rfqId', JSON.stringify(item._id));   
-     
-    
-  }
 
 }

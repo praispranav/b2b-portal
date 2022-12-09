@@ -1,4 +1,4 @@
-<div class="bg-grey1 p-2 mt-5">
+<!-- <div class="bg-grey1 p-2 mt-5">
     <h2>REQUEST FOR QUOTATION <span class="text-muted" style="font-size: 20px;">Customization Service</span>
     </h2>
     <form [formGroup]="requestQuotationForm1">
@@ -27,9 +27,72 @@
                     </div>
 
                     <div class="col-md-6 p-3">
-                        <!-- <input class="form-control" type="text" formControlName="pieces" placeholder="Piece/Pieces"
-                            name="" id=""> -->
-                            <select class="form-select" aria-label="Default select example" formControlName="pieces"
+                        <input class="form-control" type="text" formControlName="pieces" placeholder="Piece/Pieces"
+                            name="" id="">
+
+                        <div *ngIf="f1.pieces?.invalid && (f1.pieces.dirty || f1.pieces.touched)">
+                            <label *ngIf="f1.pieces.errors.required" class="error">This Field is
+                                required.</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="rounded-pill btn btn-orange" [class.disabled]="requestQuotationForm1.invalid" 
+                            (click)="subRequestForm1()">Request For
+                            Quotation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div> -->
+
+
+<div class="p-4 d-flex justify-content-center sub-div">
+    <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
+        <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
+        <p>Get quotes for all your enquiries hassle free and without any cost</p>
+        <form [formGroup]="requestQuotationForm2">
+            <div class="row">
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Product Name</h6>
+                </div>
+                <div class="col-md-8 p-3">
+                    <input class="form-control" type="text" formControlName="productName"
+                        placeholder="Enter the product name" name="" id="">
+
+                    <div *ngIf="f2.productName?.invalid && (f2.productName.dirty || f2.productName.touched)">
+                        <label *ngIf="f2.productName.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Product Category</h6>
+                </div>
+
+                <div class="col-md-8 p-3">
+                    <select class="form-select form-select-sm" formControlName="productCategory"
+                        aria-label="danger select example" class="form-select">
+                        <option selected>Select Category</option>
+                        <option value="1">Apparel</option>
+                        <option value="2">Cloth</option>
+                        <option value="3">Shoes</option>
+                    </select>
+
+                    <div
+                        *ngIf="f2.productCategory?.invalid && (f2.productCategory.dirty || f2.productCategory.touched)">
+                        <label *ngIf="f2.productCategory.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Quantity</h6>
+                </div>
+                <div class="col-md-3 p-3">
+                    <input class="form-control" type="number" placeholder="8 number"
+                        (change)="handleQuantityChange($event)" name="Quantity" id="" [value]="quantity">
+                </div>
+                <div class="col-md-5 p-3">
+                    <select class="form-select" aria-label="Default select example" formControlName="unit"
                             class="form-select">
                             <option selected>Unit</option>
                             <option value="Acres">Acres</option>
@@ -116,156 +179,6 @@
                             <option value="Watts">Watts</option>
                             <option value="Yards">Yards</option>
                         </select>
-
-                        <div *ngIf="f1.pieces?.invalid && (f1.pieces.dirty || f1.pieces.touched)">
-                            <label *ngIf="f1.pieces.errors.required" class="error">This Field is
-                                required.</label>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="rounded-pill btn btn-orange" [class.disabled]="requestQuotationForm1.invalid" 
-                            (click)="subRequestForm1()" (click)="getDetailById(item)">Request For
-                            Quotation</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-
-<!-- <div class="p-4 d-flex justify-content-center sub-div">
-    <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
-        <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
-        <p>Get quotes for all your enquiries hassle free and without any cost</p>
-        <form [formGroup]="requestQuotationForm2">
-            <div class="row">
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Product Name</h6>
-                </div>
-                <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" formControlName="productName"
-                        placeholder="Enter the product name" name="" id="">
-
-                    <div *ngIf="f2.productName?.invalid && (f2.productName.dirty || f2.productName.touched)">
-                        <label *ngIf="f2.productName.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Product Category</h6>
-                </div>
-
-                <div class="col-md-8 p-3">
-                    <select class="form-select form-select-sm" formControlName="productCategory"
-                        aria-label="danger select example" class="form-select">
-                        <option selected>Select Category</option>
-                        <option value="1">Apparel</option>
-                        <option value="2">Cloth</option>
-                        <option value="3">Shoes</option>
-                    </select>
-
-                    <div
-                        *ngIf="f2.productCategory?.invalid && (f2.productCategory.dirty || f2.productCategory.touched)">
-                        <label *ngIf="f2.productCategory.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Quantity</h6>
-                </div>
-                <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" placeholder="8 number"
-                        (change)="handleQuantityChange($event)" name="Quantity" id="" [value]="quantity">
-                </div>
-                <div class="col-md-5 p-3">
-                    <select class="form-select" aria-label="Default select example" formControlName="unit"
-                        class="form-select">
-                        <option selected>Unit</option>
-                        <option value="1">Acres</option>
-                        <option value="2">Amperes</option>
-                        <option value="3">Bags</option>
-                        <option value="4">Barrels</option>
-                        <option value="5">Blades</option>
-                        <option value="6">Boxes</option>
-                        <option value="7">Bushes</option>
-                        <option value="8">Carats</option>
-                        <option value="9">Cartons</option>
-                        <option value="10">Cases</option>
-                        <option value="11">Centimeters</option>
-                        <option value="12">Chains</option>
-                        <option value="13">Combos</option>
-                        <option value="14">Cubic Centimeters</option>
-                        <option value="15">Cubic Feet</option>
-                        <option value="16">Cubic Inches</option>
-                        <option value="17">Cubic Meters</option>
-                        <option value="18">Cubic Yards</option>
-                        <option value="19">Degree Celsius</option>
-                        <option value="20">Degree Fahrenheit</option>
-                        <option value="21">Dozens</option>
-                        <option value="22">Drums</option>
-                        <option value="23">Fluid Ounces</option>
-                        <option value="24">Feet</option>
-                        <option value="25">Forty Foot Container</option>
-                        <option value="26">Furlongs</option>
-                        <option value="27">Gallons</option>
-                        <option value="28">Gills</option>
-                        <option value="29">Grains</option>
-                        <option value="30">Gross</option>
-                        <option value="31">Hectares</option>
-                        <option value="32">Hertz</option>
-                        <option value="33">Inches</option>
-                        <option value="34">Kilo Amperes</option>
-                        <option value="35">Kilo grams</option>
-                        <option value="36">Kilo Ohms</option>
-                        <option value="37">KiloVolts</option>
-                        <option value="38">KiloWatts</option>
-                        <option value="39">Litters</option>
-                        <option value="40">Long Tons</option>
-                        <option value="41">Megahertz</option>
-                        <option value="42">Meters</option>
-                        <option value="43">Miles</option>
-                        <option value="44">Milligrams</option>
-                        <option value="45">Mill Hertz</option>
-                        <option value="46">Milliliters</option>
-                        <option value="47">Milliohms</option>
-                        <option value="48">Millivolts</option>
-                        <option value="49">MilliWatts</option>
-                        <option value="50">Nautical Miles</option>
-                        <option value="51">Ohms</option>
-                        <option value="52">Ounce</option>
-                        <option value="53">Packs</option>
-                        <option value="54">Pairs</option>
-                        <option value="55">Pallets</option>
-                        <option value="56">Parcels</option>
-                        <option value="57">Perches</option>
-                        <option value="58">Pieces</option>
-                        <option value="59">Prints</option>
-                        <option value="60">Plants</option>
-                        <option value="61">Poles</option>
-                        <option value="62">Pounds</option>
-                        <option value="63">Quarts</option>
-                        <option value="64">Quarters</option>
-                        <option value="65">Rods</option>
-                        <option value="66">Rolls</option>
-                        <option value="67">Sets</option>
-                        <option value="68">Sheets</option>
-                        <option value="69">Short Tons</option>
-                        <option value="70">Square Centimeters</option>
-                        <option value="71">Square Feet</option>
-                        <option value="72">Square Miles</option>
-                        <option value="73">Square Yards</option>
-                        <option value="74">Stones</option>
-                        <option value="75">Strands</option>
-                        <option value="76">Tons</option>
-                        <option value="77">Tones</option>
-                        <option value="78">Trays</option>
-                        <option value="79">Twenty Foot Container</option>
-                        <option value="80">Units</option>
-                        <option value="82">Volts</option>
-                        <option value="83">Watts</option>
-                        <option value="83">Yards</option>
-                    </select>
 
                     <div *ngIf="f2.unit?.invalid && (f2.unit.dirty || f2.unit.touched)">
                         <label *ngIf="f2.unit.errors.required" class="error">This Field is
@@ -360,13 +273,19 @@
                     <h6 class="star">Attach Files</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                   
+                    <!-- <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload> -->
                     <div class="input-group" style="width: 285px;">
                         <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
                             (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
                             aria-describedby="basic-addon2" formControlName="image">
                         <div class="input-group-append">
-                           
+                            <!-- <button class="btn btn-outline-secondary" type="button"
+                                (click)="fileInputDoc.click()">upload</button> -->
                         </div>
                     </div>
 
@@ -408,4 +327,4 @@
             </div>
         </form>
     </div>
-</div> -->
+</div>
