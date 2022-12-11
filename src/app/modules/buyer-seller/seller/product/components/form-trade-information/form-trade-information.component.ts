@@ -1,14 +1,29 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProviderTradeInformationService } from './../../../../../../core/providers/user/provider-trade-information.service';
-export type tradeInfo={ 
+export type tradeInfo = {
   sellingPrice: string;
   unit: string;
   moq: string;
   fobUnit: string;
-  fobPriceUnit: string;
-  moqPerUnit: string;
+  fobPriceUnit1: string;
+  fobPriceUnit2: string;
+  fobPriceUnit3: string;
+  fobPriceUnit4: string;
+  fobPriceUnit5: string;
+  fobPriceUnit6: string;
+  fobPriceUnit7: string;
+  fobPriceUnit8: string;
+  moqPerUnit1: string;
+  moqPerUnit2: string;
+  moqPerUnit3: string;
+  moqPerUnit4: string;
+  moqPerUnit5: string;
+  moqPerUnit6: string;
+  moqPerUnit7: string;
+  moqPerUnit8: string;
   paymentType: string;
+
   timestamp?: Date;
 }
 @Component({
@@ -95,54 +110,101 @@ export class FormTradeInformationComponent implements OnInit {
 
   paymentTypeList: any[] =
     [
-      { type: "D/A" },
-      { type: "D/P" },
-      { type: "L/C" },
-      { type: "Moneygram" },
-      { type: "T/T" },
-      { type: "Western Union" },
-      { type: "Other" },
+      { paymentType: false, type: "D/A", value: "D/A" },
+      { paymentType: false, type: "D/P", value: "D/P" },
+      { paymentType: false, type: "L/C", value: "L/C" },
+      { paymentType: false, type: "Moneygram", value: "Moneygram" },
+      { paymentType: false, type: "T/T", value: "T/T" },
+      { paymentType: false, type: "Western Union", value: "Western Union" },
+      { paymentType: false, type: "Other", value: "Other" },
 
 
     ]
   constructor(private formBuilder: FormBuilder, private providerTradeInformationService: ProviderTradeInformationService) { }
-  @Output() formSubmitData:EventEmitter<any>= new EventEmitter<any>();
+  @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
     return this.tradeInformationForm.controls;
   }
-
+  get otherDetail() {
+    return this.f.otherDetail as FormArray;
+  }
+  get types() {
+    return this.f.types as FormArray;
+  }
   ngOnInit() {
     this.buildTradeInformation();
+    this.addNewOtherDetails();
   }
+
   buildTradeInformation() {
     this.tradeInformationForm = this.formBuilder.group({
-      sellingPrice: ['', [Validators.required]],
-      unit: ['', [Validators.required]],
-      moq: ['', [Validators.required]],
-      MoqPerUnit: ['', [Validators.required]],
-      paymentType: ['', [Validators.required]],
-      fobUnit: ['', [Validators.required]],
-      fobPriceUnit: ['', [Validators.required]],
-      Other: ['', [Validators.required]],
+      sellingPrice: [""],
+      unit: [""],
+      moq: [""],
+      fobUnit: [""],
+      fobPriceUnit1: [""],
+      fobPriceUnit2: [""],
+      fobPriceUnit3: [""],
+      fobPriceUnit4: [""],
+      fobPriceUnit5: [""],
+      fobPriceUnit6: [""],
+      fobPriceUnit7: [""],
+      fobPriceUnit8: [""],
+      moqPerUnit1: [""],
+      moqPerUnit2: [""],
+      moqPerUnit3: [""],
+      moqPerUnit4: [""],
+      moqPerUnit5: [""],
+      moqPerUnit6: [""],
+      moqPerUnit7: [""],
+      moqPerUnit8: [""],
+      types: this.formBuilder.array([]),
+      otherDetail: this.formBuilder.array([]),
+    });
+  }
+  get otherDetailsArr() {
+    return this.f["otherDetail"] as FormArray;
+  }
+  createTypeFields(types: any[]) {
+    this.paymentTypeList.forEach(type => {
+      const findType = types.find(t => t.value === type.value);
+      type.paymentType = findType ? true : false;
+      this.addType(type);
     });
   }
 
+  addType(type) {
+    const typeForm = this.formBuilder.group({
+      name: [type.name],
+      value: [type.value],
+      paymentType: [type.paymentType]
+    });
+    this.types.push(typeForm);
+  }
+
+  deleteType(typeIndex: number) {
+    this.types.removeAt(typeIndex);
+  }
+  addNewOtherDetails() {
+    const detailForm = this.formBuilder.group({
+      other: ['', Validators.required]
+    });
+    this.otherDetailsArr.push(detailForm);
+  }
+  deleteOtherDetails(index: number): void {
+    this.otherDetailsArr.removeAt(index);
+  }
   async subTradeInformationForm() {
-    let formData= this.tradeInformationForm.value
-    let data={
+    let formData = this.tradeInformationForm.value
+    let data = {
       formData: formData,
-      value:'third'
+      value: 'third'
     }
+    formData.otherDetail = formData.otherDetail.map(i => i.other);
+    formData.types = formData.types.filter(t => t.paymentType);
+
     this.formSubmitData.emit(data);
-    // this.providerTradeInformationService.addTradeInformation(this.tradeInformationForm.value).subscribe(
-    //   (res) => {
-    //     this.resetFormGroup(this.tradeInformationForm);
-    //     window.alert('API Success');
-    //   },
-    //   (err) => {
-    //     window.alert('API Error');
-    //   }
-    // );
+
   }
   private resetFormGroup(form: FormGroup) {
     form.reset();

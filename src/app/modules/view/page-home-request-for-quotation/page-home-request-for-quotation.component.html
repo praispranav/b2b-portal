@@ -29,7 +29,7 @@
                     <div class="col-md-6 p-3">
                         <!-- <input class="form-control" type="text" formControlName="pieces" placeholder="Piece/Pieces"
                             name="" id=""> -->
-                            <select class="form-select" aria-label="Default select example" formControlName="pieces"
+                        <select class="form-select" aria-label="Default select example" formControlName="pieces"
                             class="form-select">
                             <option selected>Unit</option>
                             <option value="Acres">Acres</option>
@@ -123,8 +123,8 @@
                         </div>
                     </div>
                     <div>
-                        <button class="rounded-pill btn btn-orange" [class.disabled]="requestQuotationForm1.invalid" 
-                            (click)="subRequestForm1()" (click)="getDetailById(item)">Request For
+                        <button class="rounded-pill btn btn-orange" (click)="subRequestForm1()"
+                            (click)="getDetailById(item)">Request For
                             Quotation</button>
                     </div>
                 </div>
