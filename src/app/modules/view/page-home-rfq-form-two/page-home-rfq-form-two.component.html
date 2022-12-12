@@ -1,52 +1,3 @@
-<!-- <div class="bg-grey1 p-2 mt-5">
-    <h2>REQUEST FOR QUOTATION <span class="text-muted" style="font-size: 20px;">Customization Service</span>
-    </h2>
-    <form [formGroup]="requestQuotationForm1">
-
-        <div class="row p-4 ">
-            <div class="col-md-5 backgroundImage ">
-            </div>
-            <div class="col-md-7 p-3 bg-grey pmt-2 shadow">
-                <h2>One Request, Multiple Quotes</h2>
-                <p>Helping fashion brands make more sustainable decisionHelping fashion brands make more
-                    sustainable
-                    decision</p>
-                <div class="row p-5 ">
-                    <div class="col-md-12 p-3">
-                        <input class="form-control" type="text" formControlName="lookingFor"
-                            placeholder="What are you looking FOR..." name="lookingFor" id="lookingFor">
-
-                    </div>
-                    <div *ngIf="f1.lookingFor?.invalid && (f1.lookingFor.dirty || f1.lookingFor.touched)">
-                        <label *ngIf="f1.lookingFor.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                    <div class="col-md-6 p-3">
-                        <input class="form-control" type="number" (change)="handleQuantityChange($event)"
-                            placeholder="Quantity" name="quantity" id="quantity" [value]="quantity">
-                    </div>
-
-                    <div class="col-md-6 p-3">
-                        <input class="form-control" type="text" formControlName="pieces" placeholder="Piece/Pieces"
-                            name="" id="">
-
-                        <div *ngIf="f1.pieces?.invalid && (f1.pieces.dirty || f1.pieces.touched)">
-                            <label *ngIf="f1.pieces.errors.required" class="error">This Field is
-                                required.</label>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="rounded-pill btn btn-orange" [class.disabled]="requestQuotationForm1.invalid" 
-                            (click)="subRequestForm1()">Request For
-                            Quotation</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div> -->
-
-
 <div class="p-4 d-flex justify-content-center sub-div">
     <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
         <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
@@ -87,98 +38,99 @@
                 <div class="col-md-3 p-3">
                     <h6 class="star">Quantity</h6>
                 </div>
+                <!-- (change)="handleQuantityChange($event)" -->
+                <!-- [value]="quantity" -->
                 <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" placeholder="8 number"
-                        (change)="handleQuantityChange($event)" name="Quantity" id="" [value]="quantity">
+                    <input class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
                 </div>
                 <div class="col-md-5 p-3">
                     <select class="form-select" aria-label="Default select example" formControlName="unit"
-                            class="form-select">
-                            <option selected>Unit</option>
-                            <option value="Acres">Acres</option>
-                            <option value="Amperes">Amperes</option>
-                            <option value="Bags">Bags</option>
-                            <option value="Barrels">Barrels</option>
-                            <option value="Blades">Blades</option>
-                            <option value="Boxes">Boxes</option>
-                            <option value="Bushes">Bushes</option>
-                            <option value="Carats">Carats</option>
-                            <option value="Cartons">Cartons</option>
-                            <option value="Cases">Cases</option>
-                            <option value="Centimeters">Centimeters</option>
-                            <option value="Chains">Chains</option>
-                            <option value="Combos">Combos</option>
-                            <option value="Cubic Centimeters">Cubic Centimeters</option>
-                            <option value="Cubic Feet">Cubic Feet</option>
-                            <option value="Cubic Inches">Cubic Inches</option>
-                            <option value="Cubic Meters">Cubic Meters</option>
-                            <option value="Cubic Yards">Cubic Yards</option>
-                            <option value="Degree Celsius">Degree Celsius</option>
-                            <option value="Degree Fahrenheit">Degree Fahrenheit</option>
-                            <option value="Dozens">Dozens</option>
-                            <option value="Drums">Drums</option>
-                            <option value="Fluid Ounces">Fluid Ounces</option>
-                            <option value="Feet">Feet</option>
-                            <option value="Forty Foot Container">Forty Foot Container</option>
-                            <option value="Furlongs">Furlongs</option>
-                            <option value="Gallons">Gallons</option>
-                            <option value="Gills">Gills</option>
-                            <option value="Grains">Grains</option>
-                            <option value="Gross">Gross</option>
-                            <option value="Hectares">Hectares</option>
-                            <option value="Hertz">Hertz</option>
-                            <option value="Inches">Inches</option>
-                            <option value="Kilo Amperes">Kilo Amperes</option>
-                            <option value="Kilo grams">Kilo grams</option>
-                            <option value="Kilo Ohms">Kilo Ohms</option>
-                            <option value="KiloVolts">KiloVolts</option>
-                            <option value="KiloWatts">KiloWatts</option>
-                            <option value="Litters">Litters</option>
-                            <option value="Long Tons">Long Tons</option>
-                            <option value="Megahertz">Megahertz</option>
-                            <option value="Meters">Meters</option>
-                            <option value="Miles">Miles</option>
-                            <option value="Milligrams">Milligrams</option>
-                            <option value="Mill Hertz">Mill Hertz</option>
-                            <option value="Milliliters">Milliliters</option>
-                            <option value="Milliohms">Milliohms</option>
-                            <option value="Millivolts">Millivolts</option>
-                            <option value="MilliWatts">MilliWatts</option>
-                            <option value="Nautical Miles">Nautical Miles</option>
-                            <option value="Ohms">Ohms</option>
-                            <option value="Ounce">Ounce</option>
-                            <option value="Packs">Packs</option>
-                            <option value="Pairs">Pairs</option>
-                            <option value="Pallets">Pallets</option>
-                            <option value="Parcels">Parcels</option>
-                            <option value="Perches">Perches</option>
-                            <option value="Pieces">Pieces</option>
-                            <option value="Prints">Prints</option>
-                            <option value="Plants">Plants</option>
-                            <option value="Poles">Poles</option>
-                            <option value="Pounds">Pounds</option>
-                            <option value="Quarts">Quarts</option>
-                            <option value="Quarters">Quarters</option>
-                            <option value="Rods">Rods</option>
-                            <option value="Rolls">Rolls</option>
-                            <option value="Sets">Sets</option>
-                            <option value="Sheets">Sheets</option>
-                            <option value="Short Tons">Short Tons</option>
-                            <option value="Square Centimeters">Square Centimeters</option>
-                            <option value="Square Feet">Square Feet</option>
-                            <option value="Square Miles">Square Miles</option>
-                            <option value="Square Yards">Square Yards</option>
-                            <option value="Stones">Stones</option>
-                            <option value="Strands">Strands</option>
-                            <option value="Tons">Tons</option>
-                            <option value="Tones">Tones</option>
-                            <option value="Trays">Trays</option>
-                            <option value="Twenty Foot Container">Twenty Foot Container</option>
-                            <option value="Units">Units</option>
-                            <option value="Volts">Volts</option>
-                            <option value="Watts">Watts</option>
-                            <option value="Yards">Yards</option>
-                        </select>
+                        class="form-select">
+                        <option selected>Unit</option>
+                        <option value="Acres">Acres</option>
+                        <option value="Amperes">Amperes</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Barrels">Barrels</option>
+                        <option value="Blades">Blades</option>
+                        <option value="Boxes">Boxes</option>
+                        <option value="Bushes">Bushes</option>
+                        <option value="Carats">Carats</option>
+                        <option value="Cartons">Cartons</option>
+                        <option value="Cases">Cases</option>
+                        <option value="Centimeters">Centimeters</option>
+                        <option value="Chains">Chains</option>
+                        <option value="Combos">Combos</option>
+                        <option value="Cubic Centimeters">Cubic Centimeters</option>
+                        <option value="Cubic Feet">Cubic Feet</option>
+                        <option value="Cubic Inches">Cubic Inches</option>
+                        <option value="Cubic Meters">Cubic Meters</option>
+                        <option value="Cubic Yards">Cubic Yards</option>
+                        <option value="Degree Celsius">Degree Celsius</option>
+                        <option value="Degree Fahrenheit">Degree Fahrenheit</option>
+                        <option value="Dozens">Dozens</option>
+                        <option value="Drums">Drums</option>
+                        <option value="Fluid Ounces">Fluid Ounces</option>
+                        <option value="Feet">Feet</option>
+                        <option value="Forty Foot Container">Forty Foot Container</option>
+                        <option value="Furlongs">Furlongs</option>
+                        <option value="Gallons">Gallons</option>
+                        <option value="Gills">Gills</option>
+                        <option value="Grains">Grains</option>
+                        <option value="Gross">Gross</option>
+                        <option value="Hectares">Hectares</option>
+                        <option value="Hertz">Hertz</option>
+                        <option value="Inches">Inches</option>
+                        <option value="Kilo Amperes">Kilo Amperes</option>
+                        <option value="Kilo grams">Kilo grams</option>
+                        <option value="Kilo Ohms">Kilo Ohms</option>
+                        <option value="KiloVolts">KiloVolts</option>
+                        <option value="KiloWatts">KiloWatts</option>
+                        <option value="Litters">Litters</option>
+                        <option value="Long Tons">Long Tons</option>
+                        <option value="Megahertz">Megahertz</option>
+                        <option value="Meters">Meters</option>
+                        <option value="Miles">Miles</option>
+                        <option value="Milligrams">Milligrams</option>
+                        <option value="Mill Hertz">Mill Hertz</option>
+                        <option value="Milliliters">Milliliters</option>
+                        <option value="Milliohms">Milliohms</option>
+                        <option value="Millivolts">Millivolts</option>
+                        <option value="MilliWatts">MilliWatts</option>
+                        <option value="Nautical Miles">Nautical Miles</option>
+                        <option value="Ohms">Ohms</option>
+                        <option value="Ounce">Ounce</option>
+                        <option value="Packs">Packs</option>
+                        <option value="Pairs">Pairs</option>
+                        <option value="Pallets">Pallets</option>
+                        <option value="Parcels">Parcels</option>
+                        <option value="Perches">Perches</option>
+                        <option value="Pieces">Pieces</option>
+                        <option value="Prints">Prints</option>
+                        <option value="Plants">Plants</option>
+                        <option value="Poles">Poles</option>
+                        <option value="Pounds">Pounds</option>
+                        <option value="Quarts">Quarts</option>
+                        <option value="Quarters">Quarters</option>
+                        <option value="Rods">Rods</option>
+                        <option value="Rolls">Rolls</option>
+                        <option value="Sets">Sets</option>
+                        <option value="Sheets">Sheets</option>
+                        <option value="Short Tons">Short Tons</option>
+                        <option value="Square Centimeters">Square Centimeters</option>
+                        <option value="Square Feet">Square Feet</option>
+                        <option value="Square Miles">Square Miles</option>
+                        <option value="Square Yards">Square Yards</option>
+                        <option value="Stones">Stones</option>
+                        <option value="Strands">Strands</option>
+                        <option value="Tons">Tons</option>
+                        <option value="Tones">Tones</option>
+                        <option value="Trays">Trays</option>
+                        <option value="Twenty Foot Container">Twenty Foot Container</option>
+                        <option value="Units">Units</option>
+                        <option value="Volts">Volts</option>
+                        <option value="Watts">Watts</option>
+                        <option value="Yards">Yards</option>
+                    </select>
 
                     <div *ngIf="f2.unit?.invalid && (f2.unit.dirty || f2.unit.touched)">
                         <label *ngIf="f2.unit.errors.required" class="error">This Field is

@@ -13,23 +13,24 @@
                     decision</p>
                 <div class="row p-5 ">
                     <div class="col-md-12 p-3">
-                        <input class="form-control" type="text" formControlName="lookingFor"
-                            placeholder="What are you looking FOR..." name="lookingFor" id="lookingFor">
+                        <input class="form-control" type="text" formControlName="productName"
+                            placeholder="What are you looking FOR..." name="productName" id="productName">
 
                     </div>
-                    <div *ngIf="f1.lookingFor?.invalid && (f1.lookingFor.dirty || f1.lookingFor.touched)">
-                        <label *ngIf="f1.lookingFor.errors.required" class="error">This Field is
+                    <div *ngIf="f1.productName?.invalid && (f1.productName.dirty || f1.productName.touched)">
+                        <label *ngIf="f1.productName.errors.required" class="error">This Field is
                             required.</label>
                     </div>
+                    <!-- [value]="quantity" -->
+                    <!-- (change)="handleQuantityChange($event)" -->
                     <div class="col-md-6 p-3">
-                        <input class="form-control" type="number" (change)="handleQuantityChange($event)"
-                            placeholder="Quantity" name="quantity" id="quantity" [value]="quantity">
+                        <input class="form-control" type="number" placeholder="Quantity" name="quantity" id="quantity">
                     </div>
 
                     <div class="col-md-6 p-3">
                         <!-- <input class="form-control" type="text" formControlName="pieces" placeholder="Piece/Pieces"
                             name="" id=""> -->
-                        <select class="form-select" aria-label="Default select example" formControlName="pieces"
+                        <select class="form-select" aria-label="Default select example" formControlName="unit"
                             class="form-select">
                             <option selected>Unit</option>
                             <option value="Acres">Acres</option>

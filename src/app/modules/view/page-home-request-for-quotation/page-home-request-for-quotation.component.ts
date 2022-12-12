@@ -17,76 +17,63 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   requestQuotationForm2: FormGroup;
   payload: any = {};
   ShowSecondSection: boolean = false;
-  ShowSecondOne:boolean = true;
-  quantity: any;
+  ShowSecondOne: boolean = true;
+  // quantity: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
     private requestQuotationService: RequestQuotationService) { }
+  @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
 
-  handleQuantityChange(event) {
-    this.quantity = event.target.value;
-    console.log("quantity value", this.quantity)
-  }
+  // handleQuantityChange(event) {
+  //   this.quantity = event.target.value;
+  //   console.log("quantity value", this.quantity)
+  // }
   get f1() {
     return this.requestQuotationForm1.controls;
   }
-  get f2() {
-    return this.requestQuotationForm2.controls;
 
-  }
   ngOnInit() {
     this.buildTypeForm1();
-    this.buildTypeForm2();
-
-
   }
   buildTypeForm1() {
     this.requestQuotationForm1 = this.formBuilder.group({
-      lookingFor: ["", [Validators.required, Validators.maxLength(200)]],
-      
-      pieces: ["", [Validators.required, Validators.maxLength(10)]],
-    });
-  }
-
-  buildTypeForm2() {
-    this.requestQuotationForm2 = this.formBuilder.group({
       productName: ["", [Validators.required, Validators.maxLength(200)]],
-      productCategory: ["", [Validators.required]],
-      unit: ["", [Validators.required]],
-      sourcingType: ["", [Validators.required]],
-      sourcingPurpose: ["", [Validators.required]],
-      budget: ["", [Validators.required, Validators.maxLength(50)]],
-      details: ["", [Validators.required, Validators.maxLength(200)]],
-      currency: ["", [Validators.required]],
-      image: ["", [Validators.required]],
-      shipIn: ["", [Validators.required, Validators.maxLength(20)]],
-      isCheck: ["",],
+      quantity: ["", [Validators.required, Validators.maxLength(10)]],
+      unit: ["", [Validators.required, Validators.maxLength(10)]],
     });
   }
-  // async subRequestForm1() {
-  //   let formData1 = this.requestQuotationForm1.value;
-  //   console.log("formData1", formData1);
-  // }
+
+
+
   subRequestForm1() {
-    this.payload = {
-      quantity: this.quantity,
-      ...this.requestQuotationForm1.value,
-      // ...this.requestQuotationForm2.value,
+    // this.payload = {
+    //   // quantity: this.quantity,
+    //   ...this.requestQuotationForm1.value,
 
-    };
-    console.log("payload", this.payload);
-    this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
-      (res) => {
-        window.alert('API Success');
-        this.router.navigateByUrl(`/b2b/request-for-quotation`);
-        // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
-        console.log("res", res);
-      },
-      (err) => {
+    // };
+    let formData = this.requestQuotationForm1.value;
+    // let data = {
+    //   formData: formData,
+    //   // value: 'first'
+    // }
 
-        window.alert('API Error');
-      }
-    );
+    this.formSubmitData.emit(formData);
+    console.log(formData);
+
+    this.router.navigateByUrl(`/b2b/request-for-quotation`);
+
+    // console.log("payload", this.payload);
+    // this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
+    //   (res) => {
+    //     window.alert('API Success');
+    //     // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
+    //     console.log("res", res);
+    //   },
+    //   (err) => {
+
+    //     window.alert('API Error');
+    //   }
+    // );
   }
   fileUpload(event: any) {
     const file = event.target.files[0];
@@ -99,15 +86,12 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
       this.fileName = file.name
     }
   }
-  // showDetailsForm() {
-  //   this.ShowSecondSection = true;
-  //   this.ShowSecondOne = false;
-  // }
 
-  getDetailById(item: any) {
-    localStorage.setItem('rfqId', JSON.stringify(item._id));   
-     
-    
-  }
+
+  // getDetailById(item: any) {
+  //   localStorage.setItem('rfqId', JSON.stringify(item._id));
+
+
+  // }
 
 }

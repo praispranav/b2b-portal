@@ -13,44 +13,40 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   fileType: any | string;
   fileName: string = '';
   imageBase64: string | any = "";
-  requestQuotationForm1: FormGroup;
   requestQuotationForm2: FormGroup;
+  firstFormValue: any;
   payload: any = {};
   ShowSecondSection: boolean = false;
-  ShowSecondOne:boolean = true;
+  ShowSecondOne: boolean = true;
   quantity: any;
-  rfqId:string = '';
+  rfqId: string = '';
   quote: any = {};
+  allFormData: any;
 
   constructor(private formBuilder: FormBuilder,
     private requestQuotationService: RequestQuotationService,
-    ) { }
+  ) { }
 
-  handleQuantityChange(event) {
-    this.quantity = event.target.value;
-    console.log("quantity value", this.quantity)
-  }
-  get f1() {
-    return this.requestQuotationForm1.controls;
-  }
-  get f2() {
-    return this.requestQuotationForm2.controls;
+  // handleQuantityChange(event) {
+  //   this.quantity = event.target.value;
+  //   console.log("quantity value", this.quantity)
+  // }
 
-  }
+
   ngOnInit() {
-    this.buildTypeForm1();
+    // this.buildTypeForm1();
     this.buildTypeForm2();
     this.rfqId = JSON.parse(localStorage.getItem('rfqId'));
     this.requestQuotationService.getRequestForQuotationById(this.rfqId).subscribe(
-      (res:any)=>{
+      (res: any) => {
         this.quote = res;
         console.log('res quote', this.quote);
-       
+
         // lookingFor
         // pieces
         // quantity
       },
-      (err)=>{
+      (err) => {
 
       }
 
@@ -58,12 +54,7 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
 
 
   }
-  buildTypeForm1() {
-    this.requestQuotationForm1 = this.formBuilder.group({
-      lookingFor: ["", [Validators.required, Validators.maxLength(200)]],
-      pieces: ["", [Validators.required, Validators.maxLength(10)]],
-    });
-  }
+
 
   buildTypeForm2() {
     this.requestQuotationForm2 = this.formBuilder.group({
@@ -80,14 +71,20 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       isCheck: ["",],
     });
   }
-  async subRequestForm1() {
-    let formData1 = this.requestQuotationForm1.value;
-    console.log("formData1", formData1);
-  }
-  saveFormData() {
+
+  saveFormData(event): void {
+    if (event) {
+      this.allFormData = event.formData;
+      this.firstFormValue = {
+        productName: this.allFormData.productName ? this.allFormData.productName : '',
+        quantity: this.allFormData.quantity ? this.allFormData.quantity : '',
+        unit: this.allFormData.unit ? this.allFormData.unit : ''
+      };
+    }
     this.payload = {
-      quantity: this.quantity,
-      ...this.requestQuotationForm1.value,
+      // quantity: this.quantity,
+
+      ...this.firstFormValue.value,
       ...this.requestQuotationForm2.value,
 
     };
