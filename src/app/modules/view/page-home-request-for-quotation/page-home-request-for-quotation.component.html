@@ -24,7 +24,7 @@
                     <!-- [value]="quantity" -->
                     <!-- (change)="handleQuantityChange($event)" -->
                     <div class="col-md-6 p-3">
-                        <input class="form-control" type="number" placeholder="Quantity" name="quantity" id="quantity">
+                        <input formControlName="quantity" class="form-control" type="number" placeholder="Quantity" name="quantity" id="quantity">
                     </div>
 
                     <div class="col-md-6 p-3">
@@ -125,7 +125,7 @@
                     </div>
                     <div>
                         <button class="rounded-pill btn btn-orange" (click)="subRequestForm1()"
-                            (click)="getDetailById(item)">Request For
+                            >Request For
                             Quotation</button>
                     </div>
                 </div>

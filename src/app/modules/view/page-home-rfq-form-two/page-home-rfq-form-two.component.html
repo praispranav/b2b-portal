@@ -11,8 +11,8 @@
                     <input class="form-control" type="text" formControlName="productName"
                         placeholder="Enter the product name" name="" id="">
 
-                    <div *ngIf="f2.productName?.invalid && (f2.productName.dirty || f2.productName.touched)">
-                        <label *ngIf="f2.productName.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.productName?.invalid && (requestQuotationForm2.productName.dirty || requestQuotationForm2.productName.touched)">
+                        <label *ngIf="requestQuotationForm2.productName.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -30,8 +30,8 @@
                     </select>
 
                     <div
-                        *ngIf="f2.productCategory?.invalid && (f2.productCategory.dirty || f2.productCategory.touched)">
-                        <label *ngIf="f2.productCategory.errors.required" class="error">This Field is
+                        *ngIf="requestQuotationForm2.productCategory?.invalid && (requestQuotationForm2.productCategory.dirty || requestQuotationForm2.productCategory.touched)">
+                        <label *ngIf="requestQuotationForm2.productCategory.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 <!-- (change)="handleQuantityChange($event)" -->
                 <!-- [value]="quantity" -->
                 <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
+                    <input readonly formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
                 </div>
                 <div class="col-md-5 p-3">
                     <select class="form-select" aria-label="Default select example" formControlName="unit"
@@ -132,8 +132,8 @@
                         <option value="Yards">Yards</option>
                     </select>
 
-                    <div *ngIf="f2.unit?.invalid && (f2.unit.dirty || f2.unit.touched)">
-                        <label *ngIf="f2.unit.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.unit?.invalid && (requestQuotationForm2.unit.dirty || requestQuotationForm2.unit.touched)">
+                        <label *ngIf="requestQuotationForm2.unit.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -151,8 +151,8 @@
                             <option value="5">Others</option>
                         </select>
 
-                        <div *ngIf="f2.sourcingType?.invalid && (f2.sourcingType.dirty || f2.sourcingType.touched)">
-                            <label *ngIf="f2.sourcingType.errors.required" class="error">This Field is
+                        <div *ngIf="requestQuotationForm2.sourcingType?.invalid && (requestQuotationForm2.sourcingType.dirty || requestQuotationForm2.sourcingType.touched)">
+                            <label *ngIf="requestQuotationForm2.sourcingType.errors.required" class="error">This Field is
                                 required.</label>
                         </div>
                     </div>
@@ -177,8 +177,8 @@
                         </select>
 
                         <div
-                            *ngIf="f2.sourcingPurpose?.invalid && (f2.sourcingPurpose.dirty || f2.sourcingPurpose.touched)">
-                            <label *ngIf="f2.sourcingPurpose.errors.required" class="error">This Field is
+                            *ngIf="requestQuotationForm2.sourcingPurpose?.invalid && (requestQuotationForm2.sourcingPurpose.dirty || requestQuotationForm2.sourcingPurpose.touched)">
+                            <label *ngIf="requestQuotationForm2.sourcingPurpose.errors.required" class="error">This Field is
                                 required.</label>
                         </div>
                     </div>
@@ -191,8 +191,8 @@
                     <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name=""
                         id="">
 
-                    <div *ngIf="f2.budget?.invalid && (f2.budget.dirty || f2.budget.touched)">
-                        <label *ngIf="f2.budget.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.budget?.invalid && (requestQuotationForm2.budget.dirty || requestQuotationForm2.budget.touched)">
+                        <label *ngIf="requestQuotationForm2.budget.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -203,8 +203,8 @@
                         <option value="2">One </option>
                         <option value="3"> Two</option>
                     </select>
-                    <div *ngIf="f2.currency?.invalid && (f2.currency.dirty || f2.currency.touched)">
-                        <label *ngIf="f2.currency.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.currency?.invalid && (requestQuotationForm2.currency.dirty || requestQuotationForm2.currency.touched)">
+                        <label *ngIf="requestQuotationForm2.currency.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -216,8 +216,8 @@
                     <textarea id="w3review" name="Details" rows="4" cols="50" formControlName="details">
                 </textarea>
 
-                    <div *ngIf="f2.details?.invalid && (f2.details.dirty || f2.details.touched)">
-                        <label *ngIf="f2.details.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.details?.invalid && (requestQuotationForm2.details.dirty || requestQuotationForm2.details.touched)">
+                        <label *ngIf="requestQuotationForm2.details.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -241,8 +241,8 @@
                         </div>
                     </div>
 
-                    <div *ngIf="f2.image?.invalid && (f2.image.dirty || f2.image.touched)">
-                        <label *ngIf="f2.image.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.image?.invalid && (requestQuotationForm2.image.dirty || requestQuotationForm2.image.touched)">
+                        <label *ngIf="requestQuotationForm2.image.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
@@ -256,8 +256,8 @@
                     <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name=""
                         id="">
 
-                    <div *ngIf="f2.shipIn?.invalid && (f2.shipIn.dirty || f2.shipIn.touched)">
-                        <label *ngIf="f2.shipIn.errors.required" class="error">This Field is
+                    <div *ngIf="requestQuotationForm2.shipIn?.invalid && (requestQuotationForm2.shipIn.dirty || requestQuotationForm2.shipIn.touched)">
+                        <label *ngIf="requestQuotationForm2.shipIn.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>

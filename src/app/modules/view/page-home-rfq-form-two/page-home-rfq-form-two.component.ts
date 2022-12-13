@@ -1,60 +1,49 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RequestQuotationService } from '../../../core/providers/user/request-quotation.service';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  ReqQuoFormData,
+  RequestQuotationService,
+} from "../../../core/providers/user/request-quotation.service";
 @Component({
-  selector: 'app-page-home-rfq-form-two',
-  templateUrl: './page-home-rfq-form-two.component.html',
-  styleUrls: ['./page-home-rfq-form-two.component.scss']
+  selector: "app-page-home-rfq-form-two",
+  templateUrl: "./page-home-rfq-form-two.component.html",
+  styleUrls: ["./page-home-rfq-form-two.component.scss"],
 })
 export class PageHomeRfqFormTwoComponent implements OnInit {
-
   handlePreview: any;
   file: File;
   fileType: any | string;
-  fileName: string = '';
+  fileName: string = "";
   imageBase64: string | any = "";
   requestQuotationForm2: FormGroup;
   firstFormValue: any;
   payload: any = {};
   ShowSecondSection: boolean = false;
   ShowSecondOne: boolean = true;
-  quantity: any;
-  rfqId: string = '';
+  rfqId: string = "";
   quote: any = {};
   allFormData: any;
 
-  constructor(private formBuilder: FormBuilder,
-    private requestQuotationService: RequestQuotationService,
-  ) { }
+  rfqSmallFormData: ReqQuoFormData =
+    this.requestQuotationService.getRequestForQuotationLocal();
 
-  // handleQuantityChange(event) {
-  //   this.quantity = event.target.value;
-  //   console.log("quantity value", this.quantity)
-  // }
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private requestQuotationService: RequestQuotationService
+  ) {}
 
   ngOnInit() {
-    // this.buildTypeForm1();
     this.buildTypeForm2();
-    this.rfqId = JSON.parse(localStorage.getItem('rfqId'));
-    this.requestQuotationService.getRequestForQuotationById(this.rfqId).subscribe(
-      (res: any) => {
-        this.quote = res;
-        console.log('res quote', this.quote);
-
-        // lookingFor
-        // pieces
-        // quantity
-      },
-      (err) => {
-
-      }
-
-    )
-
-
+    this.rfqId = JSON.parse(localStorage.getItem("rfqId"));
+    // this.requestQuotationService
+    //   .getRequestForQuotationById(this.rfqId)
+    //   .subscribe(
+    //     (res: any) => {
+    //       this.quote = res;
+    //     },
+    //     (err) => {}
+    //   );
   }
-
 
   buildTypeForm2() {
     this.requestQuotationForm2 = this.formBuilder.group({
@@ -68,7 +57,11 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       currency: ["", [Validators.required]],
       image: ["", [Validators.required]],
       shipIn: ["", [Validators.required, Validators.maxLength(20)]],
-      isCheck: ["",],
+      isCheck: [""],
+      quantity: ["", Validators.required],
+    });
+    this.requestQuotationForm2.patchValue({
+      ...this.rfqSmallFormData,
     });
   }
 
@@ -76,27 +69,25 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     if (event) {
       this.allFormData = event.formData;
       this.firstFormValue = {
-        productName: this.allFormData.productName ? this.allFormData.productName : '',
-        quantity: this.allFormData.quantity ? this.allFormData.quantity : '',
-        unit: this.allFormData.unit ? this.allFormData.unit : ''
+        productName: this.allFormData.productName
+          ? this.allFormData.productName
+          : "",
+        quantity: this.allFormData.quantity ? this.allFormData.quantity : "",
+        unit: this.allFormData.unit ? this.allFormData.unit : "",
       };
     }
     this.payload = {
-      // quantity: this.quantity,
-
-      ...this.firstFormValue.value,
       ...this.requestQuotationForm2.value,
-
     };
+    debugger;
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
-        window.alert('API Success');
+        window.alert("API Success");
         console.log("res", res);
       },
       (err) => {
-
-        window.alert('API Error');
+        window.alert("API Error");
       }
     );
   }
@@ -106,14 +97,15 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.imageBase64 = reader.result;
-      this.requestQuotationForm2.patchValue({ imageUrl: reader.result as string })
+      this.requestQuotationForm2.patchValue({
+        imageUrl: reader.result as string,
+      });
       this.fileType = file.type;
-      this.fileName = file.name
-    }
+      this.fileName = file.name;
+    };
   }
   // showDetailsForm() {
   //   this.ShowSecondSection = true;
   //   this.ShowSecondOne = false;
   // }
-
 }

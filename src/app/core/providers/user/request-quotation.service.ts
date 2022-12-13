@@ -1,27 +1,62 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../../../../environments/environment";
+
+export interface ReqQuoFormData {
+  productName: string;
+  quantity: string;
+  unit: string;
+}
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: "root",
 })
 export class RequestQuotationService {
-    constructor(private http: HttpClient) { }
+  static reqForQuotationData: ReqQuoFormData = {
+    productName: "",
+    quantity: "",
+    unit: "",
+  };
 
-    addRequestForQuotation(params: any = {}): Observable<any> {
-        return this.http.post<any>(`${environment.apiUrl}/request-quotation/add`, params);
-    }
+  constants: any = {
+    reqForQuotation: "reqForQuotation",
+  };
 
-    getRequestForQuotationById(id: string): Observable<any> {
-        return this.http.get<any>(`${environment.apiUrl}/request-quotation/get/${id}`);
+  constructor(private http: HttpClient) {}
 
-    }
-    updateRequestForQuotation(params: any = {}): Observable<any> {
-        return this.http.put<any>(`${environment.apiUrl}/request-quotation/update`, params);
-    }
+  addRequestForQuotation(params: any = {}): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/request-quotation/add`,
+      params
+    );
+  }
 
-    deleteRequestForQuotation(id: string): Observable<any> {
-        return this.http.delete<any>(`${environment.apiUrl}/request-quotation/delete/${id}`);
-    }
+  getRequestForQuotationById(id: string): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/request-quotation/get/${id}`
+    );
+  }
+  updateRequestForQuotation(params: any = {}): Observable<any> {
+    return this.http.put<any>(
+      `${environment.apiUrl}/request-quotation/update`,
+      params
+    );
+  }
+
+  deleteRequestForQuotation(id: string): Observable<any> {
+    return this.http.delete<any>(
+      `${environment.apiUrl}/request-quotation/delete/${id}`
+    );
+  }
+
+  setRequestForQuotationLocal(data: ReqQuoFormData) {
+    localStorage.setItem(this.constants.reqForQuotation, JSON.stringify(data));
+  }
+
+  getRequestForQuotationLocal() {
+    const result = localStorage.getItem(this.constants.reqForQuotation);
+    if (result) return JSON.parse(result);
+    return { productName: "", quantity: "", unit: "" };
+  }
 }
