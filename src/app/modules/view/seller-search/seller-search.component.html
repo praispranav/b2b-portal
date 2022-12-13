@@ -1,0 +1,78 @@
+<div class="container-fluid p-3">
+
+    <div class="row">
+        <div class="col-md-2 bg-white mt-1">
+            <app-product-search-categories></app-product-search-categories>
+        </div>
+        <div class="col-md-10">
+            <div class="d-flex align-content-start flex-wrap ml-2 ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 pl-0">
+                            <div class="card-body p-0">
+                                <div class="btn-group btn-toolbar">
+                                    <button aria-label="" type="button" class="btn btn-default">
+                                        <div class="p-t-5 p-b-5">
+                                            <div class="fs-11 font-montserrat text-uppercase">Product List</div>
+                                        </div>
+                                    </button>
+                                    <button aria-label="" type="button" class="btn btn-default">
+                                        <div class="p-t-5 p-b-5">
+                                            <div class="fs-11 font-montserrat text-uppercase">Supplier List</div>
+                                        </div>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container  bg-white p-3 mt-2">
+                <div *ngFor='let i of [1,2,3,4,5,6,7];' class="border-bottom">
+                    <a href="">
+                        <h3 class="p-1">TAIZHOU HIGHLY IMPORT & EXPORT Co. Ltd.</h3>
+                    </a>
+                    <div class="d-flex flex-row">
+                        <div class="p-2">
+                            <table class="mb-3">
+                                <tr>
+                                    <td class="pr-5">Gold Member</td>
+                                    <td> Audited Supplier
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Main Product</td>
+                                    <td> Jacket, Uniform,Boots,Jacket, Uniform,Boots
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>City Provine</td>
+                                    <td> Delhi
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><button class="btn btn-primary">Contact Now</button></td>
+                                    <td> Inquiry Basket
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="p-2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3" *ngFor='let i of [1,2,3]'>
+                                        <img class="img-fluid mb-3"
+                                            src="https://rukminim1.flixcart.com/image/200/200/kll7bm80/sticker/q/w/r/large-wall-stickers-wallpaper-furniture-design-self-adhesive-500-original-imagyz8vhdr9wgzh.jpeg?q=70"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
