@@ -79,7 +79,7 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     this.payload = {
       ...this.requestQuotationForm2.value,
     };
-    debugger;
+    
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
