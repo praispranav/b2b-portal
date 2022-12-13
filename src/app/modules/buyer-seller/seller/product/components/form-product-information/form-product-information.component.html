@@ -82,7 +82,7 @@
             <div class="col-md-6">
                 <div class="form-group tag-group form-group-default required ">
                     <label>Product Keywords</label>
-                    <pg-tag-control></pg-tag-control>
+                    <pg-tag-control id="product-keyword" formControlName="productKeywords"></pg-tag-control>
                 </div>
             </div>
         </div>
@@ -149,9 +149,9 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div formArrayName="otherDetail">
+                <div formArrayName="otherDetailInfo">
                     <div class="col-md-6"
-                        *ngFor="let detailForm of otherDetail.controls; let i = index; let last = last; let first = first;">
+                        *ngFor="let detailForm of otherDetailInfo.controls; let i = index; let last = last; let first = first;">
                         <div [formGroup]="detailForm">
                             <div pgFormGroupDefault class="form-group form-group-default"
                                 [class.has-error]="f.otherDetails?.invalid && (f.otherDetails?.dirty || f.otherDetails?.touched)">

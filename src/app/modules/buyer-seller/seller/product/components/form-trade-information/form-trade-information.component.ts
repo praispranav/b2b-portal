@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProviderTradeInformationService } from './../../../../../../core/providers/user/provider-trade-information.service';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProviderTradeInformationService } from "./../../../../../../core/providers/user/provider-trade-information.service";
 export type tradeInfo = {
   sellingPrice: string;
   unit: string;
@@ -25,30 +25,19 @@ export type tradeInfo = {
   paymentType: string;
 
   timestamp?: Date;
-}
+};
 @Component({
-  selector: 'app-form-trade-information',
-  templateUrl: './form-trade-information.component.html',
-  styleUrls: ['./form-trade-information.component.scss']
+  selector: "app-form-trade-information",
+  templateUrl: "./form-trade-information.component.html",
+  styleUrls: ["./form-trade-information.component.scss"],
 })
 export class FormTradeInformationComponent implements OnInit {
-
   tradeInformationForm: FormGroup;
   selectedOption: string;
   numbers: number = 8;
-  unitList: any[] =
-    [
-      { unit: "unit1" },
-      { unit: "unit2" },
+  unitList: any[] = [{ unit: "unit1" }, { unit: "unit2" }];
 
-    ]
-
-  fobPriceUnitList: any[] =
-    [
-      { unit: "FOB unit1" },
-      { unit: "FOB unit2" },
-
-    ]
+  fobPriceUnitList: any[] = [{ unit: "FOB unit1" }, { unit: "FOB unit2" }];
 
   tradeUnitList: any[] = [
     { unit: "Acres" },
@@ -105,69 +94,108 @@ export class FormTradeInformationComponent implements OnInit {
     { unit: "Ounce" },
     { unit: "Packs" },
     { unit: "Pair" },
-  ]
+  ];
 
+  paymentTypeList: any[] = [
+    { paymentType: false, type: "D/A", value: "D/A" },
+    { paymentType: false, type: "D/P", value: "D/P" },
+    { paymentType: false, type: "L/C", value: "L/C" },
+    { paymentType: false, type: "Moneygram", value: "Moneygram" },
+    { paymentType: false, type: "T/T", value: "T/T" },
+    { paymentType: false, type: "Western Union", value: "Western Union" },
+    { paymentType: false, type: "Other", value: "Other" },
+  ];
 
-  paymentTypeList: any[] =
-    [
-      { paymentType: false, type: "D/A", value: "D/A" },
-      { paymentType: false, type: "D/P", value: "D/P" },
-      { paymentType: false, type: "L/C", value: "L/C" },
-      { paymentType: false, type: "Moneygram", value: "Moneygram" },
-      { paymentType: false, type: "T/T", value: "T/T" },
-      { paymentType: false, type: "Western Union", value: "Western Union" },
-      { paymentType: false, type: "Other", value: "Other" },
-
-
-    ]
-  constructor(private formBuilder: FormBuilder, private providerTradeInformationService: ProviderTradeInformationService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private providerTradeInformationService: ProviderTradeInformationService
+  ) {}
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
     return this.tradeInformationForm.controls;
   }
-  get otherDetail() {
-    return this.f.otherDetail as FormArray;
+  get otherDetailTradeInfo() {
+    return this.f.otherDetailTradeInfo as FormArray;
   }
+
+  get bulkPrice() {
+    return this.f.bulkPrice as FormArray;
+  }
+
   get types() {
     return this.f.types as FormArray;
   }
   ngOnInit() {
     this.buildTradeInformation();
     this.addNewOtherDetails();
+    this.addBulkPriceItem();
   }
 
   buildTradeInformation() {
     this.tradeInformationForm = this.formBuilder.group({
-      sellingPrice: [""],
-      unit: [""],
+      sellingPriceType: ["Set Uniform Price of FOB"],
+      fobPrice: [""],
       moq: [""],
       fobUnit: [""],
-      fobPriceUnit1: [""],
-      fobPriceUnit2: [""],
-      fobPriceUnit3: [""],
-      fobPriceUnit4: [""],
-      fobPriceUnit5: [""],
-      fobPriceUnit6: [""],
-      fobPriceUnit7: [""],
-      fobPriceUnit8: [""],
-      moqPerUnit1: [""],
-      moqPerUnit2: [""],
-      moqPerUnit3: [""],
-      moqPerUnit4: [""],
-      moqPerUnit5: [""],
-      moqPerUnit6: [""],
-      moqPerUnit7: [""],
-      moqPerUnit8: [""],
+      bulkPrice: this.formBuilder.array([]),
       types: this.formBuilder.array([]),
-      otherDetail: this.formBuilder.array([]),
+      otherDetailTradeInfo: this.formBuilder.array([]),
+    });
+    // this.addBulkPriceItem()
+  }
+
+  get otherDetailsArr() {
+    return this.f["otherDetailTradeInfo"] as FormArray;
+  }
+
+  get bulkPriceArr() {
+    return this.f["bulkPrice"] as FormArray;
+  }
+
+  get sellingPriceType() {
+    return this.f["sellingPriceType"].value;
+  }
+
+  resetFormValues() {
+    this.tradeInformationForm.patchValue({
+      fobPrice: "",
+      moq: "",
+      fobUnit: "",
+    });
+    this.bulkPriceArr.clear();
+    if (
+      this.tradeInformationForm.value.sellingPriceType ===
+      "Set Uniform Price of FOB"
+    ) {
+      this.addBulkPriceItem();
+    }
+  }
+
+  createFOBPriceUnits(): FormGroup {
+    return this.formBuilder.group({
+      moqUnit: ["", Validators.required],
+      fobUnitPrice: ["", Validators.required],
     });
   }
-  get otherDetailsArr() {
-    return this.f["otherDetail"] as FormArray;
+
+  addBulkPriceItem(): void {
+    if (!this.bulkPriceArr || this.bulkPriceArr.value.length <= 8) {
+      this.bulkPriceArr.push(this.createFOBPriceUnits());
+    }
   }
+
+  removeBulkPriceItem(index) {
+    // this.bulkPrice = this.tradeInformationForm.get('bulkPrice') as FormArray;
+    this.bulkPriceArr.removeAt(index);
+  }
+
+  addPaymentType(i) {
+    this.paymentTypeList[i].paymentType = !this.paymentTypeList[i].paymentType;
+  }
+
   createTypeFields(types: any[]) {
-    this.paymentTypeList.forEach(type => {
-      const findType = types.find(t => t.value === type.value);
+    this.paymentTypeList.forEach((type) => {
+      const findType = types.find((t) => t.value === type.value);
       type.paymentType = findType ? true : false;
       this.addType(type);
     });
@@ -177,7 +205,7 @@ export class FormTradeInformationComponent implements OnInit {
     const typeForm = this.formBuilder.group({
       name: [type.name],
       value: [type.value],
-      paymentType: [type.paymentType]
+      paymentType: [type.paymentType],
     });
     this.types.push(typeForm);
   }
@@ -185,26 +213,40 @@ export class FormTradeInformationComponent implements OnInit {
   deleteType(typeIndex: number) {
     this.types.removeAt(typeIndex);
   }
+
   addNewOtherDetails() {
     const detailForm = this.formBuilder.group({
-      other: ['', Validators.required]
+      other: ["", Validators.required],
     });
     this.otherDetailsArr.push(detailForm);
   }
+
   deleteOtherDetails(index: number): void {
     this.otherDetailsArr.removeAt(index);
   }
   async subTradeInformationForm() {
-    let formData = this.tradeInformationForm.value
+    let formData = this.tradeInformationForm.value;
+    formData.types = this.paymentTypeList;
+
+    formData.otherDetailTradeInfo = formData.otherDetailTradeInfo.map(
+      (i) => i.other
+    );
+
+    const filteredPaymentTypes = [];
+    formData.types.forEach((t) =>
+      filteredPaymentTypes.push({ type: "D/A", value: "D/A" })
+    );
+    formData.types = filteredPaymentTypes;
+
     let data = {
-      formData: formData,
-      value: 'third'
+      formData,
+      value: "third",
+    };
+
+    if (data.formData.sellingPriceType === "Set One FOB Price") {
+      data.formData.bulkPrice = [];
     }
-    formData.otherDetail = formData.otherDetail.map(i => i.other);
-    formData.types = formData.types.filter(t => t.paymentType);
-
     this.formSubmitData.emit(data);
-
   }
   private resetFormGroup(form: FormGroup) {
     form.reset();

@@ -9,7 +9,7 @@
         <div class="card-body">
             <app-form-begin-adding-products *ngIf="!isAddingProductWhichNotOnPortal" (handleNotOnPortal)="isAddingProductWhichNotOnPortal = true"></app-form-begin-adding-products>
             <div *ngIf="isAddingProductWhichNotOnPortal" class="card card-transparent ">
-                <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white">
+                <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white" [SelectedIndex]="currentTabIndex">
                     <pg-tab>
                         <ng-template #TabHeading>
                             <span>Product Information</span>

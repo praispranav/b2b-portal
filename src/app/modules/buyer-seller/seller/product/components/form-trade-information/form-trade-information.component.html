@@ -7,14 +7,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-radio">
-                            <input type="radio" id="set-uniform-price-of-fob" name="selling-price">
+                            <input type="radio" id="set-uniform-price-of-fob" (change)="resetFormValues()" formControlName="sellingPriceType"
+                                value="Set Uniform Price of FOB" name="sellingPriceType">
                             <label class="ml-2" for="set-uniform-price-of-fob">
                                 Set Uniform Price of FOB </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-radio">
-                            <input type="radio" id="set-one-fob-price" name="selling-price">
+                            <input type="radio" id="set-one-fob-price" (change)="resetFormValues()" name="sellingPriceType" formControlName="sellingPriceType"
+                                value="Set One FOB Price">
                             <label class="ml-2" for="set-one-fob-price">
                                 Set One FOB Price</label>
                         </div>
@@ -25,10 +27,48 @@
 
         </div>
 
-<!-- Set on FOB Price form start -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="row">
+        <!-- Set Uniform Price of FOB start -->
+        <div class="row" *ngIf="sellingPriceType === 'Set One FOB Price'">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default form-group-default-select2 required">
+                            <label class="">Unit</label>
+                            <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobUnit"
+                                AllowClear ShowSearch>
+                                <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit"
+                                    [Value]="option.unit" [Disabled]="false">
+                                </pg-option>
+                            </pg-select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-default form-group-default-select2 required">
+                            <label class="">FOB Price</label>
+                            <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobPrice"
+                                AllowClear ShowSearch>
+                                <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit"
+                                    [Value]="option.unit" [Disabled]="false">
+                                </pg-option>
+                            </pg-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div pgFormGroupDefault class="form-group form-group-default">
+                            <label for="model-no">MOQ</label>
+                            <input type="text" formControlName="moq" placeholder="Moq" class="form-control" id="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Set Uniform Price of FOB End -->
+
+        <!-- Set Uniform Price of FOB start -->
+
+        <div class="row" *ngIf="sellingPriceType === 'Set Uniform Price of FOB'">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Unit</label>
@@ -38,182 +78,47 @@
                             [Disabled]="false">
                         </pg-option>
                     </pg-select>
-                </div> 
-            </div>
-            <div class="col-md-6">
-                <div class="form-group form-group-default form-group-default-select2 required">
-                    <label class="">FOB Price</label>
-                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobPrice" AllowClear
-                        ShowSearch>
-                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
-                            [Disabled]="false">
-                        </pg-option>
-                    </pg-select>
-                </div> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default"
-               >
-                <label for="model-no">MOQ</label>
-                <input type="text" formControlName="" placeholder="Moq" class="form-control"
-                    id="" />
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Set on FOB Price form End -->
-
-<!-- Set Uniform Price of FOB start -->
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-group-default form-group-default-select2 required">
-                    <label class="">Unit</label>
-                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="unit" AllowClear
-                        ShowSearch>
-                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
-                            [Disabled]="false">
-                        </pg-option>
-                    </pg-select>
                 </div>
             </div>
         </div>
 
-        <div class="form-group form-group-default">
+        <div class="form-group form-group-default" *ngIf="sellingPriceType === 'Set Uniform Price of FOB'" formArrayName="bulkPrice">
             <label class="mb-2" for="bulk-price">Bulk Price</label>
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row align-items-end" *ngFor="let item of tradeInformationForm.get('bulkPrice').controls; let i = index;">
+                <div class="row" [formGroupName]="i" >
+                    <div class="col-md-6" >
 
-                    <label class="mb-2" for="bulk-moq">MOQ (Unit)</label>
-                    <div pgFormGroupDefault class="form-group form-group-default">
+                        <label class="mb-2" for="bulk-moq">MOQ (Unit)</label>
+                        <div pgFormGroupDefault class="form-group form-group-default">
 
-                        <input type="text" formControlName="moqPerUnit1" placeholder="" class="form-control"
-                            id="bulk-moq" />
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-
-                    <label class="mb-2" for="bulk-price">FOB Price (Unit)</label>
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit1" placeholder="$ UDS" class="form-control" />
-                    </div>
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit2" placeholder="" class="form-control" />
+                            <input type="text" formControlName="moqUnit" placeholder="" class="form-control"
+                                id="bulk-moq" />
+                        </div>
 
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
+                    <div class="col-md-5">
 
-                        <input type="text" formControlName="fobPriceUnit2" placeholder="$ UDS" class="form-control" />
+                        <label class="mb-2" for="bulk-price">FOB Price (Unit)</label>
+                        <div pgFormGroupDefault class="form-group form-group-default">
 
+                            <input type="text" formControlName="fobUnitPrice" id="fob-unit-price" placeholder="$ UDS"
+                                class="form-control" />
+                        </div>
+
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-danger"  (click)="removeBulkPriceItem(i)">Delete</button>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-                        <input type="text" formControlName="moqPerUnit3" placeholder="" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit3" placeholder="$ UDS" class="form-control" />
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit4" placeholder="" class="form-control" />
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit4" placeholder="$ UDS" class="form-control" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit5" placeholder="" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit5" placeholder="$ UDS" class="form-control" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit6" placeholder="" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit6" placeholder="$ UDS" class="form-control" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit7" placeholder="" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit7" placeholder="$ UDS" class="form-control" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="moqPerUnit8" placeholder="" class="form-control" />
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    <div pgFormGroupDefault class="form-group form-group-default">
-
-                        <input type="text" formControlName="fobPriceUnit8" placeholder="$ UDS" class="form-control" />
-                    </div>
-                </div>
-            </div>
-
+            <button _ngcontent-kwx-c27 aria-label *ngIf="bulkPriceArr.value.length < 8" (click)="addBulkPriceItem()" class="btn btn-primary">Add</button>
         </div>
-        <div class="row">
+
+        <div class="row mt-3" *ngIf="sellingPriceType === 'Set Uniform Price of FOB'">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label>FOB Price </label>
-                    <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" formControlName="fobUnit"
+                    <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" formControlName="fobPrice"
                         [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of fobPriceUnitList" [Label]="option.unit" [Value]="option.unit">
                         </pg-option>
@@ -231,14 +136,16 @@
                 </div>
             </div>
         </div>
+
         <label class="mb-2" for="payment-type">Payment Type</label>
-        <div formArrayName="types">
+        <div>
             <div class="row">
-                <div *ngFor="let typeForm of types.controls; let i = index;">
-                    <div class="col-md-4" [formGroup]="typeForm">
+                <div class="col-md-4" *ngFor="let paymentType of paymentTypeList; let i = index;">
+                    <div>
                         <div class="form-check">
-                            <input type="checkbox" [id]="'typesOpt-'+i" formControlName="paymentType">
-                            <label [for]="'typesOpt-'+i">{{ typeForm.get('name').value }}</label>
+                            <input type="checkbox" [id]="'typesOpt-'+i" [checked]="paymentType.paymentType"
+                                (change)="addPaymentType(i)">
+                            <label [for]="'typesOpt-'+i">{{ paymentType.value }}</label>
                         </div>
                     </div>
                 </div>
@@ -249,9 +156,9 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div formArrayName="otherDetail">
+                <div formArrayName="otherDetailTradeInfo">
                     <div class="col-md-6"
-                        *ngFor="let detailForm of otherDetail.controls; let i = index; let last = last; let first = first;">
+                        *ngFor="let detailForm of otherDetailTradeInfo.controls; let i = index; let last = last; let first = first;">
                         <div [formGroup]="detailForm">
                             <div pgFormGroupDefault class="form-group form-group-default"
                                 [class.has-error]="f.other?.invalid && (f.other?.dirty || f.other?.touched)">

@@ -287,15 +287,13 @@ export class FormProductInformationComponent implements OnInit {
   get f() {
     return this.productInformationForm.controls;
   }
-  get otherDetail() {
-    return this.f.otherDetail as FormArray;
+  get otherDetailInfo() {
+    return this.f.otherDetailInfo as FormArray;
   }
   ngOnInit() {
     this.buildProductInformationForm();
     this.addNewOtherDetails();
     this.getCountryList();
-
-
   }
 
   buildProductInformationForm() {
@@ -304,17 +302,17 @@ export class FormProductInformationComponent implements OnInit {
       productType: ["", [Validators.required]],
       brandName: ["", [Validators.required]],
       isProduct: [""],
-      productKeywords: ["", [Validators.required]],
+      productKeywords: [ [], [Validators.required]],
       sellerOwnCategorySelect: ["", [Validators.required]],
       sellerOwnCategoryCreate: ["", [Validators.required]],
       placeOfOrigin: ['', [Validators.required]],
       modelNo: ["", [Validators.required]],
-      otherDetail: this.formBuilder.array([]),
+      otherDetailInfo: this.formBuilder.array([]),
 
     });
   }
   get otherDetailsArr() {
-    return this.f["otherDetail"] as FormArray;
+    return this.f["otherDetailInfo"] as FormArray;
   }
   addNewOtherDetails() {
     const detailForm = this.formBuilder.group({
@@ -344,10 +342,6 @@ export class FormProductInformationComponent implements OnInit {
     );
   }
   onCountrySelected(e) {
-    console.log("" + e.target.value);
-    // this.f.regCountry?.setValue(e.target.value);
-    // this.f.facCountry?.setValue(e.target.value);
-
     this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
       (res: any) => {
         this.states = res.data[0].states;
@@ -361,17 +355,14 @@ export class FormProductInformationComponent implements OnInit {
   async subProductInformationForm() {
     if (this.productInformationForm.invalid) {
       this.markFormGroupTouched(this.productInformationForm);
-      // return;
     }
     let formData = this.productInformationForm.value;
     let data = {
       formData: formData,
       value: 'first'
     }
-    formData.otherDetail = formData.otherDetail.map(i => i.otherDetails);
-
+    formData.otherDetailInfo = formData.otherDetailInfo.map(i => i.otherDetails);
     this.formSubmitData.emit(data);
-
   }
 
   private markFormGroupTouched(form: FormGroup) {
