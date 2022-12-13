@@ -21,6 +21,54 @@
                     </div>
                 </div>
             </div>
+
+
+        </div>
+
+<!-- Set on FOB Price form start -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2 required">
+                    <label class="">Unit</label>
+                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobUnit" AllowClear
+                        ShowSearch>
+                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
+                            [Disabled]="false">
+                        </pg-option>
+                    </pg-select>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2 required">
+                    <label class="">FOB Price</label>
+                    <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobPrice" AllowClear
+                        ShowSearch>
+                        <pg-option *ngFor="let option of tradeUnitList" [Label]="option.unit" [Value]="option.unit"
+                            [Disabled]="false">
+                        </pg-option>
+                    </pg-select>
+                </div> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+               >
+                <label for="model-no">MOQ</label>
+                <input type="text" formControlName="" placeholder="Moq" class="form-control"
+                    id="" />
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Set on FOB Price form End -->
+
+<!-- Set Uniform Price of FOB start -->
+
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2 required">
                     <label class="">Unit</label>
@@ -33,6 +81,7 @@
                 </div>
             </div>
         </div>
+
         <div class="form-group form-group-default">
             <label class="mb-2" for="bulk-price">Bulk Price</label>
             <div class="row">
@@ -230,6 +279,7 @@
                 </button>
             </div>
         </div>
+        <!-- Set Uniform Price of FOB End -->
         <div class="col-md-1">
             <button class="btn btn-primary m-2" (click)="subTradeInformationForm()">Save and Next</button>
         </div>
