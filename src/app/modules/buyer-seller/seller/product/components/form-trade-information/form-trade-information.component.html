@@ -106,8 +106,8 @@
                         </div>
 
                     </div>
-                    <div class="col-1">
-                        <button class="btn btn-danger"  (click)="removeBulkPriceItem(i)">Delete</button>
+                    <div class="col-1" *ngIf="bulkPriceArr.value.length > 1">
+                        <button class="btn btn-danger"  (click)="removeBulkPriceItem(i)" >Delete</button>
                     </div>
                 </div>
             </div>
