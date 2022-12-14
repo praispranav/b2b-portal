@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderShippingDetailService } from "../../../../../../core/providers/user/provider-shipping-detail.service";
+
 export type shippingInfo = {
   quantity: string;
   estLoadTime: string;
@@ -12,6 +13,7 @@ export type shippingInfo = {
   productPrivateLabellingYes: string;
   productPrivateLabelingNo: string;
 };
+
 @Component({
   selector: "app-form-shipping-details",
   templateUrl: "./form-shipping-details.component.html",
@@ -21,10 +23,10 @@ export class FormShippingDetailsComponent implements OnInit {
   shippingDetailsForm: FormGroup;
 
   shippingModeList: any[] = [
-    { mode: "Air Transport" },
-    { mode: "Express Delivery" },
-    { mode: "Land Transportation" },
-    { mode: "Ocen Shipping" },
+    { mode: "Air Transport", selected: false },
+    { mode: "Express Delivery", selected: false },
+    { mode: "Land Transportation", selected: false },
+    { mode: "Ocen Shipping", selected: false },
   ];
   constructor(
     private formBuilder: FormBuilder,
@@ -40,23 +42,48 @@ export class FormShippingDetailsComponent implements OnInit {
   }
   buildProductDetails() {
     this.shippingDetailsForm = this.formBuilder.group({
-      quantity: ["", [Validators.required]],
-      estLoadTime: ["", [Validators.required]],
+      shipping: this.formBuilder.array([]),
       shippingPort: ["", [Validators.required]],
       packagingDescription: ["", [Validators.required]],
-      shippingMode: ["", [Validators.required]],
-      customizationAvailableYes: ["", [Validators.required]],
-      customizationAvailableNo: ["", [Validators.required]],
-      productPrivateLabelingYes: ["", [Validators.required]],
-      productPrivateLabelingNo: ["", [Validators.required]],
+      customizationAvailable: ["", [Validators.required]],
+      productPrivateLabeling: ["", [Validators.required]],
     });
+    this.addShippingItem();
   }
+
+  selectShippingMode(index) {
+    this.shippingModeList[index].selected =
+      !this.shippingModeList[index].selected;
+  }
+
+  get shipping() {
+    return this.f["shipping"] as FormArray;
+  }
+
+  get shippingArr() {
+    return this.f["shipping"] as FormArray;
+  }
+
+  addShippingItem() {
+    if(this.shippingArr.value.length === 4) return
+    this.shippingArr.push(
+      this.formBuilder.group({
+        quantity: [""],
+        loadTime: [""],
+      })
+    );
+  }
+
   async subShippingDetailsForm() {
     let formData = this.shippingDetailsForm.value;
-    let data={
+    const shippingModes = [];
+    this.shippingModeList.forEach((i)=> shippingModes.push(i.mode))
+    
+    formData.shippingMode = shippingModes
+    let data = {
       formData: formData,
-      value:'four'
-    }
+      value: "four",
+    };
     this.formSubmitData.emit(data);
     // this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
     //   (res) => {
