@@ -9,7 +9,7 @@
                     <h6 class="star">Product Name</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" formControlName="productName" placeholder="Enter the product name" name="" id="">
+                    <input class="form-control" type="text" (change)="onChange()" formControlName="productName" placeholder="Enter the product name" name="" id="">
 
                     <div *ngIf="requestQuotationForm2.productName?.invalid && (requestQuotationForm2.productName.dirty || requestQuotationForm2.productName.touched)">
                         <label *ngIf="requestQuotationForm2.productName.errors.required" class="error">This Field is
@@ -39,10 +39,10 @@
                 <!-- (change)="handleQuantityChange($event)" -->
                 <!-- [value]="quantity" -->
                 <div class="col-md-3 p-3">
-                    <input readonly formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
+                    <input (change)="onChange()" formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
                 </div>
                 <div class="col-md-5 p-3">
-                    <select class="form-select" aria-label="Default select example" formControlName="unit" class="form-select">
+                    <select class="form-select" (change)="onChange()" aria-label="Default select example" formControlName="unit" class="form-select">
                         <option selected>Unit</option>
                         <option value="Acres">Acres</option>
                         <option value="Amperes">Amperes</option>

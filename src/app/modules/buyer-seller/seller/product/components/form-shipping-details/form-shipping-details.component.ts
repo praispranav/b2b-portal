@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderShippingDetailService } from "../../../../../../core/providers/user/provider-shipping-detail.service";
+import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
+
 export type shippingInfo = {
   quantity: string;
   estLoadTime: string;
@@ -12,6 +14,7 @@ export type shippingInfo = {
   productPrivateLabellingYes: string;
   productPrivateLabelingNo: string;
 };
+
 @Component({
   selector: "app-form-shipping-details",
   templateUrl: "./form-shipping-details.component.html",
@@ -21,14 +24,15 @@ export class FormShippingDetailsComponent implements OnInit {
   shippingDetailsForm: FormGroup;
 
   shippingModeList: any[] = [
-    { mode: "Air Transport" },
-    { mode: "Express Delivery" },
-    { mode: "Land Transportation" },
-    { mode: "Ocen Shipping" },
+    { mode: "Air Transport", selected: false },
+    { mode: "Express Delivery", selected: false },
+    { mode: "Land Transportation", selected: false },
+    { mode: "Ocen Shipping", selected: false },
   ];
   constructor(
     private formBuilder: FormBuilder,
-    private providerShippingDetailService: ProviderShippingDetailService
+    private providerShippingDetailService: ProviderShippingDetailService,
+    private storageService: ProviderStorageService
   ) {}
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
@@ -40,35 +44,60 @@ export class FormShippingDetailsComponent implements OnInit {
   }
   buildProductDetails() {
     this.shippingDetailsForm = this.formBuilder.group({
-      quantity: ["", [Validators.required]],
-      estLoadTime: ["", [Validators.required]],
+      shipping: this.formBuilder.array([]),
       shippingPort: ["", [Validators.required]],
       packagingDescription: ["", [Validators.required]],
-      shippingMode: ["", [Validators.required]],
-      customizationAvailableYes: ["", [Validators.required]],
-      customizationAvailableNo: ["", [Validators.required]],
-      productPrivateLabelingYes: ["", [Validators.required]],
-      productPrivateLabelingNo: ["", [Validators.required]],
+      customizationAvailable: ["", [Validators.required]],
+      productPrivateLabeling: ["", [Validators.required]],
     });
+    this.addShippingItem();
+    const sessionValues = this.storageService.getFormValuesFromSession(
+      ProviderStorageService.productConstants.shippingDetail
+    );
+    if (sessionValues) this.shippingDetailsForm.patchValue(sessionValues);
   }
+
+  selectShippingMode(index) {
+    this.shippingModeList[index].selected =
+      !this.shippingModeList[index].selected;
+  }
+
+  get shipping() {
+    return this.f["shipping"] as FormArray;
+  }
+
+  get shippingArr() {
+    return this.f["shipping"] as FormArray;
+  }
+
+  addShippingItem() {
+    if (this.shippingArr.value.length === 5) return;
+    this.shippingArr.push(
+      this.formBuilder.group({
+        quantity: [""],
+        loadTime: [""],
+      })
+    );
+  }
+
+  removeShippingItem(index) {
+    this.shippingArr.removeAt(index);
+  }
+
   async subShippingDetailsForm() {
     let formData = this.shippingDetailsForm.value;
-    let data={
+    const shippingModes = [];
+    this.shippingModeList.forEach((i) => shippingModes.push(i.mode));
+
+    formData.shippingMode = shippingModes;
+    let data = {
       formData: formData,
-      value:'four'
-    }
+      value: "four",
+    };
+    this.storageService.setFormValuesToSession(
+      ProviderStorageService.productConstants.shippingDetail,
+      formData.formData
+    );
     this.formSubmitData.emit(data);
-    // this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
-    //   (res) => {
-    //     this.resetFormGroup(this.shippingDetailsForm);
-    //     window.alert('API Success');
-    //   },
-    //   (err) => {
-    //     window.alert('API Error');
-    //   }
-    // );
-  }
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
   }
 }

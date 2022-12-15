@@ -35,14 +35,6 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   ngOnInit() {
     this.buildTypeForm2();
     this.rfqId = JSON.parse(localStorage.getItem("rfqId"));
-    // this.requestQuotationService
-    //   .getRequestForQuotationById(this.rfqId)
-    //   .subscribe(
-    //     (res: any) => {
-    //       this.quote = res;
-    //     },
-    //     (err) => {}
-    //   );
   }
 
   buildTypeForm2() {
@@ -79,7 +71,7 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     this.payload = {
       ...this.requestQuotationForm2.value,
     };
-    
+
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
@@ -104,8 +96,13 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       this.fileName = file.name;
     };
   }
-  // showDetailsForm() {
-  //   this.ShowSecondSection = true;
-  //   this.ShowSecondOne = false;
-  // }
+
+  onChange() {
+    const { unit, quantity, productName } = this.requestQuotationForm2.value;
+    this.requestQuotationService.setRequestForQuotationLocal({
+      unit,
+      productName,
+      quantity,
+    });
+  }
 }

@@ -9,26 +9,26 @@
         <div class="card-body">
             <app-form-begin-adding-products *ngIf="!isAddingProductWhichNotOnPortal" (handleNotOnPortal)="isAddingProductWhichNotOnPortal = true"></app-form-begin-adding-products>
             <div *ngIf="isAddingProductWhichNotOnPortal" class="card card-transparent ">
-                <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white">
-                    <pg-tab>
+                <pg-tabset tabAnimation="slide-left" Type="fillup" extraTabContentClass="bg-white" [SelectedIndex]="currentTabIndex">
+                    <pg-tab (pgClick)="onTabClick(0)">
                         <ng-template #TabHeading>
                             <span>Product Information</span>
                         </ng-template>
                         <app-form-product-information (formSubmitData)="saveFormData($event)"></app-form-product-information>
                     </pg-tab>
-                    <pg-tab>
+                    <pg-tab  (pgClick)="onTabClick(1)">
                         <ng-template #TabHeading>
                             <span>Product Details</span>
                         </ng-template>
                         <app-form-product-details (formSubmitData)="saveFormData($event)"></app-form-product-details>
                     </pg-tab>
-                    <pg-tab>
+                    <pg-tab  (pgClick)="onTabClick(2)">
                         <ng-template #TabHeading>
                             <span>Trade Information</span>
                         </ng-template>
                         <app-form-trade-information (formSubmitData)="saveFormData($event)"></app-form-trade-information>
                     </pg-tab>
-                    <pg-tab>
+                    <pg-tab  (pgClick)="onTabClick(3)">
                         <ng-template #TabHeading>
                             <span>Shipping Details</span>
                         </ng-template>
