@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormProductService } from "./../../../../../core/providers/user/form-product.service";
 import { Router } from "@angular/router";
+import { ProviderStorageService } from "../../../../../core/providers/user/provider-storage.service";
 
 @Component({
   selector: "app-page-product-add",
@@ -19,7 +20,8 @@ export class PageProductAddComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private productService: FormProductService
+    private productService: FormProductService,
+    private storageService: ProviderStorageService
   ) {}
   // shippingInfoForm(productDetailFrom:productDetailForm){
   //      this.productService.(productDetailForm.value).subscribe(
@@ -128,6 +130,7 @@ export class PageProductAddComponent implements OnInit {
           (res) => {
             window.alert("API Success");
             console.log("res", res);
+            this.storageService.removeItems(ProviderStorageService.productConstants)
           },
           (err) => {
             window.alert("API Error");
@@ -135,5 +138,9 @@ export class PageProductAddComponent implements OnInit {
         );
       }
     }
+  }
+
+  onTabClick(index){
+    this.currentTabIndex = index
   }
 }
