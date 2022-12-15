@@ -1,4 +1,3 @@
-<app-header1></app-header1>
 <div class="container">
     <div class="row">
         <div class="sectionOne  row d-flex justify-content-center">
@@ -10,7 +9,12 @@
                             </h2>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Our Professional and High-efficient partners visit the manufacturing facilities and randomly check products against order specifications.
+                                    <p>Our Professional and High-efficient partners visit the manufacturing facilities
+                                        and
+                                        randomly
+                                        check
+                                        products
+                                        against order specifications.
                                     </p>
                                 </div>
                             </div>
@@ -21,9 +25,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <div pgFormGroupDefault class="form-group" [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
-                                            <pg-select formControlName="option" class="w-100" [PlaceHolder]="'Ask Your Categories For'" AllowClear ShowSearch>
-                                                <pg-option *ngFor="let option of options" [Label]="option.label" [Value]="option" [Disabled]="option.disabled">
+                                        <div pgFormGroupDefault class="form-group"
+                                            [class.has-error]="f.option.invalid && (f.option.dirty || f.option.touched)">
+                                            <pg-select formControlName="option" class="w-100"
+                                                [PlaceHolder]="'Ask Your Categories For'" AllowClear ShowSearch>
+                                                <pg-option *ngFor="let option of options" [Label]="option.label"
+                                                    [Value]="option" [Disabled]="option.disabled">
                                                 </pg-option>
                                             </pg-select>
                                         </div>
@@ -39,18 +46,22 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <h6 class="control-label">Description</h6>
-                                        <div pgFormGroupDefault class="form-group" [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
-                                            <textarea type="text" class="form-control" rows="10" cols="50" formControlName="description"></textarea>
+                                        <div pgFormGroupDefault class="form-group"
+                                            [class.has-error]="f.description.invalid && (f.description.dirty || f.description.touched)">
+                                            <textarea type="text" class="form-control" rows="10" cols="50"
+                                                formControlName="description"></textarea>
                                         </div>
                                     </div>
-                                    <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
+                                    <div
+                                        *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)">
                                         <label *ngIf="f.description.errors.required" class="error">Description is
                                             required.</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row d-flex justify-content-end">
-                                <button aria-label="" type="button" (click)="subInspectionForm()" class="btn btn-block btn-primary btn-lg btn-icon-right">
+                                <button aria-label="" type="button" (click)="subInspectionForm()"
+                                    class="btn btn-block btn-primary btn-lg btn-icon-right">
                                     <span>Submit</span>
                                     <i class="pg-icon md-18">arrow_right</i>
                                 </button>
@@ -493,4 +504,3 @@
         </div>
     </div>
 </div> -->
-<app-footer1></app-footer1>

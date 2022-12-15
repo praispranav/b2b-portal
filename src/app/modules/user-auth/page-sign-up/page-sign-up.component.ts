@@ -353,12 +353,7 @@ getCountryList(){
     console.log("" + e.target.value);
     this.f.regCity.setValue(e.target.value);
   }
-  navigateTosupportPage() {
-    const url= this.router.serializeUrl(
-      this.router.createUrlTree(['/b2b/create-account-support'])
-    )
-    window.open(url,"_blank");
-  }
+
   subSignUpForm() {
     const params = this.signUpForm.value;
     params.role = params.role === 'buyer' ? 'buyer' : params.role === 'seller' ? 'seller' : 'buyer-seller';

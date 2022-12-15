@@ -1,4 +1,3 @@
-<app-header1></app-header1>
 <div class="p-4 d-flex justify-content-center sub-div">
     <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
         <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
@@ -9,7 +8,8 @@
                     <h6 class="star">Product Name</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" (change)="onChange()" formControlName="productName" placeholder="Enter the product name" name="" id="">
+                    <input class="form-control" type="text" (change)="onChange()" formControlName="productName"
+                        placeholder="Enter the product name" name="" id="">
 
                     <div *ngIf="requestQuotationForm2.productName?.invalid && (requestQuotationForm2.productName.dirty || requestQuotationForm2.productName.touched)">
                         <label *ngIf="requestQuotationForm2.productName.errors.required" class="error">This Field is
@@ -21,14 +21,16 @@
                 </div>
 
                 <div class="col-md-8 p-3">
-                    <select class="form-select form-select-sm" formControlName="productCategory" aria-label="danger select example" class="form-select">
+                    <select class="form-select form-select-sm" formControlName="productCategory"
+                        aria-label="danger select example" class="form-select">
                         <option selected>Select Category</option>
                         <option value="1">Apparel</option>
                         <option value="2">Cloth</option>
                         <option value="3">Shoes</option>
                     </select>
 
-                    <div *ngIf="requestQuotationForm2.productCategory?.invalid && (requestQuotationForm2.productCategory.dirty || requestQuotationForm2.productCategory.touched)">
+                    <div
+                        *ngIf="requestQuotationForm2.productCategory?.invalid && (requestQuotationForm2.productCategory.dirty || requestQuotationForm2.productCategory.touched)">
                         <label *ngIf="requestQuotationForm2.productCategory.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -42,7 +44,8 @@
                     <input (change)="onChange()" formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
                 </div>
                 <div class="col-md-5 p-3">
-                    <select class="form-select" (change)="onChange()" aria-label="Default select example" formControlName="unit" class="form-select">
+                    <select class="form-select" (change)="onChange()" aria-label="Default select example" formControlName="unit"
+                        class="form-select">
                         <option selected>Unit</option>
                         <option value="Acres">Acres</option>
                         <option value="Amperes">Amperes</option>
@@ -160,7 +163,8 @@
                         <h6 class="star">Sourcing Purpose</h6>
                     </div>
                     <div class="col-md-5 p-3">
-                        <select class="form-select" formControlName="sourcingPurpose" aria-label="Default select example">
+                        <select class="form-select" formControlName="sourcingPurpose"
+                            aria-label="Default select example">
                             <option selected>Please select</option>
                             <option value="1">Wholesale</option>
                             <option value="2">Retail</option>
@@ -172,7 +176,8 @@
 
                         </select>
 
-                        <div *ngIf="requestQuotationForm2.sourcingPurpose?.invalid && (requestQuotationForm2.sourcingPurpose.dirty || requestQuotationForm2.sourcingPurpose.touched)">
+                        <div
+                            *ngIf="requestQuotationForm2.sourcingPurpose?.invalid && (requestQuotationForm2.sourcingPurpose.dirty || requestQuotationForm2.sourcingPurpose.touched)">
                             <label *ngIf="requestQuotationForm2.sourcingPurpose.errors.required" class="error">This Field is
                                 required.</label>
                         </div>
@@ -183,7 +188,8 @@
                     <h6 class="star">Budget</h6>
                 </div>
                 <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name="" id="">
+                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name=""
+                        id="">
 
                     <div *ngIf="requestQuotationForm2.budget?.invalid && (requestQuotationForm2.budget.dirty || requestQuotationForm2.budget.touched)">
                         <label *ngIf="requestQuotationForm2.budget.errors.required" class="error">This Field is
@@ -226,7 +232,9 @@
                         </div>
                     </pg-upload> -->
                     <div class="input-group" style="width: 285px;">
-                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="image">
+                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
+                            (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" formControlName="image">
                         <div class="input-group-append">
                             <!-- <button class="btn btn-outline-secondary" type="button"
                                 (click)="fileInputDoc.click()">upload</button> -->
@@ -245,7 +253,8 @@
                     <h6>Ship In</h6>
                 </div>
                 <div class="col-md-2 p-3">
-                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name="" id="">
+                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name=""
+                        id="">
 
                     <div *ngIf="requestQuotationForm2.shipIn?.invalid && (requestQuotationForm2.shipIn.dirty || requestQuotationForm2.shipIn.touched)">
                         <label *ngIf="requestQuotationForm2.shipIn.errors.required" class="error">This Field is
@@ -253,10 +262,12 @@
                     </div>
                 </div>
                 <div class="col-md-6 p-3">
-                    <p class="p-1">day(s) after supplier receives the initial payment.</p>
+                    <p class="p-1">day(s) after supplier
+                        receives the initial payment.</p>
                 </div>
                 <div class="col-md-12 p-4 form-check">
-                    <input class="form-check-input" type="checkbox" formControlName="isCheck" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" formControlName="isCheck" value=""
+                        id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         I have read, understood and agreed to abide by the Buying Request Posting Rules.
                     </label>
@@ -269,4 +280,3 @@
         </form>
     </div>
 </div>
-<app-footer1></app-footer1>
