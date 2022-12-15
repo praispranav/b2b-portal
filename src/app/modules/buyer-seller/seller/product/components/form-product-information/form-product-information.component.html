@@ -150,7 +150,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div formArrayName="otherDetailInfo">
-                    <div class="col-md-6"
+                    <div class="col-md-12"
                         *ngFor="let detailForm of otherDetailInfo.controls; let i = index; let last = last; let first = first;">
                         <div [formGroup]="detailForm">
                             <div pgFormGroupDefault class="form-group form-group-default"
@@ -160,25 +160,30 @@
                                     <div class="col-md-6">
                                         <input type="text" formControlName="otherDetails" placeholder="Enter Details"
                                             class="form-control" id="other-details">
-                                        <button class="btn btn-danger" (click)="deleteOtherDetails(i)"
-                                            *ngIf="!(last && first)"><i class="fa fa-trash"
-                                                aria-hidden="true"></i></button>
+                                        
                                     </div>
                                     <!-- <div class="col-md-6">
                                     <textarea type="text" formControlName="otherDetails" placeholder=""
                                         class="form-control" id="other-details"></textarea>
                                 </div> -->
                                 </div>
+                                
+                            </div>
+                            <button class="btn btn-danger mb-2" (click)="deleteOtherDetails(i)"
+                                            *ngIf="!(last && first)"><i class="fa fa-trash"
+                                                aria-hidden="true"></i></button>
+                        </div>
+                        <div class="row">
+                            <div style="margin-left: -7px" *ngIf="f.otherDetails?.invalid && (f.otherDetails?.dirty || f.otherDetails?.touched)">
+                                <label *ngIf="f.otherDetails.errors.required" class="error">This field is required.</label>
                             </div>
                         </div>
-                        <div *ngIf="f.otherDetails?.invalid && (f.otherDetails?.dirty || f.otherDetails?.touched)">
-                            <label *ngIf="f.otherDetails.errors.required" class="error">This field is required.</label>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
             <div class="col-md-1  d-flex align-items-end" style="padding-bottom: 10px;">
-                <button _ngcontent-kwx-c27 aria-label (click)="addNewOtherDetails()" class="btn btn-success">
+                <button _ngcontent-kwx-c27 aria-label (click)="addNewOtherDetails()" class="btn btn-success" type="button" role="button">
                     +Add
                 </button>
             </div>
