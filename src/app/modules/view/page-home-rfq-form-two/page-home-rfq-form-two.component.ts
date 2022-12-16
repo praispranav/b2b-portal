@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import {
   ReqQuoFormData,
   RequestQuotationService,
@@ -29,7 +30,8 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private requestQuotationService: RequestQuotationService
+    private requestQuotationService: RequestQuotationService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -75,7 +77,8 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     console.log("payload", this.payload);
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
-        window.alert("API Success");
+        this.router.navigateByUrl(`/b2b/home`);
+        window.alert("Informaion Saved");
         console.log("res", res);
       },
       (err) => {
