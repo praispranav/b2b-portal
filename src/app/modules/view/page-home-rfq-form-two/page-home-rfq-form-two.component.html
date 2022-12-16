@@ -1,0 +1,282 @@
+<div class="p-4 d-flex justify-content-center sub-div">
+    <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
+        <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
+        <p>Get quotes for all your enquiries hassle free and without any cost</p>
+        <form [formGroup]="requestQuotationForm2">
+            <div class="row">
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Product Name</h6>
+                </div>
+                <div class="col-md-8 p-3">
+                    <input class="form-control" type="text" formControlName="productName"
+                        placeholder="Enter the product name" name="" id="">
+
+                    <div *ngIf="requestQuotationForm2.productName?.invalid && (requestQuotationForm2.productName.dirty || requestQuotationForm2.productName.touched)">
+                        <label *ngIf="requestQuotationForm2.productName.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Product Category</h6>
+                </div>
+
+                <div class="col-md-8 p-3">
+                    <select class="form-select form-select-sm" formControlName="productCategory"
+                        aria-label="danger select example" class="form-select">
+                        <option selected>Select Category</option>
+                        <option value="1">Apparel</option>
+                        <option value="2">Cloth</option>
+                        <option value="3">Shoes</option>
+                    </select>
+
+                    <div
+                        *ngIf="requestQuotationForm2.productCategory?.invalid && (requestQuotationForm2.productCategory.dirty || requestQuotationForm2.productCategory.touched)">
+                        <label *ngIf="requestQuotationForm2.productCategory.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Quantity</h6>
+                </div>
+                <!-- (change)="handleQuantityChange($event)" -->
+                <!-- [value]="quantity" -->
+                <div class="col-md-3 p-3">
+                    <input readonly formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
+                </div>
+                <div class="col-md-5 p-3">
+                    <select class="form-select" aria-label="Default select example" formControlName="unit"
+                        class="form-select">
+                        <option selected>Unit</option>
+                        <option value="Acres">Acres</option>
+                        <option value="Amperes">Amperes</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Barrels">Barrels</option>
+                        <option value="Blades">Blades</option>
+                        <option value="Boxes">Boxes</option>
+                        <option value="Bushes">Bushes</option>
+                        <option value="Carats">Carats</option>
+                        <option value="Cartons">Cartons</option>
+                        <option value="Cases">Cases</option>
+                        <option value="Centimeters">Centimeters</option>
+                        <option value="Chains">Chains</option>
+                        <option value="Combos">Combos</option>
+                        <option value="Cubic Centimeters">Cubic Centimeters</option>
+                        <option value="Cubic Feet">Cubic Feet</option>
+                        <option value="Cubic Inches">Cubic Inches</option>
+                        <option value="Cubic Meters">Cubic Meters</option>
+                        <option value="Cubic Yards">Cubic Yards</option>
+                        <option value="Degree Celsius">Degree Celsius</option>
+                        <option value="Degree Fahrenheit">Degree Fahrenheit</option>
+                        <option value="Dozens">Dozens</option>
+                        <option value="Drums">Drums</option>
+                        <option value="Fluid Ounces">Fluid Ounces</option>
+                        <option value="Feet">Feet</option>
+                        <option value="Forty Foot Container">Forty Foot Container</option>
+                        <option value="Furlongs">Furlongs</option>
+                        <option value="Gallons">Gallons</option>
+                        <option value="Gills">Gills</option>
+                        <option value="Grains">Grains</option>
+                        <option value="Gross">Gross</option>
+                        <option value="Hectares">Hectares</option>
+                        <option value="Hertz">Hertz</option>
+                        <option value="Inches">Inches</option>
+                        <option value="Kilo Amperes">Kilo Amperes</option>
+                        <option value="Kilo grams">Kilo grams</option>
+                        <option value="Kilo Ohms">Kilo Ohms</option>
+                        <option value="KiloVolts">KiloVolts</option>
+                        <option value="KiloWatts">KiloWatts</option>
+                        <option value="Litters">Litters</option>
+                        <option value="Long Tons">Long Tons</option>
+                        <option value="Megahertz">Megahertz</option>
+                        <option value="Meters">Meters</option>
+                        <option value="Miles">Miles</option>
+                        <option value="Milligrams">Milligrams</option>
+                        <option value="Mill Hertz">Mill Hertz</option>
+                        <option value="Milliliters">Milliliters</option>
+                        <option value="Milliohms">Milliohms</option>
+                        <option value="Millivolts">Millivolts</option>
+                        <option value="MilliWatts">MilliWatts</option>
+                        <option value="Nautical Miles">Nautical Miles</option>
+                        <option value="Ohms">Ohms</option>
+                        <option value="Ounce">Ounce</option>
+                        <option value="Packs">Packs</option>
+                        <option value="Pairs">Pairs</option>
+                        <option value="Pallets">Pallets</option>
+                        <option value="Parcels">Parcels</option>
+                        <option value="Perches">Perches</option>
+                        <option value="Pieces">Pieces</option>
+                        <option value="Prints">Prints</option>
+                        <option value="Plants">Plants</option>
+                        <option value="Poles">Poles</option>
+                        <option value="Pounds">Pounds</option>
+                        <option value="Quarts">Quarts</option>
+                        <option value="Quarters">Quarters</option>
+                        <option value="Rods">Rods</option>
+                        <option value="Rolls">Rolls</option>
+                        <option value="Sets">Sets</option>
+                        <option value="Sheets">Sheets</option>
+                        <option value="Short Tons">Short Tons</option>
+                        <option value="Square Centimeters">Square Centimeters</option>
+                        <option value="Square Feet">Square Feet</option>
+                        <option value="Square Miles">Square Miles</option>
+                        <option value="Square Yards">Square Yards</option>
+                        <option value="Stones">Stones</option>
+                        <option value="Strands">Strands</option>
+                        <option value="Tons">Tons</option>
+                        <option value="Tones">Tones</option>
+                        <option value="Trays">Trays</option>
+                        <option value="Twenty Foot Container">Twenty Foot Container</option>
+                        <option value="Units">Units</option>
+                        <option value="Volts">Volts</option>
+                        <option value="Watts">Watts</option>
+                        <option value="Yards">Yards</option>
+                    </select>
+
+                    <div *ngIf="requestQuotationForm2.unit?.invalid && (requestQuotationForm2.unit.dirty || requestQuotationForm2.unit.touched)">
+                        <label *ngIf="requestQuotationForm2.unit.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 p-3">
+                        <h6 class="star">Sourcing Type</h6>
+                    </div>
+                    <div class="col-md-5 p-3">
+                        <select class="form-select" formControlName="sourcingType" aria-label="Default select example">
+                            <option selected>Please select</option>
+                            <option value="1">For Customizing Product</option>
+                            <option value="2">Normal Products</option>
+                            <option value="3">Full Solution</option>
+                            <option value="4">Overstock Auction</option>
+                            <option value="5">Others</option>
+                        </select>
+
+                        <div *ngIf="requestQuotationForm2.sourcingType?.invalid && (requestQuotationForm2.sourcingType.dirty || requestQuotationForm2.sourcingType.touched)">
+                            <label *ngIf="requestQuotationForm2.sourcingType.errors.required" class="error">This Field is
+                                required.</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3 p-3">
+                        <h6 class="star">Sourcing Purpose</h6>
+                    </div>
+                    <div class="col-md-5 p-3">
+                        <select class="form-select" formControlName="sourcingPurpose"
+                            aria-label="Default select example">
+                            <option selected>Please select</option>
+                            <option value="1">Wholesale</option>
+                            <option value="2">Retail</option>
+                            <option value="3"> Production</option>
+                            <option value="4">Raw Material</option>
+                            <option value="5">Large Consumption</option>
+                            <option value="6">Personal Use</option>
+                            <option value="7">Others</option>
+
+                        </select>
+
+                        <div
+                            *ngIf="requestQuotationForm2.sourcingPurpose?.invalid && (requestQuotationForm2.sourcingPurpose.dirty || requestQuotationForm2.sourcingPurpose.touched)">
+                            <label *ngIf="requestQuotationForm2.sourcingPurpose.errors.required" class="error">This Field is
+                                required.</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2 p-3">
+                    <h6 class="star">Budget</h6>
+                </div>
+                <div class="col-md-3 p-3">
+                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name=""
+                        id="">
+
+                    <div *ngIf="requestQuotationForm2.budget?.invalid && (requestQuotationForm2.budget.dirty || requestQuotationForm2.budget.touched)">
+                        <label *ngIf="requestQuotationForm2.budget.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-6 p-3">
+                    <select class="form-select" formControlName="currency" aria-label="Default select example">
+                        <option selected>Select Currency</option>
+                        <option value="1">USD</option>
+                        <option value="2">One </option>
+                        <option value="3"> Two</option>
+                    </select>
+                    <div *ngIf="requestQuotationForm2.currency?.invalid && (requestQuotationForm2.currency.dirty || requestQuotationForm2.currency.touched)">
+                        <label *ngIf="requestQuotationForm2.currency.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-2 p-3">
+                    <h6 class="star">Details</h6>
+                </div>
+
+                <div class="col-md-9 p-3">
+                    <textarea id="w3review" name="Details" rows="4" cols="50" formControlName="details">
+                </textarea>
+
+                    <div *ngIf="requestQuotationForm2.details?.invalid && (requestQuotationForm2.details.dirty || requestQuotationForm2.details.touched)">
+                        <label *ngIf="requestQuotationForm2.details.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6 class="star">Attach Files</h6>
+                </div>
+                <div class="col-md-8 p-3">
+                    <!-- <pg-upload ListType="picture-card" [Preview]="handlePreview">
+                        <div class="pic-placeholder">
+                            <i class="pg-icon p-b-5">upload</i>
+                            <div class="fs-12">Upload</div>
+                        </div>
+                    </pg-upload> -->
+                    <div class="input-group" style="width: 285px;">
+                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
+                            (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" formControlName="image">
+                        <div class="input-group-append">
+                            <!-- <button class="btn btn-outline-secondary" type="button"
+                                (click)="fileInputDoc.click()">upload</button> -->
+                        </div>
+                    </div>
+
+                    <div *ngIf="requestQuotationForm2.image?.invalid && (requestQuotationForm2.image.dirty || requestQuotationForm2.image.touched)">
+                        <label *ngIf="requestQuotationForm2.image.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-12 p-4 mx-4">
+                    <span>Product images or files lead to more accurate quotes.</span>
+                </div>
+                <div class="col-md-3 p-3">
+                    <h6>Ship In</h6>
+                </div>
+                <div class="col-md-2 p-3">
+                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name=""
+                        id="">
+
+                    <div *ngIf="requestQuotationForm2.shipIn?.invalid && (requestQuotationForm2.shipIn.dirty || requestQuotationForm2.shipIn.touched)">
+                        <label *ngIf="requestQuotationForm2.shipIn.errors.required" class="error">This Field is
+                            required.</label>
+                    </div>
+                </div>
+                <div class="col-md-6 p-3">
+                    <p class="p-1">day(s) after supplier
+                        receives the initial payment.</p>
+                </div>
+                <div class="col-md-12 p-4 form-check">
+                    <input class="form-check-input" type="checkbox" formControlName="isCheck" value=""
+                        id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        I have read, understood and agreed to abide by the Buying Request Posting Rules.
+                    </label>
+
+                    <div class="p-4 w-25">
+                        <button class="rounded-pill btn btn-orange" (click)="saveFormData()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
