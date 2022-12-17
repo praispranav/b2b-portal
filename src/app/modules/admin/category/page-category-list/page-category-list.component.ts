@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ProviderMaterCategoryService } from '../../../../core/providers/master/provider-mater-category.service';
 import { AppMessageService } from '../../../../core/services/app-message.service';
 import Swal from 'sweetalert2';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-page-category-list',
   templateUrl: './page-category-list.component.html',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class PageCategoryListComponent implements OnInit {
   preViewItem: any = null;
   masterCategoryList: any[] = [];
+  envImgUrl:string = environment.imageStorage
 
   constructor(
     private router: Router,
