@@ -725,7 +725,7 @@
             <div class="row">
                 <div class="col-md-12 pt-2 pb-2 pl-1 pr-1 ">
                     <div class="card-body no-scroll no-padding">
-                        <pg-upload Type="drag" [Multiple]="false" Action="https://jsonplaceholder.typicode.com/posts/" (Change)="handleChange($event)" extraClass="dropzone" progressType="circle">
+                        <pg-upload Type="drag" [Multiple]="false"  (Change)="handleChange($event)" extraClass="dropzone" progressType="circle">
                             <div class="d-flex flex-column align-items-center p-2 ">
                                 <h4 class="semi-bold no-margin text-center">Drop files to Upload</h4>
                                 <p>or click here</p>
@@ -751,7 +751,7 @@
             <div class="row">
                 <div class="col-md-12 pt-2 pb-2 pl-1 pr-1 ">
                     <div class="card-body no-scroll no-padding">
-                        <pg-upload Type="drag" [Multiple]="true" [Limit]="4" Action="https://jsonplaceholder.typicode.com/posts/" (Change)="otherImages($event)" extraClass="dropzone" progressType="circle">
+                        <pg-upload Type="drag" [Multiple]="true" [Limit]="4"  (Change)="otherImages($event)" extraClass="dropzone" progressType="circle">
                             <div class="d-flex flex-column align-items-center p-2 ">
                                 <h4 class="semi-bold no-margin text-center">Drop files to Upload</h4>
                                 <p>or click here</p>
