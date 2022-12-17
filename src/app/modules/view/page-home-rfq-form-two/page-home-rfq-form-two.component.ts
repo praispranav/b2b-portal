@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ProviderMaterCategoryService } from "../../../core/providers/master/provider-mater-category.service";
+import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
 import {
   ReqQuoFormData,
   RequestQuotationService,
@@ -25,6 +27,8 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   quote: any = {};
   allFormData: any;
 
+  categories: any[] = [];
+
   rfqSmallFormData: ReqQuoFormData =
     this.requestQuotationService.getRequestForQuotationLocal();
 
@@ -32,6 +36,7 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private requestQuotationService: RequestQuotationService,
     private router: Router,
+    private masterCategoryService: ProviderMaterCategoryService
   ) {}
 
   ngOnInit() {
@@ -107,5 +112,37 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       productName,
       quantity,
     });
+  }
+
+  filterCategory() {
+    const keyword = this.requestQuotationForm2.value;
+
+    console.log("Keyword", keyword);
+    this.masterCategoryService
+      .filterByKeyword(keyword.productName)
+      .subscribe((res) => {
+        console.log("Rewsponse", res);
+        const newList = [];
+        const searchedCategories = res.data.searchedCategories;
+        const parents = res.data.parents;
+
+        searchedCategories.forEach((category) => {
+          const newTree = this.includeParents(parents, category);
+          console.log("New Tree", newTree);
+          newList.push({ value: category._id, label: newTree });
+        });
+      });
+  }
+
+  includeParents(parent, category, newTree = "") {
+    if (category.level == "0") return newTree;
+    else {
+      const findParent = parent.find(
+        (parentCat) => parentCat._id === category.parentId
+      );
+      console.log("FIndParent", findParent,category.parentId)
+      newTree = findParent.name + " >> " + category.name;
+      return this.includeParents(parent, findParent, newTree);
+    }
   }
 }

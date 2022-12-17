@@ -9,7 +9,7 @@
                     <h6 class="star">Product Name</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" (change)="onChange()" formControlName="productName" placeholder="Enter the product name" name="" id="">
+                    <input class="form-control" type="text" (change)="onChange()" (blur)="filterCategory()" formControlName="productName" placeholder="Enter the product name" name="" id="">
 
                     <div *ngIf="requestQuotationForm2.productName?.invalid && (requestQuotationForm2.productName.dirty || requestQuotationForm2.productName.touched)">
                         <label *ngIf="requestQuotationForm2.productName.errors.required" class="error">This Field is
@@ -23,9 +23,7 @@
                 <div class="col-md-8 p-3">
                     <select class="form-select form-select-sm" formControlName="productCategory" aria-label="danger select example" class="form-select">
                         <option selected>Select Category</option>
-                        <option value="1">Apparel</option>
-                        <option value="2">Cloth</option>
-                        <option value="3">Shoes</option>
+                        <option value="1" *ngFor="let category of ">Apparel</option>
                     </select>
 
                     <div *ngIf="requestQuotationForm2.productCategory?.invalid && (requestQuotationForm2.productCategory.dirty || requestQuotationForm2.productCategory.touched)">
