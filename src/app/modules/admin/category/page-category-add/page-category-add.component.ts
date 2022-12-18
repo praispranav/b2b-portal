@@ -142,7 +142,7 @@ export class PageCategoryAddComponent implements OnInit {
         };
       })
     );
-    debugger;
+   
     this.providerMaterCategoryService
       .addMaterCategory(this.categoryForm.value)
       .subscribe(

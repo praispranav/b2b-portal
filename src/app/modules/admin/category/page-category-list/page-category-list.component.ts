@@ -41,7 +41,7 @@ export class PageCategoryListComponent implements OnInit {
             _isDeletable: true,
           };
         });
-        debugger;
+        
       });
   }
 
@@ -52,7 +52,7 @@ export class PageCategoryListComponent implements OnInit {
     this.providerMaterCategoryService
       .getMaterCategoryListByFilter(0, 1000, { parentId: item["_id"] })
       .subscribe((res) => {
-        debugger;
+       
         item["_toggle"] = true;
         this.preViewItem = item;
         this.preViewItem["_nodeEl"] = nodeEl;
