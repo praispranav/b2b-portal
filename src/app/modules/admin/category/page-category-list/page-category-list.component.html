@@ -93,8 +93,8 @@
                                     </li>
                                 </ol>
                             </div>
-                            <p>Category Icon : <br /><img [src]="preViewItem.icon" width="100%" /></p>
-                            <p>Category Image : <br /><img [src]="preViewItem.image" width="100%" /></p>
+                            <p>Category Icon : <br /><img [src]="envImgUrl + preViewItem.icon" width="100%" /></p>
+                            <p>Category Image : <br /><img [src]="envImgUrl + preViewItem.image" width="100%" /></p>
                             <ol *ngIf="preViewItem?.children && preViewItem.children.length>0">
                                 <li *ngFor="let item of preViewItem.children">Sub Category Name : <b>{{item._name}}</b>
                                 </li>

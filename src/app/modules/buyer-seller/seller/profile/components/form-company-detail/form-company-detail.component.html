@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <h4>Company Picture</h4>
             <pg-upload ListType="picture-card" [(FileList)]="pictureList" [ShowButton]="pictureList.length < 3"
-                Action="https://jsonplaceholder.typicode.com/posts/">
+                >
                 <div class="pic-placeholder">
                     <i class="pg-icon p-b-5">upload</i>
                     <div class="fs-12">Upload</div>
@@ -22,7 +22,7 @@
         <div class="col-md-4">
             <h4>Company Logo</h4>
             <pg-upload ListType="picture-card" [(FileList)]="logoList" [ShowButton]="logoList.length===0"
-                Action="https://jsonplaceholder.typicode.com/posts/">
+                >
                 <div class="pic-placeholder">
                     <i class="pg-icon p-b-5">upload</i>
                     <div class="fs-12">Upload</div>
@@ -503,7 +503,7 @@
             <div class="col-md-4">
                 <h4>Upload Picture</h4>
                 <pg-upload ListType="picture-card" [(FileList)]="tradePicList[i]" [ShowButton]="!tradePicList[i] < 3"
-                    Action="https://jsonplaceholder.typicode.com/posts/">
+                    >
                     <div class="pic-placeholder">
                         <i class="pg-icon p-b-5">upload</i>
                         <div class="fs-12">Upload</div>

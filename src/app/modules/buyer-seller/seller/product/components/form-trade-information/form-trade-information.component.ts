@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 import { ProviderTradeInformationService } from "./../../../../../../core/providers/user/provider-trade-information.service";
 export type tradeInfo = {
   sellingPrice: string;
@@ -108,7 +109,8 @@ export class FormTradeInformationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private providerTradeInformationService: ProviderTradeInformationService
+    private providerTradeInformationService: ProviderTradeInformationService,
+    private storageService: ProviderStorageService
   ) {}
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
@@ -142,6 +144,18 @@ export class FormTradeInformationComponent implements OnInit {
       otherDetailTradeInfo: this.formBuilder.array([]),
     });
     // this.addBulkPriceItem()
+
+    const sessionValues = this.storageService.getFormValuesFromSession(
+      ProviderStorageService.productConstants.tradeInformation
+    );
+    if (sessionValues) {
+      this.tradeInformationForm.patchValue(sessionValues);
+      sessionValues.bulkPrice.forEach((prices) =>{
+        console.log(prices)
+        this.createFOBPriceUnits(prices.moqUnit, prices.fobUnitPrice)
+      }
+      );
+    }
   }
 
   get otherDetailsArr() {
@@ -171,10 +185,11 @@ export class FormTradeInformationComponent implements OnInit {
     }
   }
 
-  createFOBPriceUnits(): FormGroup {
+  createFOBPriceUnits(moqUnit = "", fobUnitPrice = ""): FormGroup {
+    console.log(moqUnit, fobUnitPrice)
     return this.formBuilder.group({
-      moqUnit: ["", Validators.required],
-      fobUnitPrice: ["", Validators.required],
+      moqUnit: [ moqUnit, Validators.required],
+      fobUnitPrice: [ fobUnitPrice, Validators.required],
     });
   }
 
@@ -246,6 +261,10 @@ export class FormTradeInformationComponent implements OnInit {
     if (data.formData.sellingPriceType === "Set One FOB Price") {
       data.formData.bulkPrice = [];
     }
+    this.storageService.setFormValuesToSession(
+      ProviderStorageService.productConstants.tradeInformation,
+      data.formData
+    );
     this.formSubmitData.emit(data);
   }
   private resetFormGroup(form: FormGroup) {

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ImageService } from "../../../../../../core/providers/user/image.service";
 import { ProviderProductDetailService } from "../../../../../../core/providers/user/provider-product-detail.service";
+import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 export type subProductDetails = {
   productVideoLink: string;
   image: string;
@@ -21,7 +22,8 @@ export class FormProductDetailsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private providerProductDetailService: ProviderProductDetailService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private storageService: ProviderStorageService
   ) {}
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
 
@@ -41,10 +43,15 @@ export class FormProductDetailsComponent implements OnInit {
       productImage: ["", [Validators.required]],
       productDescription: ["", [Validators.required]],
     });
+
+    const sessionValues = this.storageService.getFormValuesFromSession(
+      ProviderStorageService.productConstants.productDetail
+    );
+    if (sessionValues) this.productDetailsForm.patchValue(sessionValues);
   }
+  
   uploadImageToServer(image) {
     return new Promise((resolve, reject) => {
-      // this.companyLogoUploading = true
       this.imageService.uploadImage(image).subscribe(
         (res) => {
           resolve(res);
@@ -70,6 +77,10 @@ export class FormProductDetailsComponent implements OnInit {
         ...this.productDetailsForm.value,
         productImage: pictureList,
       };
+      this.storageService.setFormValuesToSession(
+        ProviderStorageService.productConstants.productDetail,
+        this.payload
+      );
       let data = {
         formData: this.payload,
         value: "second",

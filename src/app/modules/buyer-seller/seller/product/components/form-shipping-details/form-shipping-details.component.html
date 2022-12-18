@@ -21,7 +21,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div pgFormGroupDefault [class.has-error]="item.loadTime?.invalid && (item.loadTime?.dirty ||
                             item.loadTime?.touched)">
                                 <label class="mb-2" for="est-load-time">Est Load Time(Unit)</label>
@@ -35,6 +35,10 @@
                                         required.</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-1">
+                            <button class="btn btn-danger" *ngIf="shippingArr.value.length > 1" type="button" role="button"
+                                (click)="removeShippingItem()">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -87,14 +91,16 @@
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailable" value="Yes">
+                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailable"
+                        value="Yes">
                     <label class="ml-2" for="yes">
                         Yes </label>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailable" value="No">
+                    <input type="radio" id="product-private-labeling" formControlName="customizationAvailable"
+                        value="No">
                     <label class="ml-2" for="no">
                         No </label>
                 </div>
@@ -106,14 +112,16 @@
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabeling" value="Yes">
+                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabeling"
+                        value="Yes">
                     <label class="ml-2" for="yes">
                         Yes </label>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-radio">
-                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabeling" value="No">
+                    <input type="radio" id="product-private-labeling" formControlName="productPrivateLabeling"
+                        value="No">
                     <label class="ml-2" for="no">
                         No </label>
                 </div>

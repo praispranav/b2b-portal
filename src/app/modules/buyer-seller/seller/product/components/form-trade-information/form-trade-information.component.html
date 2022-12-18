@@ -106,8 +106,8 @@
                         </div>
 
                     </div>
-                    <div class="col-1">
-                        <button class="btn btn-danger"  (click)="removeBulkPriceItem(i)">Delete</button>
+                    <div class="col-1" *ngIf="bulkPriceArr.value.length > 1">
+                        <button class="btn btn-danger"  (click)="removeBulkPriceItem(i)" >Delete</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
             <label *ngIf="f.paymentType.errors.required" class="error">This field is required.</label>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div formArrayName="otherDetailTradeInfo">
                     <div class="col-md-6"
                         *ngFor="let detailForm of otherDetailTradeInfo.controls; let i = index; let last = last; let first = first;">
@@ -167,12 +167,14 @@
                                     <div class="col-md-6">
                                         <input type="text" formControlName="other" placeholder="Enter Details"
                                             class="form-control" id="other-details">
-                                        <button class="btn btn-danger" (click)="deleteOtherDetails(i)"
-                                            *ngIf="!(last && first)"><i class="fa fa-trash"
-                                                aria-hidden="true"></i></button>
+                                        
                                     </div>
                                 </div>
+                                
                             </div>
+                            <button class="btn btn-danger" (click)="deleteOtherDetails(i)"
+                                            *ngIf="!(last && first)"><i class="fa fa-trash"
+                                                aria-hidden="true"></i></button>
                         </div>
                         <div *ngIf="f.other?.invalid && (f.other?.dirty || f.other?.touched)">
                             <label *ngIf="f.other.errors.required" class="error">This field is required.</label>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderShippingDetailService } from "../../../../../../core/providers/user/provider-shipping-detail.service";
+import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 
 export type shippingInfo = {
   quantity: string;
@@ -30,7 +31,8 @@ export class FormShippingDetailsComponent implements OnInit {
   ];
   constructor(
     private formBuilder: FormBuilder,
-    private providerShippingDetailService: ProviderShippingDetailService
+    private providerShippingDetailService: ProviderShippingDetailService,
+    private storageService: ProviderStorageService
   ) {}
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
   get f() {
@@ -49,6 +51,10 @@ export class FormShippingDetailsComponent implements OnInit {
       productPrivateLabeling: ["", [Validators.required]],
     });
     this.addShippingItem();
+    const sessionValues = this.storageService.getFormValuesFromSession(
+      ProviderStorageService.productConstants.shippingDetail
+    );
+    if (sessionValues) this.shippingDetailsForm.patchValue(sessionValues);
   }
 
   selectShippingMode(index) {
@@ -65,7 +71,7 @@ export class FormShippingDetailsComponent implements OnInit {
   }
 
   addShippingItem() {
-    if(this.shippingArr.value.length === 4) return
+    if (this.shippingArr.value.length === 5) return;
     this.shippingArr.push(
       this.formBuilder.group({
         quantity: [""],
@@ -74,28 +80,24 @@ export class FormShippingDetailsComponent implements OnInit {
     );
   }
 
+  removeShippingItem(index) {
+    this.shippingArr.removeAt(index);
+  }
+
   async subShippingDetailsForm() {
     let formData = this.shippingDetailsForm.value;
     const shippingModes = [];
-    this.shippingModeList.forEach((i)=> shippingModes.push(i.mode))
-    
-    formData.shippingMode = shippingModes
+    this.shippingModeList.forEach((i) => shippingModes.push(i.mode));
+
+    formData.shippingMode = shippingModes;
     let data = {
       formData: formData,
       value: "four",
     };
+    this.storageService.setFormValuesToSession(
+      ProviderStorageService.productConstants.shippingDetail,
+      formData.formData
+    );
     this.formSubmitData.emit(data);
-    // this.providerShippingDetailService.addShippingDetail(this.shippingDetailsForm.value).subscribe(
-    //   (res) => {
-    //     this.resetFormGroup(this.shippingDetailsForm);
-    //     window.alert('API Success');
-    //   },
-    //   (err) => {
-    //     window.alert('API Error');
-    //   }
-    // );
-  }
-  private resetFormGroup(form: FormGroup) {
-    form.reset();
   }
 }

@@ -36,4 +36,6 @@ export class ProviderMaterStateService {
   getMaterStateListAll( country: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/master-state/get-list/${country}`);
   }
+
+
 }

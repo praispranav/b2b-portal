@@ -5,6 +5,7 @@ import { ProviderMaterFilterService } from "../../../../core/providers/master/pr
 import { ProviderMaterCategoryService } from "./../../../../core/providers/master/provider-mater-category.service";
 import { AppMessageService } from "../../../../core/services/app-message.service";
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import { ImageService } from "../../../../core/providers/user/image.service";
 
 @Component({
   selector: "app-page-category-add",
@@ -18,6 +19,7 @@ export class PageCategoryAddComponent implements OnInit {
   imageList: any[] = [];
   filterList: any[] = [];
   selectedFilterList: any[] = [];
+  isLoading = true;
 
   constructor(
     private appMessageService: AppMessageService,
@@ -25,7 +27,8 @@ export class PageCategoryAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private providerMaterCategoryService: ProviderMaterCategoryService,
-    private providerMaterFilterService: ProviderMaterFilterService
+    private providerMaterFilterService: ProviderMaterFilterService,
+    private imageService: ImageService
   ) {}
 
   get f() {
@@ -59,11 +62,32 @@ export class PageCategoryAddComponent implements OnInit {
 
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
-      icon: [''],
-      image: ['', [Validators.required]],
-      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
-      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
+      name: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
+      icon: [""],
+      image: ["", [Validators.required]],
+      title: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
+      description: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
       keywords: [[]],
       filters: [[]],
       level: [0],
@@ -72,14 +96,35 @@ export class PageCategoryAddComponent implements OnInit {
     });
   }
 
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.isLoading = true;
+      this.imageService.uploadImage(image).subscribe(
+        (res) => {
+          this.isLoading = false;
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+          this.isLoading = false;
+        }
+      );
+    });
+  }
+
   async subCategoryForm() {
     if (this.iconList.length > 0) {
-      this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
+      const fileName:any = await this.uploadImageToServer(
+        this.iconList[0].originFileObj
+      );
+      this.f.icon.setValue(fileName.fileName);
     }
     if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
+      const fileName:any = await this.uploadImageToServer(
+        this.imageList[0].originFileObj
       );
+      this.f.image.setValue(fileName.fileName);
     }
     if (this.categoryForm.invalid) {
       this.markFormGroupTouched(this.categoryForm);
@@ -97,18 +142,24 @@ export class PageCategoryAddComponent implements OnInit {
         };
       })
     );
-
+   
     this.providerMaterCategoryService
       .addMaterCategory(this.categoryForm.value)
       .subscribe(
         (res) => {
           let message = res.header.message;
-          this.appMessageService.createBasicNotification(res.header.status, message);
+          this.appMessageService.createBasicNotification(
+            res.header.status,
+            message
+          );
           this.router.navigateByUrl(`/admin/category/category-list`);
         },
         (err) => {
           let message = err.header.message;
-          this.appMessageService.createBasicNotification(err.header.status, 'message');
+          this.appMessageService.createBasicNotification(
+            err.header.status,
+            "message"
+          );
         }
       );
   }
