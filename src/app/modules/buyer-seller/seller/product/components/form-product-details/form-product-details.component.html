@@ -1,4 +1,4 @@
-<div class="container-fluid p-3 bg-white">
+<div class="container p-3 bg-white">
     <h3>Product Details</h3>
     <form class="p-t-15" role="form" [formGroup]="productDetailsForm">
         <div class="row">
@@ -44,22 +44,21 @@
             </div>
         </div> -->
 
-        <div class="row ml-3 mt-4">
+        <div class="row mt-4">
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.productVideoLink.invalid && (f.productVideoLink.dirty ||
                     f.productVideoLink.touched)">
                     <label for="product-video-link">Product Video Link</label>
-                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link"
-                        class="form-control" id="product-video-link" />
+                    <input type="text" formControlName="productVideoLink" placeholder="Enter Product Video Link" class="form-control" id="product-video-link" />
                 </div>
                 <div *ngIf="f.productVideoLink.invalid && (f.productVideoLink.dirty || f.productVideoLink.touched)">
                     <label *ngIf="f.productVideoLink.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
         </div>
-        <div class="card card-default p">
-            <div class="card-header ">
-                <div class="card-title">Product Description
+        <div class="card card-default p ">
+            <div class="card-header m-0 ">
+                <div class="card-title p-0">Product Description
                 </div>
                 <div class="tools">
                     <a class="collapse" href="javascript:;"></a>
