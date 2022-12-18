@@ -36,6 +36,7 @@ const routes: Routes = [
     path: "profile",
     loadChildren: "./seller/profile/profile.module#ProfileModule",
   },
+  
   // {
   //   path: "quote-request",
   //   loadChildren: "./seller/quote-request/quote-request.module#QuoteRequestModule",
