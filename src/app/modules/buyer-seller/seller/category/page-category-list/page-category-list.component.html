@@ -4,6 +4,7 @@
             <div class="card card-default">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="card-title">ALL CATEGORY</h3>
+
                     <div>
                         <button class="btn btn-primary" routerLink="../category-add">
                             Add<i class="fa fa-plus ml-2" aria-hidden="true"></i>
@@ -102,6 +103,79 @@
                         </div>
                     </div>
                 </div>
+                <!-- start Parent category table -->
+
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Create</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><img width="80px" height="80px"
+                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
+                                <td>Apparels (4)</td>
+                                <td>Active</td>
+                                <td class="text-primary">Sub Category</td>
+                                <td><button type="button" class="btn btn-warning">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><img width="80px" height="80px"
+                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
+                                <td>Electronic (9)</td>
+                                <td>Dactive</td>
+                                <td class="text-primary">Sub Category</td>
+                                <td><button type="button" class="btn btn-warning">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- end Parent category table -->
+
+                   <!-- start Child category table -->
+
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Sub Category Name</th>
+                                <th scope="col">Status</th>
+                                <!-- <th scope="col">Create</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><img width="80px" height="80px"
+                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
+                                <td>Coat</td>
+                                <td>Active</td>
+                                <td><button type="button" class="btn btn-warning">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><img width="80px" height="80px"
+                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
+                                <td>Shirt</td>
+                                <td>Dactive</td>
+                                <td><button type="button" class="btn btn-warning">Edit</button></td>
+                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- end Child category table -->
             </div>
         </div>
     </div>
