@@ -213,11 +213,12 @@
                 </div>
              
             </div> -->
+
             <div pgFormGroupDefault class="form-group form-group-default required" 
                 [class.has-error]="f.regLandline?.invalid && (f.regLandline.dirty || f.regLandline.touched)">
                 <label for="fcp-regLandline">Landline Number</label>
                 <input type="number" formControlName="regLandline" placeholder="Enter Landline Number"
-                    class="form-control" id="fcp-regLandline" />
+                    class="form-control" id="fcp-regLandline" maxlength="12" />
             </div>
             <div *ngIf="f.regLandline?.invalid && (f.regLandline.dirty || f.regLandline.touched)">
                 <label *ngIf="f.regLandline.errors.required" class="error">This field is required.</label>
