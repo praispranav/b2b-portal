@@ -53,7 +53,7 @@
     <div class="row border mb-4 p-4" *ngFor="let form of contactArray.controls; let i=index" [formGroup]="form">
         <div class="row">
             <button *ngIf="contactArray?.controls?.length > 1" type="button" (click)="removeContact(i)"
-                class="btn btn-primary w-25 mb-4">
+                class="btn btn-info w-25 mb-4">
                 Remove
             </button>
         </div>
@@ -113,7 +113,7 @@
         </div>
 
     </div>
-    <button type="button" (click)="addNewContact()" class="btn btn-primary w-25 my-3">Add more contact person
+    <button type="button" (click)="addNewContact()" class="btn btn-info w-25 my-3">Add more contact person
     </button>
     <div class="row">
 
@@ -392,7 +392,7 @@
      
 <div *ngIf="tradeExpo">
     <div class="border p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary mb-4">
+        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-info mb-4">
             Remove
         </button>
         <div class="row">
@@ -517,7 +517,7 @@
             </div>
         </div>
     </div>
-    <button type="button" (click)="addNew()" class="btn btn-primary w-25 my-2">Add more trade show
+    <button type="button" (click)="addNew()" class="btn btn-info w-25 my-2">Add more trade show
     </button>
 </div>
    

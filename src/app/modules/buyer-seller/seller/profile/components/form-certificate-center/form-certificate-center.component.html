@@ -31,7 +31,7 @@
     </ng-container>
     <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
         <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
-            class="btn btn-primary w-25">
+            class="btn btn-info w-25">
             Remove
         </button>
         <div class="col-12">
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <button type="button" (click)="addNewCertificate()" class="btn btn-primary w-25 my-3">Add more other certificates
+    <button type="button" (click)="addNewCertificate()" class="btn btn-info w-25 my-3">Add more other certificates
     </button>
     <div class="mt-4">
         <button certificate="submit" class="me-4 btn btn-primary show-notification"

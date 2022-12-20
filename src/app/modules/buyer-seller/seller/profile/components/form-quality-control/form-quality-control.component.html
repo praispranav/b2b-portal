@@ -17,7 +17,7 @@
     
     <div *ngIf="noQualityControl">
         <div class="border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
-            <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-primary mb-4">
+            <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)" class="btn btn-info mb-4">
                 Remove
             </button>
     
@@ -60,7 +60,7 @@
             </div>
         </div>
         <button type="button" (click)="addNew()" class=" mt-4
-        btn btn-primary">
+        btn btn-info">
             Add more quality control
     
         </button>

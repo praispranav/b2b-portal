@@ -200,7 +200,7 @@
     <div class="row">
         <div class="col-md-3" *ngFor="let form of landlineArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="landlineArray?.controls?.length > 1" type="button" (click)="deleteLandline(i)"
-                class="btn btn-primary mb-4">
+                class="btn btn-info mb-4">
                 Remove
             </button>
             <!-- <div class="col-md-3 ">
@@ -225,7 +225,7 @@
             </div>
         </div>
         <div class="col-md-3">
-            <button type="button" (click)="addNewLandline()" class="btn btn-primary mt-2">Add+
+            <button type="button" (click)="addNewLandline()" class="btn btn-info mt-2">Add+
             </button>
         </div>
     </div>
@@ -251,7 +251,7 @@
     <div class="row">
         <div class="col-md-3" *ngFor="let form of mobileArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="mobileArray?.controls?.length > 1" type="button" (click)="deleteMobile(i)"
-                class="btn btn-primary mb-4">
+                class="btn btn-info mb-4">
                 Remove
             </button>
             <div pgFormGroupDefault class="form-group form-group-default required"
@@ -266,7 +266,7 @@
 
         </div>
         <div class="col-md-3">
-            <button type="button" (click)="addNewMobile()" class="btn btn-primary mt-2">Add+
+            <button type="button" (click)="addNewMobile()" class="btn btn-info mt-2">Add+
             </button>
         </div>
     </div>
@@ -290,7 +290,7 @@
         <p>This information is required if you have another offer into different location also.</p>
         <div class="border mb-4 p-4" *ngFor="let form of additionalArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="additionalArray?.controls?.length > 1" type="button" (click)="removeAdditional(i)"
-                class="btn btn-primary mb-4">
+                class="btn btn-info mb-4">
                 Remove
             </button>
             <div class="row">
@@ -418,7 +418,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" (click)="addNewAdditional()" class="btn btn-primary w-25 my-3">Add more additional details
+        <button type="button" (click)="addNewAdditional()" class="btn btn-info w-25 my-3">Add more additional details
         </button>
     </div>
    
