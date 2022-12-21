@@ -6,6 +6,7 @@ import { ProviderProductInformationService } from "./../../../../../../core/prov
 import { ProviderMaterCountryService } from "../../../../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
+import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
 
 export type productInfo = {
   productName: string;
@@ -35,6 +36,8 @@ export class FormProductInformationComponent implements OnInit {
   ];
   countries: any[] = [];
   states: any[] = [];
+
+  categoryList: any[] = []
 
   codes = [
     { country: "Afghanistan", code: "93", iso: "AF" },
@@ -278,9 +281,11 @@ export class FormProductInformationComponent implements OnInit {
     { country: "Zambia", code: "260", iso: "ZM" },
     { country: "Zimbabwe", code: "263", iso: "ZW" },
   ];
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
+    private categoryService: ProviderCategoryService,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerProductInformationService: ProviderProductInformationService,
     private providerMaterStateService: ProviderMaterStateService,
@@ -297,6 +302,7 @@ export class FormProductInformationComponent implements OnInit {
     this.buildProductInformationForm();
     this.addNewOtherDetails();
     this.getCountryList();
+    this.getCategoryList();
   }
 
   buildProductInformationForm() {
@@ -385,5 +391,14 @@ export class FormProductInformationComponent implements OnInit {
         this.markFormGroupTouched(control as FormGroup);
       }
     });
+  }
+
+  getCategoryList(){
+    this.categoryService.getCategoryListByUser().subscribe((res)=>{
+      this.categoryList = res.data
+      this.productInformationForm.patchValue({
+        sellerOwnCategorySelect: localStorage.getItem('selectedCategoryId')
+      })
+    })
   }
 }

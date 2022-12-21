@@ -17,6 +17,10 @@ export class ProviderCategoryService {
     return this.http.get<any>(`${environment.apiUrl}/category/get/${id}`);
   }
 
+  getCategoryListByUser(){
+    return this.http.get<any>(`${environment.apiUrl}/category/get-list/user`)
+  }
+
   getCategoryListByFilter(index: number = 0, length: number = 10, query: any = {}): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/category/get-list/${index}/${length}/${JSON.stringify(query)}`);
   }

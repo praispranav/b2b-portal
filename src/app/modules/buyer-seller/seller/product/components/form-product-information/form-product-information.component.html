@@ -92,7 +92,7 @@
                     <label for="seller-own-category">Seller Own Category</label>
                     <pg-select style="width: 100%;" id="product-category" [Mode]="'multiple'" [PlaceHolder]="'Select'"
                         formControlName="sellerOwnCategorySelect" [NotFoundContent]="'Not found'">
-                        <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value"
+                        <pg-option *ngFor="let option of categoryList" [Label]="option.name" [Value]="option._id"
                             [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>

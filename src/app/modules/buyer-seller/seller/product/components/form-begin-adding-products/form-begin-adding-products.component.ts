@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-form-begin-adding-products",
@@ -10,11 +11,12 @@ export class FormBeginAddingProductsComponent implements OnInit {
   @Output('handleNotOnPortal')
   handleNotOnPortal: EventEmitter<Boolean> = new EventEmitter();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
   
   handleEventNotOnPortal(){
     this.handleNotOnPortal.emit(true)
+    this.router.navigateByUrl('/seller/product/product-map');
   }
 }
