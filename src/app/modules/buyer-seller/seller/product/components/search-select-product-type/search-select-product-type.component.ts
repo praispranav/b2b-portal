@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProviderCategoryService } from '../../../../../../core/providers/user/provider-category.service';
 
 @Component({
@@ -8,23 +9,42 @@ import { ProviderCategoryService } from '../../../../../../core/providers/user/p
 })
 export class SearchSelectProductTypeComponent implements OnInit {
   keyword: string = '';
-  recentCategory: any[] = [];
+  recentCategory: any = {};
+  fav: string = ''
 
   searchedCategories: any[] = [];
 
   allCategoryListType3: any = [];
   categoryListType3:any [] = [];
   preViewItem: any = null;
-  constructor(private categoryService: ProviderCategoryService) { }
+  constructor(private categoryService: ProviderCategoryService, private router: Router) { }
 
   ngOnInit() {
     this.getCategoryListType3(0, 1000, { level: "0" });
     this.getRecentCategories();
   }
 
+  selectFavCategory(){
+    localStorage.setItem('selectedCategoryId', this.recentCategory._id);
+    this.router.navigateByUrl('/seller/product/product-add');
+  }
+
+  selectSearchedCategory(item){
+    localStorage.setItem('selectedCategoryId', item._id)
+    this.router.navigateByUrl('/seller/product/product-add');
+  }
+
+  selectExploredCategory(item){
+    localStorage.setItem('selectedCategoryId', item._id)
+    this.router.navigateByUrl('/seller/product/product-add');
+  }
+
   getRecentCategories(){
     this.categoryService.getRecent().subscribe((res)=>{
-      this.recentCategory = res.data.searchedCategories;
+      if(res.data.searchedCategories[0]){
+        this.recentCategory = res.data.searchedCategories[0];
+        this.fav = this.recentCategory.name
+      }
       // console.log("RecentCategory", this.recentCategory)
     });
   }

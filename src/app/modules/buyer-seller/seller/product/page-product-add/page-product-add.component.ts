@@ -124,6 +124,7 @@ export class PageProductAddComponent implements OnInit {
           ...this.secondTabFormValue,
           ...this.thirdTabFormValue,
           ...this.fourTabFormValue,
+          category: localStorage.getItem('selectedCategoryId')
         };
         console.log("payload", this.payload);
         this.productService.addProductDetails(this.payload).subscribe(
