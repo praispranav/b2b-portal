@@ -15,7 +15,7 @@
                     <div class="tree-container flex-grow-1">
                         <button (click)="addCategory()" class="btn btn-primary"><i class="fa fa-plus ml-2"
                                 aria-hidden="true"></i>&nbsp;&nbsp;Add Category At Parent Level</button>
-                        <ng-template [ngTemplateOutlet]="treeUlContainer"
+                        <!-- <ng-template [ngTemplateOutlet]="treeUlContainer"
                             [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
                         <ng-template #treeUlContainer let-list='list'>
                             <ul>
@@ -56,9 +56,9 @@
                                     </ng-container>
                                 </li>
                             </ul>
-                        </ng-template>
+                        </ng-template> -->
                     </div>
-                    <div class="preview-el" *ngIf="preViewItem">
+                    <!-- <div class="preview-el" *ngIf="preViewItem">
                         <h4>Preview</h4>
                         <div>
                             <p>Category Name : <b>{{preViewItem._name}}</b></p>
@@ -101,93 +101,82 @@
                                 Add Child Category<i class="fa fa-plus ml-2" aria-hidden="true"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- start Parent category table -->
 
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Create</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"><img width="80px" height="80px"
-                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
-                                <td>Apparels (4)</td>
-                                <td>
-                                    <div class="form-check form-check-inline switch">
-                                        <input type="checkbox" id="pagesSwitch" checked>
-                                        <label for="pagesSwitch">Active</label>
-                                      </div>  
-                                </td>
-                                <td class="text-primary">Sub Category</td>
-                                <td><button type="button" class="btn btn-warning">Edit</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><img width="80px" height="80px"
-                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
-                                <td>Electronic (9)</td>
-                                <td>  <div class="form-check form-check-inline switch">
-                                    <input type="checkbox" id="pagesSwitch" >
-                                    <label for="pagesSwitch">Deactive</label>
-                                  </div></td>
-                                <td class="text-primary">Sub Category</td>
-                                <td><button type="button" class="btn btn-warning">Edit</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            </tr>
+                <div>
+                    <ng-template [ngTemplateOutlet]="treeUlContainer"
+                        [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
+                    <ng-template #treeUlContainer let-list='list'>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Open/Close</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Category Name</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Create</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let item of list" #nodeEl>
+                                    <tr >
+                                        <th>
+                                            <div [class.hideToggleContainer]="!item._hasChildren">
+                                                <button class="btn btn-primary" *ngIf="!item._toggle"
+                                                    [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                                    Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
+                                                </button>
 
-                        </tbody>
-                    </table>
+                                                <button class="btn btn-primary" *ngIf="item._toggle"
+                                                    [disabled]="!item._hasChildren" (click)="remChildren(item)">
+                                                    Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </th>
+                                        <th scope="row">
+                                            <img width="80px" height="80px" [src]="imgBaseUrl + item">
+                                        </th>
+                                        <td>{{ item.name }}</td>
+                                        <td>
+                                            <div class="form-check form-check-inline switch">
+                                                <input type="checkbox" id="pagesSwitch" [checked]="item.isActivated">
+                                                <label for="pagesSwitch">{{ item.isActivated ? 'Active' : 'In active'
+                                                    }}</label>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary"><button (click)="addCategory(item)"
+                                                class="btn btn-primary"><i class="fa fa-plus ml-2"
+                                                    aria-hidden="true"></i>&nbsp;&nbsp;Add Category
+                                                Under</button></td>
+                                        <td><button class="btn btn-warning" *ngIf="item._isEditable"
+                                                (click)="editItem(item)">
+                                                Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                                            </button></td>
+                                        <td> <button class="btn btn-danger" *ngIf="item._isDeletable"
+                                                (click)="confirmationPopup(item, nodeEl)">
+                                                Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                                            </button></td>
+                                    </tr>
+                                    <tr>
+                                        <ng-container *ngIf="item?.children && item.children.length>0">
+                                            <ng-template [ngTemplateOutlet]="treeUlContainer"
+                                                [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                        </ng-container>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
                 </div>
+
 
                 <!-- end Parent category table -->
 
-                   <!-- start Child category table -->
+                <!-- start Child category table -->
 
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Sub Category Name</th>
-                                <th scope="col">Status</th>
-                                <!-- <th scope="col">Create</th> -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row"><img width="80px" height="80px"
-                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
-                                <td>Coat</td>
-                                <td>  <div class="form-check form-check-inline switch">
-                                    <input type="checkbox" id="pagesSwitch">
-                                    <label for="pagesSwitch">Deactivate</label>
-                                  </div></td>
-                                <td><button type="button" class="btn btn-warning">Edit</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><img width="80px" height="80px"
-                                        src="../../../../../../assets/img/gallery/1.jpg"></th>
-                                <td>Shirt</td>
-                                <td>  <div class="form-check form-check-inline switch">
-                                    <input type="checkbox" id="pagesSwitch" checked>
-                                    <label for="pagesSwitch">Active</label>
-                                  </div></td>
-                                <td><button type="button" class="btn btn-warning">Edit</button></td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+                
 
                 <!-- end Child category table -->
             </div>
