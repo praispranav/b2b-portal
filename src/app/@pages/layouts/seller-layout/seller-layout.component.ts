@@ -23,7 +23,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Add Products",
-          routerLink: "/seller/product/product-add",
+          routerLink: "/seller/product/form-beign-adding",
         },
         {
           label: "Make Your Own Categories",
