@@ -9,7 +9,7 @@ import { ProviderStorageService } from "../../../../../core/providers/user/provi
   styleUrls: ["./page-product-add.component.scss"],
 })
 export class PageProductAddComponent implements OnInit {
-  isAddingProductWhichNotOnPortal: boolean = false;
+  isAddingProductWhichNotOnPortal: boolean = true;
   allFormData: any;
   firstTabFormValue: any;
   secondTabFormValue: any;
