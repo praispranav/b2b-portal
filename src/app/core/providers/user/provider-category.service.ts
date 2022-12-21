@@ -28,4 +28,14 @@ export class ProviderCategoryService {
   deleteCategoryById(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/category/delete/${id}`);
   }
+
+  filterByKeyword(keyword) {
+    return this.http.get<any>(`${environment.apiUrl}/category`, {
+      params: { keyword },
+    });
+  }
+
+  getRecent(){
+    return this.http.get<any>(`${environment.apiUrl}/category/get-recent`);
+  }
 }
