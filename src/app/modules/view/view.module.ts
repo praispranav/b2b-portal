@@ -93,6 +93,7 @@ import { CatalogueProductSearchHomeComponent } from './components/catalogue-prod
 import { CatalogueProductComponent } from './components/catalogue-product/catalogue-product.component';
 import { SellerSearchComponent } from './seller-search/seller-search.component';
 import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-rfq-form-two.component';
+import { SupplierProductSearchCategoryComponent } from './components/supplier-product-search-category/supplier-product-search-category.component';
 
 @NgModule({
   declarations: [
@@ -173,6 +174,7 @@ import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-
     CatalogueProductComponent,
     SellerSearchComponent,
     PageHomeRfqFormTwoComponent,
+    SupplierProductSearchCategoryComponent,
     
   ],
   imports: [ 
