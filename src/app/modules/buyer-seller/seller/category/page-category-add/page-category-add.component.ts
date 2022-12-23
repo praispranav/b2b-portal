@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProviderCategoryService } from "./../../../../../core/providers/user/provider-category.service";
 import { AppMessageService } from "../../../../../core/services/app-message.service";
 import { Message } from "@angular/compiler/src/i18n/i18n_ast";
+import { ImageService } from "../../../../../core/providers/user/image.service";
+import { environment } from "../../../../../../environments/environment";
 
 @Component({
   selector: "app-page-category-add",
@@ -15,13 +17,15 @@ export class PageCategoryAddComponent implements OnInit {
   categoryForm: FormGroup;
   iconList: any[] = [];
   imageList: any[] = [];
+  imageUrl: string = environment.imageStorage
 
   constructor(
     private appMessageService: AppMessageService,
     private router: Router,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private providerCategoryService: ProviderCategoryService
+    private providerCategoryService: ProviderCategoryService,
+    private imageService: ImageService
   ) {}
 
   get f() {
@@ -32,31 +36,64 @@ export class PageCategoryAddComponent implements OnInit {
     this.setConfig();
   }
 
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.imageService.uploadImage(image).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
   setConfig() {
     this.buildCategoryForm();
     this.parentId = this.activatedRoute.snapshot.params["parentId"];
     if (this.parentId) {
-      this.providerCategoryService
-        .getCategoryById(this.parentId)
-        .subscribe(
-          (res) => {
-            this.parentId = res.data[0];
-            this.f.parentId.setValue(this.parentId);
-          },
-          (err) => {
-            this.router.navigateByUrl(`/seller/category/category-list`);
-          }
-        );
+      this.providerCategoryService.getCategoryById(this.parentId).subscribe(
+        (res) => {
+          this.parentId = res.data[0];
+          this.f.parentId.setValue(this.parentId);
+        },
+        (err) => {
+          this.router.navigateByUrl(`/seller/category/category-list`);
+        }
+      );
     }
   }
 
   buildCategoryForm() {
     this.categoryForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
-      icon: [''],
-      image: ['', ],
-      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
-      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(165)]],
+      name: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
+      icon: [""],
+      image: [""],
+      title: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
+      description: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(165),
+        ],
+      ],
       keywords: [[]],
       level: [0],
       parentId: [""],
@@ -66,13 +103,19 @@ export class PageCategoryAddComponent implements OnInit {
 
   async subCategoryForm() {
     if (this.iconList.length > 0) {
-      this.f.icon.setValue(await this.toBase64(this.iconList[0].originFileObj));
-    }
-    if (this.imageList.length > 0) {
-      this.f.image.setValue(
-        await this.toBase64(this.imageList[0].originFileObj)
+      const iconName: any = await this.uploadImageToServer(
+        this.iconList[0].originFileObj
       );
+      this.f.icon.setValue(iconName.fileName);
     }
+
+    if (this.imageList.length > 0) {
+      const imageList: any = await this.uploadImageToServer(
+        this.imageList[0].originFileObj
+      );
+      this.f.image.setValue(imageList.fileName);
+    }
+
     if (this.categoryForm.invalid) {
       this.markFormGroupTouched(this.categoryForm);
       return;
@@ -82,19 +125,23 @@ export class PageCategoryAddComponent implements OnInit {
       this.f.parentId.setValue(this.f.parentId.value._id);
     }
 
-    this.providerCategoryService
-      .addCategory(this.categoryForm.value)
-      .subscribe(
-        (res) => {
-          let message = res.header.message;
-          this.appMessageService.createBasicNotification(res.header.status, message);
-          this.router.navigateByUrl(`/seller/category/category-list`);
-        },
-        (err) => {
-          let message = err.header.message;
-          this.appMessageService.createBasicNotification(err.header.status, 'message');
-        }
-      );
+    this.providerCategoryService.addCategory(this.categoryForm.value).subscribe(
+      (res) => {
+        let message = res.header.message;
+        this.appMessageService.createBasicNotification(
+          res.header.status,
+          message
+        );
+        this.router.navigateByUrl(`/seller/category/category-list`);
+      },
+      (err) => {
+        let message = err.header.message;
+        this.appMessageService.createBasicNotification(
+          err.header.status,
+          "message"
+        );
+      }
+    );
   }
 
   async toBase64(file) {
