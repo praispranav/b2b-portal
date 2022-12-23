@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 interface ReqQuoFormData {
   productName: string;
@@ -18,7 +19,7 @@ export class PageHomeComponent implements OnInit {
     unit: "",
   };
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -26,4 +27,6 @@ export class PageHomeComponent implements OnInit {
     console.log(formData);
     (this.requestForQuotationData = formData);
   }
+
+ 
 }

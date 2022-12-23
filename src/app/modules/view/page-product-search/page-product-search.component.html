@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-md-2 bg-white mt-1">
-            <app-product-search-categories></app-product-search-categories>
+            <!-- <app-product-search-categories></app-product-search-categories> -->
         </div>
         <div class="col-md-10">
             <app-product-search-filter></app-product-search-filter>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="ml-2">
-                <app-product-search-card></app-product-search-card>
+                <app-product-search-card [data]="productList"></app-product-search-card>
             </div>
             <app-product-search-card-list></app-product-search-card-list>
         </div>
