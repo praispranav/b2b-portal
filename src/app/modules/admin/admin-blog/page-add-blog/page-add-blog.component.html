@@ -7,7 +7,7 @@
                     <label for="title">Post Name</label>
                     <input type="text" formControlName="postName" placeholder="Enter Post Name" class="form-control" id="title" />
                 </div>
-                <div *ngIf="f.postName?.invalid && (f.postName?.dirty || f.postName?.touched)">
+                 <div *ngIf="f.postName?.invalid && (f.postName?.dirty || f.postName?.touched)">
                     <label *ngIf="f.postName.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
@@ -40,16 +40,33 @@
         </div> -->
         <div class="row">
             <div class="col-md-6">
-                <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.title?.invalid && (f.title?.dirty || f.title?.touched)">
+                <!-- <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.title?.invalid && (f.title?.dirty || f.title?.touched)">
                     <label for="banner">Upload Banner</label>
                     <input type="file" formControlName="banner" placeholder="Enter Title" class="form-control mt-2" id="title" />
-                </div>
-                <div *ngIf="f.banner?.invalid && (f.banner?.dirty || f.banner?.touched)">
+                </div> -->
+                <div class="input-group">
+                    <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+                      id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                      aria-describedby="basic-addon2" formControlName="file">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button"
+                        (click)="fileInputDoc.click()">upload</button>
+                    </div>
+                  </div>
+                <!-- <div *ngIf="f.banner?.invalid && (f.banner?.dirty || f.banner?.touched)">
                     <label *ngIf="f.banner.errors.required" class="error">This field is required.</label>
-                </div>
+                </div> -->
             </div>
         </div>
-
+        <!-- <div class="input-group">
+            <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+              id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+              aria-describedby="basic-addon2" formControlName="file">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button"
+                (click)="fileInputDoc.click()">upload</button>
+            </div>
+          </div> -->
         <div class="row">
             <div class="col-md-12">
                 <label>Description</label>
@@ -123,7 +140,7 @@
             </div>
         </div> -->
         <div class="justify-content-end">
-            <button type="button" class="me-4 mt-4 btn btn-success" [disabled]="addBlogInfo.invalid">Submit</button>
+            <button type="button" class="me-4 mt-4 btn btn-success" (click)="subCategoryForm()" [disabled]="addBlogInfo.invalid">Submit</button>
         </div>
     </form>
 </div>
