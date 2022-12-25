@@ -50,12 +50,12 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       })
     );
   }
-  noRandDValue(){
-    this.noRandD = false;
-    }
-    yesRandDValue(){
-      this.noRandD = true;
-    }
+  // noRandDValue(){
+  //   this.noRandD = false;
+  //   }
+  //   yesRandDValue(){
+  //     this.noRandD = true;
+  //   }
   uploadImageToServer(image) {
     return new Promise((resolve, reject) => {
       this.rndImageUploading = true

@@ -14,16 +14,16 @@
             No
         </label>
     </div> -->
-    <div class="form-check form-check-inline" (click)="yesRandDValue()">
-        <input class="form-check-input" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio1" value="yes">
+    <div class="form-check form-check-inline" >
+        <input class="form-check-input"  value="Yes" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio1" value="yes">
         <label class="form-check-label" for="inlineRadio1">Yes</label>
       </div>
-      <div class="form-check form-check-inline" (click)="noRandDValue()">
-        <input class="form-check-input" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio2" value="No">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"  value="No" formControlName="isQualityProcess" type="radio" name="isQualityProcess" id="inlineRadio2" value="No">
         <label class="form-check-label" for="inlineRadio2">No</label>
       </div>
     
-      <div *ngIf="noRandD">
+      <div >
         <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)"
                 class="btn btn-info w-25 mb-4">

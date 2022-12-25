@@ -425,7 +425,7 @@ export class FormCompanyProfileComponent implements OnInit {
       estYear: ["", [Validators.required]],
       // mainCategory: ["", [Validators.required]],
       // mainProduct: ["", [Validators.required]],
-      mainCategory: [[]],
+      mainCategory: [""],
       mainProduct: [[]],
       regAddress: ["", [Validators.required]],
 
