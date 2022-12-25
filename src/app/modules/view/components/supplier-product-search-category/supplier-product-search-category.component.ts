@@ -1,5 +1,7 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProviderCategoryService } from '../../../../core/providers/user/provider-category.service';
 
 @Component({
   selector: 'app-supplier-product-search-category',
@@ -7,17 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplier-product-search-category.component.scss']
 })
 export class SupplierProductSearchCategoryComponent implements OnInit {
-
-  constructor() { }
-
-  categoriesList: any[] = [
-    { name: "Men's Jackets" },
-    { name: "Women's Coats" },
-    { name: "Gym Fitness Sets" },
-    { name: "Outdoor Jackets" },
-    { name: "Outdoor& Hiking Clothing" },
-    { name: "Fleece" },
-  ];
+  searchQuery:any = {}
+  @Input('categoriesList') categoriesList: any[] = [];
+  @Input('revenueList') revenueList: any[] = [];
+  @Input('certificationsList') certificationsList: any[] = [];
 
   countryList: any[] = [
     {
@@ -37,7 +32,30 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
     },
   ];
 
+  constructor(private categoryService:ProviderCategoryService, private route:ActivatedRoute, private router:Router) { 
+    this.route.queryParams.subscribe(
+      params => {
+        this.searchQuery = params
+      }
+    )
+  }
+
+  
+
   ngOnInit() {
+    this.getCategoryList();
+  }
+
+  getCategoryList(){
+    // this.categoryService.getCategoryListByUser().subscribe((res)=>{
+    //   if(Array.isArray(res.data)){
+    //     this.categoriesList = res.data.map((i)=> ({ label: i.name, value: i._id }))
+    //   }
+    // })
+  }
+
+  handleCategoryFilter(categoryId){
+    this.router.navigate([],{ queryParams: {...this.searchQuery, category: categoryId} })
   }
 
 }
