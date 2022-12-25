@@ -13,6 +13,7 @@ export class BlogService {
     return this.http.post<any>(`${environment.apiUrl}/blog/add`, params);
   }
 
+ 
   getBlogById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/blog/get/${id}`);
   }

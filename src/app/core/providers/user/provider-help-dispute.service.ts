@@ -12,6 +12,7 @@ export class ProviderHelpDisputeService {
   addHelpDispute(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/help-dispute/add`, params);
   }
+  
 
   getHelpDisputeById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/help-dispute/get/${id}`);
