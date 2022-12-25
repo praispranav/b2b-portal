@@ -12,7 +12,7 @@
         </div>
     </ng-container>
     <div class="mt-4">
-        <button [disabled]="isLoading" type="submit" class="me-4 btn btn-primary show-notification"
+        <button [disabled]="sellerTypeForm.invalid" type="submit" class="me-4 btn btn-primary show-notification"
             (click)="subSellerTypeForm()">
             {{isDataExist? 'Update' : 'Save'}} Supplier Type
         </button>

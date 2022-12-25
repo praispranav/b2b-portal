@@ -2,51 +2,99 @@
     <h3> Add Blog</h3>
     <form class="p-t-15" role="form" [formGroup]="addBlogInfo">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.title?.invalid && (f.title?.dirty || f.title?.touched)">
-                    <label for="title">Title</label>
-                    <input type="text" formControlName="title" placeholder="Enter Title" class="form-control" id="title" />
+                    <label for="title">Post Name</label>
+                    <input type="text" formControlName="postName" placeholder="Enter Post Name" class="form-control" id="title" />
                 </div>
-                <div *ngIf="f.title?.invalid && (f.title?.dirty || f.title?.touched)">
-                    <label *ngIf="f.title.errors.required" class="error">This field is required.</label>
+                 <div *ngIf="f.postName?.invalid && (f.postName?.dirty || f.postName?.touched)">
+                    <label *ngIf="f.postName.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
-                    <label for="seller-own-category"> Select Category</label>
-                    <pg-select style="width: 100%;" id="blog-category" [Mode]="'multiple'" [PlaceHolder]="'Select'" formControlName="blogCategory" [NotFoundContent]="'Not found'">
+                    <label for="category"> Select Category</label>
+                    <pg-select style="width: 100%;" id="blog-category" [Mode]="'multiple'" [PlaceHolder]="'Select'" formControlName="category" [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>
                 </div>
-                <div *ngIf="f.blogCategory?.invalid && (f.blogCategory?.dirty ||
-                    f.blogCategory?.touched)">
-                    <label *ngIf="f.blogCategory.errors.required" class="error">This field is
+                <div *ngIf="f.category?.invalid && (f.category?.dirty ||
+                    f.category?.touched)">
+                    <label *ngIf="f.category.errors.required" class="error">This field is
                         required.</label>
                 </div>
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-md-12">
+        <!-- <div class="row">
+            <div class="col-md-6">
                 <div class="form-group tag-group form-group-default required ">
                     <label>Tags</label>
                     <pg-tag-control></pg-tag-control>
                 </div>
             </div>
-        </div>
-        <div class="card-body no-scroll card-toolbar">
-            <div class="">
-                <label for="blogDescription"> Description</label>
-                <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="blogDescription">
-                </quill-editor>
+        </div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.title?.invalid && (f.title?.dirty || f.title?.touched)">
+                    <label for="banner">Upload Banner</label>
+                    <input type="file" formControlName="banner" placeholder="Enter Title" class="form-control mt-2" id="title" />
+                </div> -->
+                <div class="input-group">
+                    <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+                      id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                      aria-describedby="basic-addon2" formControlName="file">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button"
+                        (click)="fileInputDoc.click()">upload</button>
+                    </div>
+                  </div>
+                <!-- <div *ngIf="f.banner?.invalid && (f.banner?.dirty || f.banner?.touched)">
+                    <label *ngIf="f.banner.errors.required" class="error">This field is required.</label>
+                </div> -->
             </div>
         </div>
-        <div class="card card-default">
-            <div class="card-header ">
+        <!-- <div class="input-group">
+            <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+              id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+              aria-describedby="basic-addon2" formControlName="file">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button"
+                (click)="fileInputDoc.click()">upload</button>
+            </div>
+          </div> -->
+        <div class="row">
+            <div class="col-md-12">
+                <label>Description</label>
+                <quill-editor [styles]="{height: '200px'}" placeholder="" formControlName="description">
+                </quill-editor>
+                <div *ngIf="f.description?.invalid && (f.description?.dirty || f.description?.touched)">
+                    <label *ngIf="f.description.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="card-body no-scroll card-toolbar">
+                <div class="">
+                    <label for="blogDescription"> Description</label>
+                    <quill-editor [styles]="{height: '200px'}" placeholder="" formControlName="blogDescription">
+                    </quill-editor>
+                </div>
+            </div> 
+        </div> -->
+        <!-- <div class="card-body no-scroll card-toolbar">
+            <div class="">
+                <label for="blogDescription"> Description</label>
+                <quill-editor [styles]="{height: '200px'}" placeholder="" formControlName="blogDescription">
+                </quill-editor>
+            </div>
+        </div> -->
+        <!-- <div class="card card-default">
+            <div class=" col-md-12 card-header ">
                 <div class="card-title">
                     Banner Image
                 </div>
@@ -90,9 +138,9 @@
                     <label *ngIf="f.designation.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="justify-content-end">
-            <button type="button" class="me-4 btn btn-success" [disabled]="addBlogInfo.invalid">Submit</button>
+            <button type="button" class="me-4 mt-4 btn btn-success" (click)="subCategoryForm()" [disabled]="addBlogInfo.invalid">Submit</button>
         </div>
     </form>
 </div>

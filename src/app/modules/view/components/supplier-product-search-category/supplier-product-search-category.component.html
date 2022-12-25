@@ -1,0 +1,59 @@
+<label for="categories">
+    <h5>CATEGORIES
+    </h5>
+
+    <a *ngIf="searchQuery.category" class="text-muted" (click)="clear('category')">{{ findCategory }}}<i class="pg-icon">close</i></a>
+
+    <ul *ngIf="!searchQuery.category" class="list-unstyled">
+        <li *ngFor="let category of categoriesList">
+            <a class="text-muted" [ngClass]="searchQuery.category == category.name ? ' bold ' : '' "
+                (click)="categoryFilter(category._id)">{{category.name}}</a>
+        </li>
+    </ul>
+</label>
+
+<label for="categories">
+    <h5>Business Type
+    </h5>
+    <a *ngIf="searchQuery.businessType" class="text-muted" (click)="clear('businessType')">{{ searchQuery.businessType }} <i class="pg-icon">close</i></a>
+
+    <ul *ngIf="!searchQuery.businessType" class="list-unstyled">
+        <li *ngFor="let businessType of businessTypeList">
+            <a class="text-muted" (click)="businessTypeFilter(businessType)">{{ businessType }}</a>
+        </li>
+    </ul>
+</label>
+
+<label for="categories">
+    <h5>Management Certification
+    </h5>
+    <a *ngIf="searchQuery.certification" class="text-muted" (click)="clear('certification')">{{ searchQuery.certification }} <i class="pg-icon">close</i></a>
+
+    <ul *ngIf="!searchQuery.certification" class="list-unstyled">
+        <li *ngFor="let certification of certificationsList">
+            <a class="text-muted" (click)="certificationFilter(certification)">{{ certification }}</a>
+        </li>
+    </ul>
+</label>
+
+<label for="categories">
+    <h5>Annual Revenue
+    </h5>
+    <a *ngIf="searchQuery.revenue" class="text-muted" (click)="clear('revenue')">{{ searchQuery.revenue }}<i class="pg-icon">close</i></a>
+
+    <ul *ngIf="!searchQuery.revenue" class="list-unstyled">
+        <li *ngFor="let revenue of revenueList">
+            <a class="text-muted" (click)="revenueFilter(revenue)">{{ revenue }}</a>
+        </li>
+    </ul>
+</label>
+
+<label for="categories">
+    <h5>No. of Employees
+    </h5>
+    <ul class="list-unstyled">
+        <li *ngFor="let employee of employeeStrengthList">
+            <a class="text-muted" (click)="employeeStrengthFilter(employee)">{{ employee }}</a>
+        </li>
+    </ul>
+</label>

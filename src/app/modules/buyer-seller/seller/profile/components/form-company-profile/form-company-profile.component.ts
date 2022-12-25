@@ -7,6 +7,7 @@ import { ProviderCompanyProfileService } from "../../../../../../core/providers/
 import { ProviderMaterCountryService } from "../../../../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../../../../core/providers/master/provider-mater-location.service";
+import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
 
 @Component({
   selector: "app-form-company-profile",
@@ -310,14 +311,19 @@ export class FormCompanyProfileComponent implements OnInit {
     { country: "Zambia", code: "260", iso: "ZM" },
     { country: "Zimbabwe", code: "263", iso: "ZW" },
   ];
+
+  categoryList:any[] = []
   constructor(
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
     private providerCompanyProfileService: ProviderCompanyProfileService,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerMaterStateService: ProviderMaterStateService,
-    private providerMaterLocationService: ProviderMaterLocationService
-  ) {}
+    private providerMaterLocationService: ProviderMaterLocationService,
+    private categoryService:ProviderCategoryService
+  ) {
+    this.getCategoryList()
+  }
 
   get f() {
     return this.companyProfileForm.controls;
@@ -419,7 +425,7 @@ export class FormCompanyProfileComponent implements OnInit {
       estYear: ["", [Validators.required]],
       // mainCategory: ["", [Validators.required]],
       // mainProduct: ["", [Validators.required]],
-      mainCategory: [[]],
+      mainCategory: [""],
       mainProduct: [[]],
       regAddress: ["", [Validators.required]],
 
@@ -635,5 +641,11 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   additionlDetailValueNo() {
     this.addtionalDetails = false;
+  }
+
+  getCategoryList(){
+    this.categoryService.getCategoryListByUser().subscribe((res)=>{
+      this.categoryList = res.data
+    })
   }
 }

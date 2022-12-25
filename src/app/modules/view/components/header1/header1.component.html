@@ -6,16 +6,16 @@
         <div class="col-7">
             <div class="search-div ms-3 bg-light d-flex align-items-center">
                 <div>
-                    <select name="" id="" class="drop-down">
-                        <option value="">Products</option>
+                    <select name="searchType" [(ngModel)]="searchType" class="drop-down">
+                        <option value="Product" selected>Products</option>
                         <option value="Seller">Supplier</option>
                     </select>
                 </div>
                 <div class="line"></div>
                 <div>
-                    <input type="text" name="" id="" class="input" placeholder="What are you looking for" />
+                    <input type="text" name="search" [(ngModel)]="searchText" class="input" placeholder="What are you looking for" />
                 </div>
-                <div class="d-flex search-button text-light w-100 justify-content-center align-items-center">
+                <div (click)="search()" class="d-flex search-button text-light w-100 justify-content-center align-items-center">
                     <p class="ps-5">Search</p>
                 </div>
             </div>

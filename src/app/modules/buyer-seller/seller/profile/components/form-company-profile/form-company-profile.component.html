@@ -96,7 +96,7 @@
                 <label for="fcp-mainCategory">Main Category</label>
                 <pg-select style="width: 100%;" [PlaceHolder]="'Enter the category'" formControlName="mainCategory"
                     AllowClear ShowSearch>
-                    <pg-option *ngFor="let option of categoryOptions" [Label]="option.label" [Value]="option.value"
+                    <pg-option *ngFor="let option of categoryList" [Label]="option.name" [Value]="option._id"
                         [Disabled]="option.disabled">
                     </pg-option>
                 </pg-select>

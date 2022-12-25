@@ -26,13 +26,11 @@ export class PageAddBlogComponent implements OnInit {
   }
   buildBlogInformationForm() {
     this.addBlogInfo = this.formBuilder.group({
-      title: ["", [Validators.required]],
+      postName: ["", [Validators.required]],
       category: ["", [Validators.required]],
-      writer: ["", [Validators.required]],
-      designation: ["", [Validators.required]],
-      blogCategory: ["", [Validators.required]],
-      blogDescription: ["", [Validators.required]],
-      image: ["", [Validators.required]],
+      banner: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+   
       
      
      

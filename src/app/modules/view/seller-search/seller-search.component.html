@@ -1,8 +1,10 @@
+<app-header1></app-header1>
 <div class="container-fluid p-3">
 
     <div class="row">
         <div class="col-md-2 bg-white mt-1">
-            <app-product-search-categories></app-product-search-categories>
+            <!-- <app-product-search-categories></app-product-search-categories> -->
+            <app-supplier-product-search-category [categoriesList]="categoryList" [revenueList]="revenueList" [certificationsList]="certificationsList" [businessTypes]="businessTypeList"></app-supplier-product-search-category>
         </div>
         <div class="col-md-10">
             <div class="d-flex align-content-start flex-wrap ml-2 ">
@@ -30,7 +32,7 @@
 
             </div>
             <div class="container  bg-white pl-3 pr-3 pt-3 mt-2">
-                <div *ngFor='let i of [1,2,3,4,5,6,7];' class="border-bottom pb-3 pt-2">
+                <div *ngFor='let supplier of supplierList;' class="border-bottom pb-3 pt-2">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7">
@@ -38,17 +40,14 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-2 pl-1 pt-1">
-                                            <img src="https://sc02.alicdn.com/kf/Hb26331fc96044e79a9b686d0e3d85936g.jpg"
+                                            <img [src]="imageEnvironment + supplier.companyDetail.companyLogo"
                                                 class="rounded border" width="90px" alt="...">
                                         </div>
                                         <div class="col-md-10">
                                             <div class="d-flex flex-column">
                                                 <div class="p-2">
                                                     <a href="">
-                                                        <span class="p-1 m-0 pt-0 head">TAIZHOU HIGHLY IMPORT &
-                                                            EXPORT
-                                                            Co.
-                                                            Ltd.</span>
+                                                        <span class="p-1 m-0 pt-0 head">{{ supplier.companyProfile.company }}</span>
                                                         </a>
                                                 </div>
                                                 <div class="pl-2">
@@ -96,30 +95,17 @@
                                         5.0/5 (4 reviews)</a>
                                     <p class="text-muted"><b>Capabilities</b></p>
                                     <ul>
-                                        <li>
-                                            <a href="#">
-                                                Full customization
-                                            </a>
+                                        <li *ngIf="true">
+                                            <p><b>Business Type</b>: {{ getBusinessTypeValue(supplier.businessType.types) }}</p>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                Minor customization
-                                            </a>
+                                        <li *ngIf="supplier.companyProfile.mainProduct.length">
+                                            <p><b>Main Products</b>: {{ supplier.companyProfile.mainProduct }}</p>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                ODM service available
-                                            </a>
+                                        <li *ngIf="">
+                                            <p><b>Mgmt. Certification</b>: </p>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                Patents awarded (3)
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                On-site installation
-                                            </a>
+                                        <li *ngIf="true">
+                                            <p><b>City/Province</b>: {{ supplier.companyProfile.regCity }}, {{ supplier.companyProfile.regState }}, {{ supplier.companyProfile.regCountry }}</p>
                                         </li>
                                     </ul>
                                 </div>

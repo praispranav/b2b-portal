@@ -105,14 +105,80 @@
                 </div>
                 <!-- start Parent category table -->
 
-                <div class="table-responsive-md">
-                    <ng-template [ngTemplateOutlet]="treeUlContainer"
-                        [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
-                    <ng-template #treeUlContainer let-list='list'>
-                        <div class="row">
-                            <div class="row">
+                <table class="table-responsive table">
+                    <thead>
+                        <tr>
+                            <td class="">Open/Close</td>
+                            <td> Image</td>
+                            <td> Category Name</td>
+                            <td> Status</td>
+                            <td> Create</td>
+                            <td>Update</td>
+                        </tr>
 
-                                <div class="col-12 ">
+                    </thead>
+
+                    <tbody>
+
+                        <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
+
+
+                        <ng-template #treeUlContainer let-list='list'>
+                            <ng-container *ngFor="let item of list" #nodeEl>
+                                <tr>
+                                    <th>
+                                        <div [class.hideToggleContainer]="!item._hasChildren">
+                                            <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                                        Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
+                                                    </button>
+
+                                            <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren" (click)="remChildren(item)">
+                                                        Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+                                                    </button>
+                                        </div>
+                                    </th>
+                                    <th scope="row">
+                                        <img width="80px" height="80px" [src]="imgBaseUrl + item.image">
+                                    </th>
+                                    <td>{{ item.name }}</td>
+                                    <td>
+                                        <div class="form-check form-check-inline switch">
+                                            <input type="checkbox" id="pagesSwitch" [checked]="item.isActivated">
+                                            <label for="pagesSwitch">{{ item.isActivated ? 'Active' : 'Inactive'
+                                                        }}</label>
+                                        </div>
+                                    </td>
+                                    <td class="text-primary"><button (click)="addCategory(item)" class="btn btn-primary"><i class="fa fa-plus ml-2"
+                                                        aria-hidden="true"></i>&nbsp;&nbsp;Add Category
+                                                    Under</button></td>
+                                    <td>
+                                        <button class="btn btn-warning" *ngIf="item._isEditable" (click)="editItem(item)">
+                                                    Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                                                </button>
+                                        <button class="btn btn-danger" *ngIf="item._isDeletable" (click)="confirmationPopup(item, nodeEl)">
+                                                    Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                                                </button></td>
+                                </tr>
+
+                                <ng-container *ngIf="item?.children && item.children.length>0">
+                                    <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                </ng-container>
+
+                            </ng-container>
+                        </ng-template>
+
+
+
+
+                    </tbody>
+                </table>
+                <!-- <div class="ml-0 pl-0 pr-0 mr-0 table-responsive">
+                    <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:masterCategoryList}"></ng-template>
+                    <ng-template #treeUlContainer let-list='list'>
+                        <div class="row ml-0 mr-0 pl-0 pr-0">
+                            <div class="row ml-0 mr-0 pl-0 pr-0">
+
+                                <div class="col-12 ml-0 pr-0 mr-0 pr-0 ">
                                     <div class="d-flex justify-content-between">
 
                                         <div>Open/Close</div>
@@ -123,8 +189,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row mt-4" *ngFor="let item of list" #nodeEl>
-                                    <div class="col-12">
+                                <div class="row mt-4 ml-0 mr-0 pl-0 pr-0 " *ngFor="let item of list" #nodeEl>
+                                    <div class="col-12 ml-0 pl-0 pr-0 mr-0">
                                         <div class="d-flex justify-content-between">
 
 <div class="table table-borderless">
@@ -135,45 +201,45 @@
                              Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
                          </button>
 
-                         <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                             (click)="remChildren(item)">
-                             Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
-                         </button>
-                         </div>
-                         </th>
-                         <th scope="row">
-                             <img width="80px" height="80px" [src]="imgBaseUrl + item">
-                         </th>
-                         <td>{{ item.name }}</td>
-                         <td>
-                             <div class="form-check form-check-inline switch">
-                         <input type="checkbox" id="pagesSwitch" [checked]="item.isActivated">
-                         <label for="pagesSwitch">{{ item.isActivated ? 'Active' : 'In
-                                                        active'
+                                            <th>
+                                                <div [class.hideToggleContainer]="!item._hasChildren">
+                                                    <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                                        Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren" (click)="remChildren(item)">
+                                                        Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </th>
+                                            <th scope="row">
+                                                <img width="80px" height="80px" [src]="imgBaseUrl + item.image">
+                                            </th>
+                                            <td>{{ item.name }}</td>
+                                            <td>
+                                                <div class="form-check form-check-inline switch">
+                                                    <input type="checkbox" id="pagesSwitch" [checked]="item.isActivated">
+                                                    <label for="pagesSwitch">{{ item.isActivated ? 'Active' : 'Inactive'
                                                         }}</label>
-                     </div>
-                     </td>
-                 <td class="text-primary"><button (click)="addCategory(item)" class="btn btn-primary"><i
-                             class="fa fa-plus ml-2" aria-hidden="true"></i>&nbsp;&nbsp;Add Category
-                         Under</button></td>
-                 <td>
-                     <button class="btn btn-warning mr-2" *ngIf="item._isEditable" (click)="editItem(item)">
-                         Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
-                     </button>
-                 </td>
-                 <td>
-                     <button class="btn btn-danger" *ngIf="item._isDeletable" (click)="confirmationPopup(item, nodeEl)">
-                         Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
-                     </button></td>
-</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-primary"><button (click)="addCategory(item)" class="btn btn-primary"><i class="fa fa-plus ml-2"
+                                                        aria-hidden="true"></i>&nbsp;&nbsp;Add Category
+                                                    Under</button></td>
+                                            <td>
+                                                <button class="btn btn-warning" *ngIf="item._isEditable" (click)="editItem(item)">
+                                                    Edit<i class="fa fa-edit ml-2" aria-hidden="true"></i>
+                                                </button>
+                                                <button class="btn btn-danger" *ngIf="item._isDeletable" (click)="confirmationPopup(item, nodeEl)">
+                                                    Delete<i class="fa fa-trash ml-2" aria-hidden="true"></i>
+                                                </button></td>
                                         </div>
                                     </div>
-                                    <div class="pl-5 ">
+                                    <div class="row ml-0 pl-0 mr-0 pr-0 ">
 
-                                        <div class="col-12">
+                                        <div class="col-12  ml-0 pl-0 mr-0 pr-0 table-responsive">
                                             <ng-container *ngIf="item?.children && item.children.length>0">
-                                                <ng-template [ngTemplateOutlet]="treeUlContainer"
-                                                    [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                                <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:item.children}"></ng-template>
                                             </ng-container>
                                         </div>
                                     </div>
@@ -181,7 +247,7 @@
                             </div>
                         </div>
                     </ng-template>
-                </div>
+                </div> -->
 
 
                 <!-- end Parent category table -->
