@@ -1,5 +1,7 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProviderCategoryService } from '../../../../core/providers/user/provider-category.service';
 
 @Component({
   selector: 'app-supplier-product-search-category',
@@ -7,17 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplier-product-search-category.component.scss']
 })
 export class SupplierProductSearchCategoryComponent implements OnInit {
+  searchQuery:any = {}
+  @Input('categoriesList') categoriesList: any[] = [];
+  @Input('revenueList') revenueList: any[] = [];
+  @Input('certificationsList') certificationsList: any[] = [];
+  @Input('employeeStrength') employeeStrengthList: any[] = [];
+  @Input('businessTypes') businessTypeList: any[] = [];
 
-  constructor() { }
-
-  categoriesList: any[] = [
-    { name: "Men's Jackets" },
-    { name: "Women's Coats" },
-    { name: "Gym Fitness Sets" },
-    { name: "Outdoor Jackets" },
-    { name: "Outdoor& Hiking Clothing" },
-    { name: "Fleece" },
-  ];
 
   countryList: any[] = [
     {
@@ -37,7 +35,35 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
     },
   ];
 
+  constructor(private categoryService:ProviderCategoryService, private route:ActivatedRoute, private router:Router) { 
+    this.route.queryParams.subscribe(
+      params => {
+        this.searchQuery = params
+      }
+    )
+  }
+
   ngOnInit() {
+  }
+
+  categoryFilter(categoryId){
+    this.router.navigate([],{ queryParams: {...this.searchQuery, category: categoryId} })
+  }
+
+  certificationFilter(certification){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, certification }})
+  }
+
+  revenueFilter(revenue){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, revenue }})
+  }
+
+  employeeStrengthFilter(employeeStrength){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, employeeStrength }})
+  }
+
+  businessTypeFilter(businessType){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, businessType }})
   }
 
 }
