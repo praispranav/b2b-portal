@@ -3,7 +3,17 @@
     </h5>
     <ul  class="list-unstyled">
         <li *ngFor="let category of categoriesList">
-            <a class="text-muted" [ngClass]="searchQuery.category == category.name ? ' bold ' : '' " (click)="handleCategoryFilter(category._id)">{{category.name}}</a>
+            <a class="text-muted" [ngClass]="searchQuery.category == category.name ? ' bold ' : '' " (click)="categoryFilter(category._id)">{{category.name}}</a>
+        </li>
+    </ul>
+</label>
+
+<label for="categories">
+    <h5>Business Type
+    </h5>
+    <ul  class="list-unstyled">
+        <li *ngFor="let businessType of businessTypeList">
+            <a class="text-muted" (click)="businessTypeFilter(businessType)">{{ businessType }}</a>
         </li>
     </ul>
 </label>
@@ -13,7 +23,7 @@
     </h5>
     <ul  class="list-unstyled">
         <li *ngFor="let certification of certificationsList">
-            <a class="text-muted">{{ certification }}</a>
+            <a class="text-muted" (click)="certificationFilter(certification)">{{ certification }}</a>
         </li>
     </ul>
 </label>
@@ -23,7 +33,7 @@
     </h5>
     <ul  class="list-unstyled">
         <li *ngFor="let revenue of revenueList">
-            <a class="text-muted">{{ revenue }}</a>
+            <a class="text-muted" (click)="revenueFilter(revenue)">{{ revenue }}</a>
         </li>
     </ul>
 </label>
@@ -32,8 +42,8 @@
     <h5>No. of Employees
     </h5>
     <ul  class="list-unstyled">
-        <li *ngFor="let revenue of revenueList">
-            <a class="text-muted">{{ revenue }}</a>
+        <li *ngFor="let employee of employeeStrengthList">
+            <a class="text-muted" (click)="employeeStrengthFilter(employee)">{{ employee }}</a>
         </li>
     </ul>
 </label>

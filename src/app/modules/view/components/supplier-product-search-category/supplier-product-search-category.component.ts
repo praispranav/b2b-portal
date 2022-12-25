@@ -13,6 +13,9 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
   @Input('categoriesList') categoriesList: any[] = [];
   @Input('revenueList') revenueList: any[] = [];
   @Input('certificationsList') certificationsList: any[] = [];
+  @Input('employeeStrength') employeeStrengthList: any[] = [];
+  @Input('businessTypes') businessTypeList: any[] = [];
+
 
   countryList: any[] = [
     {
@@ -40,22 +43,27 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
     )
   }
 
-  
-
   ngOnInit() {
-    this.getCategoryList();
   }
 
-  getCategoryList(){
-    // this.categoryService.getCategoryListByUser().subscribe((res)=>{
-    //   if(Array.isArray(res.data)){
-    //     this.categoriesList = res.data.map((i)=> ({ label: i.name, value: i._id }))
-    //   }
-    // })
-  }
-
-  handleCategoryFilter(categoryId){
+  categoryFilter(categoryId){
     this.router.navigate([],{ queryParams: {...this.searchQuery, category: categoryId} })
+  }
+
+  certificationFilter(certification){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, certification }})
+  }
+
+  revenueFilter(revenue){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, revenue }})
+  }
+
+  employeeStrengthFilter(employeeStrength){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, employeeStrength }})
+  }
+
+  businessTypeFilter(businessType){
+    this.router.navigate([], { queryParams: { ...this.searchQuery, businessType }})
   }
 
 }

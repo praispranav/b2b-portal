@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-2 bg-white mt-1">
             <!-- <app-product-search-categories></app-product-search-categories> -->
-            <app-supplier-product-search-category [categoriesList]="categoryList" [revenueList]="revenueList" [certificationsList]="certificationsList"></app-supplier-product-search-category>
+            <app-supplier-product-search-category [categoriesList]="categoryList" [revenueList]="revenueList" [certificationsList]="certificationsList" [businessTypes]="businessTypeList"></app-supplier-product-search-category>
         </div>
         <div class="col-md-10">
             <div class="d-flex align-content-start flex-wrap ml-2 ">
@@ -96,7 +96,7 @@
                                     <p class="text-muted"><b>Capabilities</b></p>
                                     <ul>
                                         <li *ngIf="true">
-                                            <p><b>Business Type</b>: </p>
+                                            <p><b>Business Type</b>: {{ getBusinessTypeValue(supplier.businessType.types) }}</p>
                                         </li>
                                         <li *ngIf="supplier.companyProfile.mainProduct.length">
                                             <p><b>Main Products</b>: {{ supplier.companyProfile.mainProduct }}</p>
