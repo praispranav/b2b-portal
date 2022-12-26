@@ -342,335 +342,11 @@
             <div class="col-lg-6 ">
                 <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.Country.invalid && (f.Country.dirty || f.Country.touched)">
                     <label for="Country-name">Country/Region</label>
-                    <select type="text" formControlName="Country" placeholder="Enter your country name here" class="form-control" id="Country-name">
-
-                        <option Value="" Label="" selected>Select</option>
-                        <option Value="AF" Label="Afghanistan">Afghanistan</option>
-                        <option Value="AX" Label="Åland Islands">Åland Islands
-                        </option>
-                        <option Value="AL" Label="Albania">Albania</option>
-                        <option Value="DZ" Label="Algeria">Algeria</option>
-                        <option Value="AS" Label="American Samoa">American Samoa
-                        </option>
-                        <option Value="AD" Label="Andorra">Andorra</option>
-                        <option Value="AO" Label="Angola">Angola</option>
-                        <option Value="AI" Label="Anguilla">Anguilla</option>
-                        <option Value="AQ" Label="Antarctica">Antarctica</option>
-                        <option Value="AG" Label="Antigua and Barbuda">Antigua and Barbuda
-                        </option>
-                        <option Value="AR" Label="Argentina">Argentina</option>
-                        <option Value="AM" Label="Armenia">Armenia</option>
-                        <option Value="AW" Label="Aruba">Aruba</option>
-                        <option Value="AU" Label="Australia">Australia</option>
-                        <option Value="AT" Label="Austria">Austria</option>
-                        <option Value="AZ" Label="Azerbaijan">Azerbaijan</option>
-                        <option Value="BS" Label="Bahamas">Bahamas</option>
-                        <option Value="BH" Label="Bahrain">Bahrain</option>
-                        <option Value="BD" Label="Bangladesh">Bangladesh</option>
-                        <option Value="BB" Label="Barbados">Barbados</option>
-                        <option Value="BY" Label="Belarus">Belarus</option>
-                        <option Value="BE" Label="Belgium">Belgium</option>
-                        <option Value="BZ" Label="Belize">Belize</option>
-                        <option Value="BJ" Label="Benin">Benin</option>
-                        <option Value="BM" Label="Bermuda">Bermuda</option>
-                        <option Value="BT" Label="Bhutan">Bhutan</option>
-                        <option Value="BO" Label="Bolivia, Plurinational State of">Bolivia, Plurinational
-                            State of</option>
-                        <option Value="BQ" Label="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius
-                            and Saba</option>
-                        <option Value="BA" Label="Bosnia and Herzegovina">Bosnia and Herzegovina
-                        </option>
-                        <option Value="BW" Label="Botswana">Botswana</option>
-                        <option Value="BV" Label="Bouvet Island">Bouvet Island
-                        </option>
-                        <option Value="BR" Label="Brazil">Brazil</option>
-                        <option Value="IO" Label="British Indian Ocean Territory">British Indian Ocean
-                            Territory
-                        </option>
-                        <option Value="BN" Label="Brunei Darussalam">Brunei Darussalam
-                        </option>
-                        <option Value="BG" Label="Bulgaria">Bulgaria</option>
-                        <option Value="BF" Label="Burkina Faso">Burkina Faso
-                        </option>
-                        <option Value="BI" Label="Burundi">Burundi</option>
-                        <option Value="KH" Label="Cambodia">Cambodia</option>
-                        <option Value="CM" Label="Cameroon">Cameroon</option>
-                        <option Value="CA" Label="Canada">Canada</option>
-                        <option Value="CV" Label="Cape Verde">Cape Verde</option>
-                        <option Value="KY" Label="Cayman Islands">Cayman Islands
-                        </option>
-                        <option Value="CF" Label="Central African Republic">Central African Republic
-                        </option>
-                        <option Value="TD" Label="Chad">Chad</option>
-                        <option Value="CL" Label="Chile">Chile</option>
-                        <option Value="CN" Label="China">China</option>
-                        <option Value="CX" Label="Christmas Island">Christmas Island
-                        </option>
-                        <option Value="CC" Label="Cocos (Keeling) Islands">Cocos (Keeling) Islands
-                        </option>
-                        <option Value="CO" Label="Colombia">Colombia</option>
-                        <option Value="KM" Label="Comoros">Comoros</option>
-                        <option Value="CG" Label="Congo">Congo</option>
-                        <option Value="CD" Label="Congo, the Democratic Republic of the">Congo, the
-                            Democratic Republic of the</option>
-                        <option Value="CK" Label="Cook Islands">Cook Islands
-                        </option>
-                        <option Value="CR" Label="Costa Rica">Costa Rica</option>
-                        <option Value="CI" Label="Côte d'Ivoire">Côte d'Ivoire
-                        </option>
-                        <option Value="HR" Label="Croatia">Croatia</option>
-                        <option Value="CU" Label="Cuba">Cuba</option>
-                        <option Value="CW" Label="Curaçao">Curaçao</option>
-                        <option Value="CY" Label="Cyprus">Cyprus</option>
-                        <option Value="CZ" Label="Czech Republic">Czech Republic
-                        </option>
-                        <option Value="DK" Label="Denmark">Denmark</option>
-                        <option Value="DJ" Label="Djibouti">Djibouti</option>
-                        <option Value="DM" Label="Dominica">Dominica</option>
-                        <option Value="DO" Label="Dominican Republic">Dominican Republic
-                        </option>
-                        <option Value="EC" Label="Ecuador">Ecuador</option>
-                        <option Value="EG" Label="Egypt">Egypt</option>
-                        <option Value="SV" Label="El Salvador">El Salvador</option>
-                        <option Value="GQ" Label="Equatorial Guinea">Equatorial Guinea
-                        </option>
-                        <option Value="ER" Label="Eritrea">Eritrea</option>
-                        <option Value="EE" Label="Estonia">Estonia</option>
-                        <option Value="ET" Label="Ethiopia">Ethiopia</option>
-                        <option Value="FK" Label="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)
-                        </option>
-                        <option Value="FO" Label="Faroe Islands">Faroe Islands
-                        </option>
-                        <option Value="FJ" Label="Fiji">Fiji</option>
-                        <option Value="FI" Label="Finland">Finland</option>
-                        <option Value="FR" Label="France">France</option>
-                        <option Value="GF" Label="French Guiana">French Guiana
-                        </option>
-                        <option Value="PF" Label="French Polynesia">French Polynesia
-                        </option>
-                        <option Value="TF" Label="French Southern Territories">French Southern Territories
-                        </option>
-                        <option Value="GA" Label="Gabon">Gabon</option>
-                        <option Value="GM" Label="Gambia">Gambia</option>
-                        <option Value="GE" Label="Georgia">Georgia</option>
-                        <option Value="DE" Label="Germany">Germany</option>
-                        <option Value="GH" Label="Ghana">Ghana</option>
-                        <option Value="GI" Label="Gibraltar">Gibraltar</option>
-                        <option Value="GR" Label="Greece">Greece</option>
-                        <option Value="GL" Label="Greenland">Greenland</option>
-                        <option Value="GD" Label="Grenada">Grenada</option>
-                        <option Value="GP" Label="Guadeloupe">Guadeloupe</option>
-                        <option Value="GU" Label="Guam">Guam</option>
-                        <option Value="GT" Label="Guatemala">Guatemala</option>
-                        <option Value="GG" Label="Guernsey">Guernsey</option>
-                        <option Value="GN" Label="Guinea">Guinea</option>
-                        <option Value="GW" Label="Guinea-Bissau">Guinea-Bissau
-                        </option>
-                        <option Value="GY" Label="Guyana">Guyana</option>
-                        <option Value="HT" Label="Haiti">Haiti</option>
-                        <option Value="HM" Label="Heard Island and McDonald Islands">Heard Island and
-                            McDonald Islands</option>
-                        <option Value="VA" Label="Holy See (Vatican City State)">Holy See (Vatican City
-                            State)
-                        </option>
-                        <option Value="HN" Label="Honduras">Honduras</option>
-                        <option Value="HK" Label="Hong Kong">Hong Kong</option>
-                        <option Value="HU" Label="Hungary">Hungary</option>
-                        <option Value="IS" Label="Iceland">Iceland</option>
-                        <option Value="IN" Label="India">India</option>
-                        <option Value="ID" Label="Indonesia">Indonesia</option>
-                        <option Value="IR" Label="Iran, Islamic Republic of">Iran, Islamic Republic of
-                        </option>
-                        <option Value="IQ" Label="Iraq">Iraq</option>
-                        <option Value="IE" Label="Ireland">Ireland</option>
-                        <option Value="IM" Label="Isle of Man">Isle of Man</option>
-                        <option Value="IL" Label="Israel">Israel</option>
-                        <option Value="IT" Label="Italy">Italy</option>
-                        <option Value="JM" Label="Jamaica">Jamaica</option>
-                        <option Value="JP" Label="Japan">Japan</option>
-                        <option Value="JE" Label="Jersey">Jersey</option>
-                        <option Value="JO" Label="Jordan">Jordan</option>
-                        <option Value="KZ" Label="Kazakhstan">Kazakhstan</option>
-                        <option Value="KE" Label="Kenya">Kenya</option>
-                        <option Value="KI" Label="Kiribati">Kiribati</option>
-                        <option Value="KP" Label="Korea, Democratic People's Republic of">Korea, Democratic
-                            People's Republic of</option>
-                        <option Value="KR" Label="Korea, Republic of">Korea, Republic of
-                        </option>
-                        <option Value="KW" Label="Kuwait">Kuwait</option>
-                        <option Value="KG" Label="Kyrgyzstan">Kyrgyzstan</option>
-                        <option Value="LA" Label="Lao People's Democratic Republic">Lao People's Democratic
-                            Republic</option>
-                        <option Value="LV" Label="Latvia">Latvia</option>
-                        <option Value="LB" Label="Lebanon">Lebanon</option>
-                        <option Value="LS" Label="Lesotho">Lesotho</option>
-                        <option Value="LR" Label="Liberia">Liberia</option>
-                        <option Value="LY" Label="Libya">Libya</option>
-                        <option Value="LI" Label="Liechtenstein">Liechtenstein
-                        </option>
-                        <option Value="LT" Label="Lithuania">Lithuania</option>
-                        <option Value="LU" Label="Luxembourg">Luxembourg</option>
-                        <option Value="MO" Label="Macao">Macao</option>
-                        <option Value="MK" Label="Macedonia, the former Yugoslav Republic of">
-                            Macedonia, the former Yugoslav Republic of</option>
-                        <option Value="MG" Label="Madagascar">Madagascar</option>
-                        <option Value="MW" Label="Malawi">Malawi</option>
-                        <option Value="MY" Label="Malaysia">Malaysia</option>
-                        <option Value="MV" Label="Maldives">Maldives</option>
-                        <option Value="ML" Label="Mali">Mali</option>
-                        <option Value="MT" Label="Malta">Malta</option>
-                        <option Value="MH" Label="Marshall Islands">Marshall Islands
-                        </option>
-                        <option Value="MQ" Label="Martinique">Martinique</option>
-                        <option Value="MR" Label="Mauritania">Mauritania</option>
-                        <option Value="MU" Label="Mauritius">Mauritius</option>
-                        <option Value="YT" Label="Mayotte">Mayotte</option>
-                        <option Value="MX" Label="Mexico">Mexico</option>
-                        <option Value="FM" Label="Micronesia, Federated States of">Micronesia, Federated
-                            States of</option>
-                        <option Value="MD" Label="Moldova, Republic of">Moldova, Republic of
-                        </option>
-                        <option Value="MC" Label="Monaco">Monaco</option>
-                        <option Value="MN" Label="Mongolia">Mongolia</option>
-                        <option Value="ME" Label="Montenegro">Montenegro</option>
-                        <option Value="MS" Label="Montserrat">Montserrat</option>
-                        <option Value="MA" Label="Morocco">Morocco</option>
-                        <option Value="MZ" Label="Mozambique">Mozambique</option>
-                        <option Value="MM" Label="Myanmar">Myanmar</option>
-                        <option Value="NA" Label="Namibia">Namibia</option>
-                        <option Value="NR" Label="Nauru">Nauru</option>
-                        <option Value="NP" Label="Nepal">Nepal</option>
-                        <option Value="NL" Label="Netherlands">Netherlands</option>
-                        <option Value="NC" Label="New Caledonia">New Caledonia
-                        </option>
-                        <option Value="NZ" Label="New Zealand">New Zealand</option>
-                        <option Value="NI" Label="Nicaragua">Nicaragua</option>
-                        <option Value="NE" Label="Niger">Niger</option>
-                        <option Value="NG" Label="Nigeria">Nigeria</option>
-                        <option Value="NU" Label="Niue">Niue</option>
-                        <option Value="NF" Label="Norfolk Island">Norfolk Island
-                        </option>
-                        <option Value="MP" Label="Northern Mariana Islands">Northern Mariana Islands
-                        </option>
-                        <option Value="NO" Label="Norway">Norway</option>
-                        <option Value="OM" Label="Oman">Oman</option>
-                        <option Value="PK" Label="Pakistan">Pakistan</option>
-                        <option Value="PW" Label="Palau">Palau</option>
-                        <option Value="PS" Label="Palestinian Territory, Occupied">Palestinian Territory,
-                            Occupied
-                        </option>
-                        <option Value="PA" Label="Panama">Panama</option>
-                        <option Value="PG" Label="Papua New Guinea">Papua New Guinea
-                        </option>
-                        <option Value="PY" Label="Paraguay">Paraguay</option>
-                        <option Value="PE" Label="Peru">Peru</option>
-                        <option Value="PH" Label="Philippines">Philippines</option>
-                        <option Value="PN" Label="Pitcairn">Pitcairn</option>
-                        <option Value="PL" Label="Poland">Poland</option>
-                        <option Value="PT" Label="Portugal">Portugal</option>
-                        <option Value="PR" Label="Puerto Rico">Puerto Rico</option>
-                        <option Value="QA" Label="Qatar">Qatar</option>
-                        <option Value="RE" Label="Réunion">Réunion</option>
-                        <option Value="RO" Label="Romania">Romania</option>
-                        <option Value="RU" Label="Russian Federation">Russian Federation
-                        </option>
-                        <option Value="RW" Label="Rwanda">Rwanda</option>
-                        <option Value="BL" Label="Saint Barthélemy">Saint Barthélemy
-                        </option>
-                        <option Value="SH" Label="Saint Helena, Ascension and Tristan da Cunha">
-                            Saint Helena, Ascension and Tristan da Cunha</option>
-                        <option Value="KN" Label="Saint Kitts and Nevis">Saint Kitts and Nevis
-                        </option>
-                        <option Value="LC" Label="Saint Lucia">Saint Lucia</option>
-                        <option Value="MF" Label="Saint Martin (French part)">Saint Martin (French part)
-                        </option>
-                        <option Value="PM" Label="Saint Pierre and Miquelon">Saint Pierre and Miquelon
-                        </option>
-                        <option Value="VC" Label="Saint Vincent and the Grenadines">Saint Vincent and the
-                            Grenadines
-                        </option>
-                        <option Value="WS" Label="Samoa">Samoa</option>
-                        <option Value="SM" Label="San Marino">San Marino</option>
-                        <option Value="ST" Label="Sao Tome and Principe">Sao Tome and Principe
-                        </option>
-                        <option Value="SA" Label="Saudi Arabia">Saudi Arabia
-                        </option>
-                        <option Value="SN" Label="Senegal">Senegal</option>
-                        <option Value="RS" Label="Serbia">Serbia</option>
-                        <option Value="SC" Label="Seychelles">Seychelles</option>
-                        <option Value="SL" Label="Sierra Leone">Sierra Leone
-                        </option>
-                        <option Value="SG" Label="Singapore">Singapore</option>
-                        <option Value="SX" Label="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)
-                        </option>
-                        <option Value="SK" Label="Slovakia">Slovakia</option>
-                        <option Value="SI" Label="Slovenia">Slovenia</option>
-                        <option Value="SB" Label="Solomon Islands">Solomon Islands
-                        </option>
-                        <option Value="SO" Label="Somalia">Somalia</option>
-                        <option Value="ZA" Label="South Africa">South Africa
-                        </option>
-                        <option Value="GS" Label="South Georgia and the South Sandwich Islands">
-                            South Georgia and the South Sandwich Islands</option>
-                        <option Value="SS" Label="South Sudan">South Sudan</option>
-                        <option Value="ES" Label="Spain">Spain</option>
-                        <option Value="LK" Label="Sri Lanka">Sri Lanka</option>
-                        <option Value="SD" Label="Sudan">Sudan</option>
-                        <option Value="SR" Label="Suriname">Suriname</option>
-                        <option Value="SJ" Label="Svalbard and Jan Mayen">Svalbard and Jan Mayen
-                        </option>
-                        <option Value="SZ" Label="Swaziland">Swaziland</option>
-                        <option Value="SE" Label="Sweden">Sweden</option>
-                        <option Value="CH" Label="Switzerland">Switzerland</option>
-                        <option Value="SY" Label="Syrian Arab Republic">Syrian Arab Republic
-                        </option>
-                        <option Value="TW" Label="Taiwan, Province of China">Taiwan, Province of China
-                        </option>
-                        <option Value="TJ" Label="Tajikistan">Tajikistan</option>
-                        <option Value="TZ" Label="Tanzania, United Republic of">Tanzania, United Republic of
-                        </option>
-                        <option Value="TH" Label="Thailand">Thailand</option>
-                        <option Value="TL" Label="Timor-Leste">Timor-Leste</option>
-                        <option Value="TG" Label="Togo">Togo</option>
-                        <option Value="TK" Label="Tokelau">Tokelau</option>
-                        <option Value="TO" Label="Tonga">Tonga</option>
-                        <option Value="TT" Label="Trinidad and Tobago">Trinidad and Tobago
-                        </option>
-                        <option Value="TN" Label="Tunisia">Tunisia</option>
-                        <option Value="TR" Label="Turkey">Turkey</option>
-                        <option Value="TM" Label="Turkmenistan">Turkmenistan
-                        </option>
-                        <option Value="TC" Label="Turks and Caicos Islands">Turks and Caicos Islands
-                        </option>
-                        <option Value="TV" Label="Tuvalu">Tuvalu</option>
-                        <option Value="UG" Label="Uganda">Uganda</option>
-                        <option Value="UA" Label="Ukraine">Ukraine</option>
-                        <option Value="AE" Label="United Arab Emirates">United Arab Emirates
-                        </option>
-                        <option Value="GB" Label="United Kingdom">United Kingdom
-                        </option>
-                        <option Value="US" Label="United States">United States
-                        </option>
-                        <option Value="UM" Label="United States Minor Outlying Islands">United States Minor
-                            Outlying Islands</option>
-                        <option Value="UY" Label="Uruguay">Uruguay</option>
-                        <option Value="UZ" Label="Uzbekistan">Uzbekistan</option>
-                        <option Value="VU" Label="Vanuatu">Vanuatu</option>
-                        <option Value="VE" Label="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian
-                            Republic of</option>
-                        <option Value="VN" Label="Viet Nam">Viet Nam</option>
-                        <option Value="VG" Label="Virgin Islands, British">Virgin Islands, British
-                        </option>
-                        <option Value="VI" Label="Virgin Islands, U.S.">Virgin Islands, U.S.
-                        </option>
-                        <option Value="WF" Label="Wallis and Futuna">Wallis and Futuna
-                        </option>
-                        <option Value="EH" Label="Western Sahara">Western Sahara
-                        </option>
-                        <option Value="YE" Label="Yemen">Yemen</option>
-                        <option Value="ZM" Label="Zambia">Zambia</option>
-                        <option Value="ZW" Label="Zimbabwe">Zimbabwe</option>
-                    </select>
+                   
+                    <select id="fcp-company" formControlName="Country" class="form-control" #myCountry
+                    (change)='onCountrySelected($event)'>
+                    <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
+                </select>
                 </div>
                 <div *ngIf="f.Country.invalid && (f.Country.dirty || f.Country.touched)">
                     <label *ngIf="f.Country.errors.required" class="error">This field is required.</label>
@@ -678,23 +354,37 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group form-group-default form-group-default-select2">
-                    <label for="EventType"> state</label>
-                    <pg-select style="width: 100%;" id="state" [PlaceHolder]="'Select'" formControlName="state" [NotFoundContent]="'Not found'">
-                        <pg-option *ngFor="let option of stateList" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
-                        </pg-option>
-                    </pg-select>
+            <div class="col-lg-6 ">
+                <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.Country.invalid && (f.Country.dirty || f.Country.touched)">
+                   
+                    <label for="Country-name">State</label>
+                    <select id="fcp-regState-name" formControlName="state" class="form-control"
+                    (change)='onStateSelected($event)'>
+                    <option *ngFor="let c of states" [value]="c.name">{{ c.name }}</option>
+                </select>
                 </div>
-                <div *ngIf="f.state?.invalid && (f.state?.dirty ||
-                    f.EventType?.touched)">
-                    <label *ngIf="f.state.errors.required" class="error">This field is
-                        required.</label>
+                <div *ngIf="f.state.invalid && (f.state.dirty || f.state.touched)">
+                    <label *ngIf="f.state.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-
         </div>
         <div class="row">
+            <div class="col-lg-6 ">
+                <div pgFormGroupDefault class="form-group form-group-default required"
+                [class.has-error]="f.city?.invalid && (f.city.dirty || f.city.touched)">
+                <label for="fcp-regCity-name">City</label>
+                <select id="fcp-regCity-name" formControlName="city" class="form-control"
+                    (change)='onCitySelected($event)'>
+                    <option *ngFor="let c of cities" [value]="c.name">{{ c.name }}</option>
+                </select>
+                <!-- <input type="text" formControlName="regCity" placeholder="Enter registered City" class="form-control" id="fcp-regCity-name" /> -->
+            </div>
+            <div *ngIf="f.city?.invalid && (f.city.dirty || f.city.touched)">
+                <label *ngIf="f.city.errors.required" class="error">This field is required.</label>
+            </div>
+            </div>
+        </div>
+        <!-- <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label for="EventType"> City</label>
@@ -710,7 +400,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
         <div class="row">
 
             <label for="Date"> Date</label>

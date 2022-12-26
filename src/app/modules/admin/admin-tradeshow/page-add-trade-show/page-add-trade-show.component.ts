@@ -21,7 +21,9 @@ export class PageAddTradeShowComponent implements OnInit {
   fileType: any | string;
   fileName: string = '';
   imageBase64: string | any = "";
-
+  countries: any[] = [];
+  states: any[] = [];
+  cities: any[] = [];
   mask = {
     date: [/[1-9]/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/],
     telephone: [
@@ -76,17 +78,20 @@ export class PageAddTradeShowComponent implements OnInit {
     {label:"UK",value:"Uttarakhand",},
     {label:"Delhi",value:"Delhi",}
   ]
-  cityList=[
-     { label:"bageshwar", value: "Bageshwar"},
-    {label:"Delhi",value:"Delhi"}
-]
+//   cityList=[
+//      { label:"bageshwar", value: "Bageshwar"},
+//     {label:"Delhi",value:"Delhi"}
+// ]
   constructor(private router: Router,
-    private formBuilder: FormBuilder, private tradeShowService:TradeShowService) { }
+    private providerMaterStateService: ProviderMaterStateService,
+    private providerMaterLocationService: ProviderMaterLocationService,
+    private formBuilder: FormBuilder, private tradeShowService:TradeShowService, private providerMaterCountryService:ProviderMaterCountryService) { }
     get f() {
       return this.addTradeShowForm.controls;
     }
   ngOnInit() {
     this.buildTradeShowForm();
+    this.getCountryList();
    
   }
   buildTradeShowForm() {
@@ -147,5 +152,54 @@ export class PageAddTradeShowComponent implements OnInit {
       this.fileType = file.type;
       this.fileName = file.name
     }
+  }
+  getCountryList() {
+    this.providerMaterCountryService.getMaterCountryList().subscribe(
+      (res: any) => {
+        this.countries = res.data;
+        console.log("country", this.countries);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  onCountrySelected(e) {
+    console.log("" + e.target.value);
+    // this.f.regCountry?.setValue(e.target.value);
+    // this.f.facCountry?.setValue(e.target.value);
+
+    this.providerMaterStateService
+      .getMaterStateListAll(e.target.value)
+      .subscribe(
+        (res: any) => {
+          this.states = res.data[0].states;
+          console.log("state", this.states);
+        },
+        (err) => {
+          console.log(err, "not selected");
+        }
+      );
+  }
+  onStateSelected(e) {
+    console.log("" + e.target.value);
+    // this.f.regState.setValue(e.target.value);
+
+    // this.f.facState.setValue(e.target.value);
+    this.providerMaterLocationService
+      .getMaterLocationListAll(e.target.value)
+      .subscribe(
+        (res: any) => {
+          console.log("cities", res);
+          this.cities = res.data[0].cities ? res.data[0].cities : [];
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+  onCitySelected(e) {
+    console.log("" + e.target.value);
+    //  this.f.regCity.setValue(e.target.value);
   }
 }
