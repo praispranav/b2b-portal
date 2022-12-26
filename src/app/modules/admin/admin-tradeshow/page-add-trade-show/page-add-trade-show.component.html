@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.organiser?.invalid && (f.organiser?.dirty || f.organiser?.touched)">
                     <label for="title">Organiser</label>
@@ -22,19 +22,19 @@
                     <label *ngIf="f.organiser.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label for="EventType"> EventType</label>
-                    <pg-select style="width: 100%;" id="EventType" [PlaceHolder]="'Select'" formControlName="EventType" [NotFoundContent]="'Not found'">
+                    <pg-select style="width: 100%;" id="EventType" [PlaceHolder]="'Select'" formControlName="eventType" [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of searchOptions" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
                         </pg-option>
                     </pg-select>
                 </div>
-                <div *ngIf="f.EventType?.invalid && (f.EventType?.dirty ||
-                    f.EventType?.touched)">
-                    <label *ngIf="f.EventType.errors.required" class="error">This field is
+                <div *ngIf="f.eventType?.invalid && (f.eventType?.dirty ||
+                    f.eventType?.touched)">
+                    <label *ngIf="f.eventType.errors.required" class="error">This field is
                         required.</label>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.exbitedItem?.invalid && (f.exbitedItem?.dirty || f.exbitedItem?.touched)">
                     <label for="exbitedItem">Items to be exbited</label>
-                    <input type="text" formControlName="exbitedItem" placeholder="Enter Event Name" class="form-control" id="exbitedItem" />
+                    <input type="text" formControlName="item" placeholder="Enter Event Name" class="form-control" id="exbitedItem" />
                 </div>
                 <div *ngIf="f.exbitedItem?.invalid && (f.exbitedItem?.dirty || f.exbitedItem?.touched)">
                     <label *ngIf="f.exbitedItem.errors.required" class="error">This field is required.</label>
@@ -320,7 +320,7 @@
             <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.venue?.invalid && (f.venue?.dirty || f.venue?.touched)">
                     <label for="venue">Phone</label>
-                    <input type="number" formControlName="number" placeholder="Enter number" class="form-control" id="venue" />
+                    <input type="number" formControlName="phone" placeholder="Enter number" class="form-control" id="venue" />
                 </div>
                 <div *ngIf="f.number?.invalid && (f.number?.dirty || f.number?.touched)">
                     <label *ngIf="f.number.errors.required" class="error">This field is required.</label>
@@ -754,8 +754,8 @@
             <div class="col-md-12">
                 <div class="card-body no-scroll card-toolbar">
                     <div class="">
-                        <label for="tradeShowDescription"> Description</label>
-                        <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="tradeShowDescription">
+                        <label for="description"> Description</label>
+                        <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="description">
                         </quill-editor>
                     </div>
                 </div>
@@ -839,7 +839,7 @@
         </div> -->
 
         <div class="justify-content-end">
-            <button type="button" class="me-4 btn btn-success" [disabled]="addTradeShowForm.invalid">Submit</button>
+            <button type="button" class="me-4 btn btn-success" (click)="submitBlog()" [disabled]="addTradeShowForm.invalid">Submit</button>
         </div>
     </form>
 </div>

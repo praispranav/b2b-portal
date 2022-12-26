@@ -6,6 +6,7 @@ import * as moment from "moment";
 import { ProviderMaterCountryService } from '../../../../core/providers/master/provider-mater-country.service';
 import { ProviderMaterStateService } from '../../../../core/providers/master/provider-mater-state.service';
 import { ProviderMaterLocationService } from '../../../../core/providers/master/provider-mater-location.service';
+import { TradeShowService } from '../../../../core/providers/user/trade-show.service';
 @Component({
   selector: 'app-page-add-trade-show',
   templateUrl: './page-add-trade-show.component.html',
@@ -16,7 +17,10 @@ export class PageAddTradeShowComponent implements OnInit {
   otherImages(event) { }
   
   addTradeShowForm: FormGroup;
-  
+  file: File;
+  fileType: any | string;
+  fileName: string = '';
+  imageBase64: string | any = "";
 
   mask = {
     date: [/[1-9]/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/],
@@ -77,7 +81,7 @@ export class PageAddTradeShowComponent implements OnInit {
     {label:"Delhi",value:"Delhi"}
 ]
   constructor(private router: Router,
-    private formBuilder: FormBuilder, ) { }
+    private formBuilder: FormBuilder, private tradeShowService:TradeShowService) { }
     get f() {
       return this.addTradeShowForm.controls;
     }
@@ -116,5 +120,32 @@ export class PageAddTradeShowComponent implements OnInit {
     });
   }
 
- 
+  submitBlog(){
+    this.tradeShowService.addTradeShow(this.addTradeShowForm.value).subscribe(
+      (res) => {
+        this.resetFormGroup(this.addTradeShowForm);
+        window.alert('API Success');
+      },
+      (err) => {
+        window.alert('API Error');
+      }
+
+    )
+  }
+
+  private resetFormGroup(form: FormGroup) {
+    form.reset();
+  }
+
+  fileUpload(event: any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imageBase64 = reader.result;
+      this.addTradeShowForm.patchValue({ imageUrl: reader.result as string })
+      this.fileType = file.type;
+      this.fileName = file.name
+    }
+  }
 }
