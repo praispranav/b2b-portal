@@ -14,17 +14,17 @@ export class TradeShowService {
   }
 
  
-  getBlogById(id: string): Observable<any> {
+  getTradeShowId(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/tradeShow/get/${id}`);
   }
 
 
 
-  updateBlog(params: any = {}): Observable<any> {
+  updateTradeShow(params: any = {}): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/tradeShow/update`, params);
   }
 
-  deleteBlogById(id: string): Observable<any> {
+  deleteTradeShowId(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/tradeShow/delete/${id}`);
   }
 }
