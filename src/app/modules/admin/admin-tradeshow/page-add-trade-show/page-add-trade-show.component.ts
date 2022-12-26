@@ -55,11 +55,17 @@ export class PageAddTradeShowComponent implements OnInit {
     suffix: "",
     allowDecimal: true,
   });
-  searchOptions=[
+  searchOptionsCat=[
     {label: "Demo", value: "demo"},
     {label: "Test", value: "test"},
     {label: "Dummy", value: "dummy"},
     {label: "Testing", value: "testing"},
+  ];
+  searchOptions=[
+    {label: "Trade Show", value: "Trade Show"},
+    {label: "Exhibition", value: "Exhibition"},
+    {label: "Trade Fair", value: "Trade Fair"},
+    {label: "Expo", value: "Expo"},
   ];
   stateList=[
     { label:"UP",value:"uttarpradessh"},
@@ -82,27 +88,23 @@ export class PageAddTradeShowComponent implements OnInit {
   buildTradeShowForm() {
     this.addTradeShowForm = this.formBuilder.group({
       eventName: ["", [Validators.required]],
-      organiser: ["", [Validators.required]],
-      EventType: ["", [Validators.required]],
-      category: ["", [Validators.required]],
-      exbitedItem: ["", [Validators.required]],
+      eventType: ["", [Validators.required]],
+      category: [[]],
+      item: ["", [Validators.required]],
+      phone: ["", [Validators.required]],
       
-      countryCode:["",Validators.required],
+      venue:["",Validators.required],
       Country:["",Validators.required],
       state:["",Validators.required],
       city:["",Validators.required],
-      phone: ["", [Validators.required]],
-      venue: ["", [Validators.required]],
      
       fromDate: ["", [Validators.required]],
+     
       toDate: ["", [Validators.required]],
+      file: ["", [Validators.required]],
       
-      bannerImage: ["", [Validators.required]],
-      OtherImages: ["", [Validators.required]],
-      tradeShowDescription: ["", [Validators.required]],
-
-      keywords: ["", [Validators.required]],
-      tags: ["", [Validators.required]],
+      description: ["", [Validators.required]],
+     
     });
   }
   private markFormGroupTouched(form: FormGroup) {

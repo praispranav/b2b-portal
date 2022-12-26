@@ -2,7 +2,7 @@
     <h3> Add Tradeshow</h3>
     <form class="p-t-15" role="form" [formGroup]="addTradeShowForm">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.eventName?.invalid && (f.eventName?.dirty || f.eventName?.touched)">
                     <label for="title">Event Name</label>
                     <input type="text" formControlName="eventName" placeholder="Enter Event Name" class="form-control" id="title" />
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.organiser?.invalid && (f.organiser?.dirty || f.organiser?.touched)">
                     <label for="title">Organiser</label>
                     <input type="text" formControlName="organiser" placeholder="Enter Organiser Name" class="form-control" id="title" />
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
                     <label for="EventType"> EventType</label>
                     <pg-select style="width: 100%;" id="EventType" [PlaceHolder]="'Select'" formControlName="EventType" [NotFoundContent]="'Not found'">
@@ -41,15 +41,29 @@
 
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="form-group form-group-default form-group-default-select2">
+                    <label for="category"> Select Category</label>
+                    <pg-select style="width: 100%;" id="blog-category" [Mode]="'multiple'" [PlaceHolder]="'Select'" formControlName="category" [NotFoundContent]="'Not found'">
+                        <pg-option *ngFor="let option of searchOptionsCat" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
+                        </pg-option>
+                    </pg-select>
+                </div>
+                <div *ngIf="f.category?.invalid && (f.category?.dirty ||
+                    f.category?.touched)">
+                    <label *ngIf="f.category.errors.required" class="error">This field is
+                        required.</label>
+                </div>
+            </div>
+            <!-- <div class="col-md-6">
                 <div class="form-group tag-group form-group-default required ">
                     <label>Category</label>
                     <pg-tag-control id="category" fromControlName="category"></pg-tag-control>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.exbitedItem?.invalid && (f.exbitedItem?.dirty || f.exbitedItem?.touched)">
                     <label for="exbitedItem">Items to be exbited</label>
                     <input type="text" formControlName="exbitedItem" placeholder="Enter Event Name" class="form-control" id="exbitedItem" />
@@ -59,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div pgFormGroupDefault class="form-group form-group-default required" [class.has-error]="f.countryCode.invalid && (f.countryCode.dirty || f.countryCode.touched)">
                     <div class="input-group-prepend ">
@@ -270,11 +284,11 @@
                                 </option>
                                 <option data-countryCode="TV" value="688">Tuvalu (+688)</option>
                                 <option data-countryCode="UG" value="256">Uganda (+256)</option>
-                                <!-- <option data-countryCode="GB" value="44">UK (+44)</option> -->
+                                <option data-countryCode="GB" value="44">UK (+44)</option>
                                 <option data-countryCode="UA" value="380">Ukraine (+380)</option>
                                 <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
                                 <option data-countryCode="UY" value="598">Uruguay (+598)</option>
-                                <!-- <option data-countryCode="US" value="1">USA (+1)</option> -->
+                                <option data-countryCode="US" value="1">USA (+1)</option>
                                 <option data-countryCode="UZ" value="7">Uzbekistan (+7)</option>
                                 <option data-countryCode="VU" value="678">Vanuatu (+678)</option>
                                 <option data-countryCode="VA" value="379">Vatican City (+379)</option>
@@ -301,9 +315,20 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.venue?.invalid && (f.venue?.dirty || f.venue?.touched)">
+                    <label for="venue">Phone</label>
+                    <input type="number" formControlName="number" placeholder="Enter number" class="form-control" id="venue" />
+                </div>
+                <div *ngIf="f.number?.invalid && (f.number?.dirty || f.number?.touched)">
+                    <label *ngIf="f.number.errors.required" class="error">This field is required.</label>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.venue?.invalid && (f.venue?.dirty || f.venue?.touched)">
                     <label for="venue">Venue</label>
                     <input type="text" formControlName="venue" placeholder="Enter Venue Name" class="form-control" id="venue" />
@@ -687,8 +712,9 @@
 
         </div>
         <div class="row">
+
             <label for="Date"> Date</label>
-            <div class="col-md-6">
+            <div class="col-md-3">
 
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.fromDate?.invalid && (f.fromDate?.dirty || f.fromDate?.touched)">
                     <label for="FromDate">From</label>
@@ -698,7 +724,7 @@
                     <label *ngIf="f.fromDate.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
 
                 <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.toDate?.invalid && (f.toDate?.dirty || f.toDate?.touched)">
                     <label for="toDate">To</label>
@@ -710,6 +736,32 @@
             </div>
         </div>
 
+        <div class="row mt-4 ml-2">
+            <div class="col-md-6">
+                <label>Banner</label>
+                <div class="input-group">
+                    <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" placeholder="Company Pictures"
+                      id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
+                      aria-describedby="basic-addon2" formControlName="file">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button"
+                        (click)="fileInputDoc.click()">upload</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-body no-scroll card-toolbar">
+                    <div class="">
+                        <label for="tradeShowDescription"> Description</label>
+                        <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="tradeShowDescription">
+                        </quill-editor>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- 
         <div class="card card-default">
             <div class="card-header ">
                 <div class="card-title">
@@ -735,8 +787,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card card-default">
+        </div> -->
+        <!-- <div class="card card-default">
             <div class="card-header ">
                 <div class="card-title">
                     Other Images
@@ -761,15 +813,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body no-scroll card-toolbar">
+        </div> -->
+        <!-- <div class="card-body no-scroll card-toolbar">
             <div class="">
                 <label for="tradeShowDescription"> Description</label>
                 <quill-editor [styles]="{height: '350px'}" placeholder="" formControlName="tradeShowDescription">
                 </quill-editor>
             </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group tag-group form-group-default required ">
                     <label>Keywords</label>
@@ -784,7 +836,7 @@
                     <pg-tag-control id="tags" fromControlName="tags"></pg-tag-control>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="justify-content-end">
             <button type="button" class="me-4 btn btn-success" [disabled]="addTradeShowForm.invalid">Submit</button>
