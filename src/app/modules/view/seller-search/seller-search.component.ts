@@ -49,7 +49,6 @@ export class SellerSearchComponent implements OnInit {
 
   getSearchedSellerList() {
     const payload = { ...this.searchQuery, searchType: undefined }
-    console.log("Payload", payload)
     this.sellerSearchService
       .sellerSearch(payload)
       .subscribe((res: any) => {
