@@ -148,7 +148,7 @@
                             <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.code.invalid && (f.code.dirty || f.code.touched)">
                                 <label for="code">Code</label>
 
-                                <select name="code" id="" class="form-control mr-sm-2" [(ngModel)]="selectedOption" formControlName="code">
+                                <select name="code" id="phoneCode" class="form-control mr-sm-2" formControlName="code">
                   <option class="ms-1" *ngFor="let code of codes" [value]="code.code">{{code.code}}</option>
                 </select>
                             </div>
@@ -186,7 +186,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-check pl-0">
-                        <input type="checkbox" formControlName="checkAggriment" id="checkbox1">
+                        <input type="checkbox" id="checkbox1">
                         <!-- <label for="checkbox1" class="ml-2"> I agree to abide by the <br> Bizzexpo.com Membership <a href="javascript:void(0)"
                         class="text-info">Agreement</a></label> -->
 

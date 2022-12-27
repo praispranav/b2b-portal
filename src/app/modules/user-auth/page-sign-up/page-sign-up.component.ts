@@ -16,7 +16,6 @@ import { ProviderMaterLocationService } from "../../../core/providers/master/pro
 })
 export class PageSignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  selectedOption;
   states=[];
   cities=[];
   countries=[]
@@ -266,6 +265,7 @@ export class PageSignUpComponent implements OnInit {
   {"country":"Yemen","code":"967","iso":"YE"},
   {"country":"Zambia","code":"260","iso":"ZM"},
   {"country":"Zimbabwe","code":"263","iso":"ZW"}];
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -293,7 +293,7 @@ export class PageSignUpComponent implements OnInit {
       lName: ["", [Validators.required]],
       email: ["", [Validators.required]],
       phone: ["", [Validators.required]],
-      code: [""],
+      code: ["91"],
       password: ["", [Validators.required]],
       cpassword: ["", [Validators.required]],
       country: ["", [Validators.required],],
@@ -334,7 +334,6 @@ getCountryList(){
 
  
  onStateSelected(e) {
-    console.log("" + e.target.value);
     this.f.regState.setValue(e.target.value);
 
     this.f.facState.setValue(e.target.value);
@@ -362,6 +361,7 @@ getCountryList(){
   }
   subSignUpForm() {
     const params = this.signUpForm.value;
+    console.log(params)
     params.role = params.role === 'buyer' ? 'buyer' : params.role === 'seller' ? 'seller' : 'buyer-seller';
     this.providerUserAuthService.userSignUp(params).subscribe(res => {
       if (res.header.code === 200) {
