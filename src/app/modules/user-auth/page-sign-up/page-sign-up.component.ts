@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, AbstractControl } from "@angular/forms";
 import { ProviderUserAuthService } from "./../../../core/providers/auth/provider-user-auth.service";
 import { Router } from '@angular/router';
 import { MessageService } from "../../../@pages/components/message/message.service";
@@ -7,6 +7,7 @@ import { AppMessageService } from "../../../core/services/app-message.service";
 import { ProviderMaterCountryService } from "../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../core/providers/master/provider-mater-location.service";
+// import { ConfirmPasswordValidator } from "../confirmPasswordValidator";
 
 
 @Component({
@@ -300,9 +301,23 @@ export class PageSignUpComponent implements OnInit {
       address1: ["", [Validators.required]],
       city: [""],
       role: ["", [Validators.required]]
-    });
+    },
+    this.matchPassword
+  
+    );
   }
-    
+ 
+  private matchPassword(AC: AbstractControl) {
+    let password = AC.get('password').value;
+    if (AC.get('cpassword').touched || AC.get('cpassword').dirty) {
+      let verifyPassword = AC.get('cpassword').value;
+      if (password != verifyPassword) {
+        AC.get('cpassword').setErrors({ matchPassword: true });
+      } else {
+        return null;
+      }
+    }
+  }
 getCountryList(){
   this.providerMaterCountryService.getMaterCountryList().subscribe(
     (res: any) => {
@@ -372,6 +387,7 @@ getCountryList(){
       }
     }, err => {
       this.appMessageService.createBasicNotification('red', 'Something went wrong');
+      console.log(err)
     });
   }
 }

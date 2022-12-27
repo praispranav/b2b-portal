@@ -141,7 +141,9 @@ export class AppHammerConfig extends HammerGestureConfig {
     PerfectScrollbarModule,
     MessageModule,
     CoreModule,
+    
   ],
+
   providers: [
 //SocialService,
     MessageService,
