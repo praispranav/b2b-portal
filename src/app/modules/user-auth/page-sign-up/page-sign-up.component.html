@@ -80,10 +80,7 @@
                     <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
                         <label *ngIf="f.password.errors.required" class="error">This field is required.</label>
                     </div>
-                    <!--  -->
-                    <div *ngIf="submitted && registerForm.get('password').errors" class="alert alert-danger">
-                        <div *ngIf="registerForm.get('password').errors.required">Password is required</div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="row">
