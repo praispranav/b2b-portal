@@ -169,15 +169,14 @@ export class FormCertificateCenterComponent implements OnInit {
     console.log(pictureList)
     this.isLoading = true;
     const formData = this.certificateCenterForm.value;
+    formData.certificates = formData.certificates.filter(t => t.checked).map((i)=> ({ ...i, checked: undefined }));
+
     let reqObj = {
       certificates: formData.certificates ? formData.certificates : '',
       otherCertificates: [...this.certificateProfiles],
-
     }
     console.log('reqData', reqObj);
-
-    formData.certificates = formData.certificates.filter(t => t.checked);
-
+    debugger;
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCertificateCenterService.updateCertificateCenter(reqObj).subscribe(
