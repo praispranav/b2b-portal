@@ -487,7 +487,6 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   getStri(a){
-    console.log("FormControlCheck", a)
   }
 
   updateDataIfExist() {
