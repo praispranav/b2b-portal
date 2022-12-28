@@ -330,9 +330,12 @@ export class FormCompanyDetailComponent implements OnInit {
         tradeShow: [...this.memberProfiles],
         contactPerson: [...this.contactProfiles],
         companyPicture: pictureList,
+        employeeStrength: formData.employeeStrength ? formData.employeeStrength : '',
+        companyVideo: formData.companyVideo ? formData.companyVideo : '',
         attendTradeExpo:formData.attendTradeExpo ? formData.attendTradeExpo:''
       }
       console.log('reqData', reqObj);
+      debugger;
       if (this.isDataExist) {
         formData._id = this.idIfDataExist;
         this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(
@@ -350,26 +353,6 @@ export class FormCompanyDetailComponent implements OnInit {
     } catch (error) {
       console.log(error)
     }
-    // if (!this.companyDetailForm.valid) {
-    //   this.markFormGroupTouched(this.companyDetailForm);
-    //   return;
-    // }
-    // if (this.logoList.length > 0) {
-    //   this.f.companyLogo.setValue(
-    //     await this.toBase64(this.logoList[0].originFileObj)
-    //   );
-    // }
-    // if (this.pictureList.length > 0) {
-    //   this.f.companyPicture.setValue(
-    //     await this.toBase64(this.pictureList[0].originFileObj)
-    //   );
-    // }
-    // if (this.tradePicList.length > 0) {
-    //   this.f.tradePicture.setValue(
-    //     await this.toBase64(this.pictureList[0].originFileObj)
-    //   );
-    // }
-
   }
 
   private markFormGroupTouched(form: FormGroup) {

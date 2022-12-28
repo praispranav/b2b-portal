@@ -40,7 +40,7 @@
                 [class.has-error]="f.companyVideo?.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
                 <label for="fcd-companyVideo">Company Video</label>
                 <input type="text" formControlName="companyVideo" placeholder="Enter video link" class="form-control"
-                    id="fcd-companyVideo" />
+                    id="fcd-companyVideo" name="companyVideo" />
             </div>
             <div *ngIf="f.companyVideo?.invalid && (f.companyVideo.dirty || f.companyVideo.touched)">
                 <label *ngIf="f.companyVideo.errors.required" class="error">Company Video is required
@@ -340,7 +340,7 @@
             <div class="form-group form-group-default form-group-default-select2 required">
                 <label>Employee Strength</label>
                 <pg-select style="width: 100%;" [PlaceHolder]="'Select the employee strength'"
-                    formControlName="employeeStrength" [NotFoundContent]="'Not found'">
+                    formControlName="employeeStrength" [NotFoundContent]="'Not found'" name="employeeStrength">
                     <pg-option *ngFor="let option of strengthOptions" [Label]="option.label" [Value]="option.value"
                         [Disabled]="option.disabled">
                     </pg-option>

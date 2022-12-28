@@ -15,4 +15,10 @@ export class ImageService {
     formData.append('file', file)
     return this.http.post<any>(`${environment.apiUrl}/image`, formData);
   }
+
+  uploadFile(file): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file)
+    return this.http.post<any>(`${environment.apiUrl}/image/normal`, formData);
+  }
 }

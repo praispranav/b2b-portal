@@ -198,33 +198,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3" *ngFor="let form of landlineArray.controls; let i=index" [formGroup]="form">
-            <button *ngIf="landlineArray?.controls?.length > 1" type="button" (click)="deleteLandline(i)"
-                class="btn btn-info mb-4">
-                Remove
-            </button>
-            <!-- <div class="col-md-3 ">
-                <div pgFormGroupDefault class="form-group form-group-default ms-1">
-                    <label for="code">Code</label>
-
-                    <select name="code" id="" class="form-control mr-sm-2"  [(ngModel)]="selectedOption" formControlName="code" >
-      <option class="ms-1" *ngFor="let code of codes" [value]="code.code">{{code.code}}</option>
-    </select>
-                </div>
-             
-            </div> -->
-
+        <div class="col-md-4 d-flex align-items-center" *ngFor="let form of landlineArray.controls; let i=index" [formGroup]="form">
             <div pgFormGroupDefault class="form-group form-group-default required" 
-                [class.has-error]="f.regLandline?.invalid && (f.regLandline.dirty || f.regLandline.touched)">
+                [class.has-error]="landlineArray?.controls[i].invalid && (landlineArray?.controls[i].dirty || landlineArray?.controls[i].touched)">
                 <label for="fcp-regLandline">Landline Number</label>
-                <input type="number" formControlName="regLandline" placeholder="Enter Landline Number"
+                <input max="9999999999" min="1000000000" type="number" formControlName="regLandline" placeholder="Enter Landline Number"
                     class="form-control" id="fcp-regLandline" maxlength="12" />
             </div>
-            <div *ngIf="f.regLandline?.invalid && (f.regLandline.dirty || f.regLandline.touched)">
-                <label *ngIf="f.regLandline.errors.required" class="error">This field is required.</label>
+            <div *ngIf="landlineArray?.controls[i].invalid && (landlineArray?.controls[i].dirty || landlineArray?.controls[i].touched)">
+                <label *ngIf="landlineArray?.controls[i].invalid" class="error">Landline no should be of 10 digit.</label>
             </div>
+            <button *ngIf="landlineArray?.controls?.length > 1" type="button" (click)="deleteLandline(i)"
+                class="btn btn-info btn-sm ml-3">
+                Remove
+            </button>
         </div>
-        <div class="col-md-3">
+        <div class="">
             <button type="button" (click)="addNewLandline()" class="btn btn-info mt-2">Add+
             </button>
         </div>
@@ -249,19 +238,19 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3" *ngFor="let form of mobileArray.controls; let i=index" [formGroup]="form">
-            <button *ngIf="mobileArray?.controls?.length > 1" type="button" (click)="deleteMobile(i)"
-                class="btn btn-info mb-4">
-                Remove
-            </button>
+        <div class="col-md-3 d-flex align-items-center" *ngFor="let form of mobileArray.controls; let i=index" [formGroup]="form">
             <div pgFormGroupDefault class="form-group form-group-default required"
-                [class.has-error]="f.regMobile?.invalid && (f.regMobile.dirty || f.regMobile.touched)">
+                [class.has-error]="mobileArray?.controls[i].invalid && (mobileArray?.controls[i].dirty || mobileArray?.controls[i].touched)">
                 <label for="fcp-regMobile">Mobile Number</label>
                 <input type="number" formControlName="regMobile" maxlength="10" placeholder="Enter Mobile Number" class="form-control"
                     id="fcp-regMobile" />
             </div>
-            <div *ngIf="f.regMobile?.invalid && (f.regMobile.dirty || f.regMobile.touched)">
-                <label *ngIf="f.regMobile.errors.required" class="error">This field is required.</label>
+            <button *ngIf="mobileArray?.controls?.length > 1" type="button" (click)="deleteMobile(i)"
+                class="btn btn-info mb-4">
+                Remove
+            </button>
+            <div *ngIf="mobileArray?.controls[i].invalid && (mobileArray?.controls[i].dirty || mobileArray?.controls[i].touched)">
+                <label *ngIf="mobileArray?.controls[i].invalid" class="error">Mobile no should be of 10 digit.</label>
             </div>
 
         </div>
@@ -395,7 +384,12 @@
                     <div pgFormGroupDefault class="form-group form-group-default">
                         <label for="fcp-facLandline">Landline</label>
                         <input type="number" formControlName="facLandline" placeholder="Enter your Mobile Number"
+                            [class.has-error]="form.controls.facLandline.invalid && (form.controls.facLandline.facLandline.dirty || form.controls.facLandline.touched)"
                             class="form-control" id="fcp-facLandline" />
+                            {{ getStri(form?.controls?.facLandline) }}
+                            <div *ngIf="form.controls.facLandline.invalid && (form.controls.facLandline.dirty || form.controls.facLandline.touched)">
+                                <label *ngIf="form.controls.facLandline.error" class="error">Mobile no should be of 10 digit.</label>
+                            </div>
                     </div>
                 </div>
                 <div class="col-md-3">

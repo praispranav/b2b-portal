@@ -8,6 +8,7 @@ import { ProviderMaterCountryService } from "../../../../../../core/providers/ma
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../../../../core/providers/master/provider-mater-location.service";
 import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
+import { ImageService } from "../../../../../../core/providers/user/image.service";
 
 @Component({
   selector: "app-form-company-profile",
@@ -35,6 +36,8 @@ export class FormCompanyProfileComponent implements OnInit {
   landlineProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
   addtionalDetails: boolean = true;
+  businessCertificateFileName: string = ''
+
   categoryOptions = [
     { value: "Apparel", label: "Apparel" },
     { value: "Cloth", label: "Cloth" },
@@ -315,6 +318,7 @@ export class FormCompanyProfileComponent implements OnInit {
   categoryList:any[] = []
   constructor(
     private formBuilder: FormBuilder,
+    private imageService: ImageService,
     private appMessageService: AppMessageService,
     private providerCompanyProfileService: ProviderCompanyProfileService,
     private providerMaterCountryService: ProviderMaterCountryService,
@@ -438,7 +442,7 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   addNewMobile(data: any = {}): void {
     this.formGroup = this.formBuilder.group({
-      regMobile: [data.regMobile ? data.regMobile : "", [Validators.required]],
+      regMobile: [data.regMobile ? data.regMobile : "",  [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
     });
     this.mobileArray.push(this.formGroup);
   }
@@ -450,10 +454,11 @@ export class FormCompanyProfileComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       regLandline: [
         data.regLandline ? data.regLandline : "",
-        [Validators.required, Validators.max(999), Validators.min(100)],
+        [Validators.required, Validators.min(1000000000), Validators.max(9999999999)],
       ],
     });
     this.landlineArray.push(this.formGroup);
+    console.log("Controles",this.landlineArray.controls)
   }
 
   deleteLandline(index: number): void {
@@ -469,14 +474,19 @@ export class FormCompanyProfileComponent implements OnInit {
       facAnnualTurnover: [data.facAnnualTurnover ? data.facAnnualTurnover : ""],
       facContactPerson: [data.facContactPerson ? data.facContactPerson : ""],
       facLandline: [data.facLandline ? data.facLandline : ""],
-      facMobile: [data.facMobile ? data.facMobile : ""],
-      facEmail: [data.facEmail ? data.facEmail : ""],
+      facMobile: [data.facMobile ? data.facMobile : "", [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+      facEmail: [data.facEmail ? data.facEmail : "", [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
     });
     this.additionalArray.push(this.formGroup);
+
+    console.log(this.additionalArray.controls)
   }
   
   removeAdditional(index: number): void {
     this.additionalArray.removeAt(index);
+  }
+
+  getStri(a){
   }
 
   updateDataIfExist() {
@@ -538,11 +548,31 @@ export class FormCompanyProfileComponent implements OnInit {
       );
   }
 
+  uploadFileToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.imageService.uploadFile(image).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
   async subCompanyProfileForm() {
     if (this.companyProfileForm.invalid) {
       this.markFormGroupTouched(this.companyProfileForm);
       return;
     }
+    // let fileName = "";
+     
+    //     const productImage: any = await this.uploadImageToServer(
+    //       item.originFileObj)
+    //       fileName += (productImage.fileName);
+
     // this.isLoading = true;
     const formData = this.companyProfileForm.value;
     let reqObj = {
@@ -559,8 +589,8 @@ export class FormCompanyProfileComponent implements OnInit {
       regState: formData.regState ? formData.regState : "",
       regCity: formData.regCity ? formData.regCity : "",
 
-      businessCertificate: formData.businessCertificate
-        ? formData.businessCertificate
+      businessCertificate: this.businessCertificateFileName
+        ? this.businessCertificateFileName
         : "",
       additionalDetail: [...this.additionalProfiles],
       additionalMobile: [...this.mobileProfiles],
@@ -572,6 +602,7 @@ export class FormCompanyProfileComponent implements OnInit {
     console.log("reqData", formData);
     console.log("reqObj", reqObj);
 
+    debugger;
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCompanyProfileService.updateCompanyProfile(reqObj).subscribe(
@@ -587,10 +618,6 @@ export class FormCompanyProfileComponent implements OnInit {
             "Company Profile Not Updated"
           );
         }
-        // () =>
-        // {
-        //   this.isLoading = false;
-        //  }
       );
     } else {
       this.providerCompanyProfileService.addCompanyProfile(reqObj).subscribe(
@@ -606,9 +633,6 @@ export class FormCompanyProfileComponent implements OnInit {
             "Company Profile Not Added"
           );
         }
-        // () => {
-        //   this.isLoading = false;
-        //  }
       );
     }
   }
@@ -625,16 +649,19 @@ export class FormCompanyProfileComponent implements OnInit {
     this.file = $event.target.files[0];
   }
 
-  fileUpload(event: any) {
+  async fileUpload(event: any) {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.imageBase64 = reader.result;
-      this.companyProfileForm.patchValue({ imageUrl: reader.result as string });
-      this.fileType = file.type;
-      this.fileName = file.name;
-    };
+    const fileUploadResponse: any = await this.uploadFileToServer(file)
+    this.businessCertificateFileName = fileUploadResponse.fileName;
+    console.log("FIle Upload Response")
+    // const reader = new FileReader();
+    // reader.readAsDataURL(file);
+    // reader.onload = () => {
+    //   this.imageBase64 = reader.result;
+    //   this.companyProfileForm.patchValue({ imageUrl: reader.result as string });
+    //   this.fileType = file.type;
+    //   this.fileName = file.name;
+    // };
   }
   additionlDetailValueYes() {
     this.addtionalDetails = true;

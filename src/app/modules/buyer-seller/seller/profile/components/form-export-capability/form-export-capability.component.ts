@@ -100,17 +100,20 @@ export class FormExportCapabilityComponent implements OnInit {
     }
     this.isLoading = true;
     const formValue = this.exportCapabilityForm.value;
+    
+    debugger;
+
     if (this.isDataExist) {
       formValue._id = this.idIfDataExist;
       this.providerExportCapabilityService.updateExportCapability(formValue).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
+        (res) => { this.appMessageService.createBasicNotification('success', "Export Capability Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Export Capability Not Updated") },
         () => { this.isLoading = false; }
       );
     } else {
       this.providerExportCapabilityService.addExportCapability(formValue).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
+        (res) => { this.appMessageService.createBasicNotification('success', "Export Capability Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Export Capability Not Added") },
         () => { this.isLoading = false; }
       );
     }

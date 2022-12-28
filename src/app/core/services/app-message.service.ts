@@ -48,7 +48,7 @@ export class AppMessageService {
 
     setTimeout(() => {
       this.removeToast();
-    }, 1000);
+    }, 10000);
   }
 }
 

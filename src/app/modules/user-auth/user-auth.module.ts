@@ -8,6 +8,7 @@ import { PageSignInComponent } from "./page-sign-in/page-sign-in.component";
 import { PageSignUpComponent } from "./page-sign-up/page-sign-up.component";
 import { pgSelectModule } from "../../@pages/components/select/select.module";
 import { pgSelectfx } from "../../@pages/components/cs-select/select.module";
+import { TooltipModule } from "ngx-bootstrap";
 
 
 
@@ -20,6 +21,7 @@ import { pgSelectfx } from "../../@pages/components/cs-select/select.module";
   ],
   imports: [
     CommonModule,
+    TooltipModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     UserAuthRoutingModule,

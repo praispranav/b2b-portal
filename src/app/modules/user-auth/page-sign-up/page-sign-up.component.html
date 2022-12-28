@@ -71,24 +71,48 @@
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.password.invalid && (f.password.dirty || f.password.touched)">
                         <label for="password">Password</label>
-                        <input type="password" formControlName="password" placeholder="Enter Password" class="form-control" id="password" />
+                        <input type="password" formControlName="password" placeholder="Enter Password" class="form-control" id="password"
+                        tooltip="Password must have one uppercase letter, one lower case, one number and one special character(@,!,$)."
+                        />
+                       
                     </div>
+                  
                     <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
                         <label *ngIf="f.password.errors.required" class="error">This field is required.</label>
+                        <label *ngIf="f.password.errors.hasNumber" class="error">Must contain a number.</label>
+                        <label *ngIf="f.password.errors.hasSmallCase" class="error">Must have a smaller case character.</label>
+                        <label *ngIf="f.password.errors.hasSpecialCharacters" class="error">Must have a special character.</label>
+                        <label *ngIf="f.password.errors.minlength" class="error">Min length should be {{f.password.errors.minlength.requiredLength}} actual length {{f.password.errors.minlength.actualLength}}.</label>
                     </div>
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label for="cpassword">Confirm Password</label>
-                        <input type="password" formControlName="cpassword" placeholder="Retypr Password" class="form-control" id="cpassword" />
+                        <input type="password" formControlName="cpassword"  placeholder="Retype Password" class="form-control" id="cpassword" />
                     </div>
-                    <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
+                    <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label *ngIf="f.cpassword.errors.required" class="error">This field is required.</label>
-                    </div>
+                    </div> -->
+                    
+                    <div *ngIf="f?.cpassword?.errors && f?.cpassword?.touched" class="text-danger">
+                       
+                           <label *ngIf="f?.cpassword?.errors?.required" class="error">Confirm password is required</label>  </div>
+                        <label *ngIf="f?.cpassword?.errors?.matchPassword">New password and Confirm password didn't match. </label>
+                      
+                      <label class="text-danger"class="error"
+                      *ngIf="f['cpassword'].hasError('NoPassswordMatch') && f?.cpassword?.touched">
+                      New password and Confirm password didn't match.
+                    </label>
+                    <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
+                        <label *ngIf="f.cpassword.errors.invalid" class="error"> field is required.</label>
+                    </div> -->
+                   
                 </div>
             </div>
+           
 
             <!-- <div class="row">
         <div class="col-md-12">
@@ -133,7 +157,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.city.invalid && (f.city.dirty || f.city.touched)">
-                        <label for="city">city</label>
+                        <label for="city">City</label>
                         <input type="text" formControlName="city" placeholder="Enter city" class="form-control" id="city" />
                     </div>
                     <div *ngIf="f.city.invalid && (f.city.dirty || f.city.touched)">
