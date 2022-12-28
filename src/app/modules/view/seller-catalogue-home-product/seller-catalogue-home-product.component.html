@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-md-2 bg-white search-top-mr">
             <!-- <app-product-search-categories></app-product-search-categories>  -->
-            <app-catalogue-product-search-home></app-catalogue-product-search-home>
+            <app-catalogue-product-search-home [categories]="categories"></app-catalogue-product-search-home>
         </div>
         <div class="col-md-10">
             <!-- <app-product-search-filter></app-product-search-filter> -->
@@ -52,7 +52,7 @@
             </div>
             <div class="ml-2">
                 <!-- <app-product-search-card></app-product-search-card>  -->
-                <app-catalogue-product-card-home></app-catalogue-product-card-home>
+                <app-catalogue-product-card-home [products]="products"></app-catalogue-product-card-home>
             </div>
             <!-- <app-product-search-card-list></app-product-search-card-list> -->
         </div>

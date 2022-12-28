@@ -1,7 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { environment } from "../../../../environments/environment";
+import { FormProductService } from "../../../core/providers/user/form-product.service";
 import { ProviderCompanyProfileService } from "../../../core/providers/user/provider-company-profile.service";
 import { SellerSearchService } from "../../../core/providers/user/seller-search.service";
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+import { ProviderCategoryService } from "../../../core/providers/user/provider-category.service";
+
+TimeAgo.addDefaultLocale(en)
 
 @Component({
   selector: "app-page-seller-catalogue-home",
@@ -20,17 +27,35 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
     mainCategory: {},
   };
 
+  products:any[] = [];
+  totalProducts: number = 0;
+  categories: any[] = [];
+
+  oldSellerId: string = "";
+  oldProductSearchText: string = "";
+
   catalogue: any = {};
 
   constructor(
     private route: ActivatedRoute,
     private sellerSearch: SellerSearchService,
-    private companyProfileService: ProviderCompanyProfileService
+    private companyProfileService: ProviderCompanyProfileService,
+    private productService: FormProductService,
+    private categoryService: ProviderCategoryService,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.searchParams = params;
-      this.getSellerDetails(params.sellerId);
-      console.log("SellerId", params);
+      if(this.oldSellerId !== params['sellerId']){
+        this.getSellerDetails(params.sellerId);
+        this.getSellerCategories();
+      }
+      this.oldSellerId = params['sellerId']
+
+      if(this.oldProductSearchText !== params['searchProduct'] || params['searchProduct'] == ''){
+        this.getProducts();
+      }
+
+
     });
   }
 
@@ -45,6 +70,11 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
     // })
   }
 
+  getTimeCount(date){
+    const timeAgo = new TimeAgo('en-US')
+    return timeAgo.format(new Date(date));
+  }
+
   getBusinessTypeText() {
     if (
       this.sellerProfile.businessType &&
@@ -57,20 +87,61 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
     return "";
   }
 
+  getMainProducts() {
+    if (Array.isArray(this.sellerProfile.companyProfile.mainProduct))
+      return this.sellerProfile.companyProfile.mainProduct.join(",");
+    return "";
+  }
+
+  getProducts() {
+    this.productService
+      .searchProductBySeller({
+        sellerId: this.searchParams.sellerId,
+        page: this.searchParams.page,
+        pageSize: this.searchParams.pageSize,
+        search: this.searchParams.searchProduct || "",
+      })
+      .subscribe((res:any) => {
+        this.totalProducts = res.data.total;
+        if(Array.isArray(res.data.products)){
+          this.products = res.data.products.map((product)=>{
+            return {
+              name: product.productName,
+              image: environment.imageStorage + product.productImage[0],
+              price: "$ " + product.moq,
+              year: this.getTimeCount(product.timestamp),
+            supplier: ""
+            }
+          })
+        }
+        console.log("Products", res)
+      });
+  }
+
   getSellerDetails(id) {
     console.log("Id", id);
     this.sellerSearch.sellerSearchById(id).subscribe((res: any) => {
       if (res.header.code === 200) {
         this.sellerProfile = res.data;
+        console.log("Main Products", this.getMainProducts());
         this.catalogue = {
           company: this.sellerProfile.companyProfile.company,
           categoryName: this.sellerProfile.mainCategory.name,
           businessType: this.getBusinessTypeText(),
+          yearlyTurnover: this.sellerProfile.exportCapabilities.yearlyTurnover,
+          exportingPercent:
+            this.sellerProfile.exportCapabilities.exportingPercent,
+          mainProducts: this.getMainProducts(),
         };
       }
       console.log(res);
     });
   }
 
-  getProducts() {}
+  getSellerCategories(){
+    this.categoryService.getCategoryListBySeller(this.searchParams.sellerId).subscribe((res)=>{
+      console.log("categories", res)
+      this.categories = res.data
+    })
+  }
 }

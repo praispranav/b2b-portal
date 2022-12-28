@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-catalogue-product-search-home',
@@ -9,13 +9,13 @@ export class CatalogueProductSearchHomeComponent implements OnInit {
 
   constructor() { }
 
-  categoriesList: any[] = [
-    { name: "Men's Jackets" },
-    { name: "Women's Coats" },
-    { name: "Gym Fitness Sets" },
-    { name: "Outdoor Jackets" },
-    { name: "Outdoor& Hiking Clothing" },
-    { name: "Fleece" },
+  @Input('categories') categoriesList: any[] = [
+    // { name: "Men's Jackets" },
+    // { name: "Women's Coats" },
+    // { name: "Gym Fitness Sets" },
+    // { name: "Outdoor Jackets" },
+    // { name: "Outdoor& Hiking Clothing" },
+    // { name: "Fleece" },
   ];
 
   countryList: any[] = [

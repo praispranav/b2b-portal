@@ -64,9 +64,9 @@
     <div class="col-6 align">
       <div class="search-div bg-light d-flex align-items-center ps-4">
         <div>
-          <input type="text" name="" id="" class="input" placeholder="What are you looking for" />
+          <input type="text" [(ngModel)]="productSearchText" name="searchProduct" id="searchProduct" class="input" placeholder="What are you looking for" />
         </div>
-        <div class="d-flex search-button text-light w-100 justify-content-center align-items-center">
+        <div  (click)="searchProduct()" class="d-flex search-button text-light w-100 justify-content-center align-items-center">
           <p class="ps-5">Search</p>
         </div>
       </div>
@@ -102,8 +102,6 @@
   </div>
   <div class=" container">
     <div class="d-flex align-items-center py-1  sm-search-container">
-
-
       <input type="text" name="" id="" placeholder="bmx" class=" ps-2 sm-input">
 
       <div class="sm-search-icon-container d-flex justify-content-between">
