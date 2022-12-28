@@ -82,7 +82,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
-      isResearchAndDevelopment: [""],
+      isResearchAndDevelopment: ["Yes"],
     });
   }
   addNew(data: any = {}): void {
@@ -179,7 +179,6 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
           this.researchAndDevelopmentForm.value.isResearchAndDevelopment,
         rnd: [...this.rndDArray],
     };
-    debugger;
     console.log("reqData", reqObj);
     if (this.isDataExist) {
       formValues._id = this.idIfDataExist;

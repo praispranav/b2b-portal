@@ -58,7 +58,7 @@ yesQualityControlValue(){
 
   buildTypeForm() {
     this.qualityControlForm = this.formBuilder.group({
-      isQualityProcess: [""],
+      isQualityProcess: ["Yes"],
     });
   }
   addNew(data: any = {}): void {
@@ -133,26 +133,27 @@ yesQualityControlValue(){
     this.isLoading = true;
 
     let reqObj = {
-      qualityArray: [...this.qualityControl],
+      isQualityControl: this.qualityControlForm.value.isQualityProcess,
+      qualityControl:[...this.qualityControl],
 
     }
-    console.log('reqData', reqObj);
 
     if (this.isDataExist) {
       formValues._id = this.idIfDataExist;
       this.providerQualityControlService.updateQualityControl(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Updated Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Updated") },
+        (res) => { this.appMessageService.createBasicNotification('success', "Quality Control Updated Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Quality Control Not Updated") },
         () => { this.isLoading = false; }
       );
     } else {
       this.providerQualityControlService.addQualityControl(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Company Detail Added Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Company Detail Not Added") },
+        (res) => { this.appMessageService.createBasicNotification('success', "Quality Control Added Successfully") },
+        (err) => { this.appMessageService.createBasicNotification('success', "Quality Control Not Added") },
         () => { this.isLoading = false; }
       );
     }
   }
+
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
