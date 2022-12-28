@@ -91,19 +91,20 @@
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label for="cpassword">Confirm Password</label>
-                        <input type="password" formControlName="cpassword"  placeholder="Retypr Password" class="form-control" id="cpassword" />
+                        <input type="password" formControlName="cpassword"  placeholder="Retype Password" class="form-control" id="cpassword" />
                     </div>
                     <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label *ngIf="f.cpassword.errors.required" class="error">This field is required.</label>
                     </div> -->
                     
                     <div *ngIf="f?.cpassword?.errors && f?.cpassword?.touched" class="text-danger">
-                        <div *ngIf="f?.cpassword?.errors?.required">Confirm password is required</div>
-                        <div *ngIf="f?.cpassword?.errors?.matchPassword">New password and Confirm password didn't match. </div>
-                      </div>
-                      <label class="text-danger"
+                       
+                           <label *ngIf="f?.cpassword?.errors?.required" class="error">Confirm password is required</label>  </div>
+                        <label *ngIf="f?.cpassword?.errors?.matchPassword">New password and Confirm password didn't match. </label>
+                      
+                      <label class="text-danger"class="error"
                       *ngIf="f['cpassword'].hasError('NoPassswordMatch') && f?.cpassword?.touched">
-                      Password do not match
+                      New password and Confirm password didn't match.
                     </label>
                     <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label *ngIf="f.cpassword.errors.invalid" class="error"> field is required.</label>
