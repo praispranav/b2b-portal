@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, AbstractControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { ProviderUserAuthService } from "./../../../core/providers/auth/provider-user-auth.service";
 import { Router } from '@angular/router';
 import { MessageService } from "../../../@pages/components/message/message.service";
@@ -295,16 +295,18 @@ export class PageSignUpComponent implements OnInit {
       email: ["", [Validators.required]],
       phone: ["", [Validators.required]],
       code: ["91"],
-      password: ["", [Validators.required]],
-      cpassword: ["", [Validators.required]],
+      password: [null,Validators.compose([
+        Validators.required,CustomValidators.patternValidator(/\d/, {hasNumber: true }),
+        CustomValidators.patternValidator(/[A-Z]/, {hasCapitalCase: true }),
+         CustomValidators.patternValidator(/[a-z]/, {  hasSmallCase: true}),
+        CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,{hasSpecialCharacters: true}),Validators.minLength(8)])],
+      cpassword: [null, Validators.compose([Validators.required])],
       country: ["", [Validators.required],],
       address1: ["", [Validators.required]],
       city: [""],
       role: ["", [Validators.required]]
     },
-    this.matchPassword
-  
-    );
+    {validator: CustomValidators.passwordMatchValidator} )
   }
  
   private matchPassword(AC: AbstractControl) {
@@ -389,5 +391,25 @@ getCountryList(){
       this.appMessageService.createBasicNotification('red', 'Something went wrong');
       console.log(err)
     });
+  }
+}
+
+export class CustomValidators {
+  static patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (!control.value) {
+        return null;
+      }
+      const valid = regex.test(control.value);
+      return valid ? null : error;
+    };
+  }
+  static passwordMatchValidator(control: AbstractControl) {
+
+    const password: string = control.get('password').value; // get password from our password form control
+    const confirmPassword: string = control.get('cpassword').value; 
+    if (password !== confirmPassword) {
+      control.get('cpassword').setErrors({ NoPassswordMatch: true });
+    }
   }
 }
