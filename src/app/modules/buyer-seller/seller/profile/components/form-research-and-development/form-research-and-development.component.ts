@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppMessageService } from '../../../../../../core/services/app-message.service';
-import { ProviderResearchAndDevelopmentService } from '../../../../../../core/providers/user/provider-research-and-development.service';
-import { Subscription } from 'rxjs';
-import { ImageService } from '../../../../../../core/providers/user/image.service';
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AppMessageService } from "../../../../../../core/services/app-message.service";
+import { ProviderResearchAndDevelopmentService } from "../../../../../../core/providers/user/provider-research-and-development.service";
+import { Subscription } from "rxjs";
+import { ImageService } from "../../../../../../core/providers/user/image.service";
 
 @Component({
   selector: "app-form-research-and-development",
@@ -21,7 +21,8 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   formArray: FormArray = new FormArray([]);
   serviceSubscription: Subscription[] = [];
   rndImageUploading: boolean = false;
-  noRandD:boolean = true;
+  rnd: boolean = true;
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +30,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
 
     private appMessageService: AppMessageService,
     private providerResearchAndDevelopmentService: ProviderResearchAndDevelopmentService
-  ) { }
+  ) {}
 
   get f() {
     return this.researchAndDevelopmentForm.controls;
@@ -50,6 +51,13 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       })
     );
   }
+
+  rndYesNo(){
+    const value = this.researchAndDevelopmentForm.value.isResearchAndDevelopment
+    this.rnd = Boolean(value == 'Yes')
+  }
+
+  
   // noRandDValue(){
   //   this.noRandD = false;
   //   }
@@ -58,22 +66,23 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   //   }
   uploadImageToServer(image) {
     return new Promise((resolve, reject) => {
-      this.rndImageUploading = true
-      this.imageService.uploadImage(image).subscribe((res) => {
-        this.isLoading = false;
-        resolve(res)
-      }, (error) => {
-        console.log(error);
-        reject(error)
-        this.isLoading = false;
-      })
-
-    })
+      this.rndImageUploading = true;
+      this.imageService.uploadImage(image).subscribe(
+        (res) => {
+          this.isLoading = false;
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+          this.isLoading = false;
+        }
+      );
+    });
   }
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
       isResearchAndDevelopment: [""],
-
     });
   }
   addNew(data: any = {}): void {
@@ -81,10 +90,13 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       certificateName: [data.certificateName ? data.certificateName : ""],
       certifiedBy: [data.certifiedBy ? data.certifiedBy : ""],
       businessScope: [data.businessScope ? data.businessScope : ""],
-      certificateIssueDate: [data.certificateIssueDate ? data.certificateIssueDate : ""],
-      certificateExpiryDate: [data.certificateExpiryDate ? data.certificateExpiryDate : ""],
+      certificateIssueDate: [
+        data.certificateIssueDate ? data.certificateIssueDate : "",
+      ],
+      certificateExpiryDate: [
+        data.certificateExpiryDate ? data.certificateExpiryDate : "",
+      ],
       image: [data.image ? data.image : ""],
-
     });
     this.formArray.push(this.formGroup);
   }
@@ -94,52 +106,68 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
   updateDataIfExist() {
     this.isLoading = true;
-    this.providerResearchAndDevelopmentService.getResearchAndDevelopmentListByFilter(0, 1, { userId: 'pending' }).subscribe(
-      (res: any) => {
-        this.isDataExist = res.data.length > 0;
-        let patchFormvalue: any = res.data[0];
+    this.providerResearchAndDevelopmentService
+      .getResearchAndDevelopmentListByFilter(0, 1, { userId: "pending" })
+      .subscribe(
+        (res: any) => {
+          this.isDataExist = res.data.length > 0;
+          let patchFormvalue: any = res.data[0];
 
-        if (!this.isDataExist) {
-          return;
+          if (!this.isDataExist) {
+            return;
+          }
+          this.idIfDataExist = res.data[0]["_id"];
+          this.researchAndDevelopmentForm.patchValue({
+            certificateName: patchFormvalue.certificateName
+              ? patchFormvalue.certificateName
+              : "",
+            certifiedBy: patchFormvalue.certifiedBy
+              ? patchFormvalue.certifiedBy
+              : "",
+            businessScope: patchFormvalue.businessScope
+              ? patchFormvalue.businessScope
+              : "",
+            certificateIssueDate: patchFormvalue.certificateIssueDate
+              ? patchFormvalue.certificateIssueDate
+              : "",
+            certificateExpiryDate: patchFormvalue.certificateExpiryDate
+              ? patchFormvalue.certificateExpiryDate
+              : "",
+            image: patchFormvalue.image ? patchFormvalue.image : "",
+          });
+        },
+        (err) => {
+          this.isDataExist = false;
+        },
+        () => {
+          this.isLoading = false;
         }
-        this.idIfDataExist = res.data[0]['_id'];
-        this.researchAndDevelopmentForm.patchValue({
-          certificateName: patchFormvalue.certificateName ? patchFormvalue.certificateName : '',
-          certifiedBy: patchFormvalue.certifiedBy ? patchFormvalue.certifiedBy : '',
-          businessScope: patchFormvalue.businessScope ? patchFormvalue.businessScope : '',
-          certificateIssueDate: patchFormvalue.certificateIssueDate ? patchFormvalue.certificateIssueDate : '',
-          certificateExpiryDate: patchFormvalue.certificateExpiryDate ? patchFormvalue.certificateExpiryDate : '',
-          image: patchFormvalue.image ? patchFormvalue.image : '',
-
-        })
-
-      },
-      (err) => { this.isDataExist = false; },
-      () => { this.isLoading = false; }
-    );
+      );
   }
 
   async subResearchAndDevelopmentForm() {
-    console.log("image value", this.f, this.f.image)
+    console.log("image value", this.f, this.f.image);
     console.log("ImageList", this.imageList);
-    const pictureList = []
+    const pictureList = [];
     let i = 0;
     for await (const item of this.imageList) {
-      const researchImage: any = await this.uploadImageToServer(item[0].originFileObj);
-      pictureList[i] = (researchImage.fileName)
-      i++
+      const researchImage: any = await this.uploadImageToServer(
+        item[0].originFileObj
+      );
+      pictureList[i] = researchImage.fileName;
+      i++;
       console.log("research and development Picture", researchImage);
     }
 
-    console.log(pictureList)
+    console.log(pictureList);
 
-    console.log("Form Values", this.formArray.value)
+    console.log("Form Values", this.formArray.value);
     const formValues = this.formArray.value;
     pictureList.forEach((i, index) => {
-      formValues[index].image = i
-    })
+      formValues[index].image = i;
+    });
 
-    console.log(formValues)
+    console.log(formValues);
 
     if (this.researchAndDevelopmentForm.invalid) {
       this.markFormGroupTouched(this.researchAndDevelopmentForm);
@@ -147,25 +175,53 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     }
     this.isLoading = true;
     let reqObj = {
-
-      tradeShow: [...this.rndDArray]
-
-    }
+        isResearchAndDevelopment:
+          this.researchAndDevelopmentForm.value.isResearchAndDevelopment,
+        rnd: [...this.rndDArray],
+    };
     debugger;
-    console.log('reqData', reqObj);
+    console.log("reqData", reqObj);
     if (this.isDataExist) {
       formValues._id = this.idIfDataExist;
-      this.providerResearchAndDevelopmentService.updateResearchAndDevelopment(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Research & Development Updated Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Research & Development Not Updated") },
-        () => { this.isLoading = false; }
-      );
+      this.providerResearchAndDevelopmentService
+        .updateResearchAndDevelopment(reqObj)
+        .subscribe(
+          (res) => {
+            this.appMessageService.createBasicNotification(
+              "success",
+              "Research & Development Updated Successfully"
+            );
+          },
+          (err) => {
+            this.appMessageService.createBasicNotification(
+              "success",
+              "Research & Development Not Updated"
+            );
+          },
+          () => {
+            this.isLoading = false;
+          }
+        );
     } else {
-      this.providerResearchAndDevelopmentService.addResearchAndDevelopment(reqObj).subscribe(
-        (res) => { this.appMessageService.createBasicNotification('success', "Research & Development Added Successfully") },
-        (err) => { this.appMessageService.createBasicNotification('success', "Research & Development Not Added") },
-        () => { this.isLoading = false; }
-      );
+      this.providerResearchAndDevelopmentService
+        .addResearchAndDevelopment(reqObj)
+        .subscribe(
+          (res) => {
+            this.appMessageService.createBasicNotification(
+              "success",
+              "Research & Development Added Successfully"
+            );
+          },
+          (err) => {
+            this.appMessageService.createBasicNotification(
+              "success",
+              "Research & Development Not Added"
+            );
+          },
+          () => {
+            this.isLoading = false;
+          }
+        );
     }
   }
 

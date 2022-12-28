@@ -1,5 +1,5 @@
 <form [formGroup]="researchAndDevelopmentForm" (keydown.enter)="$event.preventDefault()">
-    <h6>Whether to demostrate Quality Control Process</h6>
+    <h6>Whether to demostrate Research And </h6>
     <!-- <div class="form-check form-check-inline complete">
         <input type="radio" formControlName="isQualityProcess" name="isQualityProcess"
             id="frand-frad-isQualityProcess-Yes" value="Yes">
@@ -15,15 +15,15 @@
         </label>
     </div> -->
     <div class="form-check form-check-inline" >
-        <input class="form-check-input"  value="Yes" formControlName="isResearchAndDevelopment"  type="radio" name="isResearchAndDevelopment" id="research-and-development-yes" value="yes">
+        <input class="form-check-input" (change)="rndYesNo()" value="Yes" formControlName="isResearchAndDevelopment"  type="radio" name="isResearchAndDevelopment" id="research-and-development-yes">
         <label class="form-check-label" for="research-and-development-yes">Yes</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input"  value="No" formControlName="isResearchAndDevelopment"  type="radio" name="isResearchAndDevelopment" id="research-and-development-no" value="No">
+        <input class="form-check-input"  (change)="rndYesNo()" value="No" formControlName="isResearchAndDevelopment"  type="radio" name="isResearchAndDevelopment" id="research-and-development-no">
         <label class="form-check-label" for="research-and-development-no">No</label>
       </div>
     
-      <div >
+      <div *ngIf="f.isResearchAndDevelopment.value === 'Yes'">
         <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
             <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeAt(i)"
                 class="btn btn-info w-25 mb-4">
