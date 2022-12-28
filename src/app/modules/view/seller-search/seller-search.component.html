@@ -2,7 +2,7 @@
 <div class="container-fluid p-3">
 
     <div class="row">
-        <div class="col-md-2 bg-white mt-1">
+        <div class="col-md-2 bg-white mt-1 " style="height: 100vh">
             <!-- <app-product-search-categories></app-product-search-categories> -->
             <app-supplier-product-search-category [categoriesList]="categoryList" [revenueList]="revenueList" [certificationsList]="certificationsList" [businessTypes]="businessTypeList"></app-supplier-product-search-category>
         </div>
@@ -10,7 +10,7 @@
             <div class="d-flex align-content-start flex-wrap ml-2 ">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 pl-0">
+                        <div class="col-md-3 pl-0 cm">
                             <div class="card-body p-0">
                                 <div class="btn-group btn-toolbar">
                                     <button aria-label="" type="button" class="btn btn-default">
@@ -39,11 +39,11 @@
 
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-2 pl-1 pt-1">
+                                        <div class="col-md-2 pl-1 pt-1 pr-1">
                                             <img [src]="imageEnvironment + supplier.companyDetail.companyLogo"
-                                                class="rounded border" width="90px" alt="...">
+                                                class="rounded border" width="60vh" alt="...">
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 pl-0">
                                             <div class="d-flex flex-column">
                                                 <div class="p-2">
                                                     <a href="">
@@ -52,7 +52,9 @@
                                                 </div>
                                                 <div class="pl-2">
                                                     <img src="https://sc01.alicdn.com/kf/H62868c75e7eb4fbba8f8eb600d749c2aR.png"
-                                                        class="img-fluid" width="40px" alt="">
+                                                        class="img-fluid mw-10" style="max-width:60px; max-height:
+                                                        60px;"
+                                                        alt="">
                                                     <span>
                                                         <b>
                                                             3 yrs 1,000+ staff US $90,000+
@@ -65,53 +67,59 @@
                                             </div>
                                             </div>
                                             <div class="col-md-5">
-                                                <div class="d-flex justify-content-end ms-auto">
-                                                    <div class="p-2">
-                                        <button class="rounded-pill btn">
-                                           <i _ngcontent-dcv-c5="" class="pg-icon">heart</i>
-                                           </button>
                                            </div>
-                                           <div class="p-2">
-                                               <button class="rounded-pill btn">
-                                            Contact Us
-                                        </button>
-                                        </div>
-                                        <div class="p-2">
-                                        <button class="rounded-pill btn">
-                                            Chat Now
-                                        </button>
-                                        </div>
-                                        <div class="p-2">
-                                        <button class="rounded-pill btn-primary">
-                                            View Profile
-                                        </button>
-                                        </div>
+                                           <div class="col-md-5 pr-0">
+                                               <div class="p-2">
+                                                   <a href="#">Rating and reviews
+                                                       5.0/5 (4 reviews)</a>
+                                                   <p class="text-muted"><b>Capabilities</b></p>
+                                                   <ul>
+                                                       <li *ngIf="true">
+                                                           <p><b>Business Type</b>:
+                                                               {{ getBusinessTypeValue(supplier.businessType.types) }}
+                                                           </p>
+                                                       </li>
+                                                       <li *ngIf="supplier.companyProfile.mainProduct.length">
+                                                           <p><b>Main Products</b>:
+                                                               {{ supplier.companyProfile.mainProduct }}</p>
+                                                       </li>
+                                                       <li *ngIf="">
+                                                           <p><b>Mgmt. Certification</b>: </p>
+                                                       </li>
+                                                       <li *ngIf="true">
+                                                           <p><b>City/Province</b>:
+                                                               {{ supplier.companyProfile.regCity }},
+                                                               {{ supplier.companyProfile.regState }},
+                                                               {{ supplier.companyProfile.regCountry }}</p>
+                                                       </li>
+                                                   </ul>
 
+                                                   <div class="d-flex d-row flex-wrap">
+                                                       <div class="pt-2">
+                                                           <button class="rounded-pill btn">
+                                                               <i _ngcontent-dcv-c5="" class="pg-icon">heart</i>
+                                                           </button>
+                                                           </div>
+                                                           <div class="p-2">
+                                                               <button class="rounded-pill btn">
+                                                                   Contact Us
+                                                               </button>
+                                                           </div>
+                                                           <div class="p-2">
+                                                               <button class="rounded-pill btn">
+                                                                   Chat Now
+                                                               </button>
+                                                           </div>
+                                                           <div class="p-2">
+                                                               <button class="rounded-pill btn-primary">
+                                                                   View Profile
+                                                               </button>
+                                                           </div>
+                                         </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="p-2">
-                                    <a href="#">Rating and reviews
-                                        5.0/5 (4 reviews)</a>
-                                    <p class="text-muted"><b>Capabilities</b></p>
-                                    <ul>
-                                        <li *ngIf="true">
-                                            <p><b>Business Type</b>: {{ getBusinessTypeValue(supplier.businessType.types) }}</p>
-                                        </li>
-                                        <li *ngIf="supplier.companyProfile.mainProduct.length">
-                                            <p><b>Main Products</b>: {{ supplier.companyProfile.mainProduct }}</p>
-                                        </li>
-                                        <li *ngIf="">
-                                            <p><b>Mgmt. Certification</b>: </p>
-                                        </li>
-                                        <li *ngIf="true">
-                                            <p><b>City/Province</b>: {{ supplier.companyProfile.regCity }}, {{ supplier.companyProfile.regState }}, {{ supplier.companyProfile.regCountry }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="p-2">
+                            <div class="col-md-7 pl-0">
+                                <div class="p-2" style="    margin-top: -60px;">
                                     <div class="container ms-auto">
                                         <div class="row">
                                             <div class="col-md-2"></div>

@@ -2,7 +2,13 @@
     <h5>CATEGORIES
     </h5>
 
-    <a *ngIf="searchQuery.category" class="text-muted" (click)="clear('category')">{{ findCategory }}}<i class="pg-icon">close</i></a>
+    <a *ngIf="searchQuery.category" class="text-muted p-2" (click)="clear('category')">
+
+        <div class="d-flex flex-row p-1" style="background-color: rgba(124, 124, 124, 0.068);">
+            <div> {{ findCategory }}</div>
+            <div class="align-self-center ms-auto"><i class="pg-icon">close</i></div>
+        </div>
+    </a>
 
     <ul *ngIf="!searchQuery.category" class="list-unstyled">
         <li *ngFor="let category of categoriesList">
@@ -15,7 +21,12 @@
 <label for="categories">
     <h5>Business Type
     </h5>
-    <a *ngIf="searchQuery.businessType" class="text-muted" (click)="clear('businessType')">{{ searchQuery.businessType }} <i class="pg-icon">close</i></a>
+    <a *ngIf="searchQuery.businessType" class="text-muted" (click)="clear('businessType')">
+        <div class="d-flex flex-row p-1" style="background-color: rgba(124, 124, 124, 0.068);">
+            <div> {{ searchQuery.businessType  }}</div>
+            <div class="align-self-center ms-auto"><i class="pg-icon">close</i></div>
+        </div>
+    </a>
 
     <ul *ngIf="!searchQuery.businessType" class="list-unstyled">
         <li *ngFor="let businessType of businessTypeList">
@@ -27,7 +38,13 @@
 <label for="categories">
     <h5>Management Certification
     </h5>
-    <a *ngIf="searchQuery.certification" class="text-muted" (click)="clear('certification')">{{ searchQuery.certification }} <i class="pg-icon">close</i></a>
+    <a *ngIf="searchQuery.certification" class="text-muted" (click)="clear('certification')">
+
+        <div class="d-flex flex-row p-1" style="background-color: rgba(124, 124, 124, 0.068);">
+            <div> {{ searchQuery.certification }}</div>
+            <div class="align-self-center ms-auto"><i class="pg-icon">close</i></div>
+        </div>
+    </a>
 
     <ul *ngIf="!searchQuery.certification" class="list-unstyled">
         <li *ngFor="let certification of certificationsList">
@@ -39,7 +56,12 @@
 <label for="categories">
     <h5>Annual Revenue
     </h5>
-    <a *ngIf="searchQuery.revenue" class="text-muted" (click)="clear('revenue')">{{ searchQuery.revenue }}<i class="pg-icon">close</i></a>
+    <a *ngIf="searchQuery.revenue" class="text-muted" (click)="clear('revenue')">
+        <div class="d-flex flex-row p-1" style="background-color: rgba(124, 124, 124, 0.068);">
+            <div> {{  searchQuery.revenue }}</div>
+            <div class="align-self-center ms-auto"><i class="pg-icon">close</i></div>
+        </div>
+    </a>
 
     <ul *ngIf="!searchQuery.revenue" class="list-unstyled">
         <li *ngFor="let revenue of revenueList">
