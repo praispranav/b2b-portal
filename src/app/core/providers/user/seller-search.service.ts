@@ -12,4 +12,8 @@ export class SellerSearchService {
   sellerSearch(params){
     return this.http.get(environment.apiUrl + '/seller-search', { params: { ...params } })
   }
+
+  sellerSearchById(sellerId){
+    return this.http.get(environment.apiUrl + '/seller-search/id', { params: { sellerId }})
+  }
 }

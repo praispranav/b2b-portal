@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-banner-img-widget',
@@ -8,6 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class BannerImgWidgetComponent implements OnInit {
 
+  @Input('label') label: string = '';
+  @Input('description') description: string = '';
+  
   constructor() { }
 
   ngOnInit() {

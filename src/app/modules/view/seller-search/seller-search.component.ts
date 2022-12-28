@@ -88,8 +88,12 @@ export class SellerSearchComponent implements OnInit {
     if(Number(this.searchQuery.page) === pageNo) return true
     return false
   }
-
   navigateToPage(page){
     this.router.navigate([], { queryParams: { ...this.searchQuery, page }})
+  }
+
+  navigateToCatelog(sellerId){
+    const searchQuery = this.searchQuery
+    this.router.navigate(['/b2b/seller-catalogue-home'], { queryParams: { ...searchQuery, sellerId: sellerId }})
   }
 }

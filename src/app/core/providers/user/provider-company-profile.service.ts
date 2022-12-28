@@ -17,6 +17,10 @@ export class ProviderCompanyProfileService {
     return this.http.get<any>(`${environment.apiUrl}/company-profile/get/${id}`);
   }
 
+  getCompanyProfileByUserId(id){
+    return this.http.get<any>(`${environment.apiUrl}/company-profile/userId/${id}`);
+  }
+
   getCompanyProfileListByFilter(index: number = 0, length: number = 10, query: any = {}): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/company-profile/get-list/${index}/${length}/${JSON.stringify(query)}`);
   }

@@ -46,7 +46,7 @@
                                         <div class="col-md-10 pl-0">
                                             <div class="d-flex flex-column">
                                                 <div class="p-2">
-                                                    <a href="">
+                                                    <a (click)="navigateToCatelog(supplier.companyProfile.userId)">
                                                         <span class="p-1 m-0 pt-0 head">{{ supplier.companyProfile.company }}</span>
                                                         </a>
                                                 </div>
@@ -111,9 +111,9 @@
                                                                </button>
                                                            </div>
                                                            <div class="p-2">
-                                                               <button class="rounded-pill btn-primary">
+                                                               <a (click)="navigateToCatelog(supplier.companyProfile.userId)" class="rounded-pill btn-primary">
                                                                    View Profile
-                                                               </button>
+                                                               </a>
                                                            </div>
                                          </div>
                                 </div>
