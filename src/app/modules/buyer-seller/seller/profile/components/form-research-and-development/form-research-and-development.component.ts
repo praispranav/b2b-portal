@@ -72,7 +72,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
   }
   buildTypeForm() {
     this.researchAndDevelopmentForm = this.formBuilder.group({
-      isQualityProcess: [""],
+      isResearchAndDevelopment: [""],
 
     });
   }
@@ -151,6 +151,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
       tradeShow: [...this.rndDArray]
 
     }
+    debugger;
     console.log('reqData', reqObj);
     if (this.isDataExist) {
       formValues._id = this.idIfDataExist;
