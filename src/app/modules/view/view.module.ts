@@ -175,7 +175,7 @@ import { SupplierProductSearchCategoryComponent } from './components/supplier-pr
     SellerSearchComponent,
     PageHomeRfqFormTwoComponent,
     SupplierProductSearchCategoryComponent,
-    
+    ProductSearchCardListComponent
   ],
   imports: [ 
   CommonModule,

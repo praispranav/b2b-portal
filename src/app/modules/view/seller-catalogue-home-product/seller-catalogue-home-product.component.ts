@@ -10,15 +10,15 @@ export class SellerCatalogueHomeProductComponent implements OnInit {
   @Input('products') products:any[] = [];
   @Input('categories') categories:any[] = [];
   
-  isGridView: boolean = false;
+  isGridView: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  changeView(){
-    this.isGridView = !this.isGridView
+  changeView(type){
+    this.isGridView = type
   }
 
 }
