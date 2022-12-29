@@ -43,14 +43,16 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
     });
   }
   isReadMore = true
-  checklist=this.categoriesList.length;
+  checklist=this.certificationsList.length;
 
   showText() {
      this.isReadMore = !this.isReadMore
   }
   getCount() {
-    return this.categoriesList.length;
+    console.log(this.certificationsList.length);
+    return this.certificationsList.length;
   }
+
   ngOnInit() {}
 
   // findCategory(){
