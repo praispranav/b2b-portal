@@ -46,11 +46,15 @@
         </div>
     </a>
 
-    <ul *ngIf="!searchQuery.certification" class="list-unstyled">
+    <ul *ngIf="!searchQuery.certification" class="list-unstyled" [ngClass]="{'limitTextHeight': isReadMore}">
         <li *ngFor="let certification of certificationsList">
             <a class="text-muted" (click)="certificationFilter(certification)">{{ certification }}</a>
         </li>
     </ul>
+    <button type="button" class="btn " (click)="showText()">
+        {{ isReadMore ? 'Read More': 'Read Less' }}
+      </button>
+   
 </label>
 
 <label for="categories">

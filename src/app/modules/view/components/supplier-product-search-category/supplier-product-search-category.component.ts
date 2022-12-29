@@ -42,7 +42,12 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
       this.searchQuery = params;
     });
   }
+  isReadMore = true
 
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+ 
   ngOnInit() {}
 
   // findCategory(){
