@@ -1,27 +1,32 @@
 .card:hover {
-  transform: scale(1.07);
+    transform: scale(1.07);
 }
 
 img:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 
 .btn {
-  background-color: rgb(255, 255, 255);
-  border-color: rgba(143, 136, 136, 0.37);
-  color: black;
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(143, 136, 136, 0.37);
+    color: black;
 }
 
 h2 {
-  font-size: medium;
-  padding: 20px;
+    font-size: medium;
+    padding: 20px;
+}
+
+.img-size {
+    height: 165px;
+    width: 100%
 }
