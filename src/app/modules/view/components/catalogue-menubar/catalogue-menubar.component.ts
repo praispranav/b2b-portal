@@ -17,7 +17,7 @@ export class CatalogueMenubarComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   searchProduct() {
     this.router.navigate([], {
@@ -28,5 +28,10 @@ export class CatalogueMenubarComponent implements OnInit {
         pageSize: 10
       },
     });
+  }
+
+  navigate(url) {
+    console.log("Url", url);
+    this.router.navigate(['/b2b/' + url], { queryParams: { ...this.searchParams, page: 1, pageSize: 10 } })
   }
 }

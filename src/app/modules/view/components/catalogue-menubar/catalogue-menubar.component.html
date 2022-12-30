@@ -55,10 +55,10 @@
 <div class="header4 d-none d-lg-block">
   <div class="row py-2">
     <div class="col-3 d-flex ps-5 align-items-center">
-      <p class="pt-2 ps-4 Bizzexpo" routerLink="../seller-catalogue-home">Home</p>
-      <p class="pt-2 ps-4 Bizzexpo" routerLink="../seller-catalogue-product">Product</p>
-      <p class="pt-2 ps-4 Bizzexpo" routerLink="../catalogue-seller-about">About</p>
-      <p class="pt-2 ps-4 Bizzexpo" routerLink="../seller-catalogue-contact">Contact</p>
+      <p class="pt-2 ps-4 Bizzexpo" (click)="navigate('seller-catalogue-home')">Home</p>
+      <p class="pt-2 ps-4 Bizzexpo" (click)="navigate('seller-catalogue-product')">Product</p>
+      <p class="pt-2 ps-4 Bizzexpo" (click)="navigate('catalogue-seller-about')">About</p>
+      <p class="pt-2 ps-4 Bizzexpo" (click)="navigate('seller-catalogue-contact')">Contact</p>
     </div>
 
     <div class="col-6 align">
