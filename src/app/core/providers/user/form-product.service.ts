@@ -34,8 +34,8 @@ export class FormProductService {
     return this.http.get(environment.apiUrl + '/product', { params: { search }})
   }
 
-  searchProductBySeller({ search, page, pageSize, sellerId }){
-    return this.http.get(environment.apiUrl + '/product/seller', { params: { search, page, pageSize, sellerId }})
+  searchProductBySeller({ search, page, pageSize, sellerId, categoryId }){
+    return this.http.get(environment.apiUrl + '/product/seller', { params: { search, page, pageSize, sellerId, categoryId }})
   }
   
 }

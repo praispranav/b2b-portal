@@ -100,6 +100,7 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
         page: this.searchParams.page,
         pageSize: this.searchParams.pageSize,
         search: this.searchParams.searchProduct || "",
+        categoryId: this.searchParams.categoryId
       })
       .subscribe((res:any) => {
         this.totalProducts = res.data.total;

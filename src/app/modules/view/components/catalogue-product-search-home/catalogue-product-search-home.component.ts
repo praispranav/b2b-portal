@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalogue-product-search-home',
@@ -6,8 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./catalogue-product-search-home.component.scss']
 })
 export class CatalogueProductSearchHomeComponent implements OnInit {
-
-  constructor() { }
+  searchParams: any = {};
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((res) => {
+      this.searchParams = res;
+    })
+  }
 
   @Input('categories') categoriesList: any[] = [
     // { name: "Men's Jackets" },
@@ -37,6 +42,11 @@ export class CatalogueProductSearchHomeComponent implements OnInit {
   ];
 
   ngOnInit() {
+  }
+
+  selectCategory(categoryId) {
+    console.log("CategooryId", categoryId)
+    this.router.navigate([], { queryParams: {...this.searchParams, categoryId: categoryId }})
   }
 
 }
