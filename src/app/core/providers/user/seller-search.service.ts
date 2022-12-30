@@ -16,4 +16,8 @@ export class SellerSearchService {
   sellerSearchById(sellerId){
     return this.http.get(environment.apiUrl + '/seller-search/id', { params: { sellerId }})
   }
+
+  sellerDetailsCompanyProfileBusinessType(sellerId){
+    return this.http.get(environment.apiUrl + '/seller-search/company-profile-business-type', { params: { sellerId }})
+  }
 }
