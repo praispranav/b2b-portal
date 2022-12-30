@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SellerSearchService } from '../../../core/providers/user/seller-search.service';
 
 @Component({
   selector: 'app-seller-about',
@@ -6,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seller-about.component.scss']
 })
 export class SellerAboutComponent implements OnInit {
+  searchParams: any = {};
 
-  constructor() { }
-  categoriesList: any[] = [
+  sellerDetails: any = {
+    qualityControl:{},
+    randd:{},
+    companyProfile:{},
+    companyDetail:{},
+    certification:{},
+    exportCapabilities:{},
+    businessType:{},
+    sellerDetails: {},
+  }
+
+  constructor(private sellerService: SellerSearchService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((params) => {
+      this.searchParams = params;
+      this.getSellerDetails();
+    })
+  }
+
+  tabs: any[] = [
     { name: "Quality Control" },
     { name: "Export Capability" },
     { name: "Company Introduction" },
@@ -20,4 +40,10 @@ export class SellerAboutComponent implements OnInit {
   ngOnInit() {
   }
 
+  getSellerDetails() {
+    this.sellerService.sellerSingleAllDetails( this.searchParams.sellerId ).subscribe((res: any) => {
+      if (res.header.code === 200) this.sellerDetails = res.data
+      if (res.header.code === 500) console.log('res', res)
+    })
+  }
 }
