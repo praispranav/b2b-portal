@@ -32,6 +32,6 @@ export class CatalogueMenubarComponent implements OnInit {
 
   navigate(url) {
     console.log("Url", url);
-    this.router.navigate(['/b2b/' + url], { queryParams: { ...this.searchParams, page: 1, pageSize: 10 } })
+    this.router.navigate(['/b2b/' + url], { queryParams: { ...this.searchParams, page: 1, pageSize: 10, categoryId: '' } })
   }
 }
