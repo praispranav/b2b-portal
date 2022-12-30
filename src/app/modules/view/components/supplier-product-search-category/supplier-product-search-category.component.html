@@ -51,7 +51,7 @@
             <a class="text-muted" (click)="certificationFilter(certification)">{{ certification }}</a>
         </li>
     </ul>
-    <button *ngIf="getCount()<6?true:false" type="button" class="btn " (click)="showText()">
+    <button *ngIf="getCount()>6" type="button" class="btn " (click)="showText()">
         {{ isReadMore ? 'Read More': 'Read Less' }}
       </button>
    
