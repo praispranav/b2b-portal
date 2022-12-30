@@ -14,7 +14,7 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
   @Input("certificationsList") certificationsList: any[] = [];
   @Input("employeeStrength") employeeStrengthList: any[] = [];
   @Input("businessTypes") businessTypeList: any[] = [];
-
+ 
   countryList: any[] = [
     {
       name: "England",
@@ -42,7 +42,15 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
       this.searchQuery = params;
     });
   }
+  isReadMore = true
+  checklist=this.categoriesList.length;
 
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+  getCount() {
+    return this.categoriesList.length;
+  }
   ngOnInit() {}
 
   // findCategory(){
