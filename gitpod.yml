@@ -1,0 +1,4 @@
+tasks:
+  - init: install
+    command: nvm install 16.18 && nvm use 16.18 && npm install && ng serve --disableHostCheck
+
