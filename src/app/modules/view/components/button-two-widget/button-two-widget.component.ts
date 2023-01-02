@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-button-two-widget',
@@ -9,6 +9,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class ButtonTwoWidgetComponent implements OnInit {
   config;
   index = 0;
+  @Input('mainProducts') mainProducts: string = '';
+
   constructor() { }
 
   ngOnInit() {

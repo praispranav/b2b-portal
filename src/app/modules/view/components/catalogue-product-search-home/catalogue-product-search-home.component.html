@@ -2,8 +2,8 @@
     <h5>CATEGORIES
     </h5>
     <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
-        <li>
-            <a class="text-muted" href="">{{categorie.name}}</a>
+        <li (click)="selectCategory(categorie._id)">
+            <p style="cursor: pointer;" class="text-muted">{{categorie.name}}</p>
         </li>
     </ul>
 </label>

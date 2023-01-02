@@ -1,12 +1,14 @@
+
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
 @Component({
-  selector: 'app-page-product-verification',
-  templateUrl: './page-product-verification.component.html',
-  styleUrls: ['./page-product-verification.component.scss']
+  selector: 'app-user-verification-list',
+  templateUrl: './user-verification-list.component.html',
+  styleUrls: ['./user-verification-list.component.scss']
 })
-export class PageProductVerificationComponent implements OnInit {
+export class UserVerificationListComponent implements OnInit {
 
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
@@ -20,39 +22,33 @@ export class PageProductVerificationComponent implements OnInit {
 
 
   advanceColumns = [
-   
-    { name: 'Product Name' },
-    { name: 'Category' },
-    { name: 'Brand' },
+    { name: 'Supplier/Buyer Name' },
+    { name: 'Type' },
+    { name: 'Country' },
+    { name: 'State' },
+    { name: 'City' },
     { name: 'Posted By' },
-    { name: 'Date Time' },
-    { name: 'MOQ' },
-    { name: 'Price $' },
-   
+    { name: 'Listing Date' },
+    {name:'Last Active Product'}
+
   ];
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
 
-  //No Option YET
-  //https://github.com/swimlane/ngx-datatable/issues/423
+
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
   constructor() {
     console.log(this.columnModeSetting);
-    this.fetch(data => {
-      // cache our list
-      this.basicSort = [...data];
 
-      // push our inital complete list
-      this.basicRows = data;
-    });
-
-    
+    //   // push our inital complete list
+    //   this.dynamicRows = data;
+    // });
 
     this.fetchSampleAdvance(data => {
-      // push our inital complete list
+
       this.advanceRows = data;
     });
 
@@ -61,33 +57,14 @@ export class PageProductVerificationComponent implements OnInit {
       this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
     };
   }
- 
+
+
   onActivate(event) { }
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table.json`);
 
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
-
-  fetchSampleDynamic(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_sample.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser-two.json`);
+    req.open('GET', `assets/data/table_browser.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
@@ -132,7 +109,7 @@ export class PageProductVerificationComponent implements OnInit {
     console.log(event);
   }
 
-  onPage(event){
+  onPage(event) {
     console.log(event);
   }
 }

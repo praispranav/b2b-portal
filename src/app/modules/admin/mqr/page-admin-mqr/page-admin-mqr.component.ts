@@ -20,9 +20,7 @@ export class PageAdminMqrComponent implements OnInit {
 
 
   advanceColumns = [
-    { name: 'Select' },
-    { name: 'Image' },
-    { name: 'Product Name' },
+   { name: 'Product Name' },
     { name: 'Category' },
     { name: 'Posted By' },
     { name: 'Date Time' },
@@ -94,7 +92,7 @@ export class PageAdminMqrComponent implements OnInit {
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser.json`);
+    req.open('GET', `assets/data/table_browser-three.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));

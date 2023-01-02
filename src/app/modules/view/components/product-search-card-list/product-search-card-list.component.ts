@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-search-card-list',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductSearchCardListComponent implements OnInit {
 
   constructor() { }
-  productList: any[] = [
+  @Input('products') productList: any[] = [
     {
       name: "simply dummy text of the printing and typesetting industry.",
       image:

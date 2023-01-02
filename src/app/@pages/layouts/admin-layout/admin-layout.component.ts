@@ -19,17 +19,18 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       routerLink: "/admin/dashboard",
     },
     {
-      label: "Seller/Buyer",
+      label: "Supplier/Buyer",
       toggle: "close",
       submenu: [
         {
-          label: "Seller",
-          routerLink: "/admin/dashboard",
+          label: "User",
+          routerLink: "/admin/user-list/user-list",
+          
         },
-        {
-          label: "Buyer",
-          routerLink: "/admin/dashboard",
-        },
+        // {
+        //   label: "Buyer",
+        //   routerLink: "/admin/dashboard",
+        // },
         {
           label: "Buyer Live Status",
           routerLink: "/admin/dashboard",
@@ -39,8 +40,8 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/admin/dashboard",
         },
         {
-          label: "MOQ",
-          routerLink: "/admin/dashboard",
+          label: "MQR",
+          routerLink: "/admin/mqr/mqr-list",
         },
         {
           label: "Product Verification",
@@ -54,7 +55,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Products For Approval",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/product-verification/verification-list",
         },
         {
           label: "Approval Status",

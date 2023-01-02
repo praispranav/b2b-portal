@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-seller-catalogue-home-product',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerCatalogueHomeProductComponent implements OnInit {
 
+  @Input('products') products:any[] = [];
+  @Input('categories') categories:any[] = [];
+  
+  isGridView: boolean = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeView(type){
+    this.isGridView = type
   }
 
 }

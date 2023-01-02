@@ -1,6 +1,6 @@
 <app-header1></app-header1>
 <app-catalogue-seller-company-details></app-catalogue-seller-company-details>
-
+<app-catalogue-menubar></app-catalogue-menubar>
 <!-- <app-catalogue-menubar></app-catalogue-menubar> -->
 <!-- <div class="ml-4">
     <div class="">
@@ -124,9 +124,9 @@
             <div class="p-3 bg-white">
                 <h4 class="ml-3">About Company
                 </h4>
-                <ul *ngFor="let categorie of categoriesList" class="list-unstyled ml-3">
+                <ul *ngFor="let tab of tabs" class="list-unstyled ml-3">
                     <li>
-                        <a class="text-muted" href="">{{categorie.name}}</a>
+                        <a class="text-muted" href="">{{tab.name}}</a>
                     </li>
                 </ul>
             </div>
@@ -136,58 +136,25 @@
 
                 <h4>Company Mission and Vision</h4>
                 <br>
-                <p>Cards are pluggable UI components that are managed and displayed in a web portal. Cards in Pages are
-                    created by
-                    reusing the
-                    <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in Bootstrap to enable
-                    effortless
-                    customization.
+                <p>{{ sellerDetails.companyDetail.companyVision }}
 
-                    <h4>Company Philosophy</h4>
-                    <br>
-                    <p>Cards are pluggable UI components that are managed and displayed in a web portal. Cards in Pages
-                        are
-                        created by
-                        reusing the
-                        <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in Bootstrap to enable
-                        effortless
-                        customization.
-                    </p>
-                    </div>
-                    </div>
+                <h4>Company Philosophy</h4>
+                <br>
+                <p>{{sellerDetails.companyDetail.companyPhilosophy }}
+                </p>
+            </div>
+        </div>
         <div class="col-md-6 p-3 ">
             <div class="p-3 bg-white">
 
                 <h3>
                     <span class="semi-bold ">About</span>
                 </h3>
-                <p>We have crafted Pages Cards to suit any use case. Add a maximize button
-                    <i class="pg pg-fullscreen"></i> into your Cards controls bar to make the Cards go full-screen. This
-                    will come
-                    handy if you want to show lot of content inside a Cards and want to give the content some room to
-                    breath.
-                    Cards are pluggable UI components that are managed and displayed in a web portal. Cards in Pages are
-                    created by
-                    reusing the
-                    <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in Bootstrap to enable
-                    effortless
-                    customization. Cards are pluggable UI components that are managed and displayed in a web portal.
-                    Cards
-                    in
-                    Pages are created by reusing the
-                    <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in Bootstrap to enable
-                    effortless
-                    customization. Cards are pluggable UI components that are managed and displayed in a web portal.
-                    Cards
-                    in
-                    Pages are created by reusing the
-                    <a href="http://getbootstrap.com/components/#cards">cards</a> introduced in Bootstrap to enable
-                    effortless
-                    customization.
-                    </p>
+                <p>{{ sellerDetails.companyDetail.companyDetail }}
+                </p>
             </div>
-            </div>
-<div class="col-md-3">
+        </div>
+        <div class="col-md-3">
         </div>
         <div class="col-md-9 ">
             <h4 class="mr-r">Company Introduction</h4>
@@ -217,36 +184,36 @@
             </div>
         </div>
 
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-9 ">
-              <h4 class="mr-r">Company Introduction</h4>
-              <div class="shadow">
-                  <table class="table table-borderless">
-                      <tr>
-                          <td class="bg"><b>Business Type</b></td>
-                          <td>Wholesaler/Distributor</td>
-                      </tr>
-                      <tr>
-                          <td class="bg"><b>Main Product</b></td>
-                          <td>Wholesaler/Distributor</td>
-                      </tr>
-                      <tr>
-                          <td class="bg"><b>Total Anual Revenue</b></td>
-                          <td>Below 100$</td>
-                      </tr>
-                      <tr>
-                          <td class="bg"><b>Main Markets</b></td>
-                          <td>Hand bag, clothes, pants, shirts</td>
-                      </tr>
-                      <tr>
-                          <td class="bg"><b>Partner</b></td>
-                          <td></td>
-                      </tr>
-                  </table>
-              </div>
-          </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9 ">
+            <h4 class="mr-r">Company Introduction</h4>
+            <div class="shadow">
+                <table class="table table-borderless">
+                    <tr>
+                        <td class="bg"><b>Business Type</b></td>
+                        <td>Wholesaler/Distributor</td>
+                    </tr>
+                    <tr>
+                        <td class="bg"><b>Main Product</b></td>
+                        <td>Wholesaler/Distributor</td>
+                    </tr>
+                    <tr>
+                        <td class="bg"><b>Total Anual Revenue</b></td>
+                        <td>Below 100$</td>
+                    </tr>
+                    <tr>
+                        <td class="bg"><b>Main Markets</b></td>
+                        <td>Hand bag, clothes, pants, shirts</td>
+                    </tr>
+                    <tr>
+                        <td class="bg"><b>Partner</b></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-    </div>
+</div>
 
 <app-footer1></app-footer1>

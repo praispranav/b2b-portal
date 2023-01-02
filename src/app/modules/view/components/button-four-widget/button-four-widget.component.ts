@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-button-four-widget',
@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class ButtonFourWidgetComponent implements OnInit {
   config;
   index = 0;
+
+  @Input('exportContribution') exportContribution: string = ''
+  @Input('yearlyTurnover') yearlyTurnover: string = ''
+
   constructor() { }
 
   ngOnInit() {

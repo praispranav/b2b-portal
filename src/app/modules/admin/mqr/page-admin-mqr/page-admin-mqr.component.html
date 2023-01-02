@@ -1,4 +1,36 @@
 <div class="p-2">
+    <div class="container">
+        <div class="row  p-10 activeBox">
+            <div class="col-md-4  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Category</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-md-4  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Date</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-md-4  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Bulk Action</option>
+                    <option value="1">Approved</option>
+                    <option value="2">Reject</option>
+                   
+                </select>
+            </div>
+
+
+
+
+        </div>
+    </div>
     <!-- <div class="card card-transparent ">
         <pg-tabset tabAnimation="slide-left" Type="fillup">
             <pg-tab>
@@ -44,7 +76,9 @@
                         [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
                         [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
                     </ngx-datatable> -->
-                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
+                        [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                        [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
                         <ngx-datatable-column name="">
@@ -61,9 +95,10 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Actions" sortable="false" prop="name">
                             <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(value)">
-                          Update
-                        </button>
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button
+                                    (click)="delete(value)">
+                                    Update
+                                </button>
                             </ng-template>
                         </ngx-datatable-column>
                     </ngx-datatable>

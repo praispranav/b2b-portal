@@ -1,4 +1,46 @@
 <div class="p-2">
+    <div class="container">
+        <div class="row  p-10 activeBox">
+            <div class="col-md-2  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Country</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-md-3  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>State</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-md-2  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>City</option>
+                    <option value="1">Approved</option>
+                    <option value="2">Reject</option>
+                   
+                </select>
+            </div>
+
+            <div class="col-md-2  p-3 p-10 ">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Category</option>
+                    <option value="1">Approved</option>
+                    <option value="2">Reject</option>
+                   
+                </select>
+            </div>
+
+<div class="col-md-2  p-3 p-10">
+    <button type="button" class="btn btn-primary">Go</button>
+</div>
+        </div>
+    </div>
+  
     <!-- <div class="card card-transparent ">
         <pg-tabset tabAnimation="slide-left" Type="fillup">
             <pg-tab>
@@ -27,7 +69,7 @@
             </pg-tab>
         </pg-tabset>
     </div> -->
-    <div class="container">
+    <!-- <div class="container">
         <div class="row  p-10 activeBox">
             <div class="col-md-2 bg-white border p-3 p-10 mr-2">
                 <p>All Products</p>
@@ -45,19 +87,13 @@
                 <p>Products Rejection</p>
                 <span>12</span>
             </div>
-
-          
-            <div class="col-md-2 bg-white">
-                <p>Products Rejection</p>
-                <span>12</span>
-            </div>
         </div>
-    </div>
+    </div> -->
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
             <div class="card-header  d-flex justify-content-between">
-                <div class="card-title">Admin Product Verification
+                <div class="card-title">Supplier Buyer Verification
                 </div>
                 <div class="export-options-container"></div>
                 <!-- <div class="clearfix"></div> -->
@@ -72,12 +108,12 @@
                     <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
-                        <ngx-datatable-column name="">
+                        <ngx-datatable-column name="Select">
                             <ng-template ngx-datatable-cell-template let-row="row">
                                 <input type="checkbox" (click)="handler(row)" />
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Img">
+                        <ngx-datatable-column name="Company Logo">
                             <ng-template ngx-datatable-cell-template let-row="row">
                                 <img src="{{row.image}}" alt="">
                             </ng-template>

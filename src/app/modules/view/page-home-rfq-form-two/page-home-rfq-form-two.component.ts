@@ -259,8 +259,6 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       const parent = this.includeParents(this.allCategoryList, category);
       name = parent + " >> " + category.name;
     }
-    debugger;
-    console.log("Selected Category", name, category._id);
     this.categories = [
       { label: name, value: category._id },
       ...this.categories,

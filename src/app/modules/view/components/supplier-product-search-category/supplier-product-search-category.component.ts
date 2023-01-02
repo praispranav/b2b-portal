@@ -14,7 +14,7 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
   @Input("certificationsList") certificationsList: any[] = [];
   @Input("employeeStrength") employeeStrengthList: any[] = [];
   @Input("businessTypes") businessTypeList: any[] = [];
-
+ 
   countryList: any[] = [
     {
       name: "England",
@@ -41,6 +41,16 @@ export class SupplierProductSearchCategoryComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.searchQuery = params;
     });
+  }
+  isReadMore = true
+  checklist=this.certificationsList.length;
+
+  showText() {
+     this.isReadMore = !this.isReadMore
+  }
+  getCount() {
+    console.log(this.certificationsList.length);
+    return this.certificationsList.length;
   }
 
   ngOnInit() {}

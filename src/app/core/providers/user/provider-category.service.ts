@@ -42,4 +42,8 @@ export class ProviderCategoryService {
   getRecent(){
     return this.http.get<any>(`${environment.apiUrl}/category/get-recent`);
   }
+  
+  getCategoryListBySeller(sellerId){
+    return this.http.get<any>(`${environment.apiUrl}/category/get-seller/${sellerId}`);
+  }
 }
