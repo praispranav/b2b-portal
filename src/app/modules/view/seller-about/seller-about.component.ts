@@ -46,4 +46,5 @@ export class SellerAboutComponent implements OnInit {
       if (res.header.code === 500) console.log('res', res)
     })
   }
+
 }
