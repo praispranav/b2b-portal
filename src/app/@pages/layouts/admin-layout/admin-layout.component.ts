@@ -24,7 +24,8 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "User",
-          routerLink: "/admin/product-verification/verification-list",
+          routerLink: "/admin/user-list/user-list",
+          
         },
         // {
         //   label: "Buyer",
@@ -54,7 +55,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "Products For Approval",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/product-verification/verification-list",
         },
         {
           label: "Approval Status",

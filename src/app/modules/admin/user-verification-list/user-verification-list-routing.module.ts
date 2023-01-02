@@ -6,14 +6,14 @@ import { UserVerificationListComponent } from './user-verification-list/user-ver
 
 const routes: Routes = [
   {
-      path: "",
-      pathMatch: "full",
-      redirectTo: "user-list"
-  },
-  {
-      path: "user-list",
-      component: UserVerificationListComponent
-  }
+    path: "",
+    pathMatch: "full",
+    redirectTo: "user-list"
+},
+{
+    path: "user-list",
+    component: UserVerificationListComponent
+}
 ];
 
 @NgModule({

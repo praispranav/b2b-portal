@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: './faq/faq.module#FaqModule',
   },
   {
+path:'user-list',
+loadChildren:'./user-verification-list/user-verification-list.module#UserVerificationListModule'
+  },
+  {
     path: 'product-verification',
     loadChildren: './product-verification/product-verification.module#ProductVerificationModule',
   },

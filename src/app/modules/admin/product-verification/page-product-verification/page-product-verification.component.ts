@@ -20,8 +20,7 @@ export class PageProductVerificationComponent implements OnInit {
 
 
   advanceColumns = [
-    { name: 'Select' },
-    { name: 'Image' },
+   
     { name: 'Product Name' },
     { name: 'Category' },
     { name: 'Brand' },
@@ -29,11 +28,7 @@ export class PageProductVerificationComponent implements OnInit {
     { name: 'Date Time' },
     { name: 'MOQ' },
     { name: 'Price $' },
-    // { name: 'Rendering engine' },
-    // { name: 'Browser' },
-    // { name: 'Platform' },
-    // { name: 'Engine version' },
-    // { name: 'CSS grade' }
+   
   ];
 
   advanceRows = [];
@@ -54,10 +49,7 @@ export class PageProductVerificationComponent implements OnInit {
       this.basicRows = data;
     });
 
-    // this.fetchSampleDynamic(data => {
-    //   // push our inital complete list
-    //   this.dynamicRows = data;
-    // });
+    
 
     this.fetchSampleAdvance(data => {
       // push our inital complete list
@@ -69,11 +61,7 @@ export class PageProductVerificationComponent implements OnInit {
       this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
     };
   }
-  // onSelect({ selected }) {
-  //   this.selected.splice(0, this.selected.length);
-  //   this.selected.push(...selected);
-  // }
-
+ 
   onActivate(event) { }
   fetch(cb) {
     const req = new XMLHttpRequest();
@@ -99,7 +87,7 @@ export class PageProductVerificationComponent implements OnInit {
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser.json`);
+    req.open('GET', `assets/data/table_browser-two.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
