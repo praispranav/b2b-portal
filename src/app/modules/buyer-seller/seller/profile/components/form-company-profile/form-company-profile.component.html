@@ -277,7 +277,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-12">
                             <div pgFormGroupDefault class="form-group form-group-default input-group">
                                 <div class="form-input-group" style="height: 55px;">
                                     <label for="fcp-facArea">Area/Size</label>
@@ -290,11 +290,11 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6 Size">
-                            <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required" style="width: 196px;">
-                                <label for="fcp-facUnit">Unit</label>
-                                <pg-select style="width: 100%;" [PlaceHolder]="'select Unit'" formControlName="facUnit" AllowClear ShowSearch>
-                                    <pg-option *ngFor="let option of unit" [Label]="option.label" [Value]="option.value" [Disabled]="option.disabled">
+                        <div class="col-md-6  col-12">
+                            <div pgFormGroupDefault class="form-group form-group-default form-group-default-select2 required ">
+                                <label for="fcp-facUnit ">Unit</label>
+                                <pg-select style="width: 100%; " [PlaceHolder]=" 'select Unit' " formControlName="facUnit " AllowClear ShowSearch>
+                                    <pg-option *ngFor="let option of unit " [Label]="option.label " [Value]="option.value " [Disabled]="option.disabled ">
                                     </pg-option>
                                 </pg-select>
                             </div>
@@ -302,86 +302,86 @@
 
                     </div>
                     <h4>Factory Country/Region</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facCountry">Country</label>
-                                <select id="fcp-facCountry" formControlName="facCountry" class="form-control" #myCountry (change)='onCountrySelected($event)'>
-                                <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
+                    <div class="row ">
+                        <div class="col-md-6 ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facCountry ">Country</label>
+                                <select id="fcp-facCountry " formControlName="facCountry " class="form-control " #myCountry (change)='onCountrySelected($event)'>
+                                <option *ngFor="let c of countries " [value]="c.country ">{{c.country}}</option>
                             </select>
-                                <!-- <input type="text" formControlName="facCountry" placeholder="Enter your Country Name here" class="form-control" id="fcp-facCountry" /> -->
+                                <!-- <input type="text " formControlName="facCountry " placeholder="Enter your Country Name here " class="form-control " id="fcp-facCountry " /> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facState">State</label>
-                                <select id="fcp-facState" formControlName="facState" class="form-control" (change)='onStateSelected($event)'>
-                                <option *ngFor="let c of states" [value]="c.name">{{ c.name }}</option>
+                        <div class="col-md-6 ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facState ">State</label>
+                                <select id="fcp-facState " formControlName="facState " class="form-control " (change)='onStateSelected($event)'>
+                                <option *ngFor="let c of states " [value]="c.name ">{{ c.name }}</option>
                             </select>
-                                <!-- <input type="text" formControlName="facState" placeholder="Enter your State Name here" class="form-control" id="fcp-facState" /> -->
+                                <!-- <input type="text " formControlName="facState " placeholder="Enter your State Name here " class="form-control " id="fcp-facState " /> -->
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div pgFormGroupDefault class="form-group form-group-default input-group">
-                                <div class="form-input-group">
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <div pgFormGroupDefault class="form-group form-group-default input-group ">
+                                <div class="form-input-group ">
 
-                                    <label for="fcp-facAnnualTurnover">Annual Turnover</label>
-                                    <input type="number" formControlName="facAnnualTurnover" placeholder="Enter your Annual Turn Over" class="form-control" id="fcp-anuualTurnover-name" />
+                                    <label for="fcp-facAnnualTurnover ">Annual Turnover</label>
+                                    <input type="number " formControlName="facAnnualTurnover " placeholder="Enter your Annual Turn Over " class="form-control " id="fcp-anuualTurnover-name " />
                                 </div>
                                 <div class="input-group-append ">
-                                    <span class="input-group-text">$
+                                    <span class="input-group-text ">$
                                 </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facContactPerson">Contact Person</label>
-                                <input type="text" formControlName="facContactPerson" placeholder="Enter Contact Person here" class="form-control" id="fcp-facContactPerson" />
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facContactPerson ">Contact Person</label>
+                                <input type="text " formControlName="facContactPerson " placeholder="Enter Contact Person here " class="form-control " id="fcp-facContactPerson " />
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row ">
 
-                        <div class="col-md-6 input-group-append">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facLandline">Landline</label>
-                                <input type="number" formControlName="facLandline" placeholder="Enter your Mobile Number" [class.has-error]="form.controls.facLandline.invalid && (form.controls.facLandline.facLandline.dirty || form.controls.facLandline.touched)" class="form-control"
-                                    id="fcp-facLandline" /> {{ getStri(form?.controls?.facLandline) }}
-                                <div *ngIf="form.controls.facLandline.invalid && (form.controls.facLandline.dirty || form.controls.facLandline.touched)">
-                                    <label *ngIf="form.controls.facLandline.error" class="error">Mobile no should be of 10 digit.</label>
+                        <div class="col-md-6 input-group-append ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facLandline ">Landline</label>
+                                <input type="number " formControlName="facLandline " placeholder="Enter your Mobile Number " [class.has-error]="form.controls.facLandline.invalid && (form.controls.facLandline.facLandline.dirty || form.controls.facLandline.touched)
+                                " class="form-control " id="fcp-facLandline " /> {{ getStri(form?.controls?.facLandline) }}
+                                <div *ngIf="form.controls.facLandline.invalid && (form.controls.facLandline.dirty || form.controls.facLandline.touched) ">
+                                    <label *ngIf="form.controls.facLandline.error " class="error ">Mobile no should be of 10 digit.</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facMobile">Mobile</label>
-                                <input type="number" formControlName="facMobile" placeholder="Enter your Mobile Number" class="form-control" id="fcp-facMobile" />
+                        <div class="col-md-6 ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facMobile ">Mobile</label>
+                                <input type="number " formControlName="facMobile " placeholder="Enter your Mobile Number " class="form-control " id="fcp-facMobile " />
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div pgFormGroupDefault class="form-group form-group-default">
-                                <label for="fcp-facEmail">Email</label>
-                                <input type="email" formControlName="facEmail" placeholder="Enter your Email Id" class="form-control" id="fcp-facEmail" />
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <div pgFormGroupDefault class="form-group form-group-default ">
+                                <label for="fcp-facEmail ">Email</label>
+                                <input type="email " formControlName="facEmail " placeholder="Enter your Email Id " class="form-control " id="fcp-facEmail " />
                             </div>
                         </div>
                     </div>
                 </div>
-                <button type="button" (click)="addNewAdditional()" class="btn btn-info w-25 my-3">Add more additional details
+                <button type="button " (click)="addNewAdditional() " class="btn btn-info  ">Add more additional details
             </button>
             </div>
 
 
-            <div class="mt-4">
-                <button type="submit" class="me-4 btn btn-primary show-notification" (click)="subCompanyProfileForm()">
+            <div class="mt-4 ">
+                <button type="submit " class="me-4 btn btn-primary show-notification " (click)="subCompanyProfileForm() ">
                 {{isDataExist? 'Update' : 'Save'}} Company Profile
             </button>
             </div>
@@ -391,32 +391,32 @@
 
 
 <!--
-<div class="row">
-    <div class="col-md-8 mb-4">
-        <pg-upload ListType="picture-card" [Preview]="handlePreview" [(FileList)]="imageList"
-            [ShowButton]="imageList.length===0" >
-            <div class="pic-placeholder">
-                <i class="pg-icon p-b-5">upload</i>
-                <div class="fs-12">Upload</div>
+<div class="row ">
+    <div class="col-md-8 mb-4 ">
+        <pg-upload ListType="picture-card " [Preview]="handlePreview " [(FileList)]="imageList "
+            [ShowButton]="imageList.length===0 " >
+            <div class="pic-placeholder ">
+                <i class="pg-icon p-b-5 ">upload</i>
+                <div class="fs-12 ">Upload</div>
             </div>
         </pg-upload>
-        <div *ngIf="f.image?.invalid && (f.image.dirty || f.image.touched)">
-            <label *ngIf="f.image.errors.required" class="error">Image is required.</label>
+        <div *ngIf="f.image?.invalid && (f.image.dirty || f.image.touched) ">
+            <label *ngIf="f.image.errors.required " class="error ">Image is required.</label>
         </div>
     </div>
 </div>
 -->
 <!--
-<h6>Do you have another office ?<span class="text-danger">*</span></h6>
-<div class="form-check form-check-inline complete">
-    <input type="radio" name="regState" id="fcp-radioInline" value="Yes" checked>
-    <label for="fcp-radioInline">
+<h6>Do you have another office ?<span class="text-danger ">*</span></h6>
+<div class="form-check form-check-inline complete ">
+    <input type="radio " name="regState " id="fcp-radioInline " value="Yes " checked>
+    <label for="fcp-radioInline ">
         Yes
     </label>
 </div>
-<div class="form-check form-check-inline">
-    <input type="radio" name="regState" id="fcp-radioDisabled" value="No">
-    <label for="fcp-radioDisabled">
+<div class="form-check form-check-inline ">
+    <input type="radio " name="regState " id="fcp-radioDisabled " value="No ">
+    <label for="fcp-radioDisabled ">
         No
     </label>
 </div>
