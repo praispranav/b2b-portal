@@ -122,8 +122,8 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Actions" sortable="false" prop="name">
                             <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(value)">
-                                  Update
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="view()">
+                                  View
                                 </button>
                             </ng-template>
                         </ngx-datatable-column>

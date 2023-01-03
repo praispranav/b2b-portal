@@ -1,6 +1,7 @@
 
 
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
 @Component({
@@ -40,7 +41,9 @@ export class UserVerificationListComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor() {
+  constructor(
+    private router: Router,
+  ) {
     console.log(this.columnModeSetting);
 
     //   // push our inital complete list
@@ -111,5 +114,8 @@ export class UserVerificationListComponent implements OnInit {
 
   onPage(event) {
     console.log(event);
+  }
+  view(){
+    this.router.navigateByUrl('/admin/user-list/user-view');
   }
 }

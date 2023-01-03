@@ -6,11 +6,12 @@ import { UserVerificationListComponent } from './user-verification-list/user-ver
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
+import { UserVerificationVewComponent } from './user-verification-vew/user-verification-vew.component';
 // import { ProductVerificationRoutingModule } from '../product-verification/product-verification-routing.module';
 
 
 @NgModule({
-  declarations: [UserVerificationListComponent],
+  declarations: [UserVerificationListComponent, UserVerificationVewComponent],
   imports: [
     CommonModule,
     UserVerificationListRoutingModule,
