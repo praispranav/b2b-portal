@@ -11,7 +11,7 @@
           </button>
                 </div>
             </div>
-        </div>
+         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <ngx-datatable class='table table-hover' [rows]="brandApprovalList" [columnMode]="columnModeSetting" [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected" [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal"
@@ -20,13 +20,15 @@
                     <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
                     </ngx-datatable-column>
                     <ngx-datatable-column name="Sr No" cellClass="d-flex align-items-center"></ngx-datatable-column>
-                    <ngx-datatable-column name="Image" cellClass="d-flex align-items-center"></ngx-datatable-column>fv
+                    <ngx-datatable-column name="Image" cellClass="d-flex align-items-center"></ngx-datatable-column>
                     <ngx-datatable-column name="Brand Type" cellClass="d-flex align-items-center">
                     </ngx-datatable-column>
                     <ngx-datatable-column name="Brand Name" cellClass="d-flex align-items-center">
                     </ngx-datatable-column>
-                    <ngx-datatable-column name="Status" cellClass="d-flex align-items-center">hello</ngx-datatable-column>
-                    <ngx-datatable-column name="Last Update" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                    <ngx-datatable-column name="Serial Number" cellClass="d-flex align-items-center">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Products" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                    <ngx-datatable-column name="Added On" cellClass="d-flex align-items-center"></ngx-datatable-column>
                 </ngx-datatable>
             </div>
         </div>
