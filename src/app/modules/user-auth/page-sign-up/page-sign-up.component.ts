@@ -304,7 +304,9 @@ export class PageSignUpComponent implements OnInit {
       country: ["", [Validators.required],],
       address1: ["", [Validators.required]],
       city: [""],
-      role: ["", [Validators.required]]
+      role: ["", [Validators.required]],
+      checkbox:[true]
+      
     },
     {validator: CustomValidators.passwordMatchValidator} )
   }
