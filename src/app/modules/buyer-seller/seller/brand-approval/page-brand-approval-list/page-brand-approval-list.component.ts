@@ -56,6 +56,7 @@ imgUrl:string = environment.imageStorage;
             const date = new Date(i.timestamp);
             return {
               ...i, srNo: index + 1,
+              productsLink: i.products,
               addedOn: moment(date).format('YYYY-DD-MM hh:mm')
             }
           });
