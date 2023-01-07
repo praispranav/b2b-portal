@@ -115,16 +115,16 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Company Logo">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img src="{{row.image}}" alt="">
+                                <img *ngIf="row.logo && row.logo.length" [src]="imageUrl + row.logo" alt="" style="width: 50px; height: 50px;">
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [prop]="col.prop" [hidden]="col.image">
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
-                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="view()">
-                                  View
-                                </button>
+                        <ngx-datatable-column name="Company Logo">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="view(row._id)">
+                                    View
+                                  </button>
                             </ng-template>
                         </ngx-datatable-column>
                     </ngx-datatable>

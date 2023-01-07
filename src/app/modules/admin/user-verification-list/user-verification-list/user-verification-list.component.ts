@@ -4,6 +4,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
+import { UserVerificationService } from '../../../../core/providers/user/user-verification.service';
+import * as moment from "moment";
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-user-verification-list',
   templateUrl: './user-verification-list.component.html',
@@ -13,6 +17,7 @@ export class UserVerificationListComponent implements OnInit {
 
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
+  imageUrl: string = environment.imageStorage
   appName = null;
   appDescription = null;
   appPrice = null;
@@ -23,14 +28,15 @@ export class UserVerificationListComponent implements OnInit {
 
 
   advanceColumns = [
-    { name: 'Supplier/Buyer Name' },
-    { name: 'Type' },
-    { name: 'Country' },
-    { name: 'State' },
-    { name: 'City' },
-    { name: 'Posted By' },
-    { name: 'Listing Date' },
-    {name:'Last Active Product'}
+    { name: 'Supplier/Buyer Name', prop: "name" },
+    { name: 'Company Name', prop: "company" },
+    { name: 'Type', prop: "role" },
+    { name: 'Country', prop: "country" },
+    // { name: 'State', prop:'state' },
+    { name: 'City', prop: 'city' },
+    // { name: 'Posted By', prop: '' },
+    { name: 'Listing Date', prop: 'timestamp' },
+    // { name: 'Last Active Product', prop: '' }
 
   ];
 
@@ -43,40 +49,48 @@ export class UserVerificationListComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private userVerificationService: UserVerificationService
   ) {
-    console.log(this.columnModeSetting);
-
-    //   // push our inital complete list
-    //   this.dynamicRows = data;
-    // });
-
-    this.fetchSampleAdvance(data => {
-
-      this.advanceRows = data;
-    });
-
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
       this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
     };
   }
 
+  ngOnInit() {
+    this.getUsers();
+    this.fetchSampleAdvance()
+  }
+
+  getUsers() {
+    this.userVerificationService.getUsers().subscribe((res) => {
+      console.log('res', res)
+      if(res.header.code === 200){
+        this.advanceRows = res.data.map((i)=>{
+          return {
+            ...i, timestamp: moment(new Date(i.timestamp)).format('YYYY-DD-MM')
+          }
+        })
+      }
+    })
+  }
+
 
   onActivate(event) { }
 
 
-  fetchSampleAdvance(cb) {
+  fetchSampleAdvance() {
     const req = new XMLHttpRequest();
     req.open('GET', `assets/data/table_browser.json`);
 
     req.onload = () => {
-      cb(JSON.parse(req.response));
+      console.log(req.response)
     };
 
     req.send();
   }
 
-  ngOnInit() { }
+
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -115,7 +129,7 @@ export class UserVerificationListComponent implements OnInit {
   onPage(event) {
     console.log(event);
   }
-  view(){
-    this.router.navigateByUrl('/admin/user-list/user-view');
+  view(sellerId) {
+    this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: sellerId, type: 'seller'}});
   }
 }
