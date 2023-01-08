@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SellerSearchService } from '../../../../core/providers/user/seller-search.service';
+import { UserVerificationService } from '../../../../core/providers/user/user-verification.service';
 
 interface SearchParams {
   type?: string;
@@ -15,11 +16,17 @@ interface SearchParams {
 export class UserVerificationVewComponent implements OnInit {
   searchParams: SearchParams = {};
   sellerDetails: any = {
-    sellerDetails:''
+    sellerDetails:{},
+    companyDetail: {},
+    companyProfile: {},
+    certification: {},
+    exportCapabilities: {},
+    businessType: {}
   }
+  checkedCards: any[] = [];
   
 
-  constructor(private route: ActivatedRoute, private sellerSearchService: SellerSearchService) {
+  constructor(private route: ActivatedRoute, private sellerSearchService: SellerSearchService, private userVerificationService: UserVerificationService) {
     this.route.queryParams.subscribe((params)=>{
       console.log("Params", params['type'])
       console.log("Params", params['id'])
@@ -33,6 +40,22 @@ export class UserVerificationVewComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  onCheckCards(index, event){
+    this.checkedCards[index] = event.target.checked
+  }
+
+  onApproveReject(userId, status){
+    let checkedCount = 0;
+    this.checkedCards.forEach((i)=> i ? checkedCount += 1 : '');
+    console.log("CheckedCount", checkedCount)
+    if(checkedCount === 4){
+      this.userVerificationService.approveRejectUser(status, userId).subscribe((res)=>{
+        console.log("Res", res)
+        this.getSellerDetails();
+      })
+    }
   }
 
   getSellerDetails(){
