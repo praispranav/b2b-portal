@@ -14,7 +14,10 @@ interface SearchParams {
 })
 export class UserVerificationVewComponent implements OnInit {
   searchParams: SearchParams = {};
-  sellerDetails: any = {}
+  sellerDetails: any = {
+    sellerDetails:''
+  }
+  
 
   constructor(private route: ActivatedRoute, private sellerSearchService: SellerSearchService) {
     this.route.queryParams.subscribe((params)=>{
