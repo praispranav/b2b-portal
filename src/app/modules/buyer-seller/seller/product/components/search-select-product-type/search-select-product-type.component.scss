@@ -3,37 +3,40 @@ ul {
     padding-left: 4px;
     padding-top: 4px;
     list-style: none;
-
     li {
         margin-bottom: 2px;
-
         >div {
             display: flex;
-
             div.hideToggleContainer {
                 opacity: 0;
             }
         }
-
         button {
             margin-right: 4px;
         }
     }
-
 }
 
 .text-bold {
     font-weight: bolder;
-
 }
 
 .search-btn {
     margin-left: -92px;
     margin-top: 32px;
     border: none;
-
 }
-.search-btn{
+
+.search-btn {
     margin-left: 645px;
     margin-top: -35px;
+}
+
+.hide {
+    display: none;
+}
+
+.myDiv:hover+.hide {
+    display: block;
+    color: red;
 }

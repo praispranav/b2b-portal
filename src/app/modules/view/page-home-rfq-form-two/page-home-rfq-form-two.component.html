@@ -1,7 +1,6 @@
 <!-- <app-header1></app-header1> -->
 <!-- Donot remove -->
-<button #launchModalButton type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-    style="visibility: hidden;">
+<button #launchModalButton type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="visibility: hidden;">
 </button>
 <!-- Donot remove -->
 
@@ -15,11 +14,9 @@
                     <h6 class="star">Product Name</h6>
                 </div>
                 <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" (change)="onChange()" (blur)="filterCategory()"
-                        formControlName="productName" placeholder="Enter the product name" name="" id="">
+                    <input class="form-control" type="text" (change)="onChange()" (blur)="filterCategory()" formControlName="productName" placeholder="Enter the product name" name="" id="">
 
-                    <div
-                        *ngIf="requestQuotationForm2?.productName?.invalid && (requestQuotationForm2?.productName.dirty || requestQuotationForm2?.productName.touched)">
+                    <div *ngIf="requestQuotationForm2?.productName?.invalid && (requestQuotationForm2?.productName.dirty || requestQuotationForm2?.productName.touched)">
                         <label *ngIf="requestQuotationForm2?.productName.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -29,15 +26,13 @@
                 </div>
 
                 <div class="col-md-8 p-3" *ngIf="categories.length > 0">
-                    <select (change)="onChangeCategory()" class="form-select form-select-sm"
-                        formControlName="productCategory" aria-label="danger select example" class="form-select">
+                    <select (change)="onChangeCategory()" class="form-select form-select-sm" formControlName="productCategory" aria-label="danger select example" class="form-select">
                         <option *ngFor="let category of categories;let i = index" [value]="category.value"
                             [selected]="i==0">{{ category.label }}
                         </option>
                     </select>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.productCategory?.invalid && (requestQuotationForm2?.productCategory.dirty || requestQuotationForm2?.productCategory.touched)">
+                    <div *ngIf="requestQuotationForm2?.productCategory?.invalid && (requestQuotationForm2?.productCategory.dirty || requestQuotationForm2?.productCategory.touched)">
                         <label *ngIf="requestQuotationForm2?.productCategory.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -48,13 +43,11 @@
                 <!-- (change)="handleQuantityChange($event)" -->
                 <!-- [value]="quantity" -->
                 <div class="col-md-3 p-3">
-                    <input (change)="onChange()" formControlName="quantity" class="form-control" type="number"
-                        placeholder="8 number" name="Quantity" id="">
+                    <input (change)="onChange()" formControlName="quantity" class="form-control" type="number" placeholder="8 number" name="Quantity" id="">
                 </div>
                 <div class="col-md-5 p-3">
-                    <select class="form-select" (change)="onChange()" aria-label="Default select example"
-                        formControlName="unit" class="form-select">
-                        <option selected>Unit</option>
+                    <select class="form-select" (change)="onChange()" aria-label="Default select example" formControlName="unit" class="form-select">
+                        <option value="" selected>Unit</option>
                         <option value="Acres">Acres</option>
                         <option value="Amperes">Amperes</option>
                         <option value="Bags">Bags</option>
@@ -140,8 +133,7 @@
                         <option value="Yards">Yards</option>
                     </select>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.unit?.invalid && (requestQuotationForm2?.unit.dirty || requestQuotationForm2?.unit.touched)">
+                    <div *ngIf="requestQuotationForm2?.unit?.invalid && (requestQuotationForm2?.unit.dirty || requestQuotationForm2?.unit.touched)">
                         <label *ngIf="requestQuotationForm2?.unit.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -152,7 +144,7 @@
                     </div>
                     <div class="col-md-5 p-3">
                         <select class="form-select" formControlName="sourcingType" aria-label="Default select example">
-                            <option selected>Please select</option>
+                            <option value ="" selected>Please select</option>
                             <option value="For Customizing Product">For Customizing Product</option>
                             <option value="Normal Products">Normal Products</option>
                             <option value="Full Solution">Full Solution</option>
@@ -160,8 +152,7 @@
                             <option value="Others">Others</option>
                         </select>
 
-                        <div
-                            *ngIf="requestQuotationForm2?.sourcingType?.invalid && (requestQuotationForm2?.sourcingType.dirty || requestQuotationForm2?.sourcingType.touched)">
+                        <div *ngIf="requestQuotationForm2?.sourcingType?.invalid && (requestQuotationForm2?.sourcingType.dirty || requestQuotationForm2?.sourcingType.touched)">
                             <label *ngIf="requestQuotationForm2?.sourcingType.errors.required" class="error">This Field
                                 is
                                 required.</label>
@@ -174,9 +165,8 @@
                         <h6 class="star">Sourcing Purpose</h6>
                     </div>
                     <div class="col-md-5 p-3">
-                        <select class="form-select" formControlName="sourcingPurpose"
-                            aria-label="Default select example">
-                            <option selected>Please select</option>
+                        <select class="form-select" formControlName="sourcingPurpose" aria-label="Default select example">
+                            <option value="" selected>Please select</option>
                             <option value="Wholesale">Wholesale</option>
                             <option value="Retail">Retail</option>
                             <option value="Production"> Production</option>
@@ -187,8 +177,7 @@
 
                         </select>
 
-                        <div
-                            *ngIf="requestQuotationForm2?.sourcingPurpose?.invalid && (requestQuotationForm2?.sourcingPurpose.dirty || requestQuotationForm2?.sourcingPurpose.touched)">
+                        <div *ngIf="requestQuotationForm2?.sourcingPurpose?.invalid && (requestQuotationForm2?.sourcingPurpose.dirty || requestQuotationForm2?.sourcingPurpose.touched)">
                             <label *ngIf="requestQuotationForm2?.sourcingPurpose.errors.required" class="error">This
                                 Field is
                                 required.</label>
@@ -200,18 +189,16 @@
                     <h6 class="star">Budget</h6>
                 </div>
                 <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name=""
-                        id="">
+                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name="" id="">
 
-                    <div
-                        *ngIf="requestQuotationForm2?.budget?.invalid && (requestQuotationForm2?.budget.dirty || requestQuotationForm2?.budget.touched)">
+                    <div *ngIf="requestQuotationForm2?.budget?.invalid && (requestQuotationForm2?.budget.dirty || requestQuotationForm2?.budget.touched)">
                         <label *ngIf="requestQuotationForm2?.budget.errors.required" class="error">This Field is
                             required.</label>
                     </div>
                 </div>
                 <div class="col-md-6 p-3">
                     <select class="form-select" formControlName="currency" aria-label="Default select example">
-                        <option selected>select currency</option>
+                        <option value="" selected>select currency</option>
                         <option value="AFN">Afghan Afghani</option>
                         <option value="ALL">Albanian Lek</option>
                         <option value="DZD">Algerian Dinar</option>
@@ -377,8 +364,7 @@
                         <option value="YER">Yemeni Rial</option>
                         <option value="ZMK">Zambian Kwacha</option>
                     </select>
-                    <div
-                        *ngIf="requestQuotationForm2?.currency?.invalid && (requestQuotationForm2?.currency.dirty || requestQuotationForm2?.currency.touched)">
+                    <div *ngIf="requestQuotationForm2?.currency?.invalid && (requestQuotationForm2?.currency.dirty || requestQuotationForm2?.currency.touched)">
                         <label *ngIf="requestQuotationForm2?.currency.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -388,12 +374,10 @@
                 </div>
 
                 <div class="col-md-9 p-3">
-                    <textarea id="w3review" class="form-control" name="Details" rows="4" cols="50"
-                        formControlName="details">
+                    <textarea id="w3review" class="form-control" name="Details" rows="4" cols="50" formControlName="details">
                 </textarea>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.details?.invalid && (requestQuotationForm2?.details.dirty || requestQuotationForm2?.details.touched)">
+                    <div *ngIf="requestQuotationForm2?.details?.invalid && (requestQuotationForm2?.details.dirty || requestQuotationForm2?.details.touched)">
                         <label *ngIf="requestQuotationForm2?.details.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -409,17 +393,14 @@
                         </div>
                     </pg-upload> -->
                     <div class="input-group" style="width: 285px;">
-                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
-                            (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
-                            aria-describedby="basic-addon2" formControlName="image">
+                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput" (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username" aria-describedby="basic-addon2" formControlName="image">
                         <div class="input-group-append">
                             <!-- <button class="btn btn-outline-secondary" type="button"
                                 (click)="fileInputDoc.click()">upload</button> -->
                         </div>
                     </div>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.image?.invalid && (requestQuotationForm2?.image.dirty || requestQuotationForm2?.image.touched)">
+                    <div *ngIf="requestQuotationForm2?.image?.invalid && (requestQuotationForm2?.image.dirty || requestQuotationForm2?.image.touched)">
                         <label *ngIf="requestQuotationForm2?.image.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -431,11 +412,9 @@
                     <h6>Ship In</h6>
                 </div>
                 <div class="col-md-2 p-3">
-                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name=""
-                        id="">
+                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name="" id="">
 
-                    <div
-                        *ngIf="requestQuotationForm2?.shipIn?.invalid && (requestQuotationForm2?.shipIn.dirty || requestQuotationForm2?.shipIn.touched)">
+                    <div *ngIf="requestQuotationForm2?.shipIn?.invalid && (requestQuotationForm2?.shipIn.dirty || requestQuotationForm2?.shipIn.touched)">
                         <label *ngIf="requestQuotationForm2?.shipIn.errors.required" class="error">This Field is
                             required.</label>
                     </div>
@@ -444,8 +423,7 @@
                     <p class="p-1">day(s) after supplier receives the initial payment.</p>
                 </div>
                 <div class="col-md-12 p-4 form-check">
-                    <input class="form-check-input pl-2" type="checkbox" formControlName="isCheck" value=""
-                        id="flexCheckDefault">
+                    <input class="form-check-input pl-2" type="checkbox" formControlName="isCheck" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         I have read, understood and agreed to abide by the Buying Request Posting Rules.
                     </label>
@@ -464,8 +442,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -482,18 +459,15 @@
                         <li *ngFor="let item of list" #nodeEl>
                             <div class="d-flex align-items-center">
                                 <div [class.hideToggleContainer]="!item._hasChildren">
-                                    <button class="btn btn-primary" *ngIf="!item._toggle"
-                                        [disabled]="!item._hasChildren" (click)="getChildren(item)">
+                                    <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren" (click)="getChildren(item)">
                                         Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
                                     </button>
 
-                                    <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                                        (click)="remChildren(item)">
+                                    <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren" (click)="remChildren(item)">
                                         Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
                                     </button>
                                 </div>
-                                <button data-dismiss="modal" class="ml-3 btn btn-secondary"
-                                    (click)="selectExtraCategory(item)">
+                                <button data-dismiss="modal" class="ml-3 btn btn-secondary" (click)="selectExtraCategory(item)">
                                     Select
                                 </button>
                                 <i class="fa fa-circle" aria-hidden="true"></i>
@@ -504,8 +478,7 @@
                                 </span>
                             </div>
                             <ng-container *ngIf="item?.children && item.children.length>0">
-                                <ng-template [ngTemplateOutlet]="treeUlContainer"
-                                    [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                                <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:item.children}"></ng-template>
                             </ng-container>
                         </li>
                     </ul>
