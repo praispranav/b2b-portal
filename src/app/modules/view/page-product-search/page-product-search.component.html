@@ -4,20 +4,22 @@
         <div class="card card-transparent">
             <div class="card-body p-0">
                 <div class="btn-group btn-toolbar">
-                    <button aria-label="" type="button" class="btn btn-default">
+                    <button aria-label="" type="button" class="btn btn-default" (click)="selectProductType('all')">
                         <div class="p-t-5 p-b-5">
                             <div class="fs-11 font-montserrat text-uppercase">All</div>
                         </div>
                     </button>
-                    <button aria-label="" type="button" class="btn btn-default">
+                    <button aria-label="" type="button" class="btn btn-default" (click)="selectProductType('customization')">
                         <div class="p-t-5 p-b-5">
                             <div class="fs-11 font-montserrat text-uppercase">Customization</div>
                         </div>
-                    </button> <button aria-label="" type="button" class="btn btn-default">
+                    </button>
+                     <!-- <button aria-label="" type="button" class="btn btn-default">
                         <div class="p-t-5 p-b-5">
                             <div class="fs-11 font-montserrat text-uppercase">Ready to Ship</div>
                         </div>
-                    </button> <button aria-label="" type="button" class="btn btn-default">
+                    </button>  -->
+                    <button aria-label="" type="button" class="btn btn-default" (click)="selectProductType('overstock')">
                         <div class="p-t-5 p-b-5">
                             <div class="fs-11 font-montserrat text-uppercase">Over Stock</div>
                         </div>
@@ -28,7 +30,7 @@
     </div>
     <div class="row">
         <div class="col-md-2 bg-white mt-1">
-            <app-product-search-categories></app-product-search-categories>
+            <app-product-search-categories [categories]="categories"></app-product-search-categories>
         </div>
         <div class="col-md-10">
             <app-product-search-filter></app-product-search-filter>

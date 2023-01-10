@@ -204,13 +204,13 @@
                     <tr>
                         <td class="bg"><b>Business Type</b></td>
                         <td>
-                            <span *ngFor="let name of sellerDetails.businessType.types">{{name}}/</span>
+                            <span *ngFor="let name of sellerDetails.businessType.types"><span *ngIf="name.checked"></span>{{name.value}},</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="bg"><b>Main Product</b></td>
                         <td>
-                            <span *ngFor="let product of sellerDetails.companyProfile.mainProduct">{{product}}/</span>
+                            <span *ngFor="let product of sellerDetails.companyProfile.mainProduct">{{product}},</span>
                         </td>
                         </tr>
                     <tr>
