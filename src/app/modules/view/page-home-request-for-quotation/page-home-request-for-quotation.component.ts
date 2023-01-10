@@ -45,7 +45,12 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
       unit: ["", [Validators.required, Validators.maxLength(10)]],
     });
   }
-
+  navigateTosupportPage() {
+    const url= this.router.serializeUrl(
+      this.router.createUrlTree(['/b2b/create-account-support'])
+    )
+    window.open(url,"_blank");
+  }
   subRequestForm1() {
     // this.getDetailById(item);
     // this.payload = {

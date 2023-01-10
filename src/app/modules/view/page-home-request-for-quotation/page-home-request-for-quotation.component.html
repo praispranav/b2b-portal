@@ -122,9 +122,15 @@
                                 required.</label>
                         </div>
                     </div>
-                    <div>
-                        <button class="rounded-pill btn btn-orange" (click)="subRequestForm1()">Request For
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <button class="rounded-pill btn btn-orange" (click)="subRequestForm1()">Request For
                             Quotation</button>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <a class="text-info small" [routerLink]="" (click)="navigateTosupportPage()">Help? Contact
+                        Support</a>
+                        </div>
                     </div>
                 </div>
             </div>
