@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { environment } from '../../../../../../environments/environment';
 import { ProviderBrandApprovalService } from '../../../../../core/providers/user/provider-brand-approval.service';
 
 @Component({
@@ -8,6 +10,7 @@ import { ProviderBrandApprovalService } from '../../../../../core/providers/user
 })
 export class PageBrandApprovalListComponent implements OnInit {
   brandApprovalList: any[] = [];
+imgUrl:string = environment.imageStorage;
 
   constructor(
     private providerBrandApprovalService: ProviderBrandApprovalService,
@@ -48,7 +51,22 @@ export class PageBrandApprovalListComponent implements OnInit {
     this.providerBrandApprovalService
       .getBrandApprovalListByFilter(index, length, query)
       .subscribe((res) => {
-        this.brandApprovalList = res.data;
+        if (Array.isArray(res.data)) {
+          this.brandApprovalList = res.data.map((i, index) => {
+            const date = new Date(i.timestamp);
+            return {
+              ...i, srNo: index + 1,
+              productsLink: i.products,
+              addedOn: moment(date).format('YYYY-DD-MM hh:mm')
+            }
+          });
+        }
+        console.log('Admin', res)
       });
+  }
+
+  getImage(file){
+    console.log(file)
+    return file.image
   }
 }

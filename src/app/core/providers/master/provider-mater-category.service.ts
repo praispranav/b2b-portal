@@ -47,9 +47,14 @@ export class ProviderMaterCategoryService {
     );
   }
 
+
   filterByKeyword(keyword) {
     return this.http.get<any>(`${environment.apiUrl}/master-category`, {
       params: { keyword },
     });
+  }
+
+  getRecent(){
+    return this.http.get<any>(`${environment.apiUrl}/master-category/get-recent`);
   }
 }

@@ -152,6 +152,47 @@
                 </h3>
                 <p>{{ sellerDetails.companyDetail.companyDetail }}
                 </p>
+ <div class="container">
+     <div class="row">
+         <div class="col-md-6">
+             <a href="{{ sellerDetails.companyDetail.companyWebsite }}">
+                 <div class="d-flex flex-row">
+                     <div> <i class="pg-icon">globe</i></div>
+                     <p>Website</p>
+                 </div>
+
+             </a>
+         </div>
+         <div class="col-md-6">
+             <a href="{{ sellerDetails.companyDetail.googleBusiness }}">
+                 <div class="d-flex flex-row">
+                     <div> <i class="pg-icon">globe</i></div>
+                     <p>Google Business</p>
+                 </div>
+
+             </a>
+         </div>
+         <div class="col-md-6">
+             <a href="{{ sellerDetails.companyDetail.facebookBusiness }}">
+                 <div class="d-flex flex-row">
+                     <div> <i class="pg-icon">facebook</i></div>
+                     <p>Facebook</p>
+                 </div>
+
+             </a>
+         </div>
+         <div class="col-md-6">
+             <a href="{{ sellerDetails.companyDetail.instagramBusiness }}">
+                 <div class="d-flex flex-row">
+                     <div> <i class="pg-icon">heart</i></div>
+                     <p>Instagam</p>
+                 </div>
+
+             </a>
+         </div>
+     </div>
+ </div>
+
             </div>
         </div>
         <div class="col-md-3">
@@ -162,12 +203,16 @@
                 <table class="table table-borderless">
                     <tr>
                         <td class="bg"><b>Business Type</b></td>
-                        <td>Wholesaler/Distributor</td>
+                        <td>
+                            <span *ngFor="let name of sellerDetails.businessType.types"><span *ngIf="name.checked"></span>{{name.value}},</span>
+                        </td>
                     </tr>
                     <tr>
                         <td class="bg"><b>Main Product</b></td>
-                        <td>Wholesaler/Distributor</td>
-                    </tr>
+                        <td>
+                            <span *ngFor="let product of sellerDetails.companyProfile.mainProduct">{{product}},</span>
+                        </td>
+                        </tr>
                     <tr>
                         <td class="bg"><b>Total Anual Revenue</b></td>
                         <td>Below 100$</td>
@@ -187,32 +232,128 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-9 ">
-            <h4 class="mr-r">Company Introduction</h4>
+            <h4 class="mr-r">Company Details</h4>
             <div class="shadow">
                 <table class="table table-borderless">
                     <tr>
-                        <td class="bg"><b>Business Type</b></td>
-                        <td>Wholesaler/Distributor</td>
+                        <td class="bg"><b>Company</b></td>
+                        <td>{{sellerDetails.sellerDetails.Company}}</td>
                     </tr>
                     <tr>
-                        <td class="bg"><b>Main Product</b></td>
-                        <td>Wholesaler/Distributor</td>
+                        <td class="bg"><b>Name</b></td>
+                        <td>{{sellerDetails.sellerDetails.fName}} {{sellerDetails.sellerDetails.lName}}</td>
                     </tr>
                     <tr>
-                        <td class="bg"><b>Total Anual Revenue</b></td>
-                        <td>Below 100$</td>
+                        <td class="bg"><b>Contact No.</b></td>
+                        <td>{{sellerDetails.sellerDetails.phone}}</td>
                     </tr>
                     <tr>
-                        <td class="bg"><b>Main Markets</b></td>
-                        <td>Hand bag, clothes, pants, shirts</td>
+                        <td class="bg"><b>Email Id</b></td>
+                        <td>{{sellerDetails.sellerDetails.email}}</td>
                     </tr>
                     <tr>
-                        <td class="bg"><b>Partner</b></td>
-                        <td></td>
+                        <td class="bg"><b>Address</b></td>
+                        <td>{{sellerDetails.sellerDetails.address1}},{{sellerDetails.sellerDetails.city}},{{sellerDetails.sellerDetails.country}}
+                        </td>
                     </tr>
                 </table>
             </div>
-        </div>
+            </div>
+
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 ">
+                <h4 class="mr-r">Certification</h4>
+                <div class="shadow">
+                    <table class="table table-borderless">
+                        <tr *ngFor="let certificate of sellerDetails.certification.certificates">
+                            <!-- <td class="bg"><b>Business Type</b></td> -->
+                            <td>
+                                <span *ngIf="certificate.checked == true">{{certificate.name}}/</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9 ">
+                <h4 class="mr-r">Export Capabilities</h4>
+                <div class="shadow">
+                    <table class="table table-borderless">
+                        <tr>
+                        <td>Yearly Turnover</td>
+                        <td>{{sellerDetails.exportCapabilities.yearlyTurnover}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nearest Port</td>
+                            <td>{{sellerDetails.exportCapabilities.nearestPort}}</td>
+                        </tr>
+                        <tr>
+                            <td>Exporting Science</td>
+                            <td>{{sellerDetails.exportCapabilities.exportingScience}}</td>
+                        </tr>
+                        <tr>
+                            <td>Exporting Percent</td>
+                            <td>{{sellerDetails.exportCapabilities.exportingPercent}}</td>
+                        </tr>
+                        <tr>
+                            <td>North America</td>
+                            <td>{{sellerDetails.exportCapabilities.northAmerica}}</td>
+                        </tr>
+                        <tr>
+                            <td>Western Europe</td>
+                            <td>{{sellerDetails.exportCapabilities.westernEurope}}</td>
+                        </tr>
+                        <tr>
+                            <td>Eastern Asia</td>
+                            <td>{{sellerDetails.exportCapabilities.easternAsia}}</td>
+                        </tr>
+                        <tr>
+                            <td>South America</td>
+                            <td>{{sellerDetails.exportCapabilities.southAmerica}}</td>
+                        </tr>
+                        <tr>
+                            <td>Northan Europe</td>
+                            <td>{{sellerDetails.exportCapabilities.northanEurope}}</td>
+                        </tr>
+                        <tr>
+                            <td>Africa</td>
+                            <td>{{sellerDetails.exportCapabilities.africa}}</td>
+                        </tr>
+                        <tr>
+                            <td>Central America</td>
+                            <td>{{sellerDetails.exportCapabilities.centralAmerica}}</td>
+                        </tr>
+                        <tr>
+                            <td>Southern Europe</td>
+                            <td>{{sellerDetails.exportCapabilities.southernEurope}}</td>
+                        </tr>
+                        <tr>
+                            <td>Middile East</td>
+                            <td>{{sellerDetails.exportCapabilities.middileEast}}</td>
+                        </tr>
+                        <tr>
+                        <td>Eastern Europe</td>
+                        <td>{{sellerDetails.exportCapabilities.easternEurope}}</td>
+                        </tr>
+                        <tr>
+                            <td>South Asia</td>
+                            <td>{{sellerDetails.exportCapabilities.southAsia}}</td>
+                            </tr>
+                            <tr>
+                            <td>Gulf</td>
+                            <td>{{sellerDetails.exportCapabilities.gulf}}</td>
+                            </tr>
+                            <tr>
+                            <td>Domastic Market</td>
+                            <td>{{sellerDetails.exportCapabilities.domasticMarket}}</td>
+                            </tr>
+                            </table>
+                            </div>
+                            </div>
     </div>
 </div>
 

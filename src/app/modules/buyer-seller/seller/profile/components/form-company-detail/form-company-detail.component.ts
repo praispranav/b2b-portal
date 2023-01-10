@@ -32,6 +32,8 @@ export class FormCompanyDetailComponent implements OnInit {
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
   tradeExpo:boolean=true;
+  bannerList:any[] = []
+
   options = [
     { value: 'Owner', label: 'Owner' },
     { value: 'CEO', label: 'CEO' },
@@ -177,6 +179,7 @@ export class FormCompanyDetailComponent implements OnInit {
   }
   buildTypeForm() {
     this.companyDetailForm = this.formBuilder.group({
+      banners: [],
       companyLogo: [""],
       companyPicture: [""],
       companyVideo: ["", [Validators.required]],
@@ -276,8 +279,17 @@ export class FormCompanyDetailComponent implements OnInit {
   }
   async subCompanyDetailForm() {
     try {
+
+
       // console.log("Tradethis.tradePicList);
       this.isLoading = true
+
+      const bannersList = [];
+      for await (const item of this.bannerList) {
+        const banner: any = await this.uploadImageToServer(item.originFileObj);
+        bannersList.push(banner.fileName)
+      }
+
       const pictureList = []
       for await (const item of this.pictureList) {
         const companyPicture: any = await this.uploadImageToServer(item.originFileObj);
@@ -310,6 +322,7 @@ export class FormCompanyDetailComponent implements OnInit {
 
       const formData = this.companyDetailForm.value;
       let reqObj = {
+        banners: bannersList,
         companyLogo: companyLogoPic[0] ? companyLogoPic[0] : '',
         contactPersonAlternateEmail: formData.contactPersonAlternateEmail ? formData.contactPersonAlternateEmail : '',
         companyWebsite: formData.companyWebsite ? formData.companyWebsite : '',
