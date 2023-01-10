@@ -126,9 +126,11 @@
                 </h4>
                 <ul *ngFor="let tab of tabs" class="list-unstyled ml-3">
                     <li>
-                        <a class="text-muted" href="">{{tab.name}}</a>
+                           <button class="tab" (click)="tabHandler(tab.name)">{{tab.name}}</button>
+                           <!-- <a class="text-muted" href="" >{{tab.name}}</a> -->
                     </li>
-                </ul>
+                                        <li>
+                                          </ul>
             </div>
         </div>
         <div class="col-md-3 p-3">
@@ -195,6 +197,8 @@
 
             </div>
         </div>
+        <div *ngIf="tab == 'Quality Control'">
+
 <div class="col-md-3">
 </div>
 <div class="col-md-9 ">
@@ -206,7 +210,9 @@
                     </p> -->
     </div>
 </div>
+</div>
 
+<div *ngIf="tab == 'Seller Details'">
 
 <div class="col-md-3">
 </div>
@@ -246,10 +252,12 @@
         </table>
     </div>
 </div>
+</div>
 
+<div *ngIf="tab == 'R & D'">
             <div class="col-md-3">
             </div>
-            <div class="col-md-9 ">
+<div class="col-md-9 ">
                 <div class="shadow bg-white p-3">
                     <h3>
                         <span class="semi-bold ">R&D</span>
@@ -258,7 +266,9 @@
                         </p> -->
                 </div>
                 </div>
+</div>
 
+<div *ngIf="tab == 'Company Introduction'">
 
                 <div class="col-md-3">
                 </div>
@@ -327,7 +337,7 @@
 
         <div class="col-md-3">
         </div>
-        <div class="col-md-9 ">
+                <div class="col-md-9 ">
             <h4 class="mr-r">Business Type</h4>
             <div class="shadow">
                 <table class="table table-borderless">
@@ -344,7 +354,7 @@
         </div>
         <div class="col-md-3">
         </div>
-        <div class="col-md-9 ">
+                <div class="col-md-9 ">
             <h4 class="mr-r">Company Details</h4>
             <div class="shadow">
                 <table class="table table-borderless">
@@ -381,10 +391,13 @@
                 </table>
             </div>
         </div>
+</div>
+
+<div *ngIf="tab == 'Certificate Center'">
 
         <div class="col-md-3">
         </div>
-        <div class="col-md-9 ">
+                <div class="col-md-9 ">
             <h4 class="mr-r">Certification</h4>
             <div class="shadow">
                 <ul class="list">
@@ -401,11 +414,12 @@
                         </table>
                         </div>
                         </div>
+</div>
 
-
+<div *ngIf="tab == 'Export Capability'">
         <div class="col-md-3">
         </div>
-        <div class="col-md-9 ">
+                <div class="col-md-9 ">
             <h4 class="mr-r">Export Capabilities</h4>
             <div class="shadow">
                 <table class="table table-borderless">
@@ -478,6 +492,7 @@
                         <td>{{sellerDetails.exportCapabilities.domasticMarket}}</td>
                         </tr>
                         </table>
+                        </div>
                         </div>
                         </div>
     </div>
