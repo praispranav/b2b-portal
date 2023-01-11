@@ -239,6 +239,7 @@ export class FormTradeInformationComponent implements OnInit {
   deleteOtherDetails(index: number): void {
     this.otherDetailsArr.removeAt(index);
   }
+
   async subTradeInformationForm() {
     let formData = this.tradeInformationForm.value;
     formData.types = this.paymentTypeList;
@@ -265,6 +266,7 @@ export class FormTradeInformationComponent implements OnInit {
       ProviderStorageService.productConstants.tradeInformation,
       data.formData
     );
+    debugger;
     this.formSubmitData.emit(data);
   }
   private resetFormGroup(form: FormGroup) {
