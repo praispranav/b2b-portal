@@ -41,54 +41,7 @@
         </div>
     </div>
   
-    <!-- <div class="card card-transparent ">
-        <pg-tabset tabAnimation="slide-left" Type="fillup">
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>All Products</span>
-                </ng-template>
-              
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Active Listings</span>
-                </ng-template>
-              
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>InActive Listings</span>
-                </ng-template>
-                
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Products Rejection</span>
-                </ng-template>
-               
-            </pg-tab>
-        </pg-tabset>
-    </div> -->
-    <!-- <div class="container">
-        <div class="row  p-10 activeBox">
-            <div class="col-md-2 bg-white border p-3 p-10 mr-2">
-                <p>All Products</p>
-                <span>6</span>
-            </div>
-            <div class="col-md-2 bg-white border p-3 p-10 mr-2">
-              <p>Active Listings</p>
-              <span>10</span>
-            </div>
-            <div class="col-md-2 bg-white border  p-3 p-10 mr-2">
-                <p>InActive Listings</p>
-                <span>8</span>
-            </div>
-            <div class="col-md-2 bg-white border p-3 p-10 mr-2">
-                <p>Products Rejection</p>
-                <span>12</span>
-            </div>
-        </div>
-    </div> -->
+  
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
@@ -101,10 +54,7 @@
             <div class="card-body">
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
-                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
-                        [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
-                        [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
-                    </ngx-datatable> -->
+                   
                     <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
