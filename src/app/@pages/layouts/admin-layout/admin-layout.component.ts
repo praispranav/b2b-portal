@@ -63,7 +63,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Brand Approval Requests",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/brand-approval/brand-approval-list",
         },
         {
           label: "Brands",

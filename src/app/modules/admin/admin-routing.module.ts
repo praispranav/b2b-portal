@@ -36,12 +36,16 @@ const routes: Routes = [
     loadChildren: './faq/faq.module#FaqModule',
   },
   {
-path:'user-list',
-loadChildren:'./user-verification-list/user-verification-list.module#UserVerificationListModule'
+    path: 'user-list',
+    loadChildren: './user-verification-list/user-verification-list.module#UserVerificationListModule'
   },
   {
     path: 'product-verification',
     loadChildren: './product-verification/product-verification.module#ProductVerificationModule',
+  },
+  {
+    path: 'brand-approval',
+    loadChildren: './brand-approval-request/brand-approval-request.module#BrandApprovalRequestModule'
   },
   {
     path: 'mqr',
@@ -52,15 +56,15 @@ loadChildren:'./user-verification-list/user-verification-list.module#UserVerific
     loadChildren: './buyer-sellers-admin/buyer-sellers-admin.module#BuyerSellersAdminModule',
   },
   {
-    path:'admin-blog',
-    loadChildren:'../admin/admin-blog/admin-blog.module#AdminBlogModule'
+    path: 'admin-blog',
+    loadChildren: '../admin/admin-blog/admin-blog.module#AdminBlogModule'
   },
   {
-    path:'admin-tradeShow',
-    loadChildren:'../admin/admin-tradeshow/admin-tradeshow.module#AdminTradeshowModule'
+    path: 'admin-tradeShow',
+    loadChildren: '../admin/admin-tradeshow/admin-tradeshow.module#AdminTradeshowModule'
   }
-  
-  
+
+
 ];
 
 @NgModule({
