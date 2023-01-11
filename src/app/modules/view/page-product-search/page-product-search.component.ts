@@ -37,7 +37,9 @@ export class PageProductSearchComponent implements OnInit {
     if (this.searchParams.pageSize && this.searchParams.pageSize.length) payload['pageSize'] = this.searchParams.pageSize;
     if (this.searchParams.moq && this.searchParams.moq.length) payload['moq'] = this.searchParams.moq
     if (this.searchParams.productType && this.searchParams.productType.length) payload['productType'] = this.searchParams.productType
-    console.log("Search Params", this.searchParams)
+    if (this.searchParams.min && this.searchParams.min.length) payload['min'] = this.searchParams.min
+    if (this.searchParams.max && this.searchParams.max.length) payload['max'] = this.searchParams.max
+
     this.productService
       .searchProduct(payload)
       .subscribe((res: any) => {

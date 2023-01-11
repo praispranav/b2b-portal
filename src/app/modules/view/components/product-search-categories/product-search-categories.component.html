@@ -27,6 +27,26 @@
     </div>
 </div>
 
+<div>
+    <h5>
+        Price
+    </h5>
+    <div class="row">
+        <div class="col-8 p-1 d-flex align-items-center">
+            <input 
+                class="form-control" type="number" name="min" 
+                placeholder="min" [(ngModel)]="min">
+            <span class="fw-bold">&nbsp;-&nbsp;</span>
+            <input 
+                class="form-control" type="number" 
+                placholder="max" name="max" [(ngModel)]="max">
+        </div>
+        <div class="col-4 p-1">
+            <button class="btn rounded-pill" (click)="minPriceSearch()">Ok</button>
+        </div>
+    </div>
+</div>
+
 <!-- <label for="supplier-types">
     <h5>
         Supplier Types
@@ -71,22 +91,6 @@
         </li>
     </ul>
 </label>
-
-<div>
-    <h5>
-        Price
-    </h5>
-    <div class="row">
-        <div class="col-8 p-1 d-flex align-items-center">
-            <input class="form-control" type="text" placeholder="min">
-            <span class="fw-bold">&nbsp;-&nbsp;</span>
-            <input class="form-control" type="text" placeholder="max">
-        </div>
-        <div class="col-4 p-1">
-            <button class="btn rounded-pill">Ok</button>
-        </div>
-    </div>
-</div>
 <label for="supplier-country">
     <h5>
         Supplier Country
