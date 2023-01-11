@@ -85,7 +85,6 @@ export class PageProductAddComponent implements OnInit {
         this.currentTabIndex += 1
       }
       if (event.value === "third") {
-        debugger;
         this.thirdTabFormValue = {
           sellingPriceType: this.allFormData.sellingPriceType
             ? this.allFormData.sellingPriceType

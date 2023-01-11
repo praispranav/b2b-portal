@@ -14,6 +14,7 @@ export class PageProductSearchComponent implements OnInit {
   categories: any[] = [];
   selectedCategories: any[] = [];
   searchParams: any = {};
+  supplierCountries: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -39,12 +40,16 @@ export class PageProductSearchComponent implements OnInit {
     if (this.searchParams.productType && this.searchParams.productType.length) payload['productType'] = this.searchParams.productType
     if (this.searchParams.min && this.searchParams.min.length) payload['min'] = this.searchParams.min
     if (this.searchParams.max && this.searchParams.max.length) payload['max'] = this.searchParams.max
+    if (this.searchParams.countries && this.searchParams.countries.length) payload['countries'] = this.searchParams.countries
 
     this.productService
       .searchProduct(payload)
       .subscribe((res: any) => {
         if(res.data.categories){
           this.categories = res.data.categories;
+        }
+        if(res.data.supplierCountries){
+          this.supplierCountries = res.data.supplierCountries;
         }
         if (Array.isArray(res.data.products)) {
           const newProductList = res.data.products.map((i) => {
