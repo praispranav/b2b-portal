@@ -1,82 +1,19 @@
-
 <div class="p-2">
-    <div class="container">
-        <div class="row  p-10 activeBox">
-            <div class="col-md-4  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-md-4  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Date</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="col-md-4  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Bulk Action</option>
-                    <option value="1">Approved</option>
-                    <option value="2">Reject</option>
-                   
-                </select>
-            </div>
+   
 
-
-
-
-        </div>
-    </div>
-    <!-- <div class="card card-transparent ">
-        <pg-tabset tabAnimation="slide-left" Type="fillup">
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>All Products</span>
-                </ng-template> -->
-    <!-- <app-dashboard-last-conversation></app-dashboard-last-conversation> -->
-    <!-- </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Active Listings</span>
-                </ng-template> -->
-    <!-- <app-dashboard-last-mqrs></app-dashboard-last-mqrs> -->
-    <!-- </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>InActive Listings</span>
-                </ng-template>
-                 <app-dashboard-last-mqrs></app-dashboard-last-mqrs> -->
-    <!-- </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Products Rejection</span>
-                </ng-template>  -->
-    <!-- <app-dashboard-last-mqrs></app-dashboard-last-mqrs> -->
-    <!-- </pg-tab> -->
-    <!-- </pg-tabset> -->
-    <!-- </div> -->
 
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
             <div class="card-header  d-flex justify-content-between">
-                <div class="card-title">Admin MQR
+                <div class="card-title">Admin-Brand Approval Request
                 </div>
                 <div class="export-options-container"></div>
-                <!-- <div class="clearfix"></div> -->
+
             </div>
             <div class="card-body">
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
-                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
-                        [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
-                        [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
-                    </ngx-datatable> -->
                     <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
                         [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
                         [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
@@ -98,10 +35,16 @@
                             <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
                                 <button class="me-4 btn btn-primary show-notification" md-icon-button
                                     (click)="delete(value)">
-                                    Update
+                                    Action
                                 </button>
+                             
                             </ng-template>
                         </ngx-datatable-column>
+
+
+
+
+
                     </ngx-datatable>
                 </div>
             </div>

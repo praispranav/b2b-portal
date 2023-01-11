@@ -20,12 +20,12 @@ export class BrandApprovalListComponent implements OnInit {
 
 
   advanceColumns = [
-   { name: 'Product Name' },
-    { name: 'Category' },
-    { name: 'Posted By' },
-    { name: 'Date Time' },
-    { name: 'MOQ' },
-    { name: 'Price $' },
+   { name: 'Brand Name' },
+    { name: 'Brand Type' },
+    { name: 'Serial Number' },
+    { name: 'Product Link' },
+    // { name: 'MOQ' },
+    // { name: 'Price $' },
 
   ];
 
@@ -85,7 +85,7 @@ export class BrandApprovalListComponent implements OnInit {
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser-three.json`);
+    req.open('GET', `assets/data/table_browser-four.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
