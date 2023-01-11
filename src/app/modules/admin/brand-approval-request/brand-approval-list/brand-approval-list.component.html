@@ -1,0 +1,54 @@
+<div class="p-2">
+   
+
+
+    <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
+        <!-- START card -->
+        <div class="card card-transparent">
+            <div class="card-header  d-flex justify-content-between">
+                <div class="card-title">Admin-Brand Approval Request
+                </div>
+                <div class="export-options-container"></div>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" style="height:600px;overflow-y: hidden">
+
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
+                        [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                        [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                        [scrollbarV]="true" (page)="onPage($event)">
+                        >
+                        <ngx-datatable-column name="">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <input type="checkbox" (click)="handler(row)" />
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Img">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <img src="{{row.image}}" alt="">
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
+                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button
+                                    (click)="delete(value)">
+                                    Action
+                                </button>
+                             
+                            </ng-template>
+                        </ngx-datatable-column>
+
+
+
+
+
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+        <!-- END card -->
+    </pg-container>
+</div>

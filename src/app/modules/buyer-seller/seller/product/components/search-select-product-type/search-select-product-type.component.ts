@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProviderMaterCategoryService } from '../../../../../../core/providers/master/provider-mater-category.service';
 import { ProviderCategoryService } from '../../../../../../core/providers/user/provider-category.service';
 
 @Component({
@@ -17,7 +18,11 @@ export class SearchSelectProductTypeComponent implements OnInit {
   allCategoryListType3: any = [];
   categoryListType3:any [] = [];
   preViewItem: any = null;
-  constructor(private categoryService: ProviderCategoryService, private router: Router) { }
+  // ProviderMaterCategoryService
+  constructor(
+    private categoryService: ProviderMaterCategoryService, 
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.getCategoryListType3(0, 1000, { level: "0" });
@@ -91,7 +96,7 @@ export class SearchSelectProductTypeComponent implements OnInit {
     query: any = {}
   ) {
     this.categoryService
-      .getCategoryListByFilter(index, length, query)
+      .getMaterCategoryListByFilter(index, length, query)
       .subscribe((res) => {
         this.categoryListType3 = res.data.map((i) => {
           this.allCategoryListType3.push(i);
@@ -111,7 +116,7 @@ export class SearchSelectProductTypeComponent implements OnInit {
       this.remChildren(item);
     }
     this.categoryService
-      .getCategoryListByFilter(0, 1000, { parentId: item["_id"] })
+      .getMaterCategoryListByFilter(0, 1000, { parentId: item["_id"] })
       .subscribe((res) => {
         item["_toggle"] = true;
         this.preViewItem = item;

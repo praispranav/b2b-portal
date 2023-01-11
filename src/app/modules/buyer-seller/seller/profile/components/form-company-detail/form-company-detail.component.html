@@ -2,6 +2,20 @@
 
     <div class="row">
         <div class="col-md-4">
+            <h4>Banner</h4>
+            <pg-upload ListType="picture-card" [(FileList)]="bannerList" [ShowButton]="bannerList.length < 4"
+                >
+                <div class="pic-placeholder">
+                    <i class="pg-icon p-b-5">upload</i>
+                    <div class="fs-12">Upload</div>
+                </div>
+            </pg-upload>
+        </div>
+     
+    
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <h4>Company Picture</h4>
             <pg-upload ListType="picture-card" [(FileList)]="pictureList" [ShowButton]="pictureList.length < 3">
                 <div class="pic-placeholder">

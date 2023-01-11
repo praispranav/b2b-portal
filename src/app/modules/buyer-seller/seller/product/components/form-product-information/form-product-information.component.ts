@@ -310,7 +310,7 @@ export class FormProductInformationComponent implements OnInit {
       productName: ["", [Validators.required]],
       productType: ["", [Validators.required]],
       brandName: ["", [Validators.required]],
-      isProduct: [""],
+      isProduct: ["No"],
       productKeywords: [[], [Validators.required]],
       sellerOwnCategorySelect: ["", [Validators.required]],
       sellerOwnCategoryCreate: ["", [Validators.required]],

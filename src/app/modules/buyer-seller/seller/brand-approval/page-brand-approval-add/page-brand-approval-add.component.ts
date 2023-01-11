@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ImageService } from "../../../../../core/providers/user/image.service";
 import { ProviderBrandApprovalService } from "./../../../../../core/providers/user/provider-brand-approval.service";
 import { AppMessageService } from "./../../../../../core/services/app-message.service";
 
@@ -17,7 +18,8 @@ export class PageBrandApprovalAddComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private appMessageService: AppMessageService,
-    private providerBrandApprovalService: ProviderBrandApprovalService
+    private providerBrandApprovalService: ProviderBrandApprovalService,
+    private imageService: ImageService,
   ) {}
 
   get f() {
@@ -72,12 +74,23 @@ export class PageBrandApprovalAddComponent implements OnInit {
     //     await this.toBase64(this.imageList[0].originFileObj)
     //   );
     // }
+
+    const pictureList = [];
+      for await (const item of this.imageList) {
+        console.log(item.originFileObj)
+        const productImage: any = await this.uploadImageToServer(
+          item.originFileObj
+        );
+        pictureList.push(productImage.fileName);
+      }
+      console.log(pictureList)
     if (this.brandForm.invalid) {
       this.markFormGroupTouched(this.brandForm);
       return;
     }
 
     const formValue = this.brandForm.value;
+    formValue.image = pictureList[0] || "";
     formValue.products = formValue.products.map((i) => i.product);
     this.providerBrandApprovalService.addBrandApproval(formValue).subscribe(
       (res) => {
@@ -95,6 +108,21 @@ export class PageBrandApprovalAddComponent implements OnInit {
       }
     );
   }
+
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.imageService.uploadImage(image).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
   async toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

@@ -8,7 +8,7 @@ import {
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // Routing
@@ -75,6 +75,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CoreModule } from './core/core.module';
 import { MessageService } from './@pages/components/message/message.service';
 import { MessageModule } from './@pages/components/message/message.module';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 // import { ProviderComponent } from './provider/provider.component';
 
 // import {SocialService} from './social/SocialService';
@@ -157,6 +158,11 @@ export class AppHammerConfig extends HammerGestureConfig {
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: AppHammerConfig,
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi   : true,
     },
   ],
   bootstrap: [AppComponent],

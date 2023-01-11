@@ -134,7 +134,7 @@
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.country.invalid && (f.country.dirty || f.country.touched)">
                         <label for="country">Country</label>
 
-                        <select id="fcp-company" formControlName="country" class="form-control" #myCountry (change)='onCountrySelected($event)'>
+                        <select id="fcp-company" formControlName="country" class="form-control p-1" #myCountry (change)='onCountrySelected($event)'>
                         <option *ngFor="let c of countries" [value]="c.name">{{c.country}}</option>
                       </select>
                     </div>
@@ -172,8 +172,8 @@
                             <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.code.invalid && (f.code.dirty || f.code.touched)">
                                 <label for="code">Code</label>
 
-                                <select name="code" id="phoneCode" class="form-control mr-sm-2" formControlName="code">
-                  <option class="ms-1" *ngFor="let code of codes" [value]="code.code">{{code.code}}</option>
+                                <select name="code" id="phoneCode" class="form-control mr-sm-2 p-1" formControlName="code">
+                  <option class="ms-1" *ngFor="let c of countries" [value]="c.code">{{c.code}}</option>
                 </select>
                             </div>
                             <div *ngIf="f.code.invalid && (f.code.dirty || f.code.touched)">
@@ -183,7 +183,7 @@
                         <div class="col-md-9">
                             <div pgFormGroupDefault class="form-group form-group-default w-d" [class.has-error]="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
                                 <label for="phone">Mobile Number</label>
-                                <input type="text" formControlName="phone" placeholder="Enter city" class="form-control" id="phone" />
+                                <input type="text" formControlName="phone" placeholder="Enter 10 digit mobile number" class="form-control" id="phone" />
                             </div>
                             <div *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
                                 <label *ngIf="f.phone.errors.required" class="error">This field is required.</label>
@@ -210,9 +210,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-check pl-0">
-                        <input type="checkbox" id="checkbox1">
-                        <!-- <label for="checkbox1" class="ml-2"> I agree to abide by the <br> Bizzexpo.com Membership <a href="javascript:void(0)"
-                        class="text-info">Agreement</a></label> -->
+                        <input type="checkbox" id="check" name="check" value="true" formControlName="checkbox">
+                     
 
                     </div>
                     <p class="check-box">

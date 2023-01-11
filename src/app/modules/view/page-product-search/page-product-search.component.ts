@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
 import { FormProductService } from "../../../core/providers/user/form-product.service";
 
@@ -11,28 +11,56 @@ import { FormProductService } from "../../../core/providers/user/form-product.se
 export class PageProductSearchComponent implements OnInit {
   searchText: string = "";
   productList: any[] = [];
+  categories: any[] = [];
+  selectedCategories: any[] = [];
+  searchParams: any = {};
 
   constructor(
     private route: ActivatedRoute,
-    private productService: FormProductService
+    private productService: FormProductService,
+    private router:Router
   ) {
     this.route.queryParams.subscribe((params) => {
       this.searchText = params["search"];
+      this.searchParams = params;
       this.getSearchedProducts();
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getSearchedProducts() {
-    this.productService.searchProduct(this.searchText).subscribe((res: any) => {
-      if (Array.isArray(res.data)) {
-        const newProductList = res.data.map((i)=>{
-          return { name: i.productName, price: i.moq, year:"", supplier: "", image: environment.imageStorage + i.productImage }
-        })
-        this.productList = newProductList;
-        console.log(newProductList)
-      }
-    });
+    const payload = {};
+    payload['search'] = this.searchText;
+    if (this.searchParams.categoryId && this.searchParams.categoryId.length) payload['categoryId'] = this.searchParams.categoryId;
+    if (this.searchParams.page && this.searchParams.page.length) payload['page'] = this.searchParams.page;
+    if (this.searchParams.pageSize && this.searchParams.pageSize.length) payload['pageSize'] = this.searchParams.pageSize;
+    if (this.searchParams.moq && this.searchParams.moq.length) payload['moq'] = this.searchParams.moq
+    if (this.searchParams.productType && this.searchParams.productType.length) payload['productType'] = this.searchParams.productType
+    console.log("Search Params", this.searchParams)
+    this.productService
+      .searchProduct(payload)
+      .subscribe((res: any) => {
+        if(res.data.categories){
+          this.categories = res.data.categories;
+        }
+        if (Array.isArray(res.data.products)) {
+          const newProductList = res.data.products.map((i) => {
+            return {
+              name: i.productName,
+              price: i.moq,
+              year: "",
+              supplier: "",
+              image: environment.imageStorage + i.productImage,
+            };
+          });
+          this.productList = newProductList;
+        }
+      });
+
+    }
+
+    selectProductType(productType){
+      this.router.navigate([], { queryParams: { ...this.searchParams, productType: productType}})
+    }
   }
-}

@@ -1,23 +1,15 @@
-
-
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { ModalDirective } from 'ngx-bootstrap';
-import { UserVerificationService } from '../../../../core/providers/user/user-verification.service';
-import * as moment from "moment";
-import { environment } from '../../../../../environments/environment';
-
 @Component({
-  selector: 'app-user-verification-list',
-  templateUrl: './user-verification-list.component.html',
-  styleUrls: ['./user-verification-list.component.scss']
+  selector: 'app-brand-approval-list',
+  templateUrl: './brand-approval-list.component.html',
+  styleUrls: ['./brand-approval-list.component.scss']
 })
-export class UserVerificationListComponent implements OnInit {
+export class BrandApprovalListComponent implements OnInit {
 
   @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
 
-  imageUrl: string = environment.imageStorage
   appName = null;
   appDescription = null;
   appPrice = null;
@@ -28,69 +20,81 @@ export class UserVerificationListComponent implements OnInit {
 
 
   advanceColumns = [
-    { name: 'Supplier/Buyer Name', prop: "name" },
-    { name: 'Company Name', prop: "company" },
-    { name: 'Type', prop: "role" },
-    { name: 'Country', prop: "country" },
-    // { name: 'State', prop:'state' },
-    { name: 'City', prop: 'city' },
-    // { name: 'Posted By', prop: '' },
-    { name: 'Listing Date', prop: 'timestamp' },
-    // { name: 'Last Active Product', prop: '' }
+   { name: 'Brand Name' },
+    { name: 'Brand Type' },
+    { name: 'Serial Number' },
+    { name: 'Product Link' },
+    // { name: 'MOQ' },
+    // { name: 'Price $' },
 
   ];
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
 
-
+  //No Option YET
+  //https://github.com/swimlane/ngx-datatable/issues/423
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor(
-    private router: Router,
-    private userVerificationService: UserVerificationService
-  ) {
+  constructor() {
+    console.log(this.columnModeSetting);
+    this.fetch(data => {
+      // cache our list
+      this.basicSort = [...data];
+
+      
+      this.basicRows = data;
+    });
+
+  
+    this.fetchSampleAdvance(data => {
+     
+      this.advanceRows = data;
+    });
+
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
       this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
     };
   }
-
-  ngOnInit() {
-    this.getUsers();
-    this.fetchSampleAdvance()
-  }
-
-  getUsers() {
-    this.userVerificationService.getUsers().subscribe((res) => {
-      console.log('res', res)
-      if(res.header.code === 200){
-        this.advanceRows = res.data.map((i)=>{
-          return {
-            ...i, timestamp: moment(new Date(i.timestamp)).format('YYYY-DD-MM')
-          }
-        })
-      }
-    })
-  }
-
+ 
 
   onActivate(event) { }
+  fetch(cb) {
+    // const req = new XMLHttpRequest();
+    // req.open('GET', `assets/data/table.json`);
 
+    // req.onload = () => {
+    //   cb(JSON.parse(req.response));
+    // };
 
-  fetchSampleAdvance() {
+    // req.send();
+  }
+
+  fetchSampleDynamic(cb) {
+    // const req = new XMLHttpRequest();
+    // req.open('GET', `assets/data/table_sample.json`);
+
+    // req.onload = () => {
+    //   cb(JSON.parse(req.response));
+    // };
+
+    // req.send();
+  }
+
+  fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser.json`);
+    req.open('GET', `assets/data/table_browser-four.json`);
 
     req.onload = () => {
-      console.log(req.response)
+      cb(JSON.parse(req.response));
     };
 
     req.send();
   }
 
-
+  ngOnInit() { }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -122,14 +126,13 @@ export class UserVerificationListComponent implements OnInit {
     // this.dynamicRows = [...this.dynamicRows, temp];
     this.addNewAppModal.hide();
   }
+
   select(event) {
     console.log(event);
   }
 
-  onPage(event) {
+  onPage(event){
     console.log(event);
   }
-  view(sellerId) {
-    this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: sellerId, type: 'seller'}});
-  }
 }
+
