@@ -40,7 +40,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/admin/dashboard",
         },
         {
-          label: "MQR",
+          label: "RFQ",
           routerLink: "/admin/mqr/mqr-list",
         },
         {

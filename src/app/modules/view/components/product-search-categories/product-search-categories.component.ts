@@ -11,7 +11,8 @@ export class ProductSearchCategoriesComponent implements OnInit {
   selectedCategory: any = {}
   moq: string = '';
   min: string = '';
-  max: string = ''
+  max: string = '';
+  selectedCountries: any = {}
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe((params) => {
@@ -22,8 +23,14 @@ export class ProductSearchCategoriesComponent implements OnInit {
     })
   }
 
-
+  supplierCountries:any []= [];
+  countriesBasedOnProducts:any[] = []
   @Input('categories') categoriesList: any[] = [];
+  @Input('supplierCountries') set ab(value){
+    this.supplierCountries = value;
+    this.countriesBasedOnProducts = value
+  }
+  // @Input('supplierCountries') countriesBasedOnProducts:any[] = []
 
   countryList: any[] = [
     {
@@ -98,4 +105,31 @@ export class ProductSearchCategoriesComponent implements OnInit {
     // }
   }
 
+  onChangeCountriesSearch(e){
+    const value = e.target.value
+    console.log("COuntries", value);
+    if(value.trim().length === 0 && this.countriesBasedOnProducts.length > 0) return this.supplierCountries = this.countriesBasedOnProducts;
+    this.supplierCountries =  this.countriesBasedOnProducts.filter((i)=>{
+      return i.toLowerCase().includes(value.toLowerCase())
+    } 
+    )
+  }
+
+  onSelectCountry(event, value, index){
+    const checked = event.target.checked;
+    this.selectedCountries[value] = checked
+
+    this.router.navigate([], { queryParams: { ...this.searchParams, countries: this.generateCountryQuery(this.selectedCountries) }})
+  }
+
+  generateCountryQuery(countries){
+    const selectedCountries = Object.entries(countries);
+
+    let str = '';
+    selectedCountries.forEach((i)=>{
+      if(i[1]) str += i[0] + '-'
+    })
+    
+    return str
+  }
 }

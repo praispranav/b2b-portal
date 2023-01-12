@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import * as moment from 'moment'
 import { ModalDirective } from 'ngx-bootstrap';
+import { RequestQuotationService } from '../../../../core/providers/user/request-quotation.service';
 @Component({
   selector: 'app-page-admin-mqr',
   templateUrl: './page-admin-mqr.component.html',
@@ -15,17 +17,25 @@ export class PageAdminMqrComponent implements OnInit {
   appPrice = null;
   appNotes = null;
 
+  selectedCategory: string = 'All';
+  selectedStatus: string = 'All';
+  categoryList: any[] = [];
+
+  page: number = 1;
+  pageSize: number = 100;
+
   basicRows = [];
   basicSort = [];
 
 
   advanceColumns = [
-   { name: 'Product Name' },
+    { name: 'Product Name' },
     { name: 'Category' },
     { name: 'Posted By' },
     { name: 'Date Time' },
     { name: 'MOQ' },
     { name: 'Price $' },
+    { name: 'Status' },
 
   ];
 
@@ -37,7 +47,7 @@ export class PageAdminMqrComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor() {
+  constructor(private requestForQuotationService: RequestQuotationService) {
     console.log(this.columnModeSetting);
     this.fetch(data => {
       // cache our list
@@ -52,10 +62,10 @@ export class PageAdminMqrComponent implements OnInit {
     //   this.dynamicRows = data;
     // });
 
-    this.fetchSampleAdvance(data => {
-      // push our inital complete list
-      this.advanceRows = data;
-    });
+    // this.fetchSampleAdvance(data => {
+    //   // push our inital complete list
+    //   this.advanceRows = data;
+    // });
 
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
@@ -101,7 +111,9 @@ export class PageAdminMqrComponent implements OnInit {
     req.send();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getAllRequestForQuotationList();
+  }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -138,7 +150,30 @@ export class PageAdminMqrComponent implements OnInit {
     console.log(event);
   }
 
-  onPage(event){
+  onPage(event) {
     console.log(event);
+  }
+
+  getAllRequestForQuotationList() {
+    this.requestForQuotationService.getAllRequestForQuotation({ page:this.page, pageSize: this.pageSize, status: this.selectedStatus, category: this.selectedCategory }).subscribe((res) => {
+      console.log(res);
+      if (Array.isArray(res.data)) {
+        const categoryIds:any = {};
+
+        this.advanceRows = res.data.map((i) => {
+          categoryIds[i.productCategory[0]] = i.category;
+          return { ...i, dateTime: moment(i.timestamp).format('YYYY-MM-DD'), moq: i.quantity, price: i.budget }
+        })
+        this.categoryList =  Object.entries(categoryIds);
+      }
+    })
+  }
+
+  handleStatusChange(event){
+    this.getAllRequestForQuotationList();
+  }
+
+  handleCategoryChange(){
+    this.getAllRequestForQuotationList();
   }
 }

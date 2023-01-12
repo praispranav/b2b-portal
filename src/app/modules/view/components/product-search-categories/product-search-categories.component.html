@@ -47,6 +47,29 @@
     </div>
 </div>
 
+<label for="supplier-country">
+    <h5>
+        Supplier Country
+    </h5>
+    <div class="form-group input-group ">
+        <div class="input-group-append">
+            <span class="input-group-text primary"><i class="pg-icon ">search</i>
+            </span>
+        </div>
+        <input type="text" (keyup)="onChangeCountriesSearch($event)" placeholder="Search" class="form-control ">
+    </div>
+    <p class="text-muted">Suggestions</p>
+    <ul class="list-unstyled">
+        <li *ngFor="let country of supplierCountries; let i = index;">
+            <input type="checkbox" class="mt-2" (change)="onSelectCountry($event, country, i)">
+            <!-- <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt=""> -->
+            <span>
+                {{country}}
+            </span>
+        </li>
+    </ul>
+</label>
+
 <!-- <label for="supplier-types">
     <h5>
         Supplier Types
@@ -91,28 +114,7 @@
         </li>
     </ul>
 </label>
-<label for="supplier-country">
-    <h5>
-        Supplier Country
-    </h5>
-    <div class="form-group input-group ">
-        <div class="input-group-append">
-            <span class="input-group-text primary"><i class="pg-icon ">search</i>
-            </span>
-        </div>
-        <input type="text" formControlName="search" placeholder="Search" class="form-control ">
-    </div>
-    <p class="text-muted">Suggestions</p>
-    <ul class="list-unstyled">
-        <li *ngFor="let country of countryList">
-            <input type="checkbox" class="mt-2">
-            <img class="img-fluid img-custom ml-1" src="{{country.image}}" alt="">
-            <span>
-                {{country.name}}
-            </span>
-        </li>
-    </ul>
-</label>
+
 <label for="past-export-country">
     <h5>
         Past Export Country
