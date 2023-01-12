@@ -26,6 +26,10 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/seller/product/form-beign-adding",
         },
         {
+          label: "All Added Products",
+          routerLink: "/seller/product/product-list",
+        },
+        {
           label: "Make Your Own Categories",
           routerLink: "/seller/category/category-list",
         },
