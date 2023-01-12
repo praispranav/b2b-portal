@@ -35,7 +35,8 @@
                 </div>
             </div>
         </div>
-        <div class="row border mb-4 p-4">
+        <div class="row mb-4 p-4" style="margin-left: -22px">
+           
             <div class="col-md-3">
                 <label for="product-brand">Is product is under any brand?</label>
             </div>
@@ -52,7 +53,7 @@
                 </label>
             </div>
 
-            <div class="row" *ngIf="f.isProduct.value === 'Yes'">
+            <div class="row" *ngIf="f.isProduct.value === 'Yes'" style="margin-left: -17px;">
                 <div class="col-md-6">
                     <!-- <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.brandName?.invalid && (f.brandName?.dirty || f.brandName?.touched)">
                     <label for="product-name">Brand Name</label>
