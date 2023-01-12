@@ -30,8 +30,8 @@ export class FormProductService {
     return this.http.delete<any>(`${environment.apiUrl}/product/delete/${id}`);
   }
 
-  searchProduct(search:string){
-    return this.http.get(environment.apiUrl + '/product', { params: { search }})
+  searchProduct(params){
+    return this.http.post(environment.apiUrl + '/product-search', { }, { params: params })
   }
 
   searchProductBySeller({ search, page, pageSize, sellerId, categoryId }){

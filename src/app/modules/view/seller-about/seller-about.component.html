@@ -305,9 +305,7 @@
                         <tr>
                             <td class="bg"><b>Main Products</b></td>
                         <td>
-                            <span
-                                *ngFor="let mainProduct of sellerDetails.companyProfile.mainProduct">{{mainProduct}},</span>
-
+                            <span *ngFor="let product of sellerDetails.companyProfile.mainProduct">{{product}}/</span>
                         </td>
                     </tr>
                     <tr>

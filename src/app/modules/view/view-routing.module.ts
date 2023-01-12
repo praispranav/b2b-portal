@@ -46,6 +46,8 @@ import { SellerAboutComponent } from "./seller-about/seller-about.component";
 import { CatalogueSellerCompanyDetailsComponent } from "./components/catalogue-seller-company-details/catalogue-seller-company-details.component";
 import { SellerSearchComponent } from "./seller-search/seller-search.component";
 import { PageHomeRfqFormTwoComponent } from "./page-home-rfq-form-two/page-home-rfq-form-two.component";
+import { PageNoProductFoundComponent } from "./page-no-product-found/page-no-product-found.component";
+import { PageNoSupplierFoundComponent } from "./page-no-supplier-found/page-no-supplier-found.component";
 
 const routes: Routes = [
   {
@@ -154,7 +156,14 @@ const routes: Routes = [
     path: "sell",
     component: PageSellComponent,
   },
-
+  {
+    path: "no-product",
+    component: PageNoProductFoundComponent,
+  },
+  {
+    path: "no-supplier",
+    component: PageNoSupplierFoundComponent,
+  },
   {
     path: "seller-catalogue-contact",
     component: PageSellerCatalogueContactComponent,

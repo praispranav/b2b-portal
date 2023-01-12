@@ -1,13 +1,53 @@
 <label for="categories">
-    <h5>CATEGORIES
-    </h5>
-    <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
-        <li>
-            <a class="text-muted" href="">{{categorie.name}}</a>
-        </li>
-    </ul>
+    <h5>CATEGORIES</h5>
+    <div *ngIf="searchParams.categoryId && searchParams.categoryId.length > 1">
+        <a class="text-muted">{{ getCategoryName }}</a>
+        <button class="btn btn-primary" (click)="onSelect(null)">Clear</button>
+    </div>
+        <div *ngIf="!(searchParams.categoryId && searchParams.categoryId.length > 1)">
+            <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
+                <li (click)="onSelect(categorie._id)">
+                    <a class="text-muted">{{categorie.name}}</a>
+                </li>
+            </ul>
+        </div>
 </label>
-<label for="supplier-types">
+
+<div>
+    <h5>
+        Min. Order
+    </h5>
+    <div class="row">
+        <div class="col-8 p-1">
+            <input class="form-control" type="text" [(ngModel)]="moq" placeholder="less than" name="moq">
+        </div>
+        <div class="col-4 p-1">
+            <button class="btn rounded-pill" (click)="submitMoq()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h5>
+        Price
+    </h5>
+    <div class="row">
+        <div class="col-8 p-1 d-flex align-items-center">
+            <input 
+                class="form-control" type="number" name="min" 
+                placeholder="min" [(ngModel)]="min">
+            <span class="fw-bold">&nbsp;-&nbsp;</span>
+            <input 
+                class="form-control" type="number" 
+                placholder="max" name="max" [(ngModel)]="max">
+        </div>
+        <div class="col-4 p-1">
+            <button class="btn rounded-pill" (click)="minPriceSearch()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<!-- <label for="supplier-types">
     <h5>
         Supplier Types
     </h5>
@@ -51,34 +91,6 @@
         </li>
     </ul>
 </label>
-<div>
-    <h5>
-        Min. Order
-    </h5>
-    <div class="row">
-        <div class="col-8 p-1">
-            <input class="form-control" type="text" placeholder="less than">
-        </div>
-        <div class="col-4 p-1">
-            <button class="btn rounded-pill">Ok</button>
-        </div>
-    </div>
-</div>
-<div>
-    <h5>
-        Price
-    </h5>
-    <div class="row">
-        <div class="col-8 p-1 d-flex align-items-center">
-            <input class="form-control" type="text" placeholder="min">
-            <span class="fw-bold">&nbsp;-&nbsp;</span>
-            <input class="form-control" type="text" placeholder="max">
-        </div>
-        <div class="col-4 p-1">
-            <button class="btn rounded-pill">Ok</button>
-        </div>
-    </div>
-</div>
 <label for="supplier-country">
     <h5>
         Supplier Country
@@ -122,4 +134,4 @@
             </span>
         </li>
     </ul>
-</label>
+</label> -->
