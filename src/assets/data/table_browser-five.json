@@ -1,0 +1,18 @@
+[
+   {
+      "image":"./assets/img/cover4.jpg",
+    "productName":"shirt",
+      "type":"Supplier",
+      "category": "Clothes",
+      "brand":"Sparky",
+      "postedBy":"Riti",
+      "dateTime":"02/01/2023",
+      "moq":"uitut",
+      "price":"12000",
+      "status":"Pending"
+
+    
+      
+   }
+  
+]
