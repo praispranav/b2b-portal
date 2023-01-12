@@ -41,9 +41,11 @@ export class SellerAboutComponent implements OnInit {
   ngOnInit() {
   }
 
-  tabHandler(tab: string) {
-    tab = this.tab;
+  tabHandler(a: string) {
+    // alert(a)
+    this.tab = a
   }
+
 
   getSellerDetails() {
     this.sellerService.sellerSingleAllDetails( this.searchParams.sellerId ).subscribe((res: any) => {
