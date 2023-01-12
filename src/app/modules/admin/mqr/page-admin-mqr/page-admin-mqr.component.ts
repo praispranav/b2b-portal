@@ -27,7 +27,6 @@ export class PageAdminMqrComponent implements OnInit {
   basicRows = [];
   basicSort = [];
 
-
   advanceColumns = [
     { name: 'Product Name' },
     { name: 'Category' },
@@ -36,8 +35,10 @@ export class PageAdminMqrComponent implements OnInit {
     { name: 'MOQ' },
     { name: 'Price $' },
     { name: 'Status' },
-
   ];
+
+  selectedRfq: any = null;
+  updateStatus: string = ''
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
@@ -117,18 +118,10 @@ export class PageAdminMqrComponent implements OnInit {
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
-
-    // filter our data
     const temp = this.basicSort.filter(function (d) {
-      // Change the column name here
-      // example d.places
       return d.title.toLowerCase().indexOf(val) !== -1 || !val;
     });
-
-    // update the rows
     this.basicRows = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
   }
 
   showModal() {
@@ -155,15 +148,19 @@ export class PageAdminMqrComponent implements OnInit {
   }
 
   getAllRequestForQuotationList() {
-    this.requestForQuotationService.getAllRequestForQuotation({ page:this.page, pageSize: this.pageSize, status: this.selectedStatus, category: this.selectedCategory }).subscribe((res) => {
-      console.log(res);
-      if (Array.isArray(res.data)) {
+    this.requestForQuotationService.getAllRequestForQuotation({ 
+      page:this.page, 
+      pageSize: this.pageSize, 
+      status: this.selectedStatus, 
+      category: this.selectedCategory 
+    }).subscribe((res) => {
+      if ( Array.isArray(res.data) ) {
         const categoryIds:any = {};
-
         this.advanceRows = res.data.map((i) => {
           categoryIds[i.productCategory[0]] = i.category;
           return { ...i, dateTime: moment(i.timestamp).format('YYYY-MM-DD'), moq: i.quantity, price: i.budget }
         })
+        console.log(this.advanceRows);
         this.categoryList =  Object.entries(categoryIds);
       }
     })
@@ -175,5 +172,21 @@ export class PageAdminMqrComponent implements OnInit {
 
   handleCategoryChange(){
     this.getAllRequestForQuotationList();
+  }
+
+  delete(row){
+    this.selectedRfq = row;
+    console.log(row);
+    this.updateStatus = row.status
+  }
+
+  confirm(){
+    console.log(this.selectedRfq);
+    this.requestForQuotationService.updateStatus({ 
+      status: this.selectedRfq.status, 
+      _id: this.selectedRfq._id 
+    }).subscribe((res)=>{
+      console.log("Response", res);
+    })
   }
 }
