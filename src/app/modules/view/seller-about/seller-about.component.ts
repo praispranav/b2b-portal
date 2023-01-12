@@ -9,7 +9,7 @@ import { SellerSearchService } from '../../../core/providers/user/seller-search.
 })
 export class SellerAboutComponent implements OnInit {
   searchParams: any = {};
-
+  tab: string = ""
   sellerDetails: any = {
     qualityControl:{},
     randd:{},
@@ -30,6 +30,7 @@ export class SellerAboutComponent implements OnInit {
 
   tabs: any[] = [
     { name: "Quality Control" },
+    { name: "Seller Details" },
     { name: "Export Capability" },
     { name: "Company Introduction" },
     { name: "Manufacturing Capacity" },
@@ -39,6 +40,12 @@ export class SellerAboutComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  tabHandler(a: string) {
+    // alert(a)
+    this.tab = a
+  }
+
 
   getSellerDetails() {
     this.sellerService.sellerSingleAllDetails( this.searchParams.sellerId ).subscribe((res: any) => {

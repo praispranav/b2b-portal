@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group form-group-default form-group-default-select2 required">
+                        <!-- <div class="form-group form-group-default form-group-default-select2 required">
                             <label class="">FOB Price</label>
                             <pg-select style="width: 100%;" [PlaceHolder]="'Select Option'" formControlName="fobPrice"
                                 AllowClear ShowSearch>
@@ -51,7 +51,15 @@
                                     [Value]="option.unit" [Disabled]="false">
                                 </pg-option>
                             </pg-select>
-                        </div>
+                        </div> -->
+                        <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.fobPrice?.invalid && (f.fobPrice.dirty || f.fobPrice.touched)">
+                    <label for="Other">FOB Price</label>
+                    <input type="text" formControlName="fobPrice" placeholder="Per Unit" class="form-control" id="moq" />
+                </div>
+                <div *ngIf="f.fobPrice?.invalid && (f.fobPrice.dirty || f.fobPrice.touched)">
+                    <label *ngIf="f.fobPrice.errors.required" class="error">This field is required.</label>
+                </div>
                     </div>
                 </div>
                 <div class="row">
@@ -115,14 +123,24 @@
         </div>
 
         <div class="row mt-3" *ngIf="sellingPriceType === 'Set Uniform Price of FOB'">
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
                 <div class="form-group form-group-default form-group-default-select2">
-                    <label>FOB Price </label>
+                    <label>FOB Price</label>
                     <pg-select style="width: 100%;" [Mode]="'single'" [PlaceHolder]="'Select'" formControlName="fobPrice"
                         [NotFoundContent]="'Not found'">
                         <pg-option *ngFor="let option of fobPriceUnitList" [Label]="option.unit" [Value]="option.unit">
                         </pg-option>
                     </pg-select>
+                </div>
+            </div> -->
+            <div class="col-md-6">
+                <div pgFormGroupDefault class="form-group form-group-default"
+                    [class.has-error]="f.fobPrice?.invalid && (f.fobPrice.dirty || f.fobPrice.touched)">
+                    <label for="Other">FOB Price</label>
+                    <input type="text" formControlName="fobPrice" placeholder="Per Unit" class="form-control" id="moq" />
+                </div>
+                <div *ngIf="f.fobPrice?.invalid && (f.fobPrice.dirty || f.fobPrice.touched)">
+                    <label *ngIf="f.fobPrice.errors.required" class="error">This field is required.</label>
                 </div>
             </div>
             <div class="col-md-6">

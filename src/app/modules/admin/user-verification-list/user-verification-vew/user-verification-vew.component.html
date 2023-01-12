@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
-                <table>
+                <table class="table table-borderless table-sm table-sm">
                     <tr>
                         <td>
                             <b>
@@ -97,7 +97,7 @@
             </div>
             <!-- 2 table -->
             <div class="col-md-6">
-                <table>
+                <table class="table table-borderless table-sm">
 
                     <tr>
                         <td>
@@ -188,7 +188,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
-                <table>
+                <table class="table table-borderless table-sm">
                     <tr>
                         <td>
                             <b>
@@ -323,7 +323,7 @@
             </div>
             <!-- 2 table -->
             <div class="col-md-6">
-                <table>
+                <table class="table table-borderless table-sm">
 
                     <tr>
                         <td>
@@ -465,11 +465,11 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
-                <table>
+                <table class="table table-borderless table-sm">
                     <tr>
                         <td>
                             <b>
-                                Export Contribution Percentage
+                                Export Contribution %
                             </b>
                         </td>
                         <td>
@@ -565,7 +565,7 @@
             </div>
             <!-- 2 table -->
             <div class="col-md-6">
-                <table>
+                <table class="table table-borderless table-sm">
 
                     <tr>
                         <td>
@@ -665,50 +665,50 @@
 <div class=" bg-white m-3 p-3 shadow-sm">
     <div class="container">
         <div class="row">
-                <!-- 1 table -->
-                <h6>Certificate You Have</h6>
+            <!-- 1 table -->
+            <h6>Certificate You Have</h6>
 
-                <div *ngFor="let item of sellerDetails.certification.certificates" class="col-md-6">
-                    <table *ngIf="item.checked">
-                        <tr>
-                            <td>
-                                <b>
-                                    Date of Expiration
-                                </b>
-                            </td>
-                            <td>
-                                {{ item.expirtData| date: "dd-mm-yyyy" }}
-                            </td>
-                        </tr>
+            <div *ngFor="let item of sellerDetails.certification.certificates" class="col-md-6">
+                <table class="table table-borderless table-sm" *ngIf="item.checked">
+                    <tr>
+                        <td>
+                            <b>
+                                Date of Expiration
+                            </b>
+                        </td>
+                        <td>
+                            {{ item.expirtData| date: "dd-mm-yyyy" }}
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>
-                                <b>
-                                    Type of Certification
-                                </b>
-                            </td>
-                            <td>
-                                {{ item.name }}
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <b>
+                                Type of Certification
+                            </b>
+                        </td>
+                        <td>
+                            {{ item.name }}
+                        </td>
+                    </tr>
 
-                    </table>
+                </table>
                 </div>
             <!-- 2 table -->
             <div class="col-md-12"></div>
             <div class="col-md-6"></div>
             <div class="col-md-6">
-                    <table class="col-12 ml-5">
-                        <tr>
-                            <td>
-                                <b>
-                                    Checked </b>
-                            </td>
-                            <td>
-                                <input (change)="onCheckCards(3, $event)" [checked]="checkedCards[3]" type="checkbox">
-                            </td>
-                        </tr>
-                    </table>
+                <table class="col-12 ml-5  table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>
+                                Checked </b>
+                        </td>
+                        <td>
+                            <input (change)="onCheckCards(3, $event)" [checked]="checkedCards[3]" type="checkbox">
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -719,7 +719,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
-                <table>
+                <table class="table table-borderless table-sm">
                     <tr>
                         <td>
                             <b>
@@ -746,7 +746,7 @@
             </div>
             <!-- 2 table -->
             <div class="col-md-6">
-                <table>
+                <table class="table table-borderless table-sm">
 
                     <tr>
                         <td>
@@ -782,7 +782,7 @@
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
-                <table>
+                <table class="table table-borderless table-sm">
                     <tr>
                         <td>
                             <b>
@@ -821,7 +821,7 @@
             </div>
             <!-- 2 table -->
             <div class="col-md-6">
-                <table>
+                <table class="table table-borderless table-sm">
                     <tr>
                         <td>
                             <b>
@@ -874,10 +874,14 @@
 
 <div class="d-flex justify-content-center">
     <div>
-        <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'approve' )" class="btn btn-success m-3">Approve</button>
+        <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'"
+            (click)="onApproveReject(sellerDetails.sellerDetails._id, 'approve' )"
+            class="btn btn-success m-3">Approve</button>
     </div>
     <div>
-        <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'reject' )" class="btn btn-danger m-3">Review</button>
+        <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'"
+            (click)="onApproveReject(sellerDetails.sellerDetails._id, 'reject' )"
+            class="btn btn-danger m-3">Review</button>
     </div>
     <div>
         <button class="btn btn-danger m-3">Deactivate</button>
