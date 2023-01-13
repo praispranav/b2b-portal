@@ -216,8 +216,8 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       toggle: "close",
       submenu: [
         {
-          label: "Create Tags",
-          routerLink: "/admin/dashboard",
+          label: "Add Blog",
+          routerLink: "/admin/add-blog",
         },
       ],
     },
@@ -231,7 +231,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Add Trade Shows",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/admin-tradeShow/add-trade-show",
         },
         {
           label: "Add Type",
