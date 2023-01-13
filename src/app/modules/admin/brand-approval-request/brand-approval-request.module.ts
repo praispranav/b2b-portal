@@ -6,12 +6,15 @@ import { BrandApprovalListComponent } from './brand-approval-list/brand-approval
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [BrandApprovalListComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrandApprovalRequestRoutingModule,
     SharedModule,
     NgxDatatableModule,
