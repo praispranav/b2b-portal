@@ -39,7 +39,7 @@ export class FormProductDetailsComponent implements OnInit {
 
   buildProductDetails() {
     this.productDetailsForm = this.formBuilder.group({
-      productVideoLink: ["", [Validators.required]],
+      productVideoLink: [""],
       productImage: ["", [Validators.required]],
       productDescription: ["", [Validators.required]],
     });

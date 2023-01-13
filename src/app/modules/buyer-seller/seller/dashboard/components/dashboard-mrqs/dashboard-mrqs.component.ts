@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestQuotationService } from '../../../../../../core/providers/user/request-quotation.service';
 
 @Component({
   selector: 'app-dashboard-mrqs',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardMrqsComponent implements OnInit {
 
-  constructor() { }
+  rfqList: any[] = [];
+
+  constructor(private requestForQuotationService: RequestQuotationService) { }
 
   ngOnInit() {
+    this.getRequestForQuotationByUser();
+  }
+
+  getRequestForQuotationByUser(){
+    this.requestForQuotationService.getRequestForQuotationByUser().subscribe((res)=>{
+      console.log("Request Data", res);
+      if(res.data) this.rfqList = res.data
+    })
   }
 
 }
