@@ -33,30 +33,58 @@
 <div class="container">
   <div class="row pt-3">
     <div class="col-md-2 col-sm-2 text-center">
-      <img class="img-fluid p-2" [src]="imgBaseUrl + comapnyDetails.companyDetail.companyLogo" width="145px" height="155px">
+      <img
+        class="img-fluid p-2"
+        [src]="imgBaseUrl + comapnyDetails.companyDetail.companyLogo"
+        width="145px"
+        height="155px"
+      />
     </div>
     <div class="col-md-3 col-sm-3">
-      <h4>{{comapnyDetails.companyProfile.company}}</h4>
-      <p class="p-text ms-1 ">
-        <span class="blue-color"> {{comapnyDetails.companyProfile.regCity}}, {{comapnyDetails.companyProfile.state}}, {{comapnyDetails.companyProfile.regCountry}},</span> 110012
+      <h4>{{ comapnyDetails.companyProfile.company }}</h4>
+      <p class="p-text ms-1">
+        <span class="blue-color">
+          {{ comapnyDetails.companyProfile.regCity }},
+          {{ comapnyDetails.companyProfile.state }},
+          {{ comapnyDetails.companyProfile.regCountry }},</span
+        >
+        110012
       </p>
       <p class="p-text ms-1 blue-color">Supplier, Trader, Manufacturer</p>
-      <br>
-      <button aria-label="" class="btn btn-chip active m-b-10 m-r-5" type="button"><i class="pg-icon">tick</i>
-        <span class="blue-color">3 </span> Year</button> <span class="blue-color">Unverified</span>
-
+      <br />
+      <button
+        aria-label=""
+        class="btn btn-chip active m-b-10 m-r-5"
+        type="button"
+        [ngClass]="
+          comapnyDetails.sellerDetails.isApprovedByAdmin === 'verified'
+            ? 'text-primary'
+            : 'text-danger'
+        "
+      >
+        <i class="pg-icon">{{
+          comapnyDetails.sellerDetails.isApprovedByAdmin === "verified"
+            ? "tick"
+            : "close"
+        }}</i>
+      </button>
+      <span class="blue-color">{{
+        comapnyDetails.sellerDetails.isApprovedByAdmin | titlecase
+      }}</span>
     </div>
-    <div class="col-md-5">
-    </div>
+    <div class="col-md-5"></div>
     <div class="col-md-2">
-      <button class="btn btn-default btn-lg btn-rounded m-r-20 m-b-10 org-color ">Contact Supplier</button>
+      <button
+        class="btn btn-default btn-lg btn-rounded m-r-20 m-b-10 org-color"
+      >
+        Contact Supplier
+      </button>
       <button aria-label="" type="button" class="btn btn-default follow-btn">
         <div class="p-t-5 p-b-5">
           <i class="pg-icon">heart</i>
           <div class="fs-11 font-montserrat text-uppercase">Follow</div>
         </div>
       </button>
-
     </div>
   </div>
 </div>
