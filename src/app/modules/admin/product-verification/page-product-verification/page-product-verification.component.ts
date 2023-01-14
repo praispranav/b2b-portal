@@ -5,6 +5,13 @@ import { environment } from "../../../../../environments/environment";
 import { FormProductService } from "../../../../core/providers/user/form-product.service";
 import * as moment from "moment";
 
+interface ProductCountType {
+  _id: {
+    status: string;
+  };
+  count: number;
+}
+
 @Component({
   selector: "app-page-product-verification",
   templateUrl: "./page-product-verification.component.html",
@@ -38,6 +45,7 @@ export class PageProductVerificationComponent implements OnInit {
   page: number = 1;
   selectedProduct: any = null;
   updateStatus: string = "";
+  productCounts: any = {};
   @ViewChild(DatatableComponent, { static: true })
   tableAdvance: DatatableComponent;
 
@@ -97,6 +105,7 @@ export class PageProductVerificationComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+    this.getProductCounts();
   }
 
   getProducts() {
@@ -170,4 +179,59 @@ export class PageProductVerificationComponent implements OnInit {
         this.getProducts();
       });
   }
+
+  getProductCounts() {
+    this.productService.getProductCounts().subscribe((res) => {
+      let total = 0;
+      let activeListing = 0;
+      let inActiveListing = 0;
+      let rejectedProduct = 0;
+      if (Array.isArray(res.data)) {
+        res.data.forEach((i) => {
+          total += i.count;
+
+          if (i._id.status == "Pending") {
+            inActiveListing = i.count;
+          }
+
+          if (i._id.status == "Approved") {
+            activeListing = i.count;
+          }
+
+          if (i._id.status == "Rejected") {
+            rejectedProduct = i.count;
+          }
+        });
+
+        this.productCounts = {
+          total,
+          inActiveListing,
+          activeListing,
+          rejectedProduct,
+        };
+      }
+      console.log("Product Status Counts", res);
+    });
+  }
 }
+
+// [
+//   {
+//       "_id": {
+//           "status": "In Progress"
+//       },
+//       "count": 1
+//   },
+//   {
+//       "_id": {
+//           "status": null
+//       },
+//       "count": 9
+//   },
+//   {
+//       "_id": {
+//           "status": "Pending"
+//       },
+//       "count": 1
+//   }
+// ]

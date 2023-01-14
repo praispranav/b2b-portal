@@ -10,6 +10,7 @@ export class FormProductService {
 
   constructor(private http: HttpClient) {}
   
+
   updateProductStatus({_id, status}){
     return this.http.post<any>(`${environment.apiUrl}/product/updateStatus`, { _id, status })
   }
@@ -20,6 +21,10 @@ export class FormProductService {
   }
   getProductById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/product/get/${id}`);
+  }
+
+  getProductCounts(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/product/get-counts`);
   }
 
   getProductBySeller({ page, pageSize }){
