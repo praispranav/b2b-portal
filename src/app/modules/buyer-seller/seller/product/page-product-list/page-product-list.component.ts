@@ -1,35 +1,43 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { ModalDirective } from 'ngx-bootstrap';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { DatatableComponent } from "@swimlane/ngx-datatable";
+import { ModalDirective } from "ngx-bootstrap";
+import { FormProductService } from "../../../../../core/providers/user/form-product.service";
+import * as moment from "moment";
+import { environment } from "../../../../../../environments/environment";
+
 @Component({
-  selector: 'app-page-product-list',
-  templateUrl: './page-product-list.component.html',
-  styleUrls: ['./page-product-list.component.scss']
+  selector: "app-page-product-list",
+  templateUrl: "./page-product-list.component.html",
+  styleUrls: ["./page-product-list.component.scss"],
 })
 export class PageProductListComponent implements OnInit {
   brandApprovalList: any[] = [];
 
-  @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
+  @ViewChild("addNewAppModal", { static: true }) addNewAppModal: ModalDirective;
 
   appName = null;
   appDescription = null;
   appPrice = null;
   appNotes = null;
 
+  imageBaseUrl: string  = environment.imageStorage;
+
   basicRows = [];
   basicSort = [];
 
+  page: number = 1;
+  pageSize: number = 10;
+  selectedProduct: any = null;
+  updateStatus: string = "";
 
   advanceColumns = [
-   
-    { name: 'Product Name' },
-    { name: 'Category' },
-    { name: 'Brand' },
-    { name: 'Posted By' },
-    { name: 'Date Time' },
-    { name: 'MOQ' },
-    { name: 'Status' },
-   
+    { name: "Product Name" },
+    { name: "Category" },
+    { name: "Brand" },
+    { name: "Posted By" },
+    { name: "Date Time" },
+    { name: "MOQ" },
+    { name: "Status" },
   ];
   // getBrandApprovalListByFilter(index: number, length: number, query: any = {}) {
   //   this.providerBrandApprovalService
@@ -40,62 +48,39 @@ export class PageProductListComponent implements OnInit {
   // }
 
   advanceRows = [];
-  @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
+  @ViewChild(DatatableComponent, { static: true })
+  tableAdvance: DatatableComponent;
 
   //No Option YET
   //https://github.com/swimlane/ngx-datatable/issues/423
   scrollBarHorizontal = window.innerWidth < 960;
-  columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+  columnModeSetting = window.innerWidth < 960 ? "standard" : "force";
 
-  constructor() {
-    console.log(this.columnModeSetting);
-    // this.fetch(data => {
-  
-    //   this.basicSort = [...data];
-
-     
-    //   this.basicRows = data;
-    // });
-
-    
-
-    this.fetchSampleAdvance(data => {
-      // push our inital complete list
-      this.advanceRows = data;
-    });
-
+  constructor(private productService: FormProductService) {
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
-      this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+      this.columnModeSetting = window.innerWidth < 960 ? "standard" : "force";
     };
   }
- 
-  // onActivate(event) { }
-  // fetch(cb) {
-  //   const req = new XMLHttpRequest();
-  //   req.open('GET', `assets/data/table.json`);
 
-  //   req.onload = () => {
-  //     cb(JSON.parse(req.response));
-  //   };
-
-  //   req.send();
-  // }
-
-  // fetchSampleDynamic(cb) {
-  //   const req = new XMLHttpRequest();
-  //   req.open('GET', `assets/data/table_sample.json`);
-
-  //   req.onload = () => {
-  //     cb(JSON.parse(req.response));
-  //   };
-
-  //   req.send();
-  // }
+  getProducts() {
+    this.productService
+      .getProductBySeller({ page: this.page, pageSize: this.pageSize })
+      .subscribe((res) => {
+        if (res.data) {
+          this.advanceRows = res.data.map((i) => ({
+            ...i,
+            brand: i.productBrand.join(","),
+            dateTime: moment(new Date(i.timestamp)).format("YYYY-MM-DD"),
+            image: i.productImage[0] ? this.imageBaseUrl + i.productImage[0] : ''
+          }));
+        }
+      });
+  }
 
   fetchSampleAdvance(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser-five.json`);
+    req.open("GET", `assets/data/table_browser-five.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
@@ -105,8 +90,8 @@ export class PageProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-      // this.getBrandApprovalListByFilter(0, 1000, {});
-   }
+    this.getProducts();
+  }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
@@ -132,7 +117,7 @@ export class PageProductListComponent implements OnInit {
       appName: this.appName,
       description: this.appDescription,
       notes: this.appPrice,
-      price: this.appNotes
+      price: this.appNotes,
     };
     //https://github.com/swimlane/ngx-datatable/issues/701
     // this.dynamicRows = [...this.dynamicRows, temp];
@@ -142,7 +127,9 @@ export class PageProductListComponent implements OnInit {
     console.log(event);
   }
 
-  onPage(event){
+  onPage(event) {
     console.log(event);
   }
+
+
 }
