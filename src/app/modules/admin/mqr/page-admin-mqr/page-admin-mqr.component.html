@@ -23,7 +23,6 @@
                     <option value="In Progress">In Progress</option>
                     <option value="Approved">Approved</option>
                     <option value="Reject">Reject</option>
-
                 </select>
             </div>
 
@@ -126,10 +125,10 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
-                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button
-                                    (click)="delete(value)">
+                        <ngx-datatable-column name="Action" sortable="false" prop="name">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(row)"
+                                data-toggle="modal" data-target="#updateStatus">
                                     Update
                                 </button>
                             </ng-template>
@@ -141,3 +140,34 @@
         <!-- END card -->
     </pg-container>
 </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" *ngIf="selectedRfq">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ selectedRfq.productName }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 p-3 p-10 ">
+                <select [(ngModel)]="updateStatus" class="form-select" aria-label="Default select example">
+                    <option value="All" selected>All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Reject">Reject</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="confirm()" class="btn btn-primary">Update Status</button>
+        </div>
+      </div>
+    </div>
+  </div>

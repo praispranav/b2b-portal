@@ -28,4 +28,12 @@ export class ProviderBrandApprovalService {
   deleteBrandApprovalById(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/brand-approval/delete/${id}`);
   }
+
+  getAll({ page, pageSize }){
+    return this.http.get<any>(`${environment.apiUrl}/brand-approval/get-all`, { params: { page, pageSize } });
+  }
+
+  updateStatus({ _id, status }){
+    return this.http.get<any>(`${environment.apiUrl}/brand-approval/updateStatus`, { params: { status,_id } });
+  }
 }
