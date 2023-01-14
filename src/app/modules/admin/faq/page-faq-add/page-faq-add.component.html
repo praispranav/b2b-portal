@@ -12,7 +12,7 @@
 
                     <form [formGroup]="faqForm" class="form-horizontal" autocomplete="off">
 
-                        <div class="col-lg-6 form-group form-group-default form-group-default-select2">
+                        <div class="col-lg-6 col-md-6 form-group form-group-default form-group-default-select2">
                             <label class="">Select Category</label>
                             <pg-select style="width: 100%;" [(ngModel)]="selectedOption"
                                 [PlaceHolder]="'Select Category'" AllowClear ShowSearch>
@@ -21,7 +21,7 @@
                                 </pg-option>
                             </pg-select>
                         </div>
-                        <div class=" col-lg-6 form-group form-group-default required mt-2" pgFormGroupDefault>
+                        <div class=" col-lg-6 col-md-6 form-group form-group-default required mt-2" pgFormGroupDefault>
                             <label id="askQ">Ask Questions</label>
                             <div class="col-md-12">
                                 <!-- <input type="text" class="form-control" id="askQ" placeholder="Enter the notice"
@@ -46,7 +46,7 @@
                             </div>
                             <div class="card-body no-scroll card-toolbar p" style="width:625px ;">
                                 <div class="">
-                                    <quill-editor [styles]="{height: '200px'}" placeholder=""
+                                    <quill-editor class="d" [styles]="{height: '200px'}" placeholder=""
                                         formControlName="description">
                                     </quill-editor>
                                 </div>

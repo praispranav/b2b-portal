@@ -33,7 +33,9 @@
             </div>
             <div class="card-body">
                 <form [formGroup]="noticeForm" class="form-horizontal" autocomplete="off">
-                    <div class="col-md-6 form-group row" [class.has-error]="f.title.invalid && (f.title.dirty || f.title.touched)">
+                    <div class="container">
+                        <div class="row">
+                            <div [class.has-error]="f.title.invalid && (f.title.dirty || f.title.touched)">
                         <label for="title" class="col-md-3 control-label">Notice Title</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control" id="title" placeholder="Enter the notice" name="title"
@@ -42,10 +44,14 @@
                                 <label *ngIf="f.title.errors.required" class="error">This field is
                                     required.</label>
                             </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-success" type="submit">Submit
-                    </button>
+                             <div class="col-md-6">
+                                 <button class="btn btn-success" type="submit">Submit
+                                 </button>
+                             </div>
+                             </div>
+                             </div>
+                             </div>
+                             </div>
                 </form>
             </div>
         </div>

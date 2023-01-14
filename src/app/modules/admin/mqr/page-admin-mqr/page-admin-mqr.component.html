@@ -1,5 +1,5 @@
 <div class="p-2">
-    <div class="container">
+    <!-- <div class="container">
         <div class="row  p-10 activeBox">
             <div class="col-md-4  p-3 p-10 ">
                 <select class="form-select" (change)="handleCategoryChange()" [(ngModel)]="selectedCategory" aria-label="Default select example">
@@ -30,7 +30,7 @@
 
 
         </div>
-    </div>
+    </div> -->
     <!-- <div class="card card-transparent ">
         <pg-tabset tabAnimation="slide-left" Type="fillup">
             <pg-tab>
@@ -63,6 +63,38 @@
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
+              <div class="container">
+                  <div class="row  ">
+                      <div class="col-md-4  p-3 ">
+                          <select class="form-select" aria-label="Default select example">
+                              <option selected>Category</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                          </select>
+                      </div>
+                      <div class="col-md-4  p-3 ">
+                          <select class="form-select" aria-label="Default select example">
+                              <option selected>Date</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                          </select>
+                      </div>
+                      <div class="col-md-4  p-3 ">
+                          <select class="form-select" aria-label="Default select example">
+                              <option selected>Bulk Action</option>
+                              <option value="1">Approved</option>
+                              <option value="2">Reject</option>
+
+                          </select>
+                      </div>
+
+
+
+
+                  </div>
+              </div>
             <div class="card-header  d-flex justify-content-between">
                 <div class="card-title">Admin MQR
                 </div>
