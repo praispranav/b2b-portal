@@ -396,9 +396,6 @@ export class FormProductInformationComponent implements OnInit {
   getCategoryList(){
     this.categoryService.getCategoryListByUser().subscribe((res)=>{
       this.categoryList = res.data
-      this.productInformationForm.patchValue({
-        sellerOwnCategorySelect: localStorage.getItem('selectedCategoryId')
-      })
     })
   }
 }
