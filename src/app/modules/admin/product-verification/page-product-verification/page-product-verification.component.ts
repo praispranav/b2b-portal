@@ -4,6 +4,7 @@ import { ModalDirective } from "ngx-bootstrap";
 import { environment } from "../../../../../environments/environment";
 import { FormProductService } from "../../../../core/providers/user/form-product.service";
 import * as moment from "moment";
+import { MessageService } from "../../../../@pages/components/message/message.service";
 
 interface ProductCountType {
   _id: {
@@ -54,7 +55,7 @@ export class PageProductVerificationComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? "standard" : "force";
 
-  constructor(private productService: FormProductService) {
+  constructor(private productService: FormProductService, private messageService: MessageService) {
     console.log(this.columnModeSetting);
     this.fetch((data) => {
       // cache our list
@@ -175,8 +176,13 @@ export class PageProductVerificationComponent implements OnInit {
         _id: this.selectedProduct._id,
         status: this.updateStatus,
       })
-      .subscribe(() => {
+      .subscribe((res) => {
         this.getProducts();
+        if(res.header.code){
+          this.messageService.success("Product Status Updated");
+        } else {
+          this.messageService.error("Product Status Not Updated");
+        }
       });
   }
 

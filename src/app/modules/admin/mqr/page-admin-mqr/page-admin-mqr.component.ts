@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import * as moment from 'moment'
 import { ModalDirective } from 'ngx-bootstrap';
+import { MessageService } from '../../../../@pages/components/message/message.service';
 import { RequestQuotationService } from '../../../../core/providers/user/request-quotation.service';
 @Component({
   selector: 'app-page-admin-mqr',
@@ -48,7 +49,7 @@ export class PageAdminMqrComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor(private requestForQuotationService: RequestQuotationService) {
+  constructor(private requestForQuotationService: RequestQuotationService, private messageService: MessageService) {
     console.log(this.columnModeSetting);
     this.fetch(data => {
       // cache our list
@@ -186,6 +187,13 @@ export class PageAdminMqrComponent implements OnInit {
       status: this.selectedRfq.status, 
       _id: this.selectedRfq._id 
     }).subscribe((res)=>{
+      this.getAllRequestForQuotationList();
+      
+      if(res.header.code){
+        this.messageService.success("Mqr status updated.")
+      } else {
+        this.messageService.error("Mqr status not updated.")
+      }
       console.log("Response", res);
     })
   }
