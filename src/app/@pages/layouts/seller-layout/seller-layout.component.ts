@@ -119,11 +119,26 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
   ];
 
+  currentUserAuth: any = null;
+  changePasswordRedirectUrl: string = "";
+
   ngOnInit() {
     this.changeLayout('menu-pin');
     this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
+    this.getCurrentAuthData();
+  }
+
+  getCurrentAuthData(){
+    const localStorageUserData = localStorage.getItem('currentUserAuth');
+    if(localStorageUserData){
+      const parsed = JSON.parse(localStorageUserData);
+      const data = parsed.data;
+      this.currentUserAuth = data;
+      if(data.role === 'seller') this.changePasswordRedirectUrl = "/seller/change-password"
+      else this.changePasswordRedirectUrl =  "/buyer/change-password"
+    }
   }
 
 }

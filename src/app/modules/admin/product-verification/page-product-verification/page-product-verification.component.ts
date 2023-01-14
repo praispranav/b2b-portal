@@ -177,6 +177,7 @@ export class PageProductVerificationComponent implements OnInit {
         status: this.updateStatus,
       })
       .subscribe((res) => {
+        this.getProductCounts();
         this.getProducts();
         if(res.header.code){
           this.messageService.success("Product Status Updated");

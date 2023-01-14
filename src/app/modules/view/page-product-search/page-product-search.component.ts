@@ -10,6 +10,7 @@ import { FormProductService } from "../../../core/providers/user/form-product.se
 })
 export class PageProductSearchComponent implements OnInit {
   searchText: string = "";
+  loading:boolean = true;
   productList: any[] = [];
   categories: any[] = [];
   selectedCategories: any[] = [];
@@ -32,6 +33,7 @@ export class PageProductSearchComponent implements OnInit {
 
   getSearchedProducts() {
     const payload = {};
+    this.loading = true
     payload['search'] = this.searchText;
     if (this.searchParams.categoryId && this.searchParams.categoryId.length) payload['categoryId'] = this.searchParams.categoryId;
     if (this.searchParams.page && this.searchParams.page.length) payload['page'] = this.searchParams.page;
@@ -45,6 +47,8 @@ export class PageProductSearchComponent implements OnInit {
     this.productService
       .searchProduct(payload)
       .subscribe((res: any) => {
+
+        this.loading = false
         if(res.data.categories){
           this.categories = res.data.categories;
         }
