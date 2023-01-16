@@ -47,6 +47,7 @@ import { CatalogueSellerCompanyDetailsComponent } from "./components/catalogue-s
 import { SellerSearchComponent } from "./seller-search/seller-search.component";
 import { PageHomeRfqFormTwoComponent } from "./page-home-rfq-form-two/page-home-rfq-form-two.component";
 import { PageNoProductFoundComponent } from "./page-no-product-found/page-no-product-found.component";
+import { ViewBlogComponent } from "./view-blog/view-blog.component";
 
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: "blog",
     component: PageBlogComponent,
+  },
+  {
+    path: "blog-view/:_id",
+    component: ViewBlogComponent,
   },
   {
     path: "buy",

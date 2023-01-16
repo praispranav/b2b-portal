@@ -95,6 +95,7 @@ import { SellerSearchComponent } from './seller-search/seller-search.component';
 import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-rfq-form-two.component';
 import { SupplierProductSearchCategoryComponent } from './components/supplier-product-search-category/supplier-product-search-category.component';
 import { PageNoProductFoundComponent } from './page-no-product-found/page-no-product-found.component';
+import { ViewBlogComponent } from './view-blog/view-blog.component';
 
 
 @NgModule({
@@ -179,6 +180,7 @@ import { PageNoProductFoundComponent } from './page-no-product-found/page-no-pro
     SupplierProductSearchCategoryComponent,
     ProductSearchCardListComponent,
     PageNoProductFoundComponent,
+    ViewBlogComponent,
     
   ],
   imports: [ 
