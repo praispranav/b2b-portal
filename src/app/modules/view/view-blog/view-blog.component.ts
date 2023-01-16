@@ -11,7 +11,8 @@ import { BlogService } from '../../../core/providers/user/blog.service';
 export class ViewBlogComponent implements OnInit {
 
   _id: string = ''
-  blogList: any = {}
+  blog: any;
+  // blog: any[] = [];
   constructor(private blogService: BlogService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit() {
@@ -19,20 +20,17 @@ export class ViewBlogComponent implements OnInit {
     this.activatedRouter.paramMap.subscribe((param: Params) => {
       let _id = param.get('_id');
       this.getBlogById(_id)
-
     });
 
   }
- 
+
   getBlogById(_id) {
 
     this.blogService.getBlogById(_id).subscribe(
-      (res: any) => {
-       console.log(res)
-
-        this.blogList = res;
-
-      },
+      (res) => {
+        this.blog = res;
+      console.log(this.blog)
+        },
       (err) => {
         console.log(err);
       }
