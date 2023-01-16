@@ -5,7 +5,7 @@
         <div class="recent-card  mt-5 ">
             <div class="row m-0 ">
                 <div class="col-lg-8 col-sm-12 px-0">
-                    <img src="../assets/img/trade-show/fashion.jpg" alt=" " class="img-fluid card-img card-img-size1 rounded-0 ml-0 pr-4">
+                    <img src="{{blog.file}}" alt=" " class="img-fluid card-img card-img-size1 rounded-0 ml-0 pr-4">
                 </div>
                 <div class="col-lg-4 col-sm-12  border-0 card-img-size1 pl-1">
                     <div class="  card-body  border-0 pl-4 pt-0">
@@ -22,25 +22,19 @@
                             </div>
                         </div>
                         <h2 class="title">
-                            Post Name
+                            {{blog.postName}}
+                           
                         </h2>
                         <div class="d-flex justify-content-end mt-0 ">
-                            <span class="text-muted"> <b> 10 Mar 2022</b></span>
+                            <span class="text-muted"> <b> {{blog.timestamp | date }} </b></span>
                         </div>
 
                         <p class="description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam
-                            voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem
-                            ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis
-                            cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias
-                            architecto atque. voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto
-                            atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                            veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt
-                            molestias architecto atque.
+                           {{blog.description}}
                         </p>
                     </div>
                     <div class=" card-footer   d-flex justify-content-end border-0 mt-1">
-                        <i class="pg-icon md-18 text-complete">arrow_right</i>
+                        <!-- <i class="pg-icon md-18 text-complete">arrow_right</i> -->
                     </div>
                 </div>
             </div>

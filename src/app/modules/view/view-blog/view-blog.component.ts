@@ -11,29 +11,29 @@ import { BlogService } from '../../../core/providers/user/blog.service';
 export class ViewBlogComponent implements OnInit {
 
   _id: string = ''
-  blog: any;
-  // blog: any[] = [];
+  blog: any = {}
+  
   constructor(private blogService: BlogService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit() {
     window.scroll(0, 0);
-    this.activatedRouter.paramMap.subscribe((param: Params) => {
-      let _id = param.get('_id');
-      this.getBlogById(_id)
+  
+    this.activatedRouter.params.subscribe(params => {
+      this._id = params['_id'];
+      console.log('User Id: ', this._id);
     });
 
-  }
-
-  getBlogById(_id) {
-
-    this.blogService.getBlogById(_id).subscribe(
-      (res) => {
-        this.blog = res;
-      console.log(this.blog)
-        },
+    this.blogService.getBlogById(this._id).subscribe(
+      (data) => {
+        console.log(data)
+        this.blog = data;
+      },
       (err) => {
         console.log(err);
       }
     );
+
   }
-}
+
+  }
+
