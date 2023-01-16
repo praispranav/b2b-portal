@@ -49,7 +49,7 @@
 
     <section class="blogCards m-80 pb-80">
         <div class="row">
-            <div class="col-lg-4 col-sm-12 col-md-6 pr-4 pl-0">
+            <div class="col-lg-4 col-sm-12 col-md-6 pr-4 pl-0"  *ngFor="let blog of blogList">
                 <div class="card blog-card">
                     <div class="  card-body  border-0 ">
 
@@ -65,14 +65,13 @@
                             </div>
                         </div>
                         <h2 class="title">
-                            National Awareness Womens day
+                            {{blog.postName}}
                         </h2>
                         <div class="d-flex justify-content-end mt-0 ">
-                            <span class="text-muted"> <b> 10 Mar 2022</b></span>
+                            <span class="text-muted"> <b> {{blog.timestamp | date:"MM/dd/yy"}}</b></span>
                         </div>
 
-                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis cum omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore veritatis
-                            cum omnis modi aperiam voluptatum, repudiandae nesciunt m omnis modi aperiam voluptatum, repudiandae nesciunt molestias architecto atque. Tushar</p>
+                        <p> {{blog.description}}</p>
 
                     </div>
                     <div class=" card-footer   d-flex justify-content-end border-0">
@@ -81,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12 col-md-6  pl-4 pr-4">
+            <!-- <div class="col-lg-4 col-sm-12 col-md-6  pl-4 pr-4">
                 <div class="card blog-card">
                     <div class="  card-body  border-0 ">
 
@@ -111,9 +110,7 @@
 
 
 
-                    <!-- <div class=" card-footer   d-flex justify-content-end border-0">
-                        <i class="pg-icon md-18 text-complete">arrow_right</i>
-                    </div> -->
+                 
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12 col-md-6 pl-4 pr-0">
@@ -146,7 +143,7 @@
                         <i class="pg-icon md-18 text-complete">arrow_right</i>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </div>
