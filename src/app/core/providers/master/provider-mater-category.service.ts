@@ -16,6 +16,10 @@ export class ProviderMaterCategoryService {
     );
   }
 
+  getCategoryListByUserParent(){
+    return this.http.get<any>(`${environment.apiUrl}/master-category/get-list/user-parent`)
+  }
+
   getMaterCategoryById(id: string): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}/master-category/get/${id}`

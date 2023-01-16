@@ -89,12 +89,12 @@
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)" />
+                                <input type="checkbox" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img src="{{row.image}}" alt="">
+                                <img src="{{row.image}}" alt="" style="width: 50px; height: 50px; object-fit: contain;">
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">

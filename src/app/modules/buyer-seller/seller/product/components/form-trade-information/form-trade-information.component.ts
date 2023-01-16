@@ -96,6 +96,7 @@ export class FormTradeInformationComponent implements OnInit {
     { unit: "Packs" },
     { unit: "Pair" },
   ];
+  
 
   paymentTypeList: any[] = [
     { paymentType: false, type: "D/A", value: "D/A" },

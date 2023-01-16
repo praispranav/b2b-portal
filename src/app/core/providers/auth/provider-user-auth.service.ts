@@ -106,6 +106,10 @@ export class ProviderUserAuthService {
     return this.http.post<any>(`${environment.apiUrl}/auth/reset-password`, params)
   }
 
+  userChangePassword(params: any = {}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/change-password`, params)
+  }
+
   userSignOutNoApiCall(nav = true) {
     localStorage.removeItem(this.currentUserKey);
     this.currentUserSubject.next(null);

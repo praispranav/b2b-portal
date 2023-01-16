@@ -95,7 +95,8 @@ import { SellerSearchComponent } from './seller-search/seller-search.component';
 import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-rfq-form-two.component';
 import { SupplierProductSearchCategoryComponent } from './components/supplier-product-search-category/supplier-product-search-category.component';
 import { PageNoProductFoundComponent } from './page-no-product-found/page-no-product-found.component';
-import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-supplier-found.component';
+import { ViewBlogComponent } from './view-blog/view-blog.component';
+
 
 @NgModule({
   declarations: [
@@ -179,7 +180,8 @@ import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-s
     SupplierProductSearchCategoryComponent,
     ProductSearchCardListComponent,
     PageNoProductFoundComponent,
-    PageNoSupplierFoundComponent
+    ViewBlogComponent,
+    
   ],
   imports: [ 
   CommonModule,

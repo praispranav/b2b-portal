@@ -3,6 +3,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import * as moment from 'moment';
 import { ModalDirective } from 'ngx-bootstrap';
 import { environment } from '../../../../../environments/environment';
+import { MessageService } from '../../../../@pages/components/message/message.service';
 import { ProviderBrandApprovalService } from '../../../../core/providers/user/provider-brand-approval.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class BrandApprovalListComponent implements OnInit {
 
   constructor(
     private providerBrandApprovalService: ProviderBrandApprovalService,
+    private messageService: MessageService
   ) {
 
     window.onresize = () => {
@@ -75,6 +77,12 @@ export class BrandApprovalListComponent implements OnInit {
       status: this.selectedBrand.status, 
       _id: this.selectedBrand._id 
     }).subscribe((res)=>{
+      this.getBrandApprovalListByFilter(0, 1000, {});
+      if(res.header.code) {
+        this.messageService.success("Brand Approval Request Updated")
+      } else {
+        this.messageService.error("Brand Approval Request Not Updated")
+      }
       console.log("Response", res);
     })
   }
