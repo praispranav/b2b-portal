@@ -38,7 +38,7 @@
                                     <div pgFormGroupDefault class="form-group form-group-default required"
                                         [class.has-error]="f.firstName.invalid && (f.firstName.dirty || f.firstName.touched)">
                                         <label for="person-first-name">Name</label>
-                                        <input type="text" formControlName="firstName"
+                                        <input type="text" formControlName="contactPersonName"
                                             placeholder="Enter your first name here" class="form-control"
                                             id="person-first-name" />
                                     </div>
@@ -51,7 +51,7 @@
                                     <div pgFormGroupDefault class="form-group form-group-default required"
                                         [class.has-error]="f.lastName.invalid && (f.lastName.dirty || f.lastName.touched)">
                                         <label for="person-last-name">SurName</label>
-                                        <input type="text" formControlName="lastName"
+                                        <input type="text" formControlName="contactPersonSurName"
                                             placeholder="Enter your last name here" class="form-control"
                                             id="person-last-name" />
                                     </div>
@@ -66,7 +66,7 @@
                             <div pgFormGroupDefault class="form-group form-group-default required"
                                 [class.has-error]="f.AccountType.invalid && (f.AccountType.dirty || f.AccountType.touched)">
                                 <label for="Country-name">Account Type</label>
-                                <select type="text" formControlName="AccountType"
+                                <select type="text" formControlName="accountType"
                                     placeholder="Enter your country name here" class="form-control" id="Country-name">
                                     <option disabled selected>Select</option>
                                     <option Value="Buyer" Label="Buyer">Buyer</option>
@@ -433,7 +433,7 @@
                             <div pgFormGroupDefault class="form-group form-group-default required"
                                 [class.has-error]="f.State.invalid && (f.State.dirty || f.State.touched)">
                                 <label for="State-name">State/Province</label>
-                                <select type="text" formControlName="State" placeholder="Enter your state name here"
+                                <select type="text" formControlName="state" placeholder="Enter your state name here"
                                     class="form-control" id="state-name">
 
                                     <option Value="" Label="" selected>Select</option>
@@ -465,7 +465,7 @@
                                 [class.has-error]="f.Address1.invalid && (f.Address1.dirty || f.Address1.touched)">
                                 <label for="Address1-detail" class="mb-0">Address 1 </label>
                                 <textarea name="" id="Address1-detail" cols="25" rows="10" class="form-control mt-2"
-                                    formControlName="Address1"></textarea>
+                                    formControlName="addOne"></textarea>
                             </div>
                             <div *ngIf="f.Address1.invalid && (f.Address1.dirty || f.Address1.touched)">
                                 <label *ngIf="f.Address1.errors.required" class="error">This field is required.</label>
@@ -475,7 +475,7 @@
                             <div pgFormGroupDefault class="form-group form-group-default ">
                                 <label for="Address2-detail" class="mb-0">Address 2 </label>
                                 <textarea name="" id="Address2-detail" cols="25" rows="10" class="form-control mt-2"
-                                    formControlName="Address2"></textarea>
+                                    formControlName="addTwo"></textarea>
                             </div>
 
                         </div>
