@@ -88,72 +88,83 @@
 
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="d-flex justify-content-start">
-                <div class="mr-auto ">
-                    <h3 class="pt-2">Browse</h3>
-                </div>
-                <div class="pt-4">
-                    <a href="" class="float-right">What is a Product Type?</a>
-                </div>
-            </div>
-            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Select a category.">
-            <div class="bg-white shadow p-3">
 
+        <div class="row mt-4 ">
+            <div class="col-md-4 m-0 p-0 side-menu  ">
+                <div class="border-end bg-white" id="sidebar-wrapper">
+                    <!-- <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div> -->
+                    <div class="list-group list-group-flush  ">
+                        <div class="dropdown">
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3 myDiv" (mouseover)="showManufacture(true)" (mouseout)="hideManufacture(false)">Manufacturing & Processing Machinery</a>
 
-                <ul>
-                    <li>
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <button class="btn btn-primary" (mouseover)="showChildrens(true)" (mouseout)="mouseOut(false)">
-              Open<i class="fa fa-caret-right ml-2" aria-hidden="true" ></i>
-            </button>
-
-                                <button class="btn btn-primary">
-              Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
-            </button>
-                            </div>
-                            <button class="ml-3 btn btn-secondary">
-            Select
-          </button>
-                            <i class="fa fa-circle" aria-hidden="true"></i>
-                            <span *>&nbsp;Agriculture&nbsp;&nbsp;&nbsp;</span>
-                            <span>
-            <b>&nbsp;Agriculture&nbsp;&nbsp;&nbsp;</b>
-          </span>
                         </div>
 
-                    </li>
 
-                </ul>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Consumer Electronics</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Industrial Equipment & Components</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Construction & Decoration</a>
 
-
-
-
-
-            </div>
-
-        </div>
-        <div class="col-md-6">
-            <ng-container *ngIf="showChildren">
-                <div class="card">
-
-                    <tr>
-                        <ul>
-                            <li *ngFor="let childNode of childrensss">
-                                {{childNode}}
-                            </li>
-                            <!-- <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur reiciendis perferendis eos, numquam praesentium reprehenderit. Veniam deleniti dolore, cupiditate non aspernatur maxime quos?
-          </p> -->
-                        </ul>
-                    </tr>
-
+                    </div>
                 </div>
-            </ng-container>
+            </div>
+            <div class="col-md-8 m-0 p-0">
+                <ng-container *ngIf="showContent">
+                    <div class="card border-0">
+                        <div class="row">
+                            <div class="col-4">
+                                <h4>Demo</h4>
+                                <ul>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h4>Demo</h4>
+                                <ul>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <h4>Demo</h4>
+                                <ul>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                    <li>Demo</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
         </div>
 
-
-
+        <div class="btn-group dropend">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropend
+          </button>
+            <ul class="dropdown-menu">
+                <!-- Dropdown menu links -->
+                <a href="">hello</a><a href="">hello</a><a href="">hello</a>
+            </ul>
+        </div>
     </div>
 </div>

@@ -12,7 +12,8 @@ export class SearchSelectProductTypeComponent implements OnInit {
   keyword: string = '';
   recentCategory: any = {};
   fav: string = ''
-  showChildren:boolean;
+  showContent:boolean;
+  // showChildren:boolean;
   searchedCategories: any[] = [];
   childrensss:any[]=["heko","hdg","hdhe","heko","hdg","hdhe","heko","hdg","hdhe"];
   allCategoryListType3: any = [];
@@ -28,14 +29,14 @@ export class SearchSelectProductTypeComponent implements OnInit {
     this.getCategoryListType3(0, 1000, { level: "0" });
     this.getRecentCategories();
   }
-  showChildrens(val:boolean){
-    setTimeout(() => this.showChildren= val,300);
+  showManufacture(val:boolean){
+   this.showContent=val;
      
      
   }
 
-  mouseOut(val:boolean){
-    setTimeout(() => this.showChildren= val,1500);
+  hideManufacture(val:boolean){
+    setTimeout(() => this.showContent= val,200);
   }
   
 
