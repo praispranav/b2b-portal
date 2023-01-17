@@ -348,7 +348,7 @@ export class FormCompanyDetailComponent implements OnInit {
         attendTradeExpo:formData.attendTradeExpo ? formData.attendTradeExpo:''
       }
       console.log('reqData', reqObj);
-      debugger;
+      // debugger;
       if (this.isDataExist) {
         formData._id = this.idIfDataExist;
         this.providerCompanyDetailService.updateCompanyDetail(reqObj).subscribe(

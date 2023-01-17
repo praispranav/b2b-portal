@@ -7,6 +7,7 @@ import { ProviderMaterCountryService } from "../../../../../../core/providers/ma
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
+import { ProviderMaterCategoryService } from "../../../../../../core/providers/master/provider-mater-category.service";
 
 export type productInfo = {
   productName: string;
@@ -286,6 +287,7 @@ export class FormProductInformationComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private categoryService: ProviderCategoryService,
+    private masterCategoryService: ProviderMaterCategoryService,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerProductInformationService: ProviderProductInformationService,
     private providerMaterStateService: ProviderMaterStateService,
@@ -313,7 +315,7 @@ export class FormProductInformationComponent implements OnInit {
       isProduct: ["No"],
       productKeywords: [[], [Validators.required]],
       sellerOwnCategorySelect: ["", [Validators.required]],
-      sellerOwnCategoryCreate: ["", [Validators.required]],
+      sellerOwnCategoryCreate: [""],
       placeOfOrigin: ["", [Validators.required]],
       modelNo: ["", [Validators.required]],
       otherDetailInfo: this.formBuilder.array([]),
@@ -394,11 +396,8 @@ export class FormProductInformationComponent implements OnInit {
   }
 
   getCategoryList(){
-    this.categoryService.getCategoryListByUser().subscribe((res)=>{
+    this.masterCategoryService.getCategoryListByUserParent().subscribe((res)=>{
       this.categoryList = res.data
-      this.productInformationForm.patchValue({
-        sellerOwnCategorySelect: localStorage.getItem('selectedCategoryId')
-      })
     })
   }
 }

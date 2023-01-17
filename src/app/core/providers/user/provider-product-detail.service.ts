@@ -22,6 +22,12 @@ export class ProviderProductDetailService {
     );
   }
 
+  getProductBySeller(){
+    return this.http.get<any>(
+      `${environment.apiUrl}/product-detail/get-seller-all`,
+    );
+  }
+
   getProductDetailById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/product-detail/get/${id}`);
   }

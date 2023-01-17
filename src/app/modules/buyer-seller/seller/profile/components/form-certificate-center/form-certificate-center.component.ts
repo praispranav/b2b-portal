@@ -176,7 +176,7 @@ export class FormCertificateCenterComponent implements OnInit {
       otherCertificates: [...this.certificateProfiles],
     }
     console.log('reqData', reqObj);
-    debugger;
+    // debugger;
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCertificateCenterService.updateCertificateCenter(reqObj).subscribe(

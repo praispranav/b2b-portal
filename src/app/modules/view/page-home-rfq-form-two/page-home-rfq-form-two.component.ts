@@ -85,7 +85,8 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
 
   saveFormData(event): void {
     if (event) {
-      this.allFormData = event.formData;
+      this.allFormData = this.requestQuotationForm2.value;
+      // debugger
       this.firstFormValue = {
         productName: this.allFormData.productName
           ? this.allFormData.productName

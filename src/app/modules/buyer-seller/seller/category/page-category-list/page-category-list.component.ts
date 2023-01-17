@@ -4,6 +4,7 @@ import { ProviderCategoryService } from "../../../../../core/providers/user/prov
 import { AppMessageService } from "../../../../../core/services/app-message.service";
 import Swal from "sweetalert2";
 import { environment } from "../../../../../../environments/environment";
+
 @Component({
   selector: "app-page-category-list",
   templateUrl: "./page-category-list.component.html",

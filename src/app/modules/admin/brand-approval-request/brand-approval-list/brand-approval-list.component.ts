@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import * as moment from 'moment';
 import { ModalDirective } from 'ngx-bootstrap';
+import { environment } from '../../../../../environments/environment';
+import { MessageService } from '../../../../@pages/components/message/message.service';
+import { ProviderBrandApprovalService } from '../../../../core/providers/user/provider-brand-approval.service';
+
 @Component({
   selector: 'app-brand-approval-list',
   templateUrl: './brand-approval-list.component.html',
@@ -8,131 +13,83 @@ import { ModalDirective } from 'ngx-bootstrap';
 })
 export class BrandApprovalListComponent implements OnInit {
 
-  @ViewChild('addNewAppModal', { static: true }) addNewAppModal: ModalDirective;
+  brandApprovalList: any[] = [];
+  imgUrl: string = environment.imageStorage;
 
-  appName = null;
-  appDescription = null;
-  appPrice = null;
-  appNotes = null;
+  page: number = 1;
+  pageSize: number = 100;
 
-  basicRows = [];
-  basicSort = [];
+  selectedBrand:any = null;
+  updateStatus: string = 'All'
 
-
-  advanceColumns = [
-   { name: 'Brand Name' },
-    { name: 'Brand Type' },
-    { name: 'Serial Number' },
-    { name: 'Product Link' },
-    // { name: 'MOQ' },
-    // { name: 'Price $' },
-
-  ];
-
-  advanceRows = [];
-  @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
-
-  //No Option YET
-  //https://github.com/swimlane/ngx-datatable/issues/423
-  scrollBarHorizontal = window.innerWidth < 960;
-  columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
-
-  constructor() {
-    console.log(this.columnModeSetting);
-    this.fetch(data => {
-      // cache our list
-      this.basicSort = [...data];
-
-      
-      this.basicRows = data;
-    });
-
-  
-    this.fetchSampleAdvance(data => {
-     
-      this.advanceRows = data;
-    });
+  constructor(
+    private providerBrandApprovalService: ProviderBrandApprovalService,
+    private messageService: MessageService
+  ) {
 
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
       this.columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+      this.columnModeSettingSmall = window.innerWidth < 560 ? 'standard' : 'force';
     };
   }
- 
+  sortName = null;
+  sortValue = null;
+  selected = [];
+  // No Option YET
+  // https://github.com/swimlane/ngx-datatable/issues/423
+  scrollBarHorizontal = window.innerWidth < 960;
+  columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
+  columnModeSettingSmall = window.innerWidth < 560 ? 'standard' : 'force';
 
+
+  ngOnInit() {
+    this.getBrandApprovalListByFilter(0, 1000, {});
+  }
   onActivate(event) { }
-  fetch(cb) {
-    // const req = new XMLHttpRequest();
-    // req.open('GET', `assets/data/table.json`);
 
-    // req.onload = () => {
-    //   cb(JSON.parse(req.response));
-    // };
+  delete(){}
 
-    // req.send();
+  getBrandApprovalListByFilter(index: number, length: number, query: any = {}) {
+    this.providerBrandApprovalService
+      .getAll({ page: this.page, pageSize: this.pageSize })
+      .subscribe((res) => {
+        if (Array.isArray(res.data)) {
+          this.brandApprovalList = res.data.map((i, index) => {
+            const date = new Date(i.timestamp);
+            return {
+              ...i, srNo: index + 1,
+              productsLink: i.products,
+              addedOn: moment(date).format('YYYY-DD-MM hh:mm')
+            }
+          });
+        }
+        console.log('Admin', res)
+      });
   }
 
-  fetchSampleDynamic(cb) {
-    // const req = new XMLHttpRequest();
-    // req.open('GET', `assets/data/table_sample.json`);
-
-    // req.onload = () => {
-    //   cb(JSON.parse(req.response));
-    // };
-
-    // req.send();
+  getImage(file) {
+    return file.image
   }
 
-  fetchSampleAdvance(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser-four.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
+  confirm(){
+    this.providerBrandApprovalService.updateStatus({ 
+      status: this.selectedBrand.status, 
+      _id: this.selectedBrand._id 
+    }).subscribe((res)=>{
+      this.getBrandApprovalListByFilter(0, 1000, {});
+      if(res.header.code) {
+        this.messageService.success("Brand Approval Request Updated")
+      } else {
+        this.messageService.error("Brand Approval Request Not Updated")
+      }
+      console.log("Response", res);
+    })
   }
 
-  ngOnInit() { }
-
-  updateFilter(event) {
-    const val = event.target.value.toLowerCase();
-
-    // filter our data
-    const temp = this.basicSort.filter(function (d) {
-      // Change the column name here
-      // example d.places
-      return d.title.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-    // update the rows
-    this.basicRows = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
-  }
-
-  showModal() {
-    this.addNewAppModal.show();
-  }
-  addRow() {
-    let temp = {
-      appName: this.appName,
-      description: this.appDescription,
-      notes: this.appPrice,
-      price: this.appNotes
-    };
-    //https://github.com/swimlane/ngx-datatable/issues/701
-    // this.dynamicRows = [...this.dynamicRows, temp];
-    this.addNewAppModal.hide();
-  }
-
-  select(event) {
-    console.log(event);
-  }
-
-  onPage(event){
-    console.log(event);
+  update(row){
+    this.selectedBrand = row;
+    this.updateStatus = row.status
   }
 }
 

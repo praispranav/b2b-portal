@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
@@ -32,11 +30,8 @@ export class UserVerificationListComponent implements OnInit {
     { name: 'Company Name', prop: "company" },
     { name: 'Type', prop: "role" },
     { name: 'Country', prop: "country" },
-    // { name: 'State', prop:'state' },
     { name: 'City', prop: 'city' },
-    // { name: 'Posted By', prop: '' },
     { name: 'Listing Date', prop: 'timestamp' },
-    // { name: 'Last Active Product', prop: '' }
 
   ];
 
@@ -59,14 +54,14 @@ export class UserVerificationListComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
-    this.fetchSampleAdvance()
+    // this.fetchSampleAdvance()
   }
 
   getUsers() {
     this.userVerificationService.getUsers().subscribe((res) => {
       console.log('res', res)
-      if(res.header.code === 200){
-        this.advanceRows = res.data.map((i)=>{
+      if (res.header.code === 200) {
+        this.advanceRows = res.data.map((i) => {
           return {
             ...i, timestamp: moment(new Date(i.timestamp)).format('YYYY-DD-MM')
           }
@@ -79,57 +74,7 @@ export class UserVerificationListComponent implements OnInit {
   onActivate(event) { }
 
 
-  fetchSampleAdvance() {
-    const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/table_browser.json`);
-
-    req.onload = () => {
-      console.log(req.response)
-    };
-
-    req.send();
-  }
-
-
-
-  updateFilter(event) {
-    const val = event.target.value.toLowerCase();
-
-    // filter our data
-    const temp = this.basicSort.filter(function (d) {
-      // Change the column name here
-      // example d.places
-      return d.title.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-
-    // update the rows
-    this.basicRows = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
-  }
-
-  showModal() {
-    this.addNewAppModal.show();
-  }
-  addRow() {
-    let temp = {
-      appName: this.appName,
-      description: this.appDescription,
-      notes: this.appPrice,
-      price: this.appNotes
-    };
-    //https://github.com/swimlane/ngx-datatable/issues/701
-    // this.dynamicRows = [...this.dynamicRows, temp];
-    this.addNewAppModal.hide();
-  }
-  select(event) {
-    console.log(event);
-  }
-
-  onPage(event) {
-    console.log(event);
-  }
   view(sellerId) {
-    this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: sellerId, type: 'seller'}});
+    this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: sellerId, type: 'seller' } });
   }
 }

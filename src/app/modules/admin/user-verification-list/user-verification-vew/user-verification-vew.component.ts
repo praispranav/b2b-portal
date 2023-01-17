@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 import { SellerSearchService } from '../../../../core/providers/user/seller-search.service';
 import { UserVerificationService } from '../../../../core/providers/user/user-verification.service';
 
@@ -21,9 +22,12 @@ export class UserVerificationVewComponent implements OnInit {
     companyProfile: {},
     certification: {},
     exportCapabilities: {},
-    businessType: {}
+    businessType: {},
+    qualityControl:{}
   }
   checkedCards: any[] = [];
+
+  imageBaseUrl: string  = environment.imageStorage
   
 
   constructor(private route: ActivatedRoute, private sellerSearchService: SellerSearchService, private userVerificationService: UserVerificationService) {
@@ -50,12 +54,18 @@ export class UserVerificationVewComponent implements OnInit {
     let checkedCount = 0;
     this.checkedCards.forEach((i)=> i ? checkedCount += 1 : '');
     console.log("CheckedCount", checkedCount)
-    if(checkedCount === 4){
+    if(checkedCount === 5){
       this.userVerificationService.approveRejectUser(status, userId).subscribe((res)=>{
         console.log("Res", res)
         this.getSellerDetails();
       })
     }
+  }
+
+  get CheckCount(){
+    let checkedCount = 0;
+    this.checkedCards.forEach((i)=> i ? checkedCount += 1 : '');
+    return checkedCount
   }
 
   getSellerDetails(){

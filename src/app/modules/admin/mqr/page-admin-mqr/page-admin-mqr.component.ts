@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import * as moment from 'moment'
 import { ModalDirective } from 'ngx-bootstrap';
+import { MessageService } from '../../../../@pages/components/message/message.service';
+import { RequestQuotationService } from '../../../../core/providers/user/request-quotation.service';
 @Component({
   selector: 'app-page-admin-mqr',
   templateUrl: './page-admin-mqr.component.html',
@@ -15,19 +18,28 @@ export class PageAdminMqrComponent implements OnInit {
   appPrice = null;
   appNotes = null;
 
+  selectedCategory: string = 'All';
+  selectedStatus: string = 'All';
+  categoryList: any[] = [];
+
+  page: number = 1;
+  pageSize: number = 100;
+
   basicRows = [];
   basicSort = [];
 
-
   advanceColumns = [
-   { name: 'Product Name' },
+    { name: 'Product Name' },
     { name: 'Category' },
     { name: 'Posted By' },
     { name: 'Date Time' },
     { name: 'MOQ' },
     { name: 'Price $' },
-
+    { name: 'Status' },
   ];
+
+  selectedRfq: any = null;
+  updateStatus: string = ''
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true }) tableAdvance: DatatableComponent;
@@ -37,7 +49,7 @@ export class PageAdminMqrComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? 'standard' : 'force';
 
-  constructor() {
+  constructor(private requestForQuotationService: RequestQuotationService, private messageService: MessageService) {
     console.log(this.columnModeSetting);
     this.fetch(data => {
       // cache our list
@@ -52,10 +64,10 @@ export class PageAdminMqrComponent implements OnInit {
     //   this.dynamicRows = data;
     // });
 
-    this.fetchSampleAdvance(data => {
-      // push our inital complete list
-      this.advanceRows = data;
-    });
+    // this.fetchSampleAdvance(data => {
+    //   // push our inital complete list
+    //   this.advanceRows = data;
+    // });
 
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
@@ -101,22 +113,16 @@ export class PageAdminMqrComponent implements OnInit {
     req.send();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getAllRequestForQuotationList();
+  }
 
   updateFilter(event) {
     const val = event.target.value.toLowerCase();
-
-    // filter our data
     const temp = this.basicSort.filter(function (d) {
-      // Change the column name here
-      // example d.places
       return d.title.toLowerCase().indexOf(val) !== -1 || !val;
     });
-
-    // update the rows
     this.basicRows = temp;
-    // Whenever the filter changes, always go back to the first page
-    // this.table.offset = 0;
   }
 
   showModal() {
@@ -138,7 +144,57 @@ export class PageAdminMqrComponent implements OnInit {
     console.log(event);
   }
 
-  onPage(event){
+  onPage(event) {
     console.log(event);
+  }
+
+  getAllRequestForQuotationList() {
+    this.requestForQuotationService.getAllRequestForQuotation({ 
+      page:this.page, 
+      pageSize: this.pageSize, 
+      status: this.selectedStatus, 
+      category: this.selectedCategory 
+    }).subscribe((res) => {
+      if ( Array.isArray(res.data) ) {
+        const categoryIds:any = {};
+        this.advanceRows = res.data.map((i) => {
+          categoryIds[i.productCategory[0]] = i.category;
+          return { ...i, dateTime: moment(i.timestamp).format('YYYY-MM-DD'), moq: i.quantity, price: i.budget }
+        })
+        console.log(this.advanceRows);
+        this.categoryList =  Object.entries(categoryIds);
+      }
+    })
+  }
+
+  handleStatusChange(event){
+    this.getAllRequestForQuotationList();
+  }
+
+  handleCategoryChange(){
+    this.getAllRequestForQuotationList();
+  }
+
+  delete(row){
+    this.selectedRfq = row;
+    console.log(row);
+    this.updateStatus = row.status
+  }
+
+  confirm(){
+    console.log(this.selectedRfq);
+    this.requestForQuotationService.updateStatus({ 
+      status: this.selectedRfq.status, 
+      _id: this.selectedRfq._id 
+    }).subscribe((res)=>{
+      this.getAllRequestForQuotationList();
+      
+      if(res.header.code){
+        this.messageService.success("Mqr status updated.")
+      } else {
+        this.messageService.error("Mqr status not updated.")
+      }
+      console.log("Response", res);
+    })
   }
 }
