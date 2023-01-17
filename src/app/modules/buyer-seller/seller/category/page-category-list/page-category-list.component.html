@@ -124,6 +124,14 @@
 
 
                         <ng-template #treeUlContainer let-list='list'>
+                            <tr>
+                                <td class="">Open/Close</td>
+                                <td> Image</td>
+                                <td> Category Name</td>
+                                <td> Status</td>
+                                <td> Create</td>
+                                <td>Update</td>
+                            </tr>
                             <ng-container *ngFor="let item of list" #nodeEl>
                                 <tr>
                                     <th>
@@ -165,6 +173,14 @@
                                 </ng-container>
 
                             </ng-container>
+                            <tr>
+                                <td colspan="6">
+                                    <div style="background-color: grey; height: 5px; width: 100%;">
+
+                                    </div>
+                                </td>
+
+                            </tr>
                         </ng-template>
 
 
