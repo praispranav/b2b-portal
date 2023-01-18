@@ -51,10 +51,10 @@ const routes: Routes = [
     path: "email",
     loadChildren: "../../features/email/email.module#EmailModule"
   },
-  {
-    path: "change-password",
-    component: PageChangePasswordComponent,
-  },
+  // {
+  //   path: "change-password",
+  //   component: PageChangePasswordComponent,
+  // },
 
 ];
 
