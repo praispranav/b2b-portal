@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { ProviderMaterCategoryService } from "../../../../core/providers/master/provider-mater-category.service";
 
 @Component({
@@ -24,8 +25,12 @@ export class HomeCategoriesComponent implements OnInit {
 
   subCategories: any[] = [];
   subSubCategories: any[] = [];
+  readMore: any = {};
 
-  constructor(private masterCategoryService: ProviderMaterCategoryService) {}
+  constructor(
+    private masterCategoryService: ProviderMaterCategoryService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getParentCategories();
@@ -43,7 +48,7 @@ export class HomeCategoriesComponent implements OnInit {
 
   getSubMasterCategories() {
     this.masterCategoryService
-      .getMaterCategoryListByFilter(0, 50, { level: "1" })
+      .getMaterCategoryListByFilter(0, 100, { level: "1" })
       .subscribe((res) => {
         this.subCategories = res.data;
       });
@@ -51,7 +56,7 @@ export class HomeCategoriesComponent implements OnInit {
 
   getSubSubMasterCategories() {
     this.masterCategoryService
-      .getMaterCategoryListByFilter(0, 50, { level: "2" })
+      .getMaterCategoryListByFilter(0, 1000, { level: "2" })
       .subscribe((res) => {
         this.subSubCategories = res.data;
       });
@@ -84,5 +89,17 @@ export class HomeCategoriesComponent implements OnInit {
     const clientX = event.clientX;
     const clientY = event.clientY - 150;
     this.overlayLocation = { clientX, clientY };
+  }
+
+  handleNavigateToCategory(categoryId) {
+    this.router.navigate([ "/b2b/product-search" ], {
+      queryParams: {
+        page: 1,
+        searchType: "Product",
+        pageSize: 10,
+        search: "",
+        categoryId: categoryId,
+      },
+    });
   }
 }
