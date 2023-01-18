@@ -1,3 +1,4 @@
+import { BuyerProfileService } from './../../../../../core/providers/user/buyer-profile.service';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import * as moment from "moment"
 })
 export class PageProfileAddComponent implements OnInit {
   contactUsForm:FormGroup;
-  constructor( private fb:FormBuilder) { }
+  constructor( private fb:FormBuilder, private buyerService:BuyerProfileService) { }
   mask = {
     date: [/[1-9]/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/],
     telephone: [
@@ -66,14 +67,30 @@ export class PageProfileAddComponent implements OnInit {
       accountType:['',[Validators.required]],
       email: ["", [Validators.email,Validators.required]],
       country: ["", [Validators.required]],
-      city: ["", [Validators.required]],
+      City: ["", [Validators.required]],
 
-      state: ["", [Validators.required]],
+      State: ["", [Validators.required]],
       addOne: ["",[Validators.required]],
       addTwo: ["",[Validators.required]],
       number: ["",[Validators.required]],
      
       agreeCheckBox:["",[Validators.required]]
     });
+  }
+  async submitBuyerProfile(){
+     console.log(this.contactUsForm.value);
+      await this.buyerService.addProfile(this.contactUsForm.value).subscribe(
+      (res)=>{
+     
+        window.alert("API Success");
+        console.log("res", res);
+
+      },
+      (err)=>{
+        window.alert("API Error");
+      }
+
+     )
+      
   }
 }
