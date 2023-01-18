@@ -63,7 +63,14 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Leads",
-      routerLink: "/seller/dashboard",
+      toggle: "close",
+      submenu: [
+        {
+          label: "Received-RFQ",
+          routerLink: "/seller/product/requested-rfq",
+        },
+        
+      ],
     },
     // {
     //   path: "request-for-quotation",
@@ -113,10 +120,10 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       label: "My Buying Interests",
       routerLink: "/seller/buying-interest",
     },
-    {
-      label: "Supplier MyListing",
-      routerLink: "/seller/supplier-list",
-    },
+    // {
+    //   label: "Supplier MyListing",
+    //   routerLink: "/seller/supplier-list",
+    // },
   ];
 
   currentUserAuth: any = null;

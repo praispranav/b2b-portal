@@ -4,6 +4,7 @@ import { FormBeginAddingProductsComponent } from './components/form-begin-adding
 import { SearchSelectProductTypeComponent } from './components/search-select-product-type/search-select-product-type.component';
 import { PageProductAddComponent } from "./page-product-add/page-product-add.component";
 import { PageProductListComponent } from "./page-product-list/page-product-list.component";
+import { RequestedRfqComponent } from './requested-rfq/requested-rfq.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "product-map",
     component: SearchSelectProductTypeComponent
+  },
+  {
+    path: "requested-rfq",
+    component: RequestedRfqComponent
   }
 
 ];

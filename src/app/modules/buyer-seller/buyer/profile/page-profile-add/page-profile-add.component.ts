@@ -61,21 +61,18 @@ export class PageProfileAddComponent implements OnInit {
   buidlContactUsForm() {
     this.contactUsForm = this.fb.group({
       companyName: ["", [Validators.required]],
-      firstName: ["", [Validators.required]],
-      lastName: ["",[Validators.required]],
-      AccountType:['',[Validators.required]],
+      contactPersonName: ["", [Validators.required]],
+      contactPersonSurName: ["",[Validators.required]],
+      accountType:['',[Validators.required]],
       email: ["", [Validators.email,Validators.required]],
-      Country: ["", [Validators.required]],
-      State: ["", [Validators.required]],
+      country: ["", [Validators.required]],
+      city: ["", [Validators.required]],
 
-      City: ["", [Validators.required]],
-      countryCode: ["",[Validators.required]],
-      phoneCountryCode: ["",[Validators.required]],
-      mobileCountryCode: ["",[Validators.required]],
-      mobile: ["",[Validators.required]],
-      phone: ["",[Validators.required]],
-      Address1: ["", [Validators.required]],
-      Address2: ["", [Validators.required]],
+      state: ["", [Validators.required]],
+      addOne: ["",[Validators.required]],
+      addTwo: ["",[Validators.required]],
+      number: ["",[Validators.required]],
+     
       agreeCheckBox:["",[Validators.required]]
     });
   }
