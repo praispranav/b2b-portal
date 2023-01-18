@@ -96,6 +96,7 @@ export class FormTradeInformationComponent implements OnInit {
     { unit: "Packs" },
     { unit: "Pair" },
   ];
+  
 
   paymentTypeList: any[] = [
     { paymentType: false, type: "D/A", value: "D/A" },
@@ -239,6 +240,7 @@ export class FormTradeInformationComponent implements OnInit {
   deleteOtherDetails(index: number): void {
     this.otherDetailsArr.removeAt(index);
   }
+
   async subTradeInformationForm() {
     let formData = this.tradeInformationForm.value;
     formData.types = this.paymentTypeList;
@@ -265,6 +267,7 @@ export class FormTradeInformationComponent implements OnInit {
       ProviderStorageService.productConstants.tradeInformation,
       data.formData
     );
+    debugger;
     this.formSubmitData.emit(data);
   }
   private resetFormGroup(form: FormGroup) {

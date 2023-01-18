@@ -1,0 +1,81 @@
+<div class="p-2">
+
+
+
+    <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
+        <!-- START card -->
+        <div class="card card-transparent">
+            <div class="card-header  d-flex justify-content-between">
+                <div class="card-title">Admin-Brand Approval Request Admin
+                </div>
+                <div class="export-options-container"></div>
+
+            </div>
+            <div class="table-responsive">
+                <ngx-datatable class='table table-hover' [rows]="brandApprovalList" [columnMode]="columnModeSetting" [headerHeight]="43" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5" [selected]="selected" [selectionType]="'checkbox'" [scrollbarH]="scrollBarHorizontal"
+                    (activate)="onActivate($event)">
+                    <!-- (select)='onSelect($event)'> -->
+                    <ngx-datatable-column [width]="45" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" cellClass="d-flex align-items-center p-l-0 p-r-0">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Sr No" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                    <!-- <ngx-datatable-column name="Image" cellClass="d-flex align-items-center"></ngx-datatable-column> -->
+                    <ngx-datatable-column name="Image" widht="600">    
+                      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>    
+                        <img [src]="imgUrl + getImage(row)" style="width: 50px; height: 50px;">
+                      </ng-template>    
+                  </ngx-datatable-column> 
+                    <ngx-datatable-column name="Brand Type" cellClass="d-flex align-items-center">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Brand Name" cellClass="d-flex align-items-center">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Serial Number" cellClass="d-flex align-items-center">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="Products Link" cellClass="d-flex align-items-center"></ngx-datatable-column>
+
+                    <ngx-datatable-column name="Added On" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                    <ngx-datatable-column name="Status" cellClass="d-flex align-items-center"></ngx-datatable-column>
+                    <ngx-datatable-column name="Action" sortable="false" prop="name">
+                        <ng-template ngx-datatable-cell-template let-row="row">
+                            <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="update(row)"
+                            data-toggle="modal" data-target="#updateStatus">
+                                Update
+                            </button>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+                
+            </div>
+        </div>
+        <!-- END card -->
+    </pg-container>
+</div>
+
+<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" *ngIf="selectedBrand">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ selectedBrand.brandName }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 p-3 p-10 ">
+                <select [(ngModel)]="updateStatus" class="form-select" aria-label="Default select example">
+                    <option value="All" selected>All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="InProgress">In Progress</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Reject">Reject</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="confirm()" data-dismiss="modal" class="btn btn-primary">Update Status</button>
+        </div>
+      </div>
+    </div>
+  </div>

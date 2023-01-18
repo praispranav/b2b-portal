@@ -12,13 +12,16 @@ export class BlogService {
   addBlog(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/blog/add`, params);
   }
-
+  getBlog(): Observable<any> {
+    
+    return this.http.get<any>(`${environment.apiUrl}/blog/getAll`);
+  }
  
   getBlogById(id: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/blog/get/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}/blog/${id}`);
   }
 
-
+  
 
   updateBlog(params: any = {}): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/blog/update`, params);

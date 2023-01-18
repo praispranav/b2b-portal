@@ -32,11 +32,31 @@ export class RequestQuotationService {
     );
   }
 
+  updateStatus(params: any = {}): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/request-quotation/updateStatus`,
+      params
+    );
+  }
+
   getRequestForQuotationById(id: string): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}/request-quotation/get/${id}`
     );
   }
+
+  getAllRequestForQuotation({page, pageSize, status, category}): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/request-quotation`, { params: { page, pageSize, status, category }}
+    );
+  }
+
+  getRequestForQuotationByUser(): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/request-quotation/get/user`
+    );
+  }
+  
   updateRequestForQuotation(params: any = {}): Observable<any> {
     return this.http.put<any>(
       `${environment.apiUrl}/request-quotation/update`,

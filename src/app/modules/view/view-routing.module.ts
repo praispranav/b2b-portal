@@ -46,6 +46,9 @@ import { SellerAboutComponent } from "./seller-about/seller-about.component";
 import { CatalogueSellerCompanyDetailsComponent } from "./components/catalogue-seller-company-details/catalogue-seller-company-details.component";
 import { SellerSearchComponent } from "./seller-search/seller-search.component";
 import { PageHomeRfqFormTwoComponent } from "./page-home-rfq-form-two/page-home-rfq-form-two.component";
+import { PageNoProductFoundComponent } from "./page-no-product-found/page-no-product-found.component";
+import { ViewBlogComponent } from "./view-blog/view-blog.component";
+
 
 const routes: Routes = [
   {
@@ -72,6 +75,10 @@ const routes: Routes = [
   {
     path: "blog",
     component: PageBlogComponent,
+  },
+  {
+    path: "blog-view/:_id",
+    component: ViewBlogComponent,
   },
   {
     path: "buy",
@@ -154,7 +161,11 @@ const routes: Routes = [
     path: "sell",
     component: PageSellComponent,
   },
-
+  {
+    path: "no-product",
+    component: PageNoProductFoundComponent,
+  },
+  
   {
     path: "seller-catalogue-contact",
     component: PageSellerCatalogueContactComponent,

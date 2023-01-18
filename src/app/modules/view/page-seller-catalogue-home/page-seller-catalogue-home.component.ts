@@ -133,9 +133,11 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
           exportingPercent:
             this.sellerProfile.exportCapabilities.exportingPercent,
           mainProducts: this.getMainProducts(),
+          banners: this.sellerProfile.companyDetail.banners
         };
       }
       console.log(res);
+      console.log("Banners", this.sellerProfile.companyDetail.banners)
     });
   }
 

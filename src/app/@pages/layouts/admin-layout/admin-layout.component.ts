@@ -40,7 +40,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/admin/dashboard",
         },
         {
-          label: "MQR",
+          label: "RFQ",
           routerLink: "/admin/mqr/mqr-list",
         },
         {
@@ -63,7 +63,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Brand Approval Requests",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/brand-approval/brand-approval-list",
         },
         {
           label: "Brands",
@@ -216,8 +216,8 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       toggle: "close",
       submenu: [
         {
-          label: "Create Tags",
-          routerLink: "/admin/dashboard",
+          label: "Add Blog",
+          routerLink: "/admin/add-blog",
         },
       ],
     },
@@ -231,7 +231,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Add Trade Shows",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/admin-tradeShow/add-trade-show",
         },
         {
           label: "Add Type",

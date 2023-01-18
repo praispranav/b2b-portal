@@ -16,13 +16,13 @@ export class PageProductAddComponent implements OnInit {
   thirdTabFormValue: any;
   fourTabFormValue: any;
   payload: any = {};
-  currentTabIndex:number = 0;
+  currentTabIndex: number = 0;
 
   constructor(
     private router: Router,
     private productService: FormProductService,
     private storageService: ProviderStorageService
-  ) {}
+  ) { }
   // shippingInfoForm(productDetailFrom:productDetailForm){
   //      this.productService.(productDetailForm.value).subscribe(
   //     (res) => {
@@ -34,7 +34,7 @@ export class PageProductAddComponent implements OnInit {
   //     }
   //   );
   // }
-  ngOnInit() {}
+  ngOnInit() { }
 
   saveFormData(event): void {
     console.log("event", event);
@@ -96,6 +96,7 @@ export class PageProductAddComponent implements OnInit {
           otherDetailTradeInfo: this.allFormData.otherDetailTradeInfo
             ? this.allFormData.otherDetailTradeInfo
             : "",
+          bulkPrice: this.allFormData.bulkPrice ? this.allFormData.bulkPrice : []
         };
         this.currentTabIndex += 1
       }
@@ -141,7 +142,7 @@ export class PageProductAddComponent implements OnInit {
     }
   }
 
-  onTabClick(index){
+  onTabClick(index) {
     this.currentTabIndex = index
   }
 }
