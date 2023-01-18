@@ -30,38 +30,20 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             <div class="form-group input-group ">
-                <input type="text" [(ngModel)]="keyword" (keyup)="filterCategory()" placeholder="Search for a category" class="form-control">
-                <div class="input-group-append">
+                <input type="text" [(ngModel)]="keyword" placeholder="Search for a category" class="form-control">
+                <div class="input-group-append" (click)="filterCategory()">
                     <span class="input-group-text primary"><i class="pg-icon">search</i>
           </span>
                 </div>
             </div>
             <div class="">
-                <div class="" *ngFor="let category of searchedCategories">
-                    <p>{{ category.mainCategoryName }}</p>
+                <div class="" *ngFor="let category of searchedCategories;let i = index">
+                    <!-- <p>Main CategoryName {{ category.mainCategoryName }}</p> -->
                     <p>{{ category.label }}</p>
                     <button class="btn btn-primary" (click)="selectSearchedCategory(category)">Select</button>
                 </div>
             </div>
-=======
-      <div class="form-group input-group ">
-        <input type="text" [(ngModel)]="keyword" placeholder="Search for a category"
-          class="form-control">
-        <div class="input-group-append" (click)="filterCategory()">
-          <span class="input-group-text primary"><i class="pg-icon">search</i>
-          </span>
-        </div>
-      </div>
-      <div class="">
-        <div class="" *ngFor="let category of searchedCategories;let i = index">
-          <!-- <p>Main CategoryName {{ category.mainCategoryName }}</p> -->
-          <p>{{ category.label }}</p>
-          <button class="btn btn-primary" (click)="selectSearchedCategory(category)">Select</button>
-        </div>
-      </div>
->>>>>>> f983cabe2d60362512eac817924e7f21230cb8b2
 
             <div class="d-flex justify-content-start">
                 <div class="mr-auto ">
