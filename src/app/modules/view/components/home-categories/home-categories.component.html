@@ -35,6 +35,8 @@
           position: fixed;
           height: 400px;
           width: 800px;
+          overflow-y: scroll;
+          overflow-x: hidden;
           background: white;
           z-index: 100;
           box-shadow: 5px 5px 10px rgba(100, 100, 100, 0.7);
@@ -43,12 +45,15 @@
         "
       >
         <div>
-          <h2>{{ selectedCategory.name }}</h2>
+          <h4>{{ selectedCategory.name }}</h4>
 
-          <div *ngFor="let item of getSubCategories(selectedCategory._id);">
-            <h4>{{ item.name }}</h4>
-            <div *ngFor="let subSubCategory of getSubSubCategories(item._id)">
-              <a>{{ subSubCategory.name }}</a>
+          <div class="row">
+            <div *ngFor="let item of getSubCategories(selectedCategory._id);" class="col-4">
+              <h5>{{ item.name }}({{ getSubSubCategories(item._id).length }})</h5>
+              <div *ngFor="let subSubCategory of getSubSubCategories(item._id).slice(0, readMore[item._id] ? getSubSubCategories(item._id).length : 5)">
+                <p (click)="handleNavigateToCategory(subSubCategory._id)">{{ subSubCategory.name }}</p>
+              </div>
+              <p *ngIf="!readMore[item._id]" (click)="readMore[item._id] = true">Read More </p>
             </div>
           </div>
 
