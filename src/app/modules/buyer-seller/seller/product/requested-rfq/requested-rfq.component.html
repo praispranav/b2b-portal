@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="pl-3 pr-3 border mt-4 p-2">
+    <div class="pl-3 pr-3 card mt-4 p-2" *ngFor="let request of requestForQutationList">
         <div class="row">
             <div  [ngClass]="i % 2 ? 'bg-gray' : 'row bg-light-gray' ">
                 <div class="col-md-3 p-2">
@@ -8,15 +8,14 @@
                 </div>
                 <div class="col-md-6 p-2">
                     <p class="border-left pl-1">
-                       Shirt</p>
-                    <p class="pl-1"><span><b>Quantity Required</b></span>10 box</p>
+                       {{ request.productName }}</p>
+                    <p class="pl-1"><span><b>Quantity Required</b></span>{{ request.quantity }} {{ request.unit[0] }}</p>
                     <p class="border-left pl-1">
-                        Budget : 100/-</p>
-                    <p class="pl-1"><span><b>Quantity Required</b></span>20 pieces</p>
+                        Budget : {{ request.budget }}/-</p>
                 </div>
                 <div class="col-md-3">
                     <p class=""><b>Status</b></p>
-                    <p class="text-primary pt-2">Pending</p>
+                    <p class="text-primary pt-2">{{ request.status }}</p>
                 </div>
             </div>
         </div>
