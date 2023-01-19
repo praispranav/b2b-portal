@@ -12,6 +12,10 @@ export class UserVerificationService {
   getUsers(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/user-verification`);
   }
+  getUsersById(id):Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/user-verification/buyer`, { params: {userId:id }});
+  }
+
 
   approveRejectUser(status, userId){
     return this.http.post(`${environment.apiUrl}/user-verification/statusUpdate`, { userId, status })
