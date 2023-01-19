@@ -74,7 +74,14 @@ export class UserVerificationListComponent implements OnInit {
   onActivate(event) { }
 
 
-  view(sellerId) {
-    this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: sellerId, type: 'seller' } });
+ async view(id,role) {
+   
+    if(role=='buyer'){
+      this.router.navigate(['/admin/user-list/buyer-view'], { queryParams: { id: id, type: 'buyer' } });
+    }
+    else{
+
+      this.router.navigate(['/admin/user-list/user-view'], { queryParams: { id: id, type: 'seller' } });
+    }
   }
 }
