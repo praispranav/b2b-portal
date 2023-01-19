@@ -93,7 +93,9 @@
     <button>Go</button>
 </div>
  <div class="col-md-12">
-    <label class="text-danger">Bulk Action</label> <button class="btn ms-2">Approve</button><button class="btn ms-2">Reject</button>
+    <label class="text-danger">Bulk Action</label> 
+    <button (click)="bulkConfirm('Approve')" class="btn ms-2">Approve</button>
+    <button (click)="bulkConfirm('Rejected')" class="btn ms-2">Reject</button>
  </div>               
 
 
@@ -118,7 +120,7 @@
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)" />
+                                <input type="checkbox" (click)="handler(row)" (change)="handleChangeCheckboxes($event, row)" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">

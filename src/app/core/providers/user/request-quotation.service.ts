@@ -39,6 +39,13 @@ export class RequestQuotationService {
     );
   }
 
+  updateBulkStatus(params: any = {}): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/request-quotation/updateStatus/all`,
+      params
+    );
+  }
+
   getRequestForQuotationById(id: string): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}/request-quotation/get/${id}`
@@ -54,6 +61,12 @@ export class RequestQuotationService {
   getRequestForQuotationByUser(): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}/request-quotation/get/user`
+    );
+  }
+
+  getRequestForQuotationAll(index: number, length:number, query:any={}): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/request-quotation//get-list/${index}/${length}/${query}`
     );
   }
   
