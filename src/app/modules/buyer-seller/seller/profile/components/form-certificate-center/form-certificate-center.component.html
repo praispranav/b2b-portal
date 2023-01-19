@@ -30,8 +30,7 @@
         </ng-container>
     </ng-container>
     <div class="row border mb-4 p-4" *ngFor="let form of formArray.controls; let i=index" [formGroup]="form">
-        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)"
-            class="btn btn-info w-25">
+        <button *ngIf="formArray?.controls?.length > 1" type="button" (click)="removeCertificate(i)" class="btn btn-info w-25">
             Remove
         </button>
         <div class="col-12">
@@ -40,28 +39,24 @@
         <div class="col-md-4">
             <div pgFormGroupDefault class="form-group form-group-default required">
                 <label for="fcc-certificateType">Type of Certification</label>
-                <input certificate="text" placeholder="Enter Type of Certification" class="form-control"
-                    id="fcc-certificateType" formControlName="certificateType" />
+                <input certificate="text" placeholder="Enter Type of Certification" class="form-control" id="fcc-certificateType" formControlName="certificateType" />
             </div>
         </div>
         <div class="col-md-4">
             <div pgFormGroupDefault class="form-group form-group-default required">
                 <label for="fcc-certificateNumber">Certificate Number</label>
-                <input certificate="text" placeholder="Enter Certificate Number" class="form-control"
-                    id="fcc-certificateNumber" formControlName="certificateNumber" />
+                <input certificate="text" placeholder="Enter Certificate Number" class="form-control" id="fcc-certificateNumber" formControlName="certificateNumber" />
             </div>
         </div>
         <div class="col-md-4">
             <div pgFormGroupDefault class="form-group form-group-default required">
                 <label for="fcc-certificateIssuer">Certificate Issuer</label>
-                <input certificate="text" placeholder="Enter Certificate Issuer" class="form-control"
-                    id="fcc-certificateIssuer" formControlName="certificateIssuer" />
+                <input certificate="text" placeholder="Enter Certificate Issuer" class="form-control" id="fcc-certificateIssuer" formControlName="certificateIssuer" />
             </div>
         </div>
         <div class="col-md-4">
             <h4>Upload Image</h4>
-            <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]"
-                >
+            <pg-upload ListType="picture-card" [(FileList)]="imageList[i]" [ShowButton]="!imageList[i]">
                 <div class="pic-placeholder">
                     <i class="pg-icon p-b-5">upload</i>
                     <div class="fs-12">Upload</div>
@@ -73,11 +68,10 @@
             </div>
         </div>
     </div>
-    <button type="button" (click)="addNewCertificate()" class="btn btn-info w-25 my-3">Add more other certificates
+    <button type="button" (click)="addNewCertificate()" class="btn btn-info ">Add more other certificates
     </button>
     <div class="mt-4">
-        <button certificate="submit" class="me-4 btn btn-primary show-notification"
-            (click)="subCertificateCenterForm()">
+        <button certificate="submit" class="me-4 btn btn-primary show-notification" (click)="subCertificateCenterForm()">
             {{isDataExist? 'Update' : 'Save'}} Certificate Center
         </button>
     </div>

@@ -9,8 +9,8 @@ import { environment } from '../../../../environments/environment';
 export class BuyerProfileService {
   constructor(private http: HttpClient) { }
 
-  addProfile(params: any = {}): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/buyer-profile/add`, params);
+   addProfile(params: any = {}): Observable<any> {
+    return   this.http.post<any>(`${environment.apiUrl}/buyer-profile/add`, params);
   }
   getBlog(): Observable<any> {
     
