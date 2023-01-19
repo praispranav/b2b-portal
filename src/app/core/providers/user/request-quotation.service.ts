@@ -64,6 +64,12 @@ export class RequestQuotationService {
     );
   }
 
+  getRequestForQuotationByCategories(): Observable<any> {
+    return this.http.get<any>(
+      `${environment.apiUrl}/request-quotation/get/user/by-category`
+    );
+  }
+
   getRequestForQuotationAll(index: number, length:number, query:any={}): Observable<any> {
     return this.http.get<any>(
       `${environment.apiUrl}/request-quotation//get-list/${index}/${length}/${query}`
@@ -91,5 +97,9 @@ export class RequestQuotationService {
     const result = localStorage.getItem(this.constants.reqForQuotation);
     if (result) return JSON.parse(result);
     return { productName: "", quantity: "", unit: "" };
+  }
+
+  removeRequestForQuotationLocal() {
+    localStorage.removeItem(this.constants.reqForQuotation);
   }
 }

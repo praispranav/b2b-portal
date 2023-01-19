@@ -51,17 +51,7 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   }
 
   subRequestForm1() {
-    // this.getDetailById(item);
-    // this.payload = {
-    //   // quantity: this.quantity,
-    //   ...this.requestQuotationForm1.value,
-
-    // };
     let formData = this.requestQuotationForm1.value;
-    // let data = {
-    //   formData: formData,
-    //   // value: 'first'
-    // }
 
     this.formSubmitData.emit(formData);
     this.requestQuotationService.setRequestForQuotationLocal(this.requestQuotationForm1.value)
@@ -72,20 +62,6 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
     } else {
       this.router.navigateByUrl('user-auth/sign-in')
     }
-
-
-    // console.log("payload", this.payload);
-    // this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
-    //   (res) => {
-    //     window.alert('API Success');
-    //     // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
-    //     console.log("res", res);
-    //   },
-    //   (err) => {
-
-    //     window.alert('API Error');
-    //   }
-    // );
   }
 
   fileUpload(event: any) {
