@@ -8,9 +8,9 @@
         *ngFor="let categories of parentCategories"
         (mouseover)="handleParentCategoryClick($event)"
       >
-        <h6 (mouseover)="selectCategory(categories)">
+        <p class="mb-1 focus" (mouseover)="selectCategory(categories)">
           {{ categories.name }}
-        </h6>
+        </p>
       </div>
       <div>
         <h6 class="text-blue">View More</h6>
@@ -28,7 +28,7 @@
         background: rgba(255, 255, 255, 0.5);
         z-index: 100;
       " -->
-      <div
+      <div class="bg"
         *ngIf="popoverVisible"
         [ngStyle]="{ top: overlayLocation.clientY + 'px', left: 350 + 'px' }"
         style="
@@ -44,19 +44,23 @@
           padding: 20px;
         "
       >
-        <div>
-          <h4>{{ selectedCategory.name }}</h4>
+        <div class="pl-2 ">
+          <h4 class="text-orange">{{ selectedCategory.name }}</h4>
 
           <div class="row">
-            <div *ngFor="let item of getSubCategories(selectedCategory._id);" class="col-4">
+            <div *ngFor="let item of getSubCategories(selectedCategory._id);" class="col-4 p-2">
+              <div class="shadow p-2">
               <h5>{{ item.name }}({{ getSubSubCategories(item._id).length }})</h5>
               <div *ngFor="let subSubCategory of getSubSubCategories(item._id).slice(0, readMore[item._id] ? getSubSubCategories(item._id).length : 5)">
-                <p (click)="handleNavigateToCategory(subSubCategory._id)">{{ subSubCategory.name }}</p>
+                <p class="underline mb-1" (click)="handleNavigateToCategory(subSubCategory._id)">
+                  {{ subSubCategory.name }}
+                </p>
               </div>
-              <p *ngIf="!readMore[item._id]" (click)="readMore[item._id] = true">Read More </p>
+              <p class="text-blue" *ngIf="!readMore[item._id]" (click)="readMore[item._id] = true"> <u>Read More</u>
+              </p>
             </div>
           </div>
-
+    </div>
         </div>
       </div>
     </div>
