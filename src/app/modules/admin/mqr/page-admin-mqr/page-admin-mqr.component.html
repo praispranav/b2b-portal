@@ -73,7 +73,7 @@
                               <option value="3">Three</option>
                           </select>
                       </div>
-                      <div class="col-md-4  p-3 ">
+                      <div class="col-md-3  p-3 ">
                           <select class="form-select" aria-label="Default select example">
                               <option selected>Date</option>
                               <option value="1">One</option>
@@ -81,14 +81,20 @@
                               <option value="3">Three</option>
                           </select>
                       </div>
-                      <div class="col-md-4  p-3 ">
+                      <div class="col-md-3  p-3 ">
                           <select class="form-select" aria-label="Default select example">
-                              <option selected>Bulk Action</option>
+                              <option selected>Status</option>
                               <option value="1">Approved</option>
                               <option value="2">Reject</option>
 
                           </select>
                       </div>
+<div class="col-md-2 p-3">
+    <button>Go</button>
+</div>
+ <div class="col-md-12">
+    <label class="text-danger">Bulk Action</label> <button class="btn ms-2">Approve</button><button class="btn ms-2">Reject</button>
+ </div>               
 
 
 
@@ -104,10 +110,7 @@
             <div class="card-body">
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
-                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
-                        [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
-                        [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
-                    </ngx-datatable> -->
+                    
                     <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
                         [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
                         [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"

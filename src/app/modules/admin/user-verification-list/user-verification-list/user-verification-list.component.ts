@@ -32,6 +32,7 @@ export class UserVerificationListComponent implements OnInit {
     { name: 'Country', prop: "country" },
     { name: 'City', prop: 'city' },
     { name: 'Listing Date', prop: 'timestamp' },
+    { name: 'Status', prop: 'status' },
 
   ];
 

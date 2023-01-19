@@ -70,7 +70,7 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [prop]="col.prop" [hidden]="col.image">
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Company Logo">
+                        <ngx-datatable-column name="Action">
                             <ng-template ngx-datatable-cell-template let-row="row">
                                 <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="view(row._id,row.role)">
                                     View
