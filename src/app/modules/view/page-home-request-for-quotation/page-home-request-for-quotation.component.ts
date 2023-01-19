@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RequestQuotationService } from "../../../core/providers/user/request-quotation.service";
 import { Router } from "@angular/router";
+import { ProviderUserAuthService } from "../../../core/providers/auth/provider-user-auth.service";
 @Component({
   selector: "app-page-home-request-for-quotation",
   templateUrl: "./page-home-request-for-quotation.component.html",
@@ -23,8 +24,11 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private requestQuotationService: RequestQuotationService
-  ) {}
+    private requestQuotationService: RequestQuotationService,
+    private authService:ProviderUserAuthService
+  ) {
+
+  }
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
 
   // handleQuantityChange(event) {
@@ -61,7 +65,14 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
 
     this.formSubmitData.emit(formData);
     this.requestQuotationService.setRequestForQuotationLocal(this.requestQuotationForm1.value)
-    this.router.navigateByUrl(`/b2b/request-for-quotation`);
+    const jwt_decode = this.authService.currentUserValueObjTokenDecoded
+    console.log("JwtDecode", jwt_decode);
+    if(jwt_decode){
+      this.router.navigateByUrl(`/b2b/request-for-quotation`);
+    } else {
+      this.router.navigateByUrl('user-auth/sign-in')
+    }
+
 
     // console.log("payload", this.payload);
     // this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(

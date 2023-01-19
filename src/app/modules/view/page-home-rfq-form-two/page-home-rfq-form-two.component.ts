@@ -9,6 +9,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
+import { ProviderUserAuthService } from "../../../core/providers/auth/provider-user-auth.service";
 import { ProviderMaterCategoryService } from "../../../core/providers/master/provider-mater-category.service";
 import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
 import {
@@ -48,15 +49,25 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   rfqSmallFormData: ReqQuoFormData =
     this.requestQuotationService.getRequestForQuotationLocal();
 
+  userInfor: any = null;
   constructor(
     private formBuilder: FormBuilder,
     private requestQuotationService: RequestQuotationService,
     private router: Router,
     private masterCategoryService: ProviderMaterCategoryService,
-    private providerMaterCategoryService: ProviderMaterCategoryService
+    private providerMaterCategoryService: ProviderMaterCategoryService,
+    private authService: ProviderUserAuthService
   ) {}
 
   ngOnInit() {
+    const jwt_decode = this.authService.currentUserValueObjTokenDecoded;
+    console.log("JwtDecode", jwt_decode);
+    if (jwt_decode) {
+      this.userInfor = jwt_decode
+    } else {
+      this.router.navigateByUrl("user-auth/sign-in");
+    }
+
     this.buildTypeForm2();
     this.rfqId = JSON.parse(localStorage.getItem("rfqId"));
     this.getMaterCategoryListByCategory(0, 1000, { level: "0" });
@@ -86,8 +97,9 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   saveFormData(event): void {
     if (event) {
       this.allFormData = this.requestQuotationForm2.value;
-      debugger
+      debugger;
       this.firstFormValue = {
+        userId: this.userInfor._id,
         productName: this.allFormData.productName
           ? this.allFormData.productName
           : "",
