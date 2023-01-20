@@ -27,7 +27,7 @@ export const AppRoutes: Routes = [
   },
   {
     path: "agent",
-    canActivate: [UserGuard],
+    // canActivate: [UserGuard],
     data: {
       role: 'agent'
     },
@@ -36,7 +36,7 @@ export const AppRoutes: Routes = [
   },
   {
     path: "associate",
-    canActivate: [UserGuard],
+    // canActivate: [UserGuard],
     data: {
       role: 'associate'
     },
