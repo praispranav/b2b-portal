@@ -71,10 +71,11 @@ export class BrandApprovalListComponent implements OnInit {
   getImage(file) {
     return file.image
   }
+  
 
   confirm(){
     this.providerBrandApprovalService.updateStatus({ 
-      status: this.selectedBrand.status, 
+      status: this.updateStatus, 
       _id: this.selectedBrand._id 
     }).subscribe((res)=>{
       this.getBrandApprovalListByFilter(0, 1000, {});

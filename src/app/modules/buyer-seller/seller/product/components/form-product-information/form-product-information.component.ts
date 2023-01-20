@@ -8,6 +8,7 @@ import { ProviderMaterStateService } from "../../../../../../core/providers/mast
 import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
 import { ProviderMaterCategoryService } from "../../../../../../core/providers/master/provider-mater-category.service";
+import { ProviderBrandApprovalService } from "../../../../../../core/providers/user/provider-brand-approval.service";
 
 export type productInfo = {
   productName: string;
@@ -37,6 +38,7 @@ export class FormProductInformationComponent implements OnInit {
   ];
   countries: any[] = [];
   states: any[] = [];
+  brandsList: any[] = [];
 
   categoryList: any[] = []
 
@@ -288,6 +290,7 @@ export class FormProductInformationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private categoryService: ProviderCategoryService,
     private masterCategoryService: ProviderMaterCategoryService,
+    private brandApproval: ProviderBrandApprovalService,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerProductInformationService: ProviderProductInformationService,
     private providerMaterStateService: ProviderMaterStateService,
@@ -305,6 +308,7 @@ export class FormProductInformationComponent implements OnInit {
     this.addNewOtherDetails();
     this.getCountryList();
     this.getCategoryList();
+    this.getApprovedBrands();
   }
 
   buildProductInformationForm() {
@@ -396,8 +400,15 @@ export class FormProductInformationComponent implements OnInit {
   }
 
   getCategoryList(){
-    this.masterCategoryService.getCategoryListByUserParent().subscribe((res)=>{
+    this.categoryService.getCategoryListByFilter(0, 100, { level: "0" }).subscribe((res)=>{
       this.categoryList = res.data
+    })
+  }
+
+  getApprovedBrands(){
+    this.brandApproval.getBrandApprovalListByFilter(0,100, { status: "Approved" }).subscribe((res)=>{
+      console.log("Brands", res.data);
+      this.brandsList = res.data
     })
   }
 }

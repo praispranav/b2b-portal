@@ -63,8 +63,8 @@
                         <label for="product-name">Brand Name</label>
                         <pg-select style="width: 100%;" id="product-name" [Mode]="'multiple'" [PlaceHolder]="'Select'"
                             formControlName="brandName" [NotFoundContent]="'Not found'">
-                            <pg-option *ngFor="let option of searchOptions" [Label]="option.label"
-                                [Value]="option.value" [Disabled]="option.disabled">
+                            <pg-option *ngFor="let option of brandsList" [Label]="option.brandName"
+                                [Value]="option._id" [Disabled]="option.disabled">
                             </pg-option>
                         </pg-select>
                     </div>
