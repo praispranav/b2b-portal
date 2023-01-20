@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProviderCompanyProfileService } from '../../../../../core/providers/user/provider-company-profile.service';
 
 @Component({
   selector: 'app-page-dashboard',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageDashboardComponent implements OnInit {
 
-  constructor() { }
+  mainCategoryName = "";
+  isVerifiedByAdmin: string = ''
+  constructor(private companyProfileService: ProviderCompanyProfileService, ) { }
 
   ngOnInit() {
+    this.getCompanyProfile();
+  }
+
+  getCompanyProfile(){
+    this.companyProfileService.getCompanyProfileByUserId().subscribe((res)=>{
+      console.log("CompanyProfile", res)
+      if(res.category) this.mainCategoryName = res.category.name
+      if(res.isVerified) this.isVerifiedByAdmin = res.isVerified
+    })
   }
 
 }

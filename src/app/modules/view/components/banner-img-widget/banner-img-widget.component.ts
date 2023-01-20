@@ -10,6 +10,7 @@ export class BannerImgWidgetComponent implements OnInit {
 
   @Input('label') label: string = '';
   @Input('description') description: string = '';
+  @Input('banners') banners: string[] = [];
   
   constructor() { }
 
