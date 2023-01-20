@@ -10,6 +10,7 @@ export class DashboardMrqsComponent implements OnInit {
 
   rfqList: any[] = [];
 
+
   constructor(private requestForQuotationService: RequestQuotationService) { }
 
   ngOnInit() {

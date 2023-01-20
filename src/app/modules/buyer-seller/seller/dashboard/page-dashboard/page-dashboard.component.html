@@ -17,16 +17,14 @@
 <div class="container-fluid p-l-25 p-r-25 sm-p-l-0 sm-p-r-0">
     <div class="p-2 my-2 bg-white d-flex justify-content-start align-items-center">
         <label class="pr-3">Select&nbsp;Industry</label>
-        <select class="form-control">
-            <option value="">Selcte Main Categories</option>
-        </select>
+        <p>{{ mainCategoryName }}</p>
     </div>
     <div class="p-2 my-2 bg-primary d-flex justify-content-between align-items-center">
         <div>
             <span class="pr-2">Account Type</span>
-            <span class="fw-bold">Unverified</span>
+            <span class="fw-bold">{{ isVerifiedByAdmin | titlecase }}</span>
         </div>
-        <div>
+        <div *ngIf="isVerifiedByAdmin != 'verified'">
             <span class="pr-2">Ask for your Supplier acccount Verification</span>
             <button class="btn btn-warning">Contact Us</button>
         </div>
