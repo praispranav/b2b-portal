@@ -40,7 +40,7 @@ export class FormProductInformationComponent implements OnInit {
   states: any[] = [];
   brandsList: any[] = [];
 
-  categoryList: any[] = []
+  categoryList: any[] = [];
 
   codes = [
     { country: "Afghanistan", code: "93", iso: "AF" },
@@ -399,16 +399,20 @@ export class FormProductInformationComponent implements OnInit {
     });
   }
 
-  getCategoryList(){
-    this.categoryService.getCategoryListByFilter(0, 100, { level: "0" }).subscribe((res)=>{
-      this.categoryList = res.data
-    })
+  getCategoryList() {
+    this.categoryService
+      .getCategoryListByFilter(0, 100, { level: "0" })
+      .subscribe((res) => {
+        this.categoryList = res.data;
+      });
   }
 
-  getApprovedBrands(){
-    this.brandApproval.getBrandApprovalListByFilter(0,100, { status: "Approved" }).subscribe((res)=>{
-      console.log("Brands", res.data);
-      this.brandsList = res.data
-    })
+  getApprovedBrands() {
+    this.brandApproval
+      .getBrandApprovalListByFilter(0, 100, { status: "Approved" })
+      .subscribe((res) => {
+        console.log("Brands", res.data);
+        this.brandsList = res.data;
+      });
   }
 }

@@ -30,6 +30,8 @@ export class PageProductListComponent implements OnInit {
   selectedProduct: any = null;
   updateStatus: string = "";
 
+  productCounts: any = {};
+
   advanceColumns = [
     { name: "Product Name" },
     { name: "Category" },
@@ -76,6 +78,8 @@ export class PageProductListComponent implements OnInit {
           }));
         }
       });
+
+      this.getProductCounts();
   }
 
   fetchSampleAdvance(cb) {
@@ -131,5 +135,38 @@ export class PageProductListComponent implements OnInit {
     console.log(event);
   }
 
+  getProductCounts() {
+    this.productService.getProductCounts().subscribe((res) => {
+      let total = 0;
+      let activeListing = 0;
+      let inActiveListing = 0;
+      let rejectedProduct = 0;
+      if (Array.isArray(res.data)) {
+        res.data.forEach((i) => {
+          total += i.count;
+
+          if (i._id.status == "Pending") {
+            inActiveListing = i.count;
+          }
+
+          if (i._id.status == "Approved") {
+            activeListing = i.count;
+          }
+
+          if (i._id.status == "Rejected") {
+            rejectedProduct = i.count;
+          }
+        });
+
+        this.productCounts = {
+          total,
+          inActiveListing,
+          activeListing,
+          rejectedProduct,
+        };
+      }
+      console.log("Product Status Counts", res);
+    });
+  }
 
 }
