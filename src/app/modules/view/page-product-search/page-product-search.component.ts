@@ -76,6 +76,8 @@ export class PageProductSearchComponent implements OnInit {
             price: i.moq,
             year: "",
             supplier: "",
+            supplierId: i.userId, 
+            productId: i._id,
             image: environment.imageStorage + i.productImage,
           };
         });

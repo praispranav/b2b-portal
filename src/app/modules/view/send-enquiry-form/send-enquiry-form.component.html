@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-12" *ngFor="let item of addedProducts;let i = index">
+        <button (click)="removeAddedProduct(item.productId)">Remove</button>
+        <div>
+            <img [src]="item.image" />
+        </div>
+        <div class="">
+            <p>{{ item.productName }}</p>
+        </div>
+        <div>
+            <input type="number" (change)="onChangeQuanity($event, i)" placeholder="Quantity" />
+        </div>
+    </div>
+
+    <div class="col-12">
+        <label>Message</label>
+        <textarea placeholder="Message" [(ngModel)]="message" name="Message"></textarea>
+    </div>
+    
+    <div class="col-12">
+        <label>Attachments</label>
+        
+    </div>
+    <div>
+        <button (click)="saveForm()">Submit</button>
+    </div>
+</div>

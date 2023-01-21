@@ -1,0 +1,18 @@
+<div class="card" *ngIf="addedProducts.length> 0">
+    <div class="card-header">
+        Shortlisted Products
+    </div>
+    <div class="card-body">
+        <div class="row">
+                <div *ngFor="let item of addedProducts; let i = index" class="col-2">
+                    <button (click)="removeAddedProduct(item.productId)">Remove</button>
+                    <img [src]="item.image" style="width: 40px; height: 40px;" />
+                    <p>{{ item.name }}</p>
+                    <p>{{ item.moq }}</p>
+                </div>
+        </div>
+
+    </div>
+
+    <a routerLink="/b2b/product-search-enquiry">Send Enquiry</a>
+</div>

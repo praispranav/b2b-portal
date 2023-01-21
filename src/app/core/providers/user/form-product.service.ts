@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -8,7 +8,38 @@ import { environment } from '../../../../environments/environment';
 })
 export class FormProductService {
 
+  public stringSubject = new Subject<any>();
+  public productConstant = "productsForPurchase"
+
   constructor(private http: HttpClient) {}
+
+  storeProductInfo(data) {
+    const products = localStorage.getItem(this.productConstant);
+    if(products){
+      const parsed = JSON.parse(products);
+      parsed.push(data);
+      localStorage.setItem(this.productConstant, JSON.stringify(parsed))
+    } else {
+      localStorage.setItem(this.productConstant, JSON.stringify([data]))
+    }
+    this.stringSubject.next(Math.floor(Math.random() * 1000000));
+  }
+
+  changeState(){
+    this.stringSubject.next(Math.floor(Math.random() * 1000000));
+  }
+
+  removeProduct(productId){
+    const products = localStorage.getItem(this.productConstant);
+    if(products){
+      const parsed = JSON.parse(products);
+      const findProductIndex = parsed.findIndex((product)=> product._id === productId)
+      parsed.splice(findProductIndex ,1);
+      localStorage.setItem(this.productConstant, JSON.stringify(parsed))
+    } 
+
+    this.stringSubject.next(true);
+  }
   
 
   updateProductStatus({_id, status}){

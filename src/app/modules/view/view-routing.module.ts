@@ -48,6 +48,7 @@ import { SellerSearchComponent } from "./seller-search/seller-search.component";
 import { PageHomeRfqFormTwoComponent } from "./page-home-rfq-form-two/page-home-rfq-form-two.component";
 import { PageNoProductFoundComponent } from "./page-no-product-found/page-no-product-found.component";
 import { ViewBlogComponent } from "./view-blog/view-blog.component";
+import { SendEnquiryFormComponent } from "./send-enquiry-form/send-enquiry-form.component";
 
 
 const routes: Routes = [
@@ -152,6 +153,10 @@ const routes: Routes = [
   {
     path: "product-search",
     component: PageProductSearchComponent,
+  },
+  {
+    path: "product-search-enquiry",
+    component: SendEnquiryFormComponent,
   },
   {
     path: "product-view",
