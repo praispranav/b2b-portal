@@ -38,6 +38,7 @@ export class PageAdminMqrComponent implements OnInit {
   ];
 
   selectedRfq: any = null;
+  selectedStatusType: string = 'Approved'
   updateStatus: string = "";
 
   checkedRfq: any = {};
@@ -216,7 +217,8 @@ export class PageAdminMqrComponent implements OnInit {
     this.checkedRfq[row._id] = event.target.checked;
   }
 
-  bulkConfirm(status: string) {
+  bulkConfirm() {
+    const status = this.selectedStatusType
     console.log(this.selectedRfq);
 
     (Object.entries(this.checkedRfq).forEach((i) => {

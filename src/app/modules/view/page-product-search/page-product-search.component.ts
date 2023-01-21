@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
+import { PriceType } from "../../../core/enums/priceType";
 import { FormProductService } from "../../../core/providers/user/form-product.service";
 
 @Component({
@@ -32,12 +33,12 @@ export class PageProductSearchComponent implements OnInit {
 
   ngOnInit() {}
 
-  showGridView(){
-    this.isGridView = true
+  showGridView() {
+    this.isGridView = true;
   }
 
-  showListView(){
-    this.isGridView = false
+  showListView() {
+    this.isGridView = false;
   }
 
   getSearchedProducts() {
@@ -71,12 +72,30 @@ export class PageProductSearchComponent implements OnInit {
       }
       if (Array.isArray(res.data.products)) {
         const newProductList = res.data.products.map((i) => {
+          let minimumOrderQuantity;
+          let minimumPrice;
+
+          if (i.sellingPriceType === PriceType.SetUniformPriceofFOB) {
+            const moqs = [];
+            const prices = [];
+            i.bulkPrice.forEach((i) => {
+              moqs.push(Number(i.moqUnit));
+              prices.push(Number(i.fobUnitPrice));
+            });
+            minimumOrderQuantity = Math.min(...moqs);
+            minimumPrice = Math.min(...prices);
+          } else {
+            minimumOrderQuantity = Number(i.moq);
+            minimumPrice = Number(i.fobPrice);
+          }
           return {
             name: i.productName,
             price: i.moq,
+            minimumOrderQuantity: minimumOrderQuantity,
+            minimumPrice: minimumPrice,
             year: "",
             supplier: "",
-            supplierId: i.userId, 
+            supplierId: i.userId,
             productId: i._id,
             image: environment.imageStorage + i.productImage,
           };

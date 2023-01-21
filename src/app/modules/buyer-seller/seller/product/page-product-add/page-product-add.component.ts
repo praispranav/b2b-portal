@@ -22,7 +22,7 @@ export class PageProductAddComponent implements OnInit {
     private router: Router,
     private productService: FormProductService,
     private storageService: ProviderStorageService
-  ) { }
+  ) {}
   // shippingInfoForm(productDetailFrom:productDetailForm){
   //      this.productService.(productDetailForm.value).subscribe(
   //     (res) => {
@@ -34,7 +34,7 @@ export class PageProductAddComponent implements OnInit {
   //     }
   //   );
   // }
-  ngOnInit() { }
+  ngOnInit() {}
 
   saveFormData(event): void {
     console.log("event", event);
@@ -68,7 +68,7 @@ export class PageProductAddComponent implements OnInit {
             ? this.allFormData.sellerOwnCategoryCreate
             : "",
         };
-        this.currentTabIndex += 1
+        this.currentTabIndex += 1;
       }
       if (event.value === "second") {
         this.secondTabFormValue = {
@@ -82,7 +82,7 @@ export class PageProductAddComponent implements OnInit {
             ? this.allFormData.productDescription
             : "",
         };
-        this.currentTabIndex += 1
+        this.currentTabIndex += 1;
       }
       if (event.value === "third") {
         this.thirdTabFormValue = {
@@ -92,13 +92,18 @@ export class PageProductAddComponent implements OnInit {
           fobPrice: this.allFormData.fobPrice ? this.allFormData.fobPrice : "",
           moq: this.allFormData.moq ? this.allFormData.moq : "",
           fobUnit: this.allFormData.fobUnit ? this.allFormData.fobUnit : "",
-          types: this.allFormData.types ? this.allFormData.types : "",
+          paymentTypes: this.allFormData.paymentTypes
+            ? this.allFormData.paymentTypes
+            : "",
           otherDetailTradeInfo: this.allFormData.otherDetailTradeInfo
             ? this.allFormData.otherDetailTradeInfo
             : "",
-          bulkPrice: this.allFormData.bulkPrice ? this.allFormData.bulkPrice : []
+          bulkPrice: this.allFormData.bulkPrice
+            ? this.allFormData.bulkPrice
+            : [],
         };
-        this.currentTabIndex += 1
+        this.currentTabIndex += 1;
+        debugger;
       }
       if (event.value === "four") {
         this.fourTabFormValue = {
@@ -125,14 +130,16 @@ export class PageProductAddComponent implements OnInit {
           ...this.secondTabFormValue,
           ...this.thirdTabFormValue,
           ...this.fourTabFormValue,
-          category: localStorage.getItem('selectedCategoryId')
+          category: localStorage.getItem("selectedCategoryId"),
         };
         console.log("payload", this.payload);
         this.productService.addProductDetails(this.payload).subscribe(
           (res) => {
             window.alert("API Success");
             console.log("res", res);
-            this.storageService.removeItems(ProviderStorageService.productConstants)
+            this.storageService.removeItems(
+              ProviderStorageService.productConstants
+            );
           },
           (err) => {
             window.alert("API Error");
@@ -143,6 +150,6 @@ export class PageProductAddComponent implements OnInit {
   }
 
   onTabClick(index) {
-    this.currentTabIndex = index
+    this.currentTabIndex = index;
   }
 }
