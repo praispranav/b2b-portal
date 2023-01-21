@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren:"../../features/email/email.module#EmailModule"
+    loadChildren:"./buyer/email-buyer/email.module#EmailBuyerModule"
   },
   // {
   //   path: "change-password",
