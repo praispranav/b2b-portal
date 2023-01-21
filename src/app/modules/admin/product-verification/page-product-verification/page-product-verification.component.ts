@@ -42,7 +42,7 @@ export class PageProductVerificationComponent implements OnInit {
 
   advanceRows = [];
   imageBaseUrl: string = environment.imageStorage;
-  pageSize: number = 10;
+  pageSize: number = 100;
   page: number = 1;
   selectedProduct: any = null;
   updateStatus: string = "";
@@ -50,6 +50,8 @@ export class PageProductVerificationComponent implements OnInit {
   @ViewChild(DatatableComponent, { static: true })
   tableAdvance: DatatableComponent;
 
+  checkedRfq: any = {};
+  approveType: string = "Approved"
   //No Option YET
   //https://github.com/swimlane/ngx-datatable/issues/423
   scrollBarHorizontal = window.innerWidth < 960;
@@ -219,6 +221,33 @@ export class PageProductVerificationComponent implements OnInit {
       }
       console.log("Product Status Counts", res);
     });
+  }
+
+  bulkConfirm() {
+
+    (Object.entries(this.checkedRfq).forEach((i) => {
+      if(i[1]){
+        this.productService
+        .updateProductStatus({
+          status: this.approveType,
+          _id: i[0],
+        })
+        .subscribe((res) => {
+          this.getProducts();
+
+          if (res.header.code) {
+            this.messageService.success("Mqr status updated.");
+          } else {
+            this.messageService.error("Mqr status not updated.");
+          }
+          console.log("Response", res);
+        });
+      }
+    }));
+  }
+  handleChangeProductVerification(event, productId){
+    const checked = event.target.checked;
+    this.checkedRfq[productId] = checked;
   }
 }
 

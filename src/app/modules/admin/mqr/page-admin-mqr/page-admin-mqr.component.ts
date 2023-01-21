@@ -40,7 +40,7 @@ export class PageAdminMqrComponent implements OnInit {
   selectedRfq: any = null;
   updateStatus: string = "";
 
-  checkedRfq: boolean[] = [];
+  checkedRfq: any = {};
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true })

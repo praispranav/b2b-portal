@@ -20,7 +20,9 @@
         </div>
     </div>
     <div class="col-md-12">
-        <label class="text-danger">Bulk Action</label> <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal" >Approve</button><button class="btn ms-2">Reject</button>
+        <label class="text-danger">Bulk Action</label> 
+        <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal" (click)="approveType= 'Approved'">Approve</button>
+        <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal" (click)="approveType= 'Rejected'">Reject</button>
      </div> 
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
@@ -45,7 +47,7 @@
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)" />
+                                <input type="checkbox" (click)="handler(row)" (change)="handleChangeProductVerification($event, row._id)" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
@@ -83,7 +85,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to approve/reject</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to {{ approveType === "Approved" ? "Approve" : "Reject" }}.</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -93,7 +95,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Yes</button>
+          <button type="button" class="btn btn-primary" (click)="bulkConfirm()" data-dismiss="modal" aria-label="Close">Yes</button>
         </div>
       </div>
     </div>
