@@ -98,6 +98,7 @@ import { PageNoProductFoundComponent } from './page-no-product-found/page-no-pro
 import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { ShortlistedProductsComponent } from './components/shortlisted-products/shortlisted-products.component';
 import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -189,6 +190,7 @@ import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.
   ],
   imports: [ 
   CommonModule,
+ 
     FormsModule,
     ReactiveFormsModule,
     AlertModule.forRoot(),
@@ -198,13 +200,13 @@ import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.
     pgCardModule,
     IsotopeModule,
     pgCardSocialModule,
-  
+    
     pgSelectfx,
     pgSelectModule,
     pgUploadModule,
     pgSliderModule,
     pgCollapseModule.forRoot(),
-    ViewRoutingModule
+    ViewRoutingModule,CarouselModule,
   ],
 })
 export class ViewModule { }
