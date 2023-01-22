@@ -66,31 +66,25 @@
             <div class="container">
                 <div class="row  ">
                     <div class="col-md-4  p-3 ">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Category</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select (change)="applyFilter()" [(ngModel)]="selectedCategory" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Category</option>
+                            <option *ngFor="let item of categoryList" [value]="item.value">{{ item.label }}</option>
                         </select>
                     </div>
                     <div class="col-md-3  p-3 ">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Date</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select (change)="applyFilter()" [(ngModel)]="selectedDate" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Date</option>
+                            <option *ngFor="let item of dateList" [value]="item">{{ item }}</option>
                         </select>
                     </div>
                     <div class="col-md-3  p-3 ">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Status</option>
-                            <option value="1">Approved</option>
-                            <option value="2">Reject</option>
-
+                        <select [(ngModel)]="selectedStatus" (change)="applyFilter()" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
                         </select>
-                    </div>
-                    <div class="col-md-2 p-3">
-                        <button>Go</button>
                     </div>
                     <div class="col-md-12">
                         <label class="text-danger">Bulk Action</label>
@@ -122,7 +116,7 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img src="{{row.image}}" alt="">
+                                <img src="{{ imageStorage + row.image}}" alt="">
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
