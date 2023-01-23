@@ -85,7 +85,7 @@ export class PageInboxComponent implements OnInit {
   }
 
   getMessages(){
-    if(this.queryParams.requestId.length == 0) return;
+    // if(this.queryParams.requestId.length == 0) return;
     this.buyerMailService.readMessages(this.queryParams.requestId).subscribe((res)=>{})
     this.buyerMailService.getAllMessages(this.queryParams.requestId).subscribe((res)=>{
      
