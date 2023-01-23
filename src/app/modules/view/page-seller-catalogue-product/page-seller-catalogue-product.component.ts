@@ -7,6 +7,7 @@ import { ProviderCompanyProfileService } from '../../../core/providers/user/prov
 import { SellerSearchService } from '../../../core/providers/user/seller-search.service';
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
+import { PriceType } from '../../../core/enums/priceType';
 TimeAgo.addDefaultLocale(en)
 
 @Component({
@@ -63,17 +64,38 @@ export class PageSellerCatalogueProductComponent implements OnInit {
       .subscribe((res: any) => {
         this.totalProducts = res.data.total;
         if (Array.isArray(res.data.products)) {
-          this.products = res.data.products.map((product) => {
-            return {
-              name: product.productName,
-              image: environment.imageStorage + product.productImage[0],
-              price: "$ " + product.moq,
-              year: this.getTimeCount(product.timestamp),
-              supplier: ""
+          this.products = res.data.products.map((i) => {
+            let minimumOrderQuantity;
+            let minimumPrice;
+  
+            if (i.sellingPriceType === PriceType.SetUniformPriceofFOB) {
+              const moqs = [];
+              const prices = [];
+              i.bulkPrice.forEach((i) => {
+                moqs.push(Number(i.moqUnit));
+                prices.push(Number(i.fobUnitPrice));
+              });
+              minimumOrderQuantity = Math.min(...moqs);
+              minimumPrice = Math.min(...prices);
+            } else {
+              minimumOrderQuantity = Number(i.moq);
+              minimumPrice = Number(i.fobPrice);
             }
-          })
+            debugger;
+            return {
+              name: i.productName,
+              price: i.moq,
+              minimumOrderQuantity: minimumOrderQuantity,
+              minimumPrice: minimumPrice,
+              year: "",
+              supplier: "",
+              supplierId: i.userId,
+              productId: i._id,
+              image: environment.imageStorage + i.productImage,
+            };
+          });
+          
         }
-        console.log("Products", res)
       });
   }
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { environment } from "../../../../environments/environment";
 import { BuyerMailService } from "../../../core/providers/user/buyer-mail.service";
+import { FormProductService } from "../../../core/providers/user/form-product.service";
 import { SellerSearchService } from "../../../core/providers/user/seller-search.service";
 
 @Component({
@@ -11,20 +13,31 @@ import { SellerSearchService } from "../../../core/providers/user/seller-search.
 })
 export class PageSellerCatalogueContactComponent implements OnInit {
   sellerId: string = "";
+  queryParams: any = {};
+  productId : string = "";
+  imageStorage: string = environment.imageStorage
   comapnyDetails: any = {
     sellerDetails: {},
   };
+  quantity: string = '';
+
+  productDetail: any = null;
 
   message: string = '';
   products: any[] = [];
   constructor(
     private route: ActivatedRoute,
     private sellerSearch: SellerSearchService,
-    private buyerMailService: BuyerMailService
+    private buyerMailService: BuyerMailService,
+    private productService: FormProductService,
+    private router: Router
   ) {
     this.route.queryParams.subscribe((params) => {
       this.sellerId = params["sellerId"];
+      this.productId = params['productId'];
+      this.queryParams = params;
       this.getSellerDetails(this.sellerId);
+      this.getProductDetails();
     });
   }
 
@@ -40,8 +53,23 @@ export class PageSellerCatalogueContactComponent implements OnInit {
         } else console.error("Error", res);
       });
   }
+  
   buildForm() {
 
+  }
+
+  getProductDetails(){
+    if(this.productId){
+      this.productService.getProductById(this.productId).subscribe((res)=>{
+        this.productDetail = res.data[0];
+        debugger;
+      })
+    }
+  }
+
+  removeProduct(){
+    this.router.navigate([], { queryParams: { ...this.queryParams, productId: undefined }});
+    this.productDetail = null;
   }
 
   sendMessage() {
@@ -49,11 +77,14 @@ export class PageSellerCatalogueContactComponent implements OnInit {
       sellerId: this.comapnyDetails.sellerDetails._id,
       message: this.message,
       attachments: [],
-      product: this.products,
+      product: this.productDetail ? [{ productId: this.productDetail._id, quantity: this.quantity }] : [],
     };
 
     this.buyerMailService.createNewRequest(payload).subscribe((res) => {
       console.log("ContactUs Response", res);
+      this.message = '';
+      this.quantity = ""
+      this.removeProduct();
     });
   }
 }

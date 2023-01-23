@@ -7,6 +7,7 @@ import { SellerSearchService } from "../../../core/providers/user/seller-search.
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import { ProviderCategoryService } from "../../../core/providers/user/provider-category.service";
+import { PriceType } from "../../../core/enums/priceType";
 
 TimeAgo.addDefaultLocale(en)
 
@@ -102,25 +103,45 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
         search: this.searchParams.searchProduct || "",
         categoryId: this.searchParams.categoryId
       })
-      .subscribe((res:any) => {
+      .subscribe((res: any) => {
         this.totalProducts = res.data.total;
-        if(Array.isArray(res.data.products)){
-          this.products = res.data.products.map((product)=>{
-            return {
-              name: product.productName,
-              image: environment.imageStorage + product.productImage[0],
-              price: "$ " + product.moq,
-              year: this.getTimeCount(product.timestamp),
-            supplier: ""
+        if (Array.isArray(res.data.products)) {
+          this.products = res.data.products.map((i) => {
+            let minimumOrderQuantity;
+            let minimumPrice;
+  
+            if (i.sellingPriceType === PriceType.SetUniformPriceofFOB) {
+              const moqs = [];
+              const prices = [];
+              i.bulkPrice.forEach((i) => {
+                moqs.push(Number(i.moqUnit));
+                prices.push(Number(i.fobUnitPrice));
+              });
+              minimumOrderQuantity = Math.min(...moqs);
+              minimumPrice = Math.min(...prices);
+            } else {
+              minimumOrderQuantity = Number(i.moq);
+              minimumPrice = Number(i.fobPrice);
             }
-          })
+            debugger;
+            return {
+              name: i.productName,
+              price: i.moq,
+              minimumOrderQuantity: minimumOrderQuantity,
+              minimumPrice: minimumPrice,
+              year: "",
+              supplier: "",
+              supplierId: i.userId,
+              productId: i._id,
+              image: environment.imageStorage + i.productImage,
+            };
+          });
+          
         }
-        console.log("Products", res)
       });
   }
 
   getSellerDetails(id) {
-    console.log("Id", id);
     this.sellerSearch.sellerSearchById(id).subscribe((res: any) => {
       if (res.header.code === 200) {
         this.sellerProfile = res.data;

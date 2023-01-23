@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormProductService } from '../../../../core/providers/user/form-product.service';
 
 @Component({
@@ -8,18 +8,15 @@ import { FormProductService } from '../../../../core/providers/user/form-product
   styleUrls: ['./shortlisted-products.component.scss']
 })
 export class ShortlistedProductsComponent implements OnInit {
-
-  constructor(private router: Router, private productService: FormProductService) {}
+  searchParams: any = {}
+  constructor(private router: Router, private productService: FormProductService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((i)=>{
+      this.searchParams = i
+    })
+  }
 
   addedProducts: any[] = [];
-
-  // name: i.productName,
-  //           price: i.moq,
-  //           year: "",
-  //           supplier: "",
-  //           supplierId: i.userId, 
-  //           productId: i._id,
-  //           image: environment.imageStorage + i.productImage,
+  @Input('type') type?: string = 'Product' 
 
   ngOnInit() {
     this.checkProducts();
@@ -36,9 +33,17 @@ export class ShortlistedProductsComponent implements OnInit {
     const products = localStorage.getItem(this.productService.productConstant);
       if(products){
         const parsed = JSON.parse(products);
-        this.addedProducts = parsed;
+        // if(this.type === 'Seller'){
+        //   this.addedProducts = parsed.filter((i)=> i.userId === this.searchParams.sellerId);
+        // } else {
+          this.addedProducts = parsed;
+        // }
       }
       console.log(products);
+  }
+
+  navigateToSearchEnquiry(){
+    localStorage.removeItem(this.productService.contactUsKey)
   }
 
 }

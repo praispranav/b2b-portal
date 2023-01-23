@@ -1,11 +1,18 @@
 <label for="categories">
     <h5>CATEGORIES
     </h5>
-    <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
-        <li (click)="selectCategory(categorie._id)">
-            <p style="cursor: pointer;" class="text-muted">{{categorie.name}}</p>
-        </li>
-    </ul>
+    <div *ngIf="searchParams.categoryId">
+            <p style="cursor: pointer;" class="text-muted">{{ findCategory }}</p>
+        
+        <button (click)="removeCategory()">Remove</button>
+    </div>
+    <div>
+        <ul *ngFor="let categorie of categoriesList" class="list-unstyled">
+            <li (click)="selectCategory(categorie._id)">
+                <p style="cursor: pointer;" class="text-muted">{{categorie.name}}</p>
+            </li>
+        </ul>
+    </div>
 </label>
 <!-- <label for="supplier-types">
     <h5>

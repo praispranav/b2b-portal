@@ -8,7 +8,10 @@ import { FormProductService } from "../../../../core/providers/user/form-product
   styleUrls: ["./product-search-card.component.scss"],
 })
 export class ProductSearchCardComponent implements OnInit {
-  constructor(private router: Router, private productService: FormProductService) {}
+  constructor(
+    private router: Router,
+    private productService: FormProductService
+  ) {}
 
   @Input("data") productList: any[] = [];
 
@@ -16,41 +19,46 @@ export class ProductSearchCardComponent implements OnInit {
 
   ngOnInit() {
     this.checkProducts();
-    this.productService.stringSubject.subscribe((a)=>{
+    this.productService.stringSubject.subscribe((a) => {
       this.checkProducts();
-    })
+    });
   }
 
-  checkProducts(){
+  checkProducts() {
     const products = localStorage.getItem(this.productService.productConstant);
-      if(products){
-        const parsed = JSON.parse(products);
-        this.addedProducts = parsed;
-      }
-      console.log(products);
+    if (products) {
+      const parsed = JSON.parse(products);
+      this.addedProducts = parsed;
+    }
+    console.log(products);
   }
 
   navigateToSeller(product) {
     console.log(product);
-    this.router.navigate(
-      ["/b2b/seller-catalogue-contact"],
-      {
-        queryParams: {
-          sellerId: product.supplierId,
-          search: "",
-          searchType: "Seller",
-          page: 1,
-          pageSize: 10,
-        },
-      }
+    this.router.navigate(["/b2b/seller-catalogue-contact"], {
+      queryParams: {
+        sellerId: product.supplierId,
+        search: "",
+        searchType: "Seller",
+        page: 1,
+        pageSize: 10,
+        productId: product.productId
+      },
+    });
+  }
+
+  findProducts(productId) {
+    return this.addedProducts.find(
+      (product) => product.productId === productId
     );
   }
 
-  findProducts(productId){
-    return this.addedProducts.find((product)=> product.productId === productId )
+  handleAddProduct(product) {
+    this.productService.storeProductInfo(product);
   }
 
-  handleAddProduct(product){
-    this.productService.storeProductInfo(product)
+  // '?=639ac7aff2a3d7795bbd4887&search=&searchType=Seller&page=1&pageSize=10&categoryId='
+  navigateToContactUs(productId) {
+   
   }
 }

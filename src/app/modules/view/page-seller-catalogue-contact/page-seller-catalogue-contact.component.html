@@ -16,19 +16,22 @@
                 <li>
                   <h6>To: {{ comapnyDetails.sellerDetails.company }}</h6>
                 </li>
-                <li>
-                  <h6 class="mt-4">
+                <li >
+                  <h6 class="mt-4" *ngIf="productDetail">
                     <span class="text-danger">*</span>Products:
                   </h6>
-                  <div class="d-flex">
+                  <div *ngIf="productDetail" class="d-flex">
                     <div>
-
+                      <img [src]="imageStorage + productDetail.productImage[0]" style="width: 40px; height: 40px;" />
                     </div>
                     <div class="">
-
+                      <p>{{ productDetail.productName }}</p>
                     </div>
                     <div class="">
-                        <input type="text" />
+                        <input type="text" name="quantity" [(ngModel)]="quantity" placeholder="Quantity" />
+                    </div>
+                    <div>
+                      <button (click)="removeProduct()">Remove</button>
                     </div>
                   </div>
 
@@ -51,7 +54,7 @@
                 </li>
                 <li>
                   <button
-                    class="btn btn-default btn-lg btn-rounded mb-4 org-color-btn"
+                    class="btn btn-default btn-lg btn-rounded mb-4 org-color-btn" (click)="sendMessage()"
                   >
                     Send
                   </button>

@@ -41,6 +41,7 @@ export class ProductSearchCardListComponent implements OnInit {
         searchType: "Seller",
         page: 1,
         pageSize: 10,
+        productId: product.productId
       },
     });
   }

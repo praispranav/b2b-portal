@@ -9,7 +9,9 @@ import { environment } from '../../../../environments/environment';
 export class FormProductService {
 
   public stringSubject = new Subject<any>();
-  public productConstant = "productsForPurchase"
+  public productConstant = "productsForPurchase";
+  public contactUsKey = 'contactUsKey';
+  public contactUsProduct = 'contactUsProduct'
 
   constructor(private http: HttpClient) {}
 

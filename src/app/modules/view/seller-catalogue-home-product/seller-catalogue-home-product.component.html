@@ -52,6 +52,7 @@
             </div>
             <div class="ml-2">
                 <!-- <app-product-search-card></app-product-search-card>  -->
+                <app-shortlisted-products></app-shortlisted-products>
                 <ng-container *ngIf="isGridView;else listView">
                     <app-catalogue-product-card-home [products]="products"></app-catalogue-product-card-home>
                 </ng-container>
