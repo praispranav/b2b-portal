@@ -62,7 +62,7 @@ export class PageSellerCatalogueContactComponent implements OnInit {
     if(this.productId){
       this.productService.getProductById(this.productId).subscribe((res)=>{
         this.productDetail = res.data[0];
-        debugger;
+        // debugger;
       })
     }
   }

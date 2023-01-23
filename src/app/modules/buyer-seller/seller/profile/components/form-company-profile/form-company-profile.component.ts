@@ -603,7 +603,7 @@ export class FormCompanyProfileComponent implements OnInit {
     console.log("reqData", formData);
     console.log("reqObj", reqObj);
 
-    debugger;
+    // debugger;
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCompanyProfileService.updateCompanyProfile(reqObj).subscribe(

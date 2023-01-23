@@ -99,6 +99,8 @@ import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { ShortlistedProductsComponent } from './components/shortlisted-products/shortlisted-products.component';
 import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-supplier-found.component';
+import { PageNoProductAddedComponent } from './page-no-product-added/page-no-product-added.component';
 
 
 @NgModule({
@@ -186,6 +188,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ViewBlogComponent,
     ShortlistedProductsComponent,
     SendEnquiryFormComponent,
+    PageNoSupplierFoundComponent,
+    PageNoProductAddedComponent,
     
   ],
   imports: [ 

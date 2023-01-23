@@ -292,7 +292,7 @@ export class FormTradeInformationComponent implements OnInit {
       data.formData
     );
     
-    debugger;
+    // debugger;
     this.formSubmitData.emit(data);
   }
 

@@ -103,7 +103,7 @@ export class PageProductAddComponent implements OnInit {
             : [],
         };
         this.currentTabIndex += 1;
-        debugger;
+        // debugger;
       }
       if (event.value === "four") {
         this.fourTabFormValue = {

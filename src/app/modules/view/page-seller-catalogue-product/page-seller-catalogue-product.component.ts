@@ -81,7 +81,7 @@ export class PageSellerCatalogueProductComponent implements OnInit {
               minimumOrderQuantity = Number(i.moq);
               minimumPrice = Number(i.fobPrice);
             }
-            debugger;
+            // debugger;
             return {
               name: i.productName,
               price: i.moq,
