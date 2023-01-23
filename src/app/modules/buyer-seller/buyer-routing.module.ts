@@ -24,6 +24,10 @@ const routes: Routes = [
     path: "email",
     loadChildren:"./buyer/email-buyer/email.module#EmailBuyerModule"
   },
+  {
+    path: "mqr",
+    loadChildren:"./buyer/buyer-mqr/buyer-mqr.module#BuyerMqrModule"
+  },
   // {
   //   path: "change-password",
   //   component: PageChangePasswordComponent,
