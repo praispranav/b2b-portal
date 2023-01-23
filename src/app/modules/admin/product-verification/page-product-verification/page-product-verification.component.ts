@@ -42,7 +42,7 @@ export class PageProductVerificationComponent implements OnInit {
 
   advanceRows = [];
   imageBaseUrl: string = environment.imageStorage;
-  pageSize: number = 100;
+  pageSize: number = 100000;
   page: number = 1;
   selectedProduct: any = null;
   updateStatus: string = "";

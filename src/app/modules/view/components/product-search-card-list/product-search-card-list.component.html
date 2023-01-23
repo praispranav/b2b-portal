@@ -17,15 +17,10 @@
     </div>
     <div class="col-md-7">
         <h2> <a href=""> {{product.name}} </a></h2>
-        <h5>
-            US${{product.price}}.00
-        </h5>
-        <span>
-            <b>{{product.year}} Pieces </b>
-            <span class="text-muted mb-3">
-                (Min. Order)
-            </span>
-        </span>
+            <span>
+                <p>Minimum Order Quantity {{ product.minimumOrderQuantity }}</p>
+                <p>Minimum Price {{ product.minimumPrice }}</p>
+              </span>
         <span class="mt-3 mb-3 text-center d-flex align-items-center">
             <b class="bg-muted">{{product.year}}YRS&nbsp;</b>
             <i class="pg-icon">star</i>&nbsp;
@@ -34,8 +29,15 @@
             </a>
         </span>
         <div class="border-top py-2 d-flex align-items-center">
-            <button class="rounded-pill btn btn-primary">Contact Supplier</button>
+            <button
+              class="rounded-pill btn btn-primary"
+              (click)="navigateToSeller(product)"
+            >
+              Contact Supplier
+            </button>
+            <button *ngIf="!findProducts(product.productId)" (click)="handleAddProduct(product)">Add</button>
+            <p *ngIf="findProducts(product.productId)">Added</p>
             <span>&nbsp;&nbsp;&nbsp;</span>
             <i class="pg-icon">comment</i>
-        </div>
+          </div>
     </div>

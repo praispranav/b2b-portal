@@ -8,6 +8,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
 import { UserVerificationVewComponent } from './user-verification-vew/user-verification-vew.component';
 import { BuyerViewComponent } from './buyer-view/buyer-view.component';
+import { FormsModule } from '@angular/forms';
 // import { ProductVerificationRoutingModule } from '../product-verification/product-verification-routing.module';
 
 
@@ -17,6 +18,7 @@ import { BuyerViewComponent } from './buyer-view/buyer-view.component';
     CommonModule,
     UserVerificationListRoutingModule,
     SharedModule,
+    FormsModule,
     NgxDatatableModule,
     pgTabsModule,
     // ProductVerificationRoutingModule

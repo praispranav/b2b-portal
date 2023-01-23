@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { DatatableComponent } from "@swimlane/ngx-datatable";
 import * as moment from "moment";
 import { ModalDirective } from "ngx-bootstrap";
+import { environment } from "../../../../../environments/environment";
 import { MessageService } from "../../../../@pages/components/message/message.service";
 import { RequestQuotationService } from "../../../../core/providers/user/request-quotation.service";
 @Component({
@@ -19,10 +20,16 @@ export class PageAdminMqrComponent implements OnInit {
 
   selectedCategory: string = "All";
   selectedStatus: string = "All";
+  selectedDate: string = "All"
   categoryList: any[] = [];
+  filters:any = {
+    category:"",
+    status:"",
+    date: "",
+  }
 
   page: number = 1;
-  pageSize: number = 100;
+  pageSize: number = 100000;
 
   basicRows = [];
   basicSort = [];
@@ -38,9 +45,12 @@ export class PageAdminMqrComponent implements OnInit {
   ];
 
   selectedRfq: any = null;
+  selectedStatusType: string = "";
+  
   updateStatus: string = "";
 
   checkedRfq: any = {};
+  imageStorage: string = environment.imageStorage;
 
   advanceRows = [];
   @ViewChild(DatatableComponent, { static: true })
@@ -153,6 +163,7 @@ export class PageAdminMqrComponent implements OnInit {
     console.log(event);
   }
 
+  dateList: any[] = [];
   getAllRequestForQuotationList() {
     this.requestForQuotationService
       .getAllRequestForQuotation({
@@ -160,21 +171,32 @@ export class PageAdminMqrComponent implements OnInit {
         pageSize: this.pageSize,
         status: this.selectedStatus,
         category: this.selectedCategory,
+        date: this.selectedDate
       })
       .subscribe((res) => {
         if (Array.isArray(res.data)) {
           const categoryIds: any = {};
           this.advanceRows = res.data.map((i) => {
-            categoryIds[i.productCategory[0]] = i.category;
+            categoryIds[i.category] = i.categoryName;
             return {
               ...i,
+              category: i.categoryName,
               dateTime: moment(i.timestamp).format("YYYY-MM-DD"),
               moq: i.quantity,
               price: i.budget,
             };
           });
           console.log(this.advanceRows);
-          this.categoryList = Object.entries(categoryIds);
+          this.categoryList = Object.entries(categoryIds).map((i) => ({
+            label: i[1],
+            value: i[0],
+          }));
+
+          const dates: any = {};
+          this.advanceRows.forEach((i) => dates[i.dateTime] = true);
+          console.log(dates);
+          this.dateList = Object.keys(dates);
+          console.log("CategoryList", this.categoryList);
         }
       });
   }
@@ -216,27 +238,54 @@ export class PageAdminMqrComponent implements OnInit {
     this.checkedRfq[row._id] = event.target.checked;
   }
 
-  bulkConfirm(status: string) {
+  bulkConfirm() {
+    const status = this.selectedStatusType;
     console.log(this.selectedRfq);
 
-    (Object.entries(this.checkedRfq).forEach((i) => {
-      if(i[1]){
+    Object.entries(this.checkedRfq).forEach((i) => {
+      if (i[1]) {
         this.requestForQuotationService
-        .updateStatus({
-          status: status,
-          _id: i[0],
-        })
-        .subscribe((res) => {
-          this.getAllRequestForQuotationList();
+          .updateStatus({
+            status: status,
+            _id: i[0],
+          })
+          .subscribe((res) => {
+            this.getAllRequestForQuotationList();
 
-          if (res.header.code) {
-            this.messageService.success("Mqr status updated.");
-          } else {
-            this.messageService.error("Mqr status not updated.");
-          }
-          console.log("Response", res);
+            if (res.header.code) {
+              this.messageService.success("Mqr status updated.");
+            } else {
+              this.messageService.error("Mqr status not updated.");
+            }
+            console.log("Response", res);
+          });
+      }
+    });
+  }
+
+  applyFilter(){
+    this.requestForQuotationService
+    .getAllRequestForQuotation({
+      page: this.page,
+      pageSize: this.pageSize,
+      status: this.selectedStatus,
+      category: this.selectedCategory,
+      date: this.selectedDate
+    })
+    .subscribe((res) => {
+      if (Array.isArray(res.data)) {
+        const categoryIds: any = {};
+        this.advanceRows = res.data.map((i) => {
+          categoryIds[i.category] = i.categoryName;
+          return {
+            ...i,
+            category: i.categoryName,
+            dateTime: moment(i.timestamp).format("YYYY-MM-DD"),
+            moq: i.quantity,
+            price: i.budget,
+          };
         });
       }
-    }));
+    })
   }
 }

@@ -44,8 +44,8 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
       routerLink: "/buyer/dashboard",
     },
     {
-      label: "Multiple Quotes Request",
-      routerLink: "/buyer/dashboard",
+      label: "Quote Requested",
+      routerLink: "/buyer/mqr/mqr-list",
     },
     {
       label: "Trade Services",

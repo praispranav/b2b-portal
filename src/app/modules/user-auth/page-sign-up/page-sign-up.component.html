@@ -133,7 +133,7 @@
 
                         <select id="fcp-company" formControlName="country" class="form-control p-1" #myCountry (change)='onCountrySelected($event)'>
                             <option value="#" selected>Select</option>
-                            <option *ngFor="let c of countries" [value]="c.name">{{c.country}}</option>
+                            <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
                       </select>
                     </div>
                     <div *ngIf="f.country.invalid && (f.country.dirty || f.country.touched)">

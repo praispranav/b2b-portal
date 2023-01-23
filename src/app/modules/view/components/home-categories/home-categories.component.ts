@@ -102,4 +102,8 @@ export class HomeCategoriesComponent implements OnInit {
       },
     });
   }
+  close() {
+    //Can I close modal window manually?
+    this.popoverVisible = false;
+  }
 }

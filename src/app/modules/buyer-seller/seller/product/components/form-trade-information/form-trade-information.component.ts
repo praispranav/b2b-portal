@@ -236,6 +236,7 @@ export class FormTradeInformationComponent implements OnInit {
 
   addPaymentType(i) {
     this.paymentTypeList[i].paymentType = !this.paymentTypeList[i].paymentType;
+    console.log("Payment Type List", this.paymentTypeList)
   }
 
   createTypeFields(types: any[]) {
@@ -272,17 +273,11 @@ export class FormTradeInformationComponent implements OnInit {
 
   async subTradeInformationForm() {
     let formData = this.tradeInformationForm.value;
-    formData.types = this.paymentTypeList;
+    formData.paymentTypes = this.paymentTypeList.filter((i)=> i.paymentType).map((i)=>({ type: i.type, value: i.value }));
 
     formData.otherDetailTradeInfo = formData.otherDetailTradeInfo.map(
       (i) => i.other
     );
-
-    const filteredPaymentTypes = [];
-    formData.types.forEach((t) =>
-      filteredPaymentTypes.push({ type: "D/A", value: "D/A" })
-    );
-    formData.types = filteredPaymentTypes;
 
     let data = {
       formData,
@@ -296,9 +291,11 @@ export class FormTradeInformationComponent implements OnInit {
       ProviderStorageService.productConstants.tradeInformation,
       data.formData
     );
+    
     debugger;
     this.formSubmitData.emit(data);
   }
+
   private resetFormGroup(form: FormGroup) {
     form.reset();
   }

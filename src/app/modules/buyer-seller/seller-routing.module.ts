@@ -49,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren: "../../features/email/email.module#EmailModule"
+    loadChildren: "./seller/email-seller/email.module#EmailSellerModule"
   },
   // {
   //   path: "change-password",

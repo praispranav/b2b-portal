@@ -27,10 +27,9 @@
       <h2 class="p-0 mb-0">
         <a href=""> {{ product.name }} </a>
       </h2>
-      <h5>US${{ product.price }}.00</h5>
       <span>
-        <b>{{ product.year }} Pieces </b>
-        <span class="text-muted mb-3"> (Min. Order) </span>
+        <p>Minimum Order Quantity {{ product.minimumOrderQuantity }}</p>
+        <p>Minimum Price {{ product.minimumPrice }}</p>
       </span>
       <span class="mt-3 mb-3 text-center d-flex align-items-center">
         <b class="bg-muted">{{ product.year }}YRS&nbsp;</b>

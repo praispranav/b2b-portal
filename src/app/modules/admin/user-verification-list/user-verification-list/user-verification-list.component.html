@@ -2,42 +2,39 @@
     <div class="container">
         <div class="row  p-10 activeBox">
             <div class="col-md-2  pt-3 pl-0 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Country</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select [(ngModel)]="filters.country" name="country" (change)="activateFilter($event, 'country')"
+                    class="form-select" aria-label="Default select example">
+                    <option selected value="">Country</option>
+                    <option *ngFor="let country of countriesList" [value]="country">{{ country }}</option>
                 </select>
             </div>
             <div class="col-md-3  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>State</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select [(ngModel)]="filters.state" name="state" (change)="activateFilter($event, 'state')"
+                    class="form-select" aria-label="Default select example">
+                    <option selected value="">State</option>
+                    <option *ngFor="let item of stateList" [value]="state">{{ state }}</option>
                 </select>
             </div>
             <div class="col-md-2  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>City</option>
-                    <option value="1">Approved</option>
-                    <option value="2">Reject</option>
-                   
+                <select [(ngModel)]="filters.city" name="city" (change)="activateFilter($event, 'city')"
+                    class="form-select" aria-label="Default select example">
+                    <option selected value="">City</option>
+                    <option *ngFor="let city of cityList" [value]="city">{{ city }}</option>
                 </select>
             </div>
 
             <div class="col-md-2  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Category</option>
-                    <option value="1">Approved</option>
-                    <option value="2">Reject</option>
-                   
+                <select [(ngModel)]="filters.status" name="status" (change)="activateFilter($event, 'status')"
+                    class="form-select" aria-label="Default select example">
+                    <option selected value="">Status</option>
+                    <option *ngFor="let status of statusList" [value]="status">{{ status | titlecase }}</option>
+
                 </select>
             </div>
 
-            <div class="col-md-2  p-3 p-10">
+            <!-- <div class="col-md-2  p-3 p-10">
                 <button type="button" class="btn btn-primary">Go</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -55,8 +52,18 @@
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
 
-                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
-                        [scrollbarV]="true" (page)="onPage($event)">
+                    <ngx-datatable 
+                    #tableAdvance 
+                    class="table table-hover table-stripped" 
+                    [rows]="advanceRows"
+                        [columns]="advanceColumns" 
+                        [columnMode]="'force'" 
+                        [headerHeight]="50" 
+                        [footerHeight]="50"
+                        [rowHeight]="60" 
+                        [columnMode]="columnModeSetting" 
+                        [scrollbarH]="scrollBarHorizontal"
+                         [scrollbarV]="true" (page)="onPage($event)" [limit]="10">
                         >
                         <ngx-datatable-column name="Select">
                             <ng-template ngx-datatable-cell-template let-row="row">
@@ -65,16 +72,19 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Company Logo">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img *ngIf="row.logo && row.logo.length" [src]="imageUrl + row.logo" alt="" style="width: 50px; height: 50px;">
+                                <img *ngIf="row.logo && row.logo.length" [src]="imageUrl + row.logo" alt=""
+                                    style="width: 50px; height: 50px;">
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [prop]="col.prop" [hidden]="col.image">
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [prop]="col.prop"
+                            [hidden]="col.image">
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Action">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="view(row._id,row.role)">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button
+                                    (click)="view(row._id,row.role)">
                                     View
-                                  </button>
+                                </button>
                             </ng-template>
                         </ngx-datatable-column>
                     </ngx-datatable>

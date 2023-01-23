@@ -52,9 +52,9 @@ export class RequestQuotationService {
     );
   }
 
-  getAllRequestForQuotation({page, pageSize, status, category}): Observable<any> {
+  getAllRequestForQuotation({page, pageSize, status, category, date }): Observable<any> {
     return this.http.get<any>(
-      `${environment.apiUrl}/request-quotation`, { params: { page, pageSize, status, category }}
+      `${environment.apiUrl}/request-quotation`, { params: { date, page, pageSize, status, category }}
     );
   }
 
