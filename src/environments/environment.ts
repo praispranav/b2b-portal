@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // apiUrl: 'https://b2buatprod.azurewebsites.net',
   imageStorage: "https://ajayshankar.blob.core.windows.net/b2b/", // add filename with extension
-  apiUrl: 'https://6f1d-106-212-42-151.in.ngrok.io',
+  apiUrl: 'http://localhost:8080',
 };
 /*
  * For easier debugging in development mode, you can import the following file
