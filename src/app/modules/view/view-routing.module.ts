@@ -49,6 +49,8 @@ import { PageHomeRfqFormTwoComponent } from "./page-home-rfq-form-two/page-home-
 import { PageNoProductFoundComponent } from "./page-no-product-found/page-no-product-found.component";
 import { ViewBlogComponent } from "./view-blog/view-blog.component";
 import { SendEnquiryFormComponent } from "./send-enquiry-form/send-enquiry-form.component";
+import { PageNoSupplierFoundComponent } from "./page-no-supplier-found/page-no-supplier-found.component";
+import { PageNoProductAddedComponent } from "./page-no-product-added/page-no-product-added.component";
 
 
 const routes: Routes = [
@@ -92,6 +94,14 @@ const routes: Routes = [
   {
     path: "contact-sales",
     component: PageContactSalesComponent,
+  },
+  {
+    path: "no-supplier",
+    component: PageNoSupplierFoundComponent,
+  },
+  {
+    path: "no-product-added",
+    component: PageNoProductAddedComponent,
   },
   {
     path: "contact-us",
