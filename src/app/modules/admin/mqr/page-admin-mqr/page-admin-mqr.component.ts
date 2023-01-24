@@ -22,9 +22,9 @@ export class PageAdminMqrComponent implements OnInit {
   selectedStatus: string = "All";
   selectedDate: string = "All"
   categoryList: any[] = [];
-  filters:any = {
-    category:"",
-    status:"",
+  filters: any = {
+    category: "",
+    status: "",
     date: "",
   }
 
@@ -46,7 +46,7 @@ export class PageAdminMqrComponent implements OnInit {
 
   selectedRfq: any = null;
   selectedStatusType: string = "";
-  
+
   updateStatus: string = "";
 
   checkedRfq: any = {};
@@ -94,7 +94,7 @@ export class PageAdminMqrComponent implements OnInit {
   //   this.selected.push(...selected);
   // }
 
-  onActivate(event) {}
+  onActivate(event) { }
   fetch(cb) {
     const req = new XMLHttpRequest();
     req.open("GET", `assets/data/table.json`);
@@ -263,14 +263,41 @@ export class PageAdminMqrComponent implements OnInit {
     });
   }
 
-  applyFilter(){
+  applyFilter() {
+    this.categoryList=[];
+    this.dateList=[];
+    this.requestForQuotationService
+      .getAllRequestForQuotation({
+        page: this.page,
+        pageSize: this.pageSize,
+        status: this.selectedStatus,
+        category: this.selectedCategory,
+        date: this.selectedDate
+      })
+      .subscribe((res) => {
+        if (Array.isArray(res.data)) {
+          const categoryIds: any = {};
+          this.advanceRows = res.data.map((i) => {
+            categoryIds[i.category] = i.categoryName;
+            return {
+              ...i,
+              category: i.categoryName,
+              dateTime: moment(i.timestamp).format("YYYY-MM-DD"),
+              moq: i.quantity,
+              price: i.budget,
+            };
+          });
+        }
+      })
+  }
+  resetFilter(): void {
     this.requestForQuotationService
     .getAllRequestForQuotation({
       page: this.page,
       pageSize: this.pageSize,
-      status: this.selectedStatus,
-      category: this.selectedCategory,
-      date: this.selectedDate
+      status: '',
+      category: '',
+      date: ''
     })
     .subscribe((res) => {
       if (Array.isArray(res.data)) {
