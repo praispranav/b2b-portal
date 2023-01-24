@@ -1,6 +1,7 @@
-<div class="p-2">
+<div class="p-2 pt-0">
     <div class="container">
         <div class="row pb-2" activeBox style=" margin-left: -15px;">
+            <h4 class="m-0">Product Verification</h4>
             <div class="col-md-2 bg-white border p-3  mr-2">
                 <p>All Products</p>
                 <span>{{ productCounts.total }}</span>
@@ -17,18 +18,21 @@
                 <p>Products Rejection</p>
                 <span>{{ productCounts.rejectedProduct }}</span>
             </div>
-        </div>
+              <div class="ms-auto mt-auto col-md-3">
+                  <label class="text-danger">Bulk Action</label>
+                  <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal"
+                      (click)="approveType= 'Approved'">Approve</button>
+                  <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal"
+                      (click)="approveType= 'Rejected'">Reject</button>
+              </div>
+              </div>
     </div>
-    <div class="col-md-12">
-        <label class="text-danger">Bulk Action</label> 
-        <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal" (click)="approveType= 'Approved'">Approve</button>
-        <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal" (click)="approveType= 'Rejected'">Reject</button>
-     </div> 
+
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
             <div class="card-header  d-flex justify-content-between">
-                <div class="card-title">Admin Product Verification
+                <div class="card-title">
                 </div>
                 <div class="export-options-container"></div>
                 <!-- <div class="clearfix"></div> -->
