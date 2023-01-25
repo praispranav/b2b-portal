@@ -1,6 +1,6 @@
 <div class="bg-white m-3 p-3 shadow-sm">
     <h4>
-        {{ sellerDetails.sellerDetails.company }}
+        {{ sellerDetails?.sellerDetails?.company }}
     </h4>
 </div>
 
@@ -15,7 +15,7 @@
                             <b> TAN </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.tanNo }}
+                            {{ sellerDetails?.companyProfile?.tanNo }}
                         </td>
                     </tr>
 
@@ -24,7 +24,7 @@
                             <b> PAN </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.panNo }}
+                            {{ sellerDetails?.companyProfile?.panNo }}
                         </td>
                     </tr>
 
@@ -33,7 +33,7 @@
                             <b> GST No. </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.gstNo }}
+                            {{ sellerDetails?.companyProfile?.gstNo }}
                         </td>
                     </tr>
 
@@ -42,7 +42,7 @@
                             <b> Import Export Code </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.codeOfIE }}
+                            {{ sellerDetails?.companyProfile?.codeOfIE }}
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +50,7 @@
                             <b> Year Of Establishment </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.estYear | date : "dd-mm-yyyy" }}
+                            {{ sellerDetails?.companyProfile?.estYear | date : "dd-mm-yyyy" }}
                         </td>
                     </tr>
                     <tr>
@@ -58,7 +58,7 @@
                             <b> Main Category </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.mainCategory }}
+                            {{ sellerDetails?.companyProfile?.mainCategory }}
                         </td>
                     </tr>
 
@@ -67,7 +67,7 @@
                             <b> Main Product </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.mainProduct }}
+                            {{ sellerDetails?.companyProfile?.mainProduct }}
                         </td>
                     </tr>
                     <tr>
@@ -75,7 +75,7 @@
                             <b> Company Address </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.regAddress }}
+                            {{ sellerDetails?.companyProfile?.regAddress }}
                         </td>
                     </tr>
                 </table>
@@ -88,7 +88,7 @@
                             <b> Country </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.regCountry }}
+                            {{ sellerDetails?.companyProfile?.regCountry }}
                         </td>
                     </tr>
 
@@ -97,7 +97,7 @@
                             <b> State </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.regState }}
+                            {{ sellerDetails?.companyProfile?.regState }}
                         </td>
                     </tr>
 
@@ -106,7 +106,7 @@
                             <b> City </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyProfile.regCity }}
+                            {{ sellerDetails?.companyProfile?.regCity }}
                         </td>
                     </tr>
                     <tr>
@@ -133,7 +133,7 @@
                         </td>
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                         <td>
                             <b> Checked</b>
                         </td>
@@ -158,7 +158,7 @@
                             <b> First Name </b>
                         </td>
                         <td>
-                            {{ sellerDetails.sellerDetails.fName }}
+                            {{ sellerDetails?.sellerDetails?.fName }}
                         </td>
                     </tr>
 
@@ -167,7 +167,7 @@
                             <b> Last Name </b>
                         </td>
                         <td>
-                            {{ sellerDetails.sellerDetails.lName }}
+                            {{ sellerDetails?.sellerDetails?.lName }}
                         </td>
                     </tr>
 
@@ -183,7 +183,7 @@
                             <b> Email </b>
                         </td>
                         <td>
-                            {{ sellerDetails.sellerDetails.email }}
+                            {{ sellerDetails?.sellerDetails?.email }}
                         </td>
                     </tr>
                     <tr>
@@ -191,7 +191,7 @@
                             <b> Alternative Email </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.contactPersonAlternateEmail }}
+                            {{ sellerDetails?.companyDetail?.contactPersonAlternateEmail }}
                         </td>
                     </tr>
                     <tr>
@@ -199,7 +199,7 @@
                             <b> Company Website </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyWebsite }}
+                            {{ sellerDetails?.companyDetail?.companyWebsite }}
                         </td>
                     </tr>
 
@@ -208,7 +208,7 @@
                             <b> Google Business </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.googleBusiness }}
+                            {{ sellerDetails?.companyDetail?.googleBusiness }}
                         </td>
                     </tr>
                     <tr>
@@ -216,7 +216,7 @@
                             <b> Facebook Business </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.facebookBusiness }}
+                            {{ sellerDetails?.companyDetail?.facebookBusiness }}
                         </td>
                     </tr>
 
@@ -225,7 +225,7 @@
                             <b> Instagram Business </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.instagramBusiness }}
+                            {{ sellerDetails?.companyDetail?.instagramBusiness }}
                         </td>
                     </tr>
 
@@ -234,7 +234,7 @@
                             <b> Account Number </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accNumber }}
+                            {{ sellerDetails?.companyDetail?.accNumber }}
                         </td>
                     </tr>
 
@@ -243,7 +243,7 @@
                             <b> Account Type </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accType }}
+                            {{ sellerDetails?.companyDetail?.accType }}
                         </td>
                     </tr>
                     <tr>
@@ -251,7 +251,7 @@
                             <b> Bank Name </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accBankName }}
+                            {{ sellerDetails?.companyDetail?.accBankName }}
                         </td>
                     </tr>
                     <tr>
@@ -259,7 +259,7 @@
                             <b> Bank Branch </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accBranch }}
+                            {{ sellerDetails?.companyDetail?.accBranch }}
                         </td>
                     </tr>
                 </table>
@@ -272,7 +272,7 @@
                             <b> IFSC Code </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accIFSCCode }}
+                            {{ sellerDetails?.companyDetail?.accIFSCCode }}
                         </td>
                     </tr>
                     <tr>
@@ -280,7 +280,7 @@
                             <b> SWIFT Code </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.accSwiftCode }}
+                            {{ sellerDetails?.companyDetail?.accSwiftCode }}
                         </td>
                     </tr>
                     <tr></tr>
@@ -289,7 +289,7 @@
                             <b> Language Spoken </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyLanguageSpoken }}
+                            {{ sellerDetails?.companyDetail?.companyLanguageSpoken }}
                         </td>
                     </tr>
 
@@ -298,7 +298,7 @@
                             <b> Company Mission and Vision </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyVision }}
+                            {{ sellerDetails?.companyDetail?.companyVision }}
                         </td>
                     </tr>
                     <tr>
@@ -306,7 +306,7 @@
                             <b> Company Philosophy </b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyPhilosophy }}
+                            {{ sellerDetails?.companyDetail?.companyPhilosophy }}
                         </td>
                     </tr>
                     <tr>
@@ -314,7 +314,7 @@
                             <b> Company Detailed Introduction</b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyDetail }}
+                            {{ sellerDetails?.companyDetail?.companyDetail }}
                         </td>
                     </tr>
                     <tr>
@@ -322,7 +322,7 @@
                             <b> Trade Name</b>
                         </td>
                         <td>
-                            {{ sellerDetails.companyDetail.companyDetail }}
+                            {{ sellerDetails?.companyDetail?.companyDetail }}
                         </td>
                     </tr>
                     <tr>
@@ -361,7 +361,7 @@
                         </td>
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                         <td>
                             <b> Checked</b>
                         </td>
@@ -386,7 +386,7 @@
                             <b> Export Contribution % </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.exportingPercent }}
+                            {{ sellerDetails?.exportCapabilities?.exportingPercent }}
                         </td>
                     </tr>
 
@@ -395,7 +395,7 @@
                             <b> Nearest Port </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.nearestPort }}
+                            {{ sellerDetails?.exportCapabilities?.nearestPort }}
                         </td>
                     </tr>
 
@@ -404,7 +404,7 @@
                             <b> Exporting Science </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.exportingScience }}
+                            {{ sellerDetails?.exportCapabilities?.exportingScience }}
                         </td>
                     </tr>
 
@@ -423,7 +423,7 @@
                             <b> North America </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.northAmerica }}
+                            {{ sellerDetails?.exportCapabilities?.northAmerica }}
                         </td>
                     </tr>
                     <tr>
@@ -431,7 +431,7 @@
                             <b> Western Europe </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.westernEurope }}
+                            {{ sellerDetails?.exportCapabilities?.westernEurope }}
                         </td>
                     </tr>
 
@@ -440,7 +440,7 @@
                             <b> Eastern Asia </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.easternAsia }}
+                            {{ sellerDetails?.exportCapabilities?.easternAsia }}
                         </td>
                     </tr>
                     <tr>
@@ -448,7 +448,7 @@
                             <b> South America </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.southAmerica }}
+                            {{ sellerDetails?.exportCapabilities?.southAmerica }}
                         </td>
                     </tr>
 
@@ -457,7 +457,7 @@
                             <b> Northern Europe </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.northanEurope }}
+                            {{ sellerDetails?.exportCapabilities?.northanEurope }}
                         </td>
                     </tr>
                 </table>
@@ -470,7 +470,7 @@
                             <b> Africa </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.africa }}
+                            {{ sellerDetails?.exportCapabilities?.africa }}
                         </td>
                     </tr>
 
@@ -479,7 +479,7 @@
                             <b> Central America</b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.centralAmerica }}
+                            {{ sellerDetails?.exportCapabilities?.centralAmerica }}
                         </td>
                     </tr>
                     <tr>
@@ -487,7 +487,7 @@
                             <b> Southern Europe </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.southernEurope }}
+                            {{ sellerDetails?.exportCapabilities?.southernEurope }}
                         </td>
                     </tr>
                     <tr>
@@ -495,7 +495,7 @@
                             <b> Middle East</b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.middileEast }}
+                            {{ sellerDetails?.exportCapabilities?.middileEast }}
                         </td>
                     </tr>
                     <tr>
@@ -503,7 +503,7 @@
                             <b> Eastern Europe </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.easternEurope }}
+                            {{ sellerDetails?.exportCapabilities?.easternEurope }}
                         </td>
                     </tr>
                     <tr>
@@ -511,7 +511,7 @@
                             <b> South Asia</b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.southAsia }}
+                            {{ sellerDetails?.exportCapabilities?.southAsia }}
                         </td>
                     </tr>
                     <tr>
@@ -519,17 +519,17 @@
                             <b> Gulf </b>
                         </td>
                         <td>
-                            {{ sellerDetails.exportCapabilities.gulf }}
+                            {{ sellerDetails?.exportCapabilities?.gulf }}
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <b> Local and Domestic Market </b>
                         </td>
-                        {{ sellerDetails.exportCapabilities.domasticMarket }}
+                        {{ sellerDetails?.exportCapabilities?.domasticMarket }}
                         <td></td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                         <td>
                             <b> Checked </b>
                         </td>
@@ -550,13 +550,14 @@
             <h6>Certificate You Have</h6>
 
             <div *ngFor="let item of sellerDetails?.certification?.certificates" class="col-md-6">
-                <table class="table table-borderless table-sm" *ngIf="item.checked">
+                <table class="table table-borderless table-sm">
+                    <!-- *ngIf="item.checked" -->
                     <tr>
                         <td>
                             <b> Date of Expiration </b>
                         </td>
                         <td>
-                            {{ item.expirtData | date : "dd-mm-yyyy" }}
+                            {{ item?.expirtData | date : "dd-mm-yyyy" }}
                         </td>
                     </tr>
 
@@ -565,7 +566,7 @@
                             <b> Type of Certification </b>
                         </td>
                         <td>
-                            {{ item.name }}
+                            {{ item?.name }}
                         </td>
                     </tr>
                 </table>
@@ -573,7 +574,7 @@
             <!-- 2 table -->
             <div class="col-md-12"></div>
             <div class="col-md-6"></div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                 <table class="col-12 ml-5 table table-borderless table-sm">
                     <tr>
                         <td>
@@ -589,7 +590,7 @@
     </div>
 </div>
 
-<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails.qualityControl.isQualityControl == 'No'">
+<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails?.qualityControl?.isQualityControl == 'No'">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -604,7 +605,7 @@
                 </table>
             </div>
             <!-- 2 table -->
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                 <table class="table table-borderless table-sm">
                     <tr>
                         <td>
@@ -620,7 +621,7 @@
     </div>
 </div>
 
-<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails.qualityControl.isQualityControl == 'Yes'">
+<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails?.qualityControl?.isQualityControl == 'Yes'">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -639,7 +640,7 @@
                             <b> Process Name </b>
                         </td>
                         <td>
-                            {{ item.processName }}
+                            {{ item?.processName }}
                         </td>
                     </tr>
 
@@ -647,7 +648,7 @@
                         <td>
                             <b> Process Description</b>
                         </td>
-                        <td>{{ item.processDescription }}</td>
+                        <td>{{ item?.processDescription }}</td>
                     </tr>
                     <tr *ngIf="item.image && item.image.length">
                         <td>
@@ -659,7 +660,7 @@
             </div>
             <div class="col-md-12"></div>
             <div class="col-md-6"></div>
-            <div class="col-md-6">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
                 <table class="col-12 ml-5 table table-borderless table-sm">
                     <tr>
                         <td>
@@ -675,17 +676,17 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div>
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
             <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'approved')" class="btn btn-success m-3">
       Approve
     </button>
         </div>
-        <div>
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
             <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'review')" class="btn btn-danger m-3">
       Review
     </button>
         </div>
-        <div>
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
             <button class="btn btn-danger m-3" [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'rejected')">Deactivate</button>
         </div>
     </div>

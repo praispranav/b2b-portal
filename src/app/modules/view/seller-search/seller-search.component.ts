@@ -101,4 +101,17 @@ export class SellerSearchComponent implements OnInit {
       },
     });
   }
+  navigateToContact(sellerId):void{
+    const searchQuery = this.searchQuery;
+    this.router.navigate(["/b2b/seller-catalogue-contact"], {
+      queryParams: {
+        ...searchQuery,
+        sellerId: sellerId,
+        page: 1,
+        pageSize: 10,
+        searchProduct: "",
+        categoryId:""
+      },
+    });
+  }
 }
