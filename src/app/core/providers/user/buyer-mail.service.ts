@@ -45,4 +45,10 @@ export class BuyerMailService {
       `${environment.apiUrl}/buyer-mails/get-requestid-messages`, { params: { requestId } }
     );
   }
+
+  getSentMessages(requestId){
+    return this.http.get<any>(
+      `${environment.apiUrl}/buyer-mails/get-sent-messages`, { params: { requestId } }
+    );
+  }
 }

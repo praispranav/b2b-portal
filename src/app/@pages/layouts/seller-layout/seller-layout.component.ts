@@ -66,8 +66,12 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       toggle: "close",
       submenu: [
         {
-          label: "Received-RFQ",
+          label: "Requested-RFQ",
           routerLink: "/seller/product/requested-rfq",
+        },
+        {
+          label: "Received-RFQ",
+          routerLink: "/seller/product/received-rfq",
         },
         
       ],

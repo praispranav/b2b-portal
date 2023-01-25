@@ -107,8 +107,8 @@ export class UserVerificationListComponent implements OnInit {
 
   getUsers({ pageSize, page, status, city, country, state }) {
     status = status || ""
-    city  = city || "" 
-    country = country || "" 
+    city = city || ""
+    country = country || ""
     state = state || ''
     this.userVerificationService
       .getUsers({ page, pageSize, status, city, country, state })
@@ -154,7 +154,15 @@ export class UserVerificationListComponent implements OnInit {
       });
     }
   }
-  onPage(event){
+  onPage(event) {
     // this.router.navigate([],  { queryParams: {...this.queryParams, page: Number(event.offset )+ 1}})
+  }
+
+  onReset(): void {
+    this.router.navigate([], { queryParams: { 'page': this.queryParams.page, 'pageSize': this.queryParams.pageSize } });
+    this.cityList = [];
+    this.countriesList = [];
+    this.statesList = [];
+    this.statusList = [];
   }
 }
