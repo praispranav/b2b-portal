@@ -50,7 +50,7 @@ export class SendEnquiryFormComponent implements OnInit {
 
     this.addedProducts.forEach((product)=>{
       if(sellersWithProduct[product.supplierId]){
-        sellersWithProduct[product.supplierId].product.push({ productId: product.productId, quantity: product.quantity })
+        sellersWithProduct[product.supplierId].product.push({ productId: product.name, quantity: product.quantity })
       } else {
         sellersWithProduct[product.supplierId] = {
           message: this.message,
@@ -58,7 +58,7 @@ export class SendEnquiryFormComponent implements OnInit {
           product: [],
           sellerId: product.supplierId
         }
-        sellersWithProduct[product.supplierId].product.push({ productId: product.productId, quantity: product.quantity })
+        sellersWithProduct[product.supplierId].product.push({ productId: product.name, quantity: product.quantity })
       }
     })
 

@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-primary">No Sppler found<span class="text-warning">"Supplier Name"</span></h1>
+                <h1 class="text-primary">No Sppler found<span *ngIf="queryData?.search" class="text-warning">&nbsp;{{queryData?.search | titlecase}}</span></h1>
              </div>
         </div>
         <div class="row">
