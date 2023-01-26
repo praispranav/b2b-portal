@@ -35,8 +35,8 @@
             >
               Contact Supplier
             </button>
-            <button *ngIf="!findProducts(product.productId)" (click)="handleAddProduct(product)">Add</button>
-            <p *ngIf="findProducts(product.productId)">Added</p>
+            <button *ngIf="!findProducts(product.productId)" class="btn btn-primary mx-2" (click)="handleAddProduct(product)">Add</button>
+            <p *ngIf="findProducts(product.productId)"><i class="fa fa-check " style="color:green"  aria-hidden="true"></i></p>
             <span>&nbsp;&nbsp;&nbsp;</span>
             <i class="pg-icon">comment</i>
           </div>

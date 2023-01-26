@@ -4,17 +4,17 @@
     </div>
     <div class="card-body">
         <div class="row">
-                <div  *ngFor="let item of addedProducts; let i = index" class="col-2 card ">
-                    <div class="card-header d-flex justify-content-end">
+                <div  *ngFor="let item of addedProducts; let i = index" class="col-2">
+                    <div class="border-0 d-flex justify-content-end">
                         <i class="fa fa-times" (click)="removeAddedProduct(item.productId)" style="color:red" aria-hidden="true"></i>
                     </div>
-                    <div class="card-body d-flex justify-content-center">
-                        <img [src]="item.image" style="width: 80px; height: 50px;" />
+                    <div class=" d-flex justify-content-center">
+                        <img [src]="item.image" style="width: 80px; height: 80px; border-radius: 80px;" />
                     </div>
-                    <div class="card-footer">
+                  
                         <p class="text-center" >{{ item.name }}</p>
                         <p  class="text-center">{{ item.moq }}</p>
-                    </div>
+                    
                    
                     
                 </div>
@@ -22,8 +22,6 @@
                   
                 
         </div>
-
     </div>
-
     <a routerLink="/b2b/product-search-enquiry">Send Enquiry</a>
 </div>

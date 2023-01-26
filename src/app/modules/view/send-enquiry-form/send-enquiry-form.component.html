@@ -1,43 +1,75 @@
-<div class=" row p-4">
+<div class=" row p-4 m-0">
 
-        <div class="col-lg-6 col-12">
-            <div class="   border-0 " *ngFor="let item of addedProducts;let i = index">
-            
-                <div class="card  border-0">
-                    <div class="card-header d-flex justify-content-end">
-                        <i class="fa fa-times" (click)="removeAddedProduct(item.productId)" style="color:red" aria-hidden="true"></i>
+        <div class=" col-12   ">
+            <div class="  card " style="background-color: whitesmoke;" *ngFor="let item of addedProducts;let i = index">
+                <div class="card-header row border-bottom  ">
+                  
+                        <div class="col-lg-9">
+                            <h4 class="m-0 ">ProductName</h4>
+                        </div>
+                 
+                   <div class="col-lg-3 d-flex justify-content-end">
+                    <i class="fa fa-times mr-4" (click)="removeAddedProduct(item.productId)" style="color:red" aria-hidden="true"></i>
+                   </div>
+                </div>
+                <div class="  card-body row  p-3">
+                  
+                  
+                    
+                    <div class="col-lg-1">
+                        <img [src]="item.image"  class="img-size"/>
                     </div>
-                    <div class="card-body">
-                        <img [src]="item.image" />
-                    </div>              
-                    <div class="">
-                        <p>{{ item.productName }}</p>
+                    <div class="col-lg-6">
+                        <p style="color:rgb(102, 57, 237)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde natus minima nam dolorem nemo consequuntur, qui laudantium aperiam beatae culpa.</p>
+                         <!-- <p>{{ item.productName }}</p>
+                             -->
                     </div>
-                    <div class="card-footer">
+                    
+                           
                         
-                            <input type="number" class="form-control" (change)="onChangeQuanity($event, i)" placeholder="Quantity" />
-                        
-                    </div>
+                        <div class=" col-lg-4 ">
+                            <form role="form">
+                                
+                                <div class="form-group form-group-default input-group" pgFormGroupDefault>
+                                    <div class="form-input-group " style="height
+                                    :10px">
+                                      <!-- <label></label> --> <input type="number" placeholder="Quantity" class="form-control" (change)="onChangeQuanity($event, i)">
+                                     
+                                    </div>
+                                    <div class="input-group-append ">
+                                       
+                                        <span class="input-group-text">Pieces <i class="fa fa-caret-down"></i>
+                                        </span>
+                                    </div>
+                                  </div>
+                            </form>
+                        </div>
+                    
                 </div>
               
                 
             </div>
-            <div class="form-group   ">
-                <label>Message</label>
-               <div >           
-                <textarea placeholder="Message" class="form-control" [(ngModel)]="message" name="Message"></textarea>
-               </div>
-            </div>
             
-            <!-- <div class="col-lg-6 col-md-8 col-12">
-                <label>Attachments</label>
-                
-            </div> -->
-            <div>
-                <button (click)="saveForm()" class="btn btn-primary">Submit</button>
-            </div>
         </div>
     
+        <div class="form-group   ">
+            <label>Content <span style="color:red">*</span>  </label>
+           <div >           
+            <textarea placeholder="Please Enter details such as material,size,application,specification and other requirements to receive accurate quote" class="form-control" [(ngModel)]="message" rows="10" name="Message"></textarea>
+           </div>
+        </div>
         
+        <!-- <div class="col-lg-6 col-md-8 col-12">
+            <label>Attachments</label>
+            
+        </div> -->
+        <div class="form-group col-lg-4">
+            <label for="">Email</label>
+            <input type="email" formControlName="email" placeholder="Enter Your Email Address" class="form-control">
+
+        </div>
+        <div>
+            <button (click)="saveForm()" class="btn btn-danger">Send Inquiry Now</button>
+        </div>
  
 </div>
