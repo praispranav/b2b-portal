@@ -1,24 +1,26 @@
-<div class=" row p-4">
+<div class=" row p-4 m-0">
 
-        <div class=" col-12 m-2">
-            <div class="  card  border-0 pb-4 ps-4 " *ngFor="let item of addedProducts;let i = index">
-                <div class="card-header p-0 d-flex justify-content-between">
-                    <div>
-                        <h4 class="ms-0 ml-0 pl-0 ">ProductName</h4>
-                    </div>
-                   <div>
+        <div class=" col-12   ">
+            <div class="  card " style="background-color: whitesmoke;" *ngFor="let item of addedProducts;let i = index">
+                <div class="card-header row border-bottom  ">
+                  
+                        <div class="col-lg-9">
+                            <h4 class="m-0 ">ProductName</h4>
+                        </div>
+                 
+                   <div class="col-lg-3 d-flex justify-content-end">
                     <i class="fa fa-times mr-4" (click)="removeAddedProduct(item.productId)" style="color:red" aria-hidden="true"></i>
                    </div>
                 </div>
-                <div class="  row  border-0">
+                <div class="  card-body row  p-3">
                   
                   
                     
-                    <div class="col-lg-2">
-                        <img [src]="item.image"  style="height:50px; width:50px;"/>
+                    <div class="col-lg-1">
+                        <img [src]="item.image"  class="img-size"/>
                     </div>
                     <div class="col-lg-6">
-                        <p style="color:blue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde natus minima nam dolorem nemo consequuntur, qui laudantium aperiam beatae culpa.</p>
+                        <p style="color:rgb(102, 57, 237)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde natus minima nam dolorem nemo consequuntur, qui laudantium aperiam beatae culpa.</p>
                          <!-- <p>{{ item.productName }}</p>
                              -->
                     </div>
@@ -26,9 +28,21 @@
                            
                         
                         <div class=" col-lg-4 ">
-                            
-                                <input type="number" class="form-control" (change)="onChangeQuanity($event, i)" placeholder="Quantity" />
-                            
+                            <form role="form">
+                                
+                                <div class="form-group form-group-default input-group" pgFormGroupDefault>
+                                    <div class="form-input-group " style="height
+                                    :10px">
+                                      <!-- <label></label> --> <input type="number" placeholder="Quantity" class="form-control" (change)="onChangeQuanity($event, i)">
+                                     
+                                    </div>
+                                    <div class="input-group-append ">
+                                       
+                                        <span class="input-group-text">Pieces <i class="fa fa-caret-down"></i>
+                                        </span>
+                                    </div>
+                                  </div>
+                            </form>
                         </div>
                     
                 </div>
@@ -39,9 +53,9 @@
         </div>
     
         <div class="form-group   ">
-            <label>Message</label>
+            <label>Content <span style="color:red">*</span>  </label>
            <div >           
-            <textarea placeholder="Message" class="form-control" [(ngModel)]="message" name="Message"></textarea>
+            <textarea placeholder="Please Enter details such as material,size,application,specification and other requirements to receive accurate quote" class="form-control" [(ngModel)]="message" rows="10" name="Message"></textarea>
            </div>
         </div>
         
@@ -49,8 +63,13 @@
             <label>Attachments</label>
             
         </div> -->
+        <div class="form-group col-lg-4">
+            <label for="">Email</label>
+            <input type="email" formControlName="email" placeholder="Enter Your Email Address" class="form-control">
+
+        </div>
         <div>
-            <button (click)="saveForm()" class="btn btn-primary">Submit</button>
+            <button (click)="saveForm()" class="btn btn-danger">Send Inquiry Now</button>
         </div>
  
 </div>
