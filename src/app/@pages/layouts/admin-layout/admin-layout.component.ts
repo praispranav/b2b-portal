@@ -39,36 +39,37 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
           label: "Seller Live Status",
           routerLink: "/admin/dashboard",
         },
-        {
-          label: "RFQ",
-          routerLink: "/admin/mqr/mqr-list",
-        },
-        {
-          label: "Product Verification",
-          routerLink: "/admin/product-verification",
-        }
+        // {
+        //   label: "RFQ",
+        //   routerLink: "/admin/mqr/mqr-list",
+        // },
+        // {
+        //   label: "Product Verification",
+        //   routerLink: "/admin/product-verification",
+        // }
       ],
     },
+
     {
       label: "Product",
       toggle: "close",
       submenu: [
         {
           label: "Products For Approval",
-          routerLink: "/admin/product-verification/verification-list",
+          routerLink: "/admin/product-verification",
         },
         {
           label: "Approval Status",
           routerLink: "/admin/dashboard",
         },
-        {
-          label: "Brand Approval Requests",
-          routerLink: "/admin/brand-approval/brand-approval-list",
-        },
-        {
-          label: "Brands",
-          routerLink: "/admin/dashboard",
-        },
+        // {
+        //   label: "Brand Approval Requests",
+        //   routerLink: "/admin/brand-approval/brand-approval-list",
+        // },
+        // {
+        //   label: "Brands",
+        //   routerLink: "/admin/dashboard",
+        // },
         {
           label: "Limits For Free Seller",
           routerLink: "/admin/dashboard",
@@ -80,12 +81,34 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       ],
     },
     {
+      label: "Brand",
+      toggle: "close",
+      submenu: [
+        {
+          label: "Brand Approval Requests",
+          routerLink: "/admin/brand-approval/brand-approval-list",
+        },
+        {
+          label: "Search Brand",
+          routerLink: "/admin/dashboard",
+        },
+        {
+          label: "Approve Brands",
+          routerLink: "/admin/dashboard",
+        },
+        {
+          label: "Add Brands",
+          routerLink: "/admin/dashboard",
+        },
+      ],
+    },
+    {
       label: "Leads",
       toggle: "close",
       submenu: [
         {
           label: "RFQ Leads",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/mqr/mqr-list",
         },
         {
           label: "Associate CRM",
@@ -239,24 +262,28 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
       ],
     },
-    {
-      label: "Brand",
-      toggle: "close",
-      submenu: [
-        {
-          label: "Search Brand",
-          routerLink: "/admin/dashboard",
-        },
-        {
-          label: "Approve Brands",
-          routerLink: "/admin/dashboard",
-        },
-        {
-          label: "Add Brands",
-          routerLink: "/admin/dashboard",
-        },
-      ],
-    },
+    // {
+    //   label: "Brand",
+    //   toggle: "close",
+    //   submenu: [
+    //     {
+    //       label: "Brand Approval Requests",
+    //       routerLink: "/admin/brand-approval/brand-approval-list",
+    //     },
+    //     {
+    //       label: "Search Brand",
+    //       routerLink: "/admin/dashboard",
+    //     },
+    //     {
+    //       label: "Approve Brands",
+    //       routerLink: "/admin/dashboard",
+    //     },
+    //     {
+    //       label: "Add Brands",
+    //       routerLink: "/admin/dashboard",
+    //     },
+    //   ],
+    // },
     {
       label: "Notice Bar",
       routerLink: "/admin/notice-bar",
