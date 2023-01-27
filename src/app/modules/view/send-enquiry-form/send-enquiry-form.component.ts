@@ -13,6 +13,7 @@ export class SendEnquiryFormComponent implements OnInit {
   addedProducts: any[] = [];
   message: string = '';
   attachments: any[] = [];
+  attachment:any[]=[];
 
   constructor(
     private router: Router,
@@ -54,13 +55,14 @@ export class SendEnquiryFormComponent implements OnInit {
       } else {
         sellersWithProduct[product.supplierId] = {
           message: this.message,
-          attachments: [],
+          attachments: [...this.attachment],
           product: [],
           sellerId: product.supplierId
         }
-        sellersWithProduct[product.supplierId].product.push({ productId: product.name, quantity: product.quantity })
+        sellersWithProduct[product.supplierId].product.push({ productId: product.productId, quantity: product.quantity })
       }
     })
+    
 
     Object.values(sellersWithProduct).forEach((payload)=>{
       this.buyerMailService.createNewRequest(payload).subscribe((res)=>{

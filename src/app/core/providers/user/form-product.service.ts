@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -11,7 +11,10 @@ export class FormProductService {
   public stringSubject = new Subject<any>();
   public productConstant = "productsForPurchase";
   public contactUsKey = 'contactUsKey';
-  public contactUsProduct = 'contactUsProduct'
+  public contactUsProduct = 'contactUsProduct';
+  productSubject = new BehaviorSubject<any>([]);
+  productSubjectAsObservable = this.productSubject.asObservable();
+
 
   constructor(private http: HttpClient) {}
 
@@ -60,9 +63,9 @@ export class FormProductService {
     return this.http.get<any>(`${environment.apiUrl}/product/get-counts`);
   }
 
-  getProductBySeller({ page, pageSize }){
+  getProductBySeller({ page, pageSize,searchText }){
     return this.http.get<any>(
-      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize }}
+      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize, searchText }}
     );
   }
 

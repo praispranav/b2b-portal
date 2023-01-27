@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
 import { ProviderCategoryService } from "../../../core/providers/user/provider-category.service";
 import { SellerSearchService } from "../../../core/providers/user/seller-search.service";
-
+import { FormProductService } from "../../../core/providers/user/form-product.service";
 interface SearchQuery {
   category?: string;
   search?: string;
@@ -29,7 +29,8 @@ export class SellerSearchComponent implements OnInit {
   categoryList: any[] = [];
   certificationsList: any[] = [];
   businessTypeList: any[] = [];
-
+  productList: any[] = [];
+  baseUrl: string;
   totalListSize: number = 0;
 
   imageEnvironment: string = environment.imageStorage;
@@ -40,6 +41,7 @@ export class SellerSearchComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: ProviderCategoryService,
     private sellerSearchService: SellerSearchService,
+    private _formProductService: FormProductService,
     private router: Router
   ) {
     this.route.queryParams.subscribe((params) => {
@@ -49,7 +51,29 @@ export class SellerSearchComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.baseUrl = environment.imageStorage;
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    let payload = {
+      page: 1,
+      pageSize: 2,
+      searchText: "Approved",
+    };
+    console.log('payload',payload);
+    
+    this._formProductService.getProductBySeller(payload).subscribe(
+      (res) => {
+        console.log("res", res);
+        this.productList = res.data;
+      },
+      (err) => {
+        console.log("err", err);
+      }
+    );
+  }
 
   getSearchedSellerList() {
     const payload = { ...this.searchQuery, searchType: undefined };
@@ -97,11 +121,11 @@ export class SellerSearchComponent implements OnInit {
         sellerId: sellerId,
         page: 1,
         pageSize: 10,
-        searchProduct: ""
+        searchProduct: "",
       },
     });
   }
-  navigateToContact(sellerId):void{
+  navigateToContact(sellerId): void {
     const searchQuery = this.searchQuery;
     this.router.navigate(["/b2b/seller-catalogue-contact"], {
       queryParams: {
@@ -110,7 +134,7 @@ export class SellerSearchComponent implements OnInit {
         page: 1,
         pageSize: 10,
         searchProduct: "",
-        categoryId:""
+        categoryId: "",
       },
     });
   }

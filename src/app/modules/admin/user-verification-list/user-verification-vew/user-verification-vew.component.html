@@ -677,16 +677,16 @@
 
     <div class="d-flex justify-content-center">
         <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
-            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'approved')" class="btn btn-success m-3">
+            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Approved')" class="btn btn-success m-3">
       Approve
     </button>
         </div>
         <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
-            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'review')" class="btn btn-danger m-3">
+            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Review')" class="btn btn-danger m-3">
       Review
     </button>
         </div>
         <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
-            <button class="btn btn-danger m-3" [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'rejected')">Deactivate</button>
+            <button class="btn btn-danger m-3" [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Rejected')">Deactivate</button>
         </div>
     </div>

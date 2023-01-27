@@ -39,6 +39,8 @@ export class PageInboxComponent implements OnInit {
   ngOnInit() {
     this._service.getEmails().subscribe(list => {
       this.emailList = list.emails;
+      console.log('emailList',this.emailList);
+      
     });
     this.toggler.toggleFooter(false);
     this.toggler.setHeaderClass('light');
@@ -79,7 +81,7 @@ export class PageInboxComponent implements OnInit {
 
   getPurchaseRequests(){
     this.buyerMailService.getSellerMessage().subscribe((res)=>{
-      console.log(res);
+      console.log('res----',res);
       this.mailsWithDates = res.data;
     })
   }

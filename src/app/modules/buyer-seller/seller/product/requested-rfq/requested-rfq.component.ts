@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../../environments/environment';
 import { ProviderUserAuthService } from "../../../../../core/providers/auth/provider-user-auth.service";
 import { RequestQuotationService } from "../../../../../core/providers/user/request-quotation.service";
 
@@ -8,6 +9,7 @@ import { RequestQuotationService } from "../../../../../core/providers/user/requ
   styleUrls: ['./requested-rfq.component.scss']
 })
 export class RequestedRfqComponent implements OnInit {
+  baseUrl:string;
   userInfor: any = null;
   requestForQutationList: any[] = [];
 
@@ -17,6 +19,7 @@ export class RequestedRfqComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.baseUrl= environment.imageStorage;
     const jwt_decode = this.authService.currentUserValueObjTokenDecoded;
     console.log("JwtDecode", jwt_decode);
     if (jwt_decode) {

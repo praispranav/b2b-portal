@@ -278,16 +278,16 @@
 
 <div class="d-flex justify-content-center">
     <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
-        <button class="btn btn-success m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails._id, 'approved')">
+        <button class="btn btn-success m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id, 'Approved')">
         Approve
       </button>
     </div>
     <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
-        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails._id, 'pending')">
+        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id, 'Pending')">
         Review
       </button>
     </div>
     <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
-        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails._id,'rejected')">Deactivate</button>
+        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id,'Rejected')">Deactivate</button>
     </div>
 </div>

@@ -10,7 +10,7 @@
             
           <div >
              <div  class="relative">
-                <img [src]="imgBaseUrl+slide" class="img-size"  >
+                <img [src]="slide? imgBaseUrl+slide : ''" class="img-size"  >
                 <div class="absolute" >
                     <h2 class="">{{ label }}</h2>
                     <p class=" hint-text">{{ description }}</p>

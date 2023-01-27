@@ -3,7 +3,7 @@
         <div class=" col-12   ">
             <div class="  card " style="background-color: whitesmoke;" *ngFor="let item of addedProducts;let i = index">
                 <div class="card-header row border-bottom  ">
-                  
+                  {{item | json}}
                         <div class="col-lg-9">
                             <h4 class="m-0 ">ProductName</h4>
                         </div>
@@ -20,7 +20,7 @@
                         <img [src]="item.image"  class="img-size"/>
                     </div>
                     <div class="col-lg-6">
-                        <p style="color:rgb(102, 57, 237)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde natus minima nam dolorem nemo consequuntur, qui laudantium aperiam beatae culpa.</p>
+                        <p style="color:rgb(102, 57, 237)">{{item?.name}}</p>
                          <!-- <p>{{ item.productName }}</p>
                              -->
                     </div>
@@ -64,8 +64,8 @@
             
         </div> -->
         <div class="form-group col-lg-4">
-            <label for="">Email</label>
-            <input type="email" formControlName="email" placeholder="Enter Your Email Address" class="form-control">
+            <label for="">Attachment</label>
+            <input type="file" [(ngModel)]="attachment" class="form-control">
 
         </div>
         <div>

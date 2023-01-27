@@ -3,7 +3,7 @@
         <div class="row p-0 m-0" *ngFor="let rfq of rfqList; let i = index"
             [ngClass]="i % 2 ? 'bg-gray' : ' bg-light-gray' ">
             <div class="col-md-3 p-2">
-                <img src="https://rukminim1.flixcart.com/image/150/150/l2f20sw0/cookware-set/h/1/5/3-kan-8pcs-kreme-original-imagdrntmzjuvhpj.jpeg?q=70"
+                <img [src]="baseUrl+rfq?.image"
                     alt="..." class="img-thumbnail">
             </div>
             <div class="col-md-6 p-2">
