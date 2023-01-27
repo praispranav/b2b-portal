@@ -67,7 +67,7 @@ export class PageProductListComponent implements OnInit {
 
   getProducts() {
     this.productService
-      .getProductBySeller({ page: this.page, pageSize: this.pageSize })
+      .getProductBySeller({ page: this.page, pageSize: this.pageSize, searchText: "" })
       .subscribe((res) => {
         if (res.data) {
           this.advanceRows = res.data.map((i) => ({
