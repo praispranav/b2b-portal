@@ -133,7 +133,7 @@
                         </td>
                         <td></td>
                     </tr>
-                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                         <td>
                             <b> Checked</b>
                         </td>
@@ -361,7 +361,7 @@
                         </td>
                         <td></td>
                     </tr>
-                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                         <td>
                             <b> Checked</b>
                         </td>
@@ -529,7 +529,7 @@
                         {{ sellerDetails?.exportCapabilities?.domasticMarket }}
                         <td></td>
                     </tr>
-                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                         <td>
                             <b> Checked </b>
                         </td>
@@ -574,7 +574,7 @@
             <!-- 2 table -->
             <div class="col-md-12"></div>
             <div class="col-md-6"></div>
-            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                 <table class="col-12 ml-5 table table-borderless table-sm">
                     <tr>
                         <td>
@@ -605,7 +605,7 @@
                 </table>
             </div>
             <!-- 2 table -->
-            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                 <table class="table table-borderless table-sm">
                     <tr>
                         <td>
@@ -660,7 +660,7 @@
             </div>
             <div class="col-md-12"></div>
             <div class="col-md-6"></div>
-            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
                 <table class="col-12 ml-5 table table-borderless table-sm">
                     <tr>
                         <td>
@@ -676,7 +676,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
             <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Approved')" class="btn btn-success m-3">
       Approve
     </button>
@@ -686,7 +686,7 @@
       Review
     </button>
         </div>
-        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
             <button class="btn btn-danger m-3" [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Rejected')">Deactivate</button>
         </div>
     </div>

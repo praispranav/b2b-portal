@@ -47,7 +47,9 @@ export class PageSentComponent implements OnInit {
     this.getPurchaseRequests();
     this.route.queryParams.subscribe((params)=>{
       this.queryParams = params;
+      if(params){
       this.getMessages();
+      }
     })
   }
 
@@ -68,7 +70,6 @@ export class PageSentComponent implements OnInit {
 
   onSelect(item: any): void {
     this.selectedEmail = item;
-    debugger;
     this.isEmailSelected = true;
 
     this.router.navigate([], { queryParams: { supplierId: item.receiverId, requestId: item._id }})

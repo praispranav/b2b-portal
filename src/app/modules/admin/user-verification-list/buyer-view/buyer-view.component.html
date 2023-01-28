@@ -259,7 +259,7 @@
                         </td>
                         <td></td>
                     </tr> -->
-                    <tr *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
+                    <tr *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending' || buyerDetails?.buyer?.isApprovedByAdmin==='Review'">
                         <td>
                             <b> Checked</b>
                         </td>
@@ -277,17 +277,17 @@
 
 
 <div class="d-flex justify-content-center">
-    <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
+    <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending' || buyerDetails?.buyer?.isApprovedByAdmin==='Review'">
         <button class="btn btn-success m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id, 'Approved')">
         Approve
       </button>
     </div>
     <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
-        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id, 'Pending')">
+        <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id, 'Review')">
         Review
       </button>
     </div>
-    <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending'">
+    <div *ngIf="buyerDetails?.buyer?.isApprovedByAdmin==='pending' || buyerDetails?.buyer?.isApprovedByAdmin==='Review'">
         <button class="btn btn-danger m-3" [disabled]="!flag" (click)="onApproveReject(buyerDetails?.buyer?._id,'Rejected')">Deactivate</button>
     </div>
 </div>

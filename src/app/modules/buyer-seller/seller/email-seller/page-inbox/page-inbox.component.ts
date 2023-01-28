@@ -95,6 +95,8 @@ export class PageInboxComponent implements OnInit {
     this.buyerMailService.getSellerMessage().subscribe((res) => {
       console.log("res----", res);
       this.mailsWithDates = res.data;
+      console.log('mailsWithDates',this.mailsWithDates);
+      
     });
   }
 
@@ -110,7 +112,7 @@ export class PageInboxComponent implements OnInit {
 
         this.messages = res.data.messages;
         this.images = res.data.images;
-        console.log("Messages", this.messages);
+        console.log("Messages", this.messages,this.images);
       });
   }
 
