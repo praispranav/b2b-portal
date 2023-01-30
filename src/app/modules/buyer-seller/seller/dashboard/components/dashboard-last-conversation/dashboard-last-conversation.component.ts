@@ -20,7 +20,8 @@ export class DashboardLastConversationComponent implements OnInit {
   }
 
   getPurchaseRequests(): void {
-    this.buyerMailService.getBuyerMessages().subscribe((res) => {
+    let paging='3';
+    this.buyerMailService.getSellerMessage(paging).subscribe((res) => {
       res.data.forEach((element) => {
         this.inboxList = element;
       });

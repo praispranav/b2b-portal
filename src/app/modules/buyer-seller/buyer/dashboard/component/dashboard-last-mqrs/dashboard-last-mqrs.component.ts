@@ -30,7 +30,8 @@ export class DashboardLastMqrsComponent implements OnInit {
   }
 
   getRequestForQuotationList() {
-    this.requestForQuotation.getRequestForQuotationByUser().subscribe((res) => {
+    let paging='3'
+    this.requestForQuotation.getRequestForQuotationByUser(paging).subscribe((res) => {
       if (Array.isArray(res.data)) this.requestForQutationList = res.data;
     });
   }

@@ -5,7 +5,7 @@
         </div>
         <div class="row pl-4" *ngFor="let product of inbox?.products">
             <div class="col-md-6 p-2 ">
-                <img [src]="baseUrl+product?.productImage"
+                <img [src]="product?.productImage"
                     alt="..." class="img-thumbnail">
             </div>
             <div class="col-md-6 p-2">

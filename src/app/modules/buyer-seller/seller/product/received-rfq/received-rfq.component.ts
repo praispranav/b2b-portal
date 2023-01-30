@@ -22,7 +22,8 @@ export class ReceivedRfqComponent implements OnInit {
   }
 
   getReceivedForQuotationList() {
-    this.requestForQuotationService.getRequestForQuotationByCategories().subscribe((res) => {
+    let paging='all'
+    this.requestForQuotationService.getRequestForQuotationByCategories(paging).subscribe((res) => {
       if(res.data) this.receivedForQutationList = res.data;
     });
   }

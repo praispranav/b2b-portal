@@ -28,6 +28,7 @@ export class PageInboxComponent implements OnInit {
   emailList = [];
   selectedEmail: any;
   editingMode = false;
+  loggedInUser:any;
   editorModules = {
     // https://github.com/KillerCodeMonkey/ngx-quill
     toolbar: [
@@ -46,6 +47,8 @@ export class PageInboxComponent implements OnInit {
     private buyerMailService: BuyerMailService
   ) {}
   ngOnInit() {
+    this.loggedInUser= JSON.parse(localStorage.getItem('currentUserAuth')).data;
+    console.log('loggedInUser',this.loggedInUser);
     this._service.getEmails().subscribe((list) => {
       this.emailList = list.emails;
     });
@@ -91,7 +94,8 @@ export class PageInboxComponent implements OnInit {
   }
 
   getPurchaseRequests() {
-    this.buyerMailService.getBuyerMessages().subscribe((res) => {
+    let paging='all';
+    this.buyerMailService.getBuyerMessages(paging).subscribe((res) => {
       console.log(res);
       this.mailsWithDates = res.data;
     });

@@ -2,10 +2,11 @@
   <div class="split-view">
     <!-- START SPLIT LIST VIEW -->
     <div class="split-list">
-      <a class="list-refresh" href="javascript:void(0)" style="display: flex; align-items:center;">
+      <a class="list-refresh" href="javascript:void(0)" style="display: flex; align-items: center">
         <span>Inbox&nbsp;</span>
         <i class="pg-icon">refresh_alt</i>
       </a>
+
       <pg-list-view-container>
         <pg-list-item *ngFor="let emailGroup of mailsWithDates">
           <ng-template #ItemHeading>
@@ -13,31 +14,51 @@
           </ng-template>
           <li class="item padding-10 p-l-15" *ngFor="let item of emailGroup.data" (click)="onSelect(item)"
             [class.active]="item === selectedEmail">
-            <div class="thumbnail-wrapper d32 circular"><img alt="" height="40" src="{{ imageBaseUrl + item.receiverLogo }}" width="40"></div>
+            <div class="thumbnail-wrapper d32 circular">
+              <!-- <img alt="" height="40" src="{{ item?.dp }}" width="40" /> -->
+              <div class="name">
+                {{item?.senderName[0]}}
+              </div>
+            </div>
             <div class="form-check no-margin p-l-10">
-              <input id="emailcheckbox-0-{{item._id}}" type="checkbox" value="1"> <label
-                for="emailcheckbox-0-{{item._id}}" class="m-l-5 no-padding"></label>
+              <input id="emailcheckbox-0-{{ item._id }}" type="checkbox" value="1" />
+              <label for="emailcheckbox-0-{{ item._id }}" class="m-l-5 no-padding"></label>
             </div>
             <div class="inline">
-              <p class="recipients no-margin">{{item.receiverName}}</p>
+              <p class="recipients no-margin">{{ item?.senderName }}</p>
               <div class="datetime">
-                {{ item.timestamp | date: "hh:mm a" }}
+                {{ item?.timestamp | date : "hh:mm a" }}
               </div>
-              <!-- {{ item.product | json }} -->
-              <p class="subject no-margin"><span *ngFor="let product of item.products.slice(0,2);let i = index">{{ product.productName }}{{ i == 1 ? '' : ',' }}</span>{{ item.products.length > 2 ? '...' : "" }}</p>
-              <!-- <p class="body no-margin" innerHTML="{{item.body}}"></p> -->
+              <p class="subject no-margin">{{ item?.subject }}</p>
             </div>
           </li>
         </pg-list-item>
       </pg-list-view-container>
+      <!-- <pg-list-view-container>
+                <pg-list-item *ngFor="let emailGroup of mailsWithDates">
+                    <ng-template #ItemHeading>
+                        {{ emailGroup.date }}
+                    </ng-template>
+                    <li class="item padding-10 p-l-15" *ngFor="let item of emailGroup.data" (click)="onSelect(item)" [class.active]="item === selectedEmail">
+                        <div class="thumbnail-wrapper d32 circular"><img alt="" height="40" src="{{ imageBaseUrl + item.receiverLogo }}" width="40"></div>
+                        <div class="form-check no-margin p-l-10">
+                            <input id="emailcheckbox-0-{{item._id}}" type="checkbox" value="1"> <label for="emailcheckbox-0-{{item._id}}" class="m-l-5 no-padding"></label>
+                        </div>
+                        <div class="inline">
+                            <p class="recipients no-margin">{{item.receiverName}}</p>
+                            <div class="datetime">
+                                {{ item.timestamp | date: "hh:mm a" }}
+                            </div>
+                            <p class="subject no-margin"><span *ngFor="let product of item.products.slice(0,2);let i = index">{{ product.productName }}{{ i == 1 ? '' : ',' }}</span>{{ item.products.length > 2 ? '...' : "" }}</p>
+                        </div>
+                    </li>
+                </pg-list-item>
+            </pg-list-view-container> -->
     </div>
     <!-- END SPLIT LIST VIEW -->
     <!-- START SPLIT DETAILS -->
     <div class="split-details">
       <div *ngIf="selectedEmail; else noResultBlock" class="email-content-wrapper my-0" style="padding-top: 40px">
-        
-      
-
         <div class="actions-wrapper menuclipper bg-master-lightest">
           <div class="actions-wrapper menuclipper bg-contrast-lowest">
             <button type="button" class="btn btn-link btn-sm">Reply</button>
@@ -47,50 +68,93 @@
           </div>
           <div class="clearfix"></div>
         </div>
-        <div class="row mt-5">
-          <div *ngFor="let product of selectedEmail.products" class="col-4">
-            <div class="row">
-              <div class="col-3">
-                <img [src]="imageBaseUrl + product.productImage" class="rounded-circle" style="width: 40px; height: 40px" />
-              </div>
-              <div class="col-5">
-                <p>{{ product.productName }}</p>
-              </div>
-              <div class="col-4">
-                <p>Quantity: {{ product.quantity }}</p>
-              </div>
+        <div class="d-flex mt-5 mb-3" *ngFor="let product of selectedEmail.products">
+          <div class="col-md-12 d-flex">
+            <div class="col-md-5 d-flex align-items-center">
+              <img [src]="imageBaseUrl+product.productImage" class="rounded-circle"
+                style="width: 40px; height: 40px" />&nbsp;
+              <span>{{ product.productName }}</span>
+            </div>
+            <div class="col-md-5">
+              <p>Quantity: {{ product.quantity }}</p>
             </div>
           </div>
         </div>
-        
-        <div class="email-content-header">
-          <!-- <div class="subject m-b-20 semi-bold mw-80">
-            {{ selectedEmail.receiverName }}
-          </div> -->
-          <div class="fromto row">
-            <div class="col-lg-8 d-flex align-items-center mt-4" *ngFor="let item of messages">
-              <div class="thumbnail-wrapper d48 circular m-r-10" *ngIf="images[item.senderId].length > 0 ">
-                <img width="40" height="40" class="rounded-circle" alt="" src="{{ imageBaseUrl + images[item.senderId]}}">
-                
+        <div class="row justify-content-center">
+          <ng-container *ngFor="let item of messages">
+            <ng-container *ngIf="item.senderId != loggedInUser._id else recieverData">
+              <div class="col-md-8 card p-3">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <div class="thumbnail-wrapper d32 circular">
+                      <!-- <div class="name">
+                        {{item?.senderName[0]}}
+                      </div> -->
+                    </div>
+                    <div>
+                      {{item?.senderName}}
+                    </div>
+                  </div>
+                  <div>
+                    <span class="datetime no-margin small-text">
+                      {{ item.timestamp | date : "dd-MM-yyyy" }},
+                      {{ item.timestamp | date : "hh:mm a" }}
+                    </span>
+                  </div>
+                </div>
+                <div class="email-content-body m-t-20" innerHTML="{{ item.message }}">
+                </div>
               </div>
-              <div class="email-content">
-                <div class="email-content-body m-t-20" innerHTML="{{item.message}}">
-                 </div>
-              </div>
-            </div>
-            <div class="col-lg-4 d-flex align-items-center text-right sm-text-left">
-              <p class="datetime no-margin small-text full-width">
-                {{selectedEmail.datetime}}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="email-content">
-          <div class="wysiwyg5-wrapper m-t-30">
-            <quill-editor [styles]="{height: '200px'}" placeholder="Reply" [(ngModel)]="replyMessage" [modules]="editorModules">
-            </quill-editor>
+            </ng-container>
+          </ng-container>
 
-            <button (click)="sendReply()">Reply</button>
+
+          <ng-template #recieverData>
+            <ng-container *ngFor="let item of messages">
+              <ng-container *ngIf="item.senderId == loggedInUser._id">
+                <div class="col-md-8 card p-3">
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <div class="thumbnail-wrapper d32 circular">
+                        <!-- <div class="name">
+                          {{item?.receiverName[0]}}
+                        </div> -->
+                      </div>
+                      <div>
+                        {{item?.receiverName}}
+                      </div>
+                    </div>
+                    <div>
+                      <span class="datetime no-margin small-text">
+                        {{ item.timestamp | date : "dd-MM-yyyy" }},
+                        {{ item.timestamp | date : "hh:mm a" }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="email-content-body m-t-20" innerHTML="{{ item.message }}">
+                  </div>
+                  <div class="mt-2">
+                    <img width="100%" height="100%" alt="" [src]="imageBaseUrl+item.attachments" />
+                  </div>
+                  <!-- <div class="thumbnail-wrapper d48 circular m-r-10 mt-2">
+                    <img width="100%" height="100%" class="rounded-circle" alt=""
+                      [src]="imageBaseUrl + item.attachments" />
+                  </div> -->
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-template>
+
+          <div class="col-md-8 card p-3">
+            <div class="wysiwyg5-wrapper m-t-30">
+              <quill-editor [styles]="{ height: '200px' }" placeholder="Reply" [(ngModel)]="replyMessage"
+                [modules]="editorModules">
+              </quill-editor>
+
+              <button class="btn btn-primary mt-3" (click)="sendReply()">
+                Reply
+              </button>
+            </div>
           </div>
         </div>
       </div>

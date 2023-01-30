@@ -20,7 +20,8 @@ export class DashboardMrqsComponent implements OnInit {
   }
 
   getRequestForQuotationByUser(){
-    this.requestForQuotationService.getRequestForQuotationByCategories().subscribe((res)=>{
+    let paging='3'
+    this.requestForQuotationService.getRequestForQuotationByCategories(paging).subscribe((res)=>{
       console.log("Request Data", res);
       if(res.data) this.rfqList = res.data
     })

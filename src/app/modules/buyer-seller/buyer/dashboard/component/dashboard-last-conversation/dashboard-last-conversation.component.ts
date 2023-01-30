@@ -21,7 +21,8 @@ export class DashboardLastConversationComponent implements OnInit {
   }
 
   getPurchaseRequests(): void {
-    this.buyerMailService.getBuyerMessages().subscribe((res) => {
+    let paging='3';
+    this.buyerMailService.getBuyerMessages(paging).subscribe((res) => {
       res.data.forEach((element) => {
         this.inboxList = element;
       });

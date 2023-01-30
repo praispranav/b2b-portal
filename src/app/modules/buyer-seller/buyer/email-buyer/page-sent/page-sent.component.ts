@@ -77,7 +77,8 @@ export class PageSentComponent implements OnInit {
   }
 
   getPurchaseRequests(){
-    this.buyerMailService.getBuyerMessages().subscribe((res)=>{
+    let paging='all';
+    this.buyerMailService.getBuyerMessages(paging).subscribe((res)=>{
       console.log(res);
       this.mailsWithDates = res.data;
     })

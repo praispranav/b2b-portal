@@ -24,6 +24,7 @@ export class PageInboxComponent implements OnInit {
   messages: any[] = [];
   images: any[] = [];
   replyMessage: string = "";
+  loggedInUser:any;
 
   emailList = [];
   selectedEmail: any;
@@ -46,6 +47,9 @@ export class PageInboxComponent implements OnInit {
     private buyerMailService: BuyerMailService
   ) {}
   ngOnInit() {
+    this.loggedInUser= JSON.parse(localStorage.getItem('currentUserAuth')).data;
+    console.log('loggedInUser',this.loggedInUser);
+    
     this._service.getEmails().subscribe((list) => {
       this.emailList = list.emails;
       console.log("emailList", this.emailList);
@@ -92,7 +96,8 @@ export class PageInboxComponent implements OnInit {
   }
 
   getPurchaseRequests() {
-    this.buyerMailService.getSellerMessage().subscribe((res) => {
+    let paging='all';
+    this.buyerMailService.getSellerMessage(paging).subscribe((res) => {
       console.log("res----", res);
       this.mailsWithDates = res.data;
       console.log('mailsWithDates',this.mailsWithDates);

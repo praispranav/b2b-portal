@@ -58,15 +58,15 @@ export class RequestQuotationService {
     );
   }
 
-  getRequestForQuotationByUser(): Observable<any> {
+  getRequestForQuotationByUser(paging): Observable<any> {
     return this.http.get<any>(
-      `${environment.apiUrl}/request-quotation/get/user`
+      `${environment.apiUrl}/request-quotation/get/user`,{params:{paging}}
     );
   }
 
-  getRequestForQuotationByCategories(): Observable<any> {
+  getRequestForQuotationByCategories(paging): Observable<any> {
     return this.http.get<any>(
-      `${environment.apiUrl}/request-quotation/get/user/by-category`
+      `${environment.apiUrl}/request-quotation/get/user/by-category`, { params: { paging}}
     );
   }
 

@@ -30,7 +30,8 @@ export class RequestedRfqComponent implements OnInit {
   }
 
   getRequestForQuotationList() {
-    this.requestForQuotation.getRequestForQuotationByUser().subscribe((res) => {
+    let paging='all'
+    this.requestForQuotation.getRequestForQuotationByUser(paging).subscribe((res) => {
       if (Array.isArray(res.data)) this.requestForQutationList = res.data;
     });
   }
