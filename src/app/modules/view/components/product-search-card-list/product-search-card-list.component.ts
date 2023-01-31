@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { environment } from "../../../../../environments/environment";
 import { FormProductService } from "../../../../core/providers/user/form-product.service";
 
 @Component({
@@ -8,10 +9,11 @@ import { FormProductService } from "../../../../core/providers/user/form-product
   styleUrls: ["./product-search-card-list.component.scss"],
 })
 export class ProductSearchCardListComponent implements OnInit {
+  baseUrl: string = environment.imageStorage;
   constructor(
     private router: Router,
     private productService: FormProductService
-  ) {}
+  ) { }
 
   @Input("products") productList: any[] = [];
   addedProducts: any[] = [];
