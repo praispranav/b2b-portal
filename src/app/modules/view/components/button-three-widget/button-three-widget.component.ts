@@ -21,21 +21,8 @@ export class ButtonThreeWidgetComponent implements OnInit {
       this._formProductService.productSubject.subscribe((res) => {
         console.log("res", res);
         this.productList=res;
-        this.productList.forEach((element)=>{
-          this.getImageById(this.baseUrl + element.productImage[0]);
-        })
       });
     }, 2000);
   }
 
-  getImageById(image) {
-    console.log('image',image)
-    if (image) {
-      document.getElementById("bg-image").style.backgroundImage =
-        "url({image})";
-    } else {
-      document.getElementById("bg-image").style.backgroundImage =
-        "url(/assets/img/button4.webp)";
-    }
-  }
 }

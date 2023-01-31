@@ -3,15 +3,15 @@
         <div class="bg-secondary text-white p-0 pl-2">
             <h5 class="p-2">Inquiry</h5>
         </div>
-        <div class="row pl-4" *ngFor="let product of inbox?.products">
+        <div class="row pl-4">
             <div class="col-md-6 p-2 ">
-                <img [src]="baseUrl+product?.productImage"
-                    alt="..." class="img-thumbnail">
+                <img [src]="baseUrl+inbox?.products[0]?.productImage" alt="..." class="img-thumbnail">
             </div>
             <div class="col-md-6 p-2">
-                <p class="pt-4 "><b>{{product?.productName}}</b></p>
+                <p class="pt-4 "><b>{{inbox?.products[0]?.productName}}</b></p>
                 <!-- <p class="border-left pl-1">2022-05-24 13:18ID: 13018893469</p> -->
-                <p class="pl-1">{{product?.quantity}}&nbsp;Piece(s)</p>
+                <p class="pl-1">{{inbox?.products[0]?.quantity}}&nbsp;Piece(s)</p>
+                <p class="pl-1">{{inbox?.products?.length}}&nbsp;More Products</p>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { param } from 'jquery';
+import { environment } from '../../../../environments/environment';
 import { BlogService } from '../../../core/providers/user/blog.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class ViewBlogComponent implements OnInit {
 
   _id: string = ''
   blog: any = {}
+  baseUrl:string= environment.imageStorage;
   
   constructor(private blogService: BlogService, private activatedRouter: ActivatedRoute) { }
 

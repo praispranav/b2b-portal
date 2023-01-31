@@ -20,7 +20,7 @@ export class PageSellerCatalogueProfileComponent implements OnInit {
   getProducts(): void {
     let payload = {
       page: 1,
-      pageSize: 2,
+      pageSize: 3,
       searchText: "Approved",
     };
     this._formProductService.getProductBySeller(payload).subscribe(

@@ -105,6 +105,8 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
       })
       .subscribe((res: any) => {
         this.totalProducts = res.data.total;
+        console.log('totalProducts',res.data);
+        
         if (Array.isArray(res.data.products)) {
           this.products = res.data.products.map((i) => {
             let minimumOrderQuantity;
@@ -134,6 +136,7 @@ export class PageSellerCatalogueHomeComponent implements OnInit {
               supplierId: i.userId,
               productId: i._id,
               image: environment.imageStorage + i.productImage,
+              status: i.status,
             };
           });
           
