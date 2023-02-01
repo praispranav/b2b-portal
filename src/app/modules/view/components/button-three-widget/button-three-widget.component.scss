@@ -19,3 +19,9 @@ $assets-url :"/assets";
         color: #fff;
     }
 }
+
+.inner-card {
+    background-size: cover !important;
+    height: 100% !important;
+    background: url('../../../../../assets/assets/img/button4.webp');
+}

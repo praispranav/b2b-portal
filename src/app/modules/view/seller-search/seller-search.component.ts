@@ -61,9 +61,7 @@ export class SellerSearchComponent implements OnInit {
       page: 1,
       pageSize: 2,
       searchText: "Approved",
-    };
-    console.log('payload',payload);
-    
+    };    
     this._formProductService.getProductBySeller(payload).subscribe(
       (res) => {
         console.log("res", res);
