@@ -54,10 +54,12 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
         {
           label: "Logistics Solutions",
           routerLink: "/b2b/logistic-solutions",
+          target: "_blank"
         },
         {
           label: "Inspection Service",
           routerLink: "/b2b/inspection-service",
+          target: "_blank"
         },
         {
           label: "Suppiler Report",
@@ -66,6 +68,7 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
         {
           label: "Suppiler Background Search",
           routerLink: "/b2b/supplier-background-search",
+         
         },
       ],
     },
@@ -80,6 +83,7 @@ export class BuyerLayoutComponent extends RootLayout implements OnInit {
         {
           label: "Dispute",
           routerLink: "/buyer/help/dispute-list",
+
         },
         {
           label: "Suggestions",
