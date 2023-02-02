@@ -7,8 +7,8 @@ import { FormProductService } from "../../../core/providers/user/form-product.se
   styleUrls: ['./page-seller-catalogue-profile.component.scss']
 })
 export class PageSellerCatalogueProfileComponent implements OnInit {
-  productList:any[]=[];
-  sellerId:string;
+  productList: any[] = [];
+  sellerId: string;
   @Input('catalogue') catalogue: any = {};
 
   constructor(
@@ -17,15 +17,15 @@ export class PageSellerCatalogueProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-this.sellerId= this._activatedRoute.snapshot.params['sellerId'];
-console.log('sellerId',this.sellerId);
+    this.sellerId = this._activatedRoute.snapshot.queryParams['sellerId'];
+    console.log('sellerId', this.sellerId);
 
     this.getProducts();
   }
 
   getProducts(): void {
     let payload = {
-      userId:this.sellerId,
+      userId: this.sellerId,
       page: 1,
       pageSize: 3,
       searchText: "Approved",
@@ -33,8 +33,8 @@ console.log('sellerId',this.sellerId);
     this._formProductService.getProductBySeller(payload).subscribe(
       (res) => {
         this.productList = res.data;
-        console.log('productList',this.productList);
-        
+        console.log('productList', this.productList);
+
         this._formProductService.productSubject.next(this.productList);
       },
       (err) => {

@@ -103,7 +103,7 @@ export class PageProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sellerId = this._activated.snapshot.params['sellerId'];
+    this.sellerId = JSON.parse(localStorage.getItem('currentUserAuth')).data._id;
     this.getProducts();
   }
 

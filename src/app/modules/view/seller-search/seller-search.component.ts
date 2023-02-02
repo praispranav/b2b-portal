@@ -23,7 +23,7 @@ interface SearchQuery {
 })
 export class SellerSearchComponent implements OnInit {
   searchQuery: SearchQuery = {};
-sellerId:string;
+  sellerId: string;
   supplierList: any[] = [];
   revenueList: any[] = [];
   categoryList: any[] = [];
@@ -53,9 +53,7 @@ sellerId:string;
   }
 
   ngOnInit() {
-    this.sellerId = this._activated.snapshot.params['sellerId'];
     this.baseUrl = environment.imageStorage;
-    this.getProducts();
   }
 
   getProducts(): void {
@@ -64,7 +62,7 @@ sellerId:string;
       page: 1,
       pageSize: 2,
       searchText: "Approved",
-    };    
+    };
     this._formProductService.getProductBySeller(payload).subscribe(
       (res) => {
         console.log("res", res);
@@ -85,6 +83,10 @@ sellerId:string;
       this.categoryList = res.data.categoryList;
       this.businessTypeList = res.data.businessTypeList;
       this.totalListSize = res.data.total;
+      this.supplierList.forEach((element) => {
+        this.sellerId = element.sellerDetails._id
+      });
+      this.getProducts();
     });
   }
 
