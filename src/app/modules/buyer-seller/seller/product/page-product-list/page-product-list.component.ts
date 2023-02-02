@@ -4,6 +4,7 @@ import { ModalDirective } from "ngx-bootstrap";
 import { FormProductService } from "../../../../../core/providers/user/form-product.service";
 import * as moment from "moment";
 import { environment } from "../../../../../../environments/environment";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-page-product-list",
@@ -20,11 +21,11 @@ export class PageProductListComponent implements OnInit {
   appPrice = null;
   appNotes = null;
 
-  imageBaseUrl: string  = environment.imageStorage;
+  imageBaseUrl: string = environment.imageStorage;
 
   basicRows = [];
   basicSort = [];
-
+  sellerId: string;
   page: number = 1;
   pageSize: number = 10;
   selectedProduct: any = null;
@@ -58,7 +59,9 @@ export class PageProductListComponent implements OnInit {
   scrollBarHorizontal = window.innerWidth < 960;
   columnModeSetting = window.innerWidth < 960 ? "standard" : "force";
 
-  constructor(private productService: FormProductService) {
+  constructor(private productService: FormProductService,
+    private _activated: ActivatedRoute,
+  ) {
     window.onresize = () => {
       this.scrollBarHorizontal = window.innerWidth < 960;
       this.columnModeSetting = window.innerWidth < 960 ? "standard" : "force";
@@ -66,9 +69,10 @@ export class PageProductListComponent implements OnInit {
   }
 
   getProducts() {
-    let payload={
-      page: this.page, 
-      pageSize: this.pageSize, 
+    let payload = {
+      userId: this.sellerId,
+      page: this.page,
+      pageSize: this.pageSize,
       searchText: "",
     }
     this.productService
@@ -84,7 +88,7 @@ export class PageProductListComponent implements OnInit {
         }
       });
 
-      this.getProductCounts();
+    this.getProductCounts();
   }
 
   fetchSampleAdvance(cb) {
@@ -99,6 +103,7 @@ export class PageProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sellerId = this._activated.snapshot.params['sellerId'];
     this.getProducts();
   }
 

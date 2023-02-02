@@ -63,9 +63,9 @@ export class FormProductService {
     return this.http.get<any>(`${environment.apiUrl}/product/get-counts`);
   }
 
-  getProductBySeller({ page, pageSize,searchText }){
+  getProductBySeller({ page, pageSize,searchText, userId }){
     return this.http.get<any>(
-      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize, searchText }}
+      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize, searchText,userId }}
     );
   }
 

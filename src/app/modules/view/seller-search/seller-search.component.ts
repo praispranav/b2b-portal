@@ -23,7 +23,7 @@ interface SearchQuery {
 })
 export class SellerSearchComponent implements OnInit {
   searchQuery: SearchQuery = {};
-
+sellerId:string;
   supplierList: any[] = [];
   revenueList: any[] = [];
   categoryList: any[] = [];
@@ -42,7 +42,8 @@ export class SellerSearchComponent implements OnInit {
     private categoryService: ProviderCategoryService,
     private sellerSearchService: SellerSearchService,
     private _formProductService: FormProductService,
-    private router: Router
+    private router: Router,
+    private _activated: ActivatedRoute,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.searchQuery = params;
@@ -52,12 +53,14 @@ export class SellerSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sellerId = this._activated.snapshot.params['sellerId'];
     this.baseUrl = environment.imageStorage;
     this.getProducts();
   }
 
   getProducts(): void {
     let payload = {
+      userId: this.sellerId,
       page: 1,
       pageSize: 2,
       searchText: "Approved",
