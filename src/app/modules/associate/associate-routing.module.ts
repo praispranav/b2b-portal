@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule'
   },
+  {
+    path:'supplier-catalogue-request',
+    loadChildren:'./supplier-catalogue-request/supplier-catalogue-request.module#SupplierCatalogueRequestModule'
+  }
 ];
 
 @NgModule({
