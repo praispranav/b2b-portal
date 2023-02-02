@@ -15,7 +15,7 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Profile",
-      routerLink: "/associate/dashboard",
+      routerLink: "/associate/profile/view",
     },
     {
       label: "Send Request",
