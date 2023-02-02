@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { environment } from "../../../../../environments/environment";
 import { FormProductService } from "../../../../core/providers/user/form-product.service";
 
 @Component({
@@ -9,6 +10,7 @@ import { FormProductService } from "../../../../core/providers/user/form-product
 })
 export class CatalogueProductCardHomeComponent implements OnInit {
   addedProducts: any[] = [];
+  baseUrl: string = environment.imageStorage;
 
   constructor(private productService: FormProductService, private router: Router) {
     this.checkProducts();
@@ -28,7 +30,7 @@ export class CatalogueProductCardHomeComponent implements OnInit {
     console.log(products);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   findProducts(productId) {
     return this.addedProducts.find(

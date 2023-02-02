@@ -48,10 +48,6 @@ export class BuyerViewComponent implements OnInit {
   }
   
   onApproveReject(userId, status){
-    // let checkedCount = 0;
-    // this.checkedCards.forEach((i)=> i ? checkedCount += 1 : '');
-    // console.log("CheckedCount", checkedCount)
-    // if(checkedCount === 5){
       this.userVerificationService.approveRejectUser(status, userId).subscribe((res)=>{
         console.log("Res", res)
         this.getBuyerDetails();

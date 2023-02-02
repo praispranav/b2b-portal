@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../../../environments/environment';
 import { ProviderUserAuthService } from '../../../../../../core/providers/auth/provider-user-auth.service';
 import { RequestQuotationService } from '../../../../../../core/providers/user/request-quotation.service';
 
@@ -8,6 +9,7 @@ import { RequestQuotationService } from '../../../../../../core/providers/user/r
   styleUrls: ['./dashboard-last-mqrs.component.scss']
 })
 export class DashboardLastMqrsComponent implements OnInit {
+  baseUrl:string;
   userInfor: any = null;
   requestForQutationList: any[] = [];
 
@@ -17,6 +19,7 @@ export class DashboardLastMqrsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.baseUrl= environment.imageStorage;
     const jwt_decode = this.authService.currentUserValueObjTokenDecoded;
     console.log("JwtDecode", jwt_decode);
     if (jwt_decode) {
@@ -27,7 +30,8 @@ export class DashboardLastMqrsComponent implements OnInit {
   }
 
   getRequestForQuotationList() {
-    this.requestForQuotation.getRequestForQuotationByUser().subscribe((res) => {
+    let paging='3'
+    this.requestForQuotation.getRequestForQuotationByUser(paging).subscribe((res) => {
       if (Array.isArray(res.data)) this.requestForQutationList = res.data;
     });
   }

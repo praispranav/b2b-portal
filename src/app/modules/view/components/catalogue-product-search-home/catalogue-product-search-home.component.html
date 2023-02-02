@@ -1,4 +1,4 @@
-<label for="categories">
+<label for="categories" *ngIf="categoriesList?.length >0">
     <h5>CATEGORIES
     </h5>
     <div *ngIf="searchParams.categoryId">

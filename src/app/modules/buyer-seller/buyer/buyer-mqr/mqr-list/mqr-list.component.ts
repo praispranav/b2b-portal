@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestQuotationService } from '../../../../../core/providers/user/request-quotation.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-mqr-list',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mqr-list.component.scss']
 })
 export class MqrListComponent implements OnInit {
+  baseUrl:string;
+  requestForQutationList: any[] = [];
 
-  constructor() { }
+  constructor(
+    private requestForQuotation: RequestQuotationService,
+  ) {}
 
   ngOnInit() {
+    this.baseUrl= environment.imageStorage;
+    this.getRequestForQuotationList();
   }
 
+  getRequestForQuotationList() {
+    let paging='all';
+    this.requestForQuotation.getRequestForQuotationByUser(paging).subscribe((res) => {
+      if (Array.isArray(res.data)) this.requestForQutationList = res.data;
+    });
+  }
 }

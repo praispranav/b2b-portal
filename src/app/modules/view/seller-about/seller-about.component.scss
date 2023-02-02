@@ -1,13 +1,17 @@
 .bg {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
-.tab {
-  text-decoration: none;
-  background: none;
-  border: 0px;
 
+.tab {
+    text-decoration: none;
+    background: none;
+    border: 0px;
 }
 
 tab:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+}
+
+.bg-white {
+    height: 323px;
 }

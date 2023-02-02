@@ -40,17 +40,29 @@ export class SearchSelectProductTypeComponent implements OnInit {
   
 
   selectFavCategory(){
-    localStorage.setItem('selectedCategoryId', this.recentCategory._id);
+    let data={
+     id: this.recentCategory._id,
+     name:this.recentCategory.name
+    }
+   localStorage.setItem('selectedCategoryId',  JSON.stringify(data) );
     this.router.navigateByUrl('/seller/product/product-add');
   }
 
   selectSearchedCategory(item){
-    localStorage.setItem('selectedCategoryId', item._id)
+    let data={
+      id: item._id,
+      name:item.name
+     }
+    localStorage.setItem('selectedCategoryId', JSON.stringify(data))
     this.router.navigateByUrl('/seller/product/product-add');
   }
 
   selectExploredCategory(item){
-    localStorage.setItem('selectedCategoryId', item._id)
+    let data={
+      id: item._id,
+      name:item.name
+     }
+    localStorage.setItem('selectedCategoryId',JSON.stringify(data))
     this.router.navigateByUrl('/seller/product/product-add');
   }
 

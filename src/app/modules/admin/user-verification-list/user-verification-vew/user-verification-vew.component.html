@@ -1,422 +1,414 @@
 <div class="bg-white m-3 p-3 shadow-sm">
-  <h4>
-    {{ sellerDetails.sellerDetails.company }}
-  </h4>
+    <h4>
+        {{ sellerDetails?.sellerDetails?.company }}
+    </h4>
 </div>
 
 <div class="bg-white m-3 p-3 shadow-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <!-- 1 table -->
-        <table class="table table-borderless table-sm table-sm">
-          <tr>
-            <td>
-              <b> TAN </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.tanNo }}
-            </td>
-          </tr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm table-sm">
+                    <tr>
+                        <td>
+                            <b> TAN </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.tanNo }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> PAN </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.panNo }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> PAN </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.panNo }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> GST No. </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.gstNo }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> GST No. </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.gstNo }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Import Export Code </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.codeOfIE }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Year Of Establishment </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.estYear | date : "dd-mm-yyyy" }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Main Category </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.mainCategory }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Import Export Code </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.codeOfIE }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Year Of Establishment </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.estYear | date : "dd-mm-yyyy" }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Main Category </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.mainCategory }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Main Product </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.mainProduct }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Company Address </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.regAddress }}
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!-- 2 table -->
-      <div class="col-md-6">
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Country </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.regCountry }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Main Product </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.mainProduct }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Address </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.regAddress }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Country </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.regCountry }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> State </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.regState }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.regState }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> City </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyProfile.regCity }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Landline Number </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Mobile Number </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Email </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Division </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Checked</b>
-            </td>
-            <td>
-              <input
-                (change)="onCheckCards(0, $event)"
-                [checked]="checkedCards[0]"
-                type="checkbox"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+                    <tr>
+                        <td>
+                            <b> City </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyProfile?.regCity }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Landline Number </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Mobile Number </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Email </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Division </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                        <td>
+                            <b> Checked</b>
+                        </td>
+                        <td>
+                            <input (change)="onCheckCards(0, $event)" [checked]="checkedCards[0]" type="checkbox" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="bg-white m-3 p-3 shadow-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <!-- 1 table -->
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> First Name </b>
-            </td>
-            <td>
-              {{ sellerDetails.sellerDetails.fName }}
-            </td>
-          </tr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> First Name </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.sellerDetails?.fName }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Last Name </b>
-            </td>
-            <td>
-              {{ sellerDetails.sellerDetails.lName }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Last Name </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.sellerDetails?.lName }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Designation </b>
-            </td>
-            <td></td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Designation </b>
+                        </td>
+                        <td></td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Email </b>
-            </td>
-            <td>
-              {{ sellerDetails.sellerDetails.email }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Alternative Email </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.contactPersonAlternateEmail }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Company Website </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyWebsite }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Email </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.sellerDetails?.email }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Alternative Email </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.contactPersonAlternateEmail }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyWebsite }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Google Business </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.googleBusiness }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Facebook Business </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.facebookBusiness }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Google Business </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.googleBusiness }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Facebook Business </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.facebookBusiness }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Instagram Business </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.instagramBusiness }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Instagram Business </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.instagramBusiness }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Account Number </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accNumber }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Account Number </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accNumber }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Account Type </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accType }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Bank Name </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accBankName }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Bank Branch </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accBranch }}
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!-- 2 table -->
-      <div class="col-md-6">
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> IFSC Code </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accIFSCCode }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> SWIFT Code </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.accSwiftCode }}
-            </td>
-          </tr>
-          <tr></tr>
-          <tr>
-            <td>
-              <b> Language Spoken </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyLanguageSpoken }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Account Type </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accType }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Bank Name </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accBankName }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Bank Branch </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accBranch }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> IFSC Code </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accIFSCCode }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> SWIFT Code </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.accSwiftCode }}
+                        </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            <b> Language Spoken </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyLanguageSpoken }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Company Mission and Vision </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyVision }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Company Philosophy </b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyPhilosophy }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Company Detailed Introduction</b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyDetail }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Trade Name</b>
-            </td>
-            <td>
-              {{ sellerDetails.companyDetail.companyDetail }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Host </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Start Date </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> End Date </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Region </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> City </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> About The Trade show </b>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Checked</b>
-            </td>
-            <td>
-              <input
-                type="checkbox"
-                (change)="onCheckCards(1, $event)"
-                [checked]="checkedCards[1]"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+                    <tr>
+                        <td>
+                            <b> Company Mission and Vision </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyVision }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Philosophy </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyPhilosophy }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Detailed Introduction</b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyDetail }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Trade Name</b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.companyDetail?.companyDetail }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Host </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Start Date </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> End Date </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Region </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> About The Trade show </b>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                        <td>
+                            <b> Checked</b>
+                        </td>
+                        <td>
+                            <input type="checkbox" (change)="onCheckCards(1, $event)" [checked]="checkedCards[1]" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="bg-white m-3 p-3 shadow-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <!-- 1 table -->
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Export Contribution % </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.exportingPercent }}
-            </td>
-          </tr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Export Contribution % </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.exportingPercent }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Nearest Port </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.nearestPort }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Nearest Port </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.nearestPort }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Exporting Science </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.exportingScience }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Exporting Science </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.exportingScience }}
+                        </td>
+                    </tr>
 
-          <!-- <tr>
+                    <!-- <tr>
                         <td>
                             <b>
                                 Export Contribution Percentage
@@ -426,309 +418,275 @@
                             {{ sellerDetails.exportCapabilities.exportingScience }}
                         </td>
                     </tr> -->
-          <tr>
-            <td>
-              <b> North America </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.northAmerica }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Western Europe </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.westernEurope }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> North America </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.northAmerica }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Western Europe </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.westernEurope }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Eastern Asia </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.easternAsia }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> South America </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.southAmerica }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Eastern Asia </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.easternAsia }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> South America </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.southAmerica }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Northern Europe </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.northanEurope }}
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!-- 2 table -->
-      <div class="col-md-6">
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Africa </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.africa }}
-            </td>
-          </tr>
+                    <tr>
+                        <td>
+                            <b> Northern Europe </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.northanEurope }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Africa </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.africa }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Central America</b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.centralAmerica }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Southern Europe </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.southernEurope }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Middle East</b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.middileEast }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Eastern Europe </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.easternEurope }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> South Asia</b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.southAsia }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Gulf </b>
-            </td>
-            <td>
-              {{ sellerDetails.exportCapabilities.gulf }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b> Local and Domestic Market </b>
-            </td>
-            {{
-              sellerDetails.exportCapabilities.domasticMarket
-            }}
-            <td></td>
-          </tr>
-          <tr>
-            <td>
-              <b> Checked </b>
-            </td>
-            <td>
-              <input
-                type="checkbox"
-                (change)="onCheckCards(2, $event)"
-                [checked]="checkedCards[2]"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+                    <tr>
+                        <td>
+                            <b> Central America</b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.centralAmerica }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Southern Europe </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.southernEurope }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Middle East</b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.middileEast }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Eastern Europe </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.easternEurope }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> South Asia</b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.southAsia }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Gulf </b>
+                        </td>
+                        <td>
+                            {{ sellerDetails?.exportCapabilities?.gulf }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Local and Domestic Market </b>
+                        </td>
+                        {{ sellerDetails?.exportCapabilities?.domasticMarket }}
+                        <td></td>
+                    </tr>
+                    <tr *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                        <td>
+                            <b> Checked </b>
+                        </td>
+                        <td>
+                            <input type="checkbox" (change)="onCheckCards(2, $event)" [checked]="checkedCards[2]" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="bg-white m-3 p-3 shadow-sm">
-  <div class="container">
-    <div class="row">
-      <!-- 1 table -->
-      <h6>Certificate You Have</h6>
+    <div class="container">
+        <div class="row">
+            <!-- 1 table -->
+            <h6>Certificate You Have</h6>
 
-      <div
-        *ngFor="let item of sellerDetails.certification.certificates"
-        class="col-md-6"
-      >
-        <table class="table table-borderless table-sm" *ngIf="item.checked">
-          <tr>
-            <td>
-              <b> Date of Expiration </b>
-            </td>
-            <td>
-              {{ item.expirtData | date : "dd-mm-yyyy" }}
-            </td>
-          </tr>
+            <div *ngFor="let item of sellerDetails?.certification?.certificates" class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <!-- *ngIf="item.checked" -->
+                    <tr>
+                        <td>
+                            <b> Date of Expiration </b>
+                        </td>
+                        <td>
+                            {{ item?.expirtData | date : "dd-mm-yyyy" }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Type of Certification </b>
-            </td>
-            <td>
-              {{ item.name }}
-            </td>
-          </tr>
-        </table>
-      </div>
-      <!-- 2 table -->
-      <div class="col-md-12"></div>
-      <div class="col-md-6"></div>
-      <div class="col-md-6">
-        <table class="col-12 ml-5 table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Checked </b>
-            </td>
-            <td>
-              <input
-                (change)="onCheckCards(3, $event)"
-                [checked]="checkedCards[3]"
-                type="checkbox"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+                    <tr>
+                        <td>
+                            <b> Type of Certification </b>
+                        </td>
+                        <td>
+                            {{ item?.name }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-12"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                <table class="col-12 ml-5 table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Checked </b>
+                        </td>
+                        <td>
+                            <input (change)="onCheckCards(3, $event)" [checked]="checkedCards[3]" type="checkbox" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<div
-  class="bg-white m-3 p-3 shadow-sm"
-  *ngIf="sellerDetails.qualityControl.isQualityControl == 'No'"
->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <!-- 1 table -->
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Whether to demostrate Quality Control Process </b>
-            </td>
-            <td>No</td>
-          </tr>
-        </table>
-      </div>
-      <!-- 2 table -->
-      <div class="col-md-6">
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Cheked </b>
-            </td>
-            <td>
-              <input
-                type="checkbox"
-                (change)="onCheckCards(4, $event)"
-                [checked]="checkedCards[4]"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails?.qualityControl?.isQualityControl == 'No'">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Whether to demostrate Quality Control Process </b>
+                        </td>
+                        <td>No</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Cheked </b>
+                        </td>
+                        <td>
+                            <input type="checkbox" (change)="onCheckCards(4, $event)" [checked]="checkedCards[4]" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<div
-  class="bg-white m-3 p-3 shadow-sm"
-  *ngIf="sellerDetails.qualityControl.isQualityControl == 'Yes'"
->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <!-- 1 table -->
-        <table class="table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Whether to demostrate Quality Control Process </b>
-            </td>
-            <td>Yes</td>
-          </tr>
-        </table>
-        <table *ngFor="let item of sellerDetails.qualityControl.qualityControl" class="col-6">
-          <tr>
-            <td>
-              <b> Process Name </b>
-            </td>
-            <td>
-              {{ item.processName }}
-            </td>
-          </tr>
+<div class="bg-white m-3 p-3 shadow-sm" *ngIf="sellerDetails?.qualityControl?.isQualityControl == 'Yes'">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Whether to demostrate Quality Control Process </b>
+                        </td>
+                        <td>Yes</td>
+                    </tr>
+                </table>
+                <table *ngFor="let item of sellerDetails.qualityControl.qualityControl" class="col-6">
+                    <tr>
+                        <td>
+                            <b> Process Name </b>
+                        </td>
+                        <td>
+                            {{ item?.processName }}
+                        </td>
+                    </tr>
 
-          <tr>
-            <td>
-              <b> Process Description</b>
-            </td>
-            <td>{{ item.processDescription }}</td>
-          </tr>
-          <tr *ngIf="item.image && item.image.length">
-            <td>
-              <b> Image </b>
-            </td>
-            <td><img src="{{ imageBaseUrl + item.image }}" style="height: 30px; width: 30px;" /></td>
-          </tr>
-        </table>
-      </div>
-      <div class="col-md-12"></div>
-      <div class="col-md-6"></div>
-      <div class="col-md-6">
-        <table class="col-12 ml-5 table table-borderless table-sm">
-          <tr>
-            <td>
-              <b> Checked </b>
-            </td>
-            <td>
-              <input
-                (change)="onCheckCards(4, $event)"
-                [checked]="checkedCards[4]"
-                type="checkbox"
-              />
-            </td>
-          </tr>
-        </table>
+                    <tr>
+                        <td>
+                            <b> Process Description</b>
+                        </td>
+                        <td>{{ item?.processDescription }}</td>
+                    </tr>
+                    <tr *ngIf="item.image && item.image.length">
+                        <td>
+                            <b> Image </b>
+                        </td>
+                        <td><img src="{{ imageBaseUrl + item.image }}" style="height: 30px; width: 30px;" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-12"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-6" *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+                <table class="col-12 ml-5 table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Checked </b>
+                        </td>
+                        <td>
+                            <input (change)="onCheckCards(4, $event)" [checked]="checkedCards[4]" type="checkbox" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<div class="d-flex justify-content-center">
-  <div>
-    <button
-      [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5"
-      (click)="onApproveReject(sellerDetails.sellerDetails._id, 'approved')"
-      class="btn btn-success m-3"
-    >
+    <div class="d-flex justify-content-center">
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending' || CheckCount !== 5" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Approved')" class="btn btn-success m-3">
       Approve
     </button>
-  </div>
-  <div>
-    <button
-      [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'"
-      (click)="onApproveReject(sellerDetails.sellerDetails._id, 'rejected')"
-      class="btn btn-danger m-3"
-    >
+        </div>
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending'">
+            <button [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Review')" class="btn btn-danger m-3">
       Review
     </button>
-  </div>
-  <div>
-    <button class="btn btn-danger m-3">Deactivate</button>
-  </div>
-</div>
+        </div>
+        <div *ngIf="sellerDetails?.sellerDetails?.isApprovedByAdmin==='pending' || sellerDetails?.sellerDetails?.isApprovedByAdmin==='Review'">
+            <button class="btn btn-danger m-3" [disabled]="sellerDetails.sellerDetails.isApprovedByAdmin !== 'pending'" (click)="onApproveReject(sellerDetails.sellerDetails._id, 'Rejected')">Deactivate</button>
+        </div>
+    </div>
