@@ -142,7 +142,7 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Associates",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/associate-profile/list",
         },
         {
           label: "Create new Associates",
