@@ -27,12 +27,12 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "List Seller",
-      routerLink: "/associate/dashboard",
+      routerLink: "/associate/supplier-catalogue-request/done",
     },
-    {
-      label: "Add into Portfolio",
-      routerLink: "/associate/dashboard",
-    },
+    // {
+    //   label: "Add into Portfolio",
+    //   routerLink: "/associate/dashboard",
+    // },
     
    
     {

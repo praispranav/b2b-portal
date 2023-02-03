@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path:'supplier-catalogue-request',
     loadChildren:'./supplier-catalogue-request/supplier-catalogue-request.module#SupplierCatalogueRequestModule'
-  }
+  },
+  
 ];
 
 @NgModule({
