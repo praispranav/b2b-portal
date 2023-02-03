@@ -15,6 +15,7 @@ export class SellerCatalogueHomeProductComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   changeView(type){

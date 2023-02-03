@@ -24,8 +24,7 @@ export class PageHomeComponent implements OnInit {
   ngOnInit() {}
 
   setRequestForQuotation = (formData: ReqQuoFormData) =>{
-    console.log(formData);
-    (this.requestForQuotationData = formData);
+    this.requestForQuotationData = formData
   }
 
  

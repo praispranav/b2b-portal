@@ -26,6 +26,10 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
           routerLink: "/seller/product/form-beign-adding",
         },
         {
+          label: "All Added Products",
+          routerLink: "/seller/product/product-list",
+        },
+        {
           label: "Make Your Own Categories",
           routerLink: "/seller/category/category-list",
         },
@@ -59,7 +63,18 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Leads",
-      routerLink: "/seller/dashboard",
+      toggle: "close",
+      submenu: [
+        {
+          label: "Requested-RFQ",
+          routerLink: "/seller/product/requested-rfq",
+        },
+        {
+          label: "Received-RFQ",
+          routerLink: "/seller/product/received-rfq",
+        },
+        
+      ],
     },
     // {
     //   path: "request-for-quotation",
@@ -109,17 +124,32 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
       label: "My Buying Interests",
       routerLink: "/seller/buying-interest",
     },
-    {
-      label: "Supplier MyListing",
-      routerLink: "/seller/supplier-list",
-    },
+    // {
+    //   label: "Supplier MyListing",
+    //   routerLink: "/seller/supplier-list",
+    // },
   ];
+
+  currentUserAuth: any = null;
+  changePasswordRedirectUrl: string = "";
 
   ngOnInit() {
     this.changeLayout('menu-pin');
     this.changeLayout('menu-behind');
     //Will sidebar close on screens below 1024
     this.autoHideMenuPin();
+    this.getCurrentAuthData();
+  }
+
+  getCurrentAuthData(){
+    const localStorageUserData = localStorage.getItem('currentUserAuth');
+    if(localStorageUserData){
+      const parsed = JSON.parse(localStorageUserData);
+      const data = parsed.data;
+      this.currentUserAuth = data;
+      if(data.role === 'seller') this.changePasswordRedirectUrl = "/seller/change-password"
+      else this.changePasswordRedirectUrl =  "/buyer/change-password"
+    }
   }
 
 }

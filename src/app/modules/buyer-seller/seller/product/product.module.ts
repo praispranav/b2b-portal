@@ -23,6 +23,8 @@ import { FormTradeInformationComponent } from './components/form-trade-informati
 import { PageProductAddComponent } from "./page-product-add/page-product-add.component";
 import { PageProductListComponent } from "./page-product-list/page-product-list.component";
 import { SearchSelectProductTypeComponent } from './components/search-select-product-type/search-select-product-type.component';
+import { RequestedRfqComponent } from './requested-rfq/requested-rfq.component';
+import { ReceivedRfqComponent } from './received-rfq/received-rfq.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { SearchSelectProductTypeComponent } from './components/search-select-pro
     PageProductAddComponent,
     PageProductListComponent,
     SearchSelectProductTypeComponent,
+    RequestedRfqComponent,
+    ReceivedRfqComponent,
   ],
   imports: [
     CommonModule,

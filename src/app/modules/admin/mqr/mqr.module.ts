@@ -5,6 +5,7 @@ import { MqrRoutingModule } from './mqr-routing.module';
 import { SharedModule } from '../../../@pages/components/shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,8 @@ import { pgTabsModule } from '../../../@pages/components/tabs/tabs.module';
   declarations: [PageAdminMqrComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MqrRoutingModule,
     SharedModule,
     NgxDatatableModule,

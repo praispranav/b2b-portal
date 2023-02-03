@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
@@ -8,7 +8,48 @@ import { environment } from '../../../../environments/environment';
 })
 export class FormProductService {
 
+  public stringSubject = new Subject<any>();
+  public productConstant = "productsForPurchase";
+  public contactUsKey = 'contactUsKey';
+  public contactUsProduct = 'contactUsProduct';
+  productSubject = new BehaviorSubject<any>([]);
+  productSubjectAsObservable = this.productSubject.asObservable();
+
+
   constructor(private http: HttpClient) {}
+
+  storeProductInfo(data) {
+    const products = localStorage.getItem(this.productConstant);
+    if(products){
+      const parsed = JSON.parse(products);
+      parsed.push(data);
+      localStorage.setItem(this.productConstant, JSON.stringify(parsed))
+    } else {
+      localStorage.setItem(this.productConstant, JSON.stringify([data]))
+    }
+    this.stringSubject.next(Math.floor(Math.random() * 1000000));
+  }
+
+  changeState(){
+    this.stringSubject.next(Math.floor(Math.random() * 1000000));
+  }
+
+  removeProduct(productId){
+    const products = localStorage.getItem(this.productConstant);
+    if(products){
+      const parsed = JSON.parse(products);
+      const findProductIndex = parsed.findIndex((product)=> product._id === productId)
+      parsed.splice(findProductIndex ,1);
+      localStorage.setItem(this.productConstant, JSON.stringify(parsed))
+    } 
+
+    this.stringSubject.next(true);
+  }
+  
+
+  updateProductStatus({_id, status}){
+    return this.http.post<any>(`${environment.apiUrl}/product/updateStatus`, { _id, status })
+  }
 
   
   addProductDetails(params: any = {}): Observable<any> {
@@ -16,6 +57,22 @@ export class FormProductService {
   }
   getProductById(id: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/product/get/${id}`);
+  }
+
+  getProductCounts(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/product/get-counts`);
+  }
+
+  getProductBySeller({ page, pageSize,searchText, userId }){
+    return this.http.get<any>(
+      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize, searchText,userId }}
+    );
+  }
+
+  getAllProduct({ page, pageSize }){
+    return this.http.get<any>(
+      `${environment.apiUrl}/product/get-all`, {params:{ page, pageSize }}
+    );
   }
   
   getProductFilter(index: number = 0, length: number = 10, query: any = {}): Observable<any> {

@@ -1,0 +1,46 @@
+<app-header1>
+</app-header1>
+<div class="main-container">
+    <section class="p-5 pb-0 ">
+        <div class="recent-card  mt-5 ">
+            <div class="row m-0 ">
+                <div class="col-lg-8 col-sm-12 px-0 blogDiv">
+                    <img [src]="baseUrl+blog.image" alt=" " class="img-fluid card-img card-img-size1 rounded-0 ml-0 pr-4">
+                </div>
+                <div class="col-lg-4 col-sm-12  border-0 card-img-size1 pl-1">
+                    <div class="  card-body  border-0 pl-4 pt-0">
+
+                        <div class="d-flex justify-content-between">
+                            <h6 class="card-title text-complete mt-0 mb-0 ">
+                                <b> Responsiblity</b>
+                            </h6>
+                            <div class="d-flex align-items-center  ">
+                                <a class="d-flex align-items-center text-muted mr-2 " href="javascript:void(0) ">5,345
+                                    <i class="pg-icon ">comment</i></a>
+                                <a class="d-flex align-items-center text-muted " href="javascript:void(0) ">23K <i
+                                        class="pg-icon ">heart</i></a>
+                            </div>
+                        </div>
+                        <h2 class="title">
+                            {{blog.postName}}
+
+                        </h2>
+                        <div class="d-flex justify-content-end mt-0 ">
+                            <span class="text-muted"> <b> {{blog.timestamp | date }} </b></span>
+                        </div>
+
+                        <p class="description" [innerHtml]="blog.description">
+
+                        </p>
+                    </div>
+                    <div class=" card-footer   d-flex justify-content-end border-0 mt-1">
+                        <!-- <i class="pg-icon md-18 text-complete">arrow_right</i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+<app-footer1></app-footer1>

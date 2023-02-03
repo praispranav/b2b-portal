@@ -9,6 +9,7 @@ import { ProviderMaterStateService } from "../../../../../../core/providers/mast
 import { ProviderMaterLocationService } from "../../../../../../core/providers/master/provider-mater-location.service";
 import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
 import { ImageService } from "../../../../../../core/providers/user/image.service";
+import { ProviderMaterCategoryService } from "../../../../../../core/providers/master/provider-mater-category.service";
 
 @Component({
   selector: "app-form-company-profile",
@@ -324,7 +325,7 @@ export class FormCompanyProfileComponent implements OnInit {
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerMaterStateService: ProviderMaterStateService,
     private providerMaterLocationService: ProviderMaterLocationService,
-    private categoryService:ProviderCategoryService
+    private masterCategoryService: ProviderMaterCategoryService,
   ) {
     this.getCategoryList()
   }
@@ -602,7 +603,7 @@ export class FormCompanyProfileComponent implements OnInit {
     console.log("reqData", formData);
     console.log("reqObj", reqObj);
 
-    debugger;
+    // debugger;
     if (this.isDataExist) {
       formData._id = this.idIfDataExist;
       this.providerCompanyProfileService.updateCompanyProfile(reqObj).subscribe(
@@ -671,7 +672,7 @@ export class FormCompanyProfileComponent implements OnInit {
   }
 
   getCategoryList(){
-    this.categoryService.getCategoryListByUser().subscribe((res)=>{
+    this.masterCategoryService.getMaterCategoryListByFilter(0, 10, { level: "0" }).subscribe((res)=>{
       this.categoryList = res.data
     })
   }

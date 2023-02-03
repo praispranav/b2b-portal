@@ -1,63 +1,38 @@
-<div class="p-2">
-    <!-- <div class="card card-transparent ">
-        <pg-tabset tabAnimation="slide-left" Type="fillup">
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>All Products</span>
-                </ng-template>
-              
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Active Listings</span>
-                </ng-template>
-              
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>InActive Listings</span>
-                </ng-template>
-                
-            </pg-tab>
-            <pg-tab>
-                <ng-template #TabHeading>
-                    <span>Products Rejection</span>
-                </ng-template>
-               
-            </pg-tab>
-        </pg-tabset>
-    </div> -->
+<div class="pl-2 pt-0">
     <div class="container">
-        <div class="row  p-10 activeBox">
-            <div class="col-md-2 bg-white border p-3 p-10 mr-2">
+        <div class="row pb-2" activeBox style=" margin-left: -76px;">
+            <h4 class="m-0 mb-4">Product For Verification</h4>
+            <div class="col-md-2 bg-white border p-3  mr-2">
                 <p>All Products</p>
-                <span>6</span>
+                <span>{{ productCounts.total }}</span>
             </div>
             <div class="col-md-2 bg-white border p-3 p-10 mr-2">
-              <p>Active Listings</p>
-              <span>10</span>
+                <p>Active Listings</p>
+                <span>{{ productCounts.activeListing }}</span>
             </div>
-            <div class="col-md-2 bg-white border  p-3 p-10 mr-2">
+            <div class="col-md-2 bg-white border  p-3  mr-2">
                 <p>InActive Listings</p>
-                <span>8</span>
+                <span>{{ productCounts.inActiveListing }}</span>
             </div>
-            <div class="col-md-2 bg-white border p-3 p-10 mr-2">
+            <div class="col-md-2 bg-white border p-3 mr-2">
                 <p>Products Rejection</p>
-                <span>12</span>
+                <span>{{ productCounts.rejectedProduct }}</span>
             </div>
-
-          
-            <div class="col-md-2 bg-white">
-                <p>Products Rejection</p>
-                <span>12</span>
-            </div>
-        </div>
+              <div class="ms-auto mt-auto col-md-3">
+                  <label class="text-danger">Bulk Action</label>
+                  <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal"
+                      (click)="approveType= 'Approved'">Approve</button>
+                  <button class="btn ms-2" data-toggle="modal" data-target="#exampleModal"
+                      (click)="approveType= 'Rejected'">Reject</button>
+              </div>
+              </div>
     </div>
+
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
             <div class="card-header  d-flex justify-content-between">
-                <div class="card-title">Admin Product Verification
+                <div class="card-title">
                 </div>
                 <div class="export-options-container"></div>
                 <!-- <div class="clearfix"></div> -->
@@ -69,25 +44,28 @@
                         [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
                         [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
                     </ngx-datatable> -->
-                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
+                        [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                        [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)" />
+                                <input type="checkbox" (click)="handler(row)" (change)="handleChangeProductVerification($event, row._id)" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img src="{{row.image}}" alt="">
+                                <img src="{{row.image}}" alt="" style="width: 50px; height: 50px; object-fit: contain;">
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
-                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(value)">
-                                  Update
+                        <ngx-datatable-column name="Actions" sortable="false">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button
+                                    (click)="selectProduct(row)" data-toggle="modal" data-target="#updateStatus">
+                                    Update
                                 </button>
                             </ng-template>
                         </ngx-datatable-column>
@@ -97,4 +75,63 @@
         </div>
         <!-- END card -->
     </pg-container>
+</div>
+
+<!--  -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+   -->
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to {{ approveType === "Approved" ? "Approve" : "Reject" }}.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         you would not able to revert back!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="bulkConfirm()" data-dismiss="modal" aria-label="Close">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  -->
+<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="selectedProduct">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ selectedProduct.productName }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 p-3 p-10 ">
+                        <select [(ngModel)]="updateStatus" class="form-select" aria-label="Default select example">
+                            <option value="All" selected>All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="InProgress">In Progress</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Reject</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" (click)="updateProductStatus()" data-dismiss="modal" class="btn btn-primary">Update Status</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -9,8 +9,10 @@ import {
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
+import { ProviderUserAuthService } from "../../../core/providers/auth/provider-user-auth.service";
 import { ProviderMaterCategoryService } from "../../../core/providers/master/provider-mater-category.service";
 import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
+import { ImageService } from "../../../core/providers/user/image.service";
 import {
   ReqQuoFormData,
   RequestQuotationService,
@@ -48,15 +50,26 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
   rfqSmallFormData: ReqQuoFormData =
     this.requestQuotationService.getRequestForQuotationLocal();
 
+  userInfor: any = null;
   constructor(
     private formBuilder: FormBuilder,
     private requestQuotationService: RequestQuotationService,
     private router: Router,
+    private imageService: ImageService,
     private masterCategoryService: ProviderMaterCategoryService,
-    private providerMaterCategoryService: ProviderMaterCategoryService
+    private providerMaterCategoryService: ProviderMaterCategoryService,
+    private authService: ProviderUserAuthService
   ) {}
 
   ngOnInit() {
+    const jwt_decode = this.authService.currentUserValueObjTokenDecoded;
+    console.log("JwtDecode", jwt_decode);
+    if (jwt_decode) {
+      this.userInfor = jwt_decode
+    } else {
+      this.router.navigateByUrl("user-auth/sign-in");
+    }
+
     this.buildTypeForm2();
     this.rfqId = JSON.parse(localStorage.getItem("rfqId"));
     this.getMaterCategoryListByCategory(0, 1000, { level: "0" });
@@ -83,10 +96,26 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
     this.filterCategory();
   }
 
-  saveFormData(event): void {
+  uploadImageToServer(image) {
+    return new Promise((resolve, reject) => {
+      this.imageService.uploadImage(image).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (error) => {
+          console.log(error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+
+  async saveFormData(event){
     if (event) {
-      this.allFormData = event.formData;
+      this.allFormData = this.requestQuotationForm2.value;
       this.firstFormValue = {
+        userId: this.userInfor._id,
         productName: this.allFormData.productName
           ? this.allFormData.productName
           : "",
@@ -94,12 +123,23 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
         unit: this.allFormData.unit ? this.allFormData.unit : "",
       };
     }
+    let productImage = '';
+
+    if (this.selectedProductFile) {
+      const fileName:any = await this.uploadImageToServer(
+        this.selectedProductFile
+      );
+      productImage = fileName.fileName
+    }
+
     this.payload = {
       ...this.requestQuotationForm2.value,
+      image: productImage
     };
 
     this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
       (res) => {
+        this.requestQuotationService.removeRequestForQuotationLocal();
         this.router.navigateByUrl(`/b2b/home`);
         window.alert("Informaion Saved");
         console.log("res", res);
@@ -109,18 +149,11 @@ export class PageHomeRfqFormTwoComponent implements OnInit {
       }
     );
   }
+
+  selectedProductFile:any = null;
   fileUpload(event: any) {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.imageBase64 = reader.result;
-      this.requestQuotationForm2.patchValue({
-        imageUrl: reader.result as string,
-      });
-      this.fileType = file.type;
-      this.fileName = file.name;
-    };
+    this.selectedProductFile = file;
   }
 
   onChange() {

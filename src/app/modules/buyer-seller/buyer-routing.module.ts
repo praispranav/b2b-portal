@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { PageChangePasswordComponent } from "./seller/page-change-password/page-change-password.component";
 
 const routes: Routes = [
   {
@@ -21,8 +22,16 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren:"../../features/email/email.module#EmailModule"
-  }
+    loadChildren:"./buyer/email-buyer/email.module#EmailBuyerModule"
+  },
+  {
+    path: "mqr",
+    loadChildren:"./buyer/buyer-mqr/buyer-mqr.module#BuyerMqrModule"
+  },
+  // {
+  //   path: "change-password",
+  //   component: PageChangePasswordComponent,
+  // },
 ];
 
 @NgModule({

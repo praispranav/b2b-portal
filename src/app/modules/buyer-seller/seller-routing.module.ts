@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { PageChangePasswordComponent } from "./seller/page-change-password/page-change-password.component";
 // import {  } from "./seller/supplier-list/supplier-list.module";
 const routes: Routes = [
   {
@@ -48,8 +49,12 @@ const routes: Routes = [
   },
   {
     path: "email",
-    loadChildren: "../../features/email/email.module#EmailModule"
-  }
+    loadChildren: "./seller/email-seller/email.module#EmailSellerModule"
+  },
+  // {
+  //   path: "change-password",
+  //   component: PageChangePasswordComponent,
+  // },
 
 ];
 

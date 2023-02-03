@@ -71,12 +71,10 @@
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.password.invalid && (f.password.dirty || f.password.touched)">
                         <label for="password">Password</label>
-                        <input type="password" formControlName="password" placeholder="Enter Password" class="form-control" id="password"
-                        tooltip="Password must have one uppercase letter, one lower case, one number and one special character(@,!,$)."
-                        />
-                       
+                        <input type="password" formControlName="password" placeholder="Enter Password" class="form-control" id="password" tooltip="Password must have one uppercase letter, one lower case, one number and one special character(@,!,$)." />
+
                     </div>
-                  
+
                     <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
                         <label *ngIf="f.password.errors.required" class="error">This field is required.</label>
                         <label *ngIf="f.password.errors.hasNumber" class="error">Must contain a number.</label>
@@ -84,35 +82,34 @@
                         <label *ngIf="f.password.errors.hasSpecialCharacters" class="error">Must have a special character.</label>
                         <label *ngIf="f.password.errors.minlength" class="error">Min length should be {{f.password.errors.minlength.requiredLength}} actual length {{f.password.errors.minlength.actualLength}}.</label>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div pgFormGroupDefault class="form-group form-group-default" [class.has-error]="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label for="cpassword">Confirm Password</label>
-                        <input type="password" formControlName="cpassword"  placeholder="Retype Password" class="form-control" id="cpassword" />
+                        <input type="password" formControlName="cpassword" placeholder="Retype Password" class="form-control" id="cpassword" />
                     </div>
                     <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label *ngIf="f.cpassword.errors.required" class="error">This field is required.</label>
                     </div> -->
-                    
+
                     <div *ngIf="f?.cpassword?.errors && f?.cpassword?.touched" class="text-danger">
-                       
-                           <label *ngIf="f?.cpassword?.errors?.required" class="error">Confirm password is required</label>  </div>
-                        <label *ngIf="f?.cpassword?.errors?.matchPassword">New password and Confirm password didn't match. </label>
-                      
-                      <label class="text-danger"class="error"
-                      *ngIf="f['cpassword'].hasError('NoPassswordMatch') && f?.cpassword?.touched">
+
+                        <label *ngIf="f?.cpassword?.errors?.required" class="error">Confirm password is required</label> </div>
+                    <label *ngIf="f?.cpassword?.errors?.matchPassword">New password and Confirm password didn't match. </label>
+
+                    <label class="text-danger" class="error" *ngIf="f['cpassword'].hasError('NoPassswordMatch') && f?.cpassword?.touched">
                       New password and Confirm password didn't match.
                     </label>
                     <!-- <div *ngIf="f.cpassword.invalid && (f.cpassword.dirty || f.cpassword.touched)">
                         <label *ngIf="f.cpassword.errors.invalid" class="error"> field is required.</label>
                     </div> -->
-                   
+
                 </div>
             </div>
-           
+
 
             <!-- <div class="row">
         <div class="col-md-12">
@@ -135,7 +132,8 @@
                         <label for="country">Country</label>
 
                         <select id="fcp-company" formControlName="country" class="form-control p-1" #myCountry (change)='onCountrySelected($event)'>
-                        <option *ngFor="let c of countries" [value]="c.name">{{c.country}}</option>
+                            <option value="#" selected>Select</option>
+                            <option *ngFor="let c of countries" [value]="c.country">{{c.country}}</option>
                       </select>
                     </div>
                     <div *ngIf="f.country.invalid && (f.country.dirty || f.country.touched)">
@@ -211,7 +209,7 @@
                 <div class="col-lg-6">
                     <div class="form-check pl-0">
                         <input type="checkbox" id="check" name="check" value="true" formControlName="checkbox">
-                     
+
 
                     </div>
                     <p class="check-box">
@@ -224,7 +222,7 @@
   </small>
                     </p>
                 </div>
-                
+
                 <div class="col-lg-6 text-right">
                     <a class="text-info small" [routerLink]="" (click)="navigateTosupportPage()">Help? Contact
                     Support</a>

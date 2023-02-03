@@ -26,40 +26,45 @@
             </div>
         </div>
     </div> -->
-
-    <div class="row">
-        <div class="col-md-2 bg-white search-top-mr">
-            <!-- <app-product-search-categories></app-product-search-categories>  -->
-            <app-catalogue-product-search-home [categories]="categories"></app-catalogue-product-search-home>
-        </div>
-        <div class="col-md-10">
-            <!-- <app-product-search-filter></app-product-search-filter> -->
-            <div class="d-flex align-content-start flex-wrap ml-2">
-                <!-- <alert class="ml-1" type="info" [dismissible]="true">
+    <ng-container>
+        <div class="row">
+            <div class="col-md-2 bg-white search-top-mr">
+                <!-- <app-product-search-categories></app-product-search-categories>  -->
+                <app-catalogue-product-search-home [categories]="categories"></app-catalogue-product-search-home>
+            </div>
+            <div class="col-md-10">
+                <!-- <app-product-search-filter></app-product-search-filter> -->
+                <div class="d-flex align-content-start flex-wrap ml-2">
+                    <!-- <alert class="ml-1" type="info" [dismissible]="true">
         <strong>jacket</strong>
     </alert>
     <alert class="ml-1" type="info" [dismissible]="true">
         <strong> Ready to Ship</strong>
     </alert> -->
-                <div class="d-flex flex-row-reverse ml-auto">
-                    <div class="p-2 " (click)="changeView(true)">
-                        <i class="pg-icon">grid_alt</i>
-                    </div>
-                    <div class="p-2 " (click)="changeView(false)">
-                        <i class="pg-icon">menu</i>
+                    <div class="d-flex flex-row-reverse ml-auto">
+                        <div class="p-2" (click)="changeView(true)">
+                            <i class="pg-icon">grid_alt</i>
+                        </div>
+                        <div class="p-2" (click)="changeView(false)">
+                            <i class="pg-icon">menu</i>
+                        </div>
                     </div>
                 </div>
+                <div class="ml-2">
+                    <!-- <app-product-search-card></app-product-search-card>  -->
+                    <app-shortlisted-products></app-shortlisted-products>
+                    <ng-container *ngIf="isGridView; else listView">
+                        <app-catalogue-product-card-home [products]="products"></app-catalogue-product-card-home>
+                    </ng-container>
+                    <ng-template #listView>
+                        <app-product-search-card-list [products]="products"></app-product-search-card-list>
+                    </ng-template>
+                </div>
+                <!-- <app-product-search-card-list></app-product-search-card-list> -->
             </div>
-            <div class="ml-2">
-                <!-- <app-product-search-card></app-product-search-card>  -->
-                <ng-container *ngIf="isGridView;else listView">
-                    <app-catalogue-product-card-home [products]="products"></app-catalogue-product-card-home>
-                </ng-container>
-                <ng-template #listView>
-                    <app-product-search-card-list [products]="products"></app-product-search-card-list>
-                </ng-template>
-            </div>
-            <!-- <app-product-search-card-list></app-product-search-card-list> -->
         </div>
-    </div>
+    </ng-container>
+    <ng-template>
+        <app-page-no-product-added></app-page-no-product-added>
+    </ng-template>
 </div>

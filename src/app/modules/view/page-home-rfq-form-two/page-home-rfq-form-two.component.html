@@ -1,516 +1,711 @@
 <!-- <app-header1></app-header1> -->
 <!-- Donot remove -->
-<button #launchModalButton type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-    style="visibility: hidden;">
-</button>
+<button
+  #launchModalButton
+  type="button"
+  class="btn btn-primary"
+  data-toggle="modal"
+  data-target="#exampleModal"
+  style="visibility: hidden"
+></button>
 <!-- Donot remove -->
 
 <div class="p-4 d-flex justify-content-center sub-div">
-    <div class="col-md-7  p-3 bg-grey pmt-2 shadow">
-        <h2>Please provide a detailed requirment so that we can assist your specific needs</h2>
-        <p>Get quotes for all your enquiries hassle free and without any cost</p>
-        <form [formGroup]="requestQuotationForm2">
-            <div class="row">
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Product Name</h6>
-                </div>
-                <div class="col-md-8 p-3">
-                    <input class="form-control" type="text" (change)="onChange()" (blur)="filterCategory()"
-                        formControlName="productName" placeholder="Enter the product name" name="" id="">
+  <div class="col-md-7 p-3 bg-grey pmt-2 shadow">
+    <h2>
+      Please provide a detailed requirment so that we can assist your specific
+      needs
+    </h2>
+    <p>Get quotes for all your enquiries hassle free and without any cost</p>
+    <form [formGroup]="requestQuotationForm2">
+      <div class="row">
+        <div class="col-md-3 p-3">
+          <h6 class="star">Product Name</h6>
+        </div>
+        <div class="col-md-8 p-3">
+          <input
+            class="form-control"
+            type="text"
+            (change)="onChange()"
+            (blur)="filterCategory()"
+            formControlName="productName"
+            placeholder="Enter the product name"
+            name=""
+            id=""
+          />
 
-                    <div
-                        *ngIf="requestQuotationForm2?.productName?.invalid && (requestQuotationForm2?.productName.dirty || requestQuotationForm2?.productName.touched)">
-                        <label *ngIf="requestQuotationForm2?.productName.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Product Category</h6>
-                </div>
+          <div
+            *ngIf="
+              requestQuotationForm2?.productName?.invalid &&
+              (requestQuotationForm2?.productName.dirty ||
+                requestQuotationForm2?.productName.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.productName.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-3 p-3">
+          <h6 class="star">Product Category</h6>
+        </div>
 
-                <div class="col-md-8 p-3" *ngIf="categories.length > 0">
-                    <select (change)="onChangeCategory()" class="form-select form-select-sm"
-                        formControlName="productCategory" aria-label="danger select example" class="form-select">
-                        <option *ngFor="let category of categories;let i = index" [value]="category.value"
-                            [selected]="i==0">{{ category.label }}
-                        </option>
-                    </select>
+        <div class="col-md-8 p-3" *ngIf="categories.length > 0">
+          <select
+            (change)="onChangeCategory()"
+            class="form-select form-select-sm"
+            formControlName="productCategory"
+            aria-label="danger select example"
+            class="form-select"
+          >
+            <option
+              *ngFor="let category of categories; let i = index"
+              [value]="category.value"
+              [selected]="i == 0"
+            >
+              {{ category.label }}
+            </option>
+          </select>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.productCategory?.invalid && (requestQuotationForm2?.productCategory.dirty || requestQuotationForm2?.productCategory.touched)">
-                        <label *ngIf="requestQuotationForm2?.productCategory.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Quantity</h6>
-                </div>
-                <!-- (change)="handleQuantityChange($event)" -->
-                <!-- [value]="quantity" -->
-                <div class="col-md-3 p-3">
-                    <input (change)="onChange()" formControlName="quantity" class="form-control" type="number"
-                        placeholder="8 number" name="Quantity" id="">
-                </div>
-                <div class="col-md-5 p-3">
-                    <select class="form-select" (change)="onChange()" aria-label="Default select example"
-                        formControlName="unit" class="form-select">
-                        <option selected>Unit</option>
-                        <option value="Acres">Acres</option>
-                        <option value="Amperes">Amperes</option>
-                        <option value="Bags">Bags</option>
-                        <option value="Barrels">Barrels</option>
-                        <option value="Blades">Blades</option>
-                        <option value="Boxes">Boxes</option>
-                        <option value="Bushes">Bushes</option>
-                        <option value="Carats">Carats</option>
-                        <option value="Cartons">Cartons</option>
-                        <option value="Cases">Cases</option>
-                        <option value="Centimeters">Centimeters</option>
-                        <option value="Chains">Chains</option>
-                        <option value="Combos">Combos</option>
-                        <option value="Cubic Centimeters">Cubic Centimeters</option>
-                        <option value="Cubic Feet">Cubic Feet</option>
-                        <option value="Cubic Inches">Cubic Inches</option>
-                        <option value="Cubic Meters">Cubic Meters</option>
-                        <option value="Cubic Yards">Cubic Yards</option>
-                        <option value="Degree Celsius">Degree Celsius</option>
-                        <option value="Degree Fahrenheit">Degree Fahrenheit</option>
-                        <option value="Dozens">Dozens</option>
-                        <option value="Drums">Drums</option>
-                        <option value="Fluid Ounces">Fluid Ounces</option>
-                        <option value="Feet">Feet</option>
-                        <option value="Forty Foot Container">Forty Foot Container</option>
-                        <option value="Furlongs">Furlongs</option>
-                        <option value="Gallons">Gallons</option>
-                        <option value="Gills">Gills</option>
-                        <option value="Grains">Grains</option>
-                        <option value="Gross">Gross</option>
-                        <option value="Hectares">Hectares</option>
-                        <option value="Hertz">Hertz</option>
-                        <option value="Inches">Inches</option>
-                        <option value="Kilo Amperes">Kilo Amperes</option>
-                        <option value="Kilo grams">Kilo grams</option>
-                        <option value="Kilo Ohms">Kilo Ohms</option>
-                        <option value="KiloVolts">KiloVolts</option>
-                        <option value="KiloWatts">KiloWatts</option>
-                        <option value="Litters">Litters</option>
-                        <option value="Long Tons">Long Tons</option>
-                        <option value="Megahertz">Megahertz</option>
-                        <option value="Meters">Meters</option>
-                        <option value="Miles">Miles</option>
-                        <option value="Milligrams">Milligrams</option>
-                        <option value="Mill Hertz">Mill Hertz</option>
-                        <option value="Milliliters">Milliliters</option>
-                        <option value="Milliohms">Milliohms</option>
-                        <option value="Millivolts">Millivolts</option>
-                        <option value="MilliWatts">MilliWatts</option>
-                        <option value="Nautical Miles">Nautical Miles</option>
-                        <option value="Ohms">Ohms</option>
-                        <option value="Ounce">Ounce</option>
-                        <option value="Packs">Packs</option>
-                        <option value="Pairs">Pairs</option>
-                        <option value="Pallets">Pallets</option>
-                        <option value="Parcels">Parcels</option>
-                        <option value="Perches">Perches</option>
-                        <option value="Pieces">Pieces</option>
-                        <option value="Prints">Prints</option>
-                        <option value="Plants">Plants</option>
-                        <option value="Poles">Poles</option>
-                        <option value="Pounds">Pounds</option>
-                        <option value="Quarts">Quarts</option>
-                        <option value="Quarters">Quarters</option>
-                        <option value="Rods">Rods</option>
-                        <option value="Rolls">Rolls</option>
-                        <option value="Sets">Sets</option>
-                        <option value="Sheets">Sheets</option>
-                        <option value="Short Tons">Short Tons</option>
-                        <option value="Square Centimeters">Square Centimeters</option>
-                        <option value="Square Feet">Square Feet</option>
-                        <option value="Square Miles">Square Miles</option>
-                        <option value="Square Yards">Square Yards</option>
-                        <option value="Stones">Stones</option>
-                        <option value="Strands">Strands</option>
-                        <option value="Tons">Tons</option>
-                        <option value="Tones">Tones</option>
-                        <option value="Trays">Trays</option>
-                        <option value="Twenty Foot Container">Twenty Foot Container</option>
-                        <option value="Units">Units</option>
-                        <option value="Volts">Volts</option>
-                        <option value="Watts">Watts</option>
-                        <option value="Yards">Yards</option>
-                    </select>
+          <div
+            *ngIf="
+              requestQuotationForm2?.productCategory?.invalid &&
+              (requestQuotationForm2?.productCategory.dirty ||
+                requestQuotationForm2?.productCategory.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.productCategory.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-3 p-3">
+          <h6 class="star">Quantity</h6>
+        </div>
+        <!-- (change)="handleQuantityChange($event)" -->
+        <!-- [value]="quantity" -->
+        <div class="col-md-3 p-3">
+          <input
+            (change)="onChange()"
+            formControlName="quantity"
+            class="form-control"
+            type="number"
+            placeholder="8 number"
+            name="Quantity"
+            id=""
+          />
+        </div>
+        <div class="col-md-5 p-3">
+          <select
+            class="form-select"
+            (change)="onChange()"
+            aria-label="Default select example"
+            formControlName="unit"
+            class="form-select"
+          >
+            <option value="" selected>Unit</option>
+            <option value="Acres">Acres</option>
+            <option value="Amperes">Amperes</option>
+            <option value="Bags">Bags</option>
+            <option value="Barrels">Barrels</option>
+            <option value="Blades">Blades</option>
+            <option value="Boxes">Boxes</option>
+            <option value="Bushes">Bushes</option>
+            <option value="Carats">Carats</option>
+            <option value="Cartons">Cartons</option>
+            <option value="Cases">Cases</option>
+            <option value="Centimeters">Centimeters</option>
+            <option value="Chains">Chains</option>
+            <option value="Combos">Combos</option>
+            <option value="Cubic Centimeters">Cubic Centimeters</option>
+            <option value="Cubic Feet">Cubic Feet</option>
+            <option value="Cubic Inches">Cubic Inches</option>
+            <option value="Cubic Meters">Cubic Meters</option>
+            <option value="Cubic Yards">Cubic Yards</option>
+            <option value="Degree Celsius">Degree Celsius</option>
+            <option value="Degree Fahrenheit">Degree Fahrenheit</option>
+            <option value="Dozens">Dozens</option>
+            <option value="Drums">Drums</option>
+            <option value="Fluid Ounces">Fluid Ounces</option>
+            <option value="Feet">Feet</option>
+            <option value="Forty Foot Container">Forty Foot Container</option>
+            <option value="Furlongs">Furlongs</option>
+            <option value="Gallons">Gallons</option>
+            <option value="Gills">Gills</option>
+            <option value="Grains">Grains</option>
+            <option value="Gross">Gross</option>
+            <option value="Hectares">Hectares</option>
+            <option value="Hertz">Hertz</option>
+            <option value="Inches">Inches</option>
+            <option value="Kilo Amperes">Kilo Amperes</option>
+            <option value="Kilo grams">Kilo grams</option>
+            <option value="Kilo Ohms">Kilo Ohms</option>
+            <option value="KiloVolts">KiloVolts</option>
+            <option value="KiloWatts">KiloWatts</option>
+            <option value="Litters">Litters</option>
+            <option value="Long Tons">Long Tons</option>
+            <option value="Megahertz">Megahertz</option>
+            <option value="Meters">Meters</option>
+            <option value="Miles">Miles</option>
+            <option value="Milligrams">Milligrams</option>
+            <option value="Mill Hertz">Mill Hertz</option>
+            <option value="Milliliters">Milliliters</option>
+            <option value="Milliohms">Milliohms</option>
+            <option value="Millivolts">Millivolts</option>
+            <option value="MilliWatts">MilliWatts</option>
+            <option value="Nautical Miles">Nautical Miles</option>
+            <option value="Ohms">Ohms</option>
+            <option value="Ounce">Ounce</option>
+            <option value="Packs">Packs</option>
+            <option value="Pairs">Pairs</option>
+            <option value="Pallets">Pallets</option>
+            <option value="Parcels">Parcels</option>
+            <option value="Perches">Perches</option>
+            <option value="Pieces">Pieces</option>
+            <option value="Prints">Prints</option>
+            <option value="Plants">Plants</option>
+            <option value="Poles">Poles</option>
+            <option value="Pounds">Pounds</option>
+            <option value="Quarts">Quarts</option>
+            <option value="Quarters">Quarters</option>
+            <option value="Rods">Rods</option>
+            <option value="Rolls">Rolls</option>
+            <option value="Sets">Sets</option>
+            <option value="Sheets">Sheets</option>
+            <option value="Short Tons">Short Tons</option>
+            <option value="Square Centimeters">Square Centimeters</option>
+            <option value="Square Feet">Square Feet</option>
+            <option value="Square Miles">Square Miles</option>
+            <option value="Square Yards">Square Yards</option>
+            <option value="Stones">Stones</option>
+            <option value="Strands">Strands</option>
+            <option value="Tons">Tons</option>
+            <option value="Tones">Tones</option>
+            <option value="Trays">Trays</option>
+            <option value="Twenty Foot Container">Twenty Foot Container</option>
+            <option value="Units">Units</option>
+            <option value="Volts">Volts</option>
+            <option value="Watts">Watts</option>
+            <option value="Yards">Yards</option>
+          </select>
 
-                    <div
-                        *ngIf="requestQuotationForm2?.unit?.invalid && (requestQuotationForm2?.unit.dirty || requestQuotationForm2?.unit.touched)">
-                        <label *ngIf="requestQuotationForm2?.unit.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 p-3">
-                        <h6 class="star">Sourcing Type</h6>
-                    </div>
-                    <div class="col-md-5 p-3">
-                        <select class="form-select" formControlName="sourcingType" aria-label="Default select example">
-                            <option selected>Please select</option>
-                            <option value="For Customizing Product">For Customizing Product</option>
-                            <option value="Normal Products">Normal Products</option>
-                            <option value="Full Solution">Full Solution</option>
-                            <option value="Overstock Auction">Overstock Auction</option>
-                            <option value="Others">Others</option>
-                        </select>
+          <div
+            *ngIf="
+              requestQuotationForm2?.unit?.invalid &&
+              (requestQuotationForm2?.unit.dirty ||
+                requestQuotationForm2?.unit.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.unit.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 p-3">
+            <h6 class="star">Sourcing Type</h6>
+          </div>
+          <div class="col-md-5 p-3">
+            <select
+              class="form-select"
+              formControlName="sourcingType"
+              aria-label="Default select example"
+            >
+              <option value="" selected>Please select</option>
+              <option value="For Customizing Product">
+                For Customizing Product
+              </option>
+              <option value="Normal Products">Normal Products</option>
+              <option value="Full Solution">Full Solution</option>
+              <option value="Overstock Auction">Overstock Auction</option>
+              <option value="Others">Others</option>
+            </select>
 
-                        <div
-                            *ngIf="requestQuotationForm2?.sourcingType?.invalid && (requestQuotationForm2?.sourcingType.dirty || requestQuotationForm2?.sourcingType.touched)">
-                            <label *ngIf="requestQuotationForm2?.sourcingType.errors.required" class="error">This Field
-                                is
-                                required.</label>
-                        </div>
-                    </div>
+            <div
+              *ngIf="
+                requestQuotationForm2?.sourcingType?.invalid &&
+                (requestQuotationForm2?.sourcingType.dirty ||
+                  requestQuotationForm2?.sourcingType.touched)
+              "
+            >
+              <label
+                *ngIf="requestQuotationForm2?.sourcingType.errors.required"
+                class="error"
+                >This Field is required.</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 p-3">
+            <h6 class="star">Sourcing Purpose</h6>
+          </div>
+          <div class="col-md-5 p-3">
+            <select
+              class="form-select"
+              formControlName="sourcingPurpose"
+              aria-label="Default select example"
+            >
+              <option value="" selected>Please select</option>
+              <option value="Wholesale">Wholesale</option>
+              <option value="Retail">Retail</option>
+              <option value="Production">Production</option>
+              <option value="Raw Material">Raw Material</option>
+              <option value="Large Consumption">Large Consumption</option>
+              <option value="Personal Use">Personal Use</option>
+              <option value="Others">Others</option>
+            </select>
 
-                </div>
-                <div class="row">
-                    <div class="col-md-3 p-3">
-                        <h6 class="star">Sourcing Purpose</h6>
-                    </div>
-                    <div class="col-md-5 p-3">
-                        <select class="form-select" formControlName="sourcingPurpose"
-                            aria-label="Default select example">
-                            <option selected>Please select</option>
-                            <option value="Wholesale">Wholesale</option>
-                            <option value="Retail">Retail</option>
-                            <option value="Production"> Production</option>
-                            <option value="Raw Material">Raw Material</option>
-                            <option value="Large Consumption">Large Consumption</option>
-                            <option value="Personal Use">Personal Use</option>
-                            <option value="Others">Others</option>
+            <div
+              *ngIf="
+                requestQuotationForm2?.sourcingPurpose?.invalid &&
+                (requestQuotationForm2?.sourcingPurpose.dirty ||
+                  requestQuotationForm2?.sourcingPurpose.touched)
+              "
+            >
+              <label
+                *ngIf="requestQuotationForm2?.sourcingPurpose.errors.required"
+                class="error"
+                >This Field is required.
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 p-3">
+          <h6 class="star">Budget</h6>
+        </div>
+        <div class="col-md-3 p-3">
+          <input
+            class="form-control"
+            type="number"
+            formControlName="budget"
+            placeholder="numbers"
+            name=""
+            id=""
+          />
 
-                        </select>
+          <div
+            *ngIf="
+              requestQuotationForm2?.budget?.invalid &&
+              (requestQuotationForm2?.budget.dirty ||
+                requestQuotationForm2?.budget.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.budget.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-6 p-3">
+          <select
+            class="form-select"
+            formControlName="currency"
+            aria-label="Default select example"
+          >
+            <option value="" selected>select currency</option>
+            <option value="AFN">Afghan Afghani</option>
+            <option value="ALL">Albanian Lek</option>
+            <option value="DZD">Algerian Dinar</option>
+            <option value="AOA">Angolan Kwanza</option>
+            <option value="ARS">Argentine Peso</option>
+            <option value="AMD">Armenian Dram</option>
+            <option value="AWG">Aruban Florin</option>
+            <option value="AUD">Australian Dollar</option>
+            <option value="AZN">Azerbaijani Manat</option>
+            <option value="BSD">Bahamian Dollar</option>
+            <option value="BHD">Bahraini Dinar</option>
+            <option value="BDT">Bangladeshi Taka</option>
+            <option value="BBD">Barbadian Dollar</option>
+            <option value="BYR">Belarusian Ruble</option>
+            <option value="BEF">Belgian Franc</option>
+            <option value="BZD">Belize Dollar</option>
+            <option value="BMD">Bermudan Dollar</option>
+            <option value="BTN">Bhutanese Ngultrum</option>
+            <option value="BTC">Bitcoin</option>
+            <option value="BOB">Bolivian Boliviano</option>
+            <option value="BAM">Bosnia-Herzegovina Convertible Mark</option>
+            <option value="BWP">Botswanan Pula</option>
+            <option value="BRL">Brazilian Real</option>
+            <option value="GBP">British Pound Sterling</option>
+            <option value="BND">Brunei Dollar</option>
+            <option value="BGN">Bulgarian Lev</option>
+            <option value="BIF">Burundian Franc</option>
+            <option value="KHR">Cambodian Riel</option>
+            <option value="CAD">Canadian Dollar</option>
+            <option value="CVE">Cape Verdean Escudo</option>
+            <option value="KYD">Cayman Islands Dollar</option>
+            <option value="XOF">CFA Franc BCEAO</option>
+            <option value="XAF">CFA Franc BEAC</option>
+            <option value="XPF">CFP Franc</option>
+            <option value="CLP">Chilean Peso</option>
+            <option value="CNY">Chinese Yuan</option>
+            <option value="COP">Colombian Peso</option>
+            <option value="KMF">Comorian Franc</option>
+            <option value="CDF">Congolese Franc</option>
+            <option value="CRC">Costa Rican ColÃ³n</option>
+            <option value="HRK">Croatian Kuna</option>
+            <option value="CUC">Cuban Convertible Peso</option>
+            <option value="CZK">Czech Republic Koruna</option>
+            <option value="DKK">Danish Krone</option>
+            <option value="DJF">Djiboutian Franc</option>
+            <option value="DOP">Dominican Peso</option>
+            <option value="XCD">East Caribbean Dollar</option>
+            <option value="EGP">Egyptian Pound</option>
+            <option value="ERN">Eritrean Nakfa</option>
+            <option value="EEK">Estonian Kroon</option>
+            <option value="ETB">Ethiopian Birr</option>
+            <option value="EUR">Euro</option>
+            <option value="FKP">Falkland Islands Pound</option>
+            <option value="FJD">Fijian Dollar</option>
+            <option value="GMD">Gambian Dalasi</option>
+            <option value="GEL">Georgian Lari</option>
+            <option value="DEM">German Mark</option>
+            <option value="GHS">Ghanaian Cedi</option>
+            <option value="GIP">Gibraltar Pound</option>
+            <option value="GRD">Greek Drachma</option>
+            <option value="GTQ">Guatemalan Quetzal</option>
+            <option value="GNF">Guinean Franc</option>
+            <option value="GYD">Guyanaese Dollar</option>
+            <option value="HTG">Haitian Gourde</option>
+            <option value="HNL">Honduran Lempira</option>
+            <option value="HKD">Hong Kong Dollar</option>
+            <option value="HUF">Hungarian Forint</option>
+            <option value="ISK">Icelandic KrÃ³na</option>
+            <option value="INR">Indian Rupee</option>
+            <option value="IDR">Indonesian Rupiah</option>
+            <option value="IRR">Iranian Rial</option>
+            <option value="IQD">Iraqi Dinar</option>
+            <option value="ILS">Israeli New Sheqel</option>
+            <option value="ITL">Italian Lira</option>
+            <option value="JMD">Jamaican Dollar</option>
+            <option value="JPY">Japanese Yen</option>
+            <option value="JOD">Jordanian Dinar</option>
+            <option value="KZT">Kazakhstani Tenge</option>
+            <option value="KES">Kenyan Shilling</option>
+            <option value="KWD">Kuwaiti Dinar</option>
+            <option value="KGS">Kyrgystani Som</option>
+            <option value="LAK">Laotian Kip</option>
+            <option value="LVL">Latvian Lats</option>
+            <option value="LBP">Lebanese Pound</option>
+            <option value="LSL">Lesotho Loti</option>
+            <option value="LRD">Liberian Dollar</option>
+            <option value="LYD">Libyan Dinar</option>
+            <option value="LTL">Lithuanian Litas</option>
+            <option value="MOP">Macanese Pataca</option>
+            <option value="MKD">Macedonian Denar</option>
+            <option value="MGA">Malagasy Ariary</option>
+            <option value="MWK">Malawian Kwacha</option>
+            <option value="MYR">Malaysian Ringgit</option>
+            <option value="MVR">Maldivian Rufiyaa</option>
+            <option value="MRO">Mauritanian Ouguiya</option>
+            <option value="MUR">Mauritian Rupee</option>
+            <option value="MXN">Mexican Peso</option>
+            <option value="MDL">Moldovan Leu</option>
+            <option value="MNT">Mongolian Tugrik</option>
+            <option value="MAD">Moroccan Dirham</option>
+            <option value="MZM">Mozambican Metical</option>
+            <option value="MMK">Myanmar Kyat</option>
+            <option value="NAD">Namibian Dollar</option>
+            <option value="NPR">Nepalese Rupee</option>
+            <option value="ANG">Netherlands Antillean Guilder</option>
+            <option value="TWD">New Taiwan Dollar</option>
+            <option value="NZD">New Zealand Dollar</option>
+            <option value="NIO">Nicaraguan CÃ³rdoba</option>
+            <option value="NGN">Nigerian Naira</option>
+            <option value="KPW">North Korean Won</option>
+            <option value="NOK">Norwegian Krone</option>
+            <option value="OMR">Omani Rial</option>
+            <option value="PKR">Pakistani Rupee</option>
+            <option value="PAB">Panamanian Balboa</option>
+            <option value="PGK">Papua New Guinean Kina</option>
+            <option value="PYG">Paraguayan Guarani</option>
+            <option value="PEN">Peruvian Nuevo Sol</option>
+            <option value="PHP">Philippine Peso</option>
+            <option value="PLN">Polish Zloty</option>
+            <option value="QAR">Qatari Rial</option>
+            <option value="RON">Romanian Leu</option>
+            <option value="RUB">Russian Ruble</option>
+            <option value="RWF">Rwandan Franc</option>
+            <option value="SVC">Salvadoran ColÃ³n</option>
+            <option value="WST">Samoan Tala</option>
+            <option value="SAR">Saudi Riyal</option>
+            <option value="RSD">Serbian Dinar</option>
+            <option value="SCR">Seychellois Rupee</option>
+            <option value="SLL">Sierra Leonean Leone</option>
+            <option value="SGD">Singapore Dollar</option>
+            <option value="SKK">Slovak Koruna</option>
+            <option value="SBD">Solomon Islands Dollar</option>
+            <option value="SOS">Somali Shilling</option>
+            <option value="ZAR">South African Rand</option>
+            <option value="KRW">South Korean Won</option>
+            <option value="XDR">Special Drawing Rights</option>
+            <option value="LKR">Sri Lankan Rupee</option>
+            <option value="SHP">St. Helena Pound</option>
+            <option value="SDG">Sudanese Pound</option>
+            <option value="SRD">Surinamese Dollar</option>
+            <option value="SZL">Swazi Lilangeni</option>
+            <option value="SEK">Swedish Krona</option>
+            <option value="CHF">Swiss Franc</option>
+            <option value="SYP">Syrian Pound</option>
+            <option value="STD">São Tomé and Príncipe Dobra</option>
+            <option value="TJS">Tajikistani Somoni</option>
+            <option value="TZS">Tanzanian Shilling</option>
+            <option value="THB">Thai Baht</option>
+            <option value="TOP">Tongan pa'anga</option>
+            <option value="TTD">Trinidad & Tobago Dollar</option>
+            <option value="TND">Tunisian Dinar</option>
+            <option value="TRY">Turkish Lira</option>
+            <option value="TMT">Turkmenistani Manat</option>
+            <option value="UGX">Ugandan Shilling</option>
+            <option value="UAH">Ukrainian Hryvnia</option>
+            <option value="AED">United Arab Emirates Dirham</option>
+            <option value="UYU">Uruguayan Peso</option>
+            <option value="USD">US Dollar</option>
+            <option value="UZS">Uzbekistan Som</option>
+            <option value="VUV">Vanuatu Vatu</option>
+            <option value="VEF">Venezuelan BolÃ­var</option>
+            <option value="VND">Vietnamese Dong</option>
+            <option value="YER">Yemeni Rial</option>
+            <option value="ZMK">Zambian Kwacha</option>
+          </select>
+          <div
+            *ngIf="
+              requestQuotationForm2?.currency?.invalid &&
+              (requestQuotationForm2?.currency.dirty ||
+                requestQuotationForm2?.currency.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.currency.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-2 p-3">
+          <h6 class="star">Details</h6>
+        </div>
 
-                        <div
-                            *ngIf="requestQuotationForm2?.sourcingPurpose?.invalid && (requestQuotationForm2?.sourcingPurpose.dirty || requestQuotationForm2?.sourcingPurpose.touched)">
-                            <label *ngIf="requestQuotationForm2?.sourcingPurpose.errors.required" class="error">This
-                                Field is
-                                required.</label>
-                        </div>
-                    </div>
+        <div class="col-md-9 p-3">
+          <textarea
+            id="w3review"
+            class="form-control"
+            name="Details"
+            rows="4"
+            cols="50"
+            formControlName="details"
+          >
+          </textarea>
 
-                </div>
-                <div class="col-md-2 p-3">
-                    <h6 class="star">Budget</h6>
-                </div>
-                <div class="col-md-3 p-3">
-                    <input class="form-control" type="number" formControlName="budget" placeholder="numbers" name=""
-                        id="">
-
-                    <div
-                        *ngIf="requestQuotationForm2?.budget?.invalid && (requestQuotationForm2?.budget.dirty || requestQuotationForm2?.budget.touched)">
-                        <label *ngIf="requestQuotationForm2?.budget.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-6 p-3">
-                    <select class="form-select" formControlName="currency" aria-label="Default select example">
-                        <option selected>select currency</option>
-                        <option value="AFN">Afghan Afghani</option>
-                        <option value="ALL">Albanian Lek</option>
-                        <option value="DZD">Algerian Dinar</option>
-                        <option value="AOA">Angolan Kwanza</option>
-                        <option value="ARS">Argentine Peso</option>
-                        <option value="AMD">Armenian Dram</option>
-                        <option value="AWG">Aruban Florin</option>
-                        <option value="AUD">Australian Dollar</option>
-                        <option value="AZN">Azerbaijani Manat</option>
-                        <option value="BSD">Bahamian Dollar</option>
-                        <option value="BHD">Bahraini Dinar</option>
-                        <option value="BDT">Bangladeshi Taka</option>
-                        <option value="BBD">Barbadian Dollar</option>
-                        <option value="BYR">Belarusian Ruble</option>
-                        <option value="BEF">Belgian Franc</option>
-                        <option value="BZD">Belize Dollar</option>
-                        <option value="BMD">Bermudan Dollar</option>
-                        <option value="BTN">Bhutanese Ngultrum</option>
-                        <option value="BTC">Bitcoin</option>
-                        <option value="BOB">Bolivian Boliviano</option>
-                        <option value="BAM">Bosnia-Herzegovina Convertible Mark</option>
-                        <option value="BWP">Botswanan Pula</option>
-                        <option value="BRL">Brazilian Real</option>
-                        <option value="GBP">British Pound Sterling</option>
-                        <option value="BND">Brunei Dollar</option>
-                        <option value="BGN">Bulgarian Lev</option>
-                        <option value="BIF">Burundian Franc</option>
-                        <option value="KHR">Cambodian Riel</option>
-                        <option value="CAD">Canadian Dollar</option>
-                        <option value="CVE">Cape Verdean Escudo</option>
-                        <option value="KYD">Cayman Islands Dollar</option>
-                        <option value="XOF">CFA Franc BCEAO</option>
-                        <option value="XAF">CFA Franc BEAC</option>
-                        <option value="XPF">CFP Franc</option>
-                        <option value="CLP">Chilean Peso</option>
-                        <option value="CNY">Chinese Yuan</option>
-                        <option value="COP">Colombian Peso</option>
-                        <option value="KMF">Comorian Franc</option>
-                        <option value="CDF">Congolese Franc</option>
-                        <option value="CRC">Costa Rican ColÃ³n</option>
-                        <option value="HRK">Croatian Kuna</option>
-                        <option value="CUC">Cuban Convertible Peso</option>
-                        <option value="CZK">Czech Republic Koruna</option>
-                        <option value="DKK">Danish Krone</option>
-                        <option value="DJF">Djiboutian Franc</option>
-                        <option value="DOP">Dominican Peso</option>
-                        <option value="XCD">East Caribbean Dollar</option>
-                        <option value="EGP">Egyptian Pound</option>
-                        <option value="ERN">Eritrean Nakfa</option>
-                        <option value="EEK">Estonian Kroon</option>
-                        <option value="ETB">Ethiopian Birr</option>
-                        <option value="EUR">Euro</option>
-                        <option value="FKP">Falkland Islands Pound</option>
-                        <option value="FJD">Fijian Dollar</option>
-                        <option value="GMD">Gambian Dalasi</option>
-                        <option value="GEL">Georgian Lari</option>
-                        <option value="DEM">German Mark</option>
-                        <option value="GHS">Ghanaian Cedi</option>
-                        <option value="GIP">Gibraltar Pound</option>
-                        <option value="GRD">Greek Drachma</option>
-                        <option value="GTQ">Guatemalan Quetzal</option>
-                        <option value="GNF">Guinean Franc</option>
-                        <option value="GYD">Guyanaese Dollar</option>
-                        <option value="HTG">Haitian Gourde</option>
-                        <option value="HNL">Honduran Lempira</option>
-                        <option value="HKD">Hong Kong Dollar</option>
-                        <option value="HUF">Hungarian Forint</option>
-                        <option value="ISK">Icelandic KrÃ³na</option>
-                        <option value="INR">Indian Rupee</option>
-                        <option value="IDR">Indonesian Rupiah</option>
-                        <option value="IRR">Iranian Rial</option>
-                        <option value="IQD">Iraqi Dinar</option>
-                        <option value="ILS">Israeli New Sheqel</option>
-                        <option value="ITL">Italian Lira</option>
-                        <option value="JMD">Jamaican Dollar</option>
-                        <option value="JPY">Japanese Yen</option>
-                        <option value="JOD">Jordanian Dinar</option>
-                        <option value="KZT">Kazakhstani Tenge</option>
-                        <option value="KES">Kenyan Shilling</option>
-                        <option value="KWD">Kuwaiti Dinar</option>
-                        <option value="KGS">Kyrgystani Som</option>
-                        <option value="LAK">Laotian Kip</option>
-                        <option value="LVL">Latvian Lats</option>
-                        <option value="LBP">Lebanese Pound</option>
-                        <option value="LSL">Lesotho Loti</option>
-                        <option value="LRD">Liberian Dollar</option>
-                        <option value="LYD">Libyan Dinar</option>
-                        <option value="LTL">Lithuanian Litas</option>
-                        <option value="MOP">Macanese Pataca</option>
-                        <option value="MKD">Macedonian Denar</option>
-                        <option value="MGA">Malagasy Ariary</option>
-                        <option value="MWK">Malawian Kwacha</option>
-                        <option value="MYR">Malaysian Ringgit</option>
-                        <option value="MVR">Maldivian Rufiyaa</option>
-                        <option value="MRO">Mauritanian Ouguiya</option>
-                        <option value="MUR">Mauritian Rupee</option>
-                        <option value="MXN">Mexican Peso</option>
-                        <option value="MDL">Moldovan Leu</option>
-                        <option value="MNT">Mongolian Tugrik</option>
-                        <option value="MAD">Moroccan Dirham</option>
-                        <option value="MZM">Mozambican Metical</option>
-                        <option value="MMK">Myanmar Kyat</option>
-                        <option value="NAD">Namibian Dollar</option>
-                        <option value="NPR">Nepalese Rupee</option>
-                        <option value="ANG">Netherlands Antillean Guilder</option>
-                        <option value="TWD">New Taiwan Dollar</option>
-                        <option value="NZD">New Zealand Dollar</option>
-                        <option value="NIO">Nicaraguan CÃ³rdoba</option>
-                        <option value="NGN">Nigerian Naira</option>
-                        <option value="KPW">North Korean Won</option>
-                        <option value="NOK">Norwegian Krone</option>
-                        <option value="OMR">Omani Rial</option>
-                        <option value="PKR">Pakistani Rupee</option>
-                        <option value="PAB">Panamanian Balboa</option>
-                        <option value="PGK">Papua New Guinean Kina</option>
-                        <option value="PYG">Paraguayan Guarani</option>
-                        <option value="PEN">Peruvian Nuevo Sol</option>
-                        <option value="PHP">Philippine Peso</option>
-                        <option value="PLN">Polish Zloty</option>
-                        <option value="QAR">Qatari Rial</option>
-                        <option value="RON">Romanian Leu</option>
-                        <option value="RUB">Russian Ruble</option>
-                        <option value="RWF">Rwandan Franc</option>
-                        <option value="SVC">Salvadoran ColÃ³n</option>
-                        <option value="WST">Samoan Tala</option>
-                        <option value="SAR">Saudi Riyal</option>
-                        <option value="RSD">Serbian Dinar</option>
-                        <option value="SCR">Seychellois Rupee</option>
-                        <option value="SLL">Sierra Leonean Leone</option>
-                        <option value="SGD">Singapore Dollar</option>
-                        <option value="SKK">Slovak Koruna</option>
-                        <option value="SBD">Solomon Islands Dollar</option>
-                        <option value="SOS">Somali Shilling</option>
-                        <option value="ZAR">South African Rand</option>
-                        <option value="KRW">South Korean Won</option>
-                        <option value="XDR">Special Drawing Rights</option>
-                        <option value="LKR">Sri Lankan Rupee</option>
-                        <option value="SHP">St. Helena Pound</option>
-                        <option value="SDG">Sudanese Pound</option>
-                        <option value="SRD">Surinamese Dollar</option>
-                        <option value="SZL">Swazi Lilangeni</option>
-                        <option value="SEK">Swedish Krona</option>
-                        <option value="CHF">Swiss Franc</option>
-                        <option value="SYP">Syrian Pound</option>
-                        <option value="STD">São Tomé and Príncipe Dobra</option>
-                        <option value="TJS">Tajikistani Somoni</option>
-                        <option value="TZS">Tanzanian Shilling</option>
-                        <option value="THB">Thai Baht</option>
-                        <option value="TOP">Tongan pa'anga</option>
-                        <option value="TTD">Trinidad & Tobago Dollar</option>
-                        <option value="TND">Tunisian Dinar</option>
-                        <option value="TRY">Turkish Lira</option>
-                        <option value="TMT">Turkmenistani Manat</option>
-                        <option value="UGX">Ugandan Shilling</option>
-                        <option value="UAH">Ukrainian Hryvnia</option>
-                        <option value="AED">United Arab Emirates Dirham</option>
-                        <option value="UYU">Uruguayan Peso</option>
-                        <option value="USD">US Dollar</option>
-                        <option value="UZS">Uzbekistan Som</option>
-                        <option value="VUV">Vanuatu Vatu</option>
-                        <option value="VEF">Venezuelan BolÃ­var</option>
-                        <option value="VND">Vietnamese Dong</option>
-                        <option value="YER">Yemeni Rial</option>
-                        <option value="ZMK">Zambian Kwacha</option>
-                    </select>
-                    <div
-                        *ngIf="requestQuotationForm2?.currency?.invalid && (requestQuotationForm2?.currency.dirty || requestQuotationForm2?.currency.touched)">
-                        <label *ngIf="requestQuotationForm2?.currency.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-2 p-3">
-                    <h6 class="star">Details</h6>
-                </div>
-
-                <div class="col-md-9 p-3">
-                    <textarea id="w3review" class="form-control" name="Details" rows="4" cols="50"
-                        formControlName="details">
-                </textarea>
-
-                    <div
-                        *ngIf="requestQuotationForm2?.details?.invalid && (requestQuotationForm2?.details.dirty || requestQuotationForm2?.details.touched)">
-                        <label *ngIf="requestQuotationForm2?.details.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6 class="star">Attach Files</h6>
-                </div>
-                <div class="col-md-8 p-3">
-                    <!-- <pg-upload ListType="picture-card" [Preview]="handlePreview">
+          <div
+            *ngIf="
+              requestQuotationForm2?.details?.invalid &&
+              (requestQuotationForm2?.details.dirty ||
+                requestQuotationForm2?.details.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.details.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-3 p-3">
+          <h6 class="star">Attach Files</h6>
+        </div>
+        <div class="col-md-8 p-3">
+          <!-- <pg-upload ListType="picture-card" [Preview]="handlePreview">
                         <div class="pic-placeholder">
                             <i class="pg-icon p-b-5">upload</i>
                             <div class="fs-12">Upload</div>
                         </div>
                     </pg-upload> -->
-                    <div class="input-group" style="width: 285px;">
-                        <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" id="fileInput"
-                            (change)="fileUpload($event)" #fileInputDoc aria-label="Recipient's username"
-                            aria-describedby="basic-addon2" formControlName="image">
-                        <div class="input-group-append">
-                            <!-- <button class="btn btn-outline-secondary" type="button"
+          <div class="input-group" style="width: 285px">
+            <input
+              type="file"
+              accept="image/*,.pdf,.doc"
+              class="form-control py-2"
+              id="fileInput"
+              (change)="fileUpload($event)"
+              #fileInputDoc
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              formControlName="image"
+            />
+            <div class="input-group-append">
+              <!-- <button class="btn btn-outline-secondary" type="button"
                                 (click)="fileInputDoc.click()">upload</button> -->
-                        </div>
-                    </div>
-
-                    <div
-                        *ngIf="requestQuotationForm2?.image?.invalid && (requestQuotationForm2?.image.dirty || requestQuotationForm2?.image.touched)">
-                        <label *ngIf="requestQuotationForm2?.image.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-12 p-4 mx-4">
-                    <span>Product images or files lead to more accurate quotes.</span>
-                </div>
-                <div class="col-md-3 p-3">
-                    <h6>Ship In</h6>
-                </div>
-                <div class="col-md-2 p-3">
-                    <input class="form-control text" type="number" formControlName="shipIn" placeholder="number" name=""
-                        id="">
-
-                    <div
-                        *ngIf="requestQuotationForm2?.shipIn?.invalid && (requestQuotationForm2?.shipIn.dirty || requestQuotationForm2?.shipIn.touched)">
-                        <label *ngIf="requestQuotationForm2?.shipIn.errors.required" class="error">This Field is
-                            required.</label>
-                    </div>
-                </div>
-                <div class="col-md-6 p-3">
-                    <p class="p-1">day(s) after supplier receives the initial payment.</p>
-                </div>
-                <div class="col-md-12 p-4 form-check">
-                    <input class="form-check-input pl-2" type="checkbox" formControlName="isCheck" value=""
-                        id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        I have read, understood and agreed to abide by the Buying Request Posting Rules.
-                    </label>
-
-                    <div class="p-4 w-25">
-                        <button class="rounded-pill btn btn-orange" (click)="saveFormData($event)">Submit</button>
-                    </div>
-                </div>
             </div>
-        </form>
-    </div>
+          </div>
+
+          <div
+            *ngIf="
+              requestQuotationForm2?.image?.invalid &&
+              (requestQuotationForm2?.image.dirty ||
+                requestQuotationForm2?.image.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.image.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-12 p-4 mx-4">
+          <span>Product images or files lead to more accurate quotes.</span>
+        </div>
+        <div class="col-md-3 p-3">
+          <h6>Ship In</h6>
+        </div>
+        <div class="col-md-2 p-3">
+          <input
+            class="form-control text"
+            type="number"
+            formControlName="shipIn"
+            placeholder="number"
+            name=""
+            id=""
+          />
+
+          <div
+            *ngIf="
+              requestQuotationForm2?.shipIn?.invalid &&
+              (requestQuotationForm2?.shipIn.dirty ||
+                requestQuotationForm2?.shipIn.touched)
+            "
+          >
+            <label
+              *ngIf="requestQuotationForm2?.shipIn.errors.required"
+              class="error"
+              >This Field is required.</label
+            >
+          </div>
+        </div>
+        <div class="col-md-6 p-3">
+          <p class="p-1">day(s) after supplier receives the initial payment.</p>
+        </div>
+        <div class="col-md-12 p-4 form-check">
+          <input
+            class="form-check-input pl-2"
+            type="checkbox"
+            formControlName="isCheck"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            I have read, understood and agreed to abide by the Buying Request
+            Posting Rules.
+          </label>
+
+          <div class="p-4 w-25">
+            <button
+              class="rounded-pill btn btn-orange"
+              (click)="saveFormData($event)"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 <!-- <app-footer1></app-footer1> -->
 
 <!-- Button trigger modal -->
 
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Select Category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="height: 50vh; overflow-y: scroll;">
-                <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:masterCategoryList}">
-                </ng-template>
-                <ng-template #treeUlContainer let-list='list'>
-                    <ul>
-                        <li *ngFor="let item of list" #nodeEl>
-                            <div class="d-flex align-items-center">
-                                <div [class.hideToggleContainer]="!item._hasChildren">
-                                    <button class="btn btn-primary" *ngIf="!item._toggle"
-                                        [disabled]="!item._hasChildren" (click)="getChildren(item)">
-                                        Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
-                                    </button>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Category</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height: 50vh; overflow-y: scroll">
+        <ng-template
+          [ngTemplateOutlet]="treeUlContainer"
+          [ngTemplateOutletContext]="{ list: masterCategoryList }"
+        >
+        </ng-template>
+        <ng-template #treeUlContainer let-list="list">
+          <ul>
+            <li *ngFor="let item of list" #nodeEl>
+              <div class="d-flex align-items-center">
+                <div [class.hideToggleContainer]="!item._hasChildren">
+                  <button
+                    class="btn btn-primary"
+                    *ngIf="!item._toggle"
+                    [disabled]="!item._hasChildren"
+                    (click)="getChildren(item)"
+                  >
+                    Open<i
+                      class="fa fa-caret-right ml-2"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
 
-                                    <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                                        (click)="remChildren(item)">
-                                        Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                                <button data-dismiss="modal" class="ml-3 btn btn-secondary"
-                                    (click)="selectExtraCategory(item)">
-                                    Select
-                                </button>
-                                <i class="fa fa-circle" aria-hidden="true"></i>
-                                <span *ngIf="!item._hasChildren">&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
-                                <span *ngIf="item._hasChildren">
-                                    <b>&nbsp;{{item._name |
-                                        uppercase}}&nbsp;&nbsp;&nbsp;</b>
-                                </span>
-                            </div>
-                            <ng-container *ngIf="item?.children && item.children.length>0">
-                                <ng-template [ngTemplateOutlet]="treeUlContainer"
-                                    [ngTemplateOutletContext]="{list:item.children}"></ng-template>
-                            </ng-container>
-                        </li>
-                    </ul>
-                </ng-template>
-            </div>
-        </div>
+                  <button
+                    class="btn btn-primary"
+                    *ngIf="item._toggle"
+                    [disabled]="!item._hasChildren"
+                    (click)="remChildren(item)"
+                  >
+                    Close<i
+                      class="fa fa-caret-down ml-2"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </div>
+                <button
+                  data-dismiss="modal"
+                  class="ml-3 btn btn-secondary"
+                  (click)="selectExtraCategory(item)"
+                >
+                  Select
+                </button>
+                <i class="fa fa-circle" aria-hidden="true"></i>
+                <span *ngIf="!item._hasChildren"
+                  >&nbsp;{{ item._name }}&nbsp;&nbsp;&nbsp;</span
+                >
+                <span *ngIf="item._hasChildren">
+                  <b>&nbsp;{{ item._name | uppercase }}&nbsp;&nbsp;&nbsp;</b>
+                </span>
+              </div>
+              <ng-container *ngIf="item?.children && item.children.length > 0">
+                <ng-template
+                  [ngTemplateOutlet]="treeUlContainer"
+                  [ngTemplateOutletContext]="{ list: item.children }"
+                ></ng-template>
+              </ng-container>
+            </li>
+          </ul>
+        </ng-template>
+      </div>
     </div>
+  </div>
 </div>

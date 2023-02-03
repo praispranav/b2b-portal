@@ -1,13 +1,12 @@
-<div class="conatiner-fluid p-3 h-100">
+<!-- <div class="conatiner-fluid p-3 h-100">
+
     <div class="card">
       <div class="card-body">
         <div class="card card-default">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h3 class="card-title">ALL Brand Approval</h3>
             <div>
-              <!-- <button class="btn btn-primary" routerLink="../brand-approval-add">
-                Add<i class="fa fa-plus ml-2" aria-hidden="true"></i>
-              </button> -->
+            
             </div>
           </div>
           <table class="table table-striped">
@@ -39,4 +38,72 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+  <div class="p-2 pt-0">
+    <div class="container">
+      <div class="row pb-2" activeBox style=" margin-left: -15px;">
+        <div class="col-md-2 bg-white border p-3  mr-2">
+            <p>All Products</p>
+            <span>{{ productCounts.total }}</span>
+        </div>
+        <div class="col-md-2 bg-white border p-3 p-10 mr-2">
+            <p>Active Listings</p>
+            <span>{{ productCounts.activeListing }}</span>
+        </div>
+        <div class="col-md-2 bg-white border  p-3  mr-2">
+            <p>InActive Listings</p>
+            <span>{{ productCounts.inActiveListing }}</span>
+        </div>
+        <div class="col-md-2 bg-white border p-3 mr-2">
+            <p>Products Rejection</p>
+            <span>{{ productCounts.rejectedProduct }}</span>
+        </div>
+    </div>
+    </div>
+    <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
+        <!-- START card -->
+        <div class="card card-transparent">
+            <div class="card-header  d-flex justify-content-between">
+                <!-- <div class="card-title">Admin Product Verification
+                </div> -->
+                <div class="export-options-container"></div>
+                <!-- <div class="clearfix"></div> -->
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" style="height:600px;overflow-y: hidden">
+
+                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
+                        [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
+                        [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
+                    </ngx-datatable> -->
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                        [scrollbarV]="true" (page)="onPage($event)">
+                        >
+                        <ngx-datatable-column name="">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <input type="checkbox" />
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Img">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <img src="{{row.image}}" alt="" style="width: 50px; height: 50px; object-fit: contain;">
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
+                        </ngx-datatable-column>
+                        <!-- <ngx-datatable-column name="Actions" sortable="false" prop="name">
+                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(value)">
+                                  Update
+                                </button>
+                            </ng-template>
+                        </ngx-datatable-column> -->
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+        <!-- END card -->
+    </pg-container>
+</div>

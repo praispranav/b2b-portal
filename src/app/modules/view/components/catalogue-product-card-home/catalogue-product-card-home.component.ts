@@ -1,81 +1,58 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { environment } from "../../../../../environments/environment";
+import { FormProductService } from "../../../../core/providers/user/form-product.service";
 
 @Component({
-  selector: 'app-catalogue-product-card-home',
-  templateUrl: './catalogue-product-card-home.component.html',
-  styleUrls: ['./catalogue-product-card-home.component.scss']
+  selector: "app-catalogue-product-card-home",
+  templateUrl: "./catalogue-product-card-home.component.html",
+  styleUrls: ["./catalogue-product-card-home.component.scss"],
 })
 export class CatalogueProductCardHomeComponent implements OnInit {
+  addedProducts: any[] = [];
+  baseUrl: string = environment.imageStorage;
 
-  constructor() { }
-
-  @Input('products') productList: any[] = [
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/H034b54eb143b4da6a93cd82aa88fe57eC.jpg_100x100.jpg",
-    //   price: 42,
-    //   year: 3,
-    //   supplier: "GS",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/High-Quality-Men-s-Washed-Denim-Jacket.jpg_300x300.jpg",
-    //   price: 23,
-    //   year: 1,
-    //   supplier: "DC",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/Hot-Style-Sherpa-Wholesale-Outdoor-Clothing-Custom.jpg_100x100.jpg",
-    //   price: 10,
-    //   year: 2,
-    //   supplier: "RD",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/O-Neck-Men-Real-lather-Zipper-Jackets.jpg_300x300.jpg",
-    //   price: 9,
-    //   year: 4,
-    //   supplier: "GS",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/baseball-jackets-men-custom-applique-embroidery-logo.jpg_100x100.jpg",
-    //   price: 22,
-    //   year: 1,
-    //   supplier: "PS",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/cz5001a-New-arrival-high-quality-mens-plus.jpg_100x100.jpg",
-    //   price: 15,
-    //   year: 2,
-    //   supplier: "RD",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/Custom-Wholesale-Cheap-Price-Zipper-Stripe-Track.jpg_100x100.jpg",
-    //   price: 19,
-    //   year: 2,
-    //   supplier: "GS",
-    // },
-    // {
-    //   name: "simply dummy text of the printing and typesetting industry.",
-    //   image:
-    //     "https://icbu-cpv-image.oss-us-west-1.aliyuncs.com/New-Autumn-Winter-Men-Waterproof-And-Warm.jpg_100x100.jpg",
-    //   price: 10,
-    //   year: 1,
-    //   supplier: "PS",
-    // },
-  ];
-  ngOnInit() {
+  constructor(private productService: FormProductService, private router: Router) {
+    this.checkProducts();
+    this.productService.stringSubject.subscribe((a) => {
+      this.checkProducts();
+    });
   }
 
+  @Input("products") productList: any[] = [];
+
+  checkProducts() {
+    const products = localStorage.getItem(this.productService.productConstant);
+    if (products) {
+      const parsed = JSON.parse(products);
+      this.addedProducts = parsed;
+    }
+    console.log(products);
+  }
+
+  ngOnInit() { }
+
+  findProducts(productId) {
+    return this.addedProducts.find(
+      (product) => product.productId === productId
+    );
+  }
+
+  handleAddProduct(product) {
+    this.productService.storeProductInfo(product);
+  }
+
+  navigateToSeller(product) {
+    console.log("Product", product);
+    this.router.navigate(["/b2b/seller-catalogue-contact"], {
+      queryParams: {
+        sellerId: product.supplierId,
+        search: "",
+        searchType: "Seller",
+        page: 1,
+        pageSize: 10,
+        productId: product.productId,
+      },
+    });
+  }
 }

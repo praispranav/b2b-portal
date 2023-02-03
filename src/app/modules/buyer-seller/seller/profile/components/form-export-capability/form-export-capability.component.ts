@@ -101,7 +101,7 @@ export class FormExportCapabilityComponent implements OnInit {
     this.isLoading = true;
     const formValue = this.exportCapabilityForm.value;
     
-    debugger;
+    // debugger;
 
     if (this.isDataExist) {
       formValue._id = this.idIfDataExist;

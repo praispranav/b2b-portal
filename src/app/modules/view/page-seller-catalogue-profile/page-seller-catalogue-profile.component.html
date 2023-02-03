@@ -7,10 +7,10 @@
     <div class="row">
         <div class="col-lg-6 col-xlg-5">
             <div class="row">
-                <div class="col-md-12 m-b-10">
-                    <div class="ar-2-2 widget-1-wrapper">
+                <div class="col-md-12 m-b-10 ">
+                    <div class="ar-2-2 ">
                         <!-- START WIDGET -->
-                        <app-banner-img-widget [label]="catalogue.company" [description]="catalogue.businessType">
+                        <app-banner-img-widget [label]="catalogue.company" [description]="catalogue.businessType" [banners]="catalogue.banners">
                         </app-banner-img-widget>
                         <!-- END WIDGET -->
                     </div>
@@ -39,31 +39,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-4 m-b-10">
                     <div class="ar-1-1">
-                        <!-- START WIDGET -->
                         <app-button-three-widget></app-button-three-widget>
-                        <!-- END WIDGET -->
                     </div>
                 </div>
                 <div class="col-sm-4 m-b-10">
                     <div class="ar-1-1">
-                        <!-- START WIDGET -->
-
                         <app-button-tile-widget></app-button-tile-widget>
-                        <!-- <graph-live-widget></graph-live-widget> -->
-                        <!-- END WIDGET -->
                     </div>
                 </div>
                 <div class="col-sm-4 m-b-10">
                     <div class="ar-1-1">
-                        <!-- START WIDGET -->
-
                         <app-button-five-widget></app-button-five-widget>
-                        <!-- <graph-live-widget></graph-live-widget> -->
-                        <!-- END WIDGET -->
                     </div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <app-button-three-widget></app-button-three-widget>
                 </div>
             </div>
         </div>

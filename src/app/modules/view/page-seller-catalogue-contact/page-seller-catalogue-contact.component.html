@@ -2,42 +2,70 @@
 <!-- <app-header1></app-header1> -->
 <app-catalogue-seller-company-details></app-catalogue-seller-company-details>
 <app-catalogue-menubar></app-catalogue-menubar>
-<div class="container ">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="container-fluid border p-3" style="margin-top: 20px;">
-                <h5 class="mt-4">Send Meassage To Supplier</h5>
 <div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <ul style="list-style: none;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container-fluid border p-3" style="margin-top: 20px">
+        <h5 class="mt-4">Send Message To Supplier</h5>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <form class="col-md-10">
+              <ul style="list-style: none">
+                <li></li>
                 <li>
+                  <h6>To: {{ comapnyDetails.sellerDetails.company }}</h6>
+                </li>
+                <li >
+                  <h6 class="mt-4" *ngIf="productDetail">
+                    <span class="text-danger">*</span>Products:
+                  </h6>
+                  <div *ngIf="productDetail" class="d-flex">
+                    <div>
+                      <img [src]="imageStorage + productDetail.productImage[0]" style="width: 40px; height: 40px;" />
+                    </div>
+                    <div class="">
+                      <p>{{ productDetail.productName }}</p>
+                    </div>
+                    <div class="">
+                        <input type="text" name="quantity" [(ngModel)]="quantity" placeholder="Quantity" />
+                    </div>
+                    <div>
+                      <button (click)="removeProduct()">Remove</button>
+                    </div>
+                  </div>
+
+                  <h6 class="mt-4">
+                    <span class="text-danger">*</span>Message:
+                  </h6>
+                  <textarea
+                    class="form-control"
+                    style="height: 200px"
+                    [(ngModel)]="message"
+                    name="message"
+                    id="name"
+                    placeholder="Briefly Describe your Abilities"
+                  ></textarea>
                 </li>
                 <li>
-                    <h6>To : Supplier Name</h6>
-
-                                </li>
-                                <li>
-                                    <h6 class="mt-4"><span class="text-danger">*</span>Meassage :</h6>
-                                    <textarea class="form-control" style="height:200px ;" id="name"
-                                        placeholder="Briefly Describe your Abilities"></textarea>
-                                </li>
-                                <li>
-                                    <input type="checkbox"><label class="ml-2">I agree to share my business cared to
-                                        supplier</label>
-                                </li>
-                                <li>
-                                    <button class="btn btn-default btn-lg btn-rounded mb-4 org-color-btn ">Send</button>
-                                </li>
-                                </ul>
-                                </div>
+                  <input type="checkbox" /><label class="ml-2"
+                    >I agree to share my business cared to supplier</label
+                  >
+                </li>
+                <li>
+                  <button
+                    class="btn btn-default btn-lg btn-rounded mb-4 org-color-btn" (click)="sendMessage()"
+                  >
+                    Send
+                  </button>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-
-            </div>
-        </div>
-        </div>
-        </div>
+  </div>
+</div>
 
 <app-footer1></app-footer1>

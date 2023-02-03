@@ -17,7 +17,7 @@ export class ProviderCompanyProfileService {
     return this.http.get<any>(`${environment.apiUrl}/company-profile/get/${id}`);
   }
 
-  getCompanyProfileByUserId(id){
+  getCompanyProfileByUserId(id?:string ){
     return this.http.get<any>(`${environment.apiUrl}/company-profile/userId/${id}`);
   }
 

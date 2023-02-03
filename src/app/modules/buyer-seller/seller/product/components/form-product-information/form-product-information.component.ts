@@ -7,6 +7,8 @@ import { ProviderMaterCountryService } from "../../../../../../core/providers/ma
 import { ProviderMaterStateService } from "../../../../../../core/providers/master/provider-mater-state.service";
 import { ProviderStorageService } from "../../../../../../core/providers/user/provider-storage.service";
 import { ProviderCategoryService } from "../../../../../../core/providers/user/provider-category.service";
+import { ProviderMaterCategoryService } from "../../../../../../core/providers/master/provider-mater-category.service";
+import { ProviderBrandApprovalService } from "../../../../../../core/providers/user/provider-brand-approval.service";
 
 export type productInfo = {
   productName: string;
@@ -36,8 +38,9 @@ export class FormProductInformationComponent implements OnInit {
   ];
   countries: any[] = [];
   states: any[] = [];
+  brandsList: any[] = [];
 
-  categoryList: any[] = []
+  categoryList: any[] = [];
 
   codes = [
     { country: "Afghanistan", code: "93", iso: "AF" },
@@ -286,6 +289,8 @@ export class FormProductInformationComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private categoryService: ProviderCategoryService,
+    private masterCategoryService: ProviderMaterCategoryService,
+    private brandApproval: ProviderBrandApprovalService,
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerProductInformationService: ProviderProductInformationService,
     private providerMaterStateService: ProviderMaterStateService,
@@ -303,6 +308,7 @@ export class FormProductInformationComponent implements OnInit {
     this.addNewOtherDetails();
     this.getCountryList();
     this.getCategoryList();
+    this.getApprovedBrands();
   }
 
   buildProductInformationForm() {
@@ -313,7 +319,7 @@ export class FormProductInformationComponent implements OnInit {
       isProduct: ["No"],
       productKeywords: [[], [Validators.required]],
       sellerOwnCategorySelect: ["", [Validators.required]],
-      sellerOwnCategoryCreate: ["", [Validators.required]],
+      sellerOwnCategoryCreate: [""],
       placeOfOrigin: ["", [Validators.required]],
       modelNo: ["", [Validators.required]],
       otherDetailInfo: this.formBuilder.array([]),
@@ -393,12 +399,20 @@ export class FormProductInformationComponent implements OnInit {
     });
   }
 
-  getCategoryList(){
-    this.categoryService.getCategoryListByUser().subscribe((res)=>{
-      this.categoryList = res.data
-      this.productInformationForm.patchValue({
-        sellerOwnCategorySelect: localStorage.getItem('selectedCategoryId')
-      })
-    })
+  getCategoryList() {
+    this.categoryService
+      .getCategoryListByFilter(0, 100, { level: "0" })
+      .subscribe((res) => {
+        this.categoryList = res.data;
+      });
+  }
+
+  getApprovedBrands() {
+    this.brandApproval
+      .getBrandApprovalListByFilter(0, 100, { status: "Approved" })
+      .subscribe((res) => {
+        console.log("Brands", res.data);
+        this.brandsList = res.data;
+      });
   }
 }

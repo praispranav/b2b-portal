@@ -1,63 +1,113 @@
 <div class="row pt-0 pl-3 pr-3">
-    <div class="col-md-3 ml-0 bg-white mt-4">
-        <div class="p-2">
-            <h5 class="text-blue"><i class="pg-icon">menu_add</i> ALL CATEGORIES</h5>
-        </div>
-        <table>
-            <tr *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
-                <h6>
-                    Auto & Transportation >
-                </h6>
-            </tr>
-            <tr>
-                <h6 class="text-blue">
-                    View More
-                </h6>
-            </tr>
-        </table>
+  <div class="col-md-3 ml-0 bg-white mt-4">
+    <div class="p-2">
+      <h5 class="text-blue"><i class="pg-icon">menu_add</i> ALL CATEGORIES</h5>
     </div>
-    <div class="col-md-9 pr-0">
-        <div class="row">
-            <div class="col-md-4 pt-4 pb-0">
-                <pgcard Maximize="false" Refresh="false" Toggle="true" HeaderClass="separator">
-                    <ng-template #CardTitle>Portlet Three</ng-template>
-                    <h3>
-                        <span class="semi-bold">With</span> Separator</h3>
-                    <p>When it comes to digital design, the lines between functionality, aesthetics, and psychology
-                        are inseparably
-                        blurred. Without the constraints of the physical world, there’s no
-                        . A
-                        product is bought to be used. </p>
-                </pgcard>
+    <div>
+      <div *ngFor="let categories of parentCategories" (mouseover)="handleParentCategoryClick($event)">
+        <p class="mb-1 focus" (mouseover)="selectCategory(categories)">
+          {{ categories.name }}
+        </p>
+      </div>
+      <div>
+        <h6 class="text-blue">View More</h6>
+      </div>
+    </div>
+    <!-- *ngIf="popoverVisible"
+    (mouseout)="unselectCategory()" -->
+    <div>
 
-                <pgcard Maximize="false" Refresh="false" Toggle="false" HeaderClass="separator">
-                    <ng-template #CardTitle>Portlet Three</ng-template>
-                    <h3>
-                        <span class="semi-bold">With</span> Separator</h3>
-                    <p>When it comes to digital design, the lines between functionality,
-                        fall back
-                        on, and every on, andand every on, and
-                        . A
-                        product is bought to be . <br> </p>
-                </pgcard>
+     
+      <!-- style="
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        background: rgba(255, 255, 255, 0.5);
+        z-index: 100;
+      " -->
+      <div class="bg" *ngIf="popoverVisible" [ngStyle]="{ top: overlayLocation.clientY + 'px', left: 350 + 'px' }"
+        style="
+          position: fixed;
+          height: 400px;
+          width: 800px;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          background: white;
+          z-index: 100;
+          box-shadow: 5px 5px 10px rgba(100, 100, 100, 0.7);
+          border-radius: 10px;
+          padding: 20px;
+        ">
+        <button type="button" class="btn-close float-right"  (click)="close()"></button>
+         
+        <div class="pl-2 ">
+          <h4 class="text-orange">{{ selectedCategory.name }}</h4>
+
+          <div class="row">
+            <div *ngFor="let item of getSubCategories(selectedCategory._id);" class="col-4 p-2">
+              <div class="shadow p-2">
+                <h5>{{ item.name }}({{ getSubSubCategories(item._id).length }})</h5>
+                <div
+                  *ngFor="let subSubCategory of getSubSubCategories(item._id).slice(0, readMore[item._id] ? getSubSubCategories(item._id).length : 5)">
+                  <p class="underline mb-1" (click)="handleNavigateToCategory(subSubCategory._id)">
+                    {{ subSubCategory.name }}
+                  </p>
+                </div>
+                <p class="text-blue" *ngIf="!readMore[item._id]" (click)="readMore[item._id] = true"> <u>Read More</u>
+                </p>
+              </div>
             </div>
-            <div class="col-md-8 pt-4 p-0 pr-3 video">
-                <iframe width="100%" height="470" src="https://www.youtube-nocookie.com/embed/CI4Uoo9MhxI"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
+          </div>
         </div>
-        <div class="d-flex flex-row flex-wrap bg-blue p-2">
-            <div class="col-md-2 p-2 mr-7">
-                <h1>EASY <br> FOR <br> BYUER</h1>
-                <p>some-text some-text </p>
-            </div>
-            <div *ngFor="let i of [1,2,3]" class="col-md-3 bg-grey pl-4 pt-2 border ml-2">
-                <h4>Select and ask for any product</h4>
-                <p>some textsome textsome textsome textsome textsome text </p>
-                <button class="btn btn-outline-primary">Get Start</button>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-md-9 pr-0">
+    <div class="row">
+      <div class="col-md-4 pt-4 pb-0">
+        <pgcard Maximize="false" Refresh="false" Toggle="true" HeaderClass="separator">
+          <ng-template #CardTitle>Portlet Three</ng-template>
+          <h3><span class="semi-bold">With</span> Separator</h3>
+          <p>
+            When it comes to digital design, the lines between functionality,
+            aesthetics, and psychology are inseparably blurred. Without the
+            constraints of the physical world, there’s no . A product is bought
+            to be used.
+          </p>
+        </pgcard>
+
+        <pgcard Maximize="false" Refresh="false" Toggle="false" HeaderClass="separator">
+          <ng-template #CardTitle>Portlet Three</ng-template>
+          <h3><span class="semi-bold">With</span> Separator</h3>
+          <p>
+            When it comes to digital design, the lines between functionality,
+            fall back on, and every on, andand every on, and . A product is
+            bought to be . <br />
+          </p>
+        </pgcard>
+      </div>
+      <div class="col-md-8 pt-4 p-0 pr-3 video">
+        <iframe width="100%" height="470" src="https://www.youtube-nocookie.com/embed/CI4Uoo9MhxI"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="d-flex flex-row flex-wrap bg-blue p-2">
+      <div class="col-md-2 p-2 mr-7">
+        <h1>
+          EASY <br />
+          FOR <br />
+          BYUER
+        </h1>
+        <p>some-text some-text</p>
+      </div>
+      <div *ngFor="let i of [1, 2, 3]" class="col-md-3 bg-grey pl-4 pt-2 border ml-2">
+        <h4>Select and ask for any product</h4>
+        <p>some textsome textsome textsome textsome textsome text</p>
+        <button class="btn btn-outline-primary">Get Start</button>
+      </div>
+    </div>
+  </div>
 </div>

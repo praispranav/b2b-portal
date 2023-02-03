@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { RequestQuotationService } from "../../../core/providers/user/request-quotation.service";
 import { Router } from "@angular/router";
+import { ProviderUserAuthService } from "../../../core/providers/auth/provider-user-auth.service";
 @Component({
   selector: "app-page-home-request-for-quotation",
   templateUrl: "./page-home-request-for-quotation.component.html",
@@ -23,8 +24,11 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private requestQuotationService: RequestQuotationService
-  ) {}
+    private requestQuotationService: RequestQuotationService,
+    private authService:ProviderUserAuthService
+  ) {
+
+  }
   @Output() formSubmitData: EventEmitter<any> = new EventEmitter<any>();
 
   // handleQuantityChange(event) {
@@ -47,34 +51,17 @@ export class PageHomeRequestForQuotationComponent implements OnInit {
   }
 
   subRequestForm1() {
-    // this.getDetailById(item);
-    // this.payload = {
-    //   // quantity: this.quantity,
-    //   ...this.requestQuotationForm1.value,
-
-    // };
     let formData = this.requestQuotationForm1.value;
-    // let data = {
-    //   formData: formData,
-    //   // value: 'first'
-    // }
 
     this.formSubmitData.emit(formData);
     this.requestQuotationService.setRequestForQuotationLocal(this.requestQuotationForm1.value)
-    this.router.navigateByUrl(`/b2b/request-for-quotation`);
-
-    // console.log("payload", this.payload);
-    // this.requestQuotationService.addRequestForQuotation(this.payload).subscribe(
-    //   (res) => {
-    //     window.alert('API Success');
-    //     // this.router.navigateByUrl(`/seller/category/category-add/${item['_id']}`);
-    //     console.log("res", res);
-    //   },
-    //   (err) => {
-
-    //     window.alert('API Error');
-    //   }
-    // );
+    const jwt_decode = this.authService.currentUserValueObjTokenDecoded
+    console.log("JwtDecode", jwt_decode);
+    if(jwt_decode){
+      this.router.navigateByUrl(`/b2b/request-for-quotation`);
+    } else {
+      this.router.navigateByUrl('user-auth/sign-in')
+    }
   }
 
   fileUpload(event: any) {

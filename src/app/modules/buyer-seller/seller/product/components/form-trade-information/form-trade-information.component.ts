@@ -42,7 +42,7 @@ export class FormTradeInformationComponent implements OnInit {
 
   tradeUnitList: any[] = [
     { unit: "Acres" },
-    { unit: "mperes" },
+    { unit: "Amperes" },
     { unit: "Bags" },
     { unit: "Barrels" },
     { unit: "Blades" },
@@ -74,10 +74,10 @@ export class FormTradeInformationComponent implements OnInit {
     { unit: "Hectares" },
     { unit: "Hertz" },
     { unit: "Inches" },
-    { unit: "Kiloamperes" },
-    { unit: "Kilograms" },
-    { unit: "Kiloohms" },
-    { unit: "Kiloviolts" },
+    { unit: "Kilo Amperes" },
+    { unit: "Kilo grams" },
+    { unit: "Kilo Ohms" },
+    { unit: "KiloVolts" },
     { unit: "Kilowatts" },
     { unit: "Litters" },
     { unit: "Long Tons" },
@@ -95,7 +95,37 @@ export class FormTradeInformationComponent implements OnInit {
     { unit: "Ounce" },
     { unit: "Packs" },
     { unit: "Pair" },
+    { unit: "Pallets" },
+    { unit: "Parcels" },
+    { unit: "Perches" },
+    { unit: "Pieces" },
+    { unit: "Prints" },
+    { unit: "Plants" },
+    { unit: "Poles" },
+    { unit: "Pounds" },
+    { unit: "Quarts" },
+    { unit: "Quarters" },
+    { unit: "Rods" },
+    { unit: "Rolls" },
+    { unit: "Sets" },
+    { unit: "Sheets" },
+    { unit: "Short Tons" },
+    { unit: "Square Centimeters" },
+    { unit: "Square Feet" },
+    { unit: "Square Miles" },
+    { unit: "Square Yards" },
+    { unit: "Stones" },
+    { unit: "Strands" },
+    { unit: "Tons" },
+    { unit: "Tones" },
+    { unit: "Trays" },
+    { unit: "Twenty Foot Container" },
+    { unit: "Units" },
+    { unit: "Volts" },
+    { unit: "Watts" },
+    { unit: "Yards" },
   ];
+  
 
   paymentTypeList: any[] = [
     { paymentType: false, type: "D/A", value: "D/A" },
@@ -206,6 +236,7 @@ export class FormTradeInformationComponent implements OnInit {
 
   addPaymentType(i) {
     this.paymentTypeList[i].paymentType = !this.paymentTypeList[i].paymentType;
+    console.log("Payment Type List", this.paymentTypeList)
   }
 
   createTypeFields(types: any[]) {
@@ -239,19 +270,14 @@ export class FormTradeInformationComponent implements OnInit {
   deleteOtherDetails(index: number): void {
     this.otherDetailsArr.removeAt(index);
   }
+
   async subTradeInformationForm() {
     let formData = this.tradeInformationForm.value;
-    formData.types = this.paymentTypeList;
+    formData.paymentTypes = this.paymentTypeList.filter((i)=> i.paymentType).map((i)=>({ type: i.type, value: i.value }));
 
     formData.otherDetailTradeInfo = formData.otherDetailTradeInfo.map(
       (i) => i.other
     );
-
-    const filteredPaymentTypes = [];
-    formData.types.forEach((t) =>
-      filteredPaymentTypes.push({ type: "D/A", value: "D/A" })
-    );
-    formData.types = filteredPaymentTypes;
 
     let data = {
       formData,
@@ -265,8 +291,11 @@ export class FormTradeInformationComponent implements OnInit {
       ProviderStorageService.productConstants.tradeInformation,
       data.formData
     );
+    
+    // debugger;
     this.formSubmitData.emit(data);
   }
+
   private resetFormGroup(form: FormGroup) {
     form.reset();
   }

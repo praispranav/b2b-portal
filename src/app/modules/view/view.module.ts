@@ -94,6 +94,15 @@ import { CatalogueProductComponent } from './components/catalogue-product/catalo
 import { SellerSearchComponent } from './seller-search/seller-search.component';
 import { PageHomeRfqFormTwoComponent } from './page-home-rfq-form-two/page-home-rfq-form-two.component';
 import { SupplierProductSearchCategoryComponent } from './components/supplier-product-search-category/supplier-product-search-category.component';
+import { PageNoProductFoundComponent } from './page-no-product-found/page-no-product-found.component';
+import { ViewBlogComponent } from './view-blog/view-blog.component';
+import { ShortlistedProductsComponent } from './components/shortlisted-products/shortlisted-products.component';
+import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-supplier-found.component';
+import { PageNoProductAddedComponent } from './page-no-product-added/page-no-product-added.component';
+import { PageViewCategoryStructureComponent } from './page-view-category-structure/page-view-category-structure.component';
+
 
 @NgModule({
   declarations: [
@@ -175,10 +184,19 @@ import { SupplierProductSearchCategoryComponent } from './components/supplier-pr
     SellerSearchComponent,
     PageHomeRfqFormTwoComponent,
     SupplierProductSearchCategoryComponent,
-    ProductSearchCardListComponent
+    ProductSearchCardListComponent,
+    PageNoProductFoundComponent,
+    ViewBlogComponent,
+    ShortlistedProductsComponent,
+    SendEnquiryFormComponent,
+    PageNoSupplierFoundComponent,
+    PageNoProductAddedComponent,
+    PageViewCategoryStructureComponent,
+    
   ],
   imports: [ 
   CommonModule,
+ 
     FormsModule,
     ReactiveFormsModule,
     AlertModule.forRoot(),
@@ -188,13 +206,13 @@ import { SupplierProductSearchCategoryComponent } from './components/supplier-pr
     pgCardModule,
     IsotopeModule,
     pgCardSocialModule,
-  
+    
     pgSelectfx,
     pgSelectModule,
     pgUploadModule,
     pgSliderModule,
     pgCollapseModule.forRoot(),
-    ViewRoutingModule
+    ViewRoutingModule,CarouselModule,
   ],
 })
 export class ViewModule { }

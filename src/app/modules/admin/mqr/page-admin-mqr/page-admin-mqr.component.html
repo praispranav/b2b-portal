@@ -1,12 +1,10 @@
-<div class="p-2">
-    <div class="container">
+<div class="pl-2">
+    <!-- <div class="container">
         <div class="row  p-10 activeBox">
             <div class="col-md-4  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="form-select" (change)="handleCategoryChange()" [(ngModel)]="selectedCategory" aria-label="Default select example">
+                    <option [value]="'All'" selected>{{ 'All' }}</option>
+                    <option *ngFor="let item of categoryList" [value]="item[0]">{{ item[1] }}</option>
                 </select>
             </div>
             <div class="col-md-4  p-3 p-10 ">
@@ -18,11 +16,13 @@
                 </select>
             </div>
             <div class="col-md-4  p-3 p-10 ">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Bulk Action</option>
-                    <option value="1">Approved</option>
-                    <option value="2">Reject</option>
-                   
+                <select class="form-select" name="status" [(ngModel)]="selectedStatus"
+                    (change)="handleStatusChange($event)" aria-label="Default select example">
+                    <option value="All" selected>All</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Reject">Reject</option>
                 </select>
             </div>
 
@@ -30,7 +30,7 @@
 
 
         </div>
-    </div>
+    </div> -->
     <!-- <div class="card card-transparent ">
         <pg-tabset tabAnimation="slide-left" Type="fillup">
             <pg-tab>
@@ -63,6 +63,41 @@
     <pg-container extraHorizontalClass="bg-white" extraClass="bg-white">
         <!-- START card -->
         <div class="card card-transparent">
+            <div class="container">
+                <div class="row  ">
+                    <div class="col-md-2  p-3 ">
+                        <select (change)="applyFilter()" [(ngModel)]="selectedCategory" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Category</option>
+                            <option *ngFor="let item of categoryList" [value]="item.value">{{ item.label }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2  p-3 ">
+                        <select (change)="applyFilter()" [(ngModel)]="selectedDate" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Date</option>
+                            <option *ngFor="let item of dateList" [value]="item">{{ item }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2  p-3 ">
+                        <select [(ngModel)]="selectedStatus" (change)="applyFilter()" class="form-select" aria-label="Default select example">
+                            <option selected value="All">Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 p-4">
+                        <button class="btn btn-primary" (click)="resetFilter()">Reset</button>
+                    </div>
+                    <div class="col-md-3 mt-auto  pb-3">
+                        <div class="">
+                        <label class="text-danger">Bulk Action</label>
+                        <button data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Approved'" class="btn ms-2">Approve</button>
+                        <button data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Rejected'" class="btn ms-2">Reject</button>
+                    </div>
+                          </div>
+                </div>
+            </div>
             <div class="card-header  d-flex justify-content-between">
                 <div class="card-title">Admin MQR
                 </div>
@@ -72,31 +107,25 @@
             <div class="card-body">
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
-                    <!-- <ngx-datatable #tableAdvance class='table table-hover table-stripped' [columns]="advanceColumns"
-                        [columnMode]="columnModeSetting" [scrollbarH]="scrollBarHorizontal" [headerHeight]="50"
-                        [footerHeight]="50" [rowHeight]="60" [limit]="5" [scrollbarV]="true" [rows]='advanceRows'>
-                    </ngx-datatable> -->
-                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
-                        [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-                        [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)" />
+                                <input type="checkbox" (click)="handler(row)" (change)="handleChangeCheckboxes($event, row)" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <img src="{{row.image}}" alt="">
+                                <img src="{{ imageStorage + row.image}}" alt="">
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column *ngFor="let col of advanceColumns" [name]="col.name" [hidden]="col.image">
                         </ngx-datatable-column>
-                        <ngx-datatable-column name="Actions" sortable="false" prop="name">
-                            <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button
-                                    (click)="delete(value)">
+                        <ngx-datatable-column name="Action" sortable="false" prop="name">
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(row)" data-toggle="modal" data-target="#updateStatus">
                                     Update
                                 </button>
                             </ng-template>
@@ -107,4 +136,56 @@
         </div>
         <!-- END card -->
     </pg-container>
+</div>
+<!--  -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to {{ selectedStatusType === 'Approved' ? 'Approve' : 'Reject' }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                you would not able to revert back!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" (click)="bulkConfirm()" data-dismiss="modal" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="selectedRfq">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ selectedRfq.productName }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 p-3 p-10 ">
+                        <select [(ngModel)]="updateStatus" class="form-select" aria-label="Default select example">
+                            <option value="All" selected>All</option>
+                            <option value="Pending">Pending</option>
+                            <option value="InProgress">In Progress</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Reject">Reject</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" (click)="confirm()" data-dismiss="modal" class="btn btn-primary">Update
+                    Status</button>
+            </div>
+        </div>
+    </div>
 </div>

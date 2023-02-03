@@ -2,101 +2,155 @@
 
 </div>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-7">
-      <h2>Select a product type</h2>
-      <p>Choosing the best product type ensures that you see the most appropriate data fields for your
-        product.
-        Browse
-        the product types directly or use search.
-        <a href="#"> See if your product already exists on Bizzexpo.</a>
-      </p>
-      <h3 class="pt-2">Favourite</h3>
-      <input type="text" [(ngModel)]="fav" (keyup)="filterCategory()" placeholder="Search for a category"
-          class="form-control">
-        <div class="input-group-append" (click)="selectFavCategory()">
-          <span class="input-group-text primary search-btn"><i class="pg-icon">Select</i>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
+            <h2>Select a product type</h2>
+            <p>Choosing the best product type ensures that you see the most appropriate data fields for your product. Browse the product types directly or use search.
+                <a href="#"> See if your product already exists on Bizzexpo.</a>
+            </p>
+            <h3 class="pt-2">Favourite</h3>
+            <input type="text" [(ngModel)]="fav" (keyup)="filterCategory()" placeholder="Search for a category" class="form-control">
+            <div class="input-group-append" (click)="selectFavCategory()">
+                <span class="input-group-text primary search-btn"><i class="pg-icon">Select</i>
           </span>
-        </div>
-      <div>
-        <!-- <div *ngFor="let category of recentCategory">
+            </div>
+            <div>
+                <!-- <div *ngFor="let category of recentCategory">
           <p>{{ category.name }}</p>
         </div> -->
-      </div>
+            </div>
 
-      <div class="d-flex justify-content-start">
-        <div class="mr-auto ">
-          <h3 class="pt-2">Search</h3>
-        </div>
-        <div class="pt-4">
-          <a href="" class="float-right">What is a Product Type?</a>
-        </div>
-      </div>
+            <div class="d-flex justify-content-start">
+                <div class="mr-auto ">
+                    <h3 class="pt-2">Search</h3>
+                </div>
+                <div class="pt-4">
+                    <a href="" class="float-right">What is a Product Type?</a>
+                </div>
+            </div>
 
-      <div class="form-group input-group ">
-        <input type="text" [(ngModel)]="keyword" (keyup)="filterCategory()" placeholder="Search for a category"
-          class="form-control">
-        <div class="input-group-append">
-          <span class="input-group-text primary"><i class="pg-icon">search</i>
+            <div class="form-group input-group ">
+                <input type="text" [(ngModel)]="keyword" placeholder="Search for a category" class="form-control">
+                <div class="input-group-append" (click)="filterCategory()">
+                    <span class="input-group-text primary"><i class="pg-icon">search</i>
           </span>
-        </div>
-      </div>
-      <div class="">
-        <div class="" *ngFor="let category of searchedCategories">
-          <p>{{ category.mainCategoryName }}</p>
-          <p>{{ category.label }}</p>
-          <button class="btn btn-primary" (click)="selectSearchedCategory(category)">Select</button>
-        </div>
-      </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="" *ngFor="let category of searchedCategories;let i = index">
+                    <!-- <p>Main CategoryName {{ category.mainCategoryName }}</p> -->
+                    <p>{{ category.label }}</p>
+                    <button class="btn btn-primary" (click)="selectSearchedCategory(category)">Select</button>
+                </div>
+            </div>
 
-      <div class="d-flex justify-content-start">
-        <div class="mr-auto ">
-          <h3 class="pt-2">Browse</h3>
-        </div>
-        <div class="pt-4">
-          <a href="" class="float-right">What is a Product Type?</a>
-        </div>
-      </div>
-      <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Select a category.">
-      <div class="bg-white shadow p-3">
-        <ng-template [ngTemplateOutlet]="treeUlContainer"
-          [ngTemplateOutletContext]="{list:categoryListType3}"></ng-template>
-        <ng-template #treeUlContainer let-list='list'>
-          <ul>
-            <li *ngFor="let item of list" #nodeEl>
-              <div class="d-flex align-items-center">
-                <div [class.hideToggleContainer]="!item._hasChildren">
-                  <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren"
-                    (click)="getChildren(item)">
+            <div class="d-flex justify-content-start">
+                <div class="mr-auto ">
+                    <h3 class="pt-2">Browse</h3>
+                </div>
+                <div class="pt-4">
+                    <a href="" class="float-right">What is a Product Type?</a>
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Select a category.">
+            <div class="bg-white shadow p-3">
+                <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:categoryListType3}"></ng-template>
+                <ng-template #treeUlContainer let-list='list'>
+                    <ul>
+                        <li *ngFor="let item of list" #nodeEl>
+                            <div class="d-flex align-items-center">
+                                <div [class.hideToggleContainer]="!item._hasChildren">
+                                    <button class="btn btn-primary" *ngIf="!item._toggle" [disabled]="!item._hasChildren" (click)="getChildren(item)">
                     Open<i class="fa fa-caret-right ml-2" aria-hidden="true"></i>
                   </button>
 
-                  <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren"
-                    (click)="remChildren(item)">
+                                    <button class="btn btn-primary" *ngIf="item._toggle" [disabled]="!item._hasChildren" (click)="remChildren(item)">
                     Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
                   </button>
-                </div>
-                <button (click)="selectExploredCategory(item)" class="ml-3 btn btn-secondary" (click)="selectExtraCategory(item)">
+                                </div>
+                                <button (click)="selectExploredCategory(item)" class="ml-3 btn btn-secondary" (click)="selectExtraCategory(item)">
                   Select
                 </button>
-                <i class="fa fa-circle" aria-hidden="true"></i>
-                <span *ngIf="!item._hasChildren">&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
-                <span *ngIf="item._hasChildren">
+                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                <span *ngIf="!item._hasChildren">&nbsp;{{item._name}}&nbsp;&nbsp;&nbsp;</span>
+                                <span *ngIf="item._hasChildren">
                   <b>&nbsp;{{item._name |
                     uppercase}}&nbsp;&nbsp;&nbsp;</b>
                 </span>
-              </div>
-              <ng-container *ngIf="item?.children && item.children.length>0">
-                <ng-template [ngTemplateOutlet]="treeUlContainer"
-                  [ngTemplateOutletContext]="{list:item.children}"></ng-template>
-              </ng-container>
-            </li>
-          </ul>
-        </ng-template>
+                            </div>
+                            <ng-container *ngIf="item?.children && item.children.length>0">
+                                <ng-template [ngTemplateOutlet]="treeUlContainer" [ngTemplateOutletContext]="{list:item.children}"></ng-template>
+                            </ng-container>
+                        </li>
+                    </ul>
+                </ng-template>
 
-      </div>
+            </div>
+        </div>
+        <!-- <div class="col-md-6">
+            <div class="d-flex justify-content-start">
+                <div class="mr-auto ">
+                    <h3 class="pt-2">Browse</h3>
+                </div>
+                <div class="pt-4">
+                    <a href="" class="float-right">What is a Product Type?</a>
+                </div>
+            </div>
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Select a category.">
+            <div class="bg-white shadow p-3">
+
+
+                <ul>
+                    <li>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <button class="btn btn-primary" (mouseover)="showChildrens(true)" (mouseout)="mouseOut(false)">
+              Open<i class="fa fa-caret-right ml-2" aria-hidden="true" ></i>
+            </button>
+
+                                <button class="btn btn-primary">
+              Close<i class="fa fa-caret-down ml-2" aria-hidden="true"></i>
+            </button>
+                            </div>
+                            <button class="ml-3 btn btn-secondary">
+            Select
+          </button>
+                            <i class="fa fa-circle" aria-hidden="true"></i>
+                            <span *>&nbsp;Agriculture&nbsp;&nbsp;&nbsp;</span>
+                            <span>
+            <b>&nbsp;Agriculture&nbsp;&nbsp;&nbsp;</b>
+          </span>
+                        </div>
+
+                    </li>
+
+                </ul>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <ng-container *ngIf="showChildren">
+                <div class="card">
+
+                    <tr>
+                        <ul>
+                            <li *ngFor="let childNode of childrensss">
+                                {{childNode}}
+                            </li>
+                               </ul>
+                    </tr>
+
+                </div>
+            </ng-container>
+        </div> -->
+
+
+
     </div>
-    <div class="col-md-3"></div>
-  </div>
 </div>
