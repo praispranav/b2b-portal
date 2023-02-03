@@ -1,4 +1,4 @@
-<div class="p-2">
+<div class="pl-2">
     <!-- <div class="container">
         <div class="row  p-10 activeBox">
             <div class="col-md-4  p-3 p-10 ">
@@ -65,19 +65,19 @@
         <div class="card card-transparent">
             <div class="container">
                 <div class="row  ">
-                    <div class="col-md-4  p-3 ">
+                    <div class="col-md-2  p-3 ">
                         <select (change)="applyFilter()" [(ngModel)]="selectedCategory" class="form-select" aria-label="Default select example">
                             <option selected value="All">Category</option>
                             <option *ngFor="let item of categoryList" [value]="item.value">{{ item.label }}</option>
                         </select>
                     </div>
-                    <div class="col-md-3  p-3 ">
+                    <div class="col-md-2  p-3 ">
                         <select (change)="applyFilter()" [(ngModel)]="selectedDate" class="form-select" aria-label="Default select example">
                             <option selected value="All">Date</option>
                             <option *ngFor="let item of dateList" [value]="item">{{ item }}</option>
                         </select>
                     </div>
-                    <div class="col-md-3  p-3 ">
+                    <div class="col-md-2  p-3 ">
                         <select [(ngModel)]="selectedStatus" (change)="applyFilter()" class="form-select" aria-label="Default select example">
                             <option selected value="All">Status</option>
                             <option value="Pending">Pending</option>
@@ -86,11 +86,16 @@
                             <option value="Rejected">Rejected</option>
                         </select>
                     </div>
-                    <div class="col-md-12">
-                        <label class="text-danger">Bulk Action</label>
-                        <button  data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Approved'" class="btn ms-2">Approve</button>
-                        <button  data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Rejected'" class="btn ms-2">Reject</button>
+                    <div class="col-md-3 p-4">
+                        <button class="btn btn-primary" (click)="resetFilter()">Reset</button>
                     </div>
+                    <div class="col-md-3 mt-auto  pb-3">
+                        <div class="">
+                        <label class="text-danger">Bulk Action</label>
+                        <button data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Approved'" class="btn ms-2">Approve</button>
+                        <button data-toggle="modal" data-target="#exampleModal" (click)=" this.selectedStatusType = 'Rejected'" class="btn ms-2">Reject</button>
+                    </div>
+                          </div>
                 </div>
             </div>
             <div class="card-header  d-flex justify-content-between">
@@ -103,15 +108,12 @@
                 <div class="table-responsive" style="height:600px;overflow-y: hidden">
 
 
-                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows"
-                        [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-                        [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
+                    <ngx-datatable #tableAdvance class="table table-hover table-stripped" [rows]="advanceRows" [columns]="advanceColumns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [columnMode]="columnModeSetting" [limit]="5" [scrollbarH]="scrollBarHorizontal"
                         [scrollbarV]="true" (page)="onPage($event)">
                         >
                         <ngx-datatable-column name="">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <input type="checkbox" (click)="handler(row)"
-                                    (change)="handleChangeCheckboxes($event, row)" />
+                                <input type="checkbox" (click)="handler(row)" (change)="handleChangeCheckboxes($event, row)" />
                             </ng-template>
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Img">
@@ -123,8 +125,7 @@
                         </ngx-datatable-column>
                         <ngx-datatable-column name="Action" sortable="false" prop="name">
                             <ng-template ngx-datatable-cell-template let-row="row">
-                                <button class="me-4 btn btn-primary show-notification" md-icon-button
-                                    (click)="delete(row)" data-toggle="modal" data-target="#updateStatus">
+                                <button class="me-4 btn btn-primary show-notification" md-icon-button (click)="delete(row)" data-toggle="modal" data-target="#updateStatus">
                                     Update
                                 </button>
                             </ng-template>
@@ -138,8 +139,7 @@
 </div>
 <!--  -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -159,8 +159,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="updateStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" *ngIf="selectedRfq">
             <div class="modal-header">

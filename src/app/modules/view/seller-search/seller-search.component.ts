@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { environment } from "../../../../environments/environment";
 import { ProviderCategoryService } from "../../../core/providers/user/provider-category.service";
 import { SellerSearchService } from "../../../core/providers/user/seller-search.service";
-
+import { FormProductService } from "../../../core/providers/user/form-product.service";
 interface SearchQuery {
   category?: string;
   search?: string;
@@ -23,13 +23,14 @@ interface SearchQuery {
 })
 export class SellerSearchComponent implements OnInit {
   searchQuery: SearchQuery = {};
-
+  sellerId: string;
   supplierList: any[] = [];
   revenueList: any[] = [];
   categoryList: any[] = [];
   certificationsList: any[] = [];
   businessTypeList: any[] = [];
-
+  productList: any[] = [];
+  baseUrl: string;
   totalListSize: number = 0;
 
   imageEnvironment: string = environment.imageStorage;
@@ -40,7 +41,9 @@ export class SellerSearchComponent implements OnInit {
     private route: ActivatedRoute,
     private categoryService: ProviderCategoryService,
     private sellerSearchService: SellerSearchService,
-    private router: Router
+    private _formProductService: FormProductService,
+    private router: Router,
+    private _activated: ActivatedRoute,
   ) {
     this.route.queryParams.subscribe((params) => {
       this.searchQuery = params;
@@ -49,7 +52,27 @@ export class SellerSearchComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.baseUrl = environment.imageStorage;
+  }
+
+  getProducts(): void {
+    let payload = {
+      userId: this.sellerId,
+      page: 1,
+      pageSize: 2,
+      searchText: "Approved",
+    };
+    this._formProductService.getProductBySeller(payload).subscribe(
+      (res) => {
+        console.log("res", res);
+        this.productList = res.data;
+      },
+      (err) => {
+        console.log("err", err);
+      }
+    );
+  }
 
   getSearchedSellerList() {
     const payload = { ...this.searchQuery, searchType: undefined };
@@ -60,6 +83,10 @@ export class SellerSearchComponent implements OnInit {
       this.categoryList = res.data.categoryList;
       this.businessTypeList = res.data.businessTypeList;
       this.totalListSize = res.data.total;
+      this.supplierList.forEach((element) => {
+        this.sellerId = element.sellerDetails._id
+      });
+      this.getProducts();
     });
   }
 
@@ -97,7 +124,20 @@ export class SellerSearchComponent implements OnInit {
         sellerId: sellerId,
         page: 1,
         pageSize: 10,
-        searchProduct: ""
+        searchProduct: "",
+      },
+    });
+  }
+  navigateToContact(sellerId): void {
+    const searchQuery = this.searchQuery;
+    this.router.navigate(["/b2b/seller-catalogue-contact"], {
+      queryParams: {
+        ...searchQuery,
+        sellerId: sellerId,
+        page: 1,
+        pageSize: 10,
+        searchProduct: "",
+        categoryId: "",
       },
     });
   }

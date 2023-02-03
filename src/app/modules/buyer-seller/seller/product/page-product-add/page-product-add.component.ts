@@ -17,7 +17,7 @@ export class PageProductAddComponent implements OnInit {
   fourTabFormValue: any;
   payload: any = {};
   currentTabIndex: number = 0;
-
+  category:any;
   constructor(
     private router: Router,
     private productService: FormProductService,
@@ -34,7 +34,11 @@ export class PageProductAddComponent implements OnInit {
   //     }
   //   );
   // }
-  ngOnInit() {}
+  ngOnInit() {
+this.category= JSON.parse(localStorage.getItem("selectedCategoryId")).name;
+console.log('category',this.category);
+
+  }
 
   saveFormData(event): void {
     console.log("event", event);
@@ -130,7 +134,7 @@ export class PageProductAddComponent implements OnInit {
           ...this.secondTabFormValue,
           ...this.thirdTabFormValue,
           ...this.fourTabFormValue,
-          category: localStorage.getItem("selectedCategoryId"),
+          category: this.category,
         };
         console.log("payload", this.payload);
         this.productService.addProductDetails(this.payload).subscribe(

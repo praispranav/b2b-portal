@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../../../../environments/environment';
 import { RequestQuotationService } from '../../../../../../core/providers/user/request-quotation.service';
 
 @Component({
@@ -7,18 +8,20 @@ import { RequestQuotationService } from '../../../../../../core/providers/user/r
   styleUrls: ['./dashboard-mrqs.component.scss']
 })
 export class DashboardMrqsComponent implements OnInit {
-
+  baseUrl:string;
   rfqList: any[] = [];
 
 
   constructor(private requestForQuotationService: RequestQuotationService) { }
 
   ngOnInit() {
+    this.baseUrl=environment.imageStorage;
     this.getRequestForQuotationByUser();
   }
 
   getRequestForQuotationByUser(){
-    this.requestForQuotationService.getRequestForQuotationByCategories().subscribe((res)=>{
+    let paging='3'
+    this.requestForQuotationService.getRequestForQuotationByCategories(paging).subscribe((res)=>{
       console.log("Request Data", res);
       if(res.data) this.rfqList = res.data
     })

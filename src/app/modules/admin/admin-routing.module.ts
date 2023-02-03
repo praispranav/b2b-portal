@@ -62,7 +62,12 @@ const routes: Routes = [
   {
     path: 'admin-tradeShow',
     loadChildren: '../admin/admin-tradeshow/admin-tradeshow.module#AdminTradeshowModule'
+  },
+  {
+    path: 'associate-profile',
+    loadChildren: '../admin/associate-profile/associate-profile.module#AssociateProfileModule'
   }
+  
 
 
 ];

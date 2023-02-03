@@ -51,6 +51,7 @@ import { ViewBlogComponent } from "./view-blog/view-blog.component";
 import { SendEnquiryFormComponent } from "./send-enquiry-form/send-enquiry-form.component";
 import { PageNoSupplierFoundComponent } from "./page-no-supplier-found/page-no-supplier-found.component";
 import { PageNoProductAddedComponent } from "./page-no-product-added/page-no-product-added.component";
+import { PageViewCategoryStructureComponent } from "./page-view-category-structure/page-view-category-structure.component";
 
 
 const routes: Routes = [
@@ -258,6 +259,10 @@ const routes: Routes = [
   {
     path: "trade-show",
     component: PageTradeShowComponent,
+  },
+  {
+    path: "view-category-structure",
+    component: PageViewCategoryStructureComponent
   },
   {
     path: "**",

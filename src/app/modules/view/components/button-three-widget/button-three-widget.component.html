@@ -1,10 +1,65 @@
-<pgcard TimeOut="3000"
-    AdditionalClasses="card no-border cover bg-contrast-medium widget widget-6 widget-loader-circle-lg no-margin full-height"
-    MinimalHeader="true" RefreshColor="light">
-    <div class="pull-bottom bottom-left bottom-right padding-25">
-        <h1 class="text-white semi-bold"></h1>
-        <span class="label font-montserrat fs-11">TODAY</span>
-        <p class="text-white m-t-20">Fashion is what you're offered </p>
-        <p class="text-white hint-text no-margin">four times a year by designers</p>
-    </div>
-</pgcard>
+<div class="row">
+    <ng-container *ngIf="productList?.length > 0; else default">
+        <ng-container *ngFor="let product of productList">
+            <div class="col-md-4">
+                <pgcard TimeOut="3000" class="widget-6"
+                    AdditionalClasses="card no-border cover bg-contrast-medium widget widget-loader-circle-lg no-margin full-height"
+                    MinimalHeader="true" RefreshColor="light">
+                    <div class="pull-bottom bottom-left bottom-right padding-25 inner-card"
+                        [ngStyle]="{background: 'url(' + baseUrl + product?.productImage[0] + ')'}">
+                        <h1 class="text-white semi-bold"></h1>
+                        <span class="label font-montserrat fs-11">TODAY</span>
+                        <p class="text-white m-t-20">Fashion is what you're offered</p>
+                        <p class="text-white hint-text no-margin">
+                            four times a year by designers
+                        </p>
+                    </div>
+                </pgcard>
+            </div>
+        </ng-container>
+    </ng-container>
+    <ng-template #default>
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" class="widget-6"
+                AdditionalClasses="card no-border cover bg-contrast-medium widget widget-loader-circle-lg no-margin full-height"
+                MinimalHeader="true" RefreshColor="light">
+                <div class="pull-bottom bottom-left bottom-right padding-25 inner-card">
+                    <h1 class="text-white semi-bold"></h1>
+                    <span class="label font-montserrat fs-11">TODAY</span>
+                    <p class="text-white m-t-20">Fashion is what you're offered</p>
+                    <p class="text-white hint-text no-margin">
+                        four times a year by designers
+                    </p>
+                </div>
+            </pgcard>
+        </div>
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" class="widget-6"
+                AdditionalClasses="card no-border cover bg-contrast-medium widget widget-loader-circle-lg no-margin full-height"
+                MinimalHeader="true" RefreshColor="light">
+                <div class="pull-bottom bottom-left bottom-right padding-25 inner-card">
+                    <h1 class="text-white semi-bold"></h1>
+                    <span class="label font-montserrat fs-11">TODAY</span>
+                    <p class="text-white m-t-20">Fashion is what you're offered</p>
+                    <p class="text-white hint-text no-margin">
+                        four times a year by designers
+                    </p>
+                </div>
+            </pgcard>
+        </div>
+        <div class="col-md-4">
+            <pgcard TimeOut="3000" class="widget-6"
+                AdditionalClasses="card no-border cover bg-contrast-medium widget widget-loader-circle-lg no-margin full-height"
+                MinimalHeader="true" RefreshColor="light">
+                <div class="pull-bottom bottom-left bottom-right padding-25 inner-card">
+                    <h1 class="text-white semi-bold"></h1>
+                    <span class="label font-montserrat fs-11">TODAY</span>
+                    <p class="text-white m-t-20">Fashion is what you're offered</p>
+                    <p class="text-white hint-text no-margin">
+                        four times a year by designers
+                    </p>
+                </div>
+            </pgcard>
+        </div>
+    </ng-template>
+</div>

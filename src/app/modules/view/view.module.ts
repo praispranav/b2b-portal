@@ -101,6 +101,7 @@ import { SendEnquiryFormComponent } from './send-enquiry-form/send-enquiry-form.
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-supplier-found.component';
 import { PageNoProductAddedComponent } from './page-no-product-added/page-no-product-added.component';
+import { PageViewCategoryStructureComponent } from './page-view-category-structure/page-view-category-structure.component';
 
 
 @NgModule({
@@ -190,6 +191,7 @@ import { PageNoProductAddedComponent } from './page-no-product-added/page-no-pro
     SendEnquiryFormComponent,
     PageNoSupplierFoundComponent,
     PageNoProductAddedComponent,
+    PageViewCategoryStructureComponent,
     
   ],
   imports: [ 

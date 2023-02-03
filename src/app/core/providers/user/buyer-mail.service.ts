@@ -22,15 +22,15 @@ export class BuyerMailService {
     );
   }
 
-  getBuyerMessages() {
+  getBuyerMessages(paging) {
     return this.http.get<any>(
-      `${environment.apiUrl}/buyer-mails/get-requestid-messages-buyer`
+      `${environment.apiUrl}/buyer-mails/get-requestid-messages-buyer`,{params:{paging}}
     );
   }
 
-  getSellerMessage() {
+  getSellerMessage(paging) {
     return this.http.get<any>(
-      `${environment.apiUrl}/buyer-mails/get-requestid-messages-seller`
+      `${environment.apiUrl}/buyer-mails/get-requestid-messages-seller`,{params:{paging}}
     );
   }
 
@@ -43,6 +43,12 @@ export class BuyerMailService {
   getAllMessages(requestId){
     return this.http.get<any>(
       `${environment.apiUrl}/buyer-mails/get-requestid-messages`, { params: { requestId } }
+    );
+  }
+
+  getSentMessages(requestId){
+    return this.http.get<any>(
+      `${environment.apiUrl}/buyer-mails/get-sent-messages`, { params: { requestId } }
     );
   }
 }
