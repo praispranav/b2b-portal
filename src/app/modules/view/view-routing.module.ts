@@ -52,6 +52,8 @@ import { SendEnquiryFormComponent } from "./send-enquiry-form/send-enquiry-form.
 import { PageNoSupplierFoundComponent } from "./page-no-supplier-found/page-no-supplier-found.component";
 import { PageNoProductAddedComponent } from "./page-no-product-added/page-no-product-added.component";
 import { PageViewCategoryStructureComponent } from "./page-view-category-structure/page-view-category-structure.component";
+import { ContactForCatalogueComponent } from "./contact-for-catalogue/contact-for-catalogue.component";
+import { ThankyouPageConfirmSupplierForCatalogingComponent } from "./thankyou-page-confirm-supplier-for-cataloging/thankyou-page-confirm-supplier-for-cataloging.component";
 
 
 const routes: Routes = [
@@ -234,7 +236,14 @@ const routes: Routes = [
     path: "supplier-report",
     component: PageSupplierReportComponent,
   },
-
+  {
+    path: "confirm-cataloging",
+    component: ThankyouPageConfirmSupplierForCatalogingComponent,
+  },
+  {
+    path: "cataloging",
+    component: ContactForCatalogueComponent,
+  },
 
   {
     path: "support",
