@@ -39,6 +39,7 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
         },
       ],
     },
+    
     {
       label: "Messages",
       toggle: "close",
@@ -118,6 +119,11 @@ export class SellerLayoutComponent extends RootLayout implements OnInit {
           label: "Suggestions",
           routerLink: "/seller/help/suggestion-list",
         },
+        {
+          label: "Cateloging request",
+          routerLink: "/b2b/cataloging",
+        },
+        
       ],
     },
     {

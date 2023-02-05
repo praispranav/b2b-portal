@@ -1,0 +1,15 @@
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1268px;
+    }
+
+}
+.table tbody tr td {
+    background: #fff;
+    color: #353f4d;
+    border-bottom: 1px solid rgba(220, 222, 224, 0.7);
+    border-top: 0px;
+    padding: 12px;
+    font-size: 13.5px;
+
+}

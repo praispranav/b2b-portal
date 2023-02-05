@@ -102,6 +102,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PageNoSupplierFoundComponent } from './page-no-supplier-found/page-no-supplier-found.component';
 import { PageNoProductAddedComponent } from './page-no-product-added/page-no-product-added.component';
 import { PageViewCategoryStructureComponent } from './page-view-category-structure/page-view-category-structure.component';
+import { ContactForCatalogueComponent } from './contact-for-catalogue/contact-for-catalogue.component';
+import { ThankyouPageConfirmSupplierForCatalogingComponent } from './thankyou-page-confirm-supplier-for-cataloging/thankyou-page-confirm-supplier-for-cataloging.component';
 
 
 @NgModule({
@@ -192,6 +194,8 @@ import { PageViewCategoryStructureComponent } from './page-view-category-structu
     PageNoSupplierFoundComponent,
     PageNoProductAddedComponent,
     PageViewCategoryStructureComponent,
+    ContactForCatalogueComponent,
+    ThankyouPageConfirmSupplierForCatalogingComponent,
     
   ],
   imports: [ 

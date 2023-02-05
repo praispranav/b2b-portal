@@ -125,6 +125,17 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       ],
     },
     {
+      label: "Cateloging",
+      toggle: "close",
+      submenu: [
+        {
+          label: "Requested Cateloging",
+          routerLink: "/admin/cataloging/requested-cateloging",
+        },
+      
+      ],
+    },
+    {
       label: "Partners",
       toggle: "close",
       submenu: [
@@ -142,11 +153,11 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
         },
         {
           label: "Associates",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/associate-profile/list",
         },
         {
           label: "Create new Associates",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/associate-profile/add-profile",
         },
         {
           label: "Associate Portfolio",

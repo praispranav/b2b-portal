@@ -66,6 +66,10 @@ const routes: Routes = [
   {
     path: 'associate-profile',
     loadChildren: '../admin/associate-profile/associate-profile.module#AssociateProfileModule'
+  },
+  {
+    path: 'cataloging',
+    loadChildren:'../admin/cateloging/cateloging.module#CatelogingModule'
   }
   
 

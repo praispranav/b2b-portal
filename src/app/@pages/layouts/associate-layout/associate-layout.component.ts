@@ -15,24 +15,26 @@ export class AssociateLayoutComponent extends RootLayout implements OnInit {
     },
     {
       label: "Profile",
-      routerLink: "/associate/dashboard",
+      routerLink: "/associate/profile/view",
     },
     {
       label: "Send Request",
-      routerLink: "/associate/dashboard",
+      routerLink: "/associate/supplier-catalogue-request/send-request",
     },
     {
-      label: "Add into Portfolio",
-      routerLink: "/associate/dashboard",
+      label: "Requested Seller",
+      routerLink: "/associate/supplier-catalogue-request/request",
     },
     {
       label: "List Seller",
-      routerLink: "/associate/dashboard",
+      routerLink: "/associate/supplier-catalogue-request/done",
     },
-    {
-      label: "Request For Seller Verification",
-      routerLink: "/associate/dashboard",
-    },
+    // {
+    //   label: "Add into Portfolio",
+    //   routerLink: "/associate/dashboard",
+    // },
+    
+   
     {
       label: "Seller Verification Status",
       routerLink: "/associate/dashboard",

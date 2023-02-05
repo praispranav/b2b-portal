@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AssociateProfileAddComponent } from './associate-profile-add/associate-profile-add.component';
+import { AssociateProfileListComponent } from './associate-profile-list/associate-profile-list.component';
+import { AssociateProfileViewComponent } from './associate-profile-view/associate-profile-view.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,14 @@ const routes: Routes = [
   {
     path:"add-profile",
     component:AssociateProfileAddComponent
+  },
+  {
+    path:"list",
+    component:AssociateProfileListComponent
+  },
+  {
+    path:"view",
+    component:AssociateProfileViewComponent
   }
 ];
 
