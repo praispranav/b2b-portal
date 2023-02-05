@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // apiUrl: 'https://b2buatprod.azurewebsites.net',
-  imageStorage: "https://ajayshankar.blob.core.windows.net/b2b/", // add filename with extension
+  imageStorage: "https://ajayshankardev.blob.core.windows.net/b2b/", // add filename with extension
   apiUrl: 'http://localhost:8080',
 };
 /*
