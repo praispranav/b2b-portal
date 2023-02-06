@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://dev.learnow.praispranav.in:8080',
+  apiUrl: 'https://dev.b2b.praispranav.in',
   imageStorage: "https://ajayshankardev.blob.core.windows.net/b2b/", 
 };
