@@ -48,6 +48,12 @@
               "src/assets/plugins/codrops-stepsform/js/classie.js",
               "src/assets/plugins/codrops-stepsform/js/stepsForm.js",
               "src/assets/plugins/skycons/skycons.js"
+            ],
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }
             ]
           },
           "configurations": {
