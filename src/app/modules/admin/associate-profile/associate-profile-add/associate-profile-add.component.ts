@@ -26,6 +26,7 @@ export class AssociateProfileAddComponent implements OnInit {
   payload: AssociateInterface;
   formArray: FormArray = new FormArray([]);
   certificateList: any[] = [];
+  date = new Date();
 
   constructor(
     private providerMaterCountryService: ProviderMaterCountryService,
@@ -225,6 +226,7 @@ export class AssociateProfileAddComponent implements OnInit {
       assignedBy: formData.assignedBy,
       agreementLetter: this.image,
       contactPerson: [...contact_details],
+      timeStamp: this.date.toString(),
     };
 
     console.log("payload", this.payload);

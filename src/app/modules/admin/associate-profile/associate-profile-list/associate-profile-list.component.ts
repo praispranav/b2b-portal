@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 export class AssociateProfileListComponent implements OnInit {
   payload = {
     page: "1",
-    pageSize: "10",
+    pageSize: "100",
     query: "",
   };
   associateList: any[] = [];
