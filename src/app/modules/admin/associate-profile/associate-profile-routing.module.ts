@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path:"view",
     component:AssociateProfileViewComponent
-  }
+  },
 ];
 
 @NgModule({
