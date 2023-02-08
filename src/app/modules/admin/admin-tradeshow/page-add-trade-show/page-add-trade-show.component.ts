@@ -191,7 +191,7 @@ export class PageAddTradeShowComponent implements OnInit {
       .subscribe(
         (res: any) => {
           console.log("cities", res);
-          this.cities = res.data[0].cities ? res.data[0].cities : [];
+          this.cities = res.data ? res.data : [];
         },
         (err) => {
           console.log(err);
