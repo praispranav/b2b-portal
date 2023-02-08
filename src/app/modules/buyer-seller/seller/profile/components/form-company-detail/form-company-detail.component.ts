@@ -166,7 +166,7 @@ export class FormCompanyDetailComponent implements OnInit {
     this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
       (res: any) => {
         console.log('cities', res)
-        this.cities = res.data[0].cities ? res.data[0].cities : [];
+        this.cities = res.data ? res.data : [];
       },
       (err) => {
         console.log(err)

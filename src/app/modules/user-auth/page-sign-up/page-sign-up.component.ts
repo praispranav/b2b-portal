@@ -358,7 +358,7 @@ getCountryList(){
     this.f.facState.setValue(e.target.value);
     this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
       (res: any) => {
-        this.cities = res.data[0].cities;
+        this.cities = res.data;
         console.log('cities', this.cities)
       },
       (err) => {
