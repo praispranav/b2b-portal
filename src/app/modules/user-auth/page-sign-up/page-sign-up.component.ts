@@ -1,14 +1,20 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  ValidatorFn,
+} from "@angular/forms";
 import { ProviderUserAuthService } from "./../../../core/providers/auth/provider-user-auth.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 import { MessageService } from "../../../@pages/components/message/message.service";
 import { AppMessageService } from "../../../core/services/app-message.service";
 import { ProviderMaterCountryService } from "../../../core/providers/master/provider-mater-country.service";
 import { ProviderMaterStateService } from "../../../core/providers/master/provider-mater-state.service";
 import { ProviderMaterLocationService } from "../../../core/providers/master/provider-mater-location.service";
 // import { ConfirmPasswordValidator } from "../confirmPasswordValidator";
-
 
 @Component({
   selector: "app-page-sign-up",
@@ -17,14 +23,14 @@ import { ProviderMaterLocationService } from "../../../core/providers/master/pro
 })
 export class PageSignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  states=[];
-  cities=[];
-  countries=[]
+  states = [];
+  cities = [];
+  countries = [];
 
   options = [
-    { value: 'India', label: 'India' },
-    { value: 'Malaysia', label: 'Malaysia' },
-    { value: 'Pakistan', label: 'Pakistan' }
+    { value: "India", label: "India" },
+    { value: "Malaysia", label: "Malaysia" },
+    { value: "Pakistan", label: "Pakistan" },
   ];
   // codes = [{"country":"Afghanistan","code":"93","iso":"AF"},
   // {"country":"Albania","code":"355","iso":"AL"},
@@ -276,7 +282,7 @@ export class PageSignUpComponent implements OnInit {
     private providerMaterCountryService: ProviderMaterCountryService,
     private providerMaterStateService: ProviderMaterStateService,
     private providerMaterLocationService: ProviderMaterLocationService
-  ) { }
+  ) {}
 
   get f() {
     return this.signUpForm.controls;
@@ -284,88 +290,105 @@ export class PageSignUpComponent implements OnInit {
 
   ngOnInit() {
     this.buildSignUpForm();
-    this.getCountryList()
+    this.getCountryList();
   }
 
   buildSignUpForm() {
-    this.signUpForm = this.formBuilder.group({
-      company: ["", [Validators.required]],
-      fName: ["", [Validators.required]],
-      lName: ["", [Validators.required]],
-      email: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-      code: ["+91"],
-      password: [null,Validators.compose([
-        Validators.required,CustomValidators.patternValidator(/\d/, {hasNumber: true }),
-        CustomValidators.patternValidator(/[A-Z]/, {hasCapitalCase: true }),
-         CustomValidators.patternValidator(/[a-z]/, {  hasSmallCase: true}),
-        CustomValidators.patternValidator(/[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,{hasSpecialCharacters: true}),Validators.minLength(8)])],
-      cpassword: [null, Validators.compose([Validators.required])],
-      country: ["", [Validators.required],],
-      address1: ["", [Validators.required]],
-      city: [""],
-      role: ["", [Validators.required]],
-      checkbox:[true]
-      
-    },
-    {validator: CustomValidators.passwordMatchValidator} )
+    this.signUpForm = this.formBuilder.group(
+      {
+        company: ["", [Validators.required]],
+        fName: ["", [Validators.required]],
+        lName: ["", [Validators.required]],
+        email: ["", [Validators.required]],
+        phone: ["", [Validators.required]],
+        code: ["+91"],
+        password: [
+          null,
+          Validators.compose([
+            Validators.required,
+            CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+            CustomValidators.patternValidator(/[A-Z]/, {
+              hasCapitalCase: true,
+            }),
+            CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true }),
+            CustomValidators.patternValidator(
+              /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/,
+              { hasSpecialCharacters: true }
+            ),
+            Validators.minLength(8),
+          ]),
+        ],
+        cpassword: [null, Validators.compose([Validators.required])],
+        country: ["", [Validators.required]],
+        address1: ["", [Validators.required]],
+        city: [""],
+        role: ["", [Validators.required]],
+        checkbox: [true],
+      },
+      { validator: CustomValidators.passwordMatchValidator }
+    );
   }
- 
+
   private matchPassword(AC: AbstractControl) {
-    let password = AC.get('password').value;
-    if (AC.get('cpassword').touched || AC.get('cpassword').dirty) {
-      let verifyPassword = AC.get('cpassword').value;
+    let password = AC.get("password").value;
+    if (AC.get("cpassword").touched || AC.get("cpassword").dirty) {
+      let verifyPassword = AC.get("cpassword").value;
       if (password != verifyPassword) {
-        AC.get('cpassword').setErrors({ matchPassword: true });
+        AC.get("cpassword").setErrors({ matchPassword: true });
       } else {
         return null;
       }
     }
   }
-getCountryList(){
-  this.providerMaterCountryService.getMaterCountryList().subscribe(
-    (res: any) => {
-
-      this.countries = res.data;
-      console.log('country', this.countries);
-    
-    },
-    (err) => {
-      console.log(err)
-    }
-  );
-}
+  getCountryList() {
+    this.providerMaterCountryService.getMaterCountryList().subscribe(
+      (res: any) => {
+        this.countries = res.data;
+        console.log("country", this.countries);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
   onCountrySelected(e) {
     console.log("" + e.target.value);
     this.f.regCountry.setValue(e.target.value);
     this.f.facCountry.setValue(e.target.value);
-  
-    this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
-      (res: any) => {
-        this.states = res.data[0].states;
-        console.log('state', this.states)
-      },
-      (err) => {
-        console.log(err)
-      }
-    );
+    let payload = {
+      country: e.target.value,
+    };
+    this.providerMaterStateService
+      .getMaterStateListAll(payload)
+      .subscribe(
+        (res: any) => {
+          this.states = res.data[0].states;
+          console.log("state", this.states);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
- 
- onStateSelected(e) {
+  onStateSelected(e) {
     this.f.regState.setValue(e.target.value);
 
     this.f.facState.setValue(e.target.value);
-    this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
-      (res: any) => {
-        this.cities = res.data;
-        console.log('cities', this.cities)
-      },
-      (err) => {
-        console.log(err)
-      }
-      
-    );
+    let payload = {
+      state: e.target.value,
+    };
+    this.providerMaterLocationService
+      .getMaterLocationListAll(payload)
+      .subscribe(
+        (res: any) => {
+          this.cities = res.data;
+          console.log("cities", this.cities);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   onCitySelected(e) {
@@ -373,26 +396,43 @@ getCountryList(){
     this.f.regCity.setValue(e.target.value);
   }
   navigateTosupportPage() {
-    const url= this.router.serializeUrl(
-      this.router.createUrlTree(['/b2b/create-account-support'])
-    )
-    window.open(url,"_blank");
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(["/b2b/create-account-support"])
+    );
+    window.open(url, "_blank");
   }
   subSignUpForm() {
     const params = this.signUpForm.value;
-    console.log(params)
-    params.role = params.role === 'buyer' ? 'buyer' : params.role === 'seller' ? 'seller' : 'buyer-seller';
-    this.providerUserAuthService.userSignUp(params).subscribe(res => {
-      if (res.header.code === 200) {
-        this.router.navigateByUrl('/b2b/active-account');
-        this.appMessageService.createBasicNotification('green', res.header.message);
-      } else {
-        this.appMessageService.createBasicNotification('blue', res.header.message);
+    console.log(params);
+    params.role =
+      params.role === "buyer"
+        ? "buyer"
+        : params.role === "seller"
+        ? "seller"
+        : "buyer-seller";
+    this.providerUserAuthService.userSignUp(params).subscribe(
+      (res) => {
+        if (res.header.code === 200) {
+          this.router.navigateByUrl("/b2b/active-account");
+          this.appMessageService.createBasicNotification(
+            "green",
+            res.header.message
+          );
+        } else {
+          this.appMessageService.createBasicNotification(
+            "blue",
+            res.header.message
+          );
+        }
+      },
+      (err) => {
+        this.appMessageService.createBasicNotification(
+          "red",
+          "Something went wrong"
+        );
+        console.log(err);
       }
-    }, err => {
-      this.appMessageService.createBasicNotification('red', 'Something went wrong');
-      console.log(err)
-    });
+    );
   }
 }
 
@@ -407,11 +447,10 @@ export class CustomValidators {
     };
   }
   static passwordMatchValidator(control: AbstractControl) {
-
-    const password: string = control.get('password').value; // get password from our password form control
-    const confirmPassword: string = control.get('cpassword').value; 
+    const password: string = control.get("password").value; // get password from our password form control
+    const confirmPassword: string = control.get("cpassword").value;
     if (password !== confirmPassword) {
-      control.get('cpassword').setErrors({ NoPassswordMatch: true });
+      control.get("cpassword").setErrors({ NoPassswordMatch: true });
     }
   }
 }

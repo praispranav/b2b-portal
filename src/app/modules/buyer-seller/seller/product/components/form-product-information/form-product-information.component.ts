@@ -359,8 +359,11 @@ export class FormProductInformationComponent implements OnInit {
     );
   }
   onCountrySelected(e) {
+    let payload = {
+      country: e.target.value,
+    };
     this.providerMaterStateService
-      .getMaterStateListAll(e.target.value)
+      .getMaterStateListAll(payload)
       .subscribe(
         (res: any) => {
           this.states = res.data[0].states;
