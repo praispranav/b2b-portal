@@ -104,6 +104,7 @@ import { PageNoProductAddedComponent } from './page-no-product-added/page-no-pro
 import { PageViewCategoryStructureComponent } from './page-view-category-structure/page-view-category-structure.component';
 import { ContactForCatalogueComponent } from './contact-for-catalogue/contact-for-catalogue.component';
 import { ThankyouPageConfirmSupplierForCatalogingComponent } from './thankyou-page-confirm-supplier-for-cataloging/thankyou-page-confirm-supplier-for-cataloging.component';
+import { VerifyAssociateComponent } from './verify-associate/verify-associate.component';
 
 
 @NgModule({
@@ -196,6 +197,7 @@ import { ThankyouPageConfirmSupplierForCatalogingComponent } from './thankyou-pa
     PageViewCategoryStructureComponent,
     ContactForCatalogueComponent,
     ThankyouPageConfirmSupplierForCatalogingComponent,
+    VerifyAssociateComponent,
     
   ],
   imports: [ 
