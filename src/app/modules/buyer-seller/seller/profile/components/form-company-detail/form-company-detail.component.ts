@@ -147,8 +147,10 @@ export class FormCompanyDetailComponent implements OnInit {
     console.log("" + e.target.value);
     // this.f.regCountry?.setValue(e.target.value);
     // this.f.facCountry?.setValue(e.target.value);
-
-    this.providerMaterStateService.getMaterStateListAll(e.target.value).subscribe(
+    let payload = {
+      country: e.target.value,
+    };
+    this.providerMaterStateService.getMaterStateListAll(payload).subscribe(
       (res: any) => {
         this.states = res.data[0].states;
         console.log('state', this.states)
@@ -163,7 +165,10 @@ export class FormCompanyDetailComponent implements OnInit {
     // this.f.regState.setValue(e.target.value);
 
     // this.f.facState.setValue(e.target.value);
-    this.providerMaterLocationService.getMaterLocationListAll(e.target.value).subscribe(
+    let payload = {
+      state: e.target.value,
+    };
+    this.providerMaterLocationService.getMaterLocationListAll(payload).subscribe(
       (res: any) => {
         console.log('cities', res)
         this.cities = res.data ? res.data : [];

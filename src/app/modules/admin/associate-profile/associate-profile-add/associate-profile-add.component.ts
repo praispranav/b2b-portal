@@ -70,8 +70,10 @@ export class AssociateProfileAddComponent implements OnInit {
   }
 
   getStateList(): void {
-    let country = null;
-    this.providerMaterStateService.getMaterStateListAll(country).subscribe(
+    let payload = {
+      country: null,
+    };
+    this.providerMaterStateService.getMaterStateListAll(payload).subscribe(
       (res: any) => {
         this.states = res.data[0].states;
         console.log("state", this.states);
@@ -83,15 +85,19 @@ export class AssociateProfileAddComponent implements OnInit {
   }
 
   getCityList(): void {
-    let state = null;
-    this.providerMaterLocationService.getMaterLocationListAll(state).subscribe(
-      (res: any) => {
-        this.cities = res.data ? res.data : [];
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    let payload = {
+      state: null,
+    };
+    this.providerMaterLocationService
+      .getMaterLocationListAll(payload)
+      .subscribe(
+        (res: any) => {
+          this.cities = res.data ? res.data : [];
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
   }
 
   getAssociateDetails(id): void {
@@ -161,22 +167,26 @@ export class AssociateProfileAddComponent implements OnInit {
   }
 
   onCountrySelected(e) {
-    this.providerMaterStateService
-      .getMaterStateListAll(e.target.value)
-      .subscribe(
-        (res: any) => {
-          this.states = res.data[0].states;
-          console.log("state", this.states);
-        },
-        (err) => {
-          console.log(err, "not selected");
-        }
-      );
+    let payload = {
+      country: e.target.value,
+    };
+    this.providerMaterStateService.getMaterStateListAll(payload).subscribe(
+      (res: any) => {
+        this.states = res.data[0].states;
+        console.log("state", this.states);
+      },
+      (err) => {
+        console.log(err, "not selected");
+      }
+    );
   }
 
   onStateSelected(e) {
+    let payload = {
+      state: e.target.value,
+    };
     this.providerMaterLocationService
-      .getMaterLocationListAll(e.target.value)
+      .getMaterLocationListAll(payload)
       .subscribe(
         (res: any) => {
           this.cities = res.data ? res.data : [];
