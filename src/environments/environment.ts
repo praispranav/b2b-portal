@@ -7,6 +7,8 @@ export const environment = {
   // apiUrl: 'https://b2buatprod.azurewebsites.net',
   imageStorage: "https://ajayshankardev.blob.core.windows.net/b2b/", // add filename with extension
   apiUrl: 'http://localhost:8080',
+  encryptionKey: '',
+  encryptionIv: '',
 };
 /*
  * For easier debugging in development mode, you can import the following file
