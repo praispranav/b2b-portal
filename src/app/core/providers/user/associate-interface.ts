@@ -16,5 +16,5 @@ export interface AssociateInterface {
   agreementLetter: string;
   contactPerson: any[];
   id?: string;
-  timeStamp: string;
+  isVerified:boolean;
 }

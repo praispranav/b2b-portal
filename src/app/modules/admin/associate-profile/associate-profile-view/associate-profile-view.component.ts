@@ -41,4 +41,9 @@ export class AssociateProfileViewComponent implements OnInit {
       }
     );
   }
+
+  onEdit(id): void {
+    console.log('id',id);
+    this.router.navigateByUrl("/admin/associate-profile/add-profile"+ "?aid=" + id)
+  }
 }

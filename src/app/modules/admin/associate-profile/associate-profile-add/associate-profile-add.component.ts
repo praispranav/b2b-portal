@@ -8,7 +8,7 @@ import { ImageService } from "./../../../../core/providers/user/image.service";
 import { AssociateService } from "./../../../../core/providers/user/associate.service";
 import { ProviderMaterLocationService } from "./../../../../core/providers/master/provider-mater-location.service";
 import { ProviderMaterStateService } from "./../../../../core/providers/master/provider-mater-state.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-associate-profile-add",
@@ -26,7 +26,8 @@ export class AssociateProfileAddComponent implements OnInit {
   payload: AssociateInterface;
   formArray: FormArray = new FormArray([]);
   certificateList: any[] = [];
-  date = new Date();
+  associateId: string;
+  associateDetails: any;
 
   constructor(
     private providerMaterCountryService: ProviderMaterCountryService,
@@ -35,12 +36,26 @@ export class AssociateProfileAddComponent implements OnInit {
     private associateService: AssociateService,
     private providerMaterLocationService: ProviderMaterLocationService,
     private providerMaterStateService: ProviderMaterStateService,
-    private router: Router
+    private router: Router,
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getCountryList();
     this.buildForm();
+    this.getCountryList();
+    this.getStateList();
+    this.getCityList();
+  }
+
+  ngAfterViewInit(): void {
+    this._activatedRoute.queryParams.subscribe((params) => {
+      try {
+        this.associateId = params["aid"];
+        this.getAssociateDetails(this.associateId);
+      } catch (err) {
+        console.log("err..");
+      }
+    });
   }
 
   getCountryList(): void {
@@ -50,6 +65,48 @@ export class AssociateProfileAddComponent implements OnInit {
       },
       (err) => {
         console.log(err);
+      }
+    );
+  }
+
+  getStateList(): void {
+    let country = null;
+    this.providerMaterStateService.getMaterStateListAll(country).subscribe(
+      (res: any) => {
+        this.states = res.data[0].states;
+        console.log("state", this.states);
+      },
+      (err) => {
+        console.log(err, "not selected");
+      }
+    );
+  }
+
+  getCityList(): void {
+    let state = null;
+    this.providerMaterLocationService.getMaterLocationListAll(state).subscribe(
+      (res: any) => {
+        this.cities = res.data ? res.data : [];
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getAssociateDetails(id): void {
+    this.associateService.getAssociateById(id).subscribe(
+      (res) => {
+        this.associateDetails = res;
+        if (
+          this.associateDetails &&
+          this.associateDetails.hasOwnProperty("_id")
+        ) {
+          this.patchFormData();
+        }
+      },
+      (err) => {
+        console.log("err", err);
       }
     );
   }
@@ -74,6 +131,33 @@ export class AssociateProfileAddComponent implements OnInit {
       contactPerson: this.formBuilder.array([]),
     });
     this.addNewContact({});
+  }
+
+  patchFormData(): void {
+    this.removeContacts(0);
+    if (this.associateDetails.hasOwnProperty("contactPerson")) {
+      this.associateDetails.contactPerson.forEach((element) => {
+        this.addNewContact(element);
+      });
+    }
+    this.formGroup.patchValue({
+      companyName: this.associateDetails.companyName,
+      email: this.associateDetails.email,
+      password: this.associateDetails.password,
+      confirmPassword: this.associateDetails.confirmPassword,
+      country: this.associateDetails.country,
+      state: this.associateDetails.state,
+      city: this.associateDetails.city,
+      gstNo: this.associateDetails.gstNo,
+      estYear: this.associateDetails.estYear,
+      // registrationCertificate: [...this.certificateList],
+      companyWebsite: this.associateDetails.companyWebsite,
+      companyStrength: this.associateDetails.companyStrength,
+      existingclient: this.associateDetails.existingclient,
+      assignedBy: this.associateDetails.assignedBy,
+      // agreementLetter: this.associateDetails.agreementLetter,
+      isVerified: this.associateDetails.isVerified,
+    });
   }
 
   onCountrySelected(e) {
@@ -226,18 +310,29 @@ export class AssociateProfileAddComponent implements OnInit {
       assignedBy: formData.assignedBy,
       agreementLetter: this.image,
       contactPerson: [...contact_details],
-      timeStamp: this.date.toString(),
+      isVerified: false,
     };
 
     console.log("payload", this.payload);
-    this.associateService.addAssociate(this.payload).subscribe(
-      (res) => {
-        console.log("res", res);
-        this.router.navigateByUrl("/admin/associate-profile/list");
-      },
-      (err) => {
-        console.log("err", err);
-      }
-    );
+    if (this.associateDetails.hasOwnProperty("_id")) {
+      this.payload.id = this.associateDetails._id;
+      this.associateService.updateAssociate(this.payload).subscribe(
+        (res) => {
+          this.router.navigateByUrl("/admin/associate-profile/list");
+        },
+        (err) => {
+          console.log("err", err);
+        }
+      );
+    } else {
+      this.associateService.addAssociate(this.payload).subscribe(
+        (res) => {
+          this.router.navigateByUrl("/admin/associate-profile/list");
+        },
+        (err) => {
+          console.log("err", err);
+        }
+      );
+    }
   }
 }
