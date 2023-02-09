@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AssociateService } from "./../../../../core/providers/user/associate.service";
 import { environment } from "./../../../../../environments/environment";
+import * as CryptoJS from "crypto-js";
+import { key, iv } from "./../../../../core/constant";
 
 @Component({
   selector: "app-associate-profile-view",
@@ -12,6 +14,9 @@ export class AssociateProfileViewComponent implements OnInit {
   associateId: string;
   associateDetails: any;
   baseUrl = environment.imageStorage;
+  key = key;
+  iv = iv;
+  password: any;
   constructor(
     private _activatedRoute: ActivatedRoute,
     private associateService: AssociateService,
@@ -22,7 +27,6 @@ export class AssociateProfileViewComponent implements OnInit {
     this._activatedRoute.queryParams.subscribe((params) => {
       try {
         this.associateId = params["aid"];
-        console.log("associateId", this.associateId);
         this.getAssociateDetails(this.associateId);
       } catch (err) {
         console.log("err..");
@@ -34,7 +38,16 @@ export class AssociateProfileViewComponent implements OnInit {
     this.associateService.getAssociateById(id).subscribe(
       (res) => {
         this.associateDetails = res;
-        console.log("associateDetails", this.associateDetails);
+        this.password = CryptoJS.AES.encrypt(
+          this.associateDetails.password,
+          key,
+          {
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7,
+          }
+        ).ciphertext.toString(CryptoJS.enc.Base64);
+        console.log("password", this.password);
       },
       (err) => {
         console.log("err", err);
@@ -43,7 +56,8 @@ export class AssociateProfileViewComponent implements OnInit {
   }
 
   onEdit(id): void {
-    console.log('id',id);
-    this.router.navigateByUrl("/admin/associate-profile/add-profile"+ "?aid=" + id)
+    this.router.navigateByUrl(
+      "/admin/associate-profile/add-profile" + "?aid=" + id
+    );
   }
 }
