@@ -1,8 +1,11 @@
+
 <div class="container">
     <div class="">
         <div class="bg-white m-3 p-3 shadow-sm">
             <div class="container">
-<button class="btn btn-primary float-right ">Assign</button>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-fullscreen-xl-down">Assign</button>
+  
                 <div class="row">
                     <table class="table table-striped">
                         <thead>
@@ -19,41 +22,35 @@
                                 <th scope="col">Associate</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <input class="form-check-input ms-2" type="checkbox" value="" id="flexCheckDefault">
- 
-                </th>
-                <td>Scorpius</td>
-                <td>Riti</td>
-                <td>Otto@yopmail.com</td>
-                <td>19009</td>
-                <td>India</td>
-                <td>up</td>
-                <td>xyz</td>
-                <td>Pending</td>
-                <td>No</td>
-                <td><button class="btn btn-warning">Assign</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <input class="form-check-input ms-2" type="checkbox" value="" id="flexCheckDefault">
-
-    </th>
-                    <td>Scorpius</td>
-                    <td>Riti</td>
-                    <td>Otto@yopmail.com</td>
-                    <td>19009</td>
-                    <td>India</td>
-                    <td>up</td>
-                    <td>xyz</td>
-                    <td>Assign</td>
-                    <td>Riti</td>
-                    <!-- <td><button class="btn btn-warning">Assign</button></td> -->
-                </tr>
-
-                </tbody>
+                     
+<tbody>
+    <tr>
+        <td> <input class="form-check-input ms-2" type="radio" value="" id="flexCheckDefault"></td>
+        <td>Scorpius</td>
+        <td>Riti</td>
+        <td>Otto@yopmail.com</td>
+        <td>19009</td>
+        <td>India</td>
+        <td>up</td>
+        <td>xyz</td>
+        <td>Pending</td>
+        <td>No</td>
+        <td><button class="btn btn-warning">Assign</button></td>
+    </tr>    
+    <tr>
+        <td> <input class="form-check-input ms-2" type="radio" value="" id="flexCheckDefault"></td>
+        <td>Scorpius</td>
+        <td>Riti</td>
+        <td>Otto@yopmail.com</td>
+        <td>19009</td>
+        <td>India</td>
+        <td>up</td>
+        <td>xyz</td>
+        <td>Pending</td>
+        <td>No</td>
+        <td><button class="btn btn-warning">Assign</button></td>
+    </tr> 
+</tbody>
                 </table>
 
 
@@ -62,4 +59,69 @@
     </div>
 
 </div>
-</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade modal-fullscreen-xl-down" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-fullscreen-xl-down">
+      <div class="modal-content">
+        <div class="">
+            <div class="bg-white m-3 p-3 shadow-sm">
+                <div class="container">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Select</th> 
+                                    <th scope="col">Company name</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Registered Date</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Associate</th>
+                                </tr>
+                            </thead>
+                     
+<tbody>
+    <tr>
+        <td> <input class="form-check-input ms-2" type="checkbox" value="" id="flexCheckDefault"></td>
+        <td>Scorpius</td>
+        <td>Riti</td>
+        <td>Otto@yopmail.com</td>
+        <td>19009</td>
+        <td>India</td>
+        <td>up</td>
+        <td>xyz</td>
+        <td>Pending</td>
+        <td>No</td>
+        <td><button class="btn btn-warning">Assign</button></td>
+    </tr>    
+    <tr>
+        <td> <input class="form-check-input ms-2" type="radu" value="" id="flexCheckDefault"></td>
+        <td>Scorpius</td>
+        <td>Riti</td>
+        <td>Otto@yopmail.com</td>
+        <td>19009</td>
+        <td>India</td>
+        <td>up</td>
+        <td>xyz</td>
+        <td>Pending</td>
+        <td>No</td>
+        <td><button class="btn btn-warning">Assign</button></td>
+    </tr> 
+</tbody>
+                    </table>
+    
+    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
