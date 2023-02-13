@@ -1,0 +1,269 @@
+<section class="m-2 ">
+    <div class="row">
+        <div class="col-md-8">
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="fcp-company">Company Name</label>
+                            <input type="text" formControlName="companyName" placeholder="Enter your Company Name here"
+                                class="form-control" id="fcp-company" />
+                        </div>
+                        <!-- <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
+                            <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.company.errors.minlength" class="error">Minimum length of 20 is
+                            required.</label> -->
+                    </div>
+
+                </div>
+
+                <div formArrayName="contactPerson" *ngFor="let conatct of contacts.controls; let contactIndex=index">
+                    <label for="fcp-company" class="mt-2">Contact Person</label>
+                    <div class="row" [formGroupName]="contactIndex">
+                        <div class="col-lg-12">
+                            <span class="dark-text">#{{contactIndex+1}}</span>
+                        </div>
+                        <div class="col-lg-6">
+                            <div pgFormGroupDefault class="form-group form-group-default required">
+                                <label for="fcp-company">Name </label>
+                                <input type="text" formControlName="name" placeholder="Enter your  Name here"
+                                    class="form-control" id="" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div pgFormGroupDefault class="form-group form-group-default required">
+                                <label for="surName ">Sur Name </label>
+                                <input type="text" formControlName="surName" placeholder="Enter your Sur Name here"
+                                    class="form-control" id="" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div pgFormGroupDefault class="form-group form-group-default required">
+                                <label for="phone">Phone</label>
+                                <input type="text" formControlName="phone" maxlength="10"
+                                    placeholder="Enter Phone Number" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div pgFormGroupDefault class="form-group form-group-default required">
+                                <label for="Mobile">Mobile Number</label>
+                                <input type="text" formControlName="mobileNumber" maxlength="10"
+                                    placeholder="Enter Mobile Number" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <button type="button" *ngIf="contactIndex===contacts.controls.length-1"
+                                (click)="addNewContact()" class="btn btn-info">
+                                Add +
+                            </button>
+                            <button *ngIf="contacts?.controls?.length > 1" class="btn btn-info ms-2" type="button"
+                                (click)="removeContacts(contactIndex)">Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="email">Email</label>
+                            <input type="email" formControlName="email" placeholder="Enter your Email Address here"
+                                class="form-control" id="" />
+                        </div>
+                        <!-- <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
+                            <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.company.errors.minlength" class="error">Minimum length of 20 is
+                            required.</label> -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="password">Password</label>
+                            <input type="password" formControlName="password" placeholder="Enter your password  "
+                                class="form-control" id="" />
+                        </div>
+                        <!-- <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
+                            <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.company.errors.minlength" class="error">Minimum length of 20 is
+                            required.</label> -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" formControlName="confirmPassword"
+                                placeholder="Enter your password  " class="form-control" id="" />
+                        </div>
+                        <!-- <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
+                            <label *ngIf="f.company.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.company.errors.minlength" class="error">Minimum length of 20 is
+                            required.</label> -->
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div pgFormGroupDefault class="form-group form-group-default ">
+                            <label for="Country ">Country</label>
+                            <select id="Country " formControlName="country" class="form-control " #myCountry
+                                (change)='onCountrySelected($event)'>
+                                <option *ngFor="let c of countries " [value]="c.country ">{{c.country}}</option>
+                            </select>
+                            <!-- <input type="text " formControlName="facCountry " placeholder="Enter your Country Name here " class="form-control " id="fcp-facCountry " /> -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div pgFormGroupDefault class="form-group form-group-default ">
+                            <label for="State ">State</label>
+                            <select id="State " formControlName="state" class="form-control"
+                                (change)='onStateSelected($event)'>
+                                <option *ngFor="let state of states" [value]="state.name">{{ state.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label>City</label>
+                            <select formControlName="city" class="form-control" (change)='onCitySelected($event)'>
+                                <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="fcp-gstNo">GST No</label>
+                            <input type="text" formControlName="gstNo" placeholder="Enter GST number"
+                                class="form-control" id="gstNo" />
+                        </div>
+                        <!-- <div *ngIf="f.gstNo?.invalid && (f.gstNo.dirty || f.gstNo.touched)">
+                            <label *ngIf="f.gstNo.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.gstNo.errors.maxlength.requiredLength" class="error">Maximum length should be
+                            15.</label>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="year">Year of Establishment</label>
+                            <input type="year" formControlName="estYear" placeholder="Enter Year" class="form-control"
+                                id="gstNo" />
+                        </div>
+                        <!-- <div *ngIf="f.gstNo?.invalid && (f.gstNo.dirty || f.gstNo.touched)">
+                            <label *ngIf="f.gstNo.errors.required" class="error">This field is required.</label>
+                            <label *ngIf="f.gstNo.errors.maxlength.requiredLength" class="error">Maximum length should be
+                            15.</label>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Business Registration Certificate</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <!-- <pg-upload ListType="picture-card" [(FileList)]="certificateList"
+                            [ShowButton]="certificateList.length < 4">
+                            <div class="pic-placeholder">
+                                <i class="pg-icon p-b-5">upload</i>
+                                <div class="fs-12">Upload</div>
+                            </div>
+                        </pg-upload> -->
+                        <div class="input-group" style="width: 285px;">
+                            <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2" multiple
+                                (change)="selectFiles($event)" #fileInputDoc formControlName="registrationCertificate">
+                            <div class="input-group-append">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="companyWebsite">Company Website </label>
+                            <input type="text" formControlName="companyWebsite" placeholder="Enter Company Website"
+                                class="form-control" id="companyWebsite" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <div pgFormGroupDefault class="form-group form-group-default ">
+                            <label for="companyStrength ">Company Strength </label>
+                            <select id="companyStrength " formControlName="companyStrength" class="form-control ">
+                                <option value="">Select</option>
+                                <option value="0-10">0-10</option>
+                                <option value="0-10">10-50</option>
+                                <option value="50-100">50-100</option>
+                                <option value="100-500">100-500</option>
+                                <option value="500-1000">500-1000</option>
+                                <option value="1000-5000">1000-5000</option>
+                                <option value="5000-10000">5000-10000</option>
+
+                            </select>
+                            <!-- <input type="text " formControlName="facCountry " placeholder="Enter your Country Name here " class="form-control " id="fcp-facCountry " /> -->
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div pgFormGroupDefault class="form-group form-group-default required">
+                            <label for="existingClients">Exisiting Clients </label>
+                            <input type="text" formControlName="existingclient" placeholder="Enter Existing Clients"
+                                class="form-control" id="existingClients" />
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-6 ">
+                        <div pgFormGroupDefault class="form-group form-group-default ">
+                            <label for="AssignedBy ">Assigned By </label>
+                            <select id="AssignedBy " formControlName="assignedBy" class="form-control ">
+                                <option value="">Select</option>
+                                <option value="Admin">Admin</option>
+                                <!-- <option value="Seller">Seller</option> -->
+                            </select>
+                            <!-- <input type="text " formControlName="facCountry " placeholder="Enter your Country Name here " class="form-control " id="fcp-facCountry " /> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Agreement Letter </label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="input-group" style="width: 285px;">
+                            <input type="file" accept="image/*,.pdf,.doc" class="form-control py-2"
+                                (change)="fileUpload($event)" #fileInputDoc formControlName="agreementLetter">
+                            <div class="input-group-append">
+                                <!-- <button class="btn btn-outline-secondary" type="button"
+                                        (click)="fileInputDoc.click()">upload</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary"> Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</section>
