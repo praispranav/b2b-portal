@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProviderMaterCountryService } from '../../../../../core/providers/master/provider-mater-country.service';
-import { ProviderMaterLocationService } from '../../../../../core/providers/master/provider-mater-location.service';
-import { ProviderMaterStateService } from '../../../../../core/providers/master/provider-mater-state.service';
-import { AssociateInterface } from '../../../../../core/providers/user/associate-interface';
-import { AssociateService } from '../../../../../core/providers/user/associate.service';
-import { ImageService } from '../../../../../core/providers/user/image.service';
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ProviderMaterCountryService } from "../../../../core/providers/master/provider-mater-country.service";
+import { ProviderMaterLocationService } from "../../../../core/providers/master/provider-mater-location.service";
+import { ProviderMaterStateService } from "../../../../core/providers/master/provider-mater-state.service";
+import { AssociateInterface } from "../../../../core/providers/user/associate-interface";
+import { AssociateService } from "../../../../core/providers/user/associate.service";
+import { ImageService } from "../../../../core/providers/user/image.service";
+import { AppMessageService } from "../../../../core/services/app-message.service";
 
 @Component({
-  selector: 'app-add-profile',
-  templateUrl: './add-profile.component.html',
-  styleUrls: ['./add-profile.component.scss']
+  selector: "app-add-profile",
+  templateUrl: "./add-profile.component.html",
+  styleUrls: ["./add-profile.component.scss"],
 })
 export class AddProfileComponent implements OnInit {
   countries: any = [];
@@ -26,6 +27,7 @@ export class AddProfileComponent implements OnInit {
   certificateList: any[] = [];
   associateId: string;
   associateDetails: any;
+  readOnly: boolean = false;
 
   constructor(
     private providerMaterCountryService: ProviderMaterCountryService,
@@ -35,7 +37,8 @@ export class AddProfileComponent implements OnInit {
     private providerMaterLocationService: ProviderMaterLocationService,
     private providerMaterStateService: ProviderMaterStateService,
     private router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private appMessageService: AppMessageService
   ) {}
 
   ngOnInit() {
@@ -162,6 +165,8 @@ export class AddProfileComponent implements OnInit {
       // agreementLetter: this.associateDetails.agreementLetter,
       isVerified: this.associateDetails.isVerified,
     });
+    // this.formGroup.controls.email.disable();
+    this.readOnly = true;
   }
 
   onCountrySelected(e) {
@@ -232,7 +237,6 @@ export class AddProfileComponent implements OnInit {
     this.selectedFiles = event.target.files;
     if (this.selectedFiles && this.selectedFiles[0]) {
       for (let image of this.selectedFiles) {
-        console.log("image------", image);
         this.uploadImageToServer(image);
       }
     }
@@ -243,7 +247,10 @@ export class AddProfileComponent implements OnInit {
     if (file && file[0]) {
       this.uploadSingleImage(file[0]);
     } else {
-      alert("Please upload a image");
+      this.appMessageService.createBasicNotification(
+        "red",
+        "Please upload a image"
+      );
     }
   }
 
@@ -278,10 +285,13 @@ export class AddProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // alert();
-    // if (!this.formGroup.valid) {
-    //   return;
-    // }
+    if (!this.formGroup.valid) {
+      this.appMessageService.createBasicNotification(
+        "red",
+        "Please fill the all mandatory fields"
+      );
+      return;
+    }
     let formData = this.formGroup.value;
     let formArrayData = [...this.formArray.value];
     let contact_details = [];
@@ -322,20 +332,11 @@ export class AddProfileComponent implements OnInit {
     };
 
     console.log("payload", this.payload);
-    if (this.associateDetails && this.associateDetails.hasOwnProperty('_id')) {
-      this.payload.id = this.associateDetails._id;
+    if (this.associateDetails && this.associateDetails.hasOwnProperty("_id")) {
+      this.payload._id = this.associateDetails._id;
       this.associateService.updateAssociate(this.payload).subscribe(
         (res) => {
-          this.router.navigateByUrl("/admin/associate-profile/list");
-        },
-        (err) => {
-          console.log("err", err);
-        }
-      );
-    } else {
-      this.associateService.addAssociate(this.payload).subscribe(
-        (res) => {
-          this.router.navigateByUrl("/admin/associate-profile/list");
+          this.router.navigateByUrl("/associate/view");
         },
         (err) => {
           console.log("err", err);
@@ -343,5 +344,4 @@ export class AddProfileComponent implements OnInit {
       );
     }
   }
-
 }

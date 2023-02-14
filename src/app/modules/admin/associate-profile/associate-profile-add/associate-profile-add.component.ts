@@ -325,7 +325,7 @@ export class AssociateProfileAddComponent implements OnInit {
 
     console.log("payload", this.payload);
     if (this.associateDetails && this.associateDetails.hasOwnProperty('_id')) {
-      this.payload.id = this.associateDetails._id;
+      this.payload._id = this.associateDetails._id;
       this.associateService.updateAssociate(this.payload).subscribe(
         (res) => {
           this.router.navigateByUrl("/admin/associate-profile/list");

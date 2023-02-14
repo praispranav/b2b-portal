@@ -51,7 +51,7 @@ export class ProfileViewComponent implements OnInit {
 
   onEdit(id): void {
     this.router.navigateByUrl(
-      "/admin/associate-profile/add-profile" + "?aid=" + id
+      "/associate/profile/add-profile" + "?aid=" + id
     );
   }
 }

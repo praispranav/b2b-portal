@@ -71,7 +71,7 @@
                     <div class="col-md-12">
                         <div pgFormGroupDefault class="form-group form-group-default required">
                             <label for="email">Email</label>
-                            <input type="email" formControlName="email" placeholder="Enter your Email Address here"
+                            <input type="email" formControlName="email" [readonly]="readOnly" placeholder="Enter your Email Address here"
                                 class="form-control" id="" />
                         </div>
                         <!-- <div *ngIf="f.company?.invalid && (f.company.dirty || f.company.touched)">
@@ -259,7 +259,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary"> Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
 
