@@ -2,37 +2,30 @@
     <h4>
         Comapny Name
     </h4>
+    <span>{{associateDetails?.companyName}}</span>
 </div>
 
 <div class="bg-white m-3 p-3 shadow-sm">
-    <div class="container">
+    <div class="container" *ngIf="associateDetails?.contactPerson?.length > 0">
         <h4>Contact Person</h4>
-        <div class="row">
+        <div class="row" *ngFor="let contact of associateDetails?.contactPerson">
             <div class="col-md-6">
-                <!-- 1 table -->
-                <table class="table table-borderless table-sm">
-                    <tr>
-                        <td>
-                            <b> First Name </b>
-                        </td>
-                        <td>
-                            fName
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <b> Last Name </b>
-                        </td>
-                        <td>
-                            lName
-                        </td>
-                    </tr>
-
-                </table>
+                <span><b>First Name </b></span>
+                <span>{{contact?.name}}</span>
             </div>
-
-
+            <div class="col-md-6">
+                <span><b>Last Name </b></span>
+                <span>{{contact?.surName}}</span>
+            </div>
+            <div class="col-md-6 mt-2">
+                <span><b>Phone </b></span>
+                <span>{{contact?.phone}}</span>
+            </div>
+            <div class="col-md-6 mt-2">
+                <span><b>Mobile Number </b></span>
+                <span>{{contact?.mobileNumber}}</span>
+            </div>
+            <hr class="mt-2" />
         </div>
     </div>
 </div>
@@ -48,35 +41,31 @@
                             <b>E-mail Address</b>
                         </td>
                         <td>
-                            xyz@yopmail.con
+                            {{associateDetails?.email}}
                         </td>
                     </tr>
-
                     <tr>
                         <td>
                             <b> Password</b>
                         </td>
                         <td>
-                            Password@123
+                            {{associateDetails?.password}}
                         </td>
                     </tr>
-
-
-
                     <tr>
                         <td>
                             <b> Country/Region </b>
                         </td>
-                        <td>India
+                        <td>
+                            {{associateDetails?.country}}
                         </td>
                     </tr>
-                    
                     <tr>
                         <td>
                             <b> State </b>
                         </td>
                         <td>
-                            UP
+                            {{associateDetails?.state}}
                         </td>
                     </tr>
                     <tr>
@@ -85,28 +74,9 @@
                             </b>
                         </td>
                         <td>
-                            City Name
+                            {{associateDetails?.city}}
                         </td>
                     </tr>
-
-
-                    <tr>
-                        <td>
-                            <b> Address 1 </b>
-                        </td>
-                        <td>
-                            Address one
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b> Address 2 </b>
-                        </td>
-                        <td>
-                            Address Two
-                        </td>
-                    </tr>
-
                 </table>
             </div>
             <!-- 2 table -->
@@ -114,26 +84,10 @@
                 <table class="table table-borderless table-sm">
                     <tr>
                         <td>
-                            <b> Phone Number </b>
-                        </td>
-                        <td>
-                            989998888988,8989898989
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>Mobile </b>
-                        </td>
-                        <td>
-                            88898888989
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <b>GST Number </b>
                         </td>
                         <td>
-                            888898888988
+                            {{associateDetails?.gstNo}}
                         </td>
                     </tr>
                     <tr>
@@ -141,24 +95,15 @@
                             <b>Year of Establishment</b>
                         </td>
                         <td>
-                            8999
+                            {{associateDetails?.estYear}}
                         </td>
                     </tr>
-
-                    <!-- <tr>
-                        <td>
-                            <b> Business regional certificate </b>
-                        </td>
-                        <td>
-                           
-                        </td>
-                    </tr> -->
                     <tr>
                         <td>
                             <b> Company Website </b>
                         </td>
                         <td>
-                            Company Website
+                            {{associateDetails?.companyWebsite}}
                         </td>
                     </tr>
                     <tr>
@@ -166,7 +111,7 @@
                             <b> Employ strength </b>
                         </td>
                         <td>
-                          2000
+                            {{associateDetails?.companyStrength}}
                         </td>
                     </tr>
                     <tr>
@@ -174,20 +119,9 @@
                             <b> Assign By </b>
                         </td>
                         <td>
-                          Admin
+                            {{associateDetails?.assignedBy}}
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <td>
-                            <b> Upload Agreement letter </b>
-                        </td>
-                        <td>
-                          
-                        </td>
-                    </tr> -->
-                   <tr>
-               
-
                 </table>
             </div>
         </div>
@@ -197,7 +131,7 @@
 
 <div class="bg-white m-3 p-3 shadow-sm">
     <div class="container">
-       <h4>Document</h4>
+        <h4>Document</h4>
         <div class="row">
             <div class="col-md-6">
                 <!-- 1 table -->
@@ -206,9 +140,12 @@
                         <td>
                             <b> Business regional certificate </b>
                         </td>
-                        <td>
-                           
-                        </td>
+
+                        <ng-container *ngFor="let image of associateDetails?.registrationCertificate">
+                            <td>
+                                <img [src]="baseUrl+image" alt="certificate" class="images">
+                            </td>
+                        </ng-container>
                     </tr>
 
                     <tr>
@@ -216,14 +153,16 @@
                             <b> Upload Agreement letter </b>
                         </td>
                         <td>
-                          
+                            <img [src]="baseUrl+associateDetails?.agreementLetter" alt="agreementLetter" class="images">
                         </td>
                     </tr>
 
                 </table>
             </div>
+        </div>
 
-
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info" (click)="onEdit(associateDetails?._id)">Edit</button>
         </div>
     </div>
 </div>

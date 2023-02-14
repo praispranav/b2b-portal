@@ -15,6 +15,6 @@ export interface AssociateInterface {
   assignedBy: string;
   agreementLetter: string;
   contactPerson: any[];
-  id?: string;
+  _id?: string;
   isVerified:boolean;
 }
