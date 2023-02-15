@@ -50,4 +50,11 @@ export class CatelogRequestService {
       payload
     );
   }
+
+  sellerVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-associate/verify`,
+      payload
+    );
+  }
 }

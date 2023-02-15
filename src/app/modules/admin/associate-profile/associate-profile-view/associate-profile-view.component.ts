@@ -47,7 +47,6 @@ export class AssociateProfileViewComponent implements OnInit {
             padding: CryptoJS.pad.Pkcs7,
           }
         ).ciphertext.toString(CryptoJS.enc.Base64);
-        console.log("password", this.password);
       },
       (err) => {
         console.log("err", err);

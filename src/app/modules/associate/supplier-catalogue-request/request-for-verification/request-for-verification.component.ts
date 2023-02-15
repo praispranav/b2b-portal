@@ -31,10 +31,12 @@ export class RequestForVerificationComponent implements OnInit {
   }
 
   sendMail(data): void {
-    let payload = {};
-    this.catelogRequestService.sendMail(payload).subscribe(
+    this.catelogRequestService.sendMail(data).subscribe(
       (res) => {
         console.log("res", res);
+        if (res.data) {
+          this.getassignAssociate();
+        }
       },
       (err) => {
         console.log("err", err);

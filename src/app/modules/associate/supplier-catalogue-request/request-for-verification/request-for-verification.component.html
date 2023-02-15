@@ -52,9 +52,9 @@
                                     <td>{{seller?.country}}</td>
                                     <td>{{seller?.city}}</td>
                                     <td>{{seller?.status}}</td>
-                                    <td>
+                                    <td class="text-primary">
                                         <ng-container *ngIf="seller?.isMail===false">
-                                            <a href="#" (click)="sendMail(associate)">Send Mail</a>
+                                            <a (click)="sendMail(seller)">Send Mail</a>
                                         </ng-container>
                                     </td>
                                 </ng-container>
