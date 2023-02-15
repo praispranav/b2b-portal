@@ -36,4 +36,18 @@ export class CatelogRequestService {
       payload
     );
   }
+
+  getassignAssociate(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-associate/get-assign-associate`,
+      payload
+    );
+  }
+
+  sendMail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-associate/send-mail`,
+      payload
+    );
+  }
 }

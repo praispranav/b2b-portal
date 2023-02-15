@@ -102,9 +102,8 @@ export class RequestedCatelogingComponent implements OnInit {
         if (res.header.status === "success") {
           this.catelogRequestService.assignAssociate(payload).subscribe(
             (res) => {
-              this.router.navigateByUrl(
-                "/admin/cataloging/requested-cateloging"
-              );
+              this.getRequest();
+              this.getAssociateList();
             },
             (err) => {
               console.log("err", err);
