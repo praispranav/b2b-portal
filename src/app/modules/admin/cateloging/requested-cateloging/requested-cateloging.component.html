@@ -80,16 +80,19 @@
 
                     <tbody>
                         <tr *ngFor="let associate of associateList">
-                            <td>
-                                <input class="form-check-input ms-2" type="radio" (change)="onRadioClick(associate)">
-                            </td>
-                            <td>{{associate?.companyName}}</td>
-                            <td>{{associate?.email}}</td>
+                            <ng-container *ngIf="associate.isVerified===true">
+                                <td>
+                                    <input class="form-check-input ms-2" type="radio" value="true"
+                                        [checked]="associate.checked==true" (change)="onRadioClick(associate)">
+                                </td>
+                                <td>{{associate?.companyName}}</td>
+                                <td>{{associate?.email}}</td>
+                            </ng-container>
                         </tr>
                     </tbody>
                 </table>
                 <div>
-                    <button class="btn btn-info" (click)="onSubmit()">Assign</button>
+                    <button class="btn btn-info" (click)="onSubmit()" data-dismiss="modal">Assign</button>
                 </div>
             </div>
         </div>

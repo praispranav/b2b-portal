@@ -1,66 +1,57 @@
 <div class="container">
-    <div class="">
-        <div class="bg-white shadow-sm">
-            <div class="container">
-               
-                <div class="row">
-                    <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">SR.No</th>
-                            <th scope="col">Company name</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Registered Date</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">State</th>
-                            <th scope="col">City</th>
-                            <th scope="col">Seller Type</th>
-                            <th scope="col">Requested By</th>
-                            <th>Status</th>
-                          
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Scorpius</td>
-                            <td>Riti</td>
-                            <td>Otto@yopmail.com</td>
-                            <td>19009</td>
-                            <td>India</td>
-                            <td>up</td>
-                            <td>xyz</td>
-                            <td>Not verify</td>
-                            <td>Admin</td>
-                            <td>Resend Link</td>
-                            <td class="text-primary">Login to supplier pannel</td>
-                            <td><button class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">Update</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Learn Now</td>
-                            <td>Tanu</td>
-                            <td>uiii@yopmail.com</td>
-                            <td>898889</td>
-                            <td>US</td>
-                            <td>Xyz</td>
-                            <td>Abc</td>
-                            <td>Verified</td>
-                            <td>Self</td>
-                            <td>Resend Link </td>
-                            <td class="text-danger">Pending</td>
-                          </tr>
-                       
-                        </tbody>
-                      </table>
-        
-        
-                </div>
-            </div>
+  <div class="">
+    <div class="bg-white shadow-sm">
+      <div class="container">
+        <div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">SR.No</th>
+                <th scope="col">Company name</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let seller of sellerList; let i=index;">
+                <ng-container *ngIf="seller.isMail===true">
+                  <td>
+                    {{i+1}}
+                  </td>
+                  <td>{{seller?.company}}</td>
+                  <td>{{seller?.sellerName}}</td>
+                  <td>{{seller?.email}}</td>
+                  <td>{{seller?.country}}</td>
+                  <td>{{seller?.city}}</td>
+                  <td>
+                    <ng-container *ngIf="seller.isVerified===false; else notVerify">
+                      <span class="text-primary">Resend Mail</span>
+                    </ng-container>
+                    <ng-template #notVerify>
+                      {{seller?.status}}
+                    </ng-template>
+                  </td>
+                  <ng-container *ngIf="seller.isVerified===true">
+                    <td class="text-primary">
+                      <span (click)="login(seller)">Login to supplier pannel</span>
+                    </td>
+                  </ng-container>
+                  <td>
+                    <ng-container *ngIf="seller?.isMail===false">
+                      <a (click)="sendMail(seller)">Send Mail</a>
+                    </ng-container>
+                  </td>
+                </ng-container>
+              </tr>
+            </tbody>
+          </table>
         </div>
-         
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Button trigger modal -->
@@ -69,7 +60,8 @@
 </button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -80,8 +72,8 @@
       </div>
       <div class="modal-body">
         <div>
-          <input  type="text" class="form-control" aria-label="Default select example" placeholder="Total Product">
-      </div>
+          <input type="text" class="form-control" aria-label="Default select example" placeholder="Total Product">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -197,8 +197,6 @@ export class AssociateProfileAddComponent implements OnInit {
       );
   }
 
-  onCitySelected(e) {}
-
   // WILL RETURN ALL CONTACTS
   get contacts(): FormArray {
     return this.formGroup.get("contactPerson") as FormArray;

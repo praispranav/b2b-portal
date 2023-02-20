@@ -130,7 +130,7 @@
                     <div class="col-md-6">
                         <div pgFormGroupDefault class="form-group form-group-default required">
                             <label>City</label>
-                            <select formControlName="city" class="form-control" (change)='onCitySelected($event)'>
+                            <select formControlName="city" class="form-control">
                                 <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
                             </select>
                         </div>
