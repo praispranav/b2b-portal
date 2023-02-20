@@ -18,6 +18,7 @@ export class RequestedCatelogingComponent implements OnInit {
   sellerData: any;
   associateList: any[] = [];
   sellerList: any[] = [];
+  radioCheck: boolean = false;
   constructor(
     private associateService: AssociateService,
     private catelogRequestService: CatelogRequestService,
@@ -57,6 +58,14 @@ export class RequestedCatelogingComponent implements OnInit {
   }
 
   onRadioClick(data): void {
+    this.associateList.forEach((element) => {
+      if (element._id === data._id) {
+        element.checked = true;
+      } else {
+        element.checked = false;
+      }
+    });
+
     this.assignData = {
       nameAssociate: data.companyName,
       associateId: data._id,

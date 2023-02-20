@@ -56,7 +56,7 @@ export class RequestedSupplierComponent implements OnInit {
   }
 
   login(data): void {
-    const password1 = JSON.stringify(data.password);
+    // const password1 = JSON.stringify(data.password);
     const cipherParams = CryptoJS.lib.CipherParams.create({
       ciphertext: CryptoJS.enc.Base64.parse(data.password),
       
