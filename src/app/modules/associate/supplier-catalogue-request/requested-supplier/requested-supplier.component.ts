@@ -12,8 +12,7 @@ import { Router } from "@angular/router";
 })
 export class RequestedSupplierComponent implements OnInit {
   sellerList: any[] = [];
-  key = key;
-  iv = iv;
+  private currentUserKey = "currentUserAuth";
 
   constructor(
     private catelogRequestService: CatelogRequestService,
@@ -56,22 +55,27 @@ export class RequestedSupplierComponent implements OnInit {
   }
 
   login(data): void {
-    // const password1 = JSON.stringify(data.password);
-    const cipherParams = CryptoJS.lib.CipherParams.create({
-      ciphertext: CryptoJS.enc.Base64.parse(data.password),
-      
-    });
-    console.log('cipherParams',cipherParams);
-    let password = CryptoJS.AES.decrypt(cipherParams, key, {
-      iv: iv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7,
-    }).ciphertext.toString(CryptoJS.enc.Utf8);
-    console.log("password", password);
-    return;
-    this.providerUserAuthService.userSignOutNoApiCall(false);
-    this.router.navigateByUrl(
-      "/user-auth/sign-in" + "?email=" + data.email + "&psd=" + password
+    let payload = {
+      sellerId: data.sellerId,
+    };
+    this.catelogRequestService.sellerLogin(payload).subscribe(
+      (res) => {
+        console.log("res", res);
+        if (res.header.status === "success") {
+          localStorage.removeItem(this.currentUserKey);
+          this.providerUserAuthService.currentUserSubject.next(null);
+          localStorage.setItem(this.currentUserKey, JSON.stringify(res));
+          this.providerUserAuthService.currentUserSubject.next(res);
+          this.providerUserAuthService.navToPortalIfAuthenticated();
+          this.router.navigateByUrl("/seller/dashboard");
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        }
+      },
+      (err) => {
+        console.log("err", err);
+      }
     );
   }
 

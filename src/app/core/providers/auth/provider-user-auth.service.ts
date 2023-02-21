@@ -11,7 +11,7 @@ export class ProviderUserAuthService {
   public currentUserObservable: Observable<any>;
   private currentUserKey = 'currentUserAuth';
   private rememberMeCredentialsKey = 'rememberMeCredentials';
-  private currentUserSubject: BehaviorSubject<any>;
+  public currentUserSubject: BehaviorSubject<any>;
 
   constructor(
     private http: HttpClient,
