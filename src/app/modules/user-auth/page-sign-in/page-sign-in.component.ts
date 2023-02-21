@@ -18,8 +18,6 @@ export class PageSignInComponent implements OnInit {
   showPassword = false;
   id: string;
   token: string;
-  email: string;
-  password: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,12 +44,6 @@ export class PageSignInComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.id = params["id"];
       this.token = params["token"];
-      this.email = params["email"];
-      this.password = params["psd"];
-
-      if (this.email && this.password) {
-        this.authSignInFormSub(this.email, this.password);
-      }
 
       if (
         this.id &&
@@ -107,7 +99,7 @@ export class PageSignInComponent implements OnInit {
     });
   }
 
-  async authSignInFormSub(email, password) {
+  async authSignInFormSub() {
     const formData = this.authSignInForm.value;
     const isEmail = isNaN(formData.email);
     const reqData: LooseObject = {
@@ -119,15 +111,12 @@ export class PageSignInComponent implements OnInit {
     } else {
       reqData.phone = formData.email;
     }
-    if (email && password) {
-      (reqData.email = email), (reqData.password = password);
-    }
 
     if (formData.rememberMe) {
       this.providerUserAuthService.setRememberMeCredentials = formData;
     } else {
       this.providerUserAuthService.setRememberMeCredentials = {
-        email: email ? email : formData.email,
+        email: formData.email,
         rememberMe: false,
       };
     }

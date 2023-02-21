@@ -57,4 +57,11 @@ export class CatelogRequestService {
       payload
     );
   }
+
+  sellerLogin(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/auth/associate-seller/login`,
+      payload
+    );
+  }
 }
