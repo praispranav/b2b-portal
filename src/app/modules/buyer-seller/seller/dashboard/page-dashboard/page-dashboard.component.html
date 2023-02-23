@@ -28,7 +28,7 @@
             <button class="btn btn-warning" *ngIf="isVerifiedByAdmin == 'verified'">{{ isVerifiedByAdmin | titlecase }}</button>
             <button class="btn btn-danger" *ngIf="isVerifiedByAdmin != 'verified'">{{ isVerifiedByAdmin | titlecase }}</button>
         </div>
-        <div *ngIf="isVerifiedByAdmin != 'verified'">
+        <div>
             <span class="pr-2">Ask for your Supplier acccount Verification</span>
             <button class="btn btn-warning">Contact Us</button>
         </div>
