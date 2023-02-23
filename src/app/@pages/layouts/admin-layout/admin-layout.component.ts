@@ -141,11 +141,11 @@ export class AdminLayoutComponent extends RootLayout implements OnInit {
       submenu: [
         {
           label: "TP Agents",
-          routerLink: "/admin/dashboard",
+          routerLink: "admin/agent-profile/view",
         },
         {
           label: "Create new TP Agent",
-          routerLink: "/admin/dashboard",
+          routerLink: "/admin/agent-profile",
         },
         {
           label: "Agents Portfolio",
