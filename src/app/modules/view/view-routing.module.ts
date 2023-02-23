@@ -55,6 +55,7 @@ import { PageViewCategoryStructureComponent } from "./page-view-category-structu
 import { ContactForCatalogueComponent } from "./contact-for-catalogue/contact-for-catalogue.component";
 import { ThankyouPageConfirmSupplierForCatalogingComponent } from "./thankyou-page-confirm-supplier-for-cataloging/thankyou-page-confirm-supplier-for-cataloging.component";
 import { VerifyAssociateComponent } from "./verify-associate/verify-associate.component";
+import { VerifyAgentComponent } from "./verify-agent/verify-agent.component";
 
 
 const routes: Routes = [
@@ -277,6 +278,10 @@ const routes: Routes = [
   {
     path: "verify-Associate",
     component: VerifyAssociateComponent
+  },
+  {
+    path: "verify-agent",
+    component: VerifyAgentComponent
   },
   {
     path: "**",

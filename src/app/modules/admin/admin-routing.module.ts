@@ -68,10 +68,14 @@ const routes: Routes = [
     loadChildren: '../admin/associate-profile/associate-profile.module#AssociateProfileModule'
   },
   {
+    path: 'agent-profile',
+    loadChildren: '../admin/agent-profile/agent-profile.module#AgentProfileModule'
+  },
+  {
     path: 'cataloging',
-    loadChildren:'../admin/cateloging/cateloging.module#CatelogingModule'
+    loadChildren: '../admin/cateloging/cateloging.module#CatelogingModule'
   }
-  
+
 
 
 ];
