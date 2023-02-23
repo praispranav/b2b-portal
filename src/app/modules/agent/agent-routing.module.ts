@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: './profile/agent-profile.module#AgentProfileModule'
   },
   {
     path: 'help',

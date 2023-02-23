@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { ProfileRoutingModule } from "./profile-routing.module";
+import { AgentProfileRoutingModule } from "./agent-profile-routing.module";
 import { ProfileViewComponent } from "./profile-view/profile-view.component";
 import { AddProfileComponent } from "./add-profile/add-profile.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -10,9 +10,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
   declarations: [ProfileViewComponent, AddProfileComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
+    AgentProfileRoutingModule,
     FormsModule,
     ReactiveFormsModule,
   ],
 })
-export class ProfileModule {}
+export class AgentProfileModule {}
