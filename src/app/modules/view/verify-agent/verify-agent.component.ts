@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ProviderUserAuthService } from "../../../core/providers/auth/provider-user-auth.service";
 import { AgentService } from "../../../core/providers/user/agent.service";
 
 @Component({
@@ -10,11 +11,14 @@ import { AgentService } from "../../../core/providers/user/agent.service";
 export class VerifyAgentComponent implements OnInit {
   payload: any;
   agentId: string;
+  private currentUserKey = "currentUserAuth";
+
   constructor(
     private agentService: AgentService,
+    private providerUserAuthService: ProviderUserAuthService,
     private _activatedRoute: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this._activatedRoute.queryParams.subscribe((params) => {
@@ -35,6 +39,8 @@ export class VerifyAgentComponent implements OnInit {
       (res) => {
         console.log("res", res);
         if (res.header.status === "success" && res.data) {
+          localStorage.removeItem(this.currentUserKey);
+          this.providerUserAuthService.currentUserSubject.next(null);
           this.router.navigateByUrl("/user-auth/sign-in");
         }
       },

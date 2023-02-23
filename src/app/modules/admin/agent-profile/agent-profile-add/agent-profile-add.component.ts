@@ -36,7 +36,7 @@ export class AgentProfileAddComponent implements OnInit {
     private providerMaterStateService: ProviderMaterStateService,
     private router: Router,
     private _activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.buildForm();
@@ -49,7 +49,9 @@ export class AgentProfileAddComponent implements OnInit {
     this._activatedRoute.queryParams.subscribe((params) => {
       try {
         this.agentId = params["aid"];
-        this.getAgentDetails(this.agentId);
+        if (this.agentId) {
+          this.getAgentDetails(this.agentId);
+        }
       } catch (err) {
         console.log("err..");
       }
