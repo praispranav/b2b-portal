@@ -1,0 +1,170 @@
+<div class="bg-white m-3 p-3 shadow-sm">
+    <h4>
+        Comapny Name
+    </h4>
+    <span>{{agentDetails?.companyName}}</span>
+</div>
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container" *ngIf="agentDetails?.contactPerson?.length > 0">
+        <h4>Contact Person</h4>
+        <div class="row" *ngFor="let contact of agentDetails?.contactPerson">
+            <div class="col-md-6">
+                <span><b>First Name </b></span>
+                <span>{{contact?.name}}</span>
+            </div>
+            <div class="col-md-6">
+                <span><b>Last Name </b></span>
+                <span>{{contact?.surName}}</span>
+            </div>
+            <div class="col-md-6 mt-2">
+                <span><b>Phone </b></span>
+                <span>{{contact?.phone}}</span>
+            </div>
+            <div class="col-md-6 mt-2">
+                <span><b>Mobile Number </b></span>
+                <span>{{contact?.mobileNumber}}</span>
+            </div>
+            <hr class="mt-2" />
+        </div>
+    </div>
+</div>
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            {{agentDetails?.email}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            {{password}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.country}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.state}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.city}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.gstNo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            {{agentDetails?.estYear}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.companyWebsite}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.companyStrength}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            {{agentDetails?.assignedBy}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>Document</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- 1 table -->
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b> Business regional certificate </b>
+                        </td>
+
+                        <ng-container *ngFor="let image of agentDetails?.registrationCertificate">
+                            <td>
+                                <img [src]="baseUrl+image" alt="certificate" class="images">
+                            </td>
+                        </ng-container>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <b> Upload Agreement letter </b>
+                        </td>
+                        <td>
+                            <img [src]="baseUrl+agentDetails?.agreementLetter" alt="agreementLetter" class="images">
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-info" (click)="onEdit(agentDetails?._id)">Edit</button>
+        </div>
+    </div>
+</div>

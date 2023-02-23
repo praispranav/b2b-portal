@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: './account-status/account-status.module#AccountStatusModule'
   },
   {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule'
+  },
+  {
     path: 'help',
     loadChildren: '../../features/help/help.module#HelpModule'
   },
