@@ -46,4 +46,40 @@ export class AgentService {
       payload
     );
   }
+
+
+  requestSend(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/seller-admin-agent/request-send`,
+      payload
+    );
+  }
+
+  getRequest(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/seller-admin-agent/get-request`,
+      payload
+    );
+  }
+
+  requestUpdate(payload): Observable<any> {
+    return this.http.put<any>(
+      `${environment.apiUrl}/seller-admin-agent/request/update`,
+      payload
+    );
+  }
+
+  assignAgent(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-agent/assign-agent`,
+      payload
+    );
+  }
+
+  getAssignAgent(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-agent/get-assign-agent`,
+      payload
+    );
+  }
 }

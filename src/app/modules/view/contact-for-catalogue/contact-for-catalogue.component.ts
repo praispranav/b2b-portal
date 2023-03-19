@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { CatelogRequestService } from "app/core/providers/user/catelog-request.service";
 import { Router } from "@angular/router";
+import { CatelogRequestService } from "../../../core/providers/user/catelog-request.service";
 
 @Component({
   selector: "app-contact-for-catalogue",
