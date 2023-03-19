@@ -37,7 +37,7 @@ export class AgentProfileListComponent implements OnInit {
 
   navigate(id): void {
     this.router.navigateByUrl(
-      "/admin/associate-profile/view"+ "?aid=" + id
+      "/admin/agent-profile/view"+ "?aid=" + id
     );
   }
 }

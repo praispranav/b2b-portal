@@ -74,8 +74,11 @@ const routes: Routes = [
   {
     path: 'cataloging',
     loadChildren: '../admin/cateloging/cateloging.module#CatelogingModule'
-  }
-
+  },
+  {
+    path: 'seller-request',
+    loadChildren: '../admin/seller-agent-request/seller-agent-request.module#SellerAgentRequestModule'
+  },
 
 
 ];

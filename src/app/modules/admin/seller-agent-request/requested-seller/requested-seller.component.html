@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="">
+        <div class="bg-white m-3 p-3 shadow-sm">
+            <div class="container">
+                <!-- Button trigger modal -->
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                        (click)="onAssign({},'all')">Assign
+                    </button>
+                </div>
+
+                <div class="row">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Select</th>
+                                <th scope="col">Company name</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Agent</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let seller of sellerList">
+                                <td>
+                                    <ng-container *ngIf="seller?.assignToAgent===false">
+                                        <input class="form-check-input ms-2" type="checkbox">
+                                    </ng-container>
+                                </td>
+                                <td>{{seller?.company}}</td>
+                                <td>{{seller?.sellerName}}</td>
+                                <td>{{seller?.email}}</td>
+                                <td>{{seller?.country}}</td>
+                                <td>{{seller?.city}}</td>
+                                <td>{{seller?.status}}</td>
+                                <td>{{seller?.assignToAssociate===false ? 'No': 'Yes'}}</td>
+                                <td>
+                                    <ng-container *ngIf="seller?.assignToAgent===false">
+                                        <button class="btn btn-warning" type="button" data-toggle="modal"
+                                            data-target="#myModal" (click)="onAssign(seller, 'one')">Assign
+                                        </button>
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Assign Agent</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Select</th>
+                            <th scope="col">Company name</th>
+                            <th scope="col">E-mail</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let agent of agentList">
+                            <ng-container *ngIf="agent.isVerified===true">
+                                <td>
+                                    <input class="form-check-input ms-2" type="radio" value="true"
+                                        [checked]="agent.checked==true" (change)="onRadioClick(agent)">
+                                </td>
+                                <td>{{agent?.companyName}}</td>
+                                <td>{{agent?.email}}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button class="btn btn-info" (click)="onSubmit()" data-dismiss="modal">Assign</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
