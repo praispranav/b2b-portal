@@ -44,20 +44,20 @@ export class FormExportCapabilityComponent implements OnInit {
       yearlyTurnover: ["", [Validators.required]],
       nearestPort: ["", [Validators.required]],
       exportingScience: [""],
-      exportingPercent: ["",[Validators.max(100)]],
-      northAmerica: ["",[Validators.max(100)]],
-      westernEurope: ["",[Validators.max(100)]],
-      easternAsia: ["",[Validators.max(100)]],
-      southAmerica: ["",[Validators.max(100)]],
-      northanEurope: ["",[Validators.max(100)]],
-      africa: ["",[Validators.max(100)]],
-      centralAmerica: ["",[Validators.max(100)]],
-      southernEurope: ["",[Validators.max(100)]],
-      middileEast: ["",[Validators.max(100)]],
-      easternEurope: ["",[Validators.max(100)]],
-      southAsia: ["",[Validators.max(100)]],
-      gulf: ["",[Validators.max(100)]],
-      domasticMarket: ["",[Validators.max(100)]],
+      exportingPercent: ["", [Validators.max(100)]],
+      northAmerica: ["", [Validators.max(100)]],
+      westernEurope: ["", [Validators.max(100)]],
+      easternAsia: ["", [Validators.max(100)]],
+      southAmerica: ["", [Validators.max(100)]],
+      northanEurope: ["", [Validators.max(100)]],
+      africa: ["", [Validators.max(100)]],
+      centralAmerica: ["", [Validators.max(100)]],
+      southernEurope: ["", [Validators.max(100)]],
+      middileEast: ["", [Validators.max(100)]],
+      easternEurope: ["", [Validators.max(100)]],
+      southAsia: ["", [Validators.max(100)]],
+      gulf: ["", [Validators.max(100)]],
+      domasticMarket: ["", [Validators.max(100)]],
     });
   }
 
@@ -100,7 +100,9 @@ export class FormExportCapabilityComponent implements OnInit {
     }
     this.isLoading = true;
     const formValue = this.exportCapabilityForm.value;
-    
+    formValue.isVerify = false;
+    formValue.isPreview = false;
+
     // debugger;
 
     if (this.isDataExist) {

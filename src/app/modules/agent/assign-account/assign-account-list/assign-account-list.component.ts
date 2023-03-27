@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AgentService } from '../../../../core/providers/user/agent.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { AgentService } from '../../../../core/providers/user/agent.service';
 })
 export class AssignAccountListComponent implements OnInit {
   sellerList: any[] = [];
-  constructor(private agentService: AgentService) {}
+  constructor(
+    private agentService: AgentService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.getAssignAssociate();
@@ -30,17 +34,7 @@ export class AssignAccountListComponent implements OnInit {
     );
   }
 
-  sendMail(data): void {
-    // this.agentService.sendMail(data).subscribe(
-    //   (res) => {
-    //     console.log("res", res);
-    //     if (res.data) {
-    //       this.getAssignAssociate();
-    //     }
-    //   },
-    //   (err) => {
-    //     console.log("err", err);
-    //   }
-    // );
+  viewDetail(data): void {
+    this.router.navigateByUrl("/agent/assign-account/assign-account-details" + "?sId=" + data.sellerId + "&aId=" + data.agentId)
   }
 }

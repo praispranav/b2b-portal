@@ -76,9 +76,7 @@
                                     <td>{{seller?.city}}</td>
                                     <td>{{seller?.status}}</td>
                                     <td class="text-primary">
-                                        <ng-container *ngIf="seller?.isMail===false">
-                                            <a (click)="sendMail(seller)">Send Mail</a>
-                                        </ng-container>
+                                        <a (click)="viewDetail(seller)">View Details</a>
                                     </td>
                                 </ng-container>
                             </tr>

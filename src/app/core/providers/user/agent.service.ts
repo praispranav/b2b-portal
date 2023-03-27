@@ -82,4 +82,9 @@ export class AgentService {
       payload
     );
   }
+  agentVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/admin-agent/verify`, payload
+    )
+  }
 }

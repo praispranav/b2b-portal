@@ -31,8 +31,8 @@ export class FormCompanyDetailComponent implements OnInit {
   memberProfiles: any[] = [];
   contactProfiles: any[] = [];
   serviceSubscription: Subscription[] = [];
-  tradeExpo:boolean=true;
-  bannerList:any[] = []
+  tradeExpo: boolean = true;
+  bannerList: any[] = []
 
   options = [
     { value: 'Owner', label: 'Owner' },
@@ -205,7 +205,7 @@ export class FormCompanyDetailComponent implements OnInit {
       companyPhilosophy: ["", [Validators.required]],
       employeeStrength: ["", [Validators.required]],
       companyPage: ["", [Validators.required]],
-      attendTradeExpo:[""]
+      attendTradeExpo: [""]
     });
   }
   addNewContact(data: any = {}): void {
@@ -350,7 +350,9 @@ export class FormCompanyDetailComponent implements OnInit {
         companyPicture: pictureList,
         employeeStrength: formData.employeeStrength ? formData.employeeStrength : '',
         companyVideo: formData.companyVideo ? formData.companyVideo : '',
-        attendTradeExpo:formData.attendTradeExpo ? formData.attendTradeExpo:''
+        attendTradeExpo: formData.attendTradeExpo ? formData.attendTradeExpo : '',
+        isVerify: false,
+        isPreview: false,
       }
       console.log('reqData', reqObj);
       // debugger;
@@ -389,10 +391,10 @@ export class FormCompanyDetailComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
   }
-  noTradeExpoDetails(){
+  noTradeExpoDetails() {
     this.tradeExpo = false;
   }
-  TradeExpoDetailsAdd(){
+  TradeExpoDetailsAdd() {
     this.tradeExpo = true;
   }
 }
