@@ -82,9 +82,95 @@ export class AgentService {
       payload
     );
   }
+
   agentVerify(payload): Observable<any> {
     return this.http.post<any>(
       `${environment.apiUrl}/admin-agent/verify`, payload
     )
   }
+
+  getSellerTypeDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/seller-type/get-detail`, payload
+    )
+  }
+
+  getCompanyProfile(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/company-profile/get-detail`, payload
+    )
+  }
+
+  getCompanyDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/company-detail/get-detail`, payload
+    )
+  }
+
+  getExportCapibilityDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/export-capability/get-detail`, payload
+    )
+  }
+
+  getCertificateDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/certificate-center/get-detail`, payload
+    )
+  }
+
+  getQualityControlDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/quality-control/get-detail`, payload
+    )
+  }
+
+  getResearchDevelopmentDetail(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/research-and-development/get-detail`, payload
+    )
+  }
+
+  sellerTypeVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/seller-type/verify`, payload
+    )
+  }
+
+  companyProfileVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/company-profile/verify`, payload
+    )
+  }
+
+  CompanyDetailVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/company-detail/verify`, payload
+    )
+  }
+
+  ExportCapibilityVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/export-capability/verify`, payload
+    )
+  }
+
+  CertificateVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/certificate-center/verify`, payload
+    )
+  }
+
+  QualityControlVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/quality-control/verify`, payload
+    )
+  }
+
+  ResearchDevelopmentVerify(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/research-and-development/verify`, payload
+    )
+  }
+
 }

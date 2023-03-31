@@ -1,7 +1,7 @@
 <div class="bg-white m-3 p-3 shadow-sm">
     <div class="container">
         <h4>
-            Profile Details
+            Seller Type
         </h4>
         <div class="row">
             <div class="col-md-6">
@@ -51,12 +51,12 @@
                 <div class="d-flex align-items-center">
                     <div class="me-4">
                         <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
-                            (change)="onProfileRadioClick($event)">
+                            (change)="onProfileRadioClick($event,'sellerType')">
                         <span> Verify</span>
                     </div>
                     <div>
                         <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
-                            (change)="onProfileRadioClick($event)">
+                            (change)="onProfileRadioClick($event,'sellerType')">
                         <span>Preview</span>
                     </div>
                 </div>
@@ -110,12 +110,696 @@
     </div>
 </div>
 
+<!-- Company Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Company Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'companyDetail')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'companyDetail')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Company Detail -->
+
+<!-- Company Profile -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Company Profile Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'companyProfile')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'companyProfile')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Company Profile -->
+
+<!-- Export Capibility -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Export Capibility
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'exportCapibility')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'exportCapibility')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Export Capibility -->
+
+<!-- Certificate Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Certificate Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'certificate')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'certificate')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Certificate Detail -->
+
+<!-- Quality Control Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Quality Control Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'qualityControl')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'qualityControl')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Quality Control Detail -->
+
+<!-- Research Development Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Research And Development Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>E-mail Address</b>
+                        </td>
+                        <td>
+                            learnnow@yopmail.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Password</b>
+                        </td>
+                        <td>
+                            Test123!
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Country/Region </b>
+                        </td>
+                        <td>
+                            India
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> State </b>
+                        </td>
+                        <td>
+                            Uttar Pradesh
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> City
+                            </b>
+                        </td>
+                        <td>
+                            Noida
+                        </td>
+                    </tr>
+                </table>
+                <div class="d-flex align-items-center">
+                    <div class="me-4">
+                        <input class="me-2" type="radio" value="Verify" [checked]="profileDetails?.checkedOne==true"
+                            (change)="onProfileRadioClick($event,'researchDevelopment')">
+                        <span> Verify</span>
+                    </div>
+                    <div>
+                        <input class="me-2" type="radio" value="Preview" [checked]="profileDetails?.checkedTwo==true"
+                            (change)="onProfileRadioClick($event,'researchDevelopment')">
+                        <span>Preview</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>GST Number </b>
+                        </td>
+                        <td>
+                            GSTIN928292
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            1987
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Company Website </b>
+                        </td>
+                        <td>
+                            learnnow.in
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Employ strength </b>
+                        </td>
+                        <td>
+                            100-500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b> Assign By </b>
+                        </td>
+                        <td>
+                            Admin
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Research Development Detail -->
+
 
 <div class="bg-white m-3 p-3 shadow-sm">
     <div class="container">
         <h4>Product Details</h4>
         <div class="row">
-            <ng-container *ngFor="let product of productList; let i=index" formArrayName="productDetails">
+            <ng-container *ngFor="let product of productList; let i=index">
                 <div class="col-md-6">
                     <table class="table table-borderless table-sm">
                         <tr>
@@ -182,6 +866,11 @@
         </div>
     </div>
 </div>
-<div class="d-flex justify-content-end">
-    <button class="btn btn-primary" (click)="onSubmit()">Verify</button>
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="onSubmit()">Verify</button>
+        </div>
+    </div>
 </div>
