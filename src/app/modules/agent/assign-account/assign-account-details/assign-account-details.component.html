@@ -1,0 +1,780 @@
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Seller Type
+        </h4>
+        <div class="row">
+            <ng-container *ngFor="let sellerType of sellerTypeDetail?.types">
+                <div class="col-md-6">
+                    <table class="table table-borderless table-sm mb-3">
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                {{sellerType?.name}}
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="d-flex align-items-center">
+                        <div class="me-4">
+                            <input class="me-2" type="radio" value="Verify"
+                                [checked]="sellerTypeDetail?.checkedOne==true"
+                                (change)="onProfileRadioClick($event,'sellerType')">
+                            <span> Verify</span>
+                        </div>
+                        <div>
+                            <input class="me-2" type="radio" value="Preview"
+                                [checked]="sellerTypeDetail?.checkedTwo==true"
+                                (change)="onProfileRadioClick($event,'sellerType')">
+                            <span>Preview</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<!-- Company Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Company Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Company Logo</b>
+                        </td>
+                        <td>
+                            <img [src]="baseUrl+companyDetail?.companyLogo" alt="" class="prd-img">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Picture</b>
+                        </td>
+                        <td *ngFor="let picture of companyDetail?.companyPicture" class="prd-img">
+                            <img [src]="baseUrl+picture" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Page</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.companyPage}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Vision</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.companyVision}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Video</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.companyVideo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Website</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.companyWebsite}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Company Philosophy</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.companyPhilosophy}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Facebook Business</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.facebookBusiness}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Instagram Business</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.instagramBusiness}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Google Business</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.googleBusiness}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Contact Person</b>
+                        </td>
+                    </tr>
+                    <ng-container *ngFor="let contact of companyDetail?.contactPerson">
+                        <tr>
+                            <td>
+                                <b>Name</b>
+                            </td>
+                            <td>
+                                {{contact?.contactPersonFirstName}}&nbsp;{{contact?.contactPersonLastName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Designation</b>
+                            </td>
+                            <td>
+                                {{contact?.contactPersonDesignation?.value}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Email</b>
+                            </td>
+                            <td>
+                                {{contact?.contactPersonEmail}}
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <tr>
+                        <td>
+                            <b>Language Spoken</b>
+                        </td>
+                        <td>
+                            <ng-container *ngFor="let lang of companyDetail?.companyLanguageSpoken">
+                                {{lang}}
+                            </ng-container>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Bank Name</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accBankName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Branch Name</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accBranch}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Account Number</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accNumber}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Account Type</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accType}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>IFSC Code</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accIFSCCode}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Account Swift Code</b>
+                        </td>
+                        <td>
+                            {{companyDetail?.accSwiftCode}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify" [checked]="companyDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'companyDetail')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview" [checked]="companyDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'companyDetail')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Company Detail -->
+
+<!-- Company Profile -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Company Profile Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Company Name</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.company}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Pan Number</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.panNo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Tin Number</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.tanNo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>GST Number</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.gstNo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Year of Establishment</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.estYear | date: 'yyyy'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Phone Number</b>
+                        </td>
+                        <td *ngFor="let phone of companyProfileDetail?.additionalMobile">
+                            {{phone?.regMobile}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Landline Number</b>
+                        </td>
+                        <td *ngFor="let landline of companyProfileDetail?.additionalLandline">
+                            {{landline?.regLandline}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Addition Detail</b></td>
+                        <td>{{companyProfileDetail?.additionalDetail}}</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Address</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.regAddress}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>City</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.regCity}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>State</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.regState}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Country</b>
+                        </td>
+                        <td>
+                            {{companyProfileDetail?.regCountry}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Main Product</b>
+                        </td>
+                        <td *ngFor="let product of companyProfileDetail?.mainProduct">
+                            {{product}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Code Of IE</b></td>
+                        <td>{{companyProfileDetail?.codeOfIE}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Business Certificate</b></td>
+                        <td>
+                            <img [src]="baseUrl+companyProfileDetail?.businessCertificate" alt="" class="prd-img">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Addition Factory Detail</b></td>
+                        <td>{{companyProfileDetail?.additionalFactoryDetails}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify" [checked]="companyProfileDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'companyProfile')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview" [checked]="companyProfileDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'companyProfile')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Company Profile -->
+
+<!-- Export Capibility -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Export Capibility
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Africa</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.africa}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Central America</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.centralAmerica}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Domastic Market</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.domasticMarket}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Eastern Asia</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.easternAsia}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Eastern Europe</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.easternEurope}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Exporting Percent</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.exportingPercent}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Exporting Science</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.exportingScience}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Western Europe</b></td>
+                        <td>{{exportCapibilityDetail?.westernEurope}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Yearly Turnover</b></td>
+                        <td>{{exportCapibilityDetail?.yearlyTurnover}}</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 2 table -->
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Gulf</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.gulf}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Middile East</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.middileEast}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Nearest Port</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.nearestPort}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>North America</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.northAmerica}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Northan Europe</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.northanEurope}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>South America</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.southAmerica}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>South Asia</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.southAsia}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Southern Europe</b>
+                        </td>
+                        <td>
+                            {{exportCapibilityDetail?.southernEurope}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify" [checked]="exportCapibilityDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'exportCapibility')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview"
+                        [checked]="exportCapibilityDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'exportCapibility')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Export Capibility -->
+
+<!-- Certificate Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Certificate Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>Certificates</b>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let certificate of certificateDetail?.certificates">
+                        <td>
+                            <b>Name</b>
+                        </td>
+                        <td>
+                            {{certificate?.name}}
+                        </td>
+                        <td>
+                            <b>Expiry Date</b>
+                        </td>
+                        <td>
+                            {{certificate?.expirtData | date: 'dd-MM-yy'}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify" [checked]="certificateDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'certificate')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview" [checked]="certificateDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'certificate')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Certificate Detail -->
+
+<!-- Quality Control Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Quality Control Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>IsQualityControl</b>
+                        </td>
+                        <td>
+                            {{qualityControlDetail?.isQualityControl}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>QualityControl</b>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let quality of qualityControlDetail?.qualityControl">
+                        <td><b>Process Name</b></td>
+                        <td>{{quality?.processName}}</td>
+                        <td><b>Process Description</b></td>
+                        <td>{{quality?.processDescription}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify" [checked]="qualityControlDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'qualityControl')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview" [checked]="qualityControlDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'qualityControl')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Quality Control Detail -->
+
+<!-- Research Development Detail -->
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>
+            Research And Development Detail
+        </h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <table class="table table-borderless table-sm">
+                    <tr>
+                        <td>
+                            <b>IsResearch and Development</b>
+                        </td>
+                        <td>
+                            {{researchDevelopmentDetail?.isResearchAndDevelopment}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>R&D</b>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let research of researchDevelopmentDetail?.rnd">
+                        <td><b>Certificate Name</b></td>
+                        <td>{{research?.certificateName}}</td>
+                        <td><b>Certified By</b></td>
+                        <td>{{research?.certifiedBy}}</td>
+                        <td><b>Business Scope</b></td>
+                        <td>{{research?.businessScope}}</td>
+                        <td><b>Certificate Issue Date</b></td>
+                        <td>{{research?.certificateIssueDate | date: 'dd-MM-yy'}}</td>
+                        <td><b>Certificate Expiry Date</b></td>
+                        <td>{{research?.certificateExpiryDate | date: 'dd-MM-yy'}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-4">
+                    <input class="me-2" type="radio" value="Verify"
+                        [checked]="researchDevelopmentDetail?.checkedOne==true"
+                        (change)="onProfileRadioClick($event,'researchDevelopment')">
+                    <span> Verify</span>
+                </div>
+                <div>
+                    <input class="me-2" type="radio" value="Preview"
+                        [checked]="researchDevelopmentDetail?.checkedTwo==true"
+                        (change)="onProfileRadioClick($event,'researchDevelopment')">
+                    <span>Preview</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Research Development Detail -->
+
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <h4>Product Details</h4>
+        <div class="row">
+            <ng-container *ngFor="let product of productList; let i=index">
+                <div class="col-md-6">
+                    <table class="table table-borderless table-sm">
+                        <tr>
+                            <td>
+                                <b> Product Name </b>
+                            </td>
+                            <td>
+                                {{product?.productName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b> Product Description </b>
+                            </td>
+                            <td [innerHtml]="product?.packagingDescription">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Product Type </b>
+                            </td>
+                            <td [innerHtml]="product?.productType">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b> Payment Type</b>
+                            </td>
+                            <td *ngFor="let payment of product?.paymentTypes">
+                                {{payment?.value}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Category</b>
+                            </td>
+                            <td>
+                                {{product?.category}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Product Image</b>
+                            </td>
+                            <td *ngFor="let img of product?.productImage">
+                                <img [src]="baseUrl+img" alt="Product Image" class="prd-img">
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="d-flex align-items-center" *ngIf="product?.isVerify===false">
+                        <div class="me-4">
+                            <input class="me-2" type="radio" value="Verify" [checked]="product?.checkedOne==true"
+                                (change)="onRadioClick($event,product)">
+                            <span> Verify</span>
+                        </div>
+                        <div>
+                            <input class="me-2" type="radio" value="Preview" [checked]="product?.checkedTwo==true"
+                                (change)="onRadioClick($event,product)">
+                            <span>Preview</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white m-3 p-3 shadow-sm">
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="onSubmit()">Verify</button>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@ export class FormQualityControlComponent implements OnInit {
   formArray: FormArray = new FormArray([]);
   qualityControl: any[] = [];
   serviceSubscription: Subscription[] = [];
-  noQualityControl:boolean = true;
+  noQualityControl: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,12 +49,12 @@ export class FormQualityControlComponent implements OnInit {
     );
   }
 
-noQualityControlValue(){
-this.noQualityControl = false;
-}
-yesQualityControlValue(){
-  this.noQualityControl = true;
-}
+  noQualityControlValue() {
+    this.noQualityControl = false;
+  }
+  yesQualityControlValue() {
+    this.noQualityControl = true;
+  }
 
   buildTypeForm() {
     this.qualityControlForm = this.formBuilder.group({
@@ -134,7 +134,9 @@ yesQualityControlValue(){
 
     let reqObj = {
       isQualityControl: this.qualityControlForm.value.isQualityProcess,
-      qualityControl:[...this.qualityControl],
+      qualityControl: [...this.qualityControl],
+      isVerify: false,
+      isPreview: false
 
     }
 

@@ -30,7 +30,7 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
 
     private appMessageService: AppMessageService,
     private providerResearchAndDevelopmentService: ProviderResearchAndDevelopmentService
-  ) {}
+  ) { }
 
   get f() {
     return this.researchAndDevelopmentForm.controls;
@@ -52,12 +52,12 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     );
   }
 
-  rndYesNo(){
+  rndYesNo() {
     const value = this.researchAndDevelopmentForm.value.isResearchAndDevelopment
     this.rnd = Boolean(value == 'Yes')
   }
 
-  
+
   // noRandDValue(){
   //   this.noRandD = false;
   //   }
@@ -175,9 +175,11 @@ export class FormResearchAndDevelopmentComponent implements OnInit {
     }
     this.isLoading = true;
     let reqObj = {
-        isResearchAndDevelopment:
-          this.researchAndDevelopmentForm.value.isResearchAndDevelopment,
-        rnd: [...this.rndDArray],
+      isResearchAndDevelopment:
+        this.researchAndDevelopmentForm.value.isResearchAndDevelopment,
+      rnd: [...this.rndDArray],
+      isVerify: false,
+      isPreview: false
     };
     console.log("reqData", reqObj);
     if (this.isDataExist) {

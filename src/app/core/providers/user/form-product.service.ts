@@ -16,11 +16,11 @@ export class FormProductService {
   productSubjectAsObservable = this.productSubject.asObservable();
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   storeProductInfo(data) {
     const products = localStorage.getItem(this.productConstant);
-    if(products){
+    if (products) {
       const parsed = JSON.parse(products);
       parsed.push(data);
       localStorage.setItem(this.productConstant, JSON.stringify(parsed))
@@ -30,28 +30,28 @@ export class FormProductService {
     this.stringSubject.next(Math.floor(Math.random() * 1000000));
   }
 
-  changeState(){
+  changeState() {
     this.stringSubject.next(Math.floor(Math.random() * 1000000));
   }
 
-  removeProduct(productId){
+  removeProduct(productId) {
     const products = localStorage.getItem(this.productConstant);
-    if(products){
+    if (products) {
       const parsed = JSON.parse(products);
-      const findProductIndex = parsed.findIndex((product)=> product._id === productId)
-      parsed.splice(findProductIndex ,1);
+      const findProductIndex = parsed.findIndex((product) => product._id === productId)
+      parsed.splice(findProductIndex, 1);
       localStorage.setItem(this.productConstant, JSON.stringify(parsed))
-    } 
+    }
 
     this.stringSubject.next(true);
   }
-  
 
-  updateProductStatus({_id, status}){
+
+  updateProductStatus({ _id, status }) {
     return this.http.post<any>(`${environment.apiUrl}/product/updateStatus`, { _id, status })
   }
 
-  
+
   addProductDetails(params: any = {}): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/product/add`, params);
   }
@@ -63,18 +63,18 @@ export class FormProductService {
     return this.http.get<any>(`${environment.apiUrl}/product/get-counts`);
   }
 
-  getProductBySeller({ page, pageSize,searchText, userId }){
+  getProductBySeller({ page, pageSize, searchText, userId }) {
     return this.http.get<any>(
-      `${environment.apiUrl}/product/get-seller-all`, {params:{ page, pageSize, searchText,userId }}
+      `${environment.apiUrl}/product/get-seller-all`, { params: { page, pageSize, searchText, userId } }
     );
   }
 
-  getAllProduct({ page, pageSize }){
+  getAllProduct({ page, pageSize }) {
     return this.http.get<any>(
-      `${environment.apiUrl}/product/get-all`, {params:{ page, pageSize }}
+      `${environment.apiUrl}/product/get-all`, { params: { page, pageSize } }
     );
   }
-  
+
   getProductFilter(index: number = 0, length: number = 10, query: any = {}): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/product/get-list/${index}/${length}/${JSON.stringify(query)}`);
   }
@@ -87,12 +87,18 @@ export class FormProductService {
     return this.http.delete<any>(`${environment.apiUrl}/product/delete/${id}`);
   }
 
-  searchProduct(params){
-    return this.http.post(environment.apiUrl + '/product-search', { }, { params: params })
+  searchProduct(params) {
+    return this.http.post(environment.apiUrl + '/product-search', {}, { params: params })
   }
 
-  searchProductBySeller({ search, page, pageSize, sellerId, categoryId }){
-    return this.http.get(environment.apiUrl + '/product/seller', { params: { search, page, pageSize, sellerId, categoryId }})
+  searchProductBySeller({ search, page, pageSize, sellerId, categoryId }) {
+    return this.http.get(environment.apiUrl + '/product/seller', { params: { search, page, pageSize, sellerId, categoryId } })
   }
-  
+
+  updateVerifyProduct(payload): Observable<any> {
+    return this.http.post<any>(
+      `${environment.apiUrl}/product/product-verify`,
+      payload
+    );
+  }
 }

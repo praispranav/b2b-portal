@@ -17,12 +17,12 @@ export class PageProductAddComponent implements OnInit {
   fourTabFormValue: any;
   payload: any = {};
   currentTabIndex: number = 0;
-  category:any;
+  category: any;
   constructor(
     private router: Router,
     private productService: FormProductService,
     private storageService: ProviderStorageService
-  ) {}
+  ) { }
   // shippingInfoForm(productDetailFrom:productDetailForm){
   //      this.productService.(productDetailForm.value).subscribe(
   //     (res) => {
@@ -35,8 +35,8 @@ export class PageProductAddComponent implements OnInit {
   //   );
   // }
   ngOnInit() {
-this.category= JSON.parse(localStorage.getItem("selectedCategoryId")).name;
-console.log('category',this.category);
+    this.category = JSON.parse(localStorage.getItem("selectedCategoryId")).name;
+    console.log('category', this.category);
 
   }
 
@@ -135,6 +135,8 @@ console.log('category',this.category);
           ...this.thirdTabFormValue,
           ...this.fourTabFormValue,
           category: this.category,
+          "isVerify": false,
+          "isPreview": false,
         };
         console.log("payload", this.payload);
         this.productService.addProductDetails(this.payload).subscribe(

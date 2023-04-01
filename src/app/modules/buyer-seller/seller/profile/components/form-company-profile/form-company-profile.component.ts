@@ -316,7 +316,7 @@ export class FormCompanyProfileComponent implements OnInit {
     { country: "Zimbabwe", code: "263", iso: "ZW" },
   ];
 
-  categoryList:any[] = []
+  categoryList: any[] = []
   constructor(
     private formBuilder: FormBuilder,
     private imageService: ImageService,
@@ -448,7 +448,7 @@ export class FormCompanyProfileComponent implements OnInit {
   }
   addNewMobile(data: any = {}): void {
     this.formGroup = this.formBuilder.group({
-      regMobile: [data.regMobile ? data.regMobile : "",  [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
+      regMobile: [data.regMobile ? data.regMobile : "", [Validators.required, Validators.min(1000000000), Validators.max(9999999999)]],
     });
     this.mobileArray.push(this.formGroup);
   }
@@ -464,7 +464,7 @@ export class FormCompanyProfileComponent implements OnInit {
       ],
     });
     this.landlineArray.push(this.formGroup);
-    console.log("Controles",this.landlineArray.controls)
+    console.log("Controles", this.landlineArray.controls)
   }
 
   deleteLandline(index: number): void {
@@ -487,12 +487,12 @@ export class FormCompanyProfileComponent implements OnInit {
 
     console.log(this.additionalArray.controls)
   }
-  
+
   removeAdditional(index: number): void {
     this.additionalArray.removeAt(index);
   }
 
-  getStri(a){
+  getStri(a) {
   }
 
   updateDataIfExist() {
@@ -574,7 +574,7 @@ export class FormCompanyProfileComponent implements OnInit {
       return;
     }
     // let fileName = "";
-     
+
     //     const productImage: any = await this.uploadImageToServer(
     //       item.originFileObj)
     //       fileName += (productImage.fileName);
@@ -604,6 +604,8 @@ export class FormCompanyProfileComponent implements OnInit {
       additionalFactoryDetails: formData.additionalFactoryDetails
         ? formData.additionalFactoryDetails
         : "",
+      isVerify: false,
+      isPreview: false
     };
     console.log("reqData", formData);
     console.log("reqObj", reqObj);
@@ -676,8 +678,8 @@ export class FormCompanyProfileComponent implements OnInit {
     this.addtionalDetails = false;
   }
 
-  getCategoryList(){
-    this.masterCategoryService.getMaterCategoryListByFilter(0, 10, { level: "0" }).subscribe((res)=>{
+  getCategoryList() {
+    this.masterCategoryService.getMaterCategoryListByFilter(0, 10, { level: "0" }).subscribe((res) => {
       this.categoryList = res.data
     })
   }
