@@ -9,7 +9,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">10</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.unReadConversation}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Replied</span>
@@ -19,11 +19,11 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">3</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.repliedMessage}}</h4>
         </div>
     </div>
 
-    <div class="col-md-4 mb-2">
+    <!-- <div class="col-md-4 mb-2">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -46,7 +46,7 @@
             </div>
             <h4 class=" p-b-5 mt-3">4</h4>
         </div>
-    </div>
+    </div> -->
 
     <div class="col-md-4  mb-2">
         <div class=" bg-white p-3  shadow-sm">
@@ -59,7 +59,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">19</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.conversation}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Added today</span>
@@ -69,13 +69,11 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">8</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.todayConversation}}</h4>
         </div>
 
     </div>
-</div>
 
-<div class="row p-0  m-0 pt-3">
     <div class="col-md-4  mb-2">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
@@ -86,7 +84,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">10</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalProduct}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Approved Products</span>
@@ -95,7 +93,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">3</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.verifiedProduct}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Unapproved Products</span>
@@ -104,11 +102,15 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">10</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.unVerifiedProduct}}</h4>
         </div>
     </div>
+</div>
 
-    <div class="col-md-4 mb-2">
+<div class="row p-0  m-0 pt-3">
+
+
+    <!-- <div class="col-md-4 mb-2">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -169,5 +171,5 @@
             </div>
             <h4 class=" p-b-5 mt-3">10</h4>
         </div>
-    </div>
+    </div> -->
 </div>

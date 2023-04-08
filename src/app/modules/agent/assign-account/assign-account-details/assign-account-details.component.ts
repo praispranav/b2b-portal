@@ -500,6 +500,7 @@ export class AssignAccountDetailsComponent implements OnInit {
     if ((this.sellerTypeDetail.checkedOne === true && this.companyDetail.checkedOne === true && this.companyProfileDetail.checkedOne === true && this.exportCapibilityDetail.checkedOne === true) && (this.certificateDetail.checkedOne === true && this.qualityControlDetail.checkedOne === true && this.researchDevelopmentDetail.checkedOne === true)) {
       payload = {
         "_id": this.agentId,
+        "sellerId": this.sellerId,
         "isVerify": true,
         "isPreview": false
       }
@@ -513,6 +514,7 @@ export class AssignAccountDetailsComponent implements OnInit {
     } else if ((this.sellerTypeDetail.checkedTwo === true && this.companyDetail.checkedTwo === true && this.companyProfileDetail.checkedTwo === true && this.exportCapibilityDetail.checkedTwo === true) && (this.certificateDetail.checkedTwo === true && this.qualityControlDetail.checkedTwo === true && this.researchDevelopmentDetail.checkedTwo === true)) {
       payload = {
         "_id": this.agentId,
+        "sellerId": this.sellerId,
         "isVerify": false,
         "isPreview": true
       }

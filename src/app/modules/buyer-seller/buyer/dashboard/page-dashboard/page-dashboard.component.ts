@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../../../../core/providers/user/dashboard.service';
 
 @Component({
   selector: 'app-page-dashboard',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-dashboard.component.scss']
 })
 export class PageDashboardComponent implements OnInit {
-
-  constructor() { }
+  counts: any;
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.getCounts();
   }
 
+  getCounts(): void {
+    this.dashboardService.buyerCount().subscribe(
+      (response) => {
+        this.counts = response.data;
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    )
+  }
 }

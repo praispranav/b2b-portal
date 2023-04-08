@@ -9,7 +9,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">505</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalSeller}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Registered Today</span>
@@ -18,7 +18,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">10</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalSellerToday}}</h4>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">200</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalBuyer}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Registered Today</span>
@@ -42,7 +42,7 @@
                     <i class="pg-icon  align-items-center ">chevron_right</i>
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">40</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalBuyerToday}}</h4>
         </div>
     </div>
     <div class="col-md-3 pl-3 p-0">
@@ -56,7 +56,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">605</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalProduct}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Added today</span>
@@ -66,7 +66,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">30</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalProductToday}}</h4>
         </div>
 
     </div>
@@ -81,7 +81,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">112</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalVerificationSeller}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Verified Supplier</span>
@@ -91,13 +91,13 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">30</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalVerifiedSeller}}</h4>
         </div>
 
     </div>
 </div>
 <div class="row p-0 pr-3 m-0 mt-3">
-    <div class="col-md-3 pl-3 p-0">
+    <!-- <div class="col-md-3 pl-3 p-0">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -121,9 +121,9 @@
             <h4 class=" p-b-5 mt-3">10</h4>
         </div>
 
-    </div>
+    </div> -->
 
-    <div class="col-md-3 pl-3 p-0">
+    <!-- <div class="col-md-3 pl-3 p-0">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -146,9 +146,9 @@
             </div>
             <h4 class=" p-b-5 mt-3">40</h4>
         </div>
-    </div>
+    </div> -->
 
-    <div class="col-md-3 pl-3 p-0">
+    <!-- <div class="col-md-3 pl-3 p-0">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -172,7 +172,7 @@
             <h4 class=" p-b-5 mt-3">30</h4>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="col-md-3 pl-3 p-0">
         <div class=" bg-white p-3 shadow-sm">
@@ -185,7 +185,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">112</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.sellerApprovedByAgent}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Verified Today</span>
@@ -195,12 +195,11 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">30</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.todaySellerApprovedByAgent}}</h4>
         </div>
 
     </div>
-</div>
-<div class="row p-0 pr-3 m-0 mt-3">
+
     <div class="col-md-3 pl-3 p-0">
         <div class=" bg-white p-3 shadow-sm">
             <div class="d-flex justify-content-start">
@@ -212,7 +211,7 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">505</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.totalSellerByAssociate}}</h4>
             <div class="d-flex justify-content-start">
                 <div>
                     <span class="font-montserrat fs-11 all-caps">Onboard Today</span>
@@ -222,13 +221,16 @@
 
                 </div>
             </div>
-            <h4 class=" p-b-5 mt-3">10</h4>
+            <h4 class=" p-b-5 mt-3">{{counts?.todaySellerByAssociate}}</h4>
         </div>
 
     </div>
+</div>
+<div class="row p-0 pr-3 m-0 mt-3">
+   
 
 
-    <div class="col-md-3  pl-3 p-0">
+    <!-- <div class="col-md-3  pl-3 p-0">
         <div class=" bg-white pl-2 pb-3 pt-4 shadow-sm">
             <div class="d-flex justify-content-start">
                 <div>
@@ -251,61 +253,7 @@
             </div>
             <h4 class=" p-b-5">40</h4>
         </div>
-    </div>
+    </div> -->
     <!--  -->
 
-</div>
-<div class="row p-0 pr-3 m-0 mt-3">
-    <div class="col-md-3 pl-3 p-0">
-        <div class=" bg-white p-3 shadow-sm">
-            <div class="d-flex justify-content-start">
-                <div>
-                    <span class="font-montserrat fs-11 all-caps">Normal Supplier Registered</span>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <i class="pg-icon  align-items-center ">chevron_right</i>
-                </div>
-            </div>
-            <h4 class=" p-b-5 mt-3">654</h4>
-        </div>
-    </div>
-    <div class="col-md-3 pl-3 p-0">
-        <div class=" bg-white p-3 shadow-sm">
-            <div class="d-flex justify-content-start">
-                <div>
-                    <span class="font-montserrat fs-11 all-caps">Normal Supplier Registered</span>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <i class="pg-icon  align-items-center ">chevron_right</i>
-                </div>
-            </div>
-            <h4 class=" p-b-5 mt-3">243</h4>
-        </div>
-    </div>
-    <div class="col-md-3 pl-3 p-0">
-        <div class=" bg-white p-3 shadow-sm">
-            <div class="d-flex justify-content-start">
-                <div>
-                    <span class="font-montserrat fs-11 all-caps">Normal Supplier Registered</span>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <i class="pg-icon  align-items-center ">chevron_right</i>
-                </div>
-            </div>
-            <h4 class=" p-b-5 mt-3">50</h4>
-        </div>
-    </div>
-    <div class="col-md-3 pl-3 p-0">
-        <div class=" bg-white p-3 shadow-sm">
-            <div class="d-flex justify-content-start">
-                <div>
-                    <span class="font-montserrat fs-11 all-caps">Normal Supplier Registered</span>
-                </div>
-                <div class="d-flex align-items-center ">
-                    <i class="pg-icon  align-items-center ">chevron_right</i>
-                </div>
-            </div>
-            <h4 class=" p-b-5 mt-3">30</h4>
-        </div>
-    </div>
 </div>
